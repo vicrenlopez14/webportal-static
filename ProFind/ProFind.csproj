@@ -150,9 +150,6 @@
     <Compile Include="Lib\Admin\Views\Main_Page_Admin\Main_Page_Admin.xaml.cs">
       <DependentUpon>Main_Page_Admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Admin\Views\Profesional_Add.xaml.cs">
-      <DependentUpon>Profesional_Add.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Professionals_Page\Actives_Page.xaml.cs">
       <DependentUpon>Actives_Page.xaml</DependentUpon>
     </Compile>
@@ -161,6 +158,9 @@
     </Compile>
     <Compile Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml.cs">
       <DependentUpon>Professional_Create.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\Professional_Add\professional_information.xaml.cs">
+      <DependentUpon>professional_information.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Professional_CRUD\ProfessionalCreate.xaml.cs">
       <DependentUpon>ProfessionalCreate.xaml</DependentUpon>
@@ -362,10 +362,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\Admin\Views\Profesional_Add.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Lib\Admin\Views\Professionals_Page\Actives_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -377,6 +373,10 @@
     <Page Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Admin\Views\Professional_Add\professional_information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\Professional_CRUD\ProfessionalCreate.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,110 @@
+﻿<Page
+    x:Class="ProFind.Lib.Admin.Views.Professional_Add.professional_information"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.Admin.Views.Professional_Add"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Margin="96,10,211,40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="288*"/>
+                <RowDefinition Height="187*"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBox Header="Num Empleado" PlaceholderText="Num" TextChanged="TxtNumEmpleado" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="28,65,849,454" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+
+            </TextBox>
+            <TextBox Header="AFP" PlaceholderText="AFP" TextChanged="TxtAFP" RenderTransformOrigin="0.6,0.536" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="572,550,287,342" Grid.RowSpan="2" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195" TranslateX="0.007" TranslateY="-0.105"/>
+                </TextBox.RenderTransform>
+
+            </TextBox>
+            <TextBox Header="Dui" PlaceholderText="" TextChanged="TxtDui" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="31,478,846,40" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+
+            </TextBox>
+            <TextBox Header="Seguro Social" PlaceholderText="Seguro" TextChanged="TxtNum_SeguroSocial" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="27,161,852,357" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <DatePicker Header="Fecha De Nacimiento" Margin="27,239,0,0" VerticalAlignment="Top" Width="316" Height="73"/>
+            <TextBox Header="Puesto de Trabajo" PlaceholderText="Puesto" TextChanged="TxtPuestoDeTrabajo" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="25,326,847,194" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <ComboBox SelectionChanged="Selection_Departamento" Header="Departamento" PlaceholderText="" Width="316" Margin="27,400,0,0">
+                <x:String>Ahuachapán</x:String>
+                <x:String>Cabañas</x:String>
+                <x:String>Chalatenango</x:String>
+                <x:String>Cuscatlán</x:String>
+                <x:String>La Libertad</x:String>
+                <x:String>Morazán</x:String>
+                <x:String>La Paz</x:String>
+                <x:String>Santa Ana</x:String>
+                <x:String>San Miguel</x:String>
+                <x:String>San Salvador</x:String>
+                <x:String>San Vicente</x:String>
+                <x:String>Sonsonate</x:String>
+                <x:String>La Unión</x:String>
+                <x:String>Usulután</x:String>
+
+            </ComboBox>
+
+            <TextBox Header="Codigo Postal" PlaceholderText="" TextChanged="TxtCodigo_Postal" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="34,550,840,344" Grid.RowSpan="2" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox Header="Email" PlaceholderText="Gmail.com" TextChanged="TxtEmail" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="562,65,298,455" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <ComboBox SelectionChanged="Selection_Sexo" Header="Sexo" PlaceholderText="" Width="331" Margin="570,164,0,0">
+                <x:String>Masculino</x:String>
+                <x:String>Femenino</x:String>
+
+
+            </ComboBox>
+            <ComboBox SelectionChanged="txtMetodoDePago" Header="Metodo De Pago" PlaceholderText="" Width="331" Margin="568,247,0,0">
+                <x:String>Transferencia Bancaria</x:String>
+                <x:String>Cheque</x:String>
+                <x:String>Efectivo</x:String>
+
+
+
+            </ComboBox>
+
+            <TextBox Header="Salario Base" PlaceholderText="" TextChanged="TxtSalario" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="570,327,292,192" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <ComboBox SelectionChanged="Selection_Tipo_Jornada" Header="Tipo de Jornada" PlaceholderText="" Width="331" Margin="571,400,0,0">
+                <x:String>Matutina</x:String>
+                <x:String>Nocturna</x:String>
+
+
+
+            </ComboBox>
+            <CalendarDatePicker PlaceholderText="Pick a date" Header="Fecha de Ingreso " Margin="571,475,0,0" VerticalAlignment="Top" Width="331" />
+            <Button x:Name="btnAgregar" Height="54" Width="131" Content="Agregar" Margin="765,69,0,0" Background="#043860" Foreground="White" CornerRadius="5" VerticalAlignment="Top" Grid.Row="1"/>
+            <Button x:Name="btnCancelar" Height="54" Width="131" Content="Cancelar" Margin="27,69,0,0" Background="#043860" Foreground="White" CornerRadius="5" VerticalAlignment="Top" RenderTransformOrigin="1.663,0.216" Grid.Row="1"/>
+            <Button x:Name="btnExaminar" Height="30" Width="75" Content="Examinar" Margin="1065,140,0,0" Background="#8EAD8B" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
+            <PersonPicture  ProfilePicture="https://cdn-icons-png.flaticon.com/512/219/219986.png" Margin="1052,25,41,451" RenderTransformOrigin="0.48,0.99"></PersonPicture>
+        </Grid>
+    </Grid>
+</Page>

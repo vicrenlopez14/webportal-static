@@ -15,16 +15,21 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views
+namespace ProFind.Lib.Admin.Views.Professional_Add
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Editar_User : Page
+    public sealed partial class professional_information : Page
     {
-        public Editar_User()
+        public professional_information()
         {
             this.InitializeComponent();
+        }
+
+        private void Selection_Sexo(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void TxtNumEmpleado(object sender, TextChangedEventArgs e)
@@ -32,22 +37,32 @@ namespace ProFind.Lib.Admin.Views
 
         }
 
-        private void TxFIstName(object sender, TextChangedEventArgs e)
+        private void TxtNum_SeguroSocial(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void TxtLastName(object sender, TextChangedEventArgs e)
+        private void TxtPuestoDeTrabajo(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Selection_Departamento(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TxtDui(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TxtCodigo_Postal(object sender, TextChangedEventArgs e)
         {
 
         }
 
         private void TxtEmail(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TxtPuesto(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -62,7 +77,12 @@ namespace ProFind.Lib.Admin.Views
 
         }
 
-        private void txtJornada(object sender, SelectionChangedEventArgs e)
+        private void Selection_Tipo_Jornada(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TxtAFP(object sender, TextChangedEventArgs e)
         {
 
         }
