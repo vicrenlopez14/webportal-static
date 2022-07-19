@@ -130,6 +130,26 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lib\Admin\Controllers\Dummy.txt" />
+    <Content Include="Lib\Admin\Models\Dummy.txt" />
+    <Content Include="Lib\Admin\Services\Dummy.txt" />
+    <Content Include="Lib\Admin\ViewModels\Dummy.txt" />
+    <Content Include="Lib\Admin\Views\Dummy.txt" />
+    <Content Include="Lib\Client\Controllers\Dummy.txt" />
+    <Content Include="Lib\Client\Models\Dummy.txt" />
+    <Content Include="Lib\Client\Services\Dummy.txt" />
+    <Content Include="Lib\Client\ViewModels\Dummy.txt" />
+    <Content Include="Lib\Client\Views\Dummy.txt" />
+    <Content Include="Lib\Global\Controllers\Dummy.txt" />
+    <Content Include="Lib\Global\Models\Dummy.txt" />
+    <Content Include="Lib\Global\Services\Dummy.txt" />
+    <Content Include="Lib\Global\ViewModels\Dummy.txt" />
+    <Content Include="Lib\Global\Views\Dummy.txt" />
+    <Content Include="Lib\Professional\Controllers\Dummy.txt" />
+    <Content Include="Lib\Professional\Models\Dummy.txt" />
+    <Content Include="Lib\Professional\Services\Dummy.txt" />
+    <Content Include="Lib\Professional\ViewModels\Dummy.txt" />
+    <Content Include="Lib\Professional\Views\Dummy.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
