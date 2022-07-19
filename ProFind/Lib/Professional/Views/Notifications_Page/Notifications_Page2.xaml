@@ -1,0 +1,99 @@
+﻿<Page
+    x:Class="UWP_ProFind.Lib.Professional.Views.Notifications_Page.Notifications_Page2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_ProFind.Lib.Professional.Views.Notifications_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="47,41,778,800" Background="#ECBE3E" CornerRadius="15" Grid.ColumnSpan="2">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Text= "Payment Notification" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="Law Firm" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Margin="550,-10,0,0" Height="27" Width="300">
+                <TextBlock Text="$220" FontWeight="Bold" Height="70" FontSize="18"/>
+            </StackPanel>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, -10">
+                <TextBlock Height="53" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="378"/>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,10">
+                <TextBlock Text="Client: Fernando Aguirre" Width="372"/>
+            </StackPanel>
+        </StackPanel>
+        <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="62,56,102,844" RenderTransformOrigin="0.48,0.99"/>
+        <StackPanel Margin="516,41,45,800" Background="#896A67" CornerRadius="15" Grid.Column="1">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Text= "Project Acceptance Notification" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="Law Firm" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Margin="550,-10,0,0" Height="27" Width="300"/>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, -10">
+                <TextBlock Height="53" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="378"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,10">
+                <TextBlock Text="Client: Daniel Burgos" Width="372"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Decline" Grid.Column="1" Margin="1059,149,0,0" VerticalAlignment="Top" Height="34" Width="109" Background="#FFD70014" />
+        <PersonPicture  ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" Margin="544,56,592,844" RenderTransformOrigin="0.48,0.99" Grid.Column="1"/>
+        <StackPanel Margin="47,259,778,582" Background="#95D7AE" CornerRadius="15" Grid.ColumnSpan="2">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Text= "Customer Message Notification" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="Law Firm" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Margin="550,-10,0,0" Height="27" Width="300"/>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, -10">
+                <TextBlock Height="53" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="378"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,10">
+                <TextBlock Text="Client: Daniel Burgos" Width="372"/>
+            </StackPanel>
+        </StackPanel>
+        <PersonPicture  ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" Margin="62,274,102,626" RenderTransformOrigin="0.48,0.99"/>
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Go to message" Grid.Column="1" Margin="315,352,0,0" VerticalAlignment="Top" Height="34" Width="120" />
+        <StackPanel Margin="516,259,45,582" Background="#FB4D3D" CornerRadius="15" Grid.Column="1">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Text= "Notification of Company Communications" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="Global" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Margin="550,-10,0,0" Height="27" Width="300"/>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, -10">
+                <TextBlock Height="53" Text="Message:" FontWeight="Bold" FontSize="15" Width="378"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,10">
+                <TextBlock Text="There was a policy change" Width="372"/>
+            </StackPanel>
+        </StackPanel>
+        <PersonPicture  ProfilePicture="https://www.santalucia.edu.pe/admin/_uploads/imagenes/14062021181256-comunicado-a-estudiantes-denuncias-y-reclamos.png" Margin="544,274,592,626" RenderTransformOrigin="0.48,0.99" Grid.Column="1"/>
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Aware" Grid.Column="1" Margin="1040,340,0,0" VerticalAlignment="Top" Height="34" Width="128" Background="#FF2E7BE2" />
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Aware" Grid.Column="1" Margin="307,122,0,0" VerticalAlignment="Top" Height="34" Width="128" Background="#FF0B7D36" />
+    </Grid>
+</Page>

@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="UWP_ProFind.Lib.Admin.Views.Status_Page.Status_Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_ProFind.Lib.Admin.Views.Status_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="15,35,15,935" Height="30" Background="#2C933A">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Width="17" Height="15" Fill="#65E700" Margin="10, 0"/>
+                    <TextBlock Text="Connected professionals (4)" TextAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+            <ListView Margin="0,-920,0,784" HorizontalAlignment="Center" Width="1462" Height="204">
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Ing. Carlos Hugo Ruíz" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Dra. María Cecibel Castellanos" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Lic. Rodrigo Abraham Echeverría" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Dr. Mario Gabriel Campos" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+            </ListView>
+
+            <StackPanel Margin="13,-800,17,739" Height="30" Background="#635225">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Width="17" Height="15" Fill="#65E700" Margin="10, 0"/>
+                    <TextBlock Text="Connected clients (3)" TextAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="White" SelectionChanged="TextBlock_SelectionChanged"/>
+                </StackPanel>
+            </StackPanel>
+
+            <ListView Margin="17,-740,0,590" HorizontalAlignment="Left" Width="1462" Height="204">
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="María Alejandra Ramos Chavéz" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Camilo Gabriel Campos Lopéz" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="Rodrigo Alejandro Flores Melgar" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

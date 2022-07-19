@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="UWP_ProFind.Lib.Professional.Views.Notifications_Page.Notifications_Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_ProFind.Lib.Professional.Views.Notifications_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <muxc:InfoBar IsOpen="True" Severity="Informational" Title="Empty page" Message="Work in progress."/>
+
+        <Grid Margin="-10,108,10,-108">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="265*"/>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="422*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Notifications and Actions" FontWeight="Bold" Margin="213,61,819,891" FontSize="22" RenderTransformOrigin="0.5,-1.208" Grid.ColumnSpan="3" FocusVisualPrimaryBrush="{x:Null}" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <TextBlock Height="53" Text="Activados banners, sonidos"  FontSize="15" Width="378" Margin="220,262,58,685" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Payment Notification" FontWeight="Bold" Margin="220,228,812,724" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="42,193,388,707" RenderTransformOrigin="0.48,0.99"/>
+            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,235,0,0" VerticalAlignment="Top" Height="38" Grid.Column="2"/>
+            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="202,409,76,538" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Project Acceptance Notification" FontWeight="Bold" Margin="202,369,830,583" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <PersonPicture  ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" Margin="42,334,388,566" RenderTransformOrigin="0.48,0.99"/>
+            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="64,365,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.Column="2">
+                <ToggleSwitch.RenderTransform>
+                    <CompositeTransform Rotation="-0.051"/>
+                </ToggleSwitch.RenderTransform>
+            </ToggleSwitch>
+            <TextBlock Height="53" Text="Activados banners, sonidos"  FontSize="15" Width="378" Margin="220,262,58,685" Grid.ColumnSpan="2"/>
+            <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="42,193,388,707" RenderTransformOrigin="0.48,0.99"/>
+            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,235,0,0" VerticalAlignment="Top" Height="38" Grid.Column="2"/>
+            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="202,551,76,396" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Customer Message Notification" FontWeight="Bold" Margin="202,504,830,448" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <PersonPicture  ProfilePicture="https://www.yelpblog.com/wp-content/uploads/2016/04/Message.png" Margin="42,478,388,422" RenderTransformOrigin="0.48,0.99"/>
+            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,512,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
+            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="196,689,82,258" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Notificación de Comunicados de la Empresa" FontWeight="Bold" Margin="196,655,836,297" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <PersonPicture  ProfilePicture="https://www.santalucia.edu.pe/admin/_uploads/imagenes/14062021181256-comunicado-a-estudiantes-denuncias-y-reclamos.png" Margin="42,626,388,274" RenderTransformOrigin="0.48,0.99"/>
+            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,657,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
+            <PersonPicture  ProfilePicture="http://blog.dopplerrelay.com/wp-content/uploads/20180316-EmailTransaccionalNotificaciones.png" Margin="42,26,388,874" RenderTransformOrigin="0.48,0.99"/>
+        </Grid>
+    </Grid>
+</Page>

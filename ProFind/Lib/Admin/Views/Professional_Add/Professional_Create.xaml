@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="UWP_ProFind.Lib.Admin.Views.Professional_Add.Professional_Create"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_ProFind.Lib.Admin.Views.Professional_Add"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Header="Fist Name" PlaceholderText="Name" Width="460" TextChanged="TxtFIstName" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox Header="Last Name" PlaceholderText="Name" Width="463" TextChanged="TxtLastName" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <ComboBox SelectionChanged="ComboBox_SelectionProfesional" Header="Elección de Profesion" PlaceholderText="Profesiones" Width="454" RenderTransformOrigin="0.555,0.073">
+                <x:String>Bufete Legal</x:String>
+                <x:String>Servicios Outsourcing Automotriz</x:String>
+                <x:String>Servicios de Medico General</x:String>
+            </ComboBox>
+            <PasswordBox Header="Password for the new professional" x:Name="passwordBox" Width="461" MaxLength="16" PlaceholderText="Password"
+             PasswordChanged="passwordBox_PasswordChanged" RenderTransformOrigin="0.538,2.297" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="54">
+                <PasswordBox.RenderTransform>
+                    <CompositeTransform SkewX="-1.005" TranslateX="-1.251"/>
+                </PasswordBox.RenderTransform>
+            </PasswordBox>
+
+            <PasswordBox Header="Confirm Password" x:Name="Confirm_passwordBox" Width="461" MaxLength="16" PlaceholderText="Password"
+             PasswordChanged="passwordBox_PasswordChanged" RenderTransformOrigin="0.538,2.297" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="54">
+                <PasswordBox.RenderTransform>
+                    <CompositeTransform SkewX="-1.005" TranslateX="-1.251"/>
+                </PasswordBox.RenderTransform>
+            </PasswordBox>
+
+            <Button Content="Crear" HorizontalAlignment="Center" Margin="0 20"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="UWP_ProFind.Lib.Admin.Views.Professionals_Page.Professionals_Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_ProFind.Lib.Admin.Views.Professionals_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Background="{ThemeResource ButtonBackgroundThemeBrush}"  Margin="32,42,904,832" CornerRadius="15">
+            <StackPanel Height="22" Width="160" Margin="10, 10, -370, 10" Background="#F2EDD1">
+                <TextBlock Text="Automotive Mechanics" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock Margin="130, 1" Text="Ing. Daniel Rodas" Style="{ThemeResource BodyTextBlockStyle}"/>
+        </StackPanel>
+        <Border BorderBrush="#292512" BorderThickness="1" Margin="34,42,905,831" CornerRadius="15"/>
+        <PersonPicture ProfilePicture="https://f.rpp-noticias.io/2019/02/15/753300descarga-11jpg.jpg" Margin="43,55,1357,845"></PersonPicture>
+
+        <StackPanel Background="{ThemeResource ButtonBackgroundThemeBrush}" Margin="34,202,902,672" CornerRadius="15">
+            <StackPanel Height="22" Width="125" Margin="10, 10, -400, 10" Background="#C5BC8C">
+                <TextBlock Text="General medicine" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock Margin="130, 1" Text="Dra. Lucía Hernández" Style="{ThemeResource BodyTextBlockStyle}"/>
+        </StackPanel>
+        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="34,202,902,671" CornerRadius="15"/>
+        <PersonPicture ProfilePicture="https://www.inboundcycle.com/hubfs/ClaraAlvarez.jpg" Margin="45,215,1355,685"/>
+
+        <StackPanel Background="{ThemeResource ButtonBackgroundThemeBrush}" Margin="36,366,901,508" CornerRadius="15">
+            <StackPanel Height="22" Width="85" Margin="10, 10, -440, 10" Background="#F2EDD1">
+                <TextBlock Text="Law Firm" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock Margin="130, 1" Text="Lic. Daniela Carranza" Style="{ThemeResource BodyTextBlockStyle}"/>
+        </StackPanel>
+        <Border BorderBrush="#292512" BorderThickness="1" Margin="36,366,901,507" CornerRadius="15"/>
+        <PersonPicture ProfilePicture="https://socialtools.me/wp-content/uploads/2016/04/foto-de-perfil.jpg" Margin="47,379,1353,521"/>
+
+        <StackPanel Background="{ThemeResource ButtonBackgroundThemeBrush}" Margin="704,42,232,832" CornerRadius="15">
+            <StackPanel Height="22" Width="125" Margin="10, 10, -400, 10" Background="#C5BC8C">
+                <TextBlock Text="General medicine" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock Margin="130, 1" Text="Dr. Diego Landaverde" Style="{ThemeResource BodyTextBlockStyle}"/>
+        </StackPanel>
+        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="704,42,232,831" CornerRadius="15"/>
+        <PersonPicture ProfilePicture="https://www.comunidad.madrid/sites/default/files/styles/colorbox_modal/public/doc/sanidad/comu/retrato_celso_arango_web_alta.jpg?itok=Re7au3rc" Margin="715,55,685,845"/>
+
+        <StackPanel Background="{ThemeResource ButtonBackgroundThemeBrush}" Margin="701,201,236,673" CornerRadius="15">
+            <StackPanel Height="22" Width="85" Margin="10, 10, -440, 10" Background="#F2EDD1">
+                <TextBlock Text="Law Firm" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock Margin="130, 1" Text="Lic. Daniel Castro" Style="{ThemeResource BodyTextBlockStyle}"/>
+        </StackPanel>
+        <Border BorderBrush="#292512" BorderThickness="1" Margin="701,201,236,672" CornerRadius="15"/>
+        <PersonPicture ProfilePicture="https://media.v2.siweb.es/uploaded_thumb_medium/75ced0231b30d5bbba39592fef39e64d/fotografia_curriculum_linkedin_corporativa_madrid_039.jpg" Margin="712,214,688,686"/>
+    </Grid>
+</Page>
