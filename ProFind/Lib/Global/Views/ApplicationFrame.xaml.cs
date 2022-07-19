@@ -1,9 +1,9 @@
-﻿using UWP_ProFind.Lib.Global.Controllers;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_ProFind.Lib.Global.Views
+namespace ProFind.Lib.Global.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

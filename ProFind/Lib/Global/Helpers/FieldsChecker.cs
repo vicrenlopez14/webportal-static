@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace UWP_ProFind.Lib.Global.Helpers
+namespace ProFind.Lib.Global.Helpers
 {
     public class FieldsChecker
     {

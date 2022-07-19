@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using UWP_ProFind.Lib.Global.Controllers;
-using UWP_ProFind.Lib.Global.Views.Preferences_Page;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Views.Preferences_Page;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_ProFind.Lib.Client.Views.Main_Page
+namespace ProFind.Lib.Client.Views.Main_Page
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

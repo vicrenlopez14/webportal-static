@@ -1,10 +1,10 @@
-﻿using UWP_ProFind.Lib.Admin.Views.Main_Page_Admin;
-using UWP_ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.Admin.Views.Main_Page_Admin;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_ProFind.Lib.Global.Views.InitPage
+namespace ProFind.Lib.Global.Views.InitPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

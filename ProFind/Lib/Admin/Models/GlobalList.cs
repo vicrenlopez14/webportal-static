@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UWP_ProFind.Lib.Admin.Model;
+using ProFind.Lib.Admin.Model;
 
-namespace UWP_ProFind.Lib.Admin.Model
+namespace ProFind.Lib.Admin.Model
 {
     static class GlobalList
     {

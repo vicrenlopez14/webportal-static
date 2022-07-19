@@ -4,7 +4,7 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
-namespace UWP_ProFind.Lib.Global.Helpers
+namespace ProFind.Lib.Global.Helpers
 {
     public static class ThemeHelper
     {

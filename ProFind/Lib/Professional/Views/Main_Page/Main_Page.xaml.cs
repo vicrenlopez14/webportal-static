@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using UWP_ProFind.Lib.Global.Views.Preferences_Page;
-using UWP_ProFind.Lib.Professional.Controllers;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Views.Preferences_Page;
+using ProFind.Lib.Professional.Controllers;
 
 
-namespace UWP_ProFind.Lib.Professional.Views.Main_Page
+namespace ProFind.Lib.Professional.Views.Main_Page
 {
     public sealed partial class Main_Page_Professional : Page
     {

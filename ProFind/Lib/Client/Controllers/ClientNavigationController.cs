@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace UWP_ProFind.Lib.Global.Controllers
+namespace ProFind.Lib.Global.Controllers
 {
     public class ClientNavigationController : IViewNavigator<Type, Frame>
     {

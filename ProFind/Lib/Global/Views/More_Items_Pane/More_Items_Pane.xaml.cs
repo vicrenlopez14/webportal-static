@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace UWP_ProFind.Lib.Global.Views.More_Items_Pane
+namespace ProFind.Lib.Global.Views.More_Items_Pane
 {
     public sealed partial class More_Items_Pane : UserControl
     {

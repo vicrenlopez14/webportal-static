@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using UWP_ProFind.Lib.Client.Views.Main_Page;
-using UWP_ProFind.Lib.Global.Controllers;
-using UWP_ProFind.Lib.Global.Helpers;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -15,10 +12,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.Client.Views.Main_Page;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_ProFind.Lib.Global.Views
+namespace ProFind.Lib.Global.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

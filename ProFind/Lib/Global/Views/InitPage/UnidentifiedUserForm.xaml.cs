@@ -1,10 +1,10 @@
-﻿using UWP_ProFind.Lib.Global.Controllers;
-using UWP_ProFind.Lib.Professional.Views.Main_Page;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Professional.Views.Main_Page;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace UWP_ProFind.Lib.Global.Views.InitPage
+namespace ProFind.Lib.Global.Views.InitPage
 {
     public sealed partial class UnidentifiedUserForm : UserControl
     {

@@ -16,4 +16,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Lib\Global\DataSource" />
+    <Folder Include="Lib\Global\Model" />
+  </ItemGroup>
+
 </Project>

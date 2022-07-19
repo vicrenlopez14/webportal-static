@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 
-namespace UWP_ProFind.Lib.Global.Helpers
+namespace ProFind.Lib.Global.Helpers
 {
     internal class Connection
     {

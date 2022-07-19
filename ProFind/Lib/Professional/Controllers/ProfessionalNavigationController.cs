@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 
-namespace UWP_ProFind.Lib.Professional.Controllers
+namespace ProFind.Lib.Professional.Controllers
 {
     public class ProfessionalNavigationController : IViewNavigator<Type, Frame>
     {
