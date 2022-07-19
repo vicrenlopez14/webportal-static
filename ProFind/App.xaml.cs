@@ -20,7 +20,7 @@ namespace ProFind
     /// <summary>
     /// Proporciona un comportamiento específico de la aplicación para complementar la clase Application predeterminada.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App : Windows.UI.Xaml.Application
     {
         /// <summary>
         /// Inicializa el objeto de aplicación Singleton. Esta es la primera línea de código creado
