@@ -5,13 +5,14 @@
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:ProFind">
     <Application.Resources>
-        <controls:XamlControlsResources>
-            <controls:XamlControlsResources.MergedDictionaries>
-                <ResourceDictionary />
-                <ResourceDictionary x:Key="Light" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <controls:XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="\Styles\_Colors.xaml" />
 
-            </controls:XamlControlsResources.MergedDictionaries>
-        </controls:XamlControlsResources>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>
 
