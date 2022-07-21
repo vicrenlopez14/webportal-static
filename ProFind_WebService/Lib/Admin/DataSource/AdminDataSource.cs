@@ -32,6 +32,41 @@ public class AdminDataSource
         return PFAdmin.FromDictionary(FirstRow);
     }
 
+    public async Task<IEnumerable<PFAdmin>> List()
+    {
+        const string query = "SELECT Id_A, Name_A, Email_A, Tel_A; `Rank`.Name_R FROM Admin, `Rank` "
+            + "WHERE (Admin.Id_R1 = `Rank`.Id_R);";
+
+        var result = await connection.QueryAsync<IEnumerable<PFAdmin>(query);
+
+        return result;
+    }
+
+    public async Task<IEnumerable<PFAdmin>> PaginatedList(int fromIndex, int toIndex)
+    {
+         int len = toIndex-fromIndex+1;
+
+         const string query = "SELECT Id_A, Name_A, Email_A, Tel_A; `Rank`.Name_R FROM Admin, `Rank` "
+            + "WHERE (Admin.Id_R1 = `Rank`.Id_R) LIMIT :FromIndex, :Len;";
+
+        DynamicParameters dynamicParameters = new DynamicParameters();
+
+        dynamicParameters.AddDynamicParams(new
+        {
+            FromIndex = fromIndex,
+            Len = len
+        });
+
+        var result = await connection.QueryAsync<IEnumerable<PFAdmin>>(query, dynamicParameters);
+
+        return result;
+    }
+
+    public async Task<IEnumerable<PFAdmin>> Search()
+    {
+
+    }
+
     public async Task<bool> Create(PFAdmin admin)
     {
         const string query = "INSET INTO ADMIN VALUES(':Id',':Name',':Email',':Tel',':Password',':Rank');";
