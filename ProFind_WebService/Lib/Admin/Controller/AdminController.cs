@@ -50,7 +50,7 @@ public class AdminController : CrudController<PFAdmin>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFAdmin>>> PaginatedList(string fromIndex, string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFAdmin>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
     }

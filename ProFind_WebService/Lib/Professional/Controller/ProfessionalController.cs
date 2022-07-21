@@ -19,8 +19,8 @@ public class ProfessionalController : CrudController<PFProfessional>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFProfessional>>> PaginatedList(string fromIndex,
-        string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFProfessional>>> PaginatedList(int fromIndex,
+        int? toIndex)
     {
         throw new NotImplementedException();
     }

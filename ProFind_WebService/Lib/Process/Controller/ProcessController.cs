@@ -22,7 +22,7 @@ public class ProcessController : CrudController<PFProcess>
     }
 
     [HttpGet("{fromIndex, toIndex}")]
-    public override async Task<ActionResult<IEnumerable<PFProcess>>> PaginatedList(string fromIndex, string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFProcess>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
     }

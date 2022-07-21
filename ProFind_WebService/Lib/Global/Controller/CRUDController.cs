@@ -12,7 +12,7 @@ public abstract class CrudController<T> : ControllerBase
     public abstract Task<ActionResult<IEnumerable<T>>> List<TE>();
 
     [HttpGet("{fromIndex}, {toIndex}")]
-    public abstract Task<ActionResult<IEnumerable<T>>> PaginatedList(string fromIndex, string? toIndex);
+    public abstract Task<ActionResult<IEnumerable<T>>> PaginatedList(int fromIndex, int? toIndex);
 
     [HttpGet("{searchCriteria}")]
     public abstract Task<ActionResult<IEnumerable<T>>> Search(IDictionary<string, string> searchCriteria);

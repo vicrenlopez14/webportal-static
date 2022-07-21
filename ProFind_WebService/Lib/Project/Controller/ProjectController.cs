@@ -18,7 +18,7 @@ public class ProjectController : CrudController<PFProject>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFProject>>> PaginatedList(string fromIndex, string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFProject>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
     }

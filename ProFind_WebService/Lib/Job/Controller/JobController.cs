@@ -20,7 +20,7 @@ public class JobController : CrudController<PFJob>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFJob>>> PaginatedList(string fromIndex, string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFJob>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
     }

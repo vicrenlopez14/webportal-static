@@ -19,7 +19,7 @@ public class CurriculumController : CrudController<PFCurriculum>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFCurriculum>>> PaginatedList(string fromIndex, string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFCurriculum>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
     }

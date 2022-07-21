@@ -18,7 +18,7 @@ public class TagController : CrudController<PFTag>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFTag>>> PaginatedList(string fromIndex, string? toIndex)
+    public override async Task<ActionResult<IEnumerable<PFTag>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
     }
