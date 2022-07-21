@@ -23,7 +23,7 @@ namespace ProFind.Lib.Global.Services
         public async Task<IEnumerable<PFAdmin>> ListObjectAsync()
         {
             IEnumerable<PFAdmin> admin = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("apiAdmin/");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/list");
             if (response.IsSuccessStatusCode)
             {
                 admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
@@ -32,14 +32,19 @@ namespace ProFind.Lib.Global.Services
             return admin;
         }
 
-        public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex) =>
+            await ListPaginatedObjectAsync(fromIndex, -1);
 
         public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFAdmin> admin = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/list");
+            if (response.IsSuccessStatusCode)
+            {
+                admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
+            }
+
+            return admin;
         }
 
         public async Task<IEnumerable<PFAdmin>> Search(IDictionary<string, string> searchCriteria)
