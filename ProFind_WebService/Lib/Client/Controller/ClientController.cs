@@ -14,7 +14,7 @@ public class ClientController : CrudController<PFClient>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFClient>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFClient>>> List()
     {
         throw new NotImplementedException();
     }

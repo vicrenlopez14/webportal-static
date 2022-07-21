@@ -15,7 +15,7 @@ public class JobController : CrudController<PFJob>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFJob>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFJob>>> List()
     {
         throw new NotImplementedException();
     }

@@ -14,7 +14,7 @@ public class CurriculumController : CrudController<PFCurriculum>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFCurriculum>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFCurriculum>>> List()
     {
         throw new NotImplementedException();
     }

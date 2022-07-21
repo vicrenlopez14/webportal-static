@@ -14,7 +14,7 @@ public class ProfessionalController : CrudController<PFProfessional>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFProfessional>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFProfessional>>> List()
     {
         throw new NotImplementedException();
     }

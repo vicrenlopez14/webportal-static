@@ -16,7 +16,7 @@ public class ProcessController : CrudController<PFProcess>
     }
 
     [HttpGet]
-    public override async Task<ActionResult<IEnumerable<PFProcess>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFProcess>>> List()
     {
         throw new NotImplementedException();
     }

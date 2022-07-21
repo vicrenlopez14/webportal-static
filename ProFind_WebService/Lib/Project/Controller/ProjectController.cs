@@ -13,7 +13,7 @@ public class ProjectController : CrudController<PFProject>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFProject>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFProject>>> List()
     {
         throw new NotImplementedException();
     }

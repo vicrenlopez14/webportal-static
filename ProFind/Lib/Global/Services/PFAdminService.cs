@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using ProFind.Lib.Global.Models;
+using HttpStatusCode = System.Net.HttpStatusCode;
 
 namespace ProFind.Lib.Global.Services
 {
@@ -9,12 +10,26 @@ namespace ProFind.Lib.Global.Services
     {
         public async Task<PFAdmin> GetObjectAsync(string id)
         {
-            throw new System.NotImplementedException();
+            PFAdmin admin = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Admin/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                admin = await response.Content.ReadAsAsync<PFAdmin>();
+            }
+
+            return admin;
         }
 
         public async Task<IEnumerable<PFAdmin>> ListObjectAsync()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFAdmin> admin = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("apiAdmin/");
+            if (response.IsSuccessStatusCode)
+            {
+                admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
+            }
+
+            return admin;
         }
 
         public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex)

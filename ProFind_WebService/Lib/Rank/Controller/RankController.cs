@@ -14,7 +14,7 @@ public class RankController : CrudController<PFRank>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFRank>>> List<TE>()
+    public override async Task<ActionResult<IEnumerable<PFRank>>> List()
     {
         throw new NotImplementedException();
     }
