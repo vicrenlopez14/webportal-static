@@ -12,17 +12,21 @@ public class AdminController : CrudController<PFAdmin>
 {
     public override async Task<ActionResult<PFAdmin>> Get(string id)
     {
-        throw new NotImplementedException();
+        PFAdmin admin = await dataSource.Get(id);
+        return admin == null ? NotFound() : admin;
     }
 
     public override async Task<ActionResult<IEnumerable<PFAdmin>>> List()
     {
-        throw new NotImplementedException();
+        var result = dataSource.List();
+        return (result==null ? NotFound():result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFAdmin>>> PaginatedList(int fromIndex, int? toIndex)
     {
-        throw new NotImplementedException();
+        if(toIndex is null or -1) toIndex = fromIndex+10;
+        var result=dataSource.PaginatedList(fromIndex,toIndex);
+        return (result==null ? NotFound():result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFAdmin>>> Search(IDictionary<string, string> searchCriteria)
@@ -32,16 +36,17 @@ public class AdminController : CrudController<PFAdmin>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFAdmin newObject)
     {
-        throw new NotImplementedException();
+        return (await dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(PFAdmin toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await dataSource.Update(toUpdateObject) ? Ok(toUpdateObject) : NotFound()); 
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        PFAdmin admin = new PFAdmin(id);
+        return (await dataSource.Delete(admin) ? Ok(admin) : NotFound());
     }
 }
