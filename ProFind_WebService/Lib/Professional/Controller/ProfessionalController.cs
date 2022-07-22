@@ -25,7 +25,8 @@ public class ProfessionalController : CrudController<PFProfessional>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFProfessional>>> Search(
+    [HttpGet("criteria")]
+    public async Task<ActionResult<IEnumerable<PFProfessional>>> Search(
         IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();

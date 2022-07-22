@@ -25,7 +25,9 @@ public class JobController : CrudController<PFJob>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFJob>>> Search(IDictionary<string, string> searchCriteria)
+        [HttpGet("criteria")]
+
+    public  async Task<ActionResult<IEnumerable<PFJob>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }

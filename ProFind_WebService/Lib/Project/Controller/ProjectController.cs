@@ -23,7 +23,9 @@ public class ProjectController : CrudController<PFProject>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFProject>>> Search(IDictionary<string, string> searchCriteria)
+    [HttpGet("criteria")]
+
+    public  async Task<ActionResult<IEnumerable<PFProject>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }

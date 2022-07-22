@@ -27,8 +27,8 @@ public class ProcessController : CrudController<PFProcess>
         throw new NotImplementedException();
     }
 
-    [HttpGet("{searchCriteria}")]
-    public override async Task<ActionResult<IEnumerable<PFProcess>>> Search(IDictionary<string, string> searchCriteria)
+    [HttpGet("criteria")]
+    public  async Task<ActionResult<IEnumerable<PFProcess>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }

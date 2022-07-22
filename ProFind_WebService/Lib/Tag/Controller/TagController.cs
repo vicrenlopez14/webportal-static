@@ -23,7 +23,8 @@ public class TagController : CrudController<PFTag>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFTag>>> Search(IDictionary<string, string> searchCriteria)
+    [HttpGet("criteria")]
+    public async Task<ActionResult<IEnumerable<PFTag>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }

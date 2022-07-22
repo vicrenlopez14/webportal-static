@@ -24,7 +24,9 @@ public class ClientController : CrudController<PFClient>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFClient>>> Search(IDictionary<string, string> searchCriteria)
+    [HttpGet("criteria")]
+
+    public  async Task<ActionResult<IEnumerable<PFClient>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }

@@ -24,7 +24,8 @@ public class CurriculumController : CrudController<PFCurriculum>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<IEnumerable<PFCurriculum>>> Search(
+    [HttpGet("criteria")]
+    public  async Task<ActionResult<IEnumerable<PFCurriculum>>> Search(
         IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();

@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProFind_WebService.Lib.Global.Controller;
@@ -15,11 +14,8 @@ public abstract class CrudController<T> : ControllerBase
 
     [HttpGet("paginated/{fromIndex:int}/{toIndex:int}")]
     public abstract Task<ActionResult<IEnumerable<T>>> PaginatedList(int fromIndex, int? toIndex);
-
-    [HttpGet("{searchCriteria}")]
-    public abstract Task<ActionResult<IEnumerable<T>>> Search(IDictionary<string, string> searchCriteria);
-
-    [HttpPost("{newObject}")]
+    
+    [HttpPost]
     public abstract Task<ActionResult<HttpStatusCode>> Create(T newObject);
 
     [HttpPut("{toUpdateObject}")]

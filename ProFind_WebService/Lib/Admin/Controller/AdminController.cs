@@ -1,4 +1,5 @@
 using System.Net;
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Admin.DataSource;
 using ProFind_WebService.Lib.Admin.Model;
@@ -10,43 +11,55 @@ namespace ProFind_WebService.Lib.Admin.Controller;
 [ApiController]
 public class AdminController : CrudController<PFAdmin>
 {
+    private readonly AdminDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFAdmin>> Get(string id)
     {
-        PFAdmin admin = await dataSource.Get(id);
+        PFAdmin? admin = await _dataSource.Get(id);
         return admin == null ? NotFound() : admin;
     }
 
     public override async Task<ActionResult<IEnumerable<PFAdmin>>> List()
     {
-        var result = dataSource.List();
-        return (result==null ? NotFound():result);
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
-    public override async Task<ActionResult<IEnumerable<PFAdmin>>> PaginatedList(int fromIndex, int? toIndex)
+    public override Task<ActionResult<IEnumerable<PFAdmin>>> PaginatedList(int fromIndex, int? toIndex)
     {
-        if(toIndex is null or -1) toIndex = fromIndex+10;
-        var result=dataSource.PaginatedList(fromIndex,toIndex);
-        return (result==null ? NotFound():result);
+        if (toIndex is null or -1) toIndex = fromIndex + 10;
+        var result = _dataSource.PaginatedList(fromIndex, toIndex ?? -1);
+        return Task.FromResult<ActionResult<IEnumerable<PFAdmin>>>(Ok(result));
     }
 
-    public override async Task<ActionResult<IEnumerable<PFAdmin>>> Search(IDictionary<string, string> searchCriteria)
+    [HttpGet("criteria")]
+    public async Task<ActionResult<IEnumerable<PFAdmin>>> Search(string name)
     {
-        throw new NotImplementedException();
+        Dictionary<string, string> searchCriteria = new()
+        {
+            ["Name"] = name
+        };
+
+        // Simple search
+        var result = await _dataSource.Search(searchCriteria);
+        return new ActionResult<IEnumerable<PFAdmin>>(Ok(result));
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFAdmin newObject)
     {
-        return (await dataSource.Create(newObject) ? Ok(newObject) : NotFound());
+        newObject.Id = Nanoid.Nanoid.Generate();
+
+        return (await _dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(PFAdmin toUpdateObject)
     {
-        return (await dataSource.Update(toUpdateObject) ? Ok(toUpdateObject) : NotFound()); 
+        return (await _dataSource.Update(toUpdateObject) ? Ok(toUpdateObject) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        PFAdmin admin = new PFAdmin(id);
-        return (await dataSource.Delete(admin) ? Ok(admin) : NotFound());
+        var admin = new PFAdmin(id);
+        return (await _dataSource.Delete(admin) ? Ok(admin) : NotFound());
     }
 }
