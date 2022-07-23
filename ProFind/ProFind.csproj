@@ -309,6 +309,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\admin_bg.jpg" />
+    <Content Include="Assets\clients_bg.jpg" />
+    <Content Include="Assets\professionals_bg.jpg" />
     <Content Include="Assets\profind-isotype-en.png" />
     <Content Include="Assets\profind-isotype-es.png" />
     <Content Include="Lib\Admin\Controllers\Dummy.txt" />

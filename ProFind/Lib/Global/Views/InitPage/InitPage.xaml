@@ -10,107 +10,35 @@
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid>
-        <TextBlock
-            Margin="0,202,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            FocusVisualPrimaryBrush="White"
-            Foreground="White"
-            Style="{ThemeResource TitleTextBlockStyle}"
-            Text="Welcome"
-            TextWrapping="Wrap" />
-        <TextBlock
-            Margin="0,238,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            FocusVisualPrimaryBrush="White"
-            Foreground="White"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
-            Text="Please select the access type you need"
-            TextWrapping="Wrap" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
         <Image
-            Height="150"
-            Margin="50"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Source="/Assets/profind-isotype-en.png">
-            <Image.RenderTransform>
-                <CompositeTransform Rotation="0" />
-            </Image.RenderTransform>
-        </Image>
-        <StackPanel
-            Width="200"
-            Height="200"
-            Margin="500,50,0,0"
-            HorizontalAlignment="Center"
-            Orientation="Vertical">
-            <TextBlock
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
-                Foreground="White"
-                Style="{ThemeResource SubheaderTextBlockStyle}"
-                Text="For users" />
-            <Button
-                Width="154"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Click="Button_Click"
-                Content="Log In" />
-            <Button
-                Width="154"
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Click="Button_Click_1"
-                Content="Register" />
-        </StackPanel>
+            Grid.Column="0"
+            Source="https://cdn.pixabay.com/photo/2016/02/07/21/03/computer-1185626_960_720.jpg"
+            Stretch="UniformToFill" />
+        <Grid Grid.Column="1">
+            <StackPanel Padding="100" Orientation="Vertical">
+                <TextBlock
+                    FontWeight="Bold"
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="Register" />
+                <RichTextBlock SelectionHighlightColor="Green">
+                    <Paragraph>
+                        Already have an account?<Hyperlink NavigateUri="https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Documents.Hyperlink">Log in to your account</Hyperlink>
+                    </Paragraph>
+                </RichTextBlock>
+                <TextBox Margin="0,30,0,0" PlaceholderText="Name" />
+                <TextBox Margin="0,15,0,0" PlaceholderText="Email" />
+                <PasswordBox Margin="0,15,0,0" PlaceholderText="Password" />
 
-        <StackPanel
-            Width="300"
-            Height="200"
-            Margin="0,50,0,0"
-            HorizontalAlignment="Center"
-            Orientation="Vertical">
-            <TextBlock
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
-                Foreground="White"
-                Style="{ThemeResource SubheaderTextBlockStyle}"
-                Text="For professionals" />
-            <Button
-                Width="154"
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Click="Button_Click_3"
-                Content="Log In" />
-        </StackPanel>
-
-        <StackPanel
-            Width="250"
-            Height="200"
-            Margin="-500,50,0,0"
-            HorizontalAlignment="Center"
-            Orientation="Vertical">
-            <TextBlock
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
-                Foreground="White"
-                Style="{ThemeResource SubheaderTextBlockStyle}"
-                Text="For admins" />
-            <Button
-                Width="154"
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Click="Button_Click_2"
-                Content="Log In" />
-        </StackPanel>
-
-
-
-
-
+                <CheckBox Margin="0,5,0,0" Content="I accept terms and conditions and privacy policy" />
+                <Button
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    Content="Register" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

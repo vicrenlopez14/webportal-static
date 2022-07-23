@@ -19,6 +19,13 @@
         TintOpacity="0.8" />
 
     <media:AcrylicBrush
+        x:Key="ElementBrush5"
+        BackgroundSource="Backdrop"
+        FallbackColor="{StaticResource SystemColorBackgroundColor}"
+        TintColor="#FF000000"
+        TintOpacity="0.05" />
+
+    <media:AcrylicBrush
         x:Key="ElementBrush25"
         BackgroundSource="Backdrop"
         FallbackColor="{StaticResource SystemColorBackgroundColor}"
