@@ -8,7 +8,6 @@ public abstract class CrudController<T> : ControllerBase
     [HttpGet("{id}")]
     public abstract Task<ActionResult<T>> Get(string id);
 
-    [Route("list")]
     [HttpGet]
     public abstract Task<ActionResult<IEnumerable<T>>> List();
 
@@ -18,8 +17,8 @@ public abstract class CrudController<T> : ControllerBase
     [HttpPost]
     public abstract Task<ActionResult<HttpStatusCode>> Create(T newObject);
 
-    [HttpPut("{toUpdateObject}")]
-    public abstract Task<ActionResult<HttpStatusCode>> Update(T toUpdateObject);
+    [HttpPut("{id}")]
+    public abstract Task<ActionResult<HttpStatusCode>> Update(string id, T toUpdateObject);
 
     [HttpDelete("{id}")]
     public abstract Task<ActionResult<HttpStatusCode>> Delete(string id);

@@ -16,111 +16,111 @@ public class ClientDataSource
 
     public async Task<PFClient> Get(string id)
     {
-        const string query = "SELECT * FROM Client WHERE Id_C = '@Id';";
+        const string query = "SELECT * FROM Client WHERE IdC = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = id
+            ["Id"] = id
         });
 
         var result = await _connection.QueryAsync<PFClient>(query, dynamicParameters);
-        var firstRow = result.First();
 
-        return firstRow;
+        return result.ToList()[0];
+    }
+
+    public async Task<IEnumerable<PFClient>> List()
+    {
+        const string query = "SELECT * FROM Client;";
+
+        var result = await _connection.QueryAsync<PFClient>(query);
+
+        return result.ToList();
     }
 
     public async Task<bool> Create(PFClient client)
     {
-        const string query = "INSERT INTO Client VALUES ('@Id', '@Name', '@Email', '@Password');";
+        const string query = "INSERT INTO Client VALUES (@Id, @Name, @Email, @Password);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            client.Id,
-            client.Name,
-            client.Email,
-            client.Password,
+            ["Id"] = client.IdC,
+            ["Name"] = client.NameC,
+            ["Email"] = client.EmailC,
+            ["Password"] = client.PasswordC
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Update(PFClient client)
+    public async Task<bool> Update(string id, PFClient client)
     {
         const string query =
-            "UPDATE Client SET Name_C = '@Name', Email_C = '@Email', Password_C = '@Password' WHERE Id_C = '@Id'";
+            "UPDATE Client SET NameC = @Name, EmailC = @Email, PasswordC = @Password WHERE IdC = @Id;";
 
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            client.Id,
-            client.Name,
-            client.Email,
-            client.Password,
+            ["Id"] = id,
+            ["Name"] = client.NameC,
+            ["Email"] = client.EmailC,
+            ["Password"] = client.PasswordC
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Delete(PFClient client)
+    public async Task<bool> Delete(string id)
     {
-        const string query = "DELETE FROM Client WHERE Id_C = '@Id';";
+        const string query = "DELETE FROM Client WHERE IdC = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object> ()
         {
-            client.Id
+            ["Id"] = id
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    private async Task<bool> CheckCredentials(string email, string password)
+    private async Task<bool> Login(string email, string password)
     {
-        const string query = "SELECT * FROM Client WHERE Email_C = '@Email' AND Password_C = '@Password';";
+        const string query = "SELECT * FROM Client WHERE EmailC = @Email AND PasswordC = @Password;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>
         {
-            Email = email,
-            Password = password
+            ["Email"] = email,
+            ["Password"] = password
         });
 
         var res = await _connection.QueryAsync(query, dynamicParameters);
-        var firstRow = res.First() as IDictionary<string, object>;
 
-        if (firstRow == null) return false;
+        if (res == null) return false;
         else return true;
-    }
-
-    public bool Login(string email, string password)
-    {
-        if (CheckCredentials(email, password).Result) return true;
-        else return false;
     }
 
     private async Task<bool> CheckEmail(string email)
     {
-        const string query = "SELECT * FROM Client WHERE Email_C = '@Email';";
+        const string query = "SELECT * FROM Client WHERE EmailC = @Email;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string,object>()
         {
-            Email = email
+            ["Email"] = email
         });
 
         var res = await _connection.QueryAsync(query, dynamicParameters);
-        var emailRow = res.First() as IDictionary<string, object>;
 
-        if (emailRow == null) return true;
+        if (res == null) return true;
         else return false;
     }
 

@@ -6,22 +6,23 @@ namespace ProFind_WebService.Lib.Process.Model;
 public class PFProcess
 {
     [JsonConstructor]
-    public PFProcess(string id, string? title = null, string? description = null, DateTime? beginDate = default,
-        string? idTag = null, DateTime? endDate = default)
+    public PFProcess(string idPR, string? titlePR = null, string? descriptionPR = null, DateTime? beginDatePR = default,
+        string? idTag = null, DateTime? endDatePR = default)
     {
-        Id = id;
-        Title = title;
-        Description = description;
-        BeginDate = beginDate;
+        IdPR = idPR;
+        TitlePR = titlePR;
+        DescriptionPR = descriptionPR;
+        BeginDatePR = beginDatePR;
         IdTag = idTag;
-        EndDate = endDate;
+        EndDatePR = endDatePR;
     }
 
+    public PFProcess() { }
 
-    [Column("Id_PR")] public string Id { get; set; }
-    [Column("Title_PR")] public string? Title { get; set; }
-    [Column("Description_PR")] public string? Description { get; set; }
-    [Column("Begin_Date_PR")] public DateTime? BeginDate { get; set; }
-    [Column("Id_T1")] public string? IdTag { get; set; }
-    [Column("End_date_PR")] public DateTime? EndDate { get; set; }
+    [Column("IdPR")] public string IdPR { get; set; }
+    [Column("TitlePR")] public string? TitlePR { get; set; }
+    [Column("DescriptionPR")] public string? DescriptionPR { get; set; }
+    [Column("BeginDatePR")] public DateTime? BeginDatePR { get; set; }
+    [Column("IdT1")] public string? IdTag { get; set; }
+    [Column("EnddatePR")] public DateTime? EndDatePR { get; set; }
 }
