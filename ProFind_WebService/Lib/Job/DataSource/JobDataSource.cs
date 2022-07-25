@@ -16,58 +16,66 @@ public class JobDataSource
 
     public async Task<PFJob> Get(string id)
     {
-        const string query = "SELECT Id_J, Name_J FROM Job WHERE Id_J = ':Id' LIMIT 1;";
+        const string query = "SELECT * FROM Job WHERE IdJ = @Id;";
         DynamicParameters dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = id
+            ["Id"] = id
         });
 
         var result = await _connection.QueryAsync<PFJob>(query, dynamicParameters);
-        var firstRow = result.First();
 
-        return firstRow;
+        return result.ToList()[0];
+    }
+
+    public async Task<IEnumerable<PFJob>> List()
+    {
+        const string query = "SELECT * FROM Job;";
+
+        var result = await _connection.QueryAsync<PFJob>(query);
+
+        return result.ToList();
     }
 
     public async Task<bool> Create(PFJob job)
     {
-        const string query = "INSERT INTO Job VALUES (':Id',':Name');";
+        const string query = "INSERT INTO Job VALUES (@Id,@Name);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = job.Id,
-            Name = job.Name
+            ["Id"] = job.IdJ,
+            ["Name"] = job.NameJ
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Update(PFJob job)
+    public async Task<bool> Update(string id, PFJob job)
     {
-        const string query = "UPDATE Job SET Name_J=':Name' WHERE Id_J = ':Id';";
+        const string query = "UPDATE Job SET NameJ=@Name WHERE IdJ = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = job.Id,
-            Name = job.Name
+            ["Id"] = id,
+            ["Name"] = job.NameJ
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Delete(PFJob job)
+    public async Task<bool> Delete(string id)
     {
-        const string query = "DELETE FROM Job WHERE Id_J = ':Id';";
+        const string query = "DELETE FROM Job WHERE IdJ = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = job.Id
+            ["Id"] = id
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);

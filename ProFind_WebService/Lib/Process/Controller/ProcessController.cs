@@ -2,6 +2,7 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
 using ProFind_WebService.Lib.Process.Model;
+using ProFind_WebService.Lib.Process.DataSource;
 
 namespace ProFind_WebService.Lib.Process.Controller;
 
@@ -9,19 +10,21 @@ namespace ProFind_WebService.Lib.Process.Controller;
 [ApiController]
 public class ProcessController : CrudController<PFProcess>
 {
-    [HttpGet("{id}")]
+
+    private readonly ProcessDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFProcess>> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.Get(id);
+        return Ok(result);
     }
 
-    [HttpGet]
     public override async Task<ActionResult<IEnumerable<PFProcess>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
-    [HttpGet("{fromIndex, toIndex}")]
     public override async Task<ActionResult<IEnumerable<PFProcess>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
@@ -35,16 +38,17 @@ public class ProcessController : CrudController<PFProcess>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFProcess newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdPR = Nanoid.Nanoid.Generate();
+        return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFProcess toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProcess toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(await _dataSource.Delete(id));
     }
 }

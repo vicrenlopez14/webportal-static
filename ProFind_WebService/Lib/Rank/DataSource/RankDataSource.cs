@@ -16,58 +16,68 @@ public class RankDataSource
 
     public async Task<PFRank> Get(string id)
     {
-        const string query = "SELECT Id_R, Name_R FROM `Rank` WHERE Id_R = '@Id' LIMIT 1;";
+        const string query = "SELECT IdR, NameR FROM `Rank` WHERE IdR = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = id
+            ["Id"] = id
         });
 
         var result = await _connection.QueryAsync<PFRank>(query, dynamicParameters);
-        var firstRow = result.First();
 
-        return firstRow;
+        return result.ToList()[0];
+    }
+
+    public async Task<IEnumerable<PFRank>> List()
+    {
+        const string query = "SELECT * FROM `Rank`;";
+
+        var result = await _connection.QueryAsync<PFRank>(query);
+
+        return result.ToList();
     }
 
     public async Task<bool> Create(PFRank rank)
     {
-        const string query = "INSERT INTO `Rank` VALUES ('@Id','@Name');";
+        const string query = "INSERT INTO `Rank` VALUES (@Id,@Name);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            rank.Id, rank.Name
+            ["Id"] = rank.IdR,
+            ["Name"] = rank.NameR
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Update(PFRank rank)
+    public async Task<bool> Update(string id, PFRank rank)
     {
-        const string query = "UPDATE `Rank` SET Name_R = '@Name' WHERE Id_R = '@Id';";
+        const string query = "UPDATE `Rank` SET NameR = @Name WHERE IdR = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            rank.Id, rank.Name
+            ["Id"] = id,
+            ["Name"] = rank.NameR
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Delete(PFRank rank)
+    public async Task<bool> Delete(string id)
     {
-        const string query = "DELETE FROM `Rank` WHERE Id_R = '@Id';";
+        const string query = "DELETE FROM `Rank` WHERE IdR = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            rank.Id
+            ["Id"] = id
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);

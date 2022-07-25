@@ -35,7 +35,7 @@ public class ProjectController : CrudController<PFProject>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFProject toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProject toUpdateObject)
     {
         throw new NotImplementedException();
     }

@@ -7,16 +7,18 @@ namespace ProFind_WebService.Lib.Curriculum.Model;
 public class PFCurriculum
 {
     [JsonConstructor]
-    public PFCurriculum(string id, string? studies = null, string? experiences = null, int? years = default)
+    public PFCurriculum(string idCU=null, string? studiesCU = null, string? experiencesCU = null, int? yearsCU = default)
     {
-        Id = id;
-        Studies = studies;
-        Experiences = experiences;
-        Years = years;
+        IdCU = idCU;
+        StudiesCU = studiesCU;
+        ExperiencesCU = experiencesCU;
+        YearsCU = yearsCU;
     }
 
-    [Column("Id_CU")] public string Id { get; set; }
-    [Column("Studies_CU")] public string? Studies { get; set; }
-    [Column("Experiences_CU")] public string? Experiences { get; set; }
-    [Column("Years_CU")] public int? Years { get; set; }
+    public PFCurriculum() { }
+
+    [Column("IdCU")] public string IdCU { get; set; }
+    [Column("StudiesCU")] public string? StudiesCU { get; set; }
+    [Column("ExperienceCU")] public string? ExperiencesCU { get; set; }
+    [Column("YearsCU")] public int? YearsCU { get; set; }
 }

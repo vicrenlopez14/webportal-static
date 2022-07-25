@@ -4,14 +4,14 @@ namespace ProFind_WebService.Lib.Tag.Model;
 
 public class PFTag
 {
-    public PFTag(string id, string? name = null, string? tagId = null)
+    public PFTag(string idT, string? nameT = null, string? IdPJ1 = null)
     {
-        Id = id;
-        Name = name;
-        TagId = tagId;
+        IdT = idT;
+        NameT = nameT;
+        IdPJ1 = IdPJ1;
     }
 
-    [Column("Id_T")] public string Id { get; set; }
-    [Column("Name_T")] public string? Name { get; set; }
-    [Column("Id_PJ1")] public string? TagId { get; set; }
+    [Column("IdT")] public string IdT { get; set; }
+    [Column("NameT")] public string? NameT { get; set; }
+    [Column("IdPJ1")] public string? IdPJ1 { get; set; }
 }

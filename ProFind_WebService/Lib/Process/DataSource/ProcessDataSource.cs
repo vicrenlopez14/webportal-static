@@ -19,31 +19,39 @@ public class ProcessDataSource
         // NOTE: Process is supposed to have already an Id at this point.
 
         const string query =
-            "SELECT Process.Id_PR," +
-            "Process.Title_PR," +
-            "Process.Description_PR," +
-            "Process.Begin_Date_PR," +
-            "Process.End_Date_PR," +
-            "Process.Id_T1," +
-            "Name_T," +
-            "Id_PJ1," +
-            "Title_PJ," +
-            "Description_PJ FROM Process " +
-            "INNER JOIN Tag T on Process.Id_T1 = T.Id_T " +
-            "INNER JOIN Project P on T.Id_PJ1 = P.Id_PJ " +
-            "WHERE Process.Id_PR = '@Id' " +
+            "SELECT Process.IdPR," +
+            "Process.TitlePR," +
+            "Process.DescriptionPR," +
+            "Process.BeginDatePR," +
+            "Process.EndDatePR," +
+            "Process.IdT1," +
+            "NameT," +
+            "IdPJ1," +
+            "TitlePJ," +
+            "DescriptionPJ FROM Process " +
+            "INNER JOIN Tag T on Process.IdT1 = T.IdT " +
+            "INNER JOIN Project P on T.IdPJ1 = P.IdPJ " +
+            "WHERE Process.IdPR = @Id " +
             "LIMIT 1;";
 
         var dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object> ()
         {
-            Id = id
+            ["Id"] = id
         });
 
         var result = await _connection.QueryAsync<PFProcess>(query, dynamicParameters);
-        var firstRow = result.First();
 
-        return firstRow;
+        return result.ToList()[0];
+    }
+
+    public async Task<IEnumerable<PFProcess>> List()
+    {
+        const string query = "SELECT * FROM Process;";
+
+        var result = await _connection.QueryAsync<PFProcess>(query);
+
+        return result.ToList();
     }
 
     public async Task<bool> Create(PFProcess process)
@@ -51,50 +59,55 @@ public class ProcessDataSource
         // NOTE@ Process is supposed to have already an Id at this point.
 
         const string query =
-            "INSERT INTO Process (Id_PR, Title_PR, Description_PR, Begin_Date_PR, Id_T1, End_Date_PR) VALUES ('@Id', '@Title', '@Description', '@BeginDate', '@IdTag', '@EndDate');";
+            "INSERT INTO Process VALUES (@Id, @Title, @Description, @BeginDate, @IdTag, @EndDate);";
 
         var dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            process.Id,
-            process.Title,
-            process.Description,
-            process.BeginDate,
-            process.IdTag,
-            process.EndDate
+            ["Id"] = process.IdPR,
+            ["Title"] = process.TitlePR,
+            ["Description"] = process.DescriptionPR,
+            ["BeginDate"] = process.BeginDatePR,
+            ["IdTag"] = process.IdTag,
+            ["EndDate"] = process.EndDatePR
         });
 
         // If more than 0 rows modified, was successful
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Update(PFProcess process)
+    public async Task<bool> Update(string id, PFProcess process)
     {
         const string query =
-            "UPDATE Process SET Title_PR='@Title', Description_PR='@Description', Begin_Date_PR='@BeginDate', Id_T1='@IdTag', End_Date_PR='@EndDate' WHERE Id_PR='@Id';";
+            "UPDATE Process SET TitlePR=@Title, DescriptionPR=@Description, BeginDatePR=@BeginDate, " +
+            "IdT1=@IdTag, EndDatePR=@EndDate WHERE IdPR=@Id;";
 
         var dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            process.Id,
-            process.Title,
-            process.Description,
-            process.BeginDate,
-            process.IdTag,
-            process.EndDate
+            ["Id"] = id,
+            ["Title"] = process.TitlePR,
+            ["Description"] = process.DescriptionPR,
+            ["BeginDate"] = process.BeginDatePR,
+            ["IdTag"] = process.IdTag,
+            ["EndDate"] = process.EndDatePR
         });
 
         // If more than 0 rows modified, was successful
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Delete(PFProcess process)
+    public async Task<bool> Delete(string id)
     {
         const string query =
-            "DELETE FROM Process WHERE Id_PR='@Id';";
+            "DELETE FROM Process WHERE IdPR=@Id;";
 
         var dynamicParameters = new DynamicParameters();
-        dynamicParameters.Add(process.Id);
+        dynamicParameters.AddDynamicParams(new Dictionary<string , object>()
+        {
+            ["Id"] = id
+        }
+        );
 
         // If more than 0 rows modified, was successful
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);

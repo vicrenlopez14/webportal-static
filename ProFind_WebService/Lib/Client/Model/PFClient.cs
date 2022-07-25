@@ -6,16 +6,18 @@ namespace ProFind_WebService.Lib.Client.Model;
 public class PFClient
 {
     [JsonConstructor]
-    public PFClient(string id, string? name = null, string? email = null, string? password = null)
+    public PFClient(string idC, string? nameC = null, string? emailC = null, string? passwordC = null)
     {
-        Id = id;
-        Name = name;
-        Email = email;
-        Password = password;
+        IdC = idC;
+        NameC = nameC;
+        EmailC = emailC;
+        PasswordC = passwordC;
     }
 
-    [Column("Id_C")] public string Id { get; set; }
-    [Column("Name_C")] public string? Name { get; set; }
-    [Column("Email_C")] public string? Email { get; set; }
-    [Column("Password_C")] public string? Password { get; set; }
+    public PFClient () { }
+
+    [Column("IdC")] public string IdC { get; set; }
+    [Column("NameC")] public string? NameC { get; set; }
+    [Column("EmailC")] public string? EmailC { get; set; }
+    [Column("PasswordC")] public string? PasswordC { get; set; }
 }
