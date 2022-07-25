@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Curriculum.Model;
 using ProFind_WebService.Lib.Global.Controller;
+using ProFind_WebService.Lib.Curriculum.DataSource;
 
 namespace ProFind_WebService.Lib.Curriculum.Controller;
 
@@ -9,14 +10,19 @@ namespace ProFind_WebService.Lib.Curriculum.Controller;
 [ApiController]
 public class CurriculumController : CrudController<PFCurriculum>
 {
+
+    private readonly CurriculumDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFCurriculum>> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.Get(id);
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFCurriculum>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFCurriculum>>> PaginatedList(int fromIndex, int? toIndex)
@@ -33,16 +39,17 @@ public class CurriculumController : CrudController<PFCurriculum>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFCurriculum newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdCU = Nanoid.Nanoid.Generate();
+        return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFCurriculum toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFCurriculum toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(_dataSource.Delete(id));
     }
 }

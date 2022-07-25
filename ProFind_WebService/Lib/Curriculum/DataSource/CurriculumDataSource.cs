@@ -17,59 +17,69 @@ public class CurriculumDataSource
     public async Task<PFCurriculum> Get(string id)
     {
         const string query =
-            "SELECT Id_CU, Studies_CU, Experiences_CU, Years_CU FROM Curriculum WHERE id_CU = ':Id' LIMIT 1;";
+            "SELECT * FROM Curriculum WHERE idCU = @Id;";
         var dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new {Id = id});
+        dynamicParameters.AddDynamicParams(new Dictionary<string,object>()
+            ["Id"] = id
+        );
 
         var result = await connection.QueryAsync<PFCurriculum>(query, dynamicParameters);
-        var firstRow = result.First();
 
-        return firstRow;
+        return result.ToList()[0];
+    }
+
+    public async Task<IEnumerable<PFCurriculum>> List()
+    {
+        const string query = "SELECT * FROM Curriculum;";
+
+        var result = await connection.QueryAsync<PFCurriculum>(query);
+
+        return result.ToList();
     }
 
     public async Task<bool> Create(PFCurriculum curriculum)
     {
-        const string query = "INSERT INTO Curriculum VALUES(':Id',':Studies',':Experiences',:Years);";
+        const string query = "INSERT INTO Curriculum VALUES(@Id,@Studies,@Experiences,@Years);";
         var dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = curriculum.Id,
-            Studies = curriculum.Studies,
-            Experiences = curriculum.Experiences,
-            Years = curriculum.Years
+            ["Id"] = curriculum.IdCU,
+            ["Studies"] = curriculum.StudiesCU,
+            ["Experiences"] = curriculum.ExperiencesCU,
+            ["Years"] = curriculum.YearsCU
         });
 
         return (await connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Update(PFCurriculum curriculum)
+    public async Task<bool> Update(string id, PFCurriculum curriculum)
     {
-        const string query = "UPDATE Curriculum SET Studies_CU = ':Studies', Experiences_CU = ':Experiences', "
-                             + "Years_CU = :Years WHERE Id_CU = ':Id';";
+        const string query = "UPDATE Curriculum SET StudiesCU = @Studies, ExperiencesCU = @Experiences, "
+                             + "YearsCU = @Years WHERE Id_CU = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = curriculum.Id,
-            Studies = curriculum.Studies,
-            Experiences = curriculum.Experiences,
-            Years = curriculum.Years
+            ["Id"] = id,
+            ["Studies"] = curriculum.StudiesCU,
+            ["Experiences"] = curriculum.ExperiencesCU,
+            ["Years"] = curriculum.YearsCU
         });
 
         return (await connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Delete(PFCurriculum curriculum)
+    public async Task<bool> Delete(string id)
     {
-        const string query = "DELETE FROM Curriculum WHERE Id_CU = ':Id';";
+        const string query = "DELETE FROM Curriculum WHERE IdCU = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = curriculum.Id
+            ["Id"] = id
         });
 
 
