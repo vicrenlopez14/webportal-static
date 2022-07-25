@@ -6,12 +6,14 @@ namespace ProFind_WebService.Lib.Job.Model;
 public class PFJob
 {
     [JsonConstructor]
-    public PFJob(string id, string? name)
+    public PFJob(string idJ=null, string? nameJ=null)
     {
-        Id = id;
-        Name = name;
+        IdJ = idJ;
+        NameJ = nameJ;
     }
 
-    [Column("Id_J")] public string Id { get; set; }
-    [Column("Name_J")] public string? Name { get; set; }
+    public PFJob() { }
+
+    [Column("IdJ")] public string IdJ { get; set; }
+    [Column("NameJ")] public string? NameJ { get; set; }
 }

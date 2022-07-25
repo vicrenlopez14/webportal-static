@@ -6,12 +6,12 @@ namespace ProFind_WebService.Lib.Rank.Model;
 public class PFRank
 {
     [JsonConstructor]
-    public PFRank(string? id = null, string? name = null)
+    public PFRank(string? idR = null, string? nameR = null)
     {
-        Id = id;
-        Name = name;
+        IdR = idR;
+        NameR = nameR;
     }
 
-    [Column("Id_R")] public string? Id { get; set; }
-    [Column("Name_R")] public string? Name { get; set; }
+    [Column("IdR")] public string? IdR { get; set; }
+    [Column("NameR")] public string? NameR { get; set; }
 }

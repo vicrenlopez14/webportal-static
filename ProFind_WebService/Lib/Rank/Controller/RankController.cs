@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
 using ProFind_WebService.Lib.Rank.Model;
+using ProFind_WebService.Lib.Rank.DataSource;
 
 namespace ProFind_WebService.Lib.Rank.Controller;
 
@@ -9,14 +10,19 @@ namespace ProFind_WebService.Lib.Rank.Controller;
 [ApiController]
 public class RankController : CrudController<PFRank>
 {
+
+    private readonly RankDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFRank>> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.Get(id);
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFRank>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFRank>>> PaginatedList(int fromIndex, int? toIndex)
@@ -33,16 +39,17 @@ public class RankController : CrudController<PFRank>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFRank newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdR = Nanoid.Nanoid.Generate();
+        return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFRank toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFRank toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(await _dataSource.Delete(id));
     }
 }

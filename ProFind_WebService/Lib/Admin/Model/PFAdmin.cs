@@ -6,21 +6,23 @@ namespace ProFind_WebService.Lib.Admin.Model;
 public class PFAdmin
 {
     [JsonConstructor]
-    public PFAdmin(string id = null, string? name = null, string? email = null, string? tel = null,
-        string? password = null, string? rankId = null)
+    public PFAdmin(string idA = null, string? nameA = null, string? emailA = null, string? telA = null,
+        string? passwordA = null, string? idR1 = null)
     {
-        Id = id;
-        Name = name;
-        Email = email;
-        Tel = tel;
-        Password = password;
-        RankId = rankId;
+        IdA = idA;
+        NameA = nameA;
+        EmailA = emailA; 
+        TelA = telA;
+        PasswordA = passwordA;
+        IdR1 = idR1;
     }
 
-    [Column("Id_A")] public string Id { get; set; }
-    [Column("Name_A")] public string? Name { get; set; }
-    [Column("Email_A")] public string? Email { get; set; }
-    [Column("Tel_A")] public string? Tel { get; set; }
-    [Column("Password_A")] public string? Password { get; set; }
-    [Column("Id_R1")] public string? RankId { get; set; }
+    public PFAdmin() { }
+
+    [Column("IdA")] public string IdA { get; set; }
+    [Column("NameA")] public string? NameA { get; set; }
+    [Column("EmailA")] public string? EmailA { get; set; }
+    [Column("TelA")] public string? TelA { get; set; }
+    [Column("PasswordA")] public string? PasswordA { get; set; }
+    [Column("IdR1")] public string? IdR1 { get; set; }
 }

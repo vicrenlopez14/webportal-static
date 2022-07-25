@@ -47,19 +47,18 @@ public class AdminController : CrudController<PFAdmin>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFAdmin newObject)
     {
-        newObject.Id = Nanoid.Nanoid.Generate();
+        newObject.IdA = Nanoid.Nanoid.Generate();
 
         return (await _dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFAdmin toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFAdmin toUpdateObject)
     {
-        return (await _dataSource.Update(toUpdateObject) ? Ok(toUpdateObject) : NotFound());
+        return (await _dataSource.Update(id,toUpdateObject) ? Ok(toUpdateObject) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        var admin = new PFAdmin(id);
-        return (await _dataSource.Delete(admin) ? Ok(admin) : NotFound());
+        return Ok(await _dataSource.Delete(id));
     }
 }

@@ -16,45 +16,42 @@ public class AdminDataSource
 
     public async Task<PFAdmin?> Get(string id)
     {
-        const string query = "SELECT Id_A, Name_A, Email_A, Tel_A, Id_R1 FROM Admin, `Rank` "
-                             + "WHERE (Id_A = @Id AND Admin.Id_R1 = `Rank`.Id_R);";
+        const string query = "SELECT IdA, NameA, EmailA, TelA, PasswordA, IdR1 FROM Admin, `Rank` "
+                             + "WHERE (IdA = @Id AND Admin.IdR1 = `Rank`.IdR);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Id = id
+            ["Id"] = id
         });
 
         var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
-        var firstRow = result.First();
 
-        return firstRow;
+        return result.ToList()[0];
     }
 
 
     public async Task<IEnumerable<PFAdmin>> List()
     {
-        const string query = "SELECT Id_A, Name_A, Email_A, Tel_A, `Rank`.Name_R FROM Admin, `Rank` "
-                             + "WHERE (Admin.Id_R1 = `Rank`.Id_R);";
-
+        const string query = "SELECT * FROM Admin;";
         var result = await _connection.QueryAsync<PFAdmin>(query);
 
-        return result;
+        return result.ToList();
     }
 
     public async Task<IEnumerable<PFAdmin>> PaginatedList(int fromIndex, int toIndex)
     {
         int len = toIndex - fromIndex + 1;
 
-        const string query = "SELECT Id_A, Name_A, Email_A, Tel_A, Id_R1 FROM Admin, `Rank` "
-                             + "WHERE (Admin.Id_R1 = `Rank`.Id_R) LIMIT @FromIndex, @Len;";
+        const string query = "SELECT IdA, NameA, EmailA, TelA, IdR1 FROM Admin, `Rank` "
+                             + "WHERE (Admin.IdR1 = `Rank`.IdR) LIMIT @FromIndex, @Len;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            FromIndex = fromIndex,
-            Len = len
+            ["FromIndex"] = fromIndex.ToString(),
+            ["Len"] = len.ToString()
         });
 
         var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
@@ -65,14 +62,14 @@ public class AdminDataSource
     public async Task<IEnumerable<PFAdmin>> Search(IDictionary<string, string> searchCriteria)
     {
         const string query =
-            "SELECT * FROM Admin WHERE(  Name_A LIKE '%@Name%') OR (soundex(Name_A) = SOUNDEX('@Name'));";
+            "SELECT * FROM Admin WHERE(  NameA LIKE '%@Name%') OR (soundex(NameA) = SOUNDEX('@Name'));";
 
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string,object>()
         {
-            Name = searchCriteria["Name"]
+            ["Name"] = searchCriteria["Name"]
         });
 
         var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
@@ -89,72 +86,66 @@ public class AdminDataSource
 
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            ["Id"] = admin.Id,
-            ["Name"] = admin.Name,
-            ["Email"] = admin.Email,
-            ["Tel"] = admin.Tel,
-            ["Password"] = admin.Password,
-            ["Rank"] = admin.Id
+            ["Id"] = admin.IdA,
+            ["Name"] = admin.NameA,
+            ["Email"] = admin.EmailA,
+            ["Tel"] = admin.TelA,
+            ["Password"] = admin.PasswordA,
+            ["Rank"] = admin.IdR1
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Update(PFAdmin admin)
+    public async Task<bool> Update(string id, PFAdmin admin)
     {
-        const string query = "UPDATE Admin SET Name_A = @Name, Email_A = @Email, Tel_A = @Tel,"
-                             + " Password_A = @Password, Id_R1 = @Rank WHERE Id_A = @Id;";
+        const string query = "UPDATE Admin SET NameA = @Name, EmailA = @Email, TelA = @Tel,"
+                             + " PasswordA = @Password, IdR1 = @Rank WHERE IdA = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            admin.Id,
-            admin.Name,
-            admin.Email,
-            admin.Tel,
-            admin.Password,
-            Rank = admin.RankId
+            ["Id"] = id,
+            ["Name"] = admin.NameA,
+            ["Email"] = admin.EmailA,
+            ["Tel"] = admin.TelA,
+            ["Password"] = admin.PasswordA,
+            ["Rank"] = admin.IdR1
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Delete(PFAdmin admin)
+    public async Task<bool> Delete(string id)
     {
-        const string query = "DELETE FROM Admin WHERE Id_A = @Id;";
+        const string query = "DELETE FROM Admin WHERE IdA = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            admin.Id
+            ["Id"] = id
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    private async Task<bool> CheckCredentials(string email, string password)
+    private async Task<bool> Login(string email, string password)
     {
-        const string query = "SELECT * FROM Admin WHERE Email_A = @Email AND Password_A = @Password;";
+        const string query = "SELECT * FROM Admin WHERE EmailA = @Email AND PasswordA = @Password;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            Email = email,
-            Password = password
+            ["Email"] = email,
+            ["Password"] = password
         });
 
         var res = await _connection.QueryAsync(query, dynamicParameters);
-        var firstRow = res.First() as IDictionary<string, object>;
 
-        if (firstRow == null) return false;
+        if (res == null) return false;
         else return true;
     }
 
-    public bool login(string email, string password)
-    {
-        if (CheckCredentials(email, password).Result) return true;
-        else return false;
-    }
 }

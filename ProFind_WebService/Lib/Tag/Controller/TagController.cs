@@ -2,20 +2,26 @@
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
 using ProFind_WebService.Lib.Tag.Model;
+using ProFind_WebService.Lib.Tag.DataSource;
 
 namespace ProFind_WebService.Lib.Tag.Controller;
 
 [Route("api/[controller]")]
 public class TagController : CrudController<PFTag>
 {
+
+    private readonly TagDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFTag>> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.Get(id);
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFTag>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFTag>>> PaginatedList(int fromIndex, int? toIndex)
@@ -31,16 +37,17 @@ public class TagController : CrudController<PFTag>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFTag newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdT = Nanoid.Nanoid.Generate();
+        return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFTag toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFTag toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(await _dataSource.Delete(id));
     }
 }

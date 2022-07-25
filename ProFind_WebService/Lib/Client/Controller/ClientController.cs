@@ -2,6 +2,7 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Client.Model;
 using ProFind_WebService.Lib.Global.Controller;
+using ProFind_WebService.Lib.Client.DataSource;
 
 namespace ProFind_WebService.Lib.Client.Controller;
 
@@ -9,14 +10,19 @@ namespace ProFind_WebService.Lib.Client.Controller;
 [ApiController]
 public class ClientController : CrudController<PFClient>
 {
+
+    private readonly ClientDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFClient>> Get(string id)
     {
-        throw new NotImplementedException();
+        PFClient client = await _dataSource.Get(id);
+        return Ok(client);
     }
 
     public override async Task<ActionResult<IEnumerable<PFClient>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFClient>>> PaginatedList(int fromIndex, int? toIndex)
@@ -33,16 +39,17 @@ public class ClientController : CrudController<PFClient>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFClient newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdC = Nanoid.Nanoid.Generate();
+        return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound(); 
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFClient toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFClient toUpdateObject)
     {
-        throw new NotImplementedException();
+        return await _dataSource.Update(id, toUpdateObject) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(await _dataSource.Delete(id));
     }
 }

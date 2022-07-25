@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
 using ProFind_WebService.Lib.Job.Model;
+using ProFind_WebService.Lib.Job.DataSource;
 
 namespace ProFind_WebService.Lib.Job.Controller;
 
@@ -9,15 +10,19 @@ namespace ProFind_WebService.Lib.Job.Controller;
 [ApiController]
 public class JobController : CrudController<PFJob>
 {
-    
+
+    private readonly JobDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFJob>> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.Get(id);
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFJob>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFJob>>> PaginatedList(int fromIndex, int? toIndex)
@@ -34,16 +39,17 @@ public class JobController : CrudController<PFJob>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFJob newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdJ = Nanoid.Nanoid.Generate();
+        return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(PFJob toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFJob toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(await _dataSource.Delete(id));
     }
 }
