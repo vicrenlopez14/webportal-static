@@ -2,6 +2,7 @@ using Dapper;
 using MySql.Data.MySqlClient;
 using ProFind_WebService.Lib.Client.Model;
 using ProFind_WebService.Lib.DataSource;
+using ProFind_WebService.Utils;
 
 namespace ProFind_WebService.Lib.Client.DataSource;
 
@@ -48,9 +49,9 @@ public class ClientDataSource
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
             ["Id"] = client.IdC,
-            ["Name"] = client.NameC,
-            ["Email"] = client.EmailC,
-            ["Password"] = client.PasswordC
+            ["Name"] = client.NameC!,
+            ["Email"] = client.EmailC!,
+            ["Password"] = SHAPassword.ShaThisPassword(client.PasswordC!)
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
@@ -81,7 +82,7 @@ public class ClientDataSource
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new Dictionary<string, object> ()
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
             ["Id"] = id
         });
@@ -89,7 +90,7 @@ public class ClientDataSource
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    private async Task<bool> Login(string email, string password)
+    public async Task<bool> Login(string email, string password)
     {
         const string query = "SELECT * FROM Client WHERE EmailC = @Email AND PasswordC = @Password;";
 
@@ -98,13 +99,10 @@ public class ClientDataSource
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>
         {
             ["Email"] = email,
-            ["Password"] = password
+            ["Password"] = SHAPassword.ShaThisPassword(password)
         });
 
-        var res = await _connection.QueryAsync(query, dynamicParameters);
-
-        if (res == null) return false;
-        else return true;
+        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
     private async Task<bool> CheckEmail(string email)
@@ -113,18 +111,15 @@ public class ClientDataSource
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new Dictionary<string,object>()
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
             ["Email"] = email
         });
 
-        var res = await _connection.QueryAsync(query, dynamicParameters);
-
-        if (res == null) return true;
-        else return false;
+        return !(await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    private bool CheckPassword(string password)
+    public bool CheckPassword(string password)
     {
         if (password.Length <= 5) return false;
 
@@ -142,18 +137,22 @@ public class ClientDataSource
         return (letter && number && upper);
     }
 
-    public bool Register(string name, string email, string password, string creditcard)
+    public async Task<RegisterResponse> Register(string name, string email, string password)
     {
-        if (CheckEmail(email).Result && CheckPassword(password))
+        var checkEmail = await CheckEmail(email);
+        var checkPassword = CheckPassword(password);
+
+        if (checkEmail && checkPassword)
         {
-            string id = Nanoid.Nanoid.Generate();
+            string id = await Nanoid.Nanoid.GenerateAsync();
 
             PFClient client = new PFClient(id, name, email, password);
 
-            if (Create(client).Result) return true;
-            else return false;
+            if (Create(client).Result) return RegisterResponse.Successful;
+            return RegisterResponse.Error;
         }
 
-        return false;
+        if (checkEmail) return RegisterResponse.AccountAlreadyExists;
+        return RegisterResponse.IncorrectPasswordFormat;
     }
 }
