@@ -1,7 +1,10 @@
+using System.Security.Cryptography;
+using System.Text;
 using Dapper;
 using MySql.Data.MySqlClient;
 using ProFind_WebService.Lib.Admin.Model;
 using ProFind_WebService.Lib.DataSource;
+using ProFind_WebService.Utils;
 
 namespace ProFind_WebService.Lib.Admin.DataSource;
 
@@ -16,8 +19,7 @@ public class AdminDataSource
 
     public async Task<PFAdmin?> Get(string id)
     {
-        const string query = "SELECT IdA, NameA, EmailA, TelA, PasswordA, IdR1 FROM Admin, `Rank` "
-                             + "WHERE (IdA = @Id AND Admin.IdR1 = `Rank`.IdR);";
+        const string query = "SELECT * FROM Admin WHERE IdA = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
@@ -27,9 +29,15 @@ public class AdminDataSource
 
         var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
 
-        return result.ToList()[0];
+        try
+        {
+            return result.ToList()[0];
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
-
 
     public async Task<IEnumerable<PFAdmin>> List()
     {
@@ -43,8 +51,7 @@ public class AdminDataSource
     {
         int len = toIndex - fromIndex + 1;
 
-        const string query = "SELECT IdA, NameA, EmailA, TelA, IdR1 FROM Admin, `Rank` "
-                             + "WHERE (Admin.IdR1 = `Rank`.IdR) LIMIT @FromIndex, @Len;";
+        const string query = "SELECT * FROM Admin LIMIT @FromIndex, @Len;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -62,12 +69,12 @@ public class AdminDataSource
     public async Task<IEnumerable<PFAdmin>> Search(IDictionary<string, string> searchCriteria)
     {
         const string query =
-            "SELECT * FROM Admin WHERE(  NameA LIKE '%@Name%') OR (soundex(NameA) = SOUNDEX('@Name'));";
+            "SELECT * FROM Admin WHERE( NameA LIKE '%@Name%') OR (soundex(NameA) = SOUNDEX('@Name'));";
 
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
-        dynamicParameters.AddDynamicParams(new Dictionary<string,object>()
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
             ["Name"] = searchCriteria["Name"]
         });
@@ -79,7 +86,7 @@ public class AdminDataSource
 
     public async Task<bool> Create(PFAdmin admin)
     {
-        const string query = "INSERT INTO ADMIN VALUES(@Id,@Name,@Email,@Tel,@Password,@Rank);";
+        const string query = "INSERT INTO Admin VALUES(@Id,@Name,@Email,@Tel,@Password,@Rank);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -90,11 +97,28 @@ public class AdminDataSource
             ["Name"] = admin.NameA,
             ["Email"] = admin.EmailA,
             ["Tel"] = admin.TelA,
-            ["Password"] = admin.PasswordA,
+            ["Password"] = SHAPassword.ShaThisPassword(admin.PasswordA!),
             ["Rank"] = admin.IdR1
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+    }
+
+    public async Task<bool> Login(string email, string password)
+    {
+       
+
+        const string query = "SELECT * FROM Admin WHERE EmailA = @Email AND PasswordA = @Password;";
+
+        DynamicParameters dynamicParameters = new DynamicParameters();
+
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
+        {
+            ["Email"] = email,
+            ["Password"] = SHAPassword.ShaThisPassword(password)
+        });
+
+        return await _connection.ExecuteAsync(query, dynamicParameters) > 0;
     }
 
     public async Task<bool> Update(string id, PFAdmin admin)
@@ -130,22 +154,5 @@ public class AdminDataSource
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    private async Task<bool> Login(string email, string password)
-    {
-        const string query = "SELECT * FROM Admin WHERE EmailA = @Email AND PasswordA = @Password;";
-
-        DynamicParameters dynamicParameters = new DynamicParameters();
-
-        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
-        {
-            ["Email"] = email,
-            ["Password"] = password
-        });
-
-        var res = await _connection.QueryAsync(query, dynamicParameters);
-
-        if (res == null) return false;
-        else return true;
-    }
-
+  
 }

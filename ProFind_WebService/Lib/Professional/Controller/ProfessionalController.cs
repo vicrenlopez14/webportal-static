@@ -43,6 +43,12 @@ public class ProfessionalController : CrudController<PFProfessional>
         newObject.IdP = Nanoid.Nanoid.Generate();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
+    
+    [HttpPost("login")]
+    public async Task<ActionResult<HttpStatusCode>> Login(string email, string password)
+    {
+        return (await _dataSource.Login(email, password)) ? Ok() : NotFound();
+    }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProfessional toUpdateObject)
     {

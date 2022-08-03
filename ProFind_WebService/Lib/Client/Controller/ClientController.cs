@@ -10,7 +10,6 @@ namespace ProFind_WebService.Lib.Client.Controller;
 [ApiController]
 public class ClientController : CrudController<PFClient>
 {
-
     private readonly ClientDataSource _dataSource = new();
 
     public override async Task<ActionResult<PFClient>> Get(string id)
@@ -31,16 +30,42 @@ public class ClientController : CrudController<PFClient>
     }
 
     [HttpGet("criteria")]
-
-    public  async Task<ActionResult<IEnumerable<PFClient>>> Search(IDictionary<string, string> searchCriteria)
+    public async Task<ActionResult<IEnumerable<PFClient>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFClient newObject)
     {
-        newObject.IdC = Nanoid.Nanoid.Generate();
-        return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound(); 
+        newObject.IdC = await Nanoid.Nanoid.GenerateAsync();
+
+        return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound();
+    }
+
+    [HttpPost("login")]
+    public async Task<ActionResult<HttpStatusCode>> Login(string email, string password)
+    {
+        return (await _dataSource.Login(email, password)) ? Ok() : NotFound();
+    }
+
+    [HttpPost("register")]
+    public async Task<ActionResult<HttpStatusCode>> Register(RegisterClient registerClient)
+    {
+        var registerResponse =
+            await _dataSource.Register(registerClient.NameC, registerClient.EmailC, registerClient.PasswordC);
+
+        switch (registerResponse)
+        {
+            case RegisterResponse.Successful:
+                return Ok();
+            case RegisterResponse.AccountAlreadyExists:
+                return Ok(HttpStatusCode.Conflict);
+            case RegisterResponse.IncorrectPasswordFormat:
+                return Ok(HttpStatusCode.BadRequest);
+            default:
+                return Ok(HttpStatusCode.InternalServerError);
+            
+        }
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFClient toUpdateObject)

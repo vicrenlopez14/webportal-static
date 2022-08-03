@@ -2,6 +2,7 @@ using Dapper;
 using MySql.Data.MySqlClient;
 using ProFind_WebService.Lib.DataSource;
 using ProFind_WebService.Lib.Professional.Model;
+using ProFind_WebService.Utils;
 
 namespace ProFind_WebService.Lib.Professional.DataSource;
 
@@ -51,7 +52,7 @@ public class ProfessionalDataSource
             ["Name"] = professional.NameP,
             ["DateBirth"] = professional.DateBirthP,
             ["Email"] = professional.EmailP,
-            ["Password"] = professional.PasswordP,
+            ["Password"] = SHAPassword.ShaThisPassword(professional.PasswordP!),
             ["Curriculum"] = professional.IdCU1,
             ["Job"] = professional.IdJ1
         });
@@ -73,7 +74,7 @@ public class ProfessionalDataSource
             ["Name"] = professional.NameP,
             ["DateBirth"] = professional.DateBirthP,
             ["Email"] = professional.EmailP,
-            ["Password"] = professional.PasswordP,
+            ["Password"] = professional.PasswordP!,
             ["Curriculum"] = professional.IdCU1,
             ["Job"] = professional.IdJ1
         });
@@ -95,7 +96,7 @@ public class ProfessionalDataSource
         return (await _connection.ExecuteAsync(query, dynamicParameters)) > 0;
     }
 
-    private async Task<bool> Login(string email, string password)
+    public async Task<bool> Login(string email, string password)
     {
         const string query = "SELECT * FROM Professional "
                              + "WHERE EmailP = @Email AND PasswordP = @Password;";
@@ -105,12 +106,12 @@ public class ProfessionalDataSource
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
             ["Email"] = email,
-            ["Password"] = password
+            ["Password"] = SHAPassword.ShaThisPassword(password)
         });
 
         var res = await _connection.QueryAsync(query, dynamicParameters);
 
         if (res == null) return false;
-        else return true;
+        return true;
     }
 }
