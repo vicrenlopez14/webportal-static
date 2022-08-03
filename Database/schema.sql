@@ -24,8 +24,6 @@ CREATE TABLE `Rank`
     NameR VARCHAR(50) UNIQUE
 );
 
-INSERT INTO `Rank` VALUES ("1","Empleado");
-
 DESCRIBE `Rank`;
 
 ###########################################
@@ -44,8 +42,6 @@ CREATE TABLE Admin
 DESCRIBE ADMIN;
 
 SELECT * FROM ADMIN;
-
-DROP TABLE Admin;
 
 ###############################################
 CREATE TABLE Project
@@ -121,7 +117,7 @@ CREATE TABLE Job
 DESCRIBE Job;
 
 ################################################
-CREATE TABLE Profesional
+CREATE TABLE Professional
 (
     IdP         CHAR(21) PRIMARY KEY,
     NameP       CHAR(50),

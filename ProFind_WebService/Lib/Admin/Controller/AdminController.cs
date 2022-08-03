@@ -13,6 +13,7 @@ public class AdminController : CrudController<PFAdmin>
 {
     private readonly AdminDataSource _dataSource = new();
 
+
     public override async Task<ActionResult<PFAdmin>> Get(string id)
     {
         PFAdmin? admin = await _dataSource.Get(id);
@@ -47,14 +48,20 @@ public class AdminController : CrudController<PFAdmin>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFAdmin newObject)
     {
-        newObject.IdA = Nanoid.Nanoid.Generate();
+        newObject.IdA = await Nanoid.Nanoid.GenerateAsync();
 
         return (await _dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }
 
+    [HttpPost("login")]
+    public async Task<ActionResult<HttpStatusCode>> Login(string email, string password)
+    {
+        return (await _dataSource.Login(email, password)) ? Ok() : NotFound();
+    }
+
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFAdmin toUpdateObject)
     {
-        return (await _dataSource.Update(id,toUpdateObject) ? Ok(toUpdateObject) : NotFound());
+        return (await _dataSource.Update(id, toUpdateObject) ? Ok(toUpdateObject) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
