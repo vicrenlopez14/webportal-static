@@ -3,25 +3,25 @@ using System.Text.Json.Serialization;
 
 namespace Domain.Models
 {
-    public class PFAdmin
-    {
-        [JsonConstructor]
+public class PFAdmin
+{
+    [JsonConstructor]
         public PFAdmin(string idA, string nameA, string emailA, string telA,
             string passwordA, string idR1)
-        {
-            IdA = idA;
-            NameA = nameA;
-            EmailA = emailA;
-            TelA = telA;
-            PasswordA = passwordA;
-            IdR1 = idR1;
-        }
+    {
+        IdA = idA;
+        NameA = nameA;
+        EmailA = emailA; 
+        TelA = telA;
+        PasswordA = passwordA;
+        IdR1 = idR1;
+    }
 
         public PFAdmin()
         {
         }
 
-        [Column("IdA")] public string IdA { get; set; }
+    [Column("IdA")] public string IdA { get; set; }
         [Column("NameA")] public string NameA { get; set; }
         [Column("EmailA")] public string EmailA { get; set; }
         [Column("TelA")] public string TelA { get; set; }
