@@ -1,50 +1,88 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using ProFind.Lib.Global.Models;
+using Domain.Models;
 
 namespace ProFind.Lib.Global.Services
 {
-    public class PFProjectService : ICrudService<PFProject>
+    public class PfProjectService : ICrudService<PFProject>
     {
-        public async Task<PFProject> GetObjectAsync(string id)
+           public async Task<PFProject> GetObjectAsync(string id)
         {
-            throw new System.NotImplementedException();
+            PFProject project = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Project/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                project = await response.Content.ReadAsAsync<PFProject>();
+            }
+
+            return project;
         }
 
         public async Task<IEnumerable<PFProject>> ListObjectAsync()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFProject> project = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Project/list");
+            if (response.IsSuccessStatusCode)
+            {
+                project = await response.Content.ReadAsAsync<IEnumerable<PFProject>>();
+            }
+
+            return project;
         }
 
-        public async Task<IEnumerable<PFProject>> ListPaginatedObjectAsync(int fromIndex)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<IEnumerable<PFProject>> ListPaginatedObjectAsync(int fromIndex) =>
+            await ListPaginatedObjectAsync(fromIndex, -1);
 
         public async Task<IEnumerable<PFProject>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFProject> project = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Project/list");
+            if (response.IsSuccessStatusCode)
+            {
+                project = await response.Content.ReadAsAsync<IEnumerable<PFProject>>();
+            }
+
+            return project;
         }
 
         public async Task<IEnumerable<PFProject>> Search(IDictionary<string, string> searchCriteria)
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFProject> projects = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Project/criteria");
+            if (response.IsSuccessStatusCode)
+            {
+                projects = await response.Content.ReadAsAsync<IEnumerable<PFProject>>();
+            }
+
+            return projects;
         }
 
         public async Task<HttpStatusCode> Create(PFProject toCreateObject)
         {
-            throw new System.NotImplementedException();
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Project", toCreateObject);
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
 
         public async Task<HttpStatusCode> Update(PFProject toUpdateObject)
         {
-            throw new System.NotImplementedException();
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/Project/{toUpdateObject.Id}", toUpdateObject);
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
 
         public async Task<HttpStatusCode> Delete(string id)
         {
-            throw new System.NotImplementedException();
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.DeleteAsync($"api/Project/{id}");
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
     }
 }

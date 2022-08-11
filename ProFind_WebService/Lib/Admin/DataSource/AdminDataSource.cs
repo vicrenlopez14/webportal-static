@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Dapper;
 using MySql.Data.MySqlClient;
-using ProFind_WebService.Lib.Admin.Model;
+using Domain.Models;
 using ProFind_WebService.Lib.DataSource;
 using ProFind_WebService.Utils;
 

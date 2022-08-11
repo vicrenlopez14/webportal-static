@@ -11,14 +11,27 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
-    <PackageReference Include="MySql.Data" Version="8.0.29" />
+    <PackageReference Include="MySql.Data" Version="8.0.30" />
     <PackageReference Include="Nanoid" Version="2.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Lib\Admin\Model" />
+    <Folder Include="Lib\Client\Model" />
+    <Folder Include="Lib\Curriculum\Model" />
     <Folder Include="Lib\Global\DataSource" />
     <Folder Include="Lib\Global\Model" />
+    <Folder Include="Lib\Job\Model" />
+    <Folder Include="Lib\Process\Model" />
+    <Folder Include="Lib\Professional\Model" />
+    <Folder Include="Lib\Project\Model" />
+    <Folder Include="Lib\Rank\Model" />
+    <Folder Include="Lib\Tag\Model" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

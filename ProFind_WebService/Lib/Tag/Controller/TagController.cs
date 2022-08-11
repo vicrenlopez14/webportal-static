@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
-using ProFind_WebService.Lib.Tag.Model;
+using Domain.Models;
 using ProFind_WebService.Lib.Tag.DataSource;
 
 namespace ProFind_WebService.Lib.Tag.Controller;

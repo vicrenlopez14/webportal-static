@@ -1,17 +1,16 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using ProFind_WebService.Lib.Curriculum.Model;
 using ProFind_WebService.Lib.DataSource;
 
 namespace ProFind_WebService.Lib.Curriculum.DataSource;
 
 public class CurriculumDataSource
 {
-    readonly MySqlConnection connection;
+    readonly MySqlConnection _connection;
 
     public CurriculumDataSource()
     {
-        connection = new MySqlDataSourceLink().getConnection();
+        _connection = new MySqlDataSourceLink().getConnection();
     }
 
     public async Task<PFCurriculum> Get(string id)
@@ -23,7 +22,7 @@ public class CurriculumDataSource
             ["Id"] = id
         );
 
-        var result = await connection.QueryAsync<PFCurriculum>(query, dynamicParameters);
+        var result = await _connection.QueryAsync<PFCurriculum>(query, dynamicParameters);
 
         return result.ToList()[0];
     }
@@ -32,7 +31,7 @@ public class CurriculumDataSource
     {
         const string query = "SELECT * FROM Curriculum;";
 
-        var result = await connection.QueryAsync<PFCurriculum>(query);
+        var result = await _connection.QueryAsync<PFCurriculum>(query);
 
         return result.ToList();
     }
@@ -50,7 +49,7 @@ public class CurriculumDataSource
             ["Years"] = curriculum.YearsCU
         });
 
-        return (await connection.ExecuteAsync(query, dynamicParameters) > 0);
+        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
     public async Task<bool> Update(string id, PFCurriculum curriculum)
@@ -68,7 +67,7 @@ public class CurriculumDataSource
             ["Years"] = curriculum.YearsCU
         });
 
-        return (await connection.ExecuteAsync(query, dynamicParameters) > 0);
+        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
     public async Task<bool> Delete(string id)
@@ -83,6 +82,6 @@ public class CurriculumDataSource
         });
 
 
-        return (await connection.ExecuteAsync(query, dynamicParameters) > 0);
+        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 }

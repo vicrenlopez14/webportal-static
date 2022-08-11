@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using ProFind.Lib.Admin.Model;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -42,9 +41,6 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
             string curriculum = txtCurriculum.Text;
             string job = txtJob.Text;
 
-            Model.Professional professional = new Model.Professional(name, dateBirth, email, password, curriculum, job);
-
-            GlobalList.gvProffesional.Add(professional);
 
         }
     }
