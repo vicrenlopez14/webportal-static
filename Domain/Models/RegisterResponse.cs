@@ -1,9 +1,10 @@
-﻿namespace ProFind_WebService.Lib.Client.Model;
-
-public enum RegisterResponse
+﻿namespace Domain.Models
 {
-    Successful,
-    IncorrectPasswordFormat,
-    AccountAlreadyExists,
-    Error
+    public enum RegisterResponse
+    {
+        Successful,
+        IncorrectPasswordFormat,
+        AccountAlreadyExists,
+        Error
+    }
 }

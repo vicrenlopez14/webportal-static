@@ -1,17 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace ProFind_WebService.Lib.Rank.Model;
-
-public class PFRank
+namespace Domain.Models
 {
-    [JsonConstructor]
-    public PFRank(string? idR = null, string? nameR = null)
+    public class PFRank
     {
-        IdR = idR;
-        NameR = nameR;
-    }
+        [JsonConstructor]
+        public PFRank(string idR, string nameR)
+        {
+            IdR = idR;
+            NameR = nameR;
+        }
 
-    [Column("IdR")] public string? IdR { get; set; }
-    [Column("NameR")] public string? NameR { get; set; }
+        [Column("IdR")] public string IdR { get; set; }
+        [Column("NameR")] public string NameR { get; set; }
+    }
 }

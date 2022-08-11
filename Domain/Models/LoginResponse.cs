@@ -1,7 +1,8 @@
-﻿namespace ProFind_WebService.Lib.Global.Model;
-
-public enum LoginResponse
+﻿namespace Domain.Models
 {
-    AccountNotExists,
-    WrongPassword
+    public enum LoginResponse
+    {
+        AccountNotExists,
+        WrongPassword
+    }
 }

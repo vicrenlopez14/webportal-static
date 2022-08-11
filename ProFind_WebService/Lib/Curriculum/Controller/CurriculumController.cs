@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using ProFind_WebService.Lib.Curriculum.Model;
 using ProFind_WebService.Lib.Global.Controller;
 using ProFind_WebService.Lib.Curriculum.DataSource;
 

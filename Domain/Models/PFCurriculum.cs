@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using MySqlX.XDevAPI.Relational;
 
-namespace ProFind_WebService.Lib.Curriculum.Model;
 
 public class PFCurriculum
 {
     [JsonConstructor]
-    public PFCurriculum(string idCU=null, string? studiesCU = null, string? experiencesCU = null, int? yearsCU = default)
+    public PFCurriculum(string idCU, string studiesCU, string experiencesCU, int yearsCU)
     {
         IdCU = idCU;
         StudiesCU = studiesCU;
@@ -15,10 +13,12 @@ public class PFCurriculum
         YearsCU = yearsCU;
     }
 
-    public PFCurriculum() { }
+    public PFCurriculum()
+    {
+    }
 
     [Column("IdCU")] public string IdCU { get; set; }
-    [Column("StudiesCU")] public string? StudiesCU { get; set; }
-    [Column("ExperienceCU")] public string? ExperiencesCU { get; set; }
-    [Column("YearsCU")] public int? YearsCU { get; set; }
+    [Column("StudiesCU")] public string StudiesCU { get; set; }
+    [Column("ExperienceCU")] public string ExperiencesCU { get; set; }
+    [Column("YearsCU")] public int YearsCU { get; set; }
 }

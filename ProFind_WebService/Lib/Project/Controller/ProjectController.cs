@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
-using ProFind_WebService.Lib.Project.Model;
+using Domain.Models;
 
 namespace ProFind_WebService.Lib.Project.Controller;
 

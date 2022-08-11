@@ -1,7 +1,7 @@
 using Dapper;
 using MySql.Data.MySqlClient;
 using ProFind_WebService.Lib.DataSource;
-using ProFind_WebService.Lib.Professional.Model;
+using Domain.Models;
 using ProFind_WebService.Utils;
 
 namespace ProFind_WebService.Lib.Professional.DataSource;

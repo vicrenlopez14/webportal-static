@@ -1,50 +1,89 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using ProFind.Lib.Global.Models;
+using Domain.Models;
+
 
 namespace ProFind.Lib.Global.Services
 {
     public class PFTagService : ICrudService<PFTag>
     {
-        public async Task<PFTag> GetObjectAsync(string id)
+         public async Task<PFTag> GetObjectAsync(string id)
         {
-            throw new System.NotImplementedException();
+            PFTag tag = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Tag/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                tag = await response.Content.ReadAsAsync<PFTag>();
+            }
+
+            return tag;
         }
 
         public async Task<IEnumerable<PFTag>> ListObjectAsync()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFTag> Tag = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Tag/list");
+            if (response.IsSuccessStatusCode)
+            {
+                Tag = await response.Content.ReadAsAsync<IEnumerable<PFTag>>();
+            }
+
+            return Tag;
         }
 
-        public async Task<IEnumerable<PFTag>> ListPaginatedObjectAsync(int fromIndex)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<IEnumerable<PFTag>> ListPaginatedObjectAsync(int fromIndex) =>
+            await ListPaginatedObjectAsync(fromIndex, -1);
 
         public async Task<IEnumerable<PFTag>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFTag> Tag = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Tag/list");
+            if (response.IsSuccessStatusCode)
+            {
+                Tag = await response.Content.ReadAsAsync<IEnumerable<PFTag>>();
+            }
+
+            return Tag;
         }
 
         public async Task<IEnumerable<PFTag>> Search(IDictionary<string, string> searchCriteria)
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PFTag> Tags = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Tag/criteria");
+            if (response.IsSuccessStatusCode)
+            {
+                Tags = await response.Content.ReadAsAsync<IEnumerable<PFTag>>();
+            }
+
+            return Tags;
         }
 
         public async Task<HttpStatusCode> Create(PFTag toCreateObject)
         {
-            throw new System.NotImplementedException();
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Tag", toCreateObject);
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
 
         public async Task<HttpStatusCode> Update(PFTag toUpdateObject)
         {
-            throw new System.NotImplementedException();
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/Tag/{toUpdateObject.IdT}", toUpdateObject);
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
 
         public async Task<HttpStatusCode> Delete(string id)
         {
-            throw new System.NotImplementedException();
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.DeleteAsync($"api/Tag/{id}");
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
     }
 }

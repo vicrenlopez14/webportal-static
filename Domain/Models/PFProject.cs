@@ -1,19 +1,20 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ProFind_WebService.Lib.Project.Model;
-
-public class PFProject
+namespace Domain.Models
 {
-    [JsonConstructor]
-    public PFProject(string id, string? title = null, string? description = null)
+    public class PFProject
     {
-        Id = id;
-        Title = title;
-        Description = description;
+        [JsonConstructor]
+        public PFProject(string id, string title, string description)
+        {
+            Id = id;
+            Title = title;
+            Description = description;
+        }
+
+
+        public string Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
-
-
-    public string Id { get; set; }
-    public string? Title { get; set; }
-    public string? Description { get; set; }
 }
