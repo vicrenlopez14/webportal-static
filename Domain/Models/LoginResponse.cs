@@ -1,9 +1,9 @@
 ﻿namespace Domain.Models
 
 {
-    public enum LoginResponse
-    {
-        AccountNotExists,
-        WrongPassword
-    }
+public enum LoginResponse
+{
+    AccountNotExists,
+    WrongPassword
+}
 }
