@@ -11,9 +11,9 @@ namespace ProFind.Lib.Global.Services
 
         public static HttpClient GetConnection => client;
 
-        static async Task RunAsync()
+        public static void RunAsync()
         {
-            client.BaseAddress = new Uri("http://localhost:5210/");
+            client.BaseAddress = new Uri("https://localhost:5001/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
