@@ -153,6 +153,12 @@
     <Compile Include="Lib\Admin\Views\Professionals_Page\Actives_Page.xaml.cs">
       <DependentUpon>Actives_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\Professionals_Page\Controls\ProfessionalTile.xaml.cs">
+      <DependentUpon>ProfessionalTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\Professionals_Page\Controls\ProfessionalView.xaml.cs">
+      <DependentUpon>ProfessionalView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Professionals_Page\Professionals_Page.xaml.cs">
       <DependentUpon>Professionals_Page.xaml</DependentUpon>
     </Compile>
@@ -376,6 +382,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Lib\Admin\Views\Professionals_Page\Controls\ProfessionalTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\Professionals_Page\Controls\ProfessionalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\Professionals_Page\Professionals_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -567,6 +581,10 @@
     <Page Include="Styles\_Thickness.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

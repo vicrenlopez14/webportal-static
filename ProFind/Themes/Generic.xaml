@@ -1,0 +1,19 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind">
+
+    <Style TargetType="local2:ProfessionalListViewTemplate" xmlns:local2="using:ProFind.Lib.Admin.Views.Professionals_Page.Templates">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local2:ProfessionalListViewTemplate">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

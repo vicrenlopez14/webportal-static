@@ -2,59 +2,64 @@
     x:Class="ProFind.Lib.Admin.Views.Estado_del_proyecto.Page_Activos"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.Admin.Views.Estado_del_proyecto"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.Admin.Views.Estado_del_proyecto"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:models="using:Domain.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
     <Grid>
-        <TextBlock Text="Activos" Margin="20,15,0,0" FontWeight="Normal" FontSize="30"></TextBlock>
-        <StackPanel Background="#F4FAE1" Margin="20,80,775,759" BorderBrush="Black" CornerRadius="15">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Revisión general del vehiculo"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Automotriz" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                <SymbolIcon Symbol="Setting"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,-5">
-                <TextBlock Text="Ing. Daniel Rodas"></TextBlock>
-            </StackPanel>
-            <Button x:Name="btnIr" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#8EAD8B" Foreground="White" CornerRadius="5"/>
-        </StackPanel>
-        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="21,79,775,758" CornerRadius="15">
-            <AppBarSeparator HorizontalAlignment="Left" Margin="525,9,0,0" VerticalAlignment="Top" Height="35"/>
-        </Border>
-        <PersonPicture  ProfilePicture="https://segurossura.com/content/uploads/sites/10/2017/10/seguros-sura-5-razones-para-hacerle-mantenimiento-preventivo-a-tu-carro-mini.jpg" Margin="34,113,1366,787"></PersonPicture>
-
-
-        <StackPanel Margin="20,270,776,567" Background="#F4FAE1" CornerRadius="15">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Cita médica"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Medicina general" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                <SymbolIcon Symbol="Contact2"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,-5">
-                <TextBlock Text="Dr. Mario Viena"></TextBlock>
-            </StackPanel>
-            <Button x:Name="btnIr1" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#8EAD8B" Foreground="White" CornerRadius="5"/>
-        </StackPanel>
-        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="20,270,775,566" CornerRadius="15">
-            <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="526,8,0,0"/>
-        </Border>
-        <PersonPicture  ProfilePicture="https://www.pasadenahealthcenter.com/es/wp-content/uploads/2019/04/PHC.jpg" Margin="34,302,1366,598" RenderTransformOrigin="0.48,0.99"></PersonPicture>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="ActiveProjectsListView" ItemTemplate="{StaticResource ActiveProjectsListViewTemplate}" />
     </Grid>
+
+    <Page.Resources>
+        <DataTemplate x:Key="ActiveProjectsListViewTemplate" x:DataType="models:PFProject">
+            <StackPanel
+                Margin="20,270,776,567"
+                Background="#F4FAE1"
+                CornerRadius="15">
+                <StackPanel
+                    Width="300"
+                    Height="27"
+                    Margin="-95,20,0,0">
+                    <TextBlock Height="25" Text="{Binding Title}" />
+                </StackPanel>
+                <StackPanel
+                    Width="300"
+                    Height="27"
+                    Margin="550,-35,0,0">
+                    <TextBlock FontWeight="Bold" Text="Medicina general" />
+                </StackPanel>
+                <StackPanel
+                    Width="20"
+                    Height="22"
+                    Margin="-425,-100,0,-70">
+                    <SymbolIcon Symbol="Contact2" />
+                </StackPanel>
+                <StackPanel Height="23" Margin="130,5">
+                    <TextBlock
+                        Height="23"
+                        FontWeight="Bold"
+                        Text="Profesional:" />
+                </StackPanel>
+                <StackPanel Height="23" Margin="130,-5">
+                    <TextBlock Text="{Binding Description}" />
+                </StackPanel>
+                <Button
+                    x:Name="btnIr1"
+                    Width="65"
+                    Height="30"
+                    Margin="130,20"
+                    Background="#8EAD8B"
+                    Content="Ir"
+                    CornerRadius="5"
+                    Foreground="White" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 </Page>
