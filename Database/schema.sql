@@ -125,6 +125,7 @@ CREATE TABLE Professional
     DateBirthP DATE,
     EmailP     CHAR(21),
     PasswordP  CHAR(64),
+    SexP        BOOLEAN,
     IdCU1      CHAR(21),
     IdJ1       CHAR(21),
     IdPFS1     INT,
