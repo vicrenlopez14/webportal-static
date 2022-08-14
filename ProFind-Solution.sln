@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProFind_WebService", "ProFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{D329F363-7A2A-4E26-BA66-1524DF5A2DB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,26 @@ Global
 		{D329F363-7A2A-4E26-BA66-1524DF5A2DB7}.Release|x64.Build.0 = Release|Any CPU
 		{D329F363-7A2A-4E26-BA66-1524DF5A2DB7}.Release|x86.ActiveCfg = Release|Any CPU
 		{D329F363-7A2A-4E26-BA66-1524DF5A2DB7}.Release|x86.Build.0 = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|x64.Build.0 = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Debug|x86.Build.0 = Debug|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|ARM.Build.0 = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|ARM64.Build.0 = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|x64.ActiveCfg = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|x64.Build.0 = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|x86.ActiveCfg = Release|Any CPU
+		{8CEFE90F-0751-4A1D-BCE4-35E2BAFEBD0E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

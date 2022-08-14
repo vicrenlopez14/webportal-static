@@ -1,5 +1,4 @@
 ﻿using Domain.Models;
-using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,18 +50,6 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
-            professional.NameP = FirstName_tbx.Text + LastName_tbx.Text;
-
-            var professionalsService = new PfProfessionalService();
-            var resultado = await professionalsService.Login("usuario@gmail.com", "123456");
-
-            if (resultado == System.Net.HttpStatusCode.OK) {
-                
-            } else { 
-            
-            
-            }
         }
     }
 }

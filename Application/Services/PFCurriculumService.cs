@@ -2,10 +2,8 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Domain.Models;
 
-
-namespace ProFind.Lib.Global.Services
+namespace Application.Services
 {
     public class PfCurriculumService : ICrudService<PFCurriculum>
     {

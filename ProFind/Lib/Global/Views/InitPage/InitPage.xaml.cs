@@ -1,7 +1,7 @@
 ﻿using ProFind.Lib.Admin.Views.Main_Page_Admin;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
-using ProFind.Lib.Global.Services;
+using Application.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 

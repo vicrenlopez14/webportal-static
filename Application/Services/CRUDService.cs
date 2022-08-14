@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 
-namespace ProFind.Lib.Global.Services
+namespace Application.Services
 {
     public interface ICrudService<T>
     {

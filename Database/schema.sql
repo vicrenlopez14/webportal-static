@@ -69,22 +69,6 @@ CREATE TABLE Process
     FOREIGN KEY (IdT1) REFERENCES Tag (IdT) ON DELETE CASCADE
 );
 
-SELECT Process.IdPR,
-       Process.TitlePR,
-       Process.DescriptionPR,
-       Process.BeginDatePR,
-       Process.EndDatePR,
-       Process.IdT1,
-       NameT,
-       IdPJ1,
-       TitlePJ,
-       DescriptionPJ
-FROM Process
-         INNER JOIN Tag T on Process.IdT1 = T.IdT
-         INNER JOIN Project P on T.IdPJ1 = P.IdPJ
-WHERE Process.IdPR = ':Id';
-
-
 
 DESCRIBE Process;
 
@@ -131,6 +115,12 @@ CREATE TABLE ProjectStatus
     NamePS VARCHAR(20)
 );
 
+INSERT INTO ProjectStatus (NamePS)
+VALUES ('Inactive'),
+       ('Active');
+
+SELECT *
+FROM ProjectStatus;
 
 ###############################################
 CREATE TABLE Project
@@ -147,6 +137,21 @@ CREATE TABLE Project
 );
 
 DESCRIBE Project;
+
+################################################
+CREATE TABLE Activity
+(
+    IdA            CHAR(21) PRIMARY KEY,
+    TitleA         VARCHAR(50),
+    DescriptionA   VARCHAR(500),
+    ExpectedBeginA DATETIME,
+    ExpectedEndA   DATETIME,
+    IdPJ1          CHAR(21),
+    IdT1           CHAR(21),
+    FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE,
+    FOREIGN KEY (IdT1) REFERENCES Tag (IdT) ON DELETE CASCADE
+);
+
 ################################################
 CREATE TABLE Profession
 (

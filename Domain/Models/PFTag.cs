@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Domain.Models
 {
     public class PFTag
     {
+        [JsonConstructor]
         public PFTag(string idT, string nameT, string IdPJ1)
         {
             IdT = idT;
