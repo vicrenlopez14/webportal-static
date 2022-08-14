@@ -4,95 +4,35 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.Client.Views.Notifications_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:Domain.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="22*"/>
-            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="47,41,778,800" Background="#ECBE3E" CornerRadius="15" Grid.ColumnSpan="2">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Text= "Payment Notification" FontWeight="Bold"/>
-            </StackPanel>
-
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Law Firm" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Margin="550,-10,0,0" Height="27" Width="300">
-                <TextBlock Text="$220" FontWeight="Bold" Height="70" FontSize="18"/>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
-            <StackPanel Height="23" Margin="130, -10">
-                <TextBlock Height="53" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="378"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,10">
-                <TextBlock Text="It was full payment" Width="372"/>
-            </StackPanel>
-        </StackPanel>
-        <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="62,56,102,844" RenderTransformOrigin="0.48,0.99"/>
-        <StackPanel Margin="516,41,45,800" Background="#896A67" CornerRadius="15" Grid.Column="1">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Text= "Project Acceptance Notification" FontWeight="Bold"/>
-            </StackPanel>
-
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Law Firm" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Margin="550,-10,0,0" Height="27" Width="300"/>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
-            <StackPanel Height="23" Margin="130, -10">
-                <TextBlock Height="55" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="369"/>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,10">
-                <TextBlock Text="There was an unforeseen" Width="372" Height="31"/>
-            </StackPanel>
-        </StackPanel>
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Know more" Grid.Column="1" Margin="1059,149,0,0" VerticalAlignment="Top" Height="34" Width="109" Background="#FFD70014" />
-        <PersonPicture  ProfilePicture="https://uploadgerencie.com/imagenes/inmobiliaria-no-paga-arriendo.png" Margin="544,56,592,844" RenderTransformOrigin="0.48,0.99" Grid.Column="1"/>
-        <StackPanel Margin="47,259,778,582" Background="#95D7AE" CornerRadius="15" Grid.ColumnSpan="2">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Text= "Professional's Message" FontWeight="Bold"/>
-            </StackPanel>
-
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Law Firm" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Margin="550,-10,0,0" Height="27" Width="300"/>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
-            <StackPanel Height="23" Margin="130, -10">
-                <TextBlock Height="53" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="378"/>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,10">
-                <TextBlock Text="Professional: Fernando Burgos" Width="372"/>
-            </StackPanel>
-        </StackPanel>
-        <PersonPicture  ProfilePicture="https://www.yelpblog.com/wp-content/uploads/2016/04/Message.png" Margin="62,274,102,626" RenderTransformOrigin="0.48,0.99"/>
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Go to message" Grid.Column="1" Margin="315,352,0,0" VerticalAlignment="Top" Height="34" Width="120" />
-        <StackPanel Margin="516,259,45,582" Background="#FB4D3D" CornerRadius="15" Grid.Column="1">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Text= "Project Finished Notification" FontWeight="Bold"/>
-            </StackPanel>
-
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Law Firm" FontWeight="Bold"/>
-            </StackPanel>
-            <StackPanel Margin="550,-10,0,0" Height="27" Width="300"/>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
-            <StackPanel Height="23" Margin="130, -10">
-                <TextBlock Height="53" Text="The project is finished" FontWeight="Bold" FontSize="15" Width="378"/>
-                <Button Style="{StaticResource AccentButtonStyle}" Content="Accent" Grid.Column="1" Margin="918,149,0,0" VerticalAlignment="Top" Height="34" Width="109" />
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,10">
-                <TextBlock Text="Project: Litigation" Width="372"/>
-            </StackPanel>
-        </StackPanel>
-        <PersonPicture  ProfilePicture="http://siceilsa.com/ERP/inventarios/imagenes/productoterminado/terminado.png" Margin="544,274,592,626" RenderTransformOrigin="0.48,0.99" Grid.Column="1"/>
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Aware" Grid.Column="1" Margin="1040,352,0,0" VerticalAlignment="Top" Height="34" Width="128" Background="#FF16B552" />
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Aware" Grid.Column="1" Margin="307,132,0,0" VerticalAlignment="Top" Height="34" Width="128" Background="#FF0B7D36" />
+        <ListView Name="CientNotificationListView" ItemTemplate="{StaticResource ClientNotificationsListViewTemplate}"/>
     </Grid>
+
+    <Page.Resources>
+        <DataTemplate x:Key="ClientNotificationsListViewTemplate" x:DataType="models:PFProject">
+            <StackPanel Margin="47,41,778,800" Background="#ECBE3E" CornerRadius="15" Grid.ColumnSpan="2">
+                <StackPanel Margin="-75,20,0,0" Height="27" Width="300" >
+                    <TextBlock Text= "Payment Notification" FontWeight="Bold" Height="21"/>
+                </StackPanel>
+                <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                    <TextBlock Text="{Binding ResponsibleProfessional.Profession}" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Height="23" Margin="130, 15">
+                    <TextBlock Height="53" Text="{Binding TitlePJ}" FontWeight="Bold" FontSize="15" Width="378"/>
+                </StackPanel>
+                <StackPanel Height="23" Margin="130,-10">
+                    <TextBlock Text="{Binding DescriptionPJ}" Width="372"/>
+                </StackPanel>
+                <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="68,72,1332,828"/>
+                <Button Style="{StaticResource AccentButtonStyle}" Content="Aware" Margin="559,138,0,0" VerticalAlignment="Top" Height="34" Width="128" Background="#FF0B7D36" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 </Page>
