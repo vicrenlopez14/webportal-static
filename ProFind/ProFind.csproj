@@ -162,15 +162,6 @@
     <Compile Include="Lib\Admin\Views\Professional_Add\professional_information.xaml.cs">
       <DependentUpon>professional_information.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Admin\Views\Professional_CRUD\ProfessionalCreate.xaml.cs">
-      <DependentUpon>ProfessionalCreate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Admin\Views\Professional_CRUD\ProfessionalCRUD.xaml.cs">
-      <DependentUpon>ProfessionalCRUD.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Admin\Views\Professional_CRUD\ProfessionalUpdate.xaml.cs">
-      <DependentUpon>ProfessionalUpdate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Projects_Page\Projects_Page.xaml.cs">
       <DependentUpon>Projects_Page.xaml</DependentUpon>
     </Compile>
@@ -260,9 +251,6 @@
     <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
     <Compile Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml.cs">
       <DependentUpon>Page_Activos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Professional\Views\Calendario\Procesos_Calendario.xaml.cs">
-      <DependentUpon>Procesos_Calendario.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Professional\Views\Calendar_Page\Calendar_Page.xaml.cs">
       <DependentUpon>Calendar_Page.xaml</DependentUpon>
@@ -388,18 +376,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\Admin\Views\Professional_CRUD\ProfessionalCreate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Lib\Admin\Views\Professional_CRUD\ProfessionalCRUD.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Lib\Admin\Views\Professional_CRUD\ProfessionalUpdate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Lib\Admin\Views\Projects_Page\Projects_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -493,10 +469,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Lib\Professional\Views\Calendario\Procesos_Calendario.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
