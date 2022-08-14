@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.Services;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,19 +45,22 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         private void TxtFIstName(object sender, TextChangedEventArgs e)
         {
-
+             
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
+
             PFProfessional professional = new PFProfessional();
             professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
+            professional.Profession.NamePFS =  elecion_tbx.Text;
 
-            PFProfessional professional1 = new PFProfessional();
+
+
+        
             if (passwordBox == Confirm_passwordBox)
             {
-                professional1.NameP = passwordBox.Password;
+                professional.PasswordP = passwordBox.Password;
             }
             else
             {
@@ -64,22 +68,8 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
             }
 
 
-            var professionalsService = new PfProfessionalService();
-            var resultado = await professionalsService.Login("usuario@gmail.com", "123456");
+            
 
-            if (resultado == System.Net.HttpStatusCode.OK)
-            {
-
-            }
-            else
-            {
-
-
-
-
-            }
-=======
->>>>>>> 2bee8d2dd8171a46477ec04450a01ffb30a0f42d
         }
     }
     }

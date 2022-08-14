@@ -1,5 +1,5 @@
-﻿using Domain.Models;
-using ProFind.Lib.Global.Services;
+﻿using Application.Services;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +27,7 @@ namespace ProFind.Lib.Admin.Views.Estado_del_proyecto
         public Page_Inactivos()
         {
             this.InitializeComponent();
-            GetProjectsList();
+                 GetProjectsList();
         }
 
         public async void GetProjectsList()

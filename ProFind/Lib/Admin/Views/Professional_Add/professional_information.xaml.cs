@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -84,6 +85,17 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         private void TxtAFP(object sender, TextChangedEventArgs e)
         {
+
+        }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            PFProfessional professional = new PFProfessional();
+            professional.IdP = numEmpleado.Text;
+            professional.EmailP = Email.Text;
+            professional.SexP = Sexo.Text;
+            professional.Department.NameDP = departamento.Text;
+       
 
         }
     }
