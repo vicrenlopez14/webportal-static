@@ -20,7 +20,6 @@
     <Folder Include="Lib\Curriculum\Model" />
     <Folder Include="Lib\Global\DataSource" />
     <Folder Include="Lib\Global\Model" />
-    <Folder Include="Lib\Job\Model" />
     <Folder Include="Lib\Profession" />
     <Folder Include="Lib\Rank\Model" />
     <Folder Include="Lib\Tag\Model" />

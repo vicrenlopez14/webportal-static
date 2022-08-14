@@ -7,7 +7,7 @@ namespace Domain.Models
     public class PFProfessional
     {
         public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP,
-            string sexP, string idCu1, string idJ1, string idPfs1, string idDp1)
+            string sexP, string idCu1, string idPfs1, string idDp1)
         {
             IdP = idP;
             NameP = nameP;
@@ -16,7 +16,6 @@ namespace Domain.Models
             PasswordP = passwordP;
             SexP = sexP;
             IdCU1 = idCu1;
-            IdJ1 = idJ1;
             IdPFS1 = idPfs1;
             IdDP1 = idDp1;
         }
@@ -33,8 +32,6 @@ namespace Domain.Models
         [Column("SexP")] public string SexP { get; set; }
         [Column("IdCU1")] public string IdCU1 { get; set; }
         public PFCurriculum Curriculum { get; set; }
-        [Column("IdJ1")] public string IdJ1 { get; set; }
-        public PFJob Job { get; set; }
         [Column("IdPFS1")] public string IdPFS1 { get; set; }
         public PFProfession Profession { get; set; }
         [Column("IdDP1")] public string IdDP1 { get; set; }
