@@ -71,7 +71,7 @@ namespace ProFind.Lib.Global.Services
         public async Task<HttpStatusCode> Update(PFProject toUpdateObject)
         {
             HttpResponseMessage response =
-                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/Project/{toUpdateObject.Id}", toUpdateObject);
+                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/Project/{toUpdateObject.IdPJ}", toUpdateObject);
             response.EnsureSuccessStatusCode();
 
             return response.StatusCode;

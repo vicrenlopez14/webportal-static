@@ -41,17 +41,9 @@ CREATE TABLE Admin
 
 DESCRIBE ADMIN;
 
-SELECT * FROM ADMIN;
+SELECT *
+FROM ADMIN;
 
-###############################################
-CREATE TABLE Project
-(
-    IdPJ          CHAR(21) PRIMARY KEY,
-    TitlePJ       VARCHAR(50),
-    DescriptionPJ VARCHAR(50)
-);
-
-DESCRIBE Project;
 
 ###############################################
 CREATE TABLE Tag
@@ -71,9 +63,9 @@ CREATE TABLE Process
     IdPR          CHAR(21) PRIMARY KEY,
     TitlePR       VARCHAR(50),
     DescriptionPR VARCHAR(350),
-    BeginDatePR  DATETIME,
-    IdT1         CHAR(21),
-    EndDatePR    DATETIME,
+    BeginDatePR   DATETIME,
+    IdT1          CHAR(21),
+    EndDatePR     DATETIME,
     FOREIGN KEY (IdT1) REFERENCES Tag (IdT) ON DELETE CASCADE
 );
 
@@ -119,13 +111,46 @@ DESCRIBE Job;
 ################################################
 CREATE TABLE Professional
 (
-    IdP         CHAR(21) PRIMARY KEY,
-    NameP       CHAR(50),
+    IdP        CHAR(21) PRIMARY KEY,
+    NameP      CHAR(50),
     DateBirthP DATE,
-    EmailP      CHAR(21),
-    PasswordP   CHAR(64),
-    IdCU1       CHAR(21),
-    IdJ1        CHAR(21),
+    EmailP     CHAR(21),
+    PasswordP  CHAR(64),
+    IdCU1      CHAR(21),
+    IdJ1       CHAR(21),
+    IdPFS1     INT,
     FOREIGN KEY (IdCU1) REFERENCES Curriculum (IdCU) ON DELETE CASCADE,
-    FOREIGN KEY (IdJ1) REFERENCES Job (IdJ) ON DELETE CASCADE
+    FOREIGN KEY (IdJ1) REFERENCES Job (IdJ) ON DELETE CASCADE,
+    FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE
 );
+
+###############################################
+CREATE TABLE ProjectStatus
+(
+    IdPS   INT AUTO_INCREMENT PRIMARY KEY,
+    NamePS VARCHAR(20)
+);
+
+
+###############################################
+CREATE TABLE Project
+(
+    IdPJ          CHAR(21) PRIMARY KEY,
+    TitlePJ       VARCHAR(50),
+    DescriptionPJ VARCHAR(50),
+    IdPS1         INT,
+    IdP1          CHAR(21),
+    IdC1          CHAR(21),
+    FOREIGN KEY (IdPS1) REFERENCES ProjectStatus (IdPS) ON DELETE CASCADE,
+    FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
+DESCRIBE Project;
+################################################
+CREATE TABLE Profession
+(
+    IdPFS   INT AUTO_INCREMENT PRIMARY KEY,
+    NamePFS VARCHAR(50)
+);
+

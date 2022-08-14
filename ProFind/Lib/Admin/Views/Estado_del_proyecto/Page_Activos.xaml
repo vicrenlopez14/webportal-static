@@ -27,7 +27,7 @@
                     Width="300"
                     Height="27"
                     Margin="-95,20,0,0">
-                    <TextBlock Height="25" Text="{Binding Title}" />
+                    <TextBlock Height="25" Text="{Binding TitlePJ}" />
                 </StackPanel>
                 <StackPanel
                     Width="300"
@@ -48,7 +48,7 @@
                         Text="Profesional:" />
                 </StackPanel>
                 <StackPanel Height="23" Margin="130,-5">
-                    <TextBlock Text="{Binding Description}" />
+                    <TextBlock Text="{Binding DescriptionPJ}" />
                 </StackPanel>
                 <Button
                     x:Name="btnIr1"
