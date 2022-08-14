@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Services;
+using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +32,17 @@ namespace UWP_Administradores
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> ActiveProjectsList = new List<PFProject>();
+
+            ActiveProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            ActiveProjectsListView.ItemsSource = ActiveProjectsList;
         }
     }
 }
