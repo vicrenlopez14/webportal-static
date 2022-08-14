@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
     <Compile Include="Lib\Admin\Views\Add_Detete_Profesionales.xaml.cs">
       <DependentUpon>Add_Detete_Profesionales.xaml</DependentUpon>

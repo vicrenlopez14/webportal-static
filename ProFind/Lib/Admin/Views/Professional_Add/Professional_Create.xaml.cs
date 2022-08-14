@@ -14,7 +14,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProFind.Lib.Admin.Views.Professional_Add
@@ -52,17 +51,33 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             PFProfessional professional = new PFProfessional();
-            professional.NameP = FirstName_tbx.Text + LastName_tbx.Text;
+            professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
+
+            PFProfessional professional1 = new PFProfessional();
+            if (passwordBox == Confirm_passwordBox)
+            {
+                professional1.NameP = passwordBox.Password;
+            }
+            else
+            {
+
+            }
+
 
             var professionalsService = new PfProfessionalService();
             var resultado = await professionalsService.Login("usuario@gmail.com", "123456");
 
-            if (resultado == System.Net.HttpStatusCode.OK) {
-                
-            } else { 
-            
-            
+            if (resultado == System.Net.HttpStatusCode.OK)
+            {
+
+            }
+            else
+            {
+
+
+
+
             }
         }
     }
-}
+    }
