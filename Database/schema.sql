@@ -83,15 +83,6 @@ CREATE TABLE Curriculum
 
 DESCRIBE Curriculum;
 
-###############################################
-CREATE TABLE Job
-(
-    IdJ   CHAR(21) PRIMARY KEY,
-    NameJ CHAR(50)
-);
-
-DESCRIBE Job;
-
 ################################################
 CREATE TABLE Department
 (
@@ -127,11 +118,9 @@ CREATE TABLE Professional
     PasswordP  CHAR(64),
     SexP        BOOLEAN,
     IdCU1      CHAR(21),
-    IdJ1       CHAR(21),
     IdPFS1     INT,
     IdDP1      INT,
     FOREIGN KEY (IdCU1) REFERENCES Curriculum (IdCU) ON DELETE CASCADE,
-    FOREIGN KEY (IdJ1) REFERENCES Job (IdJ) ON DELETE CASCADE,
     FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE,
     FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE
 );
