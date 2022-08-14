@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Domain.Models;
 
-namespace ProFind.Lib.Global.Services
+namespace Application.Services
 {
     public class PfRankService : ICrudService<PFRank>
     {

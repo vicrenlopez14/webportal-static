@@ -2,20 +2,25 @@
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
 using Domain.Models;
+using ProFind_WebService.Lib.Project.DataSource;
 
 namespace ProFind_WebService.Lib.Project.Controller;
 
 [Route("api/[controller]")]
 public class ProjectController : CrudController<PFProject>
 {
+    private readonly ProjectDataSource _dataSource = new();
+
     public override async Task<ActionResult<PFProject>> Get(string id)
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.Get(id);
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFProject>>> List()
     {
-        throw new NotImplementedException();
+        var result = await _dataSource.List();
+        return Ok(result);
     }
 
     public override async Task<ActionResult<IEnumerable<PFProject>>> PaginatedList(int fromIndex, int? toIndex)
@@ -24,24 +29,25 @@ public class ProjectController : CrudController<PFProject>
     }
 
     [HttpGet("criteria")]
-
-    public  async Task<ActionResult<IEnumerable<PFProject>>> Search(IDictionary<string, string> searchCriteria)
+    public async Task<ActionResult<IEnumerable<PFProject>>> Search(IDictionary<string, string> searchCriteria)
     {
         throw new NotImplementedException();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFProject newObject)
     {
-        throw new NotImplementedException();
+        newObject.IdPJ = await Nanoid.Nanoid.GenerateAsync();
+
+        return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProject toUpdateObject)
     {
-        throw new NotImplementedException();
+        return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Delete(string id)
     {
-        throw new NotImplementedException();
+        return Ok(await _dataSource.Delete(id));
     }
 }

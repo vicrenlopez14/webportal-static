@@ -1,5 +1,4 @@
 ﻿using Domain.Models;
-using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,6 +49,7 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             PFProfessional professional = new PFProfessional();
             professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
 
@@ -78,6 +78,8 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
 
             }
+=======
+>>>>>>> 2bee8d2dd8171a46477ec04450a01ffb30a0f42d
         }
     }
     }

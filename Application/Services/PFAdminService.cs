@@ -5,8 +5,7 @@ using Domain.Models;
 using HttpResponseMessage = System.Net.Http.HttpResponseMessage;
 using HttpStatusCode = System.Net.HttpStatusCode;
 
-
-namespace ProFind.Lib.Global.Services
+namespace Application.Services
 {
     public class PFAdminService : ICrudService<PFAdmin>
     {

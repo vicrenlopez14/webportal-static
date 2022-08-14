@@ -17,15 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Lib\Admin\Model" />
-    <Folder Include="Lib\Client\Model" />
     <Folder Include="Lib\Curriculum\Model" />
     <Folder Include="Lib\Global\DataSource" />
     <Folder Include="Lib\Global\Model" />
     <Folder Include="Lib\Job\Model" />
-    <Folder Include="Lib\Process\Model" />
-    <Folder Include="Lib\Professional\Model" />
-    <Folder Include="Lib\Project\Model" />
+    <Folder Include="Lib\Profession" />
     <Folder Include="Lib\Rank\Model" />
     <Folder Include="Lib\Tag\Model" />
   </ItemGroup>

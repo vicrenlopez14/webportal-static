@@ -214,17 +214,6 @@
     <Compile Include="Lib\Global\Helpers\Connection.cs" />
     <Compile Include="Lib\Global\Helpers\FieldsChecker.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
-    <Compile Include="Lib\Global\Services\CRUDService.cs" />
-    <Compile Include="Lib\Global\Services\PFAdminService.cs" />
-    <Compile Include="Lib\Global\Services\PFClientService.cs" />
-    <Compile Include="Lib\Global\Services\PFCurriculumService.cs" />
-    <Compile Include="Lib\Global\Services\PFJobService.cs" />
-    <Compile Include="Lib\Global\Services\PFProcessService.cs" />
-    <Compile Include="Lib\Global\Services\PFProfessionalService.cs" />
-    <Compile Include="Lib\Global\Services\PFProjectService.cs" />
-    <Compile Include="Lib\Global\Services\PFRankService.cs" />
-    <Compile Include="Lib\Global\Services\PFTagService.cs" />
-    <Compile Include="Lib\Global\Services\WebAPIConnection.cs" />
     <Compile Include="Lib\Global\Views\About_Page\About_Page.xaml.cs">
       <DependentUpon>About_Page.xaml</DependentUpon>
     </Compile>
