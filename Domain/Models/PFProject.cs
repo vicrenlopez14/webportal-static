@@ -5,16 +5,15 @@ namespace Domain.Models
     public class PFProject
     {
         [JsonConstructor]
-        public PFProject(string id, string title, string description)
+        public PFProject(string idPj, string titlePj, string descriptionPj)
         {
-            Id = id;
-            Title = title;
-            Description = description;
+            IdPJ = idPj;
+            TitlePJ = titlePj;
+            DescriptionPJ = descriptionPj;
         }
-
-
-        public string Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        
+        public string IdPJ { get; set; }
+        public string TitlePJ { get; set; }
+        public string DescriptionPJ { get; set; }
     }
 }
