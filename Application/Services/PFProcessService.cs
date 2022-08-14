@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Domain.Models;
+using Application.Models;
 
 namespace Application.Services
 {

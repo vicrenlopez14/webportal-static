@@ -1,5 +1,5 @@
-﻿using Dapper;
-using Domain.Models;
+﻿using Application.Models;
+using Dapper;
 using MySql.Data.MySqlClient;
 using ProFind_WebService.Lib.DataSource;
 

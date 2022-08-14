@@ -1,6 +1,6 @@
 using System.Net;
 using System.Web;
-using Domain.Models;
+using Application.Models;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Admin.DataSource;
 using ProFind_WebService.Lib.Global.Controller;
