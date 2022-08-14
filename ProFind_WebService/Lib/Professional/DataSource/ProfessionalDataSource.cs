@@ -42,7 +42,7 @@ public class ProfessionalDataSource
     public async Task<bool> Create(PFProfessional professional)
     {
         const string query = "INSERT INTO Professional VALUES(@Id,@Name,@DateBirth,@Email,@Password,"
-                             + "@Curriculum,@Job);";
+                             + "@Curriculum,@Job, @Profession, @Department);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -54,7 +54,9 @@ public class ProfessionalDataSource
             ["Email"] = professional.EmailP,
             ["Password"] = SHAPassword.ShaThisPassword(professional.PasswordP!),
             ["Curriculum"] = professional.IdCU1,
-            ["Job"] = professional.IdJ1
+            ["Job"] = professional.IdJ1,
+            ["Profession"] = professional.IdPFS1,
+            ["Department"] = professional.IdDP1
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);

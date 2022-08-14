@@ -22,7 +22,6 @@
     <Folder Include="Lib\Global\Model" />
     <Folder Include="Lib\Job\Model" />
     <Folder Include="Lib\Profession" />
-    <Folder Include="Lib\Professional\Model" />
     <Folder Include="Lib\Rank\Model" />
     <Folder Include="Lib\Tag\Model" />
   </ItemGroup>
