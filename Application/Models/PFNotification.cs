@@ -15,6 +15,10 @@ namespace Application.Models
             IdPJ2 = idPj2;
         }
 
+        public PFNotification()
+        {
+        }
+
         public string IdN { get; set; }
         public string TitleN { get; set; }
         public string DescriptionN { get; set; }

@@ -84,7 +84,7 @@ public class AdminDataSource
 
     public async Task<bool> Create(PFAdmin admin)
     {
-        const string query = "INSERT INTO Admin VALUES(@Id,@Name,@Email,@Tel,@Password,@Rank);";
+        const string query = "INSERT INTO Admin VALUES(@Id, @Name, @Email, @Tel, @Password, @Picture, @Rank);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -95,7 +95,8 @@ public class AdminDataSource
             ["Name"] = admin.NameA,
             ["Email"] = admin.EmailA,
             ["Tel"] = admin.TelA,
-            ["Password"] = SHAPassword.ShaThisPassword(admin.PasswordA!),
+            ["Password"] = admin.PasswordA,
+            ["Picture"] = admin.PictureA,
             ["Rank"] = admin.IdR1
         });
 
@@ -104,8 +105,6 @@ public class AdminDataSource
 
     public async Task<bool> Login(string email, string password)
     {
-       
-
         const string query = "SELECT * FROM Admin WHERE EmailA = @Email AND PasswordA = @Password;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
@@ -151,6 +150,4 @@ public class AdminDataSource
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
-
-  
 }

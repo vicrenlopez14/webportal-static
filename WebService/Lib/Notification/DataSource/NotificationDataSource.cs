@@ -62,14 +62,16 @@ public class NotificationDataSource
 
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            ["IdA"] = Notification.IdN,
-            ["TitleA"] = Notification.TitleN,
-            ["DescriptionA"] = Notification.DescriptionN,
-            ["DateTimeIssuedA"] = Notification.DateTimeIssuedN,
-            ["PictureA"] = Notification.PictureN,
+            ["IdN"] = await Nanoid.Nanoid.GenerateAsync(),
+            ["TitleN"] = Notification.TitleN,
+            ["DescriptionN"] = Notification.DescriptionN,
+            ["DateTimeIssuedN"] = DateTime.Now,
+            ["PictureN"] = Notification.PictureN,
             ["IdPJ2"] = Notification.IdPJ2
         });
 
+        
+        
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
