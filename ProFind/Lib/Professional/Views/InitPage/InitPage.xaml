@@ -1,12 +1,12 @@
 ﻿<Page
-    x:Class="ProFind.Lib.Global.Views.InitPage.InitPage"
+    x:Class="ProFind.Lib.Professional.Views.InitPage.InitPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProFind.Lib.Global.Views.InitPage"
+    xmlns:local="using:ProFind.Lib.Professional.Views.InitPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:Windows.UI.Xaml.Media"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
@@ -26,7 +26,7 @@
                         FontWeight="Bold"
                         Style="{StaticResource HeaderTextBlockStyle}"
                         Text="Register" />
-                    <RichTextBlock SelectionHighlightColor="Green">
+                    <RichTextBlock SelectionChanged="RichTextBlock_SelectionChanged" SelectionHighlightColor="Green">
                         <Paragraph>
                             Already have an account?<Hyperlink Click="Hyperlink_Click" NavigateUri="https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Documents.Hyperlink">Log in to your account</Hyperlink>
                         </Paragraph>
@@ -110,16 +110,8 @@
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
-                        <Button
-                            x:Name="Administrators_Login"
-                            Margin="0,0,10,0"
-                            Click="Button_Click_4"
-                            Content="Administrators" />
-                        <Button
-                            x:Name="Professionals_Login"
-                            Margin="10,0,0,0"
-                            Click="Professionals_Login_Click"
-                            Content="Professionals" />
+                        <Button Margin="0,0,10,0" Content="Administrators" />
+                        <Button Margin="10,0,0,0" Content="Professionals" />
                     </StackPanel>
 
 

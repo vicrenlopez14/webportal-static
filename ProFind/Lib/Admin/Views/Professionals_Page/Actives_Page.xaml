@@ -4,39 +4,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.Admin.Views.Professionals_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Background="#A8DF7C" Margin="32,42,904,832" CornerRadius="15">
-            <StackPanel Height="22" Width="160" Margin="10, 10, -370, 10" Background="#F2EDD1">
-                <TextBlock Text="Automotive Mechanics" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
-            </StackPanel>
-            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
-            <TextBlock Margin="130, 1" Text="Ing. Daniel Rodas" Style="{ThemeResource BodyTextBlockStyle}"/>
-        </StackPanel>
-        <Border BorderBrush="#449B01" BorderThickness="1" Margin="34,42,905,831" CornerRadius="15"/>
-        <PersonPicture ProfilePicture="https://f.rpp-noticias.io/2019/02/15/753300descarga-11jpg.jpg" Margin="43,55,1357,845"></PersonPicture>
 
-        <StackPanel Background="#A8DF7C" Margin="34,202,902,672" CornerRadius="15">
-            <StackPanel Height="22" Width="125" Margin="10, 10, -400, 10" Background="#F2EDD1">
-                <TextBlock Text="General medicine" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
-            </StackPanel>
-            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
-            <TextBlock Margin="130, 1" Text="Dra. Lucía Hernández" Style="{ThemeResource BodyTextBlockStyle}"/>
-        </StackPanel>
-        <Border BorderBrush="#449B01" BorderThickness="1" Margin="34,202,902,671" CornerRadius="15"/>
-        <PersonPicture ProfilePicture="https://www.inboundcycle.com/hubfs/ClaraAlvarez.jpg" Margin="45,215,1355,685"/>
-
-        <StackPanel Background="#A8DF7C" Margin="36,366,901,508" CornerRadius="15">
-            <StackPanel Height="22" Width="85" Margin="10, 10, -440, 10" Background="#F2EDD1">
-                <TextBlock Text="Law Firm" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
-            </StackPanel>
-            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
-            <TextBlock Margin="130, 1" Text="Lic. Daniela Carranza" Style="{ThemeResource BodyTextBlockStyle}"/>
-        </StackPanel>
-        <Border BorderBrush="#449B01" BorderThickness="1" Margin="36,366,901,507" CornerRadius="15"/>
-        <PersonPicture ProfilePicture="https://socialtools.me/wp-content/uploads/2016/04/foto-de-perfil.jpg" Margin="47,379,1353,521"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="ProjectsActiveListView" ItemTemplate="{StaticResource ProjectsActiveListViewTemplate}" />
     </Grid>
+
+    <Page.Resources>
+
+        <DataTemplate x:Key="ProjectsActiveListViewTemplate" x:DataType="models1:PFProject" >
+
+            <StackPanel Background="#A8DF7C" Margin="32,42,904,832" CornerRadius="15">
+
+                <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+
+                <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+                <TextBlock Margin="130, 1" Text="{Binding  ResponsibleProfessional.NameP}" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </StackPanel>
+
+        </DataTemplate>
+
+    </Page.Resources>
 </Page>

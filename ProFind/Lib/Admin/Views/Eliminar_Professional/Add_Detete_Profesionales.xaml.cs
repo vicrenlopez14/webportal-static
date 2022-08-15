@@ -17,32 +17,28 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views.Status_Page
+namespace ProFind.Lib.Admin.Views
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Status_Page : Page
+    public sealed partial class Add_Detete_Profesionales : Page
     {
-        public Status_Page()
+        public Add_Detete_Profesionales()
         {
             this.InitializeComponent();
-            GetProjectsList();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
         public async void GetProjectsList()
 
         {
             var projectService = new PfProjectService();
-            List<PFProject> statusList = new List<PFProject>();
 
-            statusList = await projectService.ListObjectAsync() as List<PFProject>;
+            List<PFProject> DeteteProfesionaList = new List<PFProject>();
 
-            StatusListView1.ItemsSource = statusList;
+            DeteteProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            DeteteProfesionalListView.ItemsSource = DeteteProfesionaList;
         }
     }
 }

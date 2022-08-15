@@ -4,57 +4,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.Admin.Views.QuickView_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
-    <Grid>
-        <StackPanel Margin="59,94,751,761">
-            <StackPanel Orientation="Horizontal" Height="122" Width="654" Margin="10">
-                <PersonPicture ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png"/>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="20" Text="Notification." Style="{ThemeResource SubtitleTextBlockStyle}" FontStyle="Italic"/>
-                    <TextBlock Margin="14, -10" Text=" Project: Brake repair" FontWeight="Bold"  Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Margin="20, 8" Text="Professional: Ing. Daniel Ramos" Style="{ThemeResource SubtitleTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged"/>
+   
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+        <ListView Name="QuickViewListView" ItemTemplate="{StaticResource QuickViewListViewTemplate}" />
+        </Grid>
+
+        <Page.Resources>
+
+            <DataTemplate x:Key="QuickViewListViewTemplate" x:DataType="models1:PFProject" >
+            <StackPanel Margin="59,94,751,761">
+                <StackPanel Orientation="Horizontal" Height="122" Width="654" Margin="10">
+                    <PersonPicture ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png"/>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="20" Text="Notification." Style="{ThemeResource SubtitleTextBlockStyle}" FontStyle="Italic"/>
+                        <TextBlock Margin="14, -10" Text="{Binding  ResponsibleProfessional.NameP}" FontWeight="Bold"  Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <TextBlock Margin="20, 8" Text="{Binding  DescriptionPJ}" Style="{ThemeResource SubtitleTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged"/>
+                    </StackPanel>
+                    <SymbolIcon Symbol="Cancel" Height="20" Margin="200, -100, 10, -10"/>
                 </StackPanel>
-                <SymbolIcon Symbol="Cancel" Height="20" Margin="200, -100, 10, -10"/>
             </StackPanel>
-        </StackPanel>
-        <Line Margin="90,574,1000,418" X2="500" Stroke="Black"></Line>
-        <StackPanel Margin="59,260,751,593">
-            <StackPanel Orientation="Horizontal" Height="122" Width="654" Margin="10">
-                <PersonPicture ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png"/>
-                <StackPanel Orientation="Vertical" Width="322">
-                    <TextBlock Margin="20" Text="Notification." Style="{ThemeResource SubtitleTextBlockStyle}" FontStyle="Italic"/>
-                    <TextBlock Margin="14, -10" Text=" Project: Medical Appointment" FontWeight="Bold"  Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Margin="20, 8" Text="Professional: Dr. Mario Lazo" Style="{ThemeResource SubtitleTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged"/>
-                </StackPanel>
-                <SymbolIcon Symbol="Cancel" Height="20" Margin="200, -100, 10, -10"/>
-            </StackPanel>
-        </StackPanel>
-        <Line Margin="82,412,1008,580" X2="500" Stroke="Black"></Line>
-        <StackPanel Margin="59,420,751,440">
-            <StackPanel Orientation="Horizontal" Height="122" Width="654" Margin="10">
-                <PersonPicture ProfilePicture="https://thumbs.dreamstime.com/b/s%C3%ADmbolo-de-aviso-peligro-se%C3%B1al-advertencia-vector-icono-con-signo-exclamaci%C3%B3n-para-material-182866733.jpg"/>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="20" Text="Notice." Style="{ThemeResource SubtitleTextBlockStyle}" FontStyle="Italic"/>
-                    <TextBlock Margin="14, -10" Text=" Project: General overhaul of the vehicle" FontWeight="Bold"  Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Margin="20, 8" Text="Professional: Ing. Daniel Ramos" Style="{ThemeResource SubtitleTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged"/>
-                </StackPanel>
-                <SymbolIcon Symbol="Cancel" Height="20" Margin="120, -100, 10, -10"/>
-            </StackPanel>
-        </StackPanel>
-        <Line Margin="90,242,1000,750" X2="500" Stroke="Black"></Line>
-        <StackPanel Margin="59,580,751,276">
-            <StackPanel Orientation="Horizontal" Height="122" Width="654" Margin="10">
-                <PersonPicture ProfilePicture="https://thumbs.dreamstime.com/b/s%C3%ADmbolo-de-aviso-peligro-se%C3%B1al-advertencia-vector-icono-con-signo-exclamaci%C3%B3n-para-material-182866733.jpg"/>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="20" Text="Notice." Style="{ThemeResource SubtitleTextBlockStyle}" FontStyle="Italic"/>
-                    <TextBlock Margin="14, -10" Text=" Project: Processing of affidavits" FontWeight="Bold"  Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    <TextBlock Margin="20, 8" Text="Professional: Lic. Ernesto Menjívar" Style="{ThemeResource SubtitleTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged"/>
-                </StackPanel>
-                <SymbolIcon Symbol="Cancel" Height="20" Margin="185, -100, 10, -10"/>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+
+        </DataTemplate>
+
+        </Page.Resources>
 </Page>

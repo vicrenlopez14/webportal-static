@@ -1,6 +1,4 @@
-﻿using Application.Models;
-using Application.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,30 +15,26 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views.Projects_Page
+namespace ProFind.Lib.Professional.Views.InitPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Projects_Page : Page
+    public sealed partial class InitPage : Page
     {
-        public Projects_Page()
+        public InitPage()
         {
             this.InitializeComponent();
-            GetProjectsList();
         }
-        public async void GetProjectsList()
 
+        private void RichTextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            var projectService = new PfProjectService();
 
-            List<PFProject> ProjectsList = new List<PFProject>();
+        }
 
-            ProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
 
-            ProjectsListView1.ItemsSource = ProjectsList;
         }
     }
-
-    
 }

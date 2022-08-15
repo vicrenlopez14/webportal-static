@@ -39,7 +39,7 @@ public class CurriculumController : CrudController<PFCurriculum>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFCurriculum newObject)
     {
-        newObject.IdCU = Nanoid.Nanoid.Generate();
+        newObject.IdCU = await Nanoid.Nanoid.GenerateAsync();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 

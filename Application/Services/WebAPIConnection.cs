@@ -17,15 +17,15 @@ namespace Application.Services
                 if (_isItRunning)
                     return Client;
 
-                RunAsync();
+                Run();
                 return Client;
             }
         }
 
 
-        public static void RunAsync()
+        public static void Run()
         {
-            Client.BaseAddress = new Uri("https://localhost:5001/");
+            Client.BaseAddress = new Uri("http://localhost:5073/");
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

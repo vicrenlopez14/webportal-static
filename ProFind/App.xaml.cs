@@ -1,9 +1,13 @@
-﻿using ProFind.Lib.Global.Views.InitPage;
+﻿using Application.Services;
+using MySql.Data.MySqlClient.Memcached;
+using Nito.AsyncEx.Synchronous;
+using ProFind.Lib.Global.Views.InitPage;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -29,10 +33,10 @@ namespace ProFind
         /// </summary>
         public App()
         {
-            
-                this.InitializeComponent();
-                this.Suspending += OnSuspending;
-            
+
+            this.InitializeComponent();
+            this.Suspending += OnSuspending;
+
         }
 
         /// <summary>
@@ -69,7 +73,25 @@ namespace ProFind
                     // Cuando no se restaura la pila de navegación, navegar a la primera página,
                     // configurando la nueva página pasándole la información requerida como
                     //parámetro de navegación
-                    rootFrame.Navigate(typeof(InitPage), e.Arguments);
+                    WebAPIConnection.Run();
+                    try
+                    {
+                        var isSystemReadyToWork = new PFAdminService().AreThereAdmins();
+                        var result = isSystemReadyToWork.WaitAndUnwrapException();
+
+                        if (result)
+                        {
+                            rootFrame.Navigate(typeof(Lib.Client.Views.InitPage.InitPage), e.Arguments);
+                        }
+                        else
+                        {
+                            rootFrame.Navigate(typeof(Lib.Global.Views.FirstUsePage.FirstUsePage), e.Arguments);
+                        }
+                    } catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                 }
                 // Asegurarse de que la ventana actual está activa.
                 Window.Current.Activate();
@@ -99,5 +121,6 @@ namespace ProFind
             //TODO: Guardar el estado de la aplicación y detener toda actividad en segundo plano
             deferral.Complete();
         }
+
     }
 }
