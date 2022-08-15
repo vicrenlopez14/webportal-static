@@ -12,6 +12,10 @@ namespace Application.Models
             NameDP = nameDp;
         }
 
+        public PFDepartment()
+        {
+        }
+
         public static PFDepartment Initialize(string id)
         {
             var infoTask = new PFDepartmentService().GetObjectAsync(id);

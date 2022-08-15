@@ -13,6 +13,10 @@ namespace Application.Models
             this.IdPJ1 = IdPJ1;
         }
 
+        public PFTag()
+        {
+        }
+
         public static PFTag Initialize(string id)
         {
             var infoTask = new PFTagService().GetObjectAsync(id);

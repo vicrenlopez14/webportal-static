@@ -12,6 +12,10 @@ namespace Application.Models
             NamePFS = namePfs;
         }
 
+        public PFProfession()
+        {
+        }
+
         public static PFProfession Initialize(string id)
         {
             var infoTask = new PFProfessionService().GetObjectAsync(id);

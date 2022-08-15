@@ -13,6 +13,10 @@ namespace Application.Models
             DescriptionPJ = descriptionPj;
         }
 
+        public PFProject()
+        {
+        }
+
         private string _idPJ;
 
         public string IdPJ

@@ -12,6 +12,10 @@ namespace Application.Models
             NameR = nameR;
         }
 
+        public PFRank()
+        {
+        }
+
         public static PFRank Initialize(string id)
         {
             var infoTask = new PfRankService().GetObjectAsync(id);

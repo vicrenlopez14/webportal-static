@@ -40,6 +40,18 @@ namespace Application.Models
         public string PasswordP { get; set; }
         public string SexP { get; set; }
 
+        public string DUIP { get; set; }
+
+        public string AFPP { get; set; }
+
+        public string ISSSP { get; set; }
+
+        public string ZipCodeP { get; set; }
+
+        public string SalaryP { get; set; }
+
+        public DateTime HiringDate { get; set; }
+
         private string _idCU1;
 
         public string IdCU1
@@ -81,5 +93,19 @@ namespace Application.Models
         }
 
         public PFDepartment Department { get; set; }
+
+        private string _idWDT1;
+
+        public string IdWDT1
+        {
+            get => _idWDT1;
+            set
+            {
+                _idWDT1 = value;
+                WorkDayType = PFWorkDayType.Initialize(_idWDT1);
+            }
+        }
+
+        public PFWorkDayType WorkDayType { get; set; }
     }
 }

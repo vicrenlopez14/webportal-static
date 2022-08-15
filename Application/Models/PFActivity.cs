@@ -20,6 +20,10 @@ namespace Application.Models
             IdT1 = idT1;
         }
 
+        public PFActivity()
+        {
+        }
+
         public static PFActivity Initialize(string id)
         {
             var infoTask = new PFActivityService().GetObjectAsync(id);
