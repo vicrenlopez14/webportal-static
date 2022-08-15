@@ -14,8 +14,8 @@ namespace ProFind.Lib.Global.Views.InitPage
     {
         public InitPage()
         {
-            WebAPIConnection.RunAsync();
-            
+            WebAPIConnection.Run();
+
             this.InitializeComponent();
         }
 
@@ -51,6 +51,17 @@ namespace ProFind.Lib.Global.Views.InitPage
             Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
             new GlobalNavigationController().NavigateTo(typeof(Clients_Login));
+        }
+
+        private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Admin.Views.InitPage.InitPage));
+        }
+
+        private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Professional.Views.InitPage.InitPage));
+
         }
     }
 }
