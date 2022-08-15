@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,18 @@ namespace ProFind.Lib.Admin.Views
         public Add_Detete_Profesionales()
         {
             this.InitializeComponent();
+        }
+
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> DeteteProfesionaList = new List<PFProject>();
+
+            DeteteProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            DeteteProfesionalListView.ItemsSource = DeteteProfesionaList;
         }
     }
 }

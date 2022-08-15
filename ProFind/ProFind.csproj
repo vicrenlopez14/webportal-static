@@ -121,7 +121,7 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
-    <Compile Include="Lib\Admin\Views\Add_Detete_Profesionales.xaml.cs">
+    <Compile Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml.cs">
       <DependentUpon>Add_Detete_Profesionales.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Calendar_Page\Calendar_Page.xaml.cs">
@@ -155,6 +155,7 @@
     <Compile Include="Lib\Admin\Views\Professionals_Page\Actives_Page.xaml.cs">
       <DependentUpon>Actives_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\Professionals_Page\Professionals_Page.cs" />
     <Compile Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml.cs">
       <DependentUpon>Professional_Create.xaml</DependentUpon>
     </Compile>
@@ -308,7 +309,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Lib\Admin\Views\Add_Detete_Profesionales.xaml">
+    <Page Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

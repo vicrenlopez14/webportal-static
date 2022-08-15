@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Application.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -95,7 +95,11 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
             professional.EmailP = Email.Text;
             professional.SexP = Sexo.Text;
             professional.Department.NameDP = departamento.Text;
-       
+            professional.AFPP = Afp.Text;
+            professional.DUIP = Dui.Text;
+            professional.SalaryP = Salario.Text;
+            professional.ISSSP = SeguroSocial.Text;
+
 
         }
     }
