@@ -40,7 +40,7 @@ public class ProfessionalController : CrudController<PFProfessional>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFProfessional newObject)
     {
-        newObject.IdP = Nanoid.Nanoid.Generate();
+        newObject.IdP = await Nanoid.Nanoid.GenerateAsync();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
     

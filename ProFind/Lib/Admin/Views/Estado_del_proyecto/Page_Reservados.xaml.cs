@@ -1,5 +1,5 @@
-﻿using Domain.Models;
-using ProFind.Lib.Global.Services;
+﻿using Application.Models;
+using Application.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +32,7 @@ namespace ProFind.Lib.Admin.Views.Estado_del_proyecto
         public async void GetProjectsList()
 
         {
-            var projectService = new PfProjectService();
+            PfProjectService projectService = new PfProjectService();
 
             List<PFProject> PendienteProjectsList = new List<PFProject>();
 

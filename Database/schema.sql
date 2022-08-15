@@ -208,3 +208,15 @@ VALUES ('Bufete legal'),
        ('Servicios automotriz'),
        ('Médico general');
 
+################################################
+
+CREATE TABLE Notification
+(
+    IdN             CHAR(21) PRIMARY KEY,
+    TitleN          VARCHAR(50),
+    DescriptionN    VARCHAR(500),
+    DateTimeIssuedN DATETIME,
+    PictureN        LONGBLOB,
+    IdPJ2           CHAR(21),
+    FOREIGN KEY (IdPJ2) REFERENCES Project (IdPJ) ON DELETE CASCADE
+);

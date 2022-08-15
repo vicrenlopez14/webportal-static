@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Application.Services;
 using Newtonsoft.Json;
 
 namespace Application.Models
@@ -16,6 +17,14 @@ namespace Application.Models
 
         public PFProject()
         {
+        }
+
+        public static PFProject Initialize(string id)
+        {
+            var infoTask = new PfProjectService().GetObjectAsync(id);
+            infoTask.Wait();
+
+            return infoTask.Result;
         }
 
         private string _idPJ;

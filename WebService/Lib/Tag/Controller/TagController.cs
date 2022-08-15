@@ -37,7 +37,7 @@ public class TagController : CrudController<PFTag>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFTag newObject)
     {
-        newObject.IdT = Nanoid.Nanoid.Generate();
+        newObject.IdT = await Nanoid.Nanoid.GenerateAsync();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 

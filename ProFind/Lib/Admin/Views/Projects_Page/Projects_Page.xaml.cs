@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,20 @@ namespace ProFind.Lib.Admin.Views.Projects_Page
         public Projects_Page()
         {
             this.InitializeComponent();
+            GetProjectsList();
+        }
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> ProjectsList = new List<PFProject>();
+
+            ProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            ProjectsListView1.ItemsSource = ProjectsList;
         }
     }
+
+    
 }
