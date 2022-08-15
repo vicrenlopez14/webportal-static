@@ -116,14 +116,36 @@ CREATE TABLE Professional
     DateBirthP DATE,
     EmailP     CHAR(21),
     PasswordP  CHAR(64),
-    SexP        BOOLEAN,
+    SexP       BOOLEAN,
+    DUIP       VARCHAR(15),
+    AFPP       VARCHAR(50),
+    ISSSP      VARCHAR(50),
+    ZipCodeP   VARCHAR(10),
+    SalaryP    FLOAT,
+    HiringDate DATE,
     IdCU1      CHAR(21),
     IdPFS1     INT,
     IdDP1      INT,
+    IdWDT1     INT,
     FOREIGN KEY (IdCU1) REFERENCES Curriculum (IdCU) ON DELETE CASCADE,
     FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE,
-    FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE
+    FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE,
+    FOREIGN KEY (IdWDT1) REFERENCES WorkDayType (IdWDT) ON DELETE CASCADE
 );
+
+###############################################
+CREATE TABLE WorkDayType
+(
+    IdWDT   INT AUTO_INCREMENT PRIMARY KEY,
+    NameWDT VARCHAR(25)
+);
+
+INSERT INTO WorkDayType (NameWDT)
+VALUES ('Diurnal'),
+       ('Nocturnal');
+
+SELECT *
+FROM WorkDayType;
 
 ###############################################
 CREATE TABLE ProjectStatus

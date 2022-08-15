@@ -1,7 +1,7 @@
 ﻿using System.Net;
+using Application.Models;
 using Microsoft.AspNetCore.Mvc;
 using ProFind_WebService.Lib.Global.Controller;
-using Domain.Models;
 using ProFind_WebService.Lib.Activity.DataSource;
 
 namespace ProFind_WebService.Lib.Activity.Controller;
@@ -31,12 +31,15 @@ public class ActivityController : CrudController<PFActivity>
     [HttpGet("criteria")]
     public async Task<ActionResult<IEnumerable<PFActivity>>> Search(IDictionary<string, string> searchCriteria)
     {
-        throw new NotImplementedException();
+        var searchResult = await _dataSource.Search(searchCriteria);
+        return (searchResult.Any() ? Ok(searchResult) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFActivity newObject)
     {
-        throw new Exception();
+        newObject.IdA = await Nanoid.Nanoid.GenerateAsync();
+
+        return (await _dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFActivity toUpdateObject)

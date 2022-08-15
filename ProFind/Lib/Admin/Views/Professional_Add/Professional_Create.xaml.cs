@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.Services;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProFind.Lib.Admin.Views.Professional_Add
@@ -45,11 +45,31 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         private void TxtFIstName(object sender, TextChangedEventArgs e)
         {
-
+             
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            PFProfessional professional = new PFProfessional();
+            professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
+            professional.Profession.NamePFS =  elecion_tbx.Text;
+
+
+
+        
+            if (passwordBox == Confirm_passwordBox)
+            {
+                professional.PasswordP = passwordBox.Password;
+            }
+            else
+            {
+
+            }
+
+
+            
+
         }
     }
-}
+    }
