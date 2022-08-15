@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Services;
+using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,17 @@ namespace ProFind.Lib.Client.Views.Pays_Page
         public Realized_Page()
         {
             this.InitializeComponent();
+            GetProjectRealizedList();
+        }
+
+        public async void GetProjectRealizedList()
+        {
+            var projectService = new PfProjectService();
+            List<PFProject> projectRealizedList = new List<PFProject>();
+
+            projectRealizedList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            clientsRealizedView.ItemsSource = projectRealizedList;  
         }
     }
 }
