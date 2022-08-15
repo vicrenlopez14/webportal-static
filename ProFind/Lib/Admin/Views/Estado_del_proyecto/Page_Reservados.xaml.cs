@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Models;
+using ProFind.Lib.Global.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,18 @@ namespace ProFind.Lib.Admin.Views.Estado_del_proyecto
         public Page_Reservados()
         {
             this.InitializeComponent();
+        }
+
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> PendienteProjectsList = new List<PFProject>();
+
+            PendienteProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            ReservadosProjectsListView.ItemsSource = PendienteProjectsList;
         }
     }
 }

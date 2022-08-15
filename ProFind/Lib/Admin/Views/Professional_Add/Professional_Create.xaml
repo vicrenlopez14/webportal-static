@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox
-                Name="FirstName_tbx"
+                Name="FirstName1_tbx"
                 Width="460"
                 d:LayoutRounding="Auto"
                 Header="Fist Name"
@@ -24,7 +24,7 @@
                 </TextBox.RenderTransform>
             </TextBox>
             <TextBox
-                Name="LastName_tbx"
+                Name="LastName1_tbx"
                 Width="463"
                 d:LayoutRounding="Auto"
                 Header="Last Name"
@@ -37,6 +37,7 @@
                 </TextBox.RenderTransform>
             </TextBox>
             <ComboBox
+               Name="elecion_tbx"
                 Width="454"
                 Header="Elección de Profesion"
                 PlaceholderText="Profesiones"
@@ -47,7 +48,8 @@
                 <x:String>Servicios de Medico General</x:String>
             </ComboBox>
             <PasswordBox
-                x:Name="passwordBox"
+               
+                Name="passwordBox"
                 Width="461"
                 Height="54"
                 d:LayoutRounding="Auto"

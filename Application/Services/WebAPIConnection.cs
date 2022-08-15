@@ -6,16 +6,31 @@ namespace Application.Services
 {
     public class WebAPIConnection
     {
-        private static HttpClient client = new HttpClient();
+        private static bool _isItRunning;
 
-        public static HttpClient GetConnection => client;
+        private static readonly HttpClient Client = new HttpClient();
+
+        public static HttpClient GetConnection
+        {
+            get
+            {
+                if (_isItRunning)
+                    return Client;
+
+                RunAsync();
+                return Client;
+            }
+        }
+
 
         public static void RunAsync()
         {
-            client.BaseAddress = new Uri("https://localhost:5001/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
+            Client.BaseAddress = new Uri("https://localhost:5001/");
+            Client.DefaultRequestHeaders.Accept.Clear();
+            Client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+
+            _isItRunning = true;
         }
     }
 }

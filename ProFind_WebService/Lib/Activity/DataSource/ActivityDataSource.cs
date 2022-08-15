@@ -1,5 +1,5 @@
-﻿using Dapper;
-using Domain.Models;
+﻿using Application.Models;
+using Dapper;
 using Microsoft.OpenApi.Extensions;
 using MySql.Data.MySqlClient;
 using ProFind_WebService.Lib.DataSource;
@@ -32,6 +32,18 @@ public class ActivityDataSource
         var result = await _connection.QueryAsync<PFActivity>(query, dynamicParameters);
 
         return result.ToList()[0];
+    }
+
+    public async Task<IEnumerable<PFActivity>> Search(IDictionary<string, string> searchCriteria)
+    {
+        const string query = "SELECT * FROM Activity WHERE IdPJ1 = @idPJ1 OR IdT1 = @idT1 OR IdA = @idA";
+
+        var dynamicParameters = new DynamicParameters();
+        dynamicParameters.AddDynamicParams(searchCriteria);
+
+        var result = await _connection.QueryAsync<PFActivity>(query, dynamicParameters);
+
+        return result;
     }
 
     public async Task<IEnumerable<PFActivity>> List()

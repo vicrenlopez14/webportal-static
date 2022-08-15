@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Domain.Models;
+using Application.Models;
 using HttpResponseMessage = System.Net.Http.HttpResponseMessage;
 using HttpStatusCode = System.Net.HttpStatusCode;
 
