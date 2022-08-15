@@ -1,5 +1,5 @@
-﻿using Application.Services;
-using Domain.Models;
+﻿using Application.Models;
+using Application.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,7 +35,8 @@ namespace ProFind.Lib.Admin.Views.Estado_del_proyecto
         {
             var projectService = new PfProjectService();
 
-            List<PFProject> InactivoProjectsList = new List<PFProject>();
+            List< PFProject > InactivoProjectsList = new List<PFProject>();
+
 
             InactivoProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
 
