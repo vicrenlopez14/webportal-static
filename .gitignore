@@ -362,3 +362,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ProFind/Lib/Client/Views/ChooseProfessional_Page/ChooseProfessional_Page.xaml.cs
+/ProFind/Lib/Client/Views/ChooseProfessional_Page
