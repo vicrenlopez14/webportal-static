@@ -6,11 +6,12 @@ namespace Application.Models
     public class PFProject
     {
         [JsonConstructor]
-        public PFProject(string idPj, string titlePj, string descriptionPj)
+        public PFProject(string idPj, string titlePj, string descriptionPj, byte[] picturePj)
         {
             IdPJ = idPj;
             TitlePJ = titlePj;
             DescriptionPJ = descriptionPj;
+            PicturePJ = picturePj;
         }
 
         public PFProject()
@@ -72,6 +73,8 @@ namespace Application.Models
         }
 
         public PFClient ResponsibleClient { get; set; }
+
+        public byte[] PicturePJ { get; set; }
 
         public IEnumerable<PFActivity> Activities { get; set; }
     }

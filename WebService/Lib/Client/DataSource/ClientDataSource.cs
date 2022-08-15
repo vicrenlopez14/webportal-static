@@ -137,7 +137,7 @@ public class ClientDataSource
         return (letter && number && upper);
     }
 
-    public async Task<RegisterResponse> Register(string name, string email, string password)
+    public async Task<RegisterResponse> Register(string name, string email, string password, byte[] picture)
     {
         var checkEmail = await CheckEmail(email);
         var checkPassword = CheckPassword(password);
@@ -146,7 +146,7 @@ public class ClientDataSource
         {
             string id = await Nanoid.Nanoid.GenerateAsync();
 
-            PFClient client = new PFClient(id, name, email, password);
+            PFClient client = new PFClient(id, name, email, password, picture);
 
             if (Create(client).Result) return RegisterResponse.Successful;
             return RegisterResponse.Error;

@@ -7,7 +7,7 @@ namespace Application.Models
     {
         [JsonConstructor]
         public PFAdmin(string idA, string nameA, string emailA, string telA,
-            string passwordA, string idR1)
+            string passwordA, string idR1, byte[] pictureA)
         {
             IdA = idA;
             NameA = nameA;
@@ -15,6 +15,7 @@ namespace Application.Models
             TelA = telA;
             PasswordA = passwordA;
             IdR1 = idR1;
+            PictureA = pictureA;
         }
 
         public PFAdmin()
@@ -26,6 +27,8 @@ namespace Application.Models
         public string EmailA { get; set; }
         public string TelA { get; set; }
         public string PasswordA { get; set; }
+        
+        public byte[] PictureA { get; set; }
 
         private string _idR1;
 

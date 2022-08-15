@@ -9,7 +9,7 @@ namespace Application.Models
     {
         [JsonConstructor]
         public PFActivity(string idA, string titleA, string descriptionA, DateTime expectedBeginA,
-            DateTime expectedEndA, string idPj1, string idT1)
+            DateTime expectedEndA, string idPj1, string idT1, byte[] pictureA)
         {
             IdA = idA;
             TitleA = titleA;
@@ -18,6 +18,7 @@ namespace Application.Models
             ExpectedEndA = expectedEndA;
             IdPJ1 = idPj1;
             IdT1 = idT1;
+            PictureA = pictureA;
         }
 
         public PFActivity()
@@ -48,6 +49,9 @@ namespace Application.Models
         public string DescriptionA { get; set; }
         public DateTime ExpectedBeginA { get; set; }
         public DateTime ExpectedEndA { get; set; }
+
+        public byte[] PictureA { get; set; }
+
         public string IdPJ1 { get; set; }
 
         private string _idT1;
