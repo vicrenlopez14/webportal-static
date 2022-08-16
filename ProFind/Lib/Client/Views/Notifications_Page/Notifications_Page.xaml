@@ -9,39 +9,38 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <muxc:InfoBar IsOpen="True" Severity="Informational" Title="Empty page" Message="Work in progress."/>
+        <Grid>
 
-        <Grid Margin="10,86,-10,-86">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="265*"/>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="422*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Notifications and Actions" FontWeight="Bold" Margin="213,61,819,891" FontSize="22" RenderTransformOrigin="0.5,-1.208" Grid.ColumnSpan="3" FocusVisualPrimaryBrush="{x:Null}" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="196,253,82,694" Grid.ColumnSpan="2"/>
-            <TextBlock Text="Payment Notification" FontWeight="Bold" Margin="196,219,836,733" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="42,193,388,707" RenderTransformOrigin="0.48,0.99"/>
-            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,235,0,0" VerticalAlignment="Top" Height="38" Grid.Column="2"/>
-            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="202,409,76,538" Grid.ColumnSpan="2"/>
-            <TextBlock Text="Project Finished Notification" FontWeight="Bold" Margin="202,369,830,583" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <PersonPicture  ProfilePicture="http://siceilsa.com/ERP/inventarios/imagenes/productoterminado/terminado.png" Margin="42,334,388,566" RenderTransformOrigin="0.48,0.99"/>
-            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="64,365,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.Column="2">
-                <ToggleSwitch.RenderTransform>
-                    <CompositeTransform Rotation="-0.051"/>
-                </ToggleSwitch.RenderTransform>
-            </ToggleSwitch>
-            <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="42,193,388,707" RenderTransformOrigin="0.48,0.99"/>
-            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,235,0,0" VerticalAlignment="Top" Height="38" Grid.Column="2"/>
-            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="202,551,76,396" Grid.ColumnSpan="2"/>
-            <TextBlock Text="Unforeseen Notification" FontWeight="Bold" Margin="202,504,830,448" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <PersonPicture  ProfilePicture="https://uploadgerencie.com/imagenes/inmobiliaria-no-paga-arriendo.png" Margin="42,478,388,422" RenderTransformOrigin="0.48,0.99"/>
-            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,512,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
-            <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="196,689,82,258" Grid.ColumnSpan="2"/>
-            <TextBlock Text="Professional's Message" FontWeight="Bold" Margin="196,655,836,297" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <PersonPicture  ProfilePicture="https://www.yelpblog.com/wp-content/uploads/2016/04/Message.png" Margin="42,626,388,274" RenderTransformOrigin="0.48,0.99"/>
-            <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,657,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
-            <PersonPicture  ProfilePicture="http://blog.dopplerrelay.com/wp-content/uploads/20180316-EmailTransaccionalNotificaciones.png" Margin="42,26,388,874" RenderTransformOrigin="0.48,0.99"/>
+            <TextBlock Text="Notifications and Actions" FontWeight="Bold" Margin="102,55,1095,913" FontSize="24" RenderTransformOrigin="0.5,-1.208" FocusVisualPrimaryBrush="{x:Null}" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <SymbolIcon Symbol="PreviewLink" Margin="66,55,1406,918" RenderTransformOrigin="0.5,0.453"/>
+
+            <StackPanel Margin="66,148,712,724">
+                <TextBlock Text="Payment Notification" FontWeight="Bold" FontSize="22" Style="{ThemeResource TitleTextBlockStyle}" Margin="150,35,20,10"/>
+                <TextBlock Text="Enabled banners, sounds"  FontSize="15" Margin="150,-5,20,10"/>
+                <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" VerticalAlignment="Top" Height="38" Margin="550,-55,20,10"/>
+                <PersonPicture  ProfilePicture="https://intl-blog.imgix.net/wp-content/uploads/2020/08/Pagos-por-movil-header.png?auto=format%2Cenhance" Margin="-550,-85,20,10"/>
+            </StackPanel>
+
+            <StackPanel Margin="66,308,712,547">
+                <TextBlock Text="Project Finished Notification" FontWeight="Bold" FontSize="22" Style="{ThemeResource TitleTextBlockStyle}" Margin="150,35,20,10"/>
+                <TextBlock Text="Enabled banners, sounds"  FontSize="15" Margin="150,-5,20,10"/>
+                <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" VerticalAlignment="Top" Height="38" Margin="550,-55,20,10"/>
+                <PersonPicture  ProfilePicture="http://siceilsa.com/ERP/inventarios/imagenes/productoterminado/terminado.png" Margin="-550,-85,20,10"/>
+            </StackPanel>
+
+            <StackPanel Margin="66,468,712,399">
+                <TextBlock Text="Unforeseen Notification" FontWeight="Bold" FontSize="22" Style="{ThemeResource TitleTextBlockStyle}" Margin="150,35,20,10"/>
+                <TextBlock Text="Enabled banners, sounds"  FontSize="15" Margin="150,-5,20,10"/>
+                <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" VerticalAlignment="Top" Height="38" Margin="550,-55,20,10"/>
+                <PersonPicture  ProfilePicture="https://uploadgerencie.com/imagenes/inmobiliaria-no-paga-arriendo.png" Margin="-550,-85,20,10"/>
+            </StackPanel>
+
+            <StackPanel Margin="66,650,712,202">
+                <TextBlock Text="Professional's Message" FontWeight="Bold" FontSize="22" Style="{ThemeResource TitleTextBlockStyle}" Margin="150,35,20,10"/>
+                <TextBlock Text="Enabled banners, sounds"  FontSize="15" Margin="150,-5,20,10"/>
+                <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" VerticalAlignment="Top" Height="38" Margin="550,-55,20,10"/>
+                <PersonPicture  ProfilePicture="https://www.yelpblog.com/wp-content/uploads/2016/04/Message.png" Margin="-550,-85,20,10"/>
+            </StackPanel>
         </Grid>
-
     </Grid>
 </Page>
