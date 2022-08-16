@@ -213,6 +213,7 @@
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
+    <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
     <Compile Include="Lib\Global\Helpers\Connection.cs" />
     <Compile Include="Lib\Global\Helpers\FieldsChecker.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
