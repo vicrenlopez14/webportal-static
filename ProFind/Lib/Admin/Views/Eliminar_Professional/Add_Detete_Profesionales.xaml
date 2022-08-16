@@ -24,8 +24,9 @@
                 <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
                     <TextBlock Height="25" Text="Proyectos Activos "></TextBlock>
                 </StackPanel>
+                <PersonPicture Margin="-95,-30,450,-110" ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png" Height="100" Width="100"/>
                 <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                    <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"></TextBlock>
+                    <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                     <SymbolIcon Symbol="Setting"/>
@@ -38,9 +39,10 @@
                 </StackPanel>
 
 
+
                 <Button
                     x:Name="btnEliminar"
-                    Width="65"
+                    Width="75"
                     Height="30"
                     Margin="130,20"
                     Background="#8EAD8B"

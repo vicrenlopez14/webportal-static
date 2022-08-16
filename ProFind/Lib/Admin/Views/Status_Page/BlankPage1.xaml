@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="ProFind.Lib.Admin.Views.Status_Page.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.Admin.Views.Status_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Background="#A8DF7C" Margin="84,161,852,713" CornerRadius="15">
+
+            <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <PersonPicture Margin="100, -10,400,-110" ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png" RenderTransformOrigin="0.47,0.07" Height="100" Width="92"/>
+
+            <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <TextBlock Margin="130, 1" Text="{Binding ResponsibleProfessional.NameP}" Style="{ThemeResource BodyTextBlockStyle}"/>
+        </StackPanel>
+        <StackPanel Margin="715,161,110,691" Background="#A8DF7C" CornerRadius="15">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" />
+            <PersonPicture Margin="-95,-60,450,-110" ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png" Height="100" Width="100"/>
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, 5">
+                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,-5">
+                <TextBlock Text="{Binding  ResponsibleProfessional.NameP}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="49,339,776,502" Background="#7A9B76" CornerRadius="15">
+
+            <StackPanel Height="27" Width="300" >
+                <TextBlock Text="{Binding TitlePJ}" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Margin="500,-10,0,0" Height="27" Width="300">
+                <TextBlock Text="{Binding ResponsibleProfessional.NameP}" FontWeight="SemiBold" Height="70" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, -10">
+                <TextBlock Height="53" Text="Descripción:" FontWeight="Bold" FontSize="15" Width="378"/>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,10">
+                <TextBlock Text="{Binding DescriptionPJ}" Width="372"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel
+
+                Margin="750,337,46,500"
+                Background="#62A2A0"
+                CornerRadius="15">
+            <StackPanel
+                    Width="300"
+                    Height="27"
+                    Margin="-95,20,0,0">
+                <TextBlock Height="25" Text="{Binding TitlePJ}" />
+            </StackPanel>
+            <PersonPicture Margin="-30,-30,570,10" ProfilePicture="{Binding ResponsibleProfessional.PictureP}" RenderTransformOrigin="0.100,0." Height="100" Width="100"/>
+
+            <StackPanel
+                    Width="300"
+                    Height="27"
+                    Margin="550,-35,0,0">
+                <TextBlock FontWeight="Bold" Margin="-240,-100,0,30" Height="30" Width="250" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" />
+            </StackPanel>
+            <StackPanel
+                    Width="20"
+                    Height="22"
+                    Margin="-425,-250,0,-70"/>
+            <StackPanel Width="340" Height="23" Margin="130,5">
+                <TextBlock
+                        Height="23"
+                        FontWeight="Bold"
+                     Margin="-20,-190,3,-70"
+                        Text="Descripción:" />
+            </StackPanel>
+            <StackPanel Height="20" Width="340"  Margin="-20,-190,3,-70">
+                <TextBlock Text="{Binding DescriptionPJ}" Height="31" />
+            </StackPanel>
+
+
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>
