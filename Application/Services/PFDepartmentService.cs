@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFDepartment>> ListObjectAsync()
         {
             IEnumerable<PFDepartment> Department = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Department/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Department/");
             if (response.IsSuccessStatusCode)
             {
                 Department = await response.Content.ReadAsAsync<IEnumerable<PFDepartment>>();
@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFDepartment>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFDepartment> Department = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Department/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Department/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 Department = await response.Content.ReadAsAsync<IEnumerable<PFDepartment>>();

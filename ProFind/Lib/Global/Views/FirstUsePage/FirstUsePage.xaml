@@ -6,7 +6,7 @@
     xmlns:local="using:ProFind.Lib.Global.Views.FirstUsePage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
     <Grid>
@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <Image
             Grid.Column="1"
-            Source="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
+            Source="https://cdn.pixabay.com/photo/2015/01/08/18/30/man-593372_960_720.jpg"
             Stretch="UniformToFill" />
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -29,7 +29,7 @@
                 FontWeight="Medium">
                 We need to do some things before to make this instance usable
             </TextBlock>
-            <Button HorizontalAlignment="Center" Style="{StaticResource AccentButtonStyle}">
+            <Button HorizontalAlignment="Center" Style="{StaticResource AccentButtonStyle}" Click="Button_Click">
                 Create the first administrator account
             </Button>
         </StackPanel>

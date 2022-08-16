@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProFind.Lib.Admin.Views.Admin_Create;
+using ProFind.Lib.Global.Controllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,11 @@ namespace ProFind.Lib.Global.Views.FirstUsePage
         public FirstUsePage()
         {
             this.InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(AdminCreate), true);
         }
     }
 }

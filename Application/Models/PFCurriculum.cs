@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -18,12 +19,15 @@ namespace Application.Models
         {
         }
 
-        public static PFCurriculum Initialize(string id)
-        {
-            var infoTask = new PfCurriculumService().GetObjectAsync(id);
-            infoTask.Wait();
 
-            return infoTask.Result;
+        public async void FillFromId(string id)
+        {
+            var result = await new PfCurriculumService().GetObjectAsync(id);
+
+            IdCU = result.IdCU;
+            StudiesCU = result.StudiesCU;
+            ExperiencesCU = result.ExperiencesCU;
+            YearsCU = result.YearsCU;
         }
 
         public string IdCU { get; set; }

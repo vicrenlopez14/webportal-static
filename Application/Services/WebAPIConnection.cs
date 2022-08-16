@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -6,9 +7,9 @@ namespace Application.Services
 {
     public class WebAPIConnection
     {
+        private static string _endPoint = "http://localhost:5073/";
         private static bool _isItRunning;
-
-        private static readonly HttpClient Client = new HttpClient();
+        private static HttpClient Client;
 
         public static HttpClient GetConnection
         {
@@ -25,7 +26,16 @@ namespace Application.Services
 
         public static void Run()
         {
-            Client.BaseAddress = new Uri("http://localhost:5073/");
+         
+            var httpClientHandler = new HttpClientHandler();
+            httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) =>
+            {
+                return true;
+            };
+            Client = new HttpClient(httpClientHandler) { BaseAddress = new Uri(_endPoint) };
+
+
+            Client.BaseAddress = new Uri(_endPoint);
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

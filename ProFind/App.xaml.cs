@@ -1,6 +1,8 @@
 ﻿using Application.Services;
 using MySql.Data.MySqlClient.Memcached;
 using Nito.AsyncEx.Synchronous;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Views.FirstUsePage;
 using ProFind.Lib.Global.Views.InitPage;
 using System;
 using System.Collections.Generic;
@@ -44,7 +46,7 @@ namespace ProFind
         /// de entrada cuando la aplicación se inicie para abrir un archivo específico, por ejemplo.
         /// </summary>
         /// <param name="e">Información detallada acerca de la solicitud y el proceso de inicio.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -76,22 +78,24 @@ namespace ProFind
                     WebAPIConnection.Run();
                     try
                     {
-                        var isSystemReadyToWork = new PFAdminService().AreThereAdmins();
-                        var result = isSystemReadyToWork.WaitAndUnwrapException();
 
-                        if (result)
+                        if (await new PFAdminService().AreThereAdmins())
                         {
                             rootFrame.Navigate(typeof(Lib.Client.Views.InitPage.InitPage), e.Arguments);
+                            new GlobalNavigationController().Init(rootFrame, typeof(InitPage));
+
                         }
                         else
                         {
                             rootFrame.Navigate(typeof(Lib.Global.Views.FirstUsePage.FirstUsePage), e.Arguments);
+                            new GlobalNavigationController().Init(rootFrame, typeof(FirstUsePage));
+
                         }
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
-
                 }
                 // Asegurarse de que la ventana actual está activa.
                 Window.Current.Activate();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Application.Services
 {
     public class PfRankService : ICrudService<PFRank>
     {
-            public async Task<PFRank> GetObjectAsync(string id)
+        public async Task<PFRank> GetObjectAsync(string id)
         {
             PFRank rank = null;
             HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Rank/{id}");
@@ -23,12 +24,18 @@ namespace Application.Services
         public async Task<IEnumerable<PFRank>> ListObjectAsync()
         {
             IEnumerable<PFRank> rank = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Rank/list");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                rank = await response.Content.ReadAsAsync<IEnumerable<PFRank>>();
+                HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Rank");
+                if (response.IsSuccessStatusCode)
+                {
+                    rank = await response.Content.ReadAsAsync<IEnumerable<PFRank>>();
+                }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return rank;
         }
 
@@ -38,7 +45,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFRank>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFRank> rank = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Rank/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Rank/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 rank = await response.Content.ReadAsAsync<IEnumerable<PFRank>>();

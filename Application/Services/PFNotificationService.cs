@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFNotification>> ListObjectAsync()
         {
             IEnumerable<PFNotification> Notification = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Notification/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Notification/");
             if (response.IsSuccessStatusCode)
             {
                 Notification = await response.Content.ReadAsAsync<IEnumerable<PFNotification>>();
@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFNotification>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFNotification> Notification = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Notification/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Notification/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 Notification = await response.Content.ReadAsAsync<IEnumerable<PFNotification>>();

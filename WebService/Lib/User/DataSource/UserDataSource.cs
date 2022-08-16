@@ -1,5 +1,6 @@
 using Dapper;
 using MySql.Data.MySqlClient;
+using Nito.AsyncEx.Synchronous;
 using WebService.Lib.DataSource;
 
 namespace WebService.Lib.User.DataSource;
@@ -47,7 +48,7 @@ public class UserDataSource
 
     public int GetUserType(string email)
     {
-        return SearchUser(email).Result;
+        return SearchUser(email).WaitAndUnwrapException();
     }
 
 }

@@ -1,6 +1,7 @@
 using Application.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
+using Nito.AsyncEx.Synchronous;
 using WebService.Lib.DataSource;
 using WebService.Utils;
 
@@ -148,7 +149,7 @@ public class ClientDataSource
 
             PFClient client = new PFClient(id, name, email, password, picture);
 
-            if (Create(client).Result) return RegisterResponse.Successful;
+            if (Create(client).WaitAndUnwrapException()) return RegisterResponse.Successful;
             return RegisterResponse.Error;
         }
 

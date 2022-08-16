@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProcess>> ListObjectAsync()
         {
             IEnumerable<PFProcess> process = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Process/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Process/");
             if (response.IsSuccessStatusCode)
             {
                 process = await response.Content.ReadAsAsync<IEnumerable<PFProcess>>();
@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProcess>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFProcess> process = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Process/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Process/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 process = await response.Content.ReadAsAsync<IEnumerable<PFProcess>>();
