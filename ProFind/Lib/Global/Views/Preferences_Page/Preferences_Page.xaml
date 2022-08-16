@@ -2,36 +2,76 @@
     x:Class="ProFind.Lib.Global.Views.Preferences_Page.Preferences_Page"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.Global.Views.Preferences_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.Global.Views.Preferences_Page"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
 
     <Grid Padding="50">
         <ScrollViewer>
             <StackPanel>
-                <TextBlock Text="Preferences" FontSize="38" FontWeight="Normal" Style="{ThemeResource TitleTextBlockStyle}"/>
-                <Rectangle Height="50"/>
-                <TextBlock Text="ThemeMode" FontWeight="Normal" Style="{ThemeResource TitleTextBlockStyle}"/>
+                <TextBlock
+                    FontSize="38"
+                    FontWeight="Normal"
+                    Style="{ThemeResource TitleTextBlockStyle}"
+                    Text="Preferences" />
+                <Rectangle Height="50" />
+                <TextBlock
+                    FontWeight="Normal"
+                    Style="{ThemeResource TitleTextBlockStyle}"
+                    Text="ThemeMode" />
                 <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
-                    <RadioButton Tag="Light" Checked="OnThemeRadioButtonChecked" Content="Light" KeyDown="OnThemeRadioButtonKeyDown"/>
-                    <RadioButton Tag="Dark" Checked="OnThemeRadioButtonChecked" Content="Dark" />
-                    <RadioButton Tag="Default" Checked="OnThemeRadioButtonChecked" Content="Use system setting" />
+                    <RadioButton
+                        Checked="OnThemeRadioButtonChecked"
+                        Content="Light"
+                        KeyDown="OnThemeRadioButtonKeyDown"
+                        Tag="Light" />
+                    <RadioButton
+                        Checked="OnThemeRadioButtonChecked"
+                        Content="Dark"
+                        Tag="Dark" />
+                    <RadioButton
+                        Checked="OnThemeRadioButtonChecked"
+                        Content="Use system setting"
+                        Tag="Default" />
                 </StackPanel>
-                <Rectangle Height="50"/>
-                <TextBlock Text="SoundMode" FontWeight="Normal" Style="{ThemeResource TitleTextBlockStyle}"/>
-                <TextBlock Text="This option enables sound effects in the app." Style="{ThemeResource CaptionTextBlockStyle}" />
+                <Rectangle Height="50" />
+                <TextBlock
+                    FontWeight="Normal"
+                    Style="{ThemeResource TitleTextBlockStyle}"
+                    Text="SoundMode" />
+                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="This option enables sound effects in the app." />
                 <StackPanel x:Name="SoundPanel" Margin="0,10,0,0">
-                    <RadioButton Tag="On" Checked="OnThemeRadioButtonChecked" Content="On" KeyDown="OnThemeRadioButtonKeyDown" />
-                    <RadioButton Tag="Off" Checked="OnThemeRadioButtonChecked" Content="Off" />
+                    <RadioButton
+                        Checked="OnThemeRadioButtonChecked"
+                        Content="On"
+                        KeyDown="OnThemeRadioButtonKeyDown"
+                        Tag="On" />
+                    <RadioButton
+                        Checked="OnThemeRadioButtonChecked"
+                        Content="Off"
+                        Tag="Off" />
                 </StackPanel>
-                <Rectangle Height="50"/>
-                <TextBlock Text="Language" FontWeight="Normal" Style="{ThemeResource TitleTextBlockStyle}"/>
-                <RadioButton Tag="spanish" Checked="OnThemeRadioButtonChecked" Content="Spanish" KeyDown="OnThemeRadioButtonKeyDown"/>
-                <RadioButton Tag="english" Checked="OnThemeRadioButtonChecked" Content="English" />
-                <RadioButton Tag="french" Checked="OnThemeRadioButtonChecked" Content="French" />
+                <Rectangle Height="50" />
+                <TextBlock
+                    FontWeight="Normal"
+                    Style="{ThemeResource TitleTextBlockStyle}"
+                    Text="Language" />
+                <RadioButton
+                    Checked="OnThemeRadioButtonChecked"
+                    Content="Spanish"
+                    KeyDown="OnThemeRadioButtonKeyDown"
+                    Tag="spanish" />
+                <RadioButton
+                    Checked="OnThemeRadioButtonChecked"
+                    Content="English"
+                    Tag="english" />
+                <RadioButton
+                    Checked="OnThemeRadioButtonChecked"
+                    Content="French"
+                    Tag="french" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

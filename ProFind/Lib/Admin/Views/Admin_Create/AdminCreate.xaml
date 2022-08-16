@@ -113,7 +113,7 @@
                         Width="200"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="Create_btn_Click"
+                        Click="GoToProfessionals"
                         Content="Go to Professionals creation"
                         Visibility="Collapsed" />
                     <muxc:ProgressRing
