@@ -3,6 +3,7 @@ using Application.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebService.Lib.Admin.DataSource;
 using WebService.Lib.Global.Controller;
+using WebService.Utils;
 
 namespace WebService.Lib.Admin.Controller;
 
@@ -48,6 +49,7 @@ public class AdminController : CrudController<PFAdmin>
     public override async Task<ActionResult<HttpStatusCode>> Create(PFAdmin newObject)
     {
         newObject.IdA = await Nanoid.Nanoid.GenerateAsync();
+        newObject.PasswordA = SHAPassword.ShaThisPassword(newObject.PasswordA!);
 
         return (await _dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }

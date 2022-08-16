@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +27,23 @@ namespace ProFind.Lib.Admin.Views.QuickView_Page
         public QuickView_Page()
         {
             this.InitializeComponent();
+            GetProjectsList();
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> QuickViewList = new List<PFProject>();
+
+            QuickViewList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            QuickViewListView.ItemsSource = QuickViewList;
         }
     }
 }

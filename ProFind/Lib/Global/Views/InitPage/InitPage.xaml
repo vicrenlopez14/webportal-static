@@ -110,8 +110,16 @@
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
-                        <Button Margin="0,0,10,0" Content="Administrators" />
-                        <Button Margin="10,0,0,0" Content="Professionals" />
+                        <Button
+                            x:Name="Administrators_Login"
+                            Margin="0,0,10,0"
+                            Click="Button_Click_4"
+                            Content="Administrators" />
+                        <Button
+                            x:Name="Professionals_Login"
+                            Margin="10,0,0,0"
+                            Click="Professionals_Login_Click"
+                            Content="Professionals" />
                     </StackPanel>
 
 

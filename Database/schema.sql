@@ -9,7 +9,8 @@ CREATE TABLE Client
     IdC       CHAR(21) PRIMARY KEY,
     NameC     VARCHAR(50),
     EmailC    VARCHAR(50),
-    PasswordC CHAR(64)
+    PasswordC CHAR(64),
+    PictureC  LONGBLOB
 );
 
 SELECT *
@@ -34,6 +35,7 @@ CREATE TABLE Admin
     EmailA    VARCHAR(50),
     TelA      VARCHAR(15),
     PasswordA CHAR(64),
+    PictureA  LONGBLOB,
     IdR1      CHAR(21),
     FULLTEXT (NameA, EmailA, TelA),
     FOREIGN KEY (IdR1) REFERENCES `Rank` (IdR) ON DELETE CASCADE
@@ -111,22 +113,23 @@ VALUES ('Ahuachapán'),
 
 CREATE TABLE Professional
 (
-    IdP        CHAR(21) PRIMARY KEY,
-    NameP      CHAR(50),
-    DateBirthP DATE,
-    EmailP     CHAR(21),
-    PasswordP  CHAR(64),
-    SexP       BOOLEAN,
-    DUIP       VARCHAR(15),
-    AFPP       VARCHAR(50),
-    ISSSP      VARCHAR(50),
-    ZipCodeP   VARCHAR(10),
-    SalaryP    FLOAT,
-    HiringDate DATE,
-    IdCU1      CHAR(21),
-    IdPFS1     INT,
-    IdDP1      INT,
-    IdWDT1     INT,
+    IdP         CHAR(21) PRIMARY KEY,
+    NameP       CHAR(50),
+    DateBirthP  DATE,
+    EmailP      CHAR(21),
+    PasswordP   CHAR(64),
+    SexP        BOOLEAN,
+    DUIP        VARCHAR(15),
+    AFPP        VARCHAR(50),
+    ISSSP       VARCHAR(50),
+    ZipCodeP    VARCHAR(10),
+    SalaryP     FLOAT,
+    HiringDateP DATE,
+    PictureP    LONGBLOB,
+    IdCU1       CHAR(21),
+    IdPFS1      INT,
+    IdDP1       INT,
+    IdWDT1      INT,
     FOREIGN KEY (IdCU1) REFERENCES Curriculum (IdCU) ON DELETE CASCADE,
     FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE,
     FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE,
@@ -167,6 +170,7 @@ CREATE TABLE Project
     IdPJ          CHAR(21) PRIMARY KEY,
     TitlePJ       VARCHAR(50),
     DescriptionPJ VARCHAR(50),
+    PicturePJ     LONGBLOB,
     IdPS1         INT,
     IdP1          CHAR(21),
     IdC1          CHAR(21),
@@ -185,6 +189,7 @@ CREATE TABLE Activity
     DescriptionA   VARCHAR(500),
     ExpectedBeginA DATETIME,
     ExpectedEndA   DATETIME,
+    PictureA       LONGBLOB,
     IdPJ1          CHAR(21),
     IdT1           CHAR(21),
     FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE,
@@ -203,3 +208,15 @@ VALUES ('Bufete legal'),
        ('Servicios automotriz'),
        ('Médico general');
 
+################################################
+
+CREATE TABLE Notification
+(
+    IdN             CHAR(21) PRIMARY KEY,
+    TitleN          VARCHAR(50),
+    DescriptionN    VARCHAR(500),
+    DateTimeIssuedN DATETIME,
+    PictureN        LONGBLOB,
+    IdPJ2           CHAR(21),
+    FOREIGN KEY (IdPJ2) REFERENCES Project (IdPJ) ON DELETE CASCADE
+);

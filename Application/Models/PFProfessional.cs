@@ -8,7 +8,8 @@ namespace Application.Models
     {
         [JsonConstructor]
         public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP,
-            string sexP, string idCu1, string idPfs1, string idDp1)
+            string sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTime hiringDateP,
+            byte[] pictureP)
         {
             IdP = idP;
             NameP = nameP;
@@ -16,10 +17,15 @@ namespace Application.Models
             EmailP = emailP;
             PasswordP = passwordP;
             SexP = sexP;
-            IdCU1 = idCu1;
-            IdPFS1 = idPfs1;
-            IdDP1 = idDp1;
+            DUIP = duip;
+            AFPP = afpp;
+            ISSSP = isssp;
+            ZipCodeP = zipCodeP;
+            SalaryP = salaryP;
+            HiringDateP = hiringDateP;
+            PictureP = pictureP;
         }
+
 
         public PFProfessional()
         {
@@ -50,7 +56,10 @@ namespace Application.Models
 
         public string SalaryP { get; set; }
 
-        public DateTime HiringDate { get; set; }
+        public DateTime HiringDateP { get; set; }
+
+        public byte[] PictureP { get; set; }
+
 
         private string _idCU1;
 

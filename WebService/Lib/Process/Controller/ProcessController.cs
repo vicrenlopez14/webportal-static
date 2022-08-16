@@ -38,7 +38,7 @@ public class ProcessController : CrudController<PFProcess>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFProcess newObject)
     {
-        newObject.IdPR = Nanoid.Nanoid.Generate();
+        newObject.IdPR = await Nanoid.Nanoid.GenerateAsync();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 

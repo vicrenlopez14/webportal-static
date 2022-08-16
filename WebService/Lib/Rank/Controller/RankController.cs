@@ -39,7 +39,7 @@ public class RankController : CrudController<PFRank>
 
     public override async Task<ActionResult<HttpStatusCode>> Create(PFRank newObject)
     {
-        newObject.IdR = Nanoid.Nanoid.Generate();
+        newObject.IdR = await Nanoid.Nanoid.GenerateAsync();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
 
