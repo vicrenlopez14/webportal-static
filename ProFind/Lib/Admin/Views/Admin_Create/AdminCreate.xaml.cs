@@ -123,7 +123,6 @@ namespace ProFind.Lib.Admin.Views.Admin_Create
                 if (result == System.Net.HttpStatusCode.OK)
                 {
                     ToggleThemeTeachingTip2.IsOpen = true;
-
                 }
             }
             catch (Exception ex)
@@ -138,7 +137,7 @@ namespace ProFind.Lib.Admin.Views.Admin_Create
         }
         private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Professional_Add.Professional_Create));
+            new GlobalNavigationController().NavigateTo(typeof(Professional_Add.ProfessionalInformationAddition), isFirstAdmin);
         }
 
         private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
@@ -149,6 +148,12 @@ namespace ProFind.Lib.Admin.Views.Admin_Create
         private void ToggleThemeTeachingTip2_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
         {
             CreateProfessionals_btn.Visibility = Visibility.Visible;
+        }
+
+        private void GoToProfessionals(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Professional_Add.ProfessionalInformationAddition), isFirstAdmin);
+
         }
     }
 }

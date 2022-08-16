@@ -188,7 +188,6 @@ CREATE TABLE Project
 );
 
 DESCRIBE Project;
-
 ################################################
 CREATE TABLE Activity
 (

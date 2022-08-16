@@ -1,17 +1,11 @@
 ﻿using Application.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Application.Services;
+using Microsoft.UI.Xaml.Controls;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
+using System.Net;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -21,11 +15,19 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class professional_information : Page
+    public sealed partial class ProfessionalInformationAddition : Page
     {
-        public professional_information()
+        private bool _isFirstAdmin;
+        public ProfessionalInformationAddition()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            _isFirstAdmin = (bool)e.Parameter;
+
         }
 
         private void Selection_Sexo(object sender, SelectionChangedEventArgs e)
@@ -88,19 +90,50 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         }
 
-        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
+
             PFProfessional professional = new PFProfessional();
             professional.IdP = numEmpleado.Text;
             professional.EmailP = Email.Text;
             professional.SexP = Sexo.Text;
+            professional.Department = new PFDepartment();
             professional.Department.NameDP = departamento.Text;
             professional.AFPP = Afp.Text;
             professional.DUIP = Dui.Text;
             professional.SalaryP = Salario.Text;
             professional.ISSSP = SeguroSocial.Text;
 
+            var respuesta = await new PfProfessionalService().Create(professional);
+            if (respuesta == HttpStatusCode.OK)
+            {
+                ToggleThemeTeachingTip2.IsOpen = true;
+            }
 
+        }
+
+        private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+        }
+
+        private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
+        {
+
+        }
+
+        private void ToggleThemeTeachingTip2_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
+        {
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_isFirstAdmin)
+                FirstProfessional_tt.IsOpen = true;
+        }
+
+        private async void btnExaminar_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
