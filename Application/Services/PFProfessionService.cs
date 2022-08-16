@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfession>> ListObjectAsync()
         {
             IEnumerable<PFProfession> PFProfession = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/PFProfession/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/PFProfession/");
             if (response.IsSuccessStatusCode)
             {
                 PFProfession = await response.Content.ReadAsAsync<IEnumerable<PFProfession>>();
@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfession>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFProfession> PFProfession = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/PFProfession/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/PFProfession/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 PFProfession = await response.Content.ReadAsAsync<IEnumerable<PFProfession>>();

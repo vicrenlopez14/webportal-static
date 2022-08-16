@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -16,12 +17,12 @@ namespace Application.Models
         {
         }
 
-        public static PFWorkDayType Initialize(string id)
+        public async void FillFromId(string id)
         {
-            var infoTask = new PFWorkDayTypeService().GetObjectAsync(id);
-            infoTask.Wait();
+            var result = await new PFWorkDayTypeService().GetObjectAsync(id);
 
-            return infoTask.Result;
+            IdWDT = result.IdWDT;
+            NameWDT = result.NameWDT;
         }
 
         public string IdWDT { get; set; }

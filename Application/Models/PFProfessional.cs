@@ -1,6 +1,7 @@
 using System;
 using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -31,13 +32,37 @@ namespace Application.Models
         {
         }
 
-        public static PFProfessional Initialize(string id)
+        public async void FillFromId(string id)
         {
-            var infoTask = new PfProfessionalService().GetObjectAsync(id);
-            infoTask.Wait();
+            var result = await new PfProfessionalService().GetObjectAsync(id);
 
-            return infoTask.Result;
+            IdP = result.IdP;
+            NameP = result.NameP;
+            DateBirthP = result.DateBirthP;
+            EmailP = result.EmailP;
+            PasswordP = result.PasswordP;
+            SexP = result.SexP;
+            DUIP = result.DUIP;
+            AFPP = result.AFPP;
+            ISSSP = result.ISSSP;
+            ZipCodeP = result.ZipCodeP;
+            SalaryP = result.SalaryP;
+            HiringDateP = result.HiringDateP;
+            PictureP = result.PictureP;
+            IdCU1 = result.IdCU1;
+            if (!string.IsNullOrEmpty(IdCU1))
+                Curriculum.FillFromId(IdCU1);
+            IdPFS1 = result.IdPFS1;
+            if (!string.IsNullOrEmpty(IdPFS1))
+                Profession.FillFromId(IdPFS1);
+            IdDP1 = result.IdDP1;
+            if (!string.IsNullOrEmpty(IdDP1))
+                Department.FillFromId(IdDP1);
+            IdWDT1 = result.IdWDT1;
+            if (!string.IsNullOrEmpty(IdWDT1))
+                WorkDayType.FillFromId(IdWDT1);
         }
+
 
         public string IdP { get; set; }
         public string NameP { get; set; }
@@ -61,60 +86,20 @@ namespace Application.Models
         public byte[] PictureP { get; set; }
 
 
-        private string _idCU1;
-
-        public string IdCU1
-        {
-            get => _idCU1;
-            set
-            {
-                _idCU1 = value;
-                Curriculum = PFCurriculum.Initialize(_idCU1);
-            }
-        }
+        public string IdCU1 { get; set; }
 
         public PFCurriculum Curriculum { get; set; }
 
-        private string _idPFS1;
 
-        public string IdPFS1
-        {
-            get => _idPFS1;
-            set
-            {
-                _idPFS1 = value;
-                Profession = PFProfession.Initialize(_idPFS1);
-            }
-        }
-
+        public string IdPFS1 { get; set; }
         public PFProfession Profession { get; set; }
 
-        private string _idDP1;
 
-        public string IdDP1
-        {
-            get => _idDP1;
-            set
-            {
-                _idDP1 = value;
-                Department = PFDepartment.Initialize(_idDP1);
-            }
-        }
-
+        public string IdDP1 { get; set; }
         public PFDepartment Department { get; set; }
 
-        private string _idWDT1;
 
-        public string IdWDT1
-        {
-            get => _idWDT1;
-            set
-            {
-                _idWDT1 = value;
-                WorkDayType = PFWorkDayType.Initialize(_idWDT1);
-            }
-        }
-
+        public string IdWDT1 { get; set; }
         public PFWorkDayType WorkDayType { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFWorkDayType>> ListObjectAsync()
         {
             IEnumerable<PFWorkDayType> WorkDayType = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/WorkDayType/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/WorkDayType/");
             if (response.IsSuccessStatusCode)
             {
                 WorkDayType = await response.Content.ReadAsAsync<IEnumerable<PFWorkDayType>>();
@@ -38,7 +38,8 @@ namespace Application.Services
         public async Task<IEnumerable<PFWorkDayType>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFWorkDayType> WorkDayType = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/WorkDayType/list");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/WorkDayType/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 WorkDayType = await response.Content.ReadAsAsync<IEnumerable<PFWorkDayType>>();

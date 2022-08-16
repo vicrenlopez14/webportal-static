@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -28,9 +29,9 @@ namespace Application.Models
         public static PFActivity Initialize(string id)
         {
             var infoTask = new PFActivityService().GetObjectAsync(id);
-            infoTask.Wait();
+            var result = infoTask.WaitAndUnwrapException();
 
-            return infoTask.Result;
+            return result;
         }
 
         public static IEnumerable<PFActivity> InitializeFromProjectId(string projectId)
@@ -39,10 +40,27 @@ namespace Application.Models
             {
                 {"IdPJ1", projectId},
             });
-            infoTask.Wait();
+            var result = infoTask.WaitAndUnwrapException();
 
-            return infoTask.Result;
+            return result;
         }
+
+        public async void FillFromId(string id)
+        {
+            var result = await new PFActivityService().GetObjectAsync(id);
+
+            IdA = result.IdA;
+            TitleA = result.TitleA;
+            DescriptionA = result.DescriptionA;
+            ExpectedBeginA = result.ExpectedBeginA;
+            ExpectedEndA = result.ExpectedEndA;
+            IdPJ1 = result.IdPJ1;
+            IdT1 = result.IdT1;
+            if (!string.IsNullOrEmpty(IdT1))
+                Tag.FillFromId(IdT1);
+            PictureA = result.PictureA;
+        }
+
 
         public string IdA { get; set; }
         public string TitleA { get; set; }
@@ -54,17 +72,7 @@ namespace Application.Models
 
         public string IdPJ1 { get; set; }
 
-        private string _idT1;
-
-        public string IdT1
-        {
-            get => _idT1;
-            set
-            {
-                _idT1 = value;
-                Tag = PFTag.Initialize(_idT1);
-            }
-        }
+        public string IdT1 { get; set; }
 
         public PFTag Tag { get; set; }
     }

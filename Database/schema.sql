@@ -21,11 +21,18 @@ DESCRIBE Client;
 ###########################################
 CREATE TABLE `Rank`
 (
-    IdR   CHAR(21) PRIMARY KEY,
+    IdR   INT AUTO_INCREMENT PRIMARY KEY,
     NameR VARCHAR(50) UNIQUE
 );
 
 DESCRIBE `Rank`;
+
+INSERT INTO `Rank` (NameR)
+VALUES ('Principal'),
+       ('Administrator');
+
+SELECT *
+FROM `Rank`;
 
 ###########################################
 CREATE TABLE Admin
@@ -44,7 +51,7 @@ CREATE TABLE Admin
 DESCRIBE ADMIN;
 
 SELECT *
-FROM ADMIN;
+FROM Admin;
 
 
 ###############################################
@@ -171,6 +178,7 @@ CREATE TABLE Project
     TitlePJ       VARCHAR(50),
     DescriptionPJ VARCHAR(50),
     PicturePJ     LONGBLOB,
+    TotalPricePJ  FLOAT,
     IdPS1         INT,
     IdP1          CHAR(21),
     IdC1          CHAR(21),

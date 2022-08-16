@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfessional>> ListObjectAsync()
         {
             IEnumerable<PFProfessional> professional = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Professional/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Professional/");
             if (response.IsSuccessStatusCode)
             {
                 professional = await response.Content.ReadAsAsync<IEnumerable<PFProfessional>>();
@@ -53,7 +53,8 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfessional>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFProfessional> professional = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Professional/list");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/Professional/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 professional = await response.Content.ReadAsAsync<IEnumerable<PFProfessional>>();

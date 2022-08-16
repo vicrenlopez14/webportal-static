@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -17,12 +18,14 @@ namespace Application.Models
         {
         }
 
-        public static PFTag Initialize(string id)
+      
+        public async void FillFromId(string id)
         {
-            var infoTask = new PFTagService().GetObjectAsync(id);
-            infoTask.Wait();
+            var result = await new PFTagService().GetObjectAsync(id);
 
-            return infoTask.Result;
+            IdT = result.IdT;
+            NameT = result.NameT;
+            IdPJ1 = result.IdPJ1;
         }
 
         public string IdT { get; set; }

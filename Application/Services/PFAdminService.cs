@@ -41,7 +41,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFAdmin>> ListObjectAsync()
         {
             IEnumerable<PFAdmin> admin = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/");
             if (response.IsSuccessStatusCode)
             {
                 admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
@@ -56,7 +56,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFAdmin> admin = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Admin/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
@@ -89,13 +89,18 @@ namespace Application.Services
         public async Task<bool> AreThereAdmins()
         {
             IEnumerable<PFAdmin> admins = new List<PFAdmin>();
-
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/list");
-            if (response.IsSuccessStatusCode)
+            try
             {
-                admins = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
+                HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/");
+                if (response.IsSuccessStatusCode)
+                {
+                    admins = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
+                }
             }
-
+            catch (Exception Ex)
+            {
+                Console.WriteLine(Ex.Message);
+            }
             return admins.Any();
         }
 

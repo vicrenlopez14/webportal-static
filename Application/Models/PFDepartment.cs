@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -16,13 +17,16 @@ namespace Application.Models
         {
         }
 
-        public static PFDepartment Initialize(string id)
-        {
-            var infoTask = new PFDepartmentService().GetObjectAsync(id);
-            infoTask.Wait();
+      
 
-            return infoTask.Result;
+        public async void FillFromId(string id)
+        {
+            var result = await new PFDepartmentService().GetObjectAsync(id);
+
+            IdDP = result.IdDP;
+            NameDP = result.NameDP;
         }
+
 
         public string IdDP { get; set; }
 
