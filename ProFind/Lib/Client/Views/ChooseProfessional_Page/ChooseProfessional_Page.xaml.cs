@@ -1,6 +1,4 @@
-﻿using Application.Services;
-using Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,33 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Client.Views.Pays_Page
+namespace ProFind.Lib.Client.Views.ChooseProfesional_Page
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Pending_page : Page
+    public sealed partial class ChooseProfessional_Page : Page
     {
-        public Pending_page()
+        public ChooseProfessional_Page()
         {
             this.InitializeComponent();
-            GetprojectsPendingList();
-            
-        }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        public async void GetprojectsPendingList()
-        {
-            var projectService = new PfProjectService();
-            List<PFProject> clientPendingList = new List<PFProject>();
-
-            clientPendingList = await projectService.ListObjectAsync() as List<PFProject>;
-
-            clientsPendingListView.ItemsSource = clientPendingList;
         }
     }
 }

@@ -4,71 +4,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.Client.Views.Pays_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:Domain.Models" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView Margin="10,10,0,30" HorizontalAlignment="Left" Width="1442">
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#F9D13E" Margin="1,15">
-                        <SymbolIcon Symbol="Important" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="General medical consultation" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Dr. Mario Juaquín Flores" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Pending - $20.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#F9D13E" Margin="1,15">
-                        <SymbolIcon Symbol="Important" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="Brake repair" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Dra. Carmen Flores" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Pending - $50.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#F9D13E" Margin="1,15">
-                        <SymbolIcon Symbol="Important" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="Processing of affidavits" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Lic. Gabriel Castro" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Pending - $100.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#F9D13E" Margin="1,15">
-                        <SymbolIcon Symbol="Important" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="General medical consultation" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Dra. Ellie White" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Pending - $25.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-        </ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Name="clientsPendingListView" ItemTemplate="{StaticResource ClientsPendingListViewTemplate}"/>
     </Grid>
+    
+    <Page.Resources>
+        <DataTemplate x:Key="ClientsPendingListViewTemplate" x:DataType="models1:PFProject">
+            <StackPanel Orientation="Horizontal" Margin="-900,-800,10,10" Height="100" Width="500">
+                <StackPanel Background="#F9D13E" Margin="1,15" Height="100">
+                    <SymbolIcon Symbol="Important" Height="79" Width="166"/>
+                </StackPanel>
+                <StackPanel Margin="10, 18, 0, 0">
+                    <TextBlock Text="{Binding TitlePJ}" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    <StackPanel>
+                        <TextBlock Text="{Binding ResponsibleProfessional.NameP}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="Pending - $20.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 </Page>

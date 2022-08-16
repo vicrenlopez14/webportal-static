@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Services;
+using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,17 @@ namespace ProFind.Lib.Client.Views.Pays_Page
         public Unauthorized_page()
         {
             this.InitializeComponent();
+            GetProjectUnauthorizedList();
+        }
+
+        public async void GetProjectUnauthorizedList()
+        {
+            var projectUnauthorizedService = new PfProjectService();
+            List<PFProject> projectUnauthorizedList = new List<PFProject>();
+
+            projectUnauthorizedList = await projectUnauthorizedService.ListObjectAsync() as List<PFProject>;
+
+            clientsUnauthorizedListView.ItemsSource = projectUnauthorizedList;
         }
     }
 }
