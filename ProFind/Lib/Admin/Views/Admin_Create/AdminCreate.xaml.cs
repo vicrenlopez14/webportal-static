@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using Nito.AsyncEx.Synchronous;
 using Org.BouncyCastle.Utilities;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Views;
 using System;
 using System.Collections.Generic;
@@ -82,33 +83,16 @@ namespace ProFind.Lib.Admin.Views.Admin_Create
             {
                 Creation_pr.IsActive = true;
 
-                var picker = new Windows.Storage.Pickers.FileOpenPicker();
-                picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-                picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-                picker.FileTypeFilter.Add(".jpg");
-                picker.FileTypeFilter.Add(".jpeg");
-                picker.FileTypeFilter.Add(".png");
+                var file = await PickFileHelper.PickImage();
 
-                StorageFile file = await picker.PickSingleFileAsync();
                 if (file != null)
                 {
-                    // Application now has read/write access to the picked file
                     SelectedPicture_tbk.Text = file.Name;
+                    imageBytes = await file.ToByteArrayAsync();
 
-                    // Read the bytes
-                    byte[] result;
-                    using (Stream stream = await file.OpenStreamForReadAsync())
-                    {
-                        using (var memoryStream = new MemoryStream())
-                        {
-
-                            stream.CopyTo(memoryStream);
-                            result = memoryStream.ToArray();
-                        }
-                    }
-
-                    imageBytes = result;
+                    SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
                 }
+
             }
             catch (Exception ex)
             {

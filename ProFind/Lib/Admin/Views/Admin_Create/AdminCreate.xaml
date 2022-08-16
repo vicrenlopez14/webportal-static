@@ -42,7 +42,7 @@
                     <TextBlock>
                         Create an administrator account for managing ProFind.
                     </TextBlock>
-                    <muxc:PersonPicture Name="SelectedPicture_pp" Margin="0,30,0,0" />
+                    <muxc:PersonPicture Name="SelectedPicture_pp" ProfilePicture="{x:Bind imageBytes}" Margin="0,30,0,0" />
                     <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
