@@ -21,7 +21,8 @@
         <DataTemplate x:Key="InactivosProjectsListViewTemplate" x:DataType="models1:PFProject"  >
 
             <StackPanel
-                Margin="20,270,776,567"
+
+                Margin="366,337,430,500"
                 Background="#F4FAE1"
                 CornerRadius="15">
                 <StackPanel
@@ -30,36 +31,33 @@
                     Margin="-95,20,0,0">
                     <TextBlock Height="25" Text="{Binding TitlePJ}" />
                 </StackPanel>
+                <PersonPicture Margin="-30,-30,570,10" ProfilePicture="{Binding ResponsibleProfessional.PictureP}" RenderTransformOrigin="0.100,0." Height="100" Width="100"/>
+
                 <StackPanel
                     Width="300"
                     Height="27"
                     Margin="550,-35,0,0">
-                    <TextBlock FontWeight="Bold" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" />
+                    <TextBlock FontWeight="Bold" Margin="-240,-100,0,30" Height="30" Width="250" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" />
                 </StackPanel>
                 <StackPanel
                     Width="20"
                     Height="22"
-                    Margin="-425,-100,0,-70">
+                    Margin="-425,-250,0,-70">
                     <SymbolIcon Symbol="Contact2" />
                 </StackPanel>
-                <StackPanel Height="23" Margin="130,5">
+                <StackPanel Width="340" Height="23" Margin="130,5">
                     <TextBlock
                         Height="23"
                         FontWeight="Bold"
+                     Margin="-20,-190,3,-70"
                         Text="Profesional:" />
                 </StackPanel>
-                <StackPanel Height="23" Margin="130,-5">
-                    <TextBlock Text="{Binding  ResponsibleProfessional.NameP}" />
+                <StackPanel Height="20" Width="340"  Margin="-20,-190,3,-70">
+                    <TextBlock Text="{Binding ResponsibleProfessional.NameP}" Height="31" />
                 </StackPanel>
-                <Button
-                    x:Name="btnIr1"
-                    Width="65"
-                    Height="30"
-                    Margin="130,20"
-                    Background="#8EAD8B"
-                    Content="Ir"
-                    CornerRadius="5"
-                    Foreground="White" />
+
+
+
             </StackPanel>
 
         </DataTemplate>

@@ -21,12 +21,19 @@
 
         <DataTemplate x:Key="ProjectsActiveListViewTemplate" x:DataType="models1:PFProject" >
 
-            <StackPanel Background="#A8DF7C" Margin="32,42,904,832" CornerRadius="15">
-
-                <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" TextAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
-
-                <TextBlock Margin="130, 1" Text="Professional:" FontWeight="Bold" Style="{ThemeResource BodyTextBlockStyle}"/>
-                <TextBlock Margin="130, 1" Text="{Binding  ResponsibleProfessional.NameP}" Style="{ThemeResource BodyTextBlockStyle}"/>
+            <StackPanel Margin="715,161,110,691" Background="#A8DF7C" CornerRadius="15">
+                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" />
+                <PersonPicture Margin="-95,-60,450,-110" Name="" ProfilePicture="{Binding ResponsibleProfessional.PictureP}" Height="100" Width="100"/>
+                <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                    <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+                <StackPanel Height="23" Margin="130, 5">
+                    <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+                </StackPanel>
+                <StackPanel Height="23" Margin="130,-5">
+                    <TextBlock Text="{Binding  ResponsibleProfessional.NameP}"></TextBlock>
+                </StackPanel>
             </StackPanel>
 
         </DataTemplate>
