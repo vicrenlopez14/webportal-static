@@ -121,6 +121,9 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
+    <Compile Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml.cs">
+      <DependentUpon>AdminCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml.cs">
       <DependentUpon>Add_Detete_Profesionales.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,9 @@
     <Compile Include="Lib\Admin\Views\QuickView_Page\QuickView_Page.xaml.cs">
       <DependentUpon>QuickView_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\Status_Page\BlankPage1.xaml.cs">
+      <DependentUpon>BlankPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Status_Page\Status_Page.xaml.cs">
       <DependentUpon>Status_Page.xaml</DependentUpon>
     </Compile>
@@ -213,8 +219,11 @@
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
+    <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
     <Compile Include="Lib\Global\Helpers\Connection.cs" />
     <Compile Include="Lib\Global\Helpers\FieldsChecker.cs" />
+    <Compile Include="Lib\Global\Helpers\PickFileHelper.cs" />
+    <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
     <Compile Include="Lib\Global\Views\About_Page\About_Page.xaml.cs">
       <DependentUpon>About_Page.xaml</DependentUpon>
@@ -321,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -384,6 +397,10 @@
     <Page Include="Lib\Admin\Views\QuickView_Page\QuickView_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Admin\Views\Status_Page\BlankPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\Status_Page\Status_Page.xaml">
       <Generator>MSBuild:Compile</Generator>

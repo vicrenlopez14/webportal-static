@@ -1,4 +1,5 @@
 ﻿using System;
+using Application.Services;
 
 namespace Application.Models
 {
@@ -19,22 +20,27 @@ namespace Application.Models
         {
         }
 
+        public async void FillFromId(string id)
+        {
+            var result = await new PFNotificationService().GetObjectAsync(id);
+
+            IdN = result.IdN;
+            TitleN = result.TitleN;
+            DescriptionN = result.DescriptionN;
+            DateTimeIssuedN = result.DateTimeIssuedN;
+            PictureN = result.PictureN;
+            IdPJ2 = result.IdPJ2;
+            if (!string.IsNullOrEmpty(IdPJ2))
+                Project.FillFromId(IdPJ2);
+        }
+
         public string IdN { get; set; }
         public string TitleN { get; set; }
         public string DescriptionN { get; set; }
         public DateTime DateTimeIssuedN { get; set; }
         public byte[] PictureN { get; set; }
-        private string _idPJ2;
 
-        public string IdPJ2
-        {
-            get => _idPJ2;
-            set
-            {
-                _idPJ2 = value;
-                Project = PFProject.Initialize(_idPJ2);
-            }
-        }
+        public string IdPJ2 { get; set; }
 
         public PFProject Project { get; set; }
     }

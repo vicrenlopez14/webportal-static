@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Newtonsoft.Json;
+using Nito.AsyncEx.Synchronous;
 
 namespace Application.Models
 {
@@ -16,12 +17,12 @@ namespace Application.Models
         {
         }
 
-        public static PFRank Initialize(string id)
+        public async void FillFromId(string id)
         {
-            var infoTask = new PfRankService().GetObjectAsync(id);
-            infoTask.Wait();
+            var result = await new PfRankService().GetObjectAsync(id);
 
-            return infoTask.Result;
+            IdR = result.IdR;
+            NameR = result.NameR;
         }
 
         public string IdR { get; set; }

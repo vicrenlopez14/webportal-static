@@ -8,7 +8,7 @@ namespace Application.Services
 {
     public class PFTagService : ICrudService<PFTag>
     {
-         public async Task<PFTag> GetObjectAsync(string id)
+        public async Task<PFTag> GetObjectAsync(string id)
         {
             PFTag tag = null;
             HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Tag/{id}");
@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFTag>> ListObjectAsync()
         {
             IEnumerable<PFTag> Tag = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Tag/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Tag/");
             if (response.IsSuccessStatusCode)
             {
                 Tag = await response.Content.ReadAsAsync<IEnumerable<PFTag>>();
@@ -38,7 +38,8 @@ namespace Application.Services
         public async Task<IEnumerable<PFTag>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFTag> Tag = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Tag/list");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/Tag/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 Tag = await response.Content.ReadAsAsync<IEnumerable<PFTag>>();

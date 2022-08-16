@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFCurriculum>> ListObjectAsync()
         {
             IEnumerable<PFCurriculum> curriculum = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Curriculum/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Curriculum/");
             if (response.IsSuccessStatusCode)
             {
                 curriculum = await response.Content.ReadAsAsync<IEnumerable<PFCurriculum>>();
@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFCurriculum>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFCurriculum> curriculum = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Curriculum/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Curriculum/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 curriculum = await response.Content.ReadAsAsync<IEnumerable<PFCurriculum>>();

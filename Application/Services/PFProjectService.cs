@@ -23,7 +23,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProject>> ListObjectAsync()
         {
             IEnumerable<PFProject> project = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Project/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Project/");
             if (response.IsSuccessStatusCode)
             {
                 project = await response.Content.ReadAsAsync<IEnumerable<PFProject>>();
@@ -38,7 +38,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProject>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFProject> project = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Project/list");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Project/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 project = await response.Content.ReadAsAsync<IEnumerable<PFProject>>();

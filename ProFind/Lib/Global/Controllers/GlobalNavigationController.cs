@@ -35,6 +35,11 @@ namespace ProFind.Lib.Global.Controllers
         {
             BaseFrame.Navigate(view);
         }
+
+        public void NavigateTo(Type view, object parameter)
+        {
+            BaseFrame.Navigate(view, parameter);
+        }
     }
 
 }
