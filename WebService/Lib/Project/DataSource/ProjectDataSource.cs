@@ -44,16 +44,18 @@ public class ProjectDataSource
     public async Task<bool> Create(PFProject Project)
     {
         const string query =
-            "INSERT INTO Project VALUES(@IdPJ, @TitlePJ, @DescriptionPJ, @IdPS1, @IdP1, @IdC1);";
+            "INSERT INTO Project VALUES(@IdPJ, @TitlePJ, @DescriptionPJ, @PicturePJ, @TotalPricePJ, @IdPS1, @IdP1, @IdC1);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
 
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            ["IdA"] = Project.IdPJ,
-            ["TitleA"] = Project.TitlePJ,
-            ["DescriptionA"] = Project.DescriptionPJ,
+            ["IdPJ"] = Project.IdPJ,
+            ["TitlePJ"] = Project.TitlePJ,
+            ["DescriptionPJ"] = Project.DescriptionPJ,
+            ["PicturePJ"] = Project.PicturePJ,
+            ["TotalPricePJ"] = Project.TotalPricePJ,
             ["IdPS1"] = Project.IdPS1,
             ["IdP1"] = Project.IdP1,
             ["IdC1"] = Project.IdC1
@@ -65,7 +67,7 @@ public class ProjectDataSource
     public async Task<bool> Update(string id, PFProject Project)
     {
         const string query =
-            "UPDATE Project SET TitlePJ=@Title, DescriptionPJ=@Description, IdPS1=@IdPS1, IdP1=@IdP1, IdC1=@IdC1 WHERE IdPJ=@Id;";
+            "UPDATE Project SET TitlePJ=@Title, DescriptionPJ=@Description, PicturePJ=@Picture, TotalPricePJ=@TotalPrice, IdPS1=@IdPS1, IdP1=@IdP1, IdC1=@IdC1 WHERE IdPJ=@Id;";
 
         var dynamicParameters = new DynamicParameters();
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
@@ -73,6 +75,8 @@ public class ProjectDataSource
             ["Id"] = id,
             ["Description"] = Project.DescriptionPJ,
             ["Title"] = Project.TitlePJ,
+            ["Picture"] = Project.PicturePJ,
+            ["TotalPrice"] = Project.TotalPricePJ,
             ["IdPS1"] = Project.IdPS1,
             ["IdP1"] = Project.IdP1,
             ["IdC1"] = Project.IdC1
