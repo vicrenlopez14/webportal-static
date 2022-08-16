@@ -52,7 +52,8 @@ public class ClientController : CrudController<PFClient>
     public async Task<ActionResult<HttpStatusCode>> Register(RegisterClient registerClient)
     {
         var registerResponse =
-            await _dataSource.Register(registerClient.NameC, registerClient.EmailC, registerClient.PasswordC);
+            await _dataSource.Register(registerClient.NameC, registerClient.EmailC, registerClient.PasswordC,
+                registerClient.PictureC);
 
         switch (registerResponse)
         {
@@ -64,7 +65,6 @@ public class ClientController : CrudController<PFClient>
                 return Ok(HttpStatusCode.BadRequest);
             default:
                 return Ok(HttpStatusCode.InternalServerError);
-            
         }
     }
 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Application.Models;
@@ -23,7 +25,7 @@ namespace Application.Services
 
             return response.StatusCode;
         }
-        
+
         public async Task<PFAdmin> GetObjectAsync(string id)
         {
             PFAdmin admin = null;
@@ -82,6 +84,19 @@ namespace Application.Services
             response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
+        }
+
+        public async Task<bool> AreThereAdmins()
+        {
+            IEnumerable<PFAdmin> admins = new List<PFAdmin>();
+
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Admin/list");
+            if (response.IsSuccessStatusCode)
+            {
+                admins = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
+            }
+
+            return admins.Any();
         }
 
         public async Task<HttpStatusCode> Update(PFAdmin toUpdateObject)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +27,22 @@ namespace ProFind.Lib.Admin.Views.Status_Page
         public Status_Page()
         {
             this.InitializeComponent();
+            GetProjectsList();
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+            List<PFProject> statusList = new List<PFProject>();
+
+            statusList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            StatusListView1.ItemsSource = statusList;
         }
     }
 }
