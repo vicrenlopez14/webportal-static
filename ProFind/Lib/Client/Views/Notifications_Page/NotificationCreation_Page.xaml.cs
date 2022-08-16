@@ -46,5 +46,15 @@ namespace ProFind.Lib.Client.Views.Notifications_Page
             var answer = new PFNotificationService();
             await answer.Create(ClientNotification);
         }
+
+        private void btnSend_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

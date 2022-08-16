@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <ScrollViewer>
@@ -52,8 +52,8 @@
                 </StackPanel>
                 <StackPanel Grid.Row="5">
                     <StackPanel HorizontalAlignment="Center" Height="50" Orientation="Horizontal">
-                        <Button Name="btnSend" Background="#FF00AD00" Content="Send" Margin="0,0,40,0" Width="120" CornerRadius="10" Foreground="White"/>
-                        <Button Name="btnCancel" Background="#FFE42B2B" Content="Cancel" Width="120" CornerRadius="10" Foreground="White"/>
+                        <Button Name="btnSend" Content="Send" Margin="0,0,40,0" Width="120" CornerRadius="10" Click="btnSend_Click_1"/>
+                        <Button Name="btnCancel"  Content="Cancel" Width="120" CornerRadius="10" Click="btnCancel_Click" />
                     </StackPanel>
                 </StackPanel>
             </Grid>
