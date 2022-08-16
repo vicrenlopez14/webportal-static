@@ -184,6 +184,9 @@
     <Compile Include="Lib\Client\Views\Calendar_Page\Calendar_Page.xaml.cs">
       <DependentUpon>Calendar_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml.cs">
+      <DependentUpon>ChooseProfessional_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Views\Dashboard_Page\Dashboard_Page.xaml.cs">
       <DependentUpon>Dashboard_Page.xaml</DependentUpon>
     </Compile>
@@ -195,6 +198,9 @@
     </Compile>
     <Compile Include="Lib\Client\Views\Main_Page\Main_Page_Client.xaml.cs">
       <DependentUpon>Main_Page_Client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Client\Views\Notifications_Page\NotificationCreation_Page.xaml.cs">
+      <DependentUpon>NotificationCreation_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Client\Views\Notifications_Page\Notifications_Page.xaml.cs">
       <DependentUpon>Notifications_Page.xaml</DependentUpon>
@@ -407,6 +413,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Lib\Client\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Client\Views\Dashboard_Page\Dashboard_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -422,6 +432,10 @@
     <Page Include="Lib\Client\Views\Main_Page\Main_Page_Client.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Client\Views\Notifications_Page\NotificationCreation_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Client\Views\Notifications_Page\Notifications_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
