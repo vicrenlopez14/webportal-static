@@ -28,7 +28,7 @@ namespace ProFind.Lib.Admin.Views.Admin_Create
     /// </summary>
     public sealed partial class AdminCreate : Page
     {
-        private List<PFRank> ranks;
+        private List<PFRank> ranks = new List<PFRank>();
         private List<string> rankStrings = new List<string>();
         private byte[] imageBytes;
         private bool isFirstAdmin = false;
