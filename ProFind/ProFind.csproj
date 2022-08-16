@@ -159,9 +159,6 @@
       <DependentUpon>Actives_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Professionals_Page\Professionals_Page.cs" />
-    <Compile Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml.cs">
-      <DependentUpon>Professional_Create.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Professional_Add\professional_information.xaml.cs">
       <DependentUpon>professional_information.xaml</DependentUpon>
     </Compile>
@@ -257,6 +254,9 @@
     </Compile>
     <Compile Include="Lib\Global\Views\Professionals_Login.xaml.cs">
       <DependentUpon>Professionals_Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
+      <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
     <Compile Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml.cs">
@@ -381,10 +381,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Lib\Admin\Views\Professional_Add\professional_information.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -500,6 +496,10 @@
     <Page Include="Lib\Global\Views\Professionals_Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml">
       <Generator>MSBuild:Compile</Generator>

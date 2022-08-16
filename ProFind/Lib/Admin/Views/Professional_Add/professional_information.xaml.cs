@@ -3,6 +3,8 @@ using Application.Services;
 using Microsoft.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -17,10 +19,39 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
     /// </summary>
     public sealed partial class ProfessionalInformationAddition : Page
     {
+        private List<PFProfession> professions = new List<PFProfession>();
+        private List<string> professionStrings = new List<string>();
+
+        private List<PFDepartment> departments = new List<PFDepartment>();
+        private List<string> departmentsStrings = new List<string>();
+
+        private List<PFWorkDayType> workdaytypes = new List<PFWorkDayType>();
+        private List<string> workdaytypestrings = new List<string>();
+
         private bool _isFirstAdmin;
         public ProfessionalInformationAddition()
         {
             this.InitializeComponent();
+            loadUsefulThings();
+
+        }
+
+        public async void loadUsefulThings()
+        {
+            // Professions
+            (professions, professionStrings) = await new PFProfessionService().GetComboboxChoices();
+            elecion_tbx.ItemsSource = null;
+            elecion_tbx.ItemsSource = professionStrings;
+
+            // Departments
+            (departments, departmentsStrings) = await new PFDepartmentService().GetComboboxChoices();
+            departamento.ItemsSource = null;
+            departamento.ItemsSource = departmentsStrings;
+
+            // Work-day types
+            (workdaytypes, workdaytypestrings) = await new PFWorkDayTypeService().GetComboboxChoices();
+            Jornada.ItemsSource = null;
+            Jornada.ItemsSource = workdaytypestrings;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -93,11 +124,25 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
+
             PFProfessional professional = new PFProfessional();
-            professional.IdP = numEmpleado.Text;
-            professional.EmailP = Email.Text;
-            professional.SexP = Sexo.Text;
+            professional.NameP = FirstName1_tbx.Text + " " + LastName1_tbx.Text;
+
+            // Nested objects
+            var profession = new PFProfession();
+            profession = professions.Where(x => x.NamePFS == elecion_tbx.Text).First();
+
             professional.Department = new PFDepartment();
+            professional.Department = departments.Where(x => x.NameDP == departamento.Text).First();
+
+            professional.WorkDayType = new PFWorkDayType();
+            professional.WorkDayType = workdaytypes.Where(x => x.NameWDT == Jornada.Text).First();
+
+            professional.Profession = profession;
+            professional.EmailP = Email.Text;
+            professional.SexP = Sexo.Text == "Male";
+            professional.PasswordP = passwordBox.Password;
+
             professional.Department.NameDP = departamento.Text;
             professional.AFPP = Afp.Text;
             professional.DUIP = Dui.Text;
@@ -134,6 +179,43 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
 
         private async void btnExaminar_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void TxtFIstName(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TxtLastName(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionProfesional(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PFProfessional professional = new PFProfessional();
+            professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
+            professional.Profession.NamePFS = elecion_tbx.Text;
+
+
+            if (passwordBox == Confirm_passwordBox)
+            {
+                professional.PasswordP = passwordBox.Password;
+            }
+            else
+            {
+
+            }
         }
     }
 }
