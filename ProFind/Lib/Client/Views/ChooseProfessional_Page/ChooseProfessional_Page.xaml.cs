@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,18 @@ namespace ProFind.Lib.Client.Views.ChooseProfesional_Page
         public ChooseProfessional_Page()
         {
             this.InitializeComponent();
+
+            GetChooseProfessionalLis();
+        }
+
+        public async void GetChooseProfessionalLis()
+        {
+            var professional = new PfProfessionalService();
+            List<PFProfessionService> chooseProfessionalList = new List<PFProfessionService>(); 
+
+            chooseProfessionalList = await professional.ListObjectAsync() as List<PFProfessionService>;
+
+            chooseProfessionalListView.ItemsSource = chooseProfessionalList;
         }
     }
 }
