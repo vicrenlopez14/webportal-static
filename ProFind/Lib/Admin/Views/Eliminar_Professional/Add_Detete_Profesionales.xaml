@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
 
@@ -23,7 +23,7 @@
 
             <StackPanel Margin="75,84,750,753" CornerRadius="15">
                 <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                    <TextBlock Height="25" Text="Proyectos Activos "></TextBlock>
+                    <TextBlock Height="25" Text="Active projects"></TextBlock>
                 </StackPanel>
                 <Image Margin="-95,-30,450,-110"  Width="100" Height="100" Source="{Binding PicturePJ}"/>
 
@@ -34,7 +34,7 @@
                     <SymbolIcon Symbol="Setting"/>
                 </StackPanel>
                 <StackPanel Height="23" Margin="130, 5">
-                    <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+                    <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
                 </StackPanel>
                 <StackPanel Height="23" Margin="130,-5">
                     <TextBlock Text="{Binding  ResponsibleProfessional.NameP}"></TextBlock>

@@ -341,7 +341,7 @@
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
                     Click="btnAgregar_Click"
-                    Content="Agregar"
+                    Content="Add"
                     CornerRadius="5" />
                 <Button
                     x:Name="btnCancelar"
@@ -349,7 +349,7 @@
                     Margin="50,0"
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
-                    Content="Cancelar"
+                    Content="Cancel"
                     CornerRadius="5"
                     RenderTransformOrigin="1.663,0.216" />
             </StackPanel>

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
 
     <Grid>
@@ -34,7 +34,7 @@
                     <SymbolIcon Symbol="Setting"/>
                 </StackPanel>
                 <StackPanel Height="23" Margin="130, 5">
-                    <TextBlock Height="23" Text="CLiente:" FontWeight="Bold"></TextBlock>
+                    <TextBlock Height="23" Text="Client:" FontWeight="Bold"></TextBlock>
                 </StackPanel>
                 <StackPanel Height="23" Margin="130,-5">
                     <TextBlock Text="{Binding  ResponsibleClient.NameC}"></TextBlock>

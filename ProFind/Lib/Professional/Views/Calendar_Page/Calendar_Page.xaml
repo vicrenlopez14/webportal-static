@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
+    
     <StackPanel>
         <CalendarView Margin="40" VerticalAlignment="Top" Height="582" Width="800" />
     </StackPanel>

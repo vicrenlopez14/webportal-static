@@ -7,7 +7,7 @@
     x:Class="ProFind.Lib.Admin.Views.Main_Page_Admin.Main_Page_Admin"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <Grid.Resources>

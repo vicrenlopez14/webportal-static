@@ -6,7 +6,7 @@
     xmlns:local="using:ProFind.Lib.Professional.Views.Main_Page"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Style="{StaticResource PageStyle}"
     Loaded="Page_Loaded_1"
     mc:Ignorable="d">
 
