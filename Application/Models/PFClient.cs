@@ -20,7 +20,7 @@ namespace Application.Models
         {
         }
 
-     
+
         public async void FillFromId(string id)
         {
             var result = await new PfClientService().GetObjectAsync(id);
@@ -39,6 +39,23 @@ namespace Application.Models
         public string PasswordC { get; set; }
 
         public byte[] PictureC { get; set; }
+    }
+
+    public class LoginClient
+    {
+        [JsonConstructor]
+        public LoginClient(string emailC, string passwordC)
+        {
+            EmailC = emailC;
+            PasswordC = passwordC;
+        }
+
+        public LoginClient()
+        {
+        }
+
+        public string EmailC { get; }
+        public string PasswordC { get; }
     }
 
     public class RegisterClient

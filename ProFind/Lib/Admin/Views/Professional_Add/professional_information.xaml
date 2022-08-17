@@ -67,12 +67,12 @@
                                     </TextBox.RenderTransform>
                                 </TextBox>
                                 <ComboBox
-                                    Name="elecion_tbx"
+                                    Name="profession_cbx"
                                     Width="454"
                                     Margin="0,15,0,0"
                                     Header="Profession choice"
-                                    PlaceholderText="Profesiones"
                                     RenderTransformOrigin="0.555,0.073"
+                                    SelectedIndex="0"
                                     SelectionChanged="ComboBox_SelectionProfesional">
                                     <x:String>Law firm</x:String>
                                     <x:String>Automotive services</x:String>
@@ -121,7 +121,7 @@
                                 <ColumnDefinition Width="0.4*" />
                             </Grid.ColumnDefinitions>
                             <muxc:TeachingTip
-                                x:Name="ToggleThemeTeachingTip2"
+                                x:Name="SucessfulCreation_tt"
                                 Title="Professional created successfuly!"
                                 ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick"
                                 ActionButtonContent="Go to log in"
@@ -313,7 +313,12 @@
                                         VerticalAlignment="Top"
                                         Header="Hiring date"
                                         PlaceholderText="Pick a date" />
-                                    <Button Margin="5,0" VerticalAlignment="Bottom">Today</Button>
+                                    <Button
+                                        Margin="5,0"
+                                        VerticalAlignment="Bottom"
+                                        Click="Button_Click_1">
+                                        Today
+                                    </Button>
                                 </StackPanel>
                                 <StackPanel Margin="0,20" Orientation="Horizontal" />
                             </StackPanel>

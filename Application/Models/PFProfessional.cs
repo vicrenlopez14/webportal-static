@@ -102,4 +102,21 @@ namespace Application.Models
         public string IdWDT1 { get; set; }
         public PFWorkDayType WorkDayType { get; set; }
     }
+
+    public class LoginProfessional
+    {
+        [JsonConstructor]
+        public LoginProfessional(string emailP, string passwordP)
+        {
+            EmailP = emailP;
+            PasswordP = passwordP;
+        }
+
+        public LoginProfessional()
+        {
+        }
+
+        public string EmailP { get; }
+        public string PasswordP { get; }
+    }
 }

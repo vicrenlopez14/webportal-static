@@ -79,7 +79,7 @@ namespace Application.Services
         public async Task<HttpStatusCode> Create(PFProfession toCreateObject)
         {
             HttpResponseMessage response =
-                await WebAPIConnection.GetConnection.PostAsJsonAsync("api/PFProfession", toCreateObject);
+                await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Profession", toCreateObject);
             response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
@@ -88,7 +88,7 @@ namespace Application.Services
         public async Task<HttpStatusCode> Update(PFProfession toUpdateObject)
         {
             HttpResponseMessage response =
-                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/PFProfession/{toUpdateObject.IdPFS}",
+                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/Profession/{toUpdateObject.IdPFS}",
                     toUpdateObject);
             response.EnsureSuccessStatusCode();
 

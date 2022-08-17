@@ -63,5 +63,19 @@ namespace ProFind.Lib.Global.Views.InitPage
             new GlobalNavigationController().NavigateTo(typeof(Professional.Views.InitPage.InitPage));
 
         }
+
+        private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var result = await new PfProfessionalService().Login(Email_tb.Text, Password_tb.Password);
+
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.Main_Page.Main_Page_Professional));
+            }
+            else
+            {
+                FailedAuth_tt.IsOpen = true;
+            }
+        }
     }
 }

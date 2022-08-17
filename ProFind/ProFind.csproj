@@ -190,6 +190,9 @@
     <Compile Include="Lib\Client\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\InitPage\InitPage_Login.xaml.cs">
+      <DependentUpon>InitPage_Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Views\InitPage\UnidentifiedUserForm.xaml.cs">
       <DependentUpon>UnidentifiedUserForm.xaml</DependentUpon>
     </Compile>
@@ -318,7 +321,6 @@
     <Content Include="Lib\Professional\Controllers\Dummy.txt" />
     <Content Include="Lib\Professional\Services\Dummy.txt" />
     <Content Include="Lib\Professional\ViewModels\Dummy.txt" />
-    <Content Include="Lib\Professional\Views\Dummy.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -420,6 +422,10 @@
     <Page Include="Lib\Client\Views\InitPage\InitPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Client\Views\InitPage\InitPage_Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Client\Views\InitPage\UnidentifiedUserForm.xaml">
       <Generator>MSBuild:Compile</Generator>

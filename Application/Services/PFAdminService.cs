@@ -14,15 +14,9 @@ namespace Application.Services
     {
         public async Task<HttpStatusCode> Login(string email, string password)
         {
-            var values = new Dictionary<string, string>
-            {
-                {"email", email},
-                {"password", password}
-            };
+            var loginAdmin = new LoginAdmin(email, password);
 
-            var content = new FormUrlEncodedContent(values);
-
-            var response = await WebAPIConnection.GetConnection.PostAsync($"api/Admin/login", content);
+            var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Admin/login", loginAdmin);
 
             return response.StatusCode;
         }
@@ -57,11 +51,13 @@ namespace Application.Services
         public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFAdmin> admin = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Admin/paginated/{fromIndex}/{toIndex}");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/Admin/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
-            } else
+            }
+            else
             {
                 throw new NetworkInformationException();
             }
@@ -105,6 +101,7 @@ namespace Application.Services
             {
                 Console.WriteLine(Ex.Message);
             }
+
             return admins.Any();
         }
 

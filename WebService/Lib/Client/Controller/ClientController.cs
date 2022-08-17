@@ -43,9 +43,9 @@ public class ClientController : CrudController<PFClient>
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<HttpStatusCode>> Login(string email, string password)
+    public async Task<ActionResult<HttpStatusCode>> Login(LoginClient loginClient)
     {
-        return (await _dataSource.Login(email, password)) ? Ok() : NotFound();
+        return (await _dataSource.Login(loginClient.EmailC, loginClient.PasswordC)) ? Ok() : NotFound();
     }
 
     [HttpPost("register")]

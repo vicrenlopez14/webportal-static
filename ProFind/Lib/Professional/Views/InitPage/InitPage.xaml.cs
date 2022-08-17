@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Application.Services;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,7 +37,33 @@ namespace ProFind.Lib.Professional.Views.InitPage
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
+            new GlobalNavigationController().NavigateTo(typeof(Clients_Login));
 
+        }
+
+        private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Admin.Views.InitPage.InitPage));
+        }
+
+        private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Client.Views.InitPage.InitPage_Login));
+
+        }
+
+        private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var result = await new PfProfessionalService().Login(Email_tb.Text, Password_tb.Password);
+
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.Main_Page.Main_Page_Professional));
+            }
+            else
+            {
+                FailedAuth_tt.IsOpen = true;
+            }
         }
     }
 }

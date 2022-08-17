@@ -55,9 +55,9 @@ public class AdminController : CrudController<PFAdmin>
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<HttpStatusCode>> Login(string email, string password)
+    public async Task<ActionResult<HttpStatusCode>> Login(LoginAdmin loginAdmin)
     {
-        return (await _dataSource.Login(email, password)) ? Ok() : NotFound();
+        return (await _dataSource.Login(loginAdmin.EmailA, loginAdmin.PasswordA)) ? Ok() : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFAdmin toUpdateObject)
