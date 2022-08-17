@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,18 @@ namespace ProFind.Lib.Professional.Views.Notifications_Page
         public Notifications_Page2()
         {
             this.InitializeComponent();
+            GetProjectsList();
+        }
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> NotifiProfesionaList = new List<PFProject>();
+
+            NotifiProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            NotificationsrofesionalListView.ItemsSource = NotifiProfesionaList;
         }
     }
 }

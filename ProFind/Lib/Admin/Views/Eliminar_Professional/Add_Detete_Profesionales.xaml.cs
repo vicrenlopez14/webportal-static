@@ -27,6 +27,7 @@ namespace ProFind.Lib.Admin.Views
         public Add_Detete_Profesionales()
         {
             this.InitializeComponent();
+            GetProjectsList();
         }
 
         public async void GetProjectsList()
