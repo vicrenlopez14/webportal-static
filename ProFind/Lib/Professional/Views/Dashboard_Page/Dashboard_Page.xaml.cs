@@ -24,5 +24,12 @@ namespace ProFind.Lib.Professional.Views.Dashboard_Page
 
             DashboardProjectsListView.ItemsSource = PendienteProjectsList;
         }
+
+        private void DashboardProjectsListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var clickedItem = e.ClickedItem as PFProject;
+            
+
+        }
     }
 }

@@ -16,17 +16,19 @@
             <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="DashboardProjectsListView" ItemTemplate="{StaticResource DeashboardProjectsListViewTemplate}" />
+        <ListView Name="DashboardProjectsListView" IsItemClickEnabled="True" ItemTemplate="{StaticResource DeashboardProjectsListViewTemplate}" ItemClick="DashboardProjectsListView_ItemClick" />
     </Grid>
 
     <Page.Resources>
-        <DataTemplate x:Key="DeashboardProjectsListViewTemplate" x:DataType="models1:PFProject"  >
+        <DataTemplate x:Key="DeashboardProjectsListViewTemplate"  x:DataType="models1:PFProject"  >
 
             <StackPanel Margin="47,41,778,800"  CornerRadius="15">
                 <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
                     <TextBlock Text= "Dashboard" FontWeight="Bold"/>
                 </StackPanel>
-                <PersonPicture Margin="-550,-10,0,0" ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" RenderTransformOrigin="0.48,0.99" Height="100" Width="100"/>
+
+                <Image Margin="-550,-10,0,0"  Width="100" Height="100" Source="{Binding PicturePJ}"/>
+               
 
                 <TextBlock Margin="550,-150,0,0" Text="{Binding TotalPricePJ}" FontWeight="Bold" Height="32" FontSize="18" RenderTransformOrigin="0.494,0.595" Width="138"/>
 
