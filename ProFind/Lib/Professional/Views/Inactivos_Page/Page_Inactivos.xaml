@@ -9,12 +9,61 @@
     Style="{StaticResource PageStyle}">
 
     <Grid>
+<<<<<<< Updated upstream
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Inactives" Margin="20,15,0,0" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged" Grid.RowSpan="2"></TextBlock>
         <ListView Name="InactivesProfessionalListView" ItemTemplate="{StaticResource InactivesProfessionalListViewTemplate}"/>
+=======
+        <TextBlock Text="Inactivos" Margin="20,15,0,0" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+        <StackPanel Background="#FEF8E9" Margin="20,80,775,759" BorderBrush="Black" CornerRadius="15">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Height="25" Text="Revisión general del vehiculo"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="Automotriz" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
+                <SymbolIcon Symbol="Setting"/>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130, 5">
+                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,-5">
+                <TextBlock Text="Ing. Daniel Rodas"></TextBlock>
+            </StackPanel>
+            <Button x:Name="btnIr" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
+        </StackPanel>
+        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="837,669,-41,168" CornerRadius="15">
+            <AppBarSeparator HorizontalAlignment="Left" Margin="525,9,0,0" VerticalAlignment="Top" Height="35"/>
+        </Border>
+        <PersonPicture  ProfilePicture="https://segurossura.com/content/uploads/sites/10/2017/10/seguros-sura-5-razones-para-hacerle-mantenimiento-preventivo-a-tu-carro-mini.jpg" Margin="34,113,1366,787"></PersonPicture>
+
+        <StackPanel Margin="20,270,776,567" Background="#FEF8E9" CornerRadius="15">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Height="25" Text="Apelación de esquelas"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                <TextBlock Text="Bufete legal" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
+                <SymbolIcon Symbol="Manage"/>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130, 5">
+                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,-5">
+                <TextBlock Text="Lic. Benjamin Bottom"></TextBlock>
+            </StackPanel>
+            <Button x:Name="btnIr1" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
+        </StackPanel>
+        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="20,270,775,566" CornerRadius="15">
+            <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="526,8,0,0"/>
+        </Border>
+        <PersonPicture  ProfilePicture="https://a.mktgcdn.com/p/_YplrENatdVAjrjCE8M3DyVZylzUh_i9pSiAyAueX_U/760x440.jpg" Margin="34,302,1366,598" RenderTransformOrigin="0.48,0.99"></PersonPicture>
+>>>>>>> Stashed changes
     </Grid>
 
     <Page.Resources>
