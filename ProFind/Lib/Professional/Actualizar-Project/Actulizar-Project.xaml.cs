@@ -27,9 +27,7 @@ namespace ProFind.Lib.Professional.Actualizar_Project
     /// </summary>
     public sealed partial class Actulizar_Project : Page
     {
-        private bool _isFirstAdmin;
-
-        public bool SucessfulCreation_tt { get; private set; }
+      
 
         public Actulizar_Project()
         {
@@ -63,12 +61,15 @@ namespace ProFind.Lib.Professional.Actualizar_Project
 
             if (respuesta == HttpStatusCode.OK)
             {
+
+
+
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new clientNavigationController().GoBack();
 
                 if (_isFirstAdmin)
                 {
-                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
         }

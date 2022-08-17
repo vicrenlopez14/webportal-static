@@ -64,7 +64,7 @@ namespace ProFind.Lib.Professional.eliminar_projetc
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
-                new ProfessionalNavigationController().GoBack();
+                new AdminNavigationController().GoBack();
                 if (_isFirstAdmin)
                 {
                     new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));

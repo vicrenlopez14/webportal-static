@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="ProFind.Lib.Professional.Actualizar_Project.Actulizar_Project"
+    x:Class="ProFind.Lib.Admin.Actualizar_Project.Actulizar_Project"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.Professional.Actualizar_Project"

@@ -28,22 +28,26 @@ namespace ProFind.Lib.Professional.eliminar_projetc
     /// </summary>
     public sealed partial class Eliminacio_Projetcs : Page
     {
-        private bool _isFirstAdmin;
 
-        public bool SucessfulCreation_tt { get; private set; }
+       
 
         public Eliminacio_Projetcs()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            GetProjectsList2();
+
+
+
+
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
             _isFirstAdmin = (bool)e.Parameter;
 
         }
-        public async void GetProjectsList()
+        public async void GetProjectsList2()
 
         {
             var projectService = new PfProjectService();
@@ -63,8 +67,10 @@ namespace ProFind.Lib.Professional.eliminar_projetc
             var respuesta = await new PFProjectService().Delete(Project.IdPJ);
             if (respuesta == HttpStatusCode.OK)
             {
+
+
                 SucessfulCreation_tt = true;
-                new ProfessionalNavigationController().GoBack();
+                new AdminNavigationController().GoBack();
                 if (_isFirstAdmin)
                 {
                     new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));

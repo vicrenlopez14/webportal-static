@@ -65,7 +65,7 @@ namespace ProFind.Lib.Admin.Views
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new clientNavigationController().GoBack();
                 if (_isFirstAdmin)
                 {
                     new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));

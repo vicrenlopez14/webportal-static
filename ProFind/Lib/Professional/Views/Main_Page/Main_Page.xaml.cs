@@ -20,7 +20,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
         public Main_Page_Professional()
         {
             this.InitializeComponent();
-            new ProfessionalNavigationController().Init(Professionals_ContentFrame);
+            new AdminNavigationController().Init(Professionals_ContentFrame);
 
         }
 
@@ -28,7 +28,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
         {
             if (args.IsSettingsInvoked)
             {
-                new ProfessionalNavigationController().NavigateTo(typeof(Preferences_Page));
+                new AdminNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -44,11 +44,11 @@ namespace ProFind.Lib.Professional.Views.Main_Page
 
             try
             {
-                new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                new AdminNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
             }
             catch
             {
-                new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
+                new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
             }
         }
 
@@ -58,7 +58,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
 
         private void Page_Loaded_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
+            new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
         }
     }
 }

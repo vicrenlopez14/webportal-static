@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace ProFind.Lib.Professional.Controllers
 {
-    public class ProfessionalNavigationController : IViewNavigator<Type, Frame>
+    public class AdminNavigationController : IViewNavigator<Type, Frame>
     {
         private static Stack<Type> pagesStack = new Stack<Type>();
         private static Frame BaseFrame;
