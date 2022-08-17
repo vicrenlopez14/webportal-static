@@ -111,6 +111,7 @@ CREATE TABLE Professional
     DateBirthP  DATE,
     EmailP      CHAR(21),
     PasswordP   CHAR(64),
+    ActiveP     BOOLEAN,
     SexP        BOOLEAN,
     DUIP        VARCHAR(15),
     AFPP        VARCHAR(50),

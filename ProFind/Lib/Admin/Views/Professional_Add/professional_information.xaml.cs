@@ -150,7 +150,7 @@ namespace ProFind.Lib.Admin.Views.Professional_Add
             professional.SalaryP = Salario.Text;
             professional.ISSSP = SeguroSocial.Text;
 
-            var respuesta = await new PfProfessionalService().Create(professional);
+            var respuesta = await new PFProjectService().Create(professional);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt.IsOpen = true;

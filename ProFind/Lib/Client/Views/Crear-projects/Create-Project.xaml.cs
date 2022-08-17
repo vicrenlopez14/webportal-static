@@ -1,7 +1,7 @@
 ﻿using Application.Models;
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
-using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Professional.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,35 +20,21 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views
+namespace ProFind.Lib.Client.Views.Crear_projects
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Add_Detete_Profesionales : Page
+    public sealed partial class Create_Project : Page
     {
         private bool _isFirstAdmin;
 
-        public Add_Detete_Profesionales()
+        public Create_Project()
         {
             this.InitializeComponent();
-            GetProjectsList();
         }
 
-        public object SucessfulCreation_tt { get; private set; }
-
-        public async void GetProjectsList()
-
-        {
-            var projectService = new PfProjectService();
-
-            List<PFProject> DeteteProfesionaList = new List<PFProject>();
-
-            DeteteProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
-
-            DeteteProfesionalListView.ItemsSource = DeteteProfesionaList;
-        }
-
+        public bool SucessfulCreation_tt { get; private set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -56,23 +42,39 @@ namespace ProFind.Lib.Admin.Views
             _isFirstAdmin = (bool)e.Parameter;
 
         }
-        private async void btnEliminar_Click(object sender, RoutedEventArgs e)
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
+            PFProject project = new PFProject();
+            var profession = new PFProfessional();
 
 
-            var respuesta = await new PFProjectService().Delete(professional.IdP);
+
+            project.ResponsibleProfessional = profession;
+
+            project.TitlePJ = TitlePJ.Text;
+            project.DescriptionPJ = DescriptionPJ.Text;
+
+            project.Status = true ?PFProjectStatus.Active : PFProjectStatus.Inactive;
+
+
+
+            var respuesta = await new PfProjectService().Update(project);
+
             if (respuesta == HttpStatusCode.OK)
             {
+
+
+
                 SucessfulCreation_tt = true;
                 new clientNavigationController().GoBack();
+
                 if (_isFirstAdmin)
                 {
-                    new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
-
-
         }
     }
 }
+

@@ -28,14 +28,14 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         public Main_Page_Admin()
         {
             this.InitializeComponent();
-            new AdminNavigationController().Init(ContentFrame);
+            new clientNavigationController().Init(ContentFrame);
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
-                new AdminNavigationController().NavigateTo(typeof(Preferences_Page));
+                new clientNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -51,11 +51,11 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
 
             try
             {
-                new AdminNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                new clientNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
             }
             catch
             {
-                new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
+                new clientNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
             }
         }
     }
