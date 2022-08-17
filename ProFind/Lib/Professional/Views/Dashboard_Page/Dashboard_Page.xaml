@@ -16,11 +16,11 @@
             <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="DashboardProjectsListView" IsItemClickEnabled="True" ItemTemplate="{StaticResource DeashboardProjectsListViewTemplate}" ItemClick="DashboardProjectsListView_ItemClick" />
+        <ListView Name="DashboardProjectsListView" IsItemClickEnabled="True" ItemTemplate="{StaticResource DashboardProjectsListViewTemplate}" ItemClick="DashboardProjectsListView_ItemClick" />
     </Grid>
 
     <Page.Resources>
-        <DataTemplate x:Key="DeashboardProjectsListViewTemplate"  x:DataType="models1:PFProject"  >
+        <DataTemplate x:Key="DashboardProjectsListViewTemplate"  x:DataType="models1:PFProject"  >
 
             <StackPanel Margin="47,41,778,800"  CornerRadius="15">
                 <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >

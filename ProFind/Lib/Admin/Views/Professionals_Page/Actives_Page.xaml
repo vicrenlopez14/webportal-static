@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="ProjectsActiveListView" ItemTemplate="{StaticResource ProjectsActiveListViewTemplate}" />
+        <ListView Name="ProjectsActiveListView" ItemTemplate="{StaticResource ProjectsActiveListViewTemplate}" Tapped="ProjectsActiveListView_Tapped" ItemClick="ProjectsActiveListView_ItemClick" />
     </Grid>
 
     <Page.Resources>

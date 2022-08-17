@@ -23,7 +23,7 @@ namespace ProFind.Lib.Professional.Views.Dashboard_Page
             PendienteProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
 
             DashboardProjectsListView.ItemsSource = PendienteProjectsList;
-        }
+        }   
 
         private void DashboardProjectsListView_ItemClick(object sender, ItemClickEventArgs e)
         {

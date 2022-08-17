@@ -5,52 +5,42 @@
     xmlns:local="using:ProFind.Lib.Client.Views.Dashboard_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ScrollViewer>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="107*"/>
-                <RowDefinition Height="393*"/>
-            </Grid.RowDefinitions>
-            <Rectangle HorizontalAlignment="Left" Height="400" Margin="49,166,0,0" Stroke="Black" VerticalAlignment="Top" Width="321" Fill="#FF1DA9BB" Grid.RowSpan="2"/>
-            <TextBlock HorizontalAlignment="Left" Height="85" Margin="51,47,0,0" TextWrapping="Wrap" Text="Active Proyects" VerticalAlignment="Top" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <TextBlock HorizontalAlignment="Left" Height="85" Margin="43,462,0,0" TextWrapping="Wrap" Text="Activity Register" VerticalAlignment="Top" Width="379" Style="{ThemeResource TitleTextBlockStyle}" Grid.Row="1"/>
-            <Rectangle HorizontalAlignment="Left" Height="102" Margin="49,139,0,0" Stroke="Black" VerticalAlignment="Top" Width="321" Fill="#FFF9F9F9" Grid.RowSpan="2"/>
-            <TextBlock HorizontalAlignment="Left" Height="81" Margin="103,166,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="Automotive" VerticalAlignment="Top" Width="193" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="69,162,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Professional: Alejandro Rodas" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="69,200,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Brake pad change." VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="69,248,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Price: $35" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="69,296,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Standby time: about 5 days" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <Rectangle HorizontalAlignment="Left" Height="400" Margin="493,166,0,0" Stroke="Black" VerticalAlignment="Top" Width="321" Fill="#FF1D6FBB" Grid.RowSpan="2"/>
-            <TextBlock HorizontalAlignment="Left" Height="85" Margin="493,363,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379" FontSize="48" Grid.Row="1"/>
-            <Rectangle HorizontalAlignment="Left" Height="102" Margin="493,139,0,0" Stroke="Black" VerticalAlignment="Top" Width="321" Fill="#FFF9F9F9" Grid.RowSpan="2"/>
-            <TextBlock HorizontalAlignment="Left" Height="81" Margin="573,166,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="Law firm" VerticalAlignment="Top" Width="193" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="513,156,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Professional: Lis.Miguel Araujo" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="513,202,0,0" Grid.Row="1" TextWrapping="Wrap" Text="House deed" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="513,250,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Price: $355" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="513,298,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Standby time: about 12 days" VerticalAlignment="Top" Width="274" FontSize="20"/>
-            <Rectangle HorizontalAlignment="Left" Height="400" Margin="949,166,0,0" Stroke="Black" VerticalAlignment="Top" Width="321" Fill="#FF0E4888" Grid.RowSpan="2" FocusVisualPrimaryBrush="#FF2F1D8A"/>
-            <TextBlock HorizontalAlignment="Left" Height="85" Margin="993,371,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379" FontSize="48" Grid.Row="1"/>
-            <Rectangle HorizontalAlignment="Left" Height="102" Margin="949,139,0,0" Stroke="Black" VerticalAlignment="Top" Width="321" Fill="#FFF9F9F9" Grid.RowSpan="2"/>
-            <TextBlock HorizontalAlignment="Left" Height="81" Margin="1020,166,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="Medicine" VerticalAlignment="Top" Width="193" Style="{ThemeResource TitleTextBlockStyle}"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="982,161,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Professional: Dr.Luis Pérez" VerticalAlignment="Top" Width="275" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="982,202,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Colon operation" VerticalAlignment="Top" Width="275" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="982,255,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Price: $425" VerticalAlignment="Top" Width="275" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="33" Margin="982,303,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Standby time: about 2 weeks" VerticalAlignment="Top" Width="275" FontSize="20"/>
-            <Rectangle HorizontalAlignment="Left" Height="206" Margin="97,512,0,0" Stroke="Black" VerticalAlignment="Top" Width="1301" Fill="White" Grid.Row="1" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" FocusVisualPrimaryBrush="#FFE8E8E8">
-                <Rectangle.RenderTransform>
-                    <CompositeTransform SkewY="0.259" TranslateY="2.995"/>
-                </Rectangle.RenderTransform>
-            </Rectangle>
-            <Rectangle HorizontalAlignment="Left" Height="205" Margin="98,513,0,0" Stroke="Black" VerticalAlignment="Top" Width="181" Fill="#FF4094C1" Grid.Row="1"/>
-            <TextBlock HorizontalAlignment="Left" Height="40" Margin="288,534,0,0" Grid.Row="1" TextWrapping="Wrap" Text="-Automotive: Professional: Eric Lemus" VerticalAlignment="Top" Width="346" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="40" Margin="288,566,0,0" Grid.Row="1" TextWrapping="Wrap" Text="-Automotive: Professional: Diego Herrera" VerticalAlignment="Top" Width="383" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="40" Margin="288,598,0,0" Grid.Row="1" TextWrapping="Wrap" Text="-Law Firm: Professional: Ls. Fernando Reyes" VerticalAlignment="Top" Width="421" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" Height="40" Margin="288,630,0,0" Grid.Row="1" TextWrapping="Wrap" Text="-Medicine: Professional: Dr. Enrique Guevara" VerticalAlignment="Top" Width="421" FontSize="20"/>
 
-        </Grid>
-    </ScrollViewer>
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="DashboardProjectsListView" IsItemClickEnabled="True" ItemTemplate="{StaticResource DashboardProjectsListViewTemplate}" ItemClick="DashboardProjectsListView_ItemClick" />
+    </Grid>
+
+    <Page.Resources>
+        <DataTemplate x:Key="DashboardProjectsListViewTemplate"  x:DataType="models1:PFProject"  >
+
+            <StackPanel Margin="47,41,778,800"  CornerRadius="15">
+                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                    <TextBlock Text= "Dashboard" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel Height="23" Margin="130, -30">
+                    <TextBlock Margin="-5, -100, 0,-70"  Height="53" Text="{Binding TitlePJ}" FontWeight="Bold" FontSize="15" Width="378"/>
+                </StackPanel>
+
+                <TextBlock Margin="550,-150,0,0" Text="{Binding TotalPricePJ}" FontWeight="Bold" Height="32" FontSize="18" RenderTransformOrigin="0.494,0.595" Width="138"/>
+
+                <TextBlock Margin="550,-230,2,2" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" Height="28"/>
+
+                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+                <StackPanel Height="23" Margin="130,10">
+                    <TextBlock Margin="-25, -60, 0,-70" Text="{Binding ResponsibleProfessional.NameP}" Width="372" Height="68"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
 </Page>

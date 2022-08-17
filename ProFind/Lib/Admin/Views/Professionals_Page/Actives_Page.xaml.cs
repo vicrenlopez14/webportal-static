@@ -35,10 +35,21 @@ namespace ProFind.Lib.Admin.Views.Professionals_Page
             var projectService = new PfProjectService();
 
             List<PFProject> ActiveProjectsList = new List<PFProject>();
+            
 
-            ActiveProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
             
             ProjectsActiveListView.ItemsSource = ActiveProjectsList;
+        }
+
+        private void ProjectsActiveListView_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PFProfessional project = e.ClickedItem as PFProfessional;
+
         }
     }
 }
