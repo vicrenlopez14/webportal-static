@@ -4,71 +4,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.Client.Views.Pays_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:Domain.Models" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView Margin="10,10,0,30" HorizontalAlignment="Left" Width="1442">
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#FF7773" Margin="1,15">
-                        <SymbolIcon Symbol="ReportHacked" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="Windshield repair" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Ing. Rafael Lima" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Unauthorized - $45.78" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#FF7773" Margin="1,15">
-                        <SymbolIcon Symbol="ReportHacked" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="General overhaul of the vehicle" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Ing. Charlie House" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Unauthorized - $50.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#FF7773" Margin="1,15">
-                        <SymbolIcon Symbol="ReportHacked" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="General medical consultation" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Dr. Michael Jhonson" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Unauthorized - $15.50" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-
-            <ListViewItem>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Background="#FF7773" Margin="1,15">
-                        <SymbolIcon Symbol="ReportHacked" Height="79" Width="166"/>
-                    </StackPanel>
-                    <StackPanel Margin="10, 18, 0, 0">
-                        <TextBlock Text="General medical consultation" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                        <StackPanel>
-                            <TextBlock Text="Dra. Ellie White" Style="{ThemeResource BodyTextBlockStyle}"/>
-                            <TextBlock Text="Unauthorized - $25.00" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </ListViewItem>
-        </ListView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Name="clientsUnauthorizedListView" ItemTemplate="{StaticResource ClientsUnauthorizedListViewTemplate}"/>
     </Grid>
+    
+    <Page.Resources>
+        <DataTemplate x:Key="ClientsUnauthorizedListViewTemplate" x:DataType="models1:PFProject">
+            <StackPanel Orientation="Horizontal" Margin="-900,-800,10,10" Height="100" Width="500">
+                <StackPanel Background="#FF7773" Margin="1,15">
+                    <SymbolIcon Symbol="ReportHacked" Height="79" Width="166"/>
+                </StackPanel>
+                <StackPanel Margin="10, 18, 0, 0">
+                    <TextBlock Text="Windshield repair" FontWeight="Bold" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    <StackPanel>
+                        <TextBlock Text="Ing. Rafael Lima" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="Unauthorized - $45.78" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 </Page>

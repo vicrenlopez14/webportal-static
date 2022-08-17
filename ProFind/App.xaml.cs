@@ -4,10 +4,12 @@ using Nito.AsyncEx.Synchronous;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Views.FirstUsePage;
 using ProFind.Lib.Global.Views.InitPage;
+using ProFind.Lib.Global.Views.ServerNotAvailable;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
@@ -78,6 +80,7 @@ namespace ProFind
                     WebAPIConnection.Run();
                     try
                     {
+                        await WebAPIConnection.IsServerAlive();
 
                         if (await new PFAdminService().AreThereAdmins())
                         {
@@ -89,12 +92,13 @@ namespace ProFind
                         {
                             rootFrame.Navigate(typeof(Lib.Global.Views.FirstUsePage.FirstUsePage), e.Arguments);
                             new GlobalNavigationController().Init(rootFrame, typeof(FirstUsePage));
-
                         }
                     }
-                    catch (Exception ex)
+                    catch (NetworkInformationException)
                     {
-                        Console.WriteLine(ex.Message);
+
+                        new GlobalNavigationController().Init(rootFrame, typeof(ServerNotAvailablePage));
+
                     }
                 }
                 // Asegurarse de que la ventana actual está activa.

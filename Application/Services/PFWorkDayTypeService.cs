@@ -8,6 +8,21 @@ namespace Application.Services
 {
     public class PFWorkDayTypeService : ICrudService<PFWorkDayType>
     {
+        public async Task<(List<PFWorkDayType>, List<string>)> GetComboboxChoices()
+        {
+            List<PFWorkDayType> objects = new List<PFWorkDayType>();
+            List<string> objectStrings = new List<string>();
+
+            objects = (List<PFWorkDayType>) await new PFWorkDayTypeService().ListObjectAsync();
+
+            foreach (var profession in objects)
+            {
+                objectStrings.Add(profession.NameWDT);
+            }
+
+            return (objects, objectStrings);
+        }
+
         public async Task<PFWorkDayType> GetObjectAsync(string id)
         {
             PFWorkDayType WorkDayType = null;

@@ -1,17 +1,7 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +15,18 @@ namespace ProFind.Lib.Client.Views.Notifications_Page
         public Notifications_Page2()
         {
             this.InitializeComponent();
+
+            GetProjectsList();
+        }
+
+        public async void GetProjectsList()
+        {
+            var projectService = new PfProjectService();
+            List<PFProject> clientNotificationList = new List<PFProject>();
+
+            clientNotificationList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            CientNotificationListView.ItemsSource = clientNotificationList;
         }
     }
 }

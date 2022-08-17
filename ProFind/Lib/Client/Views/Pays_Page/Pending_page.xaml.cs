@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +27,23 @@ namespace ProFind.Lib.Client.Views.Pays_Page
         public Pending_page()
         {
             this.InitializeComponent();
+            GetprojectsPendingList();
+
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public async void GetprojectsPendingList()
+        {
+            var projectService = new PfProjectService();
+            List<PFProject> clientPendingList = new List<PFProject>();
+
+            clientPendingList = await projectService.ListObjectAsync() as List<PFProject>;
+
+            clientsPendingListView.ItemsSource = clientPendingList;
         }
     }
 }

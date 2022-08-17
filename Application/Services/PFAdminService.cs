@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using Application.Models;
 using HttpResponseMessage = System.Net.Http.HttpResponseMessage;
@@ -60,6 +61,9 @@ namespace Application.Services
             if (response.IsSuccessStatusCode)
             {
                 admin = await response.Content.ReadAsAsync<IEnumerable<PFAdmin>>();
+            } else
+            {
+                throw new NetworkInformationException();
             }
 
             return admin;
