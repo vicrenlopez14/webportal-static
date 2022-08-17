@@ -66,7 +66,7 @@ namespace ProFind.Lib.Global.Views.InitPage
 
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var result = await new PfProfessionalService().Login(Email_tb.Text, Password_tb.Password);
+            var result = await new PFProjectService().Login(Email_tb.Text, Password_tb.Password);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

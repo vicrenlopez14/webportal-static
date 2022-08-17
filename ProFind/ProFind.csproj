@@ -262,6 +262,9 @@
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
+    <Compile Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
+      <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml.cs">
       <DependentUpon>Page_Activos.xaml</DependentUpon>
     </Compile>
@@ -504,6 +507,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

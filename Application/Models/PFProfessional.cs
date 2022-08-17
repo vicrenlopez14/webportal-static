@@ -34,7 +34,7 @@ namespace Application.Models
 
         public async void FillFromId(string id)
         {
-            var result = await new PfProfessionalService().GetObjectAsync(id);
+            var result = await new PFProjectService().GetObjectAsync(id);
 
             IdP = result.IdP;
             NameP = result.NameP;

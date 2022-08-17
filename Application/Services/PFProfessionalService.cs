@@ -6,7 +6,7 @@ using Application.Models;
 
 namespace Application.Services
 {
-    public class PfProfessionalService : ICrudService<PFProfessional>
+    public class PFProjectService : ICrudService<PFProfessional>
     {
         public async Task<HttpStatusCode> Login(string email, string password)
         {
