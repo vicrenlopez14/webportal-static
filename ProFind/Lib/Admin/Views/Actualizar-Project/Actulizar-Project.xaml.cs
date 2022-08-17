@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Professional.Actualizar_Project
+namespace ProFind.Lib.Admin.Actualizar_Project
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -64,11 +64,11 @@ namespace ProFind.Lib.Professional.Actualizar_Project
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new clientNavigationController().GoBack();
 
                 if (_isFirstAdmin)
                 {
-                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
         }

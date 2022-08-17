@@ -67,11 +67,11 @@ namespace ProFind.Lib.Client.Views.Crear_projects
 
 
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new clientNavigationController().GoBack();
 
                 if (_isFirstAdmin)
                 {
-                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
         }

@@ -65,11 +65,11 @@ namespace ProFind.Lib.Professional.Actualizar_Project
 
 
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new clientNavigationController().GoBack();
 
                 if (_isFirstAdmin)
                 {
-                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
         }
