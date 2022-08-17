@@ -121,8 +121,14 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
+    <Compile Include="Lib\Admin\Views\Actualizar-Project\Actulizar-Project.xaml.cs">
+      <DependentUpon>Actulizar-Project.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml.cs">
       <DependentUpon>AdminCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
+      <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml.cs">
       <DependentUpon>Add_Detete_Profesionales.xaml</DependentUpon>
@@ -171,9 +177,6 @@
     <Compile Include="Lib\Admin\Views\QuickView_Page\QuickView_Page.xaml.cs">
       <DependentUpon>QuickView_Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Admin\Views\Status_Page\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Status_Page\Status_Page.xaml.cs">
       <DependentUpon>Status_Page.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,9 @@
     </Compile>
     <Compile Include="Lib\Client\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml.cs">
       <DependentUpon>ChooseProfessional_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Client\Views\Crear-projects\Create-Project.xaml.cs">
+      <DependentUpon>Create-Project.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Client\Views\Dashboard_Page\Dashboard_Page.xaml.cs">
       <DependentUpon>Dashboard_Page.xaml</DependentUpon>
@@ -261,6 +267,9 @@
     <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Professional\Actualizar-Project\Actulizar-Project.xaml.cs">
+      <DependentUpon>Actulizar-Project.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
     <Compile Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
       <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
@@ -338,9 +347,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Lib\Admin\Views\Actualizar-Project\Actulizar-Project.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -402,10 +419,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\Admin\Views\Status_Page\BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\Admin\Views\Status_Page\Status_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -415,6 +428,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Client\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Client\Views\Crear-projects\Create-Project.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -507,6 +524,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Professional\Actualizar-Project\Actulizar-Project.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
