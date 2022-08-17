@@ -63,4 +63,21 @@ namespace Application.Models
 
         public PFRank Rank;
     }
+
+    public class LoginAdmin
+    {
+        [JsonConstructor]
+        public LoginAdmin(string emailA, string passwordA)
+        {
+            EmailA = emailA;
+            PasswordA = passwordA;
+        }
+
+        public LoginAdmin()
+        {
+        }
+
+        public string EmailA { get; }
+        public string PasswordA { get; }
+    }
 }

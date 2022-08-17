@@ -6,19 +6,15 @@ using Application.Models;
 
 namespace Application.Services
 {
-    public class PfProfessionalService : ICrudService<PFProfessional>
+    public class PFProjectService : ICrudService<PFProfessional>
     {
         public async Task<HttpStatusCode> Login(string email, string password)
         {
-            var values = new Dictionary<string, string>
-            {
-                {"email", email},
-                {"password", password}
-            };
+            var loginProfessional = new LoginProfessional(email, password);
 
-            var content = new FormUrlEncodedContent(values);
 
-            var response = await WebAPIConnection.GetConnection.PostAsync($"api/Professional/login", content);
+            var response =
+                await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Professional/login", loginProfessional);
 
             return response.StatusCode;
         }

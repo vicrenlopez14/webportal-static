@@ -1,6 +1,9 @@
 ﻿using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
 using Application.Services;
+using System.Threading.Tasks;
+using Application.Models;
+using ProFind.Lib.Global.Helpers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -11,6 +14,7 @@ namespace ProFind.Lib.Client.Views.InitPage
     /// </summary>
     public sealed partial class InitPage : Page
     {
+        byte[] pictureBytes;
         public InitPage()
         {
             WebAPIConnection.Run();
@@ -45,6 +49,8 @@ namespace ProFind.Lib.Client.Views.InitPage
         private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender,
             Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
+            new GlobalNavigationController().NavigateTo(typeof(InitPage_Login));
+
         }
 
         private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -56,6 +62,51 @@ namespace ProFind.Lib.Client.Views.InitPage
         {
             new GlobalNavigationController().NavigateTo(typeof(Professional.Views.InitPage.InitPage));
 
+        }
+
+        private async Task Button_Click_5Async(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var registerClient = new RegisterClient(Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
+            var result = await new PfClientService().Register(registerClient);
+
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.Main_Page.Main_Page_Professional));
+            }
+            else
+            {
+                FailedAuth_tt.IsOpen = true;
+            }
+        }
+
+        private void Name_tb_TextChanged(TextBlock sender, TextChangedEventArgs e)
+        {
+            ProfilePicture_pp.DisplayName = sender.Text;
+        }
+
+        private async void btnExaminar_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            pictureBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+        }
+
+        private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var registerClient = new RegisterClient(Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
+            var result = await new PfClientService().Register(registerClient);
+
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                new GlobalNavigationController().NavigateTo(typeof(Lib.Client.Views.Main_Page.Main_Page_Client));
+            }
+            else
+            {
+                FailedAuth_tt.IsOpen = true;
+            }
         }
     }
 }

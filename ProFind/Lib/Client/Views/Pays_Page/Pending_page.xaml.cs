@@ -1,5 +1,5 @@
-﻿using Application.Services;
-using Domain.Models;
+﻿using Application.Models;
+using Application.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +28,7 @@ namespace ProFind.Lib.Client.Views.Pays_Page
         {
             this.InitializeComponent();
             GetprojectsPendingList();
-            
+
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

@@ -66,20 +66,6 @@ CREATE TABLE Tag
 
 DESCRIBE Tag;
 
-###############################################
-CREATE TABLE Process
-(
-    IdPR          CHAR(21) PRIMARY KEY,
-    TitlePR       VARCHAR(50),
-    DescriptionPR VARCHAR(350),
-    BeginDatePR   DATETIME,
-    IdT1          CHAR(21),
-    EndDatePR     DATETIME,
-    FOREIGN KEY (IdT1) REFERENCES Tag (IdT) ON DELETE CASCADE
-);
-
-
-DESCRIBE Process;
 
 ###############################################
 CREATE TABLE Curriculum
@@ -115,7 +101,7 @@ VALUES ('Ahuachapán'),
        ('La Unión'),
        ('Usulután');
 
-
+SELECT * FROM Department;
 ################################################
 
 CREATE TABLE Professional
@@ -125,6 +111,7 @@ CREATE TABLE Professional
     DateBirthP  DATE,
     EmailP      CHAR(21),
     PasswordP   CHAR(64),
+    ActiveP     BOOLEAN,
     SexP        BOOLEAN,
     DUIP        VARCHAR(15),
     AFPP        VARCHAR(50),
@@ -211,9 +198,9 @@ CREATE TABLE Profession
 );
 
 INSERT INTO Profession (NamePFS)
-VALUES ('Bufete legal'),
-       ('Servicios automotriz'),
-       ('Médico general');
+VALUES ('Law firm'),
+       ('Automotive services'),
+       ('General medicine');
 
 ################################################
 

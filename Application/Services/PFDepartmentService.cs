@@ -8,6 +8,21 @@ namespace Application.Services
 {
     public class PFDepartmentService
     {
+        public async Task<(List<PFDepartment>, List<string>)> GetComboboxChoices()
+        {
+            List<PFDepartment> objects = new List<PFDepartment>();
+            List<string> objectStrings = new List<string>();
+
+            objects = (List<PFDepartment>) await new PFDepartmentService().ListObjectAsync();
+
+            foreach (var profession in objects)
+            {
+                objectStrings.Add(profession.NameDP);
+            }
+
+            return (objects, objectStrings);
+        }
+
         public async Task<PFDepartment> GetObjectAsync(string id)
         {
             PFDepartment Department = null;
@@ -38,7 +53,8 @@ namespace Application.Services
         public async Task<IEnumerable<PFDepartment>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFDepartment> Department = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Department/paginated/{fromIndex}/{toIndex}");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/Department/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 Department = await response.Content.ReadAsAsync<IEnumerable<PFDepartment>>();

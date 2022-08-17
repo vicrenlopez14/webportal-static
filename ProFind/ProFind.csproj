@@ -121,8 +121,14 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
+    <Compile Include="Lib\Admin\Views\Actualizar-Project\Actulizar-Project.xaml.cs">
+      <DependentUpon>Actulizar-Project.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml.cs">
       <DependentUpon>AdminCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
+      <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml.cs">
       <DependentUpon>Add_Detete_Profesionales.xaml</DependentUpon>
@@ -159,9 +165,6 @@
       <DependentUpon>Actives_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Professionals_Page\Professionals_Page.cs" />
-    <Compile Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml.cs">
-      <DependentUpon>Professional_Create.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Professional_Add\professional_information.xaml.cs">
       <DependentUpon>professional_information.xaml</DependentUpon>
     </Compile>
@@ -174,9 +177,6 @@
     <Compile Include="Lib\Admin\Views\QuickView_Page\QuickView_Page.xaml.cs">
       <DependentUpon>QuickView_Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Admin\Views\Status_Page\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Status_Page\Status_Page.xaml.cs">
       <DependentUpon>Status_Page.xaml</DependentUpon>
     </Compile>
@@ -187,11 +187,17 @@
     <Compile Include="Lib\Client\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml.cs">
       <DependentUpon>ChooseProfessional_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\Crear-projects\Create-Project.xaml.cs">
+      <DependentUpon>Create-Project.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Views\Dashboard_Page\Dashboard_Page.xaml.cs">
       <DependentUpon>Dashboard_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Client\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Client\Views\InitPage\InitPage_Login.xaml.cs">
+      <DependentUpon>InitPage_Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Client\Views\InitPage\UnidentifiedUserForm.xaml.cs">
       <DependentUpon>UnidentifiedUserForm.xaml</DependentUpon>
@@ -258,7 +264,16 @@
     <Compile Include="Lib\Global\Views\Professionals_Login.xaml.cs">
       <DependentUpon>Professionals_Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
+      <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Professional\Actualizar-Project\Actulizar-Project.xaml.cs">
+      <DependentUpon>Actulizar-Project.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
+    <Compile Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
+      <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml.cs">
       <DependentUpon>Page_Activos.xaml</DependentUpon>
     </Compile>
@@ -318,7 +333,6 @@
     <Content Include="Lib\Professional\Controllers\Dummy.txt" />
     <Content Include="Lib\Professional\Services\Dummy.txt" />
     <Content Include="Lib\Professional\ViewModels\Dummy.txt" />
-    <Content Include="Lib\Professional\Views\Dummy.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -333,9 +347,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Lib\Admin\Views\Actualizar-Project\Actulizar-Project.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Admin\Views\Eliminar_Professional\Add_Detete_Profesionales.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -381,10 +403,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\Admin\Views\Professional_Add\Professional_Create.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Lib\Admin\Views\Professional_Add\professional_information.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -401,10 +419,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\Admin\Views\Status_Page\BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\Admin\Views\Status_Page\Status_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -417,6 +431,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\Client\Views\Crear-projects\Create-Project.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Client\Views\Dashboard_Page\Dashboard_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -424,6 +442,10 @@
     <Page Include="Lib\Client\Views\InitPage\InitPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Client\Views\InitPage\InitPage_Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Client\Views\InitPage\UnidentifiedUserForm.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -500,6 +522,18 @@
     <Page Include="Lib\Global\Views\Professionals_Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Professional\Actualizar-Project\Actulizar-Project.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml">
       <Generator>MSBuild:Compile</Generator>

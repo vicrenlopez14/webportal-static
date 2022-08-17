@@ -43,7 +43,7 @@ public class ClientDataSource
 
     public async Task<bool> Create(PFClient client)
     {
-        const string query = "INSERT INTO Client VALUES (@Id, @Name, @Email, @Password);";
+        const string query = "INSERT INTO Client VALUES (@Id, @Name, @Email, @Password, @Picture);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -52,7 +52,8 @@ public class ClientDataSource
             ["Id"] = client.IdC,
             ["Name"] = client.NameC!,
             ["Email"] = client.EmailC!,
-            ["Password"] = SHAPassword.ShaThisPassword(client.PasswordC!)
+            ["Password"] = SHAPassword.ShaThisPassword(client.PasswordC!),
+            ["Picture"] = client.PictureC
         });
 
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
@@ -102,7 +103,7 @@ public class ClientDataSource
             ["Email"] = email,
             ["Password"] = SHAPassword.ShaThisPassword(password)
         });
-
+        
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 

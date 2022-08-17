@@ -10,7 +10,6 @@ namespace WebService.Lib.Professional.Controller;
 [ApiController]
 public class ProfessionalController : CrudController<PFProfessional>
 {
-
     private readonly ProfessionalDataSource _dataSource = new();
 
     public override async Task<ActionResult<PFProfessional>> Get(string id)
@@ -43,11 +42,11 @@ public class ProfessionalController : CrudController<PFProfessional>
         newObject.IdP = await Nanoid.Nanoid.GenerateAsync();
         return (await _dataSource.Create(newObject)) ? Ok(newObject) : NotFound();
     }
-    
+
     [HttpPost("login")]
-    public async Task<ActionResult<HttpStatusCode>> Login(string email, string password)
+    public async Task<ActionResult<HttpStatusCode>> Login(LoginProfessional loginProfessional)
     {
-        return (await _dataSource.Login(email, password)) ? Ok() : NotFound();
+        return (await _dataSource.Login(loginProfessional.EmailP, loginProfessional.PasswordP)) ? Ok() : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProfessional toUpdateObject)

@@ -6,34 +6,27 @@ using Application.Models;
 
 namespace Application.Services
 {
-    public class PfClientService: ICrudService<PFClient>
+    public class PfClientService : ICrudService<PFClient>
     {
         public async Task<HttpStatusCode> Login(string email, string password)
         {
-            var values = new Dictionary<string, string>
-            {
-                {"email", email},
-                {"password", password}
-            };
+            var loginClient = new LoginClient(email, password);
 
-            var content = new FormUrlEncodedContent(values);
-
-            var response = await WebAPIConnection.GetConnection.PostAsync($"api/Client/login", content);
+            var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Client/login", loginClient);
 
             return response.StatusCode;
         }
-        
+
         public async Task<HttpStatusCode> Register(RegisterClient toCreateObject)
         {
             HttpResponseMessage response =
                 await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Client", toCreateObject);
-            response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
         }
 
-        
-         public async Task<PFClient> GetObjectAsync(string id)
+
+        public async Task<PFClient> GetObjectAsync(string id)
         {
             PFClient client = null;
             HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Client/{id}");
@@ -63,7 +56,8 @@ namespace Application.Services
         public async Task<IEnumerable<PFClient>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFClient> client = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Client/paginated/{fromIndex}/{toIndex}");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/Client/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 client = await response.Content.ReadAsAsync<IEnumerable<PFClient>>();

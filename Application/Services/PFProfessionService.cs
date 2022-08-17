@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,10 +9,25 @@ namespace Application.Services
 {
     public class PFProfessionService
     {
+        public async Task<(List<PFProfession>, List<string>)> GetComboboxChoices()
+        {
+            List<PFProfession> professions = new List<PFProfession>();
+            List<string> professionStrings = new List<string>();
+
+            professions = (List<PFProfession>) await new PFProfessionService().ListObjectAsync();
+
+            foreach (var profession in professions)
+            {
+                professionStrings.Add(profession.NamePFS);
+            }
+
+            return (professions, professionStrings);
+        }
+
         public async Task<PFProfession> GetObjectAsync(string id)
         {
             PFProfession PFProfession = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/PFProfession/{id}");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Profession/{id}");
             if (response.IsSuccessStatusCode)
             {
                 PFProfession = await response.Content.ReadAsAsync<PFProfession>();
@@ -23,7 +39,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfession>> ListObjectAsync()
         {
             IEnumerable<PFProfession> PFProfession = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/PFProfession/");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Profession/");
             if (response.IsSuccessStatusCode)
             {
                 PFProfession = await response.Content.ReadAsAsync<IEnumerable<PFProfession>>();
@@ -38,7 +54,8 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfession>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFProfession> PFProfession = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/PFProfession/paginated/{fromIndex}/{toIndex}");
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.GetAsync($"api/Profession/paginated/{fromIndex}/{toIndex}");
             if (response.IsSuccessStatusCode)
             {
                 PFProfession = await response.Content.ReadAsAsync<IEnumerable<PFProfession>>();
@@ -50,7 +67,7 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfession>> Search(IDictionary<string, string> searchCriteria)
         {
             IEnumerable<PFProfession> PFProfessions = null;
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/PFProfession/criteria");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync("api/Profession/criteria");
             if (response.IsSuccessStatusCode)
             {
                 PFProfessions = await response.Content.ReadAsAsync<IEnumerable<PFProfession>>();
@@ -62,7 +79,7 @@ namespace Application.Services
         public async Task<HttpStatusCode> Create(PFProfession toCreateObject)
         {
             HttpResponseMessage response =
-                await WebAPIConnection.GetConnection.PostAsJsonAsync("api/PFProfession", toCreateObject);
+                await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Profession", toCreateObject);
             response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
@@ -71,7 +88,7 @@ namespace Application.Services
         public async Task<HttpStatusCode> Update(PFProfession toUpdateObject)
         {
             HttpResponseMessage response =
-                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/PFProfession/{toUpdateObject.IdPFS}",
+                await WebAPIConnection.GetConnection.PutAsJsonAsync($"api/Profession/{toUpdateObject.IdPFS}",
                     toUpdateObject);
             response.EnsureSuccessStatusCode();
 
@@ -80,7 +97,7 @@ namespace Application.Services
 
         public async Task<HttpStatusCode> Delete(string id)
         {
-            HttpResponseMessage response = await WebAPIConnection.GetConnection.DeleteAsync($"api/PFProfession/{id}");
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.DeleteAsync($"api/Profession/{id}");
             response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
