@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using ProFind.Lib.Admin.Controllers;
+using ProFind.Lib.Professional.Controllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -22,9 +27,54 @@ namespace ProFind.Lib.Client.Views.Crear_projects
     /// </summary>
     public sealed partial class Create_Project : Page
     {
+        private bool _isFirstAdmin;
+
         public Create_Project()
         {
             this.InitializeComponent();
         }
+
+        public bool SucessfulCreation_tt { get; private set; }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            _isFirstAdmin = (bool)e.Parameter;
+
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            PFProject project = new PFProject();
+            var profession = new PFProfessional();
+
+
+
+            project.ResponsibleProfessional = profession;
+
+            project.TitlePJ = TitlePJ.Text;
+            project.DescriptionPJ = DescriptionPJ.Text;
+
+            project.Status = true ?PFProjectStatus.Active : PFProjectStatus.Inactive;
+
+
+
+            var respuesta = await new PfProjectService().Update(project);
+
+            if (respuesta == HttpStatusCode.OK)
+            {
+
+
+
+                SucessfulCreation_tt = true;
+                new AdminNavigationController().GoBack();
+
+                if (_isFirstAdmin)
+                {
+                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                }
+            }
+        }
     }
 }
+
