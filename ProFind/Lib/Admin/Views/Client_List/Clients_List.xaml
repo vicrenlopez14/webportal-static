@@ -14,18 +14,18 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Clients" Style="{StaticResource HeaderTextBlockStyle}" Margin="80,39,1268,903" RenderTransformOrigin="0.638,0.776"/>
-        <ListView Name="ClientListView" ItemTemplate="{StaticResource ClientsListViewTemplate}"/>
+        <ListView Name="ClientListView">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:PFClient">
+                    <StackPanel CornerRadius="10" BorderThickness="1" BorderBrush="Black" Orientation="Horizontal" >
+                        <PersonPicture ProfilePicture="{Binding PictureC}" Height="73" Width="69" Margin="15,0"/>
+                        <StackPanel Orientation="Vertical" Height="42">
+                            <TextBlock Text="{Binding NameC}" Height="21"/>
+                            <TextBlock Text="{Binding EmailC}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
-
-    <Page.Resources>
-        <DataTemplate x:Key="ClientsListViewTemplate" x:DataType="models:PFClient">
-            <StackPanel Margin="80,131,750,765" CornerRadius="10" BorderThickness="1" BorderBrush="Black" Orientation="Horizontal" >
-                <PersonPicture ProfilePicture="{Binding PictureC}" Height="73" Width="69" Margin="15,0"/>
-                <StackPanel Orientation="Vertical" Height="42">
-                    <TextBlock Text="{Binding NameC}" Height="21"/>
-                    <TextBlock Text="{Binding EmailC}"/>
-                </StackPanel>
-            </StackPanel>
-        </DataTemplate>
-    </Page.Resources>
 </Page>
