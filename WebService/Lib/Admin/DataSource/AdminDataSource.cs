@@ -95,7 +95,7 @@ public class AdminDataSource
             ["Name"] = admin.NameA,
             ["Email"] = admin.EmailA,
             ["Tel"] = admin.TelA,
-            ["Password"] =  SHAPassword.ShaThisPassword(admin.PasswordA),
+            ["Password"] =  admin.PasswordA,
             ["Picture"] = admin.PictureA,
             ["Rank"] = admin.IdR1
         });

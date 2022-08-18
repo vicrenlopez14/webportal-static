@@ -14,7 +14,11 @@ namespace Application.Services
     {
         public async Task<HttpStatusCode> Login(string email, string password)
         {
-            var loginAdmin = new LoginAdmin(email, password);
+            var loginAdmin = new RegisterClient
+            {
+                EmailC = email,
+                PasswordC = password
+            };
 
             var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Admin/login", loginAdmin);
 
