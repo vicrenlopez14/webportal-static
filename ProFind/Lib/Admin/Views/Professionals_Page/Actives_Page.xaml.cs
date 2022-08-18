@@ -1,5 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
+using ProFind.Lib.Admin.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,13 +33,29 @@ namespace ProFind.Lib.Admin.Views.Professionals_Page
         public async void GetProjectsList()
 
         {
-            var projectService = new PfProjectService();
+            var professionalService = new PfProfessionalService();
 
-            List<PFProject> ActiveProjectsList = new List<PFProject>();
+            List<PFProject> activeProfessionalsList = new List<PFProject>();
 
-            ActiveProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
-            
-            ProjectsActiveListView.ItemsSource = ActiveProjectsList;
+            IDictionary<string, string> criteries = new Dictionary<string, string>()
+            {
+                ["ActiveP"] = "1"
+            };
+
+            activeProfessionalsList = await professionalService.Search(criteries) as List<PFProject>;
+
+            DashboardProfessionalsActiveListView.ItemsSource = activeProfessionalsList;
+        }
+
+        private void ProjectsActiveListView_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PFProfessional project = e.ClickedItem as PFProfessional;
+            new AdminNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage),project);
         }
     }
 }

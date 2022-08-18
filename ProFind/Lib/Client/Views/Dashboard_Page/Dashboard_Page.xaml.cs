@@ -13,6 +13,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Application.Models;
+using Application.Services;
+using ProFind.Lib.Admin.Controllers;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProFind.Lib.Client.Views.Dashboard_Page
@@ -25,6 +29,27 @@ namespace ProFind.Lib.Client.Views.Dashboard_Page
         public Dashboard_Page()
         {
             this.InitializeComponent();
+            GetProjectList();
+        }
+
+        public async void GetProjectList()
+        {
+            PfProjectService projectService = new PfProjectService();
+            List<PFProject> projects = new List<PFProject>();
+
+            IDictionary<string, string> criteries = new Dictionary<string, string>()
+            {
+                ["IdC1"] = PfClientService.client.IdC
+            };
+
+            projects = await projectService.Search(criteries) as List<PFProject>;
+
+            DashboardProjectsListView.ItemsSource = projects;
+        }
+
+        private void DashboardProjectsListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var clickedItem = e.ClickedItem as PFProject;
         }
     }
 }

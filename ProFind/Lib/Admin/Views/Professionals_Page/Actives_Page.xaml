@@ -14,18 +14,18 @@
             <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="ProjectsActiveListView" ItemTemplate="{StaticResource ProjectsActiveListViewTemplate}" />
+        <ListView Name="DashboardProfessionalsActiveListView" ItemTemplate="{StaticResource DashboardProfessionalsActiveListViewTemplate}" Tapped="ProjectsActiveListView_Tapped" ItemClick="ProjectsActiveListView_ItemClick" />
     </Grid>
 
     <Page.Resources>
 
-        <DataTemplate x:Key="ProjectsActiveListViewTemplate" x:DataType="models1:PFProfessional" >
+        <DataTemplate x:Key="DashboardProfessionalsActiveListViewTemplate" x:DataType="models1:PFProfessional" >
 
             <StackPanel Margin="715,161,110,691" Background="#A8DF7C" CornerRadius="15">
                 <StackPanel Margin="-95,20,0,0" Height="27" Width="300" />
                 <PersonPicture Margin="-95,-60,450,-110" Name="" ProfilePicture="{Binding ResponsibleProfessional.PictureP}" Height="100" Width="100"/>
                 <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                    <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
+                    <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.NameP}" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
                 <StackPanel Height="23" Margin="130, 5">

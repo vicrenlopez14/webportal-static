@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +27,22 @@ namespace UWP_Administradores
         public Page_Inactivos()
         {
             this.InitializeComponent();
+            GetInactiveProjectList();   
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public async void GetInactiveProjectList()
+        {
+            var answerInactives = new PfProjectService();
+            List<PFProject> inactivesProjectList = new List<PFProject>();
+
+           inactivesProjectList = await answerInactives.ListObjectAsync() as List<PFProject>;
+
+            InactivesProfessionalListView.ItemsSource = inactivesProjectList;   
         }
     }
 }

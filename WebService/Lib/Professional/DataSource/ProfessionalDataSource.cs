@@ -42,7 +42,7 @@ public class ProfessionalDataSource
     public async Task<bool> Create(PFProfessional professional)
     {
         const string query =
-            "INSERT INTO Professional VALUES(@Id,@Name,@DateBirth,@Email,@Password, @Sex, @Dui, @Afp, @Isss, @ZipCode, @Salary, @HiringDate, @Picture, @Curriculum, @Profession, @Department);";
+            "INSERT INTO Professional VALUES(@Id,@Name,@DateBirth,@Email,@Password, @Active, @Sex, @Dui, @Afp, @Isss, @ZipCode, @Salary, @HiringDate, @Picture, @Curriculum, @Profession, @Department);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -53,6 +53,7 @@ public class ProfessionalDataSource
             ["DateBirth"] = professional.DateBirthP,
             ["Email"] = professional.EmailP,
             ["Password"] = SHAPassword.ShaThisPassword(professional.PasswordP!),
+            ["Active"] = professional.ActiveP,
             ["Sex"] = professional.SexP,
             ["Dui"] = professional.DUIP,
             ["Afp"] = professional.AFPP,
@@ -72,7 +73,7 @@ public class ProfessionalDataSource
     public async Task<bool> Update(string id, PFProfessional professional)
     {
         const string query = "UPDATE Professional SET NameP = @Name, DateBirthP = @DateBirth, "
-                             + "EmailP = @Email, PasswordP = @Password, IdCU1 = @Curriculum WHERE IdP = @Id;";
+                             + "EmailP = @Email, PasswordP = @Password, ActiveP = @Active IdCU1 = @Curriculum WHERE IdP = @Id;";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -83,6 +84,7 @@ public class ProfessionalDataSource
             ["DateBirth"] = professional.DateBirthP,
             ["Email"] = professional.EmailP,
             ["Password"] = professional.PasswordP!,
+            ["Active"] = professional.ActiveP,
             ["Curriculum"] = professional.IdCU1,
         });
 

@@ -8,6 +8,8 @@ namespace Application.Services
 {
     public class PFProjectService : ICrudService<PFProfessional>
     {
+        public static PFProfessional professional;
+
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginProfessional = new LoginProfessional(email, password);

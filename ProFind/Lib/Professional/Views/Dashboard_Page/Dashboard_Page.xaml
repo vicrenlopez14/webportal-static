@@ -5,7 +5,7 @@
     xmlns:local="using:ProFind.Lib.Professional.Views.Dashboard_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
@@ -52,5 +52,37 @@
         <TextBlock HorizontalAlignment="Left" Height="40" Margin="284,598,0,0" Grid.Row="1" TextWrapping="Wrap" Text="-Law Firm: Client: Génesis Aguirre" VerticalAlignment="Top" Width="421" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" Height="40" Margin="284,630,0,0" Grid.Row="1" TextWrapping="Wrap" Text="-Medicine: Client: Daniela Vega" VerticalAlignment="Top" Width="421" FontSize="20"/>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="DashboardProjectsListView" IsItemClickEnabled="True" ItemTemplate="{StaticResource DashboardProjectsListViewTemplate}" ItemClick="DashboardProjectsListView_ItemClick" />
     </Grid>
+
+    <Page.Resources>
+        <DataTemplate x:Key="DashboardProjectsListViewTemplate"  x:DataType="models1:PFProject"  >
+
+            <StackPanel Margin="47,41,778,800"  CornerRadius="15">
+                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                    <TextBlock Text= "Dashboard" FontWeight="Bold"/>
+                </StackPanel>
+
+                <Image Margin="-550,-10,0,0"  Width="100" Height="100" Source="{Binding PicturePJ}"/>
+               
+
+                <TextBlock Margin="550,-150,0,0" Text="{Binding TotalPricePJ}" FontWeight="Bold" Height="32" FontSize="18" RenderTransformOrigin="0.494,0.595" Width="138"/>
+
+                <TextBlock Margin="550,-230,2,2" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" Height="28"/>
+
+                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+                <StackPanel Height="23" Margin="130, -30">
+                    <TextBlock Margin="-5, -100, 0,-70"  Height="53" Text="{Binding TitlePJ}" FontWeight="Bold" FontSize="15" Width="378"/>
+                </StackPanel>
+                <StackPanel Height="23" Margin="130,10">
+                    <TextBlock Margin="-25, -60, 0,-70" Text="{Binding ResponsibleProfessional.NameP}" Width="372" Height="68"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
 </Page>
