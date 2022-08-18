@@ -16,8 +16,8 @@ namespace ProFind.Lib.Professional.Views.Main_Page
             {"ActiveProjects_Page", typeof(Page_Activos) },
             {"InactiveProjects_Page", typeof(Page_Inactivos) },
             {"Notifications_Page", typeof(Notifications_Page.Notifications_Page) },
-            {"Activities_Page", typeof(Actives_Page) },
-            {"", typeof(Dashboard_Page.Dashboard_Page) }
+            {"Activities_Page", typeof(ActivesPage) },
+            {"", typeof(Page_Activos) }
         };
         public Main_Page_Professional()
         {

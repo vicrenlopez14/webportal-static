@@ -49,7 +49,7 @@ namespace ProFind.Lib.Professional.Views.EliminarProject
             PFProject Project = new PFProject();
 
 
-            var respuesta = await new PFProjectService().Delete(Project.IdPJ);
+            var respuesta = await new PfProjectService().Delete(Project.IdPJ);
             if (respuesta == HttpStatusCode.OK)
             {
 

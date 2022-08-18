@@ -61,7 +61,7 @@ namespace ProFind.Lib.Admin.Views
             PFProfessional professional = new PFProfessional();
 
 
-            var respuesta = await new PFProjectService().Delete(professional.IdP);
+            var respuesta = await new PFProfessionalService().Delete(professional.IdP);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;

@@ -16,24 +16,25 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProFind.Lib.Admin.Views.Professionals_Page
 {
     /// <summary>
-    /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Actives_Page : Page
+    public sealed partial class ActivesPage : Page
     {
-        public Actives_Page()
+        public ActivesPage()
         {
             this.InitializeComponent();
             GetProjectsList();
         }
+
         public async void GetProjectsList()
 
         {
-            var professionalService = new PfProfessionalService();
+            var professionalService = new PFProfessionalService();
 
             List<PFProject> activeProfessionalsList = new List<PFProject>();
 
@@ -55,7 +56,7 @@ namespace ProFind.Lib.Admin.Views.Professionals_Page
         private void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             PFProfessional project = e.ClickedItem as PFProfessional;
-            new AdminNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage),project);
+            new AdminNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage), project);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace ProFind.Lib.Client.Views.ChooseProfesional_Page
 
         public async void GetChooseProfessionalLis()
         {
-            var professional = new PFProjectService();
+            var professional = new PFProfessionalService();
             List<PFProfessionService> chooseProfessionalList = new List<PFProfessionService>(); 
 
             chooseProfessionalList = await professional.ListObjectAsync() as List<PFProfessionService>;

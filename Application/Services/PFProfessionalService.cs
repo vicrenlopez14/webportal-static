@@ -6,7 +6,7 @@ using Application.Models;
 
 namespace Application.Services
 {
-    public class PFProjectService : ICrudService<PFProfessional>
+    public class PFProfessionalService : ICrudService<PFProfessional>
     {
         public static PFProfessional professional;
 

@@ -42,5 +42,10 @@ namespace ProFind.Lib.Admin.Views.Estado_del_proyecto
 
             ActiveProjectsListView.ItemsSource = ActiveProjectsList;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
