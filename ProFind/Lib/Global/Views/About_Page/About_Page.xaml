@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="344" Margin="64,68,0,0" Stroke="Black" VerticalAlignment="Top" Width="1032" Fill="Salmon" FocusVisualPrimaryBrush="White"/>

@@ -6,27 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
-        <TextBlock Text="Inactivos" Margin="20,15,0,0" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+        <TextBlock Text="Inactives" Margin="20,15,0,0" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
         <StackPanel Background="#FEF8E9" Margin="20,80,775,759" BorderBrush="Black" CornerRadius="15">
             <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Revisión general del vehiculo"></TextBlock>
+                <TextBlock Height="25" Text="General overhaul of the vehicle"></TextBlock>
             </StackPanel>
             <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Automotriz" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Automotive" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                 <SymbolIcon Symbol="Setting"/>
             </StackPanel>
             <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+                <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Height="23" Margin="130,-5">
                 <TextBlock Text="Ing. Daniel Rodas"></TextBlock>
             </StackPanel>
-            <Button x:Name="btnIr" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
+            <Button x:Name="btnIr" Height="30" Width="65" Content="Go" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
         </StackPanel>
         <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="21,79,775,758" CornerRadius="15">
             <AppBarSeparator HorizontalAlignment="Left" Margin="525,9,0,0" VerticalAlignment="Top" Height="35"/>
@@ -35,21 +35,21 @@
 
         <StackPanel Margin="20,270,776,567" Background="#FEF8E9" CornerRadius="15">
             <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Apelación de esquelas"></TextBlock>
+                <TextBlock Height="25" Text="Appeal of obituaries"></TextBlock>
             </StackPanel>
             <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Bufete legal" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Law firm" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                 <SymbolIcon Symbol="Manage"/>
             </StackPanel>
             <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+                <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Height="23" Margin="130,-5">
                 <TextBlock Text="Lic. Benjamin Bottom"></TextBlock>
             </StackPanel>
-            <Button x:Name="btnIr1" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
+            <Button x:Name="btnIr1" Height="30" Width="65" Content="Go" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
         </StackPanel>
         <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="20,270,775,566" CornerRadius="15">
             <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="526,8,0,0"/>

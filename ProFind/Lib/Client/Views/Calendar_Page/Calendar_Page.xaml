@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <muxc:InfoBar IsOpen="True" Severity="Informational" Title="Empty page" Message="Work in progress."/>
@@ -46,7 +46,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="274,165,112,801" RenderTransformOrigin="1.133,0.471"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="274,165,112,801" RenderTransformOrigin="1.133,0.471"/>
             <TextBlock Text="Stage 2" FontWeight="SemiBold" FontSize="14" Margin="273,189,71,777"/>
             <StackPanel Margin="47,136,266,766" Background="#FFCA3A" CornerRadius="8">
 
@@ -62,7 +62,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="64,165,322,801" RenderTransformOrigin="1.133,0.471"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="64,165,322,801" RenderTransformOrigin="1.133,0.471"/>
             <TextBlock Text="29/02" FontWeight="SemiBold" FontSize="14" Margin="47,135,409,844" RenderTransformOrigin="1.133,0.471"/>
             <TextBlock Text="Stage 1" FontWeight="SemiBold" FontSize="14" Margin="63,189,281,777"/>
             <StackPanel Margin="220,137,257,765" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
@@ -100,7 +100,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="489,165,65,801" RenderTransformOrigin="1.133,0.471" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="489,165,65,801" RenderTransformOrigin="1.133,0.471" Grid.ColumnSpan="2"/>
             <TextBlock Text="Stage 3" FontWeight="SemiBold" FontSize="14" Margin="488,189,24,777" Grid.ColumnSpan="2"/>
             <StackPanel Margin="11,140,466,762" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
 
@@ -116,7 +116,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="28,169,522,797" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="28,169,522,797" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
             <TextBlock Text="Stage 4" FontWeight="SemiBold" FontSize="14" Margin="27,193,481,773" Grid.Column="2"/>
             <StackPanel Margin="257,250,56,652" Background="#FFCA3A" CornerRadius="8">
 
@@ -132,7 +132,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="274,279,112,687" RenderTransformOrigin="1.133,0.471"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="274,279,112,687" RenderTransformOrigin="1.133,0.471"/>
             <TextBlock Text="Stage 4.1" FontWeight="SemiBold" FontSize="14" Margin="273,303,71,663"/>
             <StackPanel Margin="11,254,466,648" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
 
@@ -148,7 +148,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="28,283,522,683" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="28,283,522,683" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
             <TextBlock Text="Stage 4.2" FontWeight="SemiBold" FontSize="14" Margin="27,307,481,659" Grid.Column="2"/>
             <StackPanel Margin="431,250,46,652" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
 
@@ -164,7 +164,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="448,283,102,683" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="448,283,102,683" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
             <TextBlock Text="Professional:Daniel Rojas " FontWeight="SemiBold" FontSize="14" Margin="447,307,61,659" Grid.Column="2"/>
             <StackPanel Margin="220,250,257,652" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
 
@@ -208,7 +208,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="64,383,322,583" RenderTransformOrigin="1.133,0.471"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="64,383,322,583" RenderTransformOrigin="1.133,0.471"/>
             <TextBlock Text="Stage 4.3" FontWeight="SemiBold" FontSize="14" Margin="63,407,281,559"/>
             <StackPanel Margin="473,354,8,548" Background="#FFCA3A" CornerRadius="8" Grid.ColumnSpan="2">
 
@@ -224,7 +224,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="490,383,64,583" RenderTransformOrigin="1.133,0.471" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="490,383,64,583" RenderTransformOrigin="1.133,0.471" Grid.ColumnSpan="2"/>
             <TextBlock Text="Stage 5" FontWeight="SemiBold" FontSize="14" Margin="489,407,23,559" Grid.ColumnSpan="2"/>
             <StackPanel Margin="220,354,257,548" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
 
@@ -240,7 +240,7 @@
 
 
             </StackPanel>
-            <TextBlock Text="Proyecto: litigation " FontWeight="SemiBold" FontSize="14" Margin="237,383,313,583" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
+            <TextBlock Text="Project: litigation " FontWeight="SemiBold" FontSize="14" Margin="237,383,313,583" RenderTransformOrigin="1.133,0.471" Grid.Column="2"/>
             <TextBlock Text="Professional:Daniel Rojas " FontWeight="SemiBold" FontSize="14" Margin="236,407,272,559" Grid.Column="2"/>
             <StackPanel Margin="11,357,466,545" Background="#FFCA3A" CornerRadius="8" Grid.Column="2">
 

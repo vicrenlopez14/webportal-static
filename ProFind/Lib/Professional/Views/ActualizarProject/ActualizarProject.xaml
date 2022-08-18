@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <Grid>
@@ -48,8 +48,8 @@
 
             <TextBlock FontWeight="Bold" Text="Status De Project" Margin="690,66,598,904"></TextBlock>
             <CheckBox   Name="Inactivo" Content="Inactive" Margin="0,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Button x:Name="btnGuardarCambios" Height="47" Width="135" Content="Guardar Cambios" Margin="882,229,0,0" Background="#017AEB" Foreground="White" CornerRadius="5" VerticalAlignment="Top" Click="btnGuardarCambios_Click"/>
-            <Button x:Name="btnCancelarCambios" Height="47" Width="135" Content="Cancelar Cambios" Margin="643,229,0,0" Background="#DF181F" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
+            <Button x:Name="btnGuardarCambios" Height="47" Width="135" Content="Save changes" Margin="882,229,0,0" Background="#017AEB" Foreground="White" CornerRadius="5" VerticalAlignment="Top" Click="btnGuardarCambios_Click"/>
+            <Button x:Name="btnCancelarCambios" Height="47" Width="135" Content="Cancel changes" Margin="643,229,0,0" Background="#DF181F" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
             <CheckBox x:Name="Active" Content="Active" Margin="0,127,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>

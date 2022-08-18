@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <SymbolIcon Symbol="Edit" RenderTransformOrigin="4.432,-0.983" Margin="42,67,1401,893" UseLayoutRounding="False" d:LayoutRounding="Auto">
@@ -64,9 +64,9 @@
                 <CompositeTransform SkewX="-1.005" TranslateX="-1.251" />
             </PasswordBox.RenderTransform>
         </PasswordBox>
-        <Button x:Name="btnCambiar" Height="30" Width="135" Content="Cambiar imagen" Margin="1138,154,0,0" Background="#8EAD8B" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
-        <Button x:Name="btnGuardarCambios" Height="47" Width="135" Content="Guardar Cambios" Margin="882,229,0,0" Background="#017AEB" Foreground="White" CornerRadius="5" VerticalAlignment="Top" Click="btnGuardarCambios_Click"/>
-        <Button x:Name="btnCancelarCambios" Height="47" Width="135" Content="Cancelar Cambios" Margin="643,229,0,0" Background="#DF181F" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
+        <Button x:Name="btnCambiar" Height="30" Width="135" Content="Change image" Margin="1138,154,0,0" Background="#8EAD8B" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
+        <Button x:Name="btnGuardarCambios" Height="47" Width="135" Content="Save changes" Margin="882,229,0,0" Background="#017AEB" Foreground="White" CornerRadius="5" VerticalAlignment="Top" Click="btnGuardarCambios_Click"/>
+        <Button x:Name="btnCancelarCambios" Height="47" Width="135" Content="Cancel changes" Margin="643,229,0,0" Background="#DF181F" Foreground="White" CornerRadius="5" VerticalAlignment="Top"/>
         <PersonPicture  ProfilePicture="https://es.eserp.com/wp-content/uploads/2019/08/%C3%89tica-profesional-del-abogado.jpg" Margin="1155,34,245,866" RenderTransformOrigin="0.48,0.99"></PersonPicture>
         <SymbolIcon Symbol="Folder" RenderTransformOrigin="4.432,-0.983" Margin="570,172,872,788" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <SymbolIcon.RenderTransform>

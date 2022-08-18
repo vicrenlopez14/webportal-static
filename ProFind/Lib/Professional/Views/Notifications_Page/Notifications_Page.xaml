@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
         <muxc:InfoBar IsOpen="True" Severity="Informational" Title="Empty page" Message="Work in progress."/>
@@ -39,7 +39,7 @@
             <PersonPicture  ProfilePicture="https://www.yelpblog.com/wp-content/uploads/2016/04/Message.png" Margin="42,478,388,422" RenderTransformOrigin="0.48,0.99"/>
             <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,512,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
             <TextBlock Height="53" Text="Enabled banners, sounds"  FontSize="15" Width="378" Margin="196,689,82,258" Grid.ColumnSpan="2"/>
-            <TextBlock Text="Notificación de Comunicados de la Empresa" FontWeight="Bold" Margin="196,655,836,297" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <TextBlock Text="Notification of Company Notices" FontWeight="Bold" Margin="196,655,836,297" FontSize="22" Grid.ColumnSpan="3" Style="{ThemeResource TitleTextBlockStyle}"/>
             <PersonPicture  ProfilePicture="https://www.santalucia.edu.pe/admin/_uploads/imagenes/14062021181256-comunicado-a-estudiantes-denuncias-y-reclamos.png" Margin="42,626,388,274" RenderTransformOrigin="0.48,0.99"/>
             <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="66,657,0,0" VerticalAlignment="Top" Height="38" RenderTransformOrigin="0.5,0.5" Grid.Column="2"/>
             <PersonPicture  ProfilePicture="http://blog.dopplerrelay.com/wp-content/uploads/20180316-EmailTransaccionalNotificaciones.png" Margin="42,26,388,874" RenderTransformOrigin="0.48,0.99"/>

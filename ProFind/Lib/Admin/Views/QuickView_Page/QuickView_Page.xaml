@@ -6,10 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
-   
-        <Grid>
+    Style="{StaticResource PageStyle}">
+
+
+    <Grid>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*" />

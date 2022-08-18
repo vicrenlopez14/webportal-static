@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models1="using:Application.Models"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Style="{StaticResource PageStyle}"  
     mc:Ignorable="d">
 
     <Grid>
@@ -49,8 +49,8 @@
                     <TextBlock
                         Height="23"
                         FontWeight="Bold"
-                     Margin="-20,-190,3,-70"
-                        Text="Profesional:" />
+                        Margin="-20,-190,3,-70"
+                        Text="Professional:" />
                 </StackPanel>
                 <StackPanel Height="20" Width="340"  Margin="-20,-190,3,-70">
                     <TextBlock Text="{Binding ResponsibleProfessional.NameP}" Height="31" />

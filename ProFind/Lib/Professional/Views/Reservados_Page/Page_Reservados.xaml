@@ -6,33 +6,33 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Style="{StaticResource PageStyle}">
 
     <Grid>
-        <TextBlock Text="Reservados" Margin="22,20,-2,-5" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+        <TextBlock Text="Reserved" Margin="22,20,-2,-5" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
         <StackPanel Background="#F3F2F6" Margin="20,80,775,707" BorderBrush="Black" CornerRadius="15">
             <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Revisión de aceite"></TextBlock>
+                <TextBlock Height="25" Text="Oil overhaul"></TextBlock>
             </StackPanel>
             <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Automotriz" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Automotive" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                 <SymbolIcon Symbol="Setting"/>
             </StackPanel>
             <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+                <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Height="23" Margin="130,-5">
                 <TextBlock Text="Ing. Maria Esperanza Granados"></TextBlock>
             </StackPanel>
             <StackPanel Height="23" Margin="130, 15">
-                <TextBlock Text="Fecha:" Height="23" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Date:" Height="23" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Height="31" Margin="130, -15">
                 <TextBlock Text="14/04/22" Height="23"></TextBlock>
             </StackPanel>
-            <Button x:Name="btnIr" Height="30" Width="65" Content="Ir" Margin="130, 15" Background="#3A2F59" Foreground="White" CornerRadius="5"/>
+            <Button x:Name="btnIr" Height="30" Width="65" Content="Go" Margin="130, 15" Background="#3A2F59" Foreground="White" CornerRadius="5"/>
         </StackPanel>
         <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="21,79,775,708" CornerRadius="15">
             <AppBarSeparator HorizontalAlignment="Left" Margin="525,9,0,0" VerticalAlignment="Top" Height="35"/>
@@ -42,27 +42,27 @@
 
         <StackPanel Margin="20,330,776,451" Background="#F3F2F6" CornerRadius="15">
             <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Cita médica"></TextBlock>
+                <TextBlock Height="25" Text="Medical Appointment"></TextBlock>
             </StackPanel>
             <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Medicina general" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="General medicine" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                 <SymbolIcon Symbol="Contact2"/>
             </StackPanel>
             <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
+                <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Height="23" Margin="130,-5">
                 <TextBlock Text="Dra. Lourdes Berrios"></TextBlock>
             </StackPanel>
             <StackPanel Height="23" Margin="130, 15">
-                <TextBlock Text="Fecha:" Height="23" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Date:" Height="23" FontWeight="Bold"></TextBlock>
             </StackPanel>
             <StackPanel Height="31" Margin="130, -15">
                 <TextBlock Text="01/03/22" Height="23"></TextBlock>
             </StackPanel>
-            <Button x:Name="btnIr1" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#3A2F59" Foreground="White" CornerRadius="5"/>
+            <Button x:Name="btnIr1" Height="30" Width="65" Content="Go" Margin="130, 20" Background="#3A2F59" Foreground="White" CornerRadius="5"/>
         </StackPanel>
         <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="19,331,776,451" CornerRadius="15">
             <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="525,9,0,0" RenderTransformOrigin="0.531,0.886"/>
