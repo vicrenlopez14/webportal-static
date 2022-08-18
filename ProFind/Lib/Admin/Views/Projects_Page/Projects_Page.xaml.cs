@@ -30,7 +30,6 @@ namespace ProFind.Lib.Admin.Views.Projects_Page
             GetProjectsList();
         }
         public async void GetProjectsList()
-
         {
             var projectService = new PfProjectService();
 

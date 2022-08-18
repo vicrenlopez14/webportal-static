@@ -67,7 +67,7 @@ namespace ProFind.Lib.Client.Views.Crear_projects
 
 
                 SucessfulCreation_tt = true;
-                new clientNavigationController().GoBack();
+                new AdminNavigationController().GoBack();
 
                 if (_isFirstAdmin)
                 {

@@ -5,6 +5,7 @@ using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Professional.Controllers;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
+using ProFind.Lib.Global.Controllers;
 
 namespace ProFind.Lib.Professional.Views.Main_Page
 {
@@ -22,6 +23,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
         {
             this.InitializeComponent();
             new ProfessionalNavigationController().Init(Professionals_ContentFrame);
+            new ProfessionalNavigationController().NavigateTo(typeof(Page_Activos));
 
         }
 

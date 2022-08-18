@@ -10,6 +10,7 @@
 
     <Grid>
         <muxc:NavigationView
+            Name="navview"
             Header="Welcome"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
