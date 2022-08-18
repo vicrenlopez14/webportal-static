@@ -6,6 +6,7 @@ using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
+using ProFind.Lib.Global.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,14 +29,16 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         public Main_Page_Admin()
         {
             this.InitializeComponent();
-            new clientNavigationController().Init(ContentFrame);
+            new AdminNavigationController().Init(ContentFrame);
+            new AdminNavigationController().NavigateTo(typeof(Page_Activos));
+
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
-                new clientNavigationController().NavigateTo(typeof(Preferences_Page));
+                new AdminNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -51,11 +54,11 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
 
             try
             {
-                new clientNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                new AdminNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
             }
             catch
             {
-                new clientNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
+                new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
             }
         }
     }

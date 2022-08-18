@@ -34,6 +34,7 @@ namespace ProFind.Lib.Client.Views.Main_Page
         {
             this.InitializeComponent();
             new ClientNavigationController().Init(ClientsContentFrame);
+            new ClientNavigationController().NavigateTo(typeof(Page_Activos));
         }
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
