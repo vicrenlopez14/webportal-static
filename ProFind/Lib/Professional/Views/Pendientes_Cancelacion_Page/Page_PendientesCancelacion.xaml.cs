@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Application.Models;
+using Application.Services;
+using ProFind.Lib.Admin.Views.Estado_del_proyecto;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,11 +28,24 @@ namespace UWP_Administradores.Lib.Pages
         public Page_PendientesCancelacion()
         {
             this.InitializeComponent();
+            GetPendienteCancel();
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
         }
+
+        public async void GetPendienteCancel()
+        {
+            var PendienteCancelService = new PfProjectService();
+
+            List<PFProject> PendienteCancelList = new List<PFProject>();
+
+            PendienteCancelList = await PendienteCancelService.ListObjectAsync() as List<PFProject>;
+
+            PendientesCancelacionListView.ItemsSource = PendienteCancelList;
+        }
+
     }
 }
