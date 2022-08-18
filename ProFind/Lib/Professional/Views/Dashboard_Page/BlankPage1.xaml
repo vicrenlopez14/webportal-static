@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="ProFind.Lib.Professional.Views.Dashboard_Page.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.Professional.Views.Dashboard_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Margin="47,41,778,800"  CornerRadius="15">
+            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                <TextBlock Text= "Payment Notification" FontWeight="Bold"/>
+            </StackPanel>
+            <PersonPicture Margin="-550,-10,0,0" ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" RenderTransformOrigin="0.48,0.99" Height="100" Width="100"/>
+
+            <TextBlock Margin="550,-150,0,0" Text="$220" FontWeight="Bold" Height="32" FontSize="18" RenderTransformOrigin="0.494,0.595" Width="138"/>
+
+
+            <Button Margin="530,-60,0,0"  Content="Aware" Height="34" Width="128" />
+
+
+            <TextBlock Margin="550,-230,2,2" Text="Law Firm" FontWeight="Bold" Height="28"/>
+
+            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+            <StackPanel Height="23" Margin="130, -30">
+                <TextBlock Margin="-5, -100, 0,-70"  Height="53" Text="Project: Litigation" FontWeight="Bold" FontSize="15" Width="378"/>
+            </StackPanel>
+            <StackPanel Height="23" Margin="130,10">
+                <TextBlock Margin="-25, -60, 0,-70" Text="Profesional: Fernando Aguirre" Width="372" Height="68"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

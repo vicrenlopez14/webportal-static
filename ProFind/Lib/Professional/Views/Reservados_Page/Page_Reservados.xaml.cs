@@ -36,6 +36,18 @@ namespace UWP_Administradores
         public async void GetProjectsList()
 
         {
+
+            var projectService = new PfProjectService();
+
+            List<PFProject> reservadosProfesionaList = new List<PFProject>();
+
+            reservadosProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+
+          ReservadosProfesionalListView.ItemsSource = reservadosProfesionaList;
+        }
+        public async void GetProjectsList()
+
+        {
             var projectService = new PfProjectService();
 
             List<PFProject> ActiveProjectsList = new List<PFProject>();

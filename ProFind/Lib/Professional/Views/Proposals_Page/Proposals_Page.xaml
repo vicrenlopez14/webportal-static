@@ -5,38 +5,50 @@
     xmlns:local="using:ProFind.Lib.Professional.Views.Proposals_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
-    Style="{StaticResource PageStyle}">
+    Style="{StaticResource PageStyle}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ScrollViewer>
+
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="114" Margin="54,57,0,0" TextWrapping="Wrap" Text="Proposals" VerticalAlignment="Top" Width="240" FontSize="48"/>
-        <Rectangle HorizontalAlignment="Left" Height="537" Margin="54,348,0,0" Stroke="Black" VerticalAlignment="Top" Width="423" Fill="#FF4DB2BF"/>
-        <Rectangle HorizontalAlignment="Left" Height="214" Margin="54,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="423" Fill="White"/>
-        <TextBox HorizontalAlignment="Left" Height="114" Margin="123,282,0,0" TextWrapping="Wrap" Text="Automotive" VerticalAlignment="Top" Width="285" FontSize="48" BorderBrush="#66FFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="79,500,0,0" TextWrapping="Wrap" Text="Client: Carmen Wada" VerticalAlignment="Top" Width="285" FontSize="24" BorderBrush="#FF4DB2BF" Background="#FF4DB2BF"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="79,583,0,0" TextWrapping="Wrap" Text="Oil change" VerticalAlignment="Top" Width="285" FontSize="24" BorderBrush="#FF4DB2BF" Background="#FF4DB2BF"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="330,651,0,0" TextWrapping="Wrap" Text="Read more" VerticalAlignment="Top" Width="142" FontSize="24" BorderBrush="#FF4DB2BF" Background="#FF4DB2BF" FontWeight="Bold"/>
-        <Button Content="Accept" Height="72" Margin="79,764,0,0" VerticalAlignment="Top" Width="143" Background="#33CB22DE" BorderBrush="DarkBlue" FocusVisualPrimaryBrush="DarkBlue" FocusVisualSecondaryBrush="DarkBlue" Foreground="DarkBlue"/>
-        <Button Content="Decline" Height="72" Margin="295,764,0,0" VerticalAlignment="Top" Width="143" Background="#33DE2222" BorderBrush="#FFC31F1F" FocusVisualPrimaryBrush="#FFE02020" FocusVisualSecondaryBrush="#99B71313" Foreground="#FFE03131"/>
-        <Rectangle HorizontalAlignment="Left" Height="537" Margin="544,348,0,0" Stroke="Black" VerticalAlignment="Top" Width="423" Fill="#FF0F5F88"/>
-        <Rectangle HorizontalAlignment="Left" Height="214" Margin="544,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="423" Fill="White"/>
-        <TextBox HorizontalAlignment="Left" Height="114" Margin="613,282,0,0" TextWrapping="Wrap" Text="Law firm" VerticalAlignment="Top" Width="285" FontSize="48" BorderBrush="#66FFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="569,500,0,0" TextWrapping="Wrap" Text="Client: Elias Carcamo" VerticalAlignment="Top" Width="285" FontSize="24" BorderBrush="#FF0F5F88" Background="#FF0F5F88"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="569,583,0,0" TextWrapping="Wrap" Text="Purchase of land" VerticalAlignment="Top" Width="285" FontSize="24" BorderBrush="#FF0F5F88" Background="#FF0F5F88"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="820,651,0,0" TextWrapping="Wrap" Text="Read more" VerticalAlignment="Top" Width="142" FontSize="24" BorderBrush="#FF0F5F88" Background="#FF0F5F88" FontWeight="Bold"/>
-        <Button Content="Accept" Height="72" Margin="569,764,0,0" VerticalAlignment="Top" Width="143" Background="#33CB22DE" BorderBrush="DarkBlue" FocusVisualPrimaryBrush="DarkBlue" FocusVisualSecondaryBrush="DarkBlue" Foreground="DarkBlue"/>
-        <Button Content="Decline" Height="72" Margin="785,764,0,0" VerticalAlignment="Top" Width="143" Background="#33DE2222" BorderBrush="#FFC31F1F" FocusVisualPrimaryBrush="#FFE02020" FocusVisualSecondaryBrush="#99B71313" Foreground="#FFE03131"/>
-        <Rectangle HorizontalAlignment="Left" Height="537" Margin="1043,348,0,0" Stroke="Black" VerticalAlignment="Top" Width="423" Fill="#FF2B235D" FocusVisualPrimaryBrush="#FF040119"/>
-        <Rectangle HorizontalAlignment="Left" Height="214" Margin="1043,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="423" Fill="White"/>
-        <TextBox HorizontalAlignment="Left" Height="114" Margin="1112,282,0,0" TextWrapping="Wrap" Text="Medicine" VerticalAlignment="Top" Width="285" FontSize="48" BorderBrush="#66FFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="1068,500,0,0" TextWrapping="Wrap" Text="Client: Alejandro Buaje" VerticalAlignment="Top" Width="285" FontSize="24" BorderBrush="#FF2B235D" Background="#FF2B235D"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="1068,583,0,0" TextWrapping="Wrap" Text="View operation" VerticalAlignment="Top" Width="285" FontSize="24" BorderBrush="#FF2B235D" Background="#FF2B235D"/>
-        <TextBox HorizontalAlignment="Left" Height="68" Margin="1319,651,0,0" TextWrapping="Wrap" Text="Read more" VerticalAlignment="Top" Width="142" FontSize="24" BorderBrush="#FF2B235D" Background="#FF2B235D" FontWeight="Bold"/>
-        <Button Content="Accept" Height="72" Margin="1068,764,0,0" VerticalAlignment="Top" Width="143" Background="#33CB22DE" BorderBrush="DarkBlue" FocusVisualPrimaryBrush="DarkBlue" FocusVisualSecondaryBrush="DarkBlue" Foreground="DarkBlue"/>
-        <Button Content="Decline" Height="72" Margin="1284,764,0,0" VerticalAlignment="Top" Width="143" Background="#33DE2222" BorderBrush="#FFC31F1F" FocusVisualPrimaryBrush="#FFE02020" FocusVisualSecondaryBrush="#99B71313" Foreground="#FFE03131"/>
 
-        </Grid>
-    </ScrollViewer>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="ProposalsProfesionalListView" ItemTemplate="{StaticResource ProposalsProfesionalListViewTemplate}" />
+    </Grid>
+
+    <Page.Resources>
+        <DataTemplate x:Key="ProposalsProfesionalListViewTemplate" x:DataType="models1:PFProject" >
+            <StackPanel Margin="47,41,778,800"  CornerRadius="15">
+                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                    <TextBlock Text="{Binding TitlePJ}" FontWeight="Bold"/>
+                </StackPanel>
+                <PersonPicture Margin="-550,-20,0,0" ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" RenderTransformOrigin="0.48,0.99" Height="100" Width="100"/>
+
+
+
+
+                <Button Margin="530,-60,0,0"  Content="Decline" Height="34" Width="128" />
+                <Button Margin="530,-140,0,0"  Content="Accept" Height="34" Width="128" />
+
+
+
+                <TextBlock Margin="550,-210,2,2" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" Height="28"/>
+
+                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
+                <StackPanel Height="23" Margin="130, -30">
+                    <TextBlock Margin="-5, -100, 0,-70"  Height="53" Text="Cliente:" FontWeight="Bold" FontSize="15" Width="378"/>
+                </StackPanel>
+                <StackPanel Height="23" Margin="130,10">
+                    <TextBlock Margin="-25, -60, 0,-70" Text="{Binding  ResponsibleClient.NameC}" Width="372" Height="68"/>
+                </StackPanel>
+            </StackPanel>
+
+        </DataTemplate>
+
+    </Page.Resources>
+
 </Page>
