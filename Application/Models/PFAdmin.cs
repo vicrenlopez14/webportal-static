@@ -8,7 +8,7 @@ namespace Application.Models
     {
         [JsonConstructor]
         public PFAdmin(string idA, string nameA, string emailA, string telA,
-            string passwordA, string idR1, byte[] pictureA)
+            string passwordA, string idR1, PFRank rank, byte[] pictureA)
         {
             IdA = idA;
             NameA = nameA;
@@ -16,6 +16,7 @@ namespace Application.Models
             TelA = telA;
             PasswordA = passwordA;
             IdR1 = idR1;
+            Rank = rank;
             PictureA = pictureA;
         }
 
@@ -55,11 +56,8 @@ namespace Application.Models
         public string EmailA { get; set; }
         public string TelA { get; set; }
         public string PasswordA { get; set; }
-
         public byte[] PictureA { get; set; }
-
         public string IdR1 { get; set; }
-
 
         public PFRank Rank;
     }

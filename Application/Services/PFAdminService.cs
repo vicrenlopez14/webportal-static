@@ -85,7 +85,6 @@ namespace Application.Services
         {
             HttpResponseMessage response =
                 await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Admin", toCreateObject);
-            response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
         }

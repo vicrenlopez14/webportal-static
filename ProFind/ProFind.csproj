@@ -137,6 +137,15 @@
     <Compile Include="Lib\Admin\Views\Client_List\Clients_List.xaml.cs">
       <DependentUpon>Clients_List.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml.cs">
+      <DependentUpon>CreatePageAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUD\ReadPageAdmin.xaml.cs">
+      <DependentUpon>ReadPageAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUD\UpdatePageAdmin.xaml.cs">
+      <DependentUpon>UpdatePageAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
       <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
     </Compile>
@@ -416,6 +425,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUD\ReadPageAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUD\UpdatePageAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -682,7 +703,7 @@
       <Version>5.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.13</Version>
+      <Version>6.2.14</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.8.1</Version>

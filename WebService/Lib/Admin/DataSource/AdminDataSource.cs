@@ -1,4 +1,5 @@
 using Application.Models;
+using Application.Services;
 using Dapper;
 using MySql.Data.MySqlClient;
 using WebService.Lib.DataSource;
@@ -25,24 +26,30 @@ public class AdminDataSource
             ["Id"] = id
         });
 
-        var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
+        var result = (await _connection.QueryAsync<PFAdmin>(query, dynamicParameters)).ToList();
 
-        try
-        {
-            return result.ToList()[0];
-        }
-        catch (Exception e)
-        {
+        // Fill up nested objects
+        if (!result.Any())
             return null;
-        }
+
+        return await FillUp(result.First());
     }
 
     public async Task<IEnumerable<PFAdmin>> List()
     {
         const string query = "SELECT * FROM Admin;";
-        var result = await _connection.QueryAsync<PFAdmin>(query);
+        var result = (await _connection.QueryAsync<PFAdmin>(query)).ToList();
 
-        return result.ToList();
+        if (!result.Any()) return result.ToList();
+
+        // Fill nested objects
+        var filledList = new List<PFAdmin>();
+        foreach (var admin in result)
+        {
+            filledList.Add(await FillUp(admin));
+        }
+
+        return filledList;
     }
 
     public async Task<IEnumerable<PFAdmin>> PaginatedList(int fromIndex, int toIndex)
@@ -82,6 +89,20 @@ public class AdminDataSource
         return result;
     }
 
+    private static async Task<PFAdmin> FillUp(PFAdmin unfilled)
+    {
+        if (!string.IsNullOrEmpty(unfilled.IdR1))
+            unfilled.Rank = await new PfRankService().GetObjectAsync(unfilled.IdR1);
+
+
+        return unfilled;
+    }
+
+    private static async Task<bool> FillDown(PFAdmin unfilled)
+    {
+        return true;
+    }
+
     public async Task<bool> Create(PFAdmin admin)
     {
         const string query = "INSERT INTO Admin VALUES(@Id, @Name, @Email, @Tel, @Password, @Picture, @Rank);";
@@ -95,12 +116,16 @@ public class AdminDataSource
             ["Name"] = admin.NameA,
             ["Email"] = admin.EmailA,
             ["Tel"] = admin.TelA,
-            ["Password"] =  admin.PasswordA,
+            ["Password"] = admin.PasswordA,
             ["Picture"] = admin.PictureA,
             ["Rank"] = admin.IdR1
         });
 
-        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+        var result = (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+
+        if (result == false) return false;
+
+        return await FillDown(admin);
     }
 
     public async Task<(bool, PFAdmin)> Login(string email, string password)
@@ -116,7 +141,12 @@ public class AdminDataSource
         });
 
         var result = (await _connection.QueryAsync<PFAdmin>(query, dynamicParameters)).ToList();
-        return ((result.Count()) > 0, result.First());
+        // Fill up nested objects
+        if (!result.Any())
+            return (result.Any(), null);
+
+        var filledUp = await FillUp(result.First());
+        return (result.Any(), filledUp);
     }
 
     public async Task<bool> Update(string id, PFAdmin admin)

@@ -6,6 +6,7 @@ using ProFind.Lib.Professional.Controllers;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Views.About_Page;
 
 namespace ProFind.Lib.Professional.Views.Main_Page
 {
@@ -17,6 +18,8 @@ namespace ProFind.Lib.Professional.Views.Main_Page
             {"InactiveProjects_Page", typeof(Page_Inactivos) },
             {"Notifications_Page", typeof(Notifications_Page.Notifications_Page) },
             {"Activities_Page", typeof(ActivesPage) },
+            {"Preferences_Page", typeof(Preferences_Page) },
+            {"About_Page",typeof(About_Page) },
             {"", typeof(Page_Activos) }
         };
         public Main_Page_Professional()

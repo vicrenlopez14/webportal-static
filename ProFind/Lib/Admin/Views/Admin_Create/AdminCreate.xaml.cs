@@ -117,6 +117,7 @@ namespace ProFind.Lib.Admin.Views.Admin_Create
                 Creation_pr.IsActive = true;
 
                 var toCreateAdmin = new PFAdmin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                toCreateAdmin.IdR1 = ranks[Rank_cb.SelectedIndex].IdR;
 
                 var result = await new PFAdminService().Create(toCreateAdmin);
 

@@ -78,6 +78,8 @@ CREATE TABLE Curriculum
 
 DESCRIBE Curriculum;
 
+SELECT * FROM Curriculum;
+
 ################################################
 CREATE TABLE Department
 (

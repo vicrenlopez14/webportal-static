@@ -5,6 +5,7 @@ using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
+using ProFind.Lib.Global.Views.About_Page;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,6 +27,8 @@ namespace ProFind.Lib.Client.Views.Main_Page
             {"Pays_Page", typeof(Pays_Page.Pays_Page) },
             {"Catalog_Page", typeof(ActivesPage) },
             {"Activities_Page", typeof(ActivesPage) },
+            {"Preferences_Page", typeof(Preferences_Page) },
+            {"About_Page",typeof(About_Page) },
             {"", typeof(Page_Activos) }
         };
 

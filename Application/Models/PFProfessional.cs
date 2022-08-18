@@ -8,9 +8,7 @@ namespace Application.Models
     public class PFProfessional
     {
         [JsonConstructor]
-        public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP, bool activeP,
-            bool sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTime hiringDateP,
-            byte[] pictureP)
+        public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP, bool activeP, bool sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTime hiringDateP, byte[] pictureP, string idCu1, PFCurriculum curriculum, string idPfs1, PFProfession profession, string idDp1, PFDepartment department, string idWdt1, PFWorkDayType workDayType)
         {
             IdP = idP;
             NameP = nameP;
@@ -26,8 +24,37 @@ namespace Application.Models
             SalaryP = salaryP;
             HiringDateP = hiringDateP;
             PictureP = pictureP;
+            IdCU1 = idCu1;
+            Curriculum = curriculum;
+            IdPFS1 = idPfs1;
+            Profession = profession;
+            IdDP1 = idDp1;
+            Department = department;
+            IdWDT1 = idWdt1;
+            WorkDayType = workDayType;
         }
 
+        // [JsonConstructor]
+        // public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP,
+        //     bool activeP,
+        //     bool sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTime hiringDateP,
+        //     byte[] pictureP)
+        // {
+        //     IdP = idP;
+        //     NameP = nameP;
+        //     DateBirthP = dateBirthP;
+        //     EmailP = emailP;
+        //     PasswordP = passwordP;
+        //     ActiveP = activeP;
+        //     SexP = sexP;
+        //     DUIP = duip;
+        //     AFPP = afpp;
+        //     ISSSP = isssp;
+        //     ZipCodeP = zipCodeP;
+        //     SalaryP = salaryP;
+        //     HiringDateP = hiringDateP;
+        //     PictureP = pictureP;
+        // }
 
         public PFProfessional()
         {
@@ -65,6 +92,17 @@ namespace Application.Models
                 WorkDayType.FillFromId(IdWDT1);
         }
 
+        public async void FillUp()
+        {
+            if (!string.IsNullOrEmpty(IdCU1))
+                Curriculum.FillFromId(IdCU1);
+            if (!string.IsNullOrEmpty(IdPFS1))
+                Profession.FillFromId(IdPFS1);
+            if (!string.IsNullOrEmpty(IdDP1))
+                Department.FillFromId(IdDP1);
+            if (!string.IsNullOrEmpty(IdWDT1))
+                WorkDayType.FillFromId(IdWDT1);
+        }
 
         public string IdP { get; set; }
         public string NameP { get; set; }

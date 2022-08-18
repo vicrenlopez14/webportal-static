@@ -6,24 +6,23 @@
     xmlns:local="using:ProFind.Lib.Admin.Views.Main_Page_Admin"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    Style="{StaticResource PageStyle}">
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
 
     <Grid>
-        <Grid.Resources>
-            <AcrylicBrush
-                x:Key="NavigationViewDefaultPaneBackground"
-                BackgroundSource="HostBackdrop"
-                FallbackColor="Black"
-                TintColor="Gray"
-                TintOpacity="0.6" />
-        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <muxc:NavigationView
-            Header="Panel de Administrador"
-            IsBackButtonVisible="Collapsed"
-            IsSettingsVisible="True"
+            Name="navView"
+            Grid.RowSpan="2"
+            Header="Admin's panel"
+            IsBackButtonVisible="Visible"
+            IsBackEnabled="True"
+            IsSettingsVisible="False"
             ItemInvoked="NavigationView_ItemInvoked"
-            PaneDisplayMode="Left">
+            PaneDisplayMode="Left" BackRequested="navView_BackRequested">
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
                 <muxc:NavigationViewItem
@@ -44,8 +43,25 @@
                     Tag="Clients_Page" />
             </muxc:NavigationView.MenuItems>
 
+            <muxc:NavigationView.PaneFooter>
+                <StackPanel Orientation="Vertical">
+                    <muxc:NavigationViewItemHeader Content="Más" />
+                    <muxc:NavigationViewItem
+                        Content="Preferences"
+                        Icon="Setting"
+                        Tag="Preferences_Page" />
+                    <muxc:NavigationViewItem
+                        Content="About"
+                        Icon="People"
+                        Tag="About_Page" />
+                </StackPanel>
+            </muxc:NavigationView.PaneFooter>
 
-            <Frame x:Name="ContentFrame" Margin="50">
+
+            <Frame
+                x:Name="ContentFrame"
+                Margin="0"
+                Background="{StaticResource SystemControlBackgroundTransparentRevealBorderBrush}">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition />

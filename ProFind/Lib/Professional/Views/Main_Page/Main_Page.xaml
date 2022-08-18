@@ -56,14 +56,14 @@
             <muxc:NavigationView.PaneFooter>
                 <StackPanel Orientation="Vertical">
                     <NavigationViewItemHeader Content="Más" />
-                    <NavigationViewItem
+                    <muxc:NavigationViewItem
                         Content="Preferences"
                         Icon="Setting"
-                        Tag="preferencias" />
-                    <NavigationViewItem
+                        Tag="Preferences_Page" />
+                    <muxc:NavigationViewItem
                         Content="About"
                         Icon="People"
-                        Tag="acercade" />
+                        Tag="About_Page" />
                 </StackPanel>
             </muxc:NavigationView.PaneFooter>
 

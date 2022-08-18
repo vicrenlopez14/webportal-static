@@ -1,7 +1,11 @@
 using Application.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
+using WebService.Lib.Curriculum.DataSource;
 using WebService.Lib.DataSource;
+using WebService.Lib.Department.DataSource;
+using WebService.Lib.Profession.DataSource;
+using WebService.Lib.WorkDayType.DataSource;
 using WebService.Utils;
 
 namespace WebService.Lib.Professional.DataSource;
@@ -15,7 +19,7 @@ public class ProfessionalDataSource
         _connection = new MySqlDataSourceLink().getConnection();
     }
 
-    public async Task<PFProfessional> Get(string id)
+    public async Task<PFProfessional?> Get(string id)
     {
         const string query = "SELECT * FROM Professional WHERE IdP = @Id;";
 
@@ -26,17 +30,54 @@ public class ProfessionalDataSource
             ["Id"] = id
         });
 
-        var result = await _connection.QueryAsync<PFProfessional>(query, dynamicParameters);
-        return result.ToList()[0];
+        List<PFProfessional> result =
+            (await _connection.QueryAsync<PFProfessional>(query, dynamicParameters)).ToList();
+
+        // Fill up nested objects
+        if (!result.Any())
+            return null;
+
+        return await FillUp(result.First());
     }
 
     public async Task<IEnumerable<PFProfessional>> List()
     {
         const string query = "SELECT * FROM Professional;";
 
-        var result = await _connection.QueryAsync<PFProfessional>(query);
+        var result = (await _connection.QueryAsync<PFProfessional>(query)).ToList();
 
-        return result.ToList();
+        if (!result.Any()) return result.ToList();
+
+        // Fill nested objects
+        var filledList = new List<PFProfessional>();
+        foreach (var professional in result)
+        {
+            filledList.Add(await FillUp(professional));
+        }
+
+        return filledList;
+    }
+
+    private static async Task<PFProfessional> FillUp(PFProfessional unfilled)
+    {
+        if (!string.IsNullOrEmpty(unfilled.IdCU1))
+            unfilled.Curriculum = await new CurriculumDataSource().Get(unfilled.IdP);
+        if (!string.IsNullOrEmpty(unfilled.IdPFS1))
+            unfilled.Profession = await new ProfessionDataSource().Get(unfilled.IdPFS1);
+        if (!string.IsNullOrEmpty(unfilled.IdDP1))
+            unfilled.Department = await new DepartmentDataSource().Get(unfilled.IdDP1);
+        if (!string.IsNullOrEmpty(unfilled.IdWDT1))
+            unfilled.WorkDayType = await new WorkDayTypeDataSource().Get(unfilled.IdWDT1);
+
+        return unfilled;
+    }
+
+    private static async Task<bool> FillDown(PFProfessional unfilled)
+    {
+        if (unfilled.Curriculum != null)
+            unfilled.Curriculum = await new CurriculumDataSource().Get(unfilled.IdP);
+
+        return true;
     }
 
     public async Task<bool> Create(PFProfessional professional)
@@ -48,7 +89,7 @@ public class ProfessionalDataSource
 
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            ["Id"] =  await Nanoid.Nanoid.GenerateAsync(),
+            ["Id"] = await Nanoid.Nanoid.GenerateAsync(),
             ["Name"] = professional.NameP,
             ["DateBirth"] = professional.DateBirthP,
             ["Email"] = professional.EmailP,
@@ -67,8 +108,11 @@ public class ProfessionalDataSource
             ["Department"] = professional.Department.IdDP,
             ["WorkDayType"] = professional.WorkDayType.IdWDT,
         });
+        var result = (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
 
-        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+        if (result == false) return false;
+
+        return await FillDown(professional);
     }
 
     public async Task<bool> Update(string id, PFProfessional professional)
@@ -130,6 +174,10 @@ public class ProfessionalDataSource
         });
 
         var result = (await _connection.QueryAsync<PFProfessional>(query, dynamicParameters)).ToList();
-        return ((result.Count()) > 0, result.First());
+        // Fill up nested objects
+        if (!result.Any())
+            return (result.Any(), null);
+
+        return (result.Any(), await FillUp(result.First()));
     }
 }

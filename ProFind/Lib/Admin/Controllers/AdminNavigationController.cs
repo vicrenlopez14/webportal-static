@@ -26,11 +26,13 @@ namespace ProFind.Lib.Admin.Controllers
 
         public void NavigateTo(Type view)
         {
+            pagesStack.Push(view);
             BaseFrame.Navigate(view);
         }
 
         public void NavigateTo(Type view, object parameter)
         {
+            pagesStack.Push(view);
             BaseFrame.Navigate(view, parameter);
         }
     }
