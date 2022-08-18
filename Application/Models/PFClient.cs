@@ -1,6 +1,9 @@
 using Application.Services;
 using Newtonsoft.Json;
 using Nito.AsyncEx.Synchronous;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Application.Models
 {
@@ -39,6 +42,11 @@ namespace Application.Models
         public string PasswordC { get; set; }
 
         public byte[] PictureC { get; set; }
+
+        public Task<List<PFClient>> ListObjectAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class LoginClient
@@ -54,8 +62,8 @@ namespace Application.Models
         {
         }
 
-        public string EmailC { get; set; }
-        public string PasswordC { get; set; }
+        public string EmailC { get; }
+        public string PasswordC { get; }
     }
 
     public class RegisterClient
@@ -69,13 +77,9 @@ namespace Application.Models
             PictureC = pictureC;
         }
 
-        public RegisterClient()
-        {
-        }
-
-        public string NameC { get; set; }
-        public string EmailC { get; set; }
-        public string PasswordC { get; set; }
+        public string NameC { get; }
+        public string EmailC { get; }
+        public string PasswordC { get; }
 
         public byte[] PictureC { get; set; }
     }
