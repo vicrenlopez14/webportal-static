@@ -48,7 +48,7 @@ public class ProfessionalDataSource
 
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
         {
-            ["Id"] = professional.IdCU1,
+            ["Id"] =  await Nanoid.Nanoid.GenerateAsync(),
             ["Name"] = professional.NameP,
             ["DateBirth"] = professional.DateBirthP,
             ["Email"] = professional.EmailP,

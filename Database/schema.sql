@@ -129,7 +129,7 @@ CREATE TABLE Professional
     FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE,
     FOREIGN KEY (IdWDT1) REFERENCES WorkDayType (IdWDT) ON DELETE CASCADE
 );
-
+SELECT * FROM Professional;
 ###############################################
 CREATE TABLE WorkDayType
 (
