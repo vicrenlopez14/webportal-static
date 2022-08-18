@@ -95,7 +95,7 @@ namespace ProFind.Lib.Admin.Views
             professional.PasswordP = Confirm_passwordBox.Password;
 
 
-            var respuesta = await new PFProjectService().Update(professional);
+            var respuesta = await new PFProfessionalService().Update(professional);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;

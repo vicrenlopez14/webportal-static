@@ -8,7 +8,7 @@ namespace Application.Models
     public class PFProfessional
     {
         [JsonConstructor]
-        public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP,
+        public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP, bool activeP,
             bool sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTime hiringDateP,
             byte[] pictureP)
         {
@@ -17,6 +17,7 @@ namespace Application.Models
             DateBirthP = dateBirthP;
             EmailP = emailP;
             PasswordP = passwordP;
+            ActiveP = activeP;
             SexP = sexP;
             DUIP = duip;
             AFPP = afpp;
@@ -34,13 +35,14 @@ namespace Application.Models
 
         public async void FillFromId(string id)
         {
-            var result = await new PFProjectService().GetObjectAsync(id);
+            var result = await new PFProfessionalService().GetObjectAsync(id);
 
             IdP = result.IdP;
             NameP = result.NameP;
             DateBirthP = result.DateBirthP;
             EmailP = result.EmailP;
             PasswordP = result.PasswordP;
+            ActiveP = result.ActiveP;
             SexP = result.SexP;
             DUIP = result.DUIP;
             AFPP = result.AFPP;
@@ -69,6 +71,7 @@ namespace Application.Models
         public DateTime DateBirthP { get; set; }
         public string EmailP { get; set; }
         public string PasswordP { get; set; }
+        public bool ActiveP { get; set; }
         public bool SexP { get; set; }
 
         public string DUIP { get; set; }

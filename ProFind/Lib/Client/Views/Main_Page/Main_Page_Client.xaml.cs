@@ -21,13 +21,12 @@ namespace ProFind.Lib.Client.Views.Main_Page
 
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"Dashboard_Page", typeof(Lib.Professional.Views.Dashboard_Page.Dashboard_Page) },
             {"Proyects_Page", typeof(Page_Activos) },
-            {"Notifications_Page", typeof(Actives_Page) },
+            {"Notifications_Page", typeof(ActivesPage) },
             {"Pays_Page", typeof(Pays_Page.Pays_Page) },
-            {"Catalog_Page", typeof(Actives_Page) },
-            {"Activities_Page", typeof(Actives_Page) },
-            {"", typeof(Dashboard_Page.Dashboard_Page) }
+            {"Catalog_Page", typeof(ActivesPage) },
+            {"Activities_Page", typeof(ActivesPage) },
+            {"", typeof(Page_Activos) }
         };
 
         public Main_Page_Client()

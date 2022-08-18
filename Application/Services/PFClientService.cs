@@ -8,6 +8,7 @@ namespace Application.Services
 {
     public class PfClientService : ICrudService<PFClient>
     {
+        public static PFClient client;
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginClient = new RegisterClient

@@ -27,7 +27,7 @@ namespace ProFind.Lib.Admin.Views.Estado_del_proyecto
         public Page_Inactivos()
         {
             this.InitializeComponent();
-                 GetProjectsList();
+            GetProjectsList();
         }
 
         public async void GetProjectsList()

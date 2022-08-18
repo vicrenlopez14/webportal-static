@@ -13,16 +13,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Client.Views.Dashboard_Page
+namespace ProFind.Lib.Professional.Views.Inactivos_Page
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Dashboard_Page : Page
+    public sealed partial class BlankPage1 : Page
     {
-        public Dashboard_Page()
+        public BlankPage1()
         {
             this.InitializeComponent();
         }

@@ -21,7 +21,7 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         {
             {"Administrators_Page", typeof(Calendar_Page.Calendar_Page) },
             {"Calendar_Page", typeof(Page_Activos) },
-            {"Professionals_Page", typeof(Actives_Page) },
+            {"Professionals_Page", typeof(ActivesPage) },
             {"Clients_Page", typeof(QuickView_Page.QuickView_Page) },
             {"", typeof(Calendar_Page.Calendar_Page) }
         };

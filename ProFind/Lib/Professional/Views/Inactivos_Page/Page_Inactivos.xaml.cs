@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_Administradores
+namespace ProFind.Lib.Professional.Views.Inactivos_Page
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -27,7 +27,7 @@ namespace UWP_Administradores
         public Page_Inactivos()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            GetInactiveProjectList();   
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
@@ -42,10 +42,16 @@ namespace UWP_Administradores
 
             List<PFProject> InactivoProjectsList = new List<PFProject>();
 
+        }
 
-            InactivoProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
+        public async void GetInactiveProjectList()
+        {
+            var answerInactives = new PfProjectService();
+            List<PFProject> inactivesProjectList = new List<PFProject>();
 
-            InactivosProjectsListView.ItemsSource = InactivoProjectsList;
+           inactivesProjectList = await answerInactives.ListObjectAsync() as List<PFProject>;
+
+            InactivesProfessionalListView.ItemsSource = inactivesProjectList;   
         }
     }
 }
