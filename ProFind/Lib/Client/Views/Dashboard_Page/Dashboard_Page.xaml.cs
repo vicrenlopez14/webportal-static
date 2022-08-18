@@ -29,7 +29,7 @@ namespace ProFind.Lib.Client.Views.Dashboard_Page
         public Dashboard_Page()
         {
             this.InitializeComponent();
-
+            GetProjectList();
         }
 
         public async void GetProjectList()
@@ -50,7 +50,6 @@ namespace ProFind.Lib.Client.Views.Dashboard_Page
         private void DashboardProjectsListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var clickedItem = e.ClickedItem as PFProject;
-            new AdminNavigationController().NavigateTo(typeof(Admin.Views.Add_Detete_Profesionales), clickedItem);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
+using ProFind.Lib.Admin.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,6 +40,13 @@ namespace ProFind.Lib.Admin.Views.Projects_Page
             ProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
 
             ProjectsListView1.ItemsSource = ProjectsList;
+        }
+
+        private void ProjectsListView1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PFProject clickeditem = e.ClickedItem as PFProject;
+
+            new AdminNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage), clickeditem); 
         }
     }
 

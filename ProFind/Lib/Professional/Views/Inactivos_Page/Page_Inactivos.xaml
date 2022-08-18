@@ -1,92 +1,42 @@
 ﻿<Page
-    x:Class="UWP_Administradores.Page_Inactivos"
+    x:Class="ProFind.Lib.Admin.Views.Professionals_Page.Actives_Page"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UWP_Administradores"
+    xmlns:local="using:ProFind.Lib.Admin.Views.Professionals_Page"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:Application.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
-    Style="{StaticResource PageStyle}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-<<<<<<< Updated upstream
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="0.5*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="Inactives" Margin="20,15,0,0" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged" Grid.RowSpan="2"></TextBlock>
-        <ListView Name="InactivesProfessionalListView" ItemTemplate="{StaticResource InactivesProfessionalListViewTemplate}"/>
-=======
-        <TextBlock Text="Inactivos" Margin="20,15,0,0" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
-        <StackPanel Background="#FEF8E9" Margin="20,80,775,759" BorderBrush="Black" CornerRadius="15">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Revisión general del vehiculo"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Automotriz" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                <SymbolIcon Symbol="Setting"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,-5">
-                <TextBlock Text="Ing. Daniel Rodas"></TextBlock>
-            </StackPanel>
-            <Button x:Name="btnIr" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
-        </StackPanel>
-        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="837,669,-41,168" CornerRadius="15">
-            <AppBarSeparator HorizontalAlignment="Left" Margin="525,9,0,0" VerticalAlignment="Top" Height="35"/>
-        </Border>
-        <PersonPicture  ProfilePicture="https://segurossura.com/content/uploads/sites/10/2017/10/seguros-sura-5-razones-para-hacerle-mantenimiento-preventivo-a-tu-carro-mini.jpg" Margin="34,113,1366,787"></PersonPicture>
 
-        <StackPanel Margin="20,270,776,567" Background="#FEF8E9" CornerRadius="15">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Apelación de esquelas"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Bufete legal" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                <SymbolIcon Symbol="Manage"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,-5">
-                <TextBlock Text="Lic. Benjamin Bottom"></TextBlock>
-            </StackPanel>
-            <Button x:Name="btnIr1" Height="30" Width="65" Content="Ir" Margin="130, 20" Background="#887766" Foreground="White" CornerRadius="5"/>
-        </StackPanel>
-        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="20,270,775,566" CornerRadius="15">
-            <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="526,8,0,0"/>
-        </Border>
-        <PersonPicture  ProfilePicture="https://a.mktgcdn.com/p/_YplrENatdVAjrjCE8M3DyVZylzUh_i9pSiAyAueX_U/760x440.jpg" Margin="34,302,1366,598" RenderTransformOrigin="0.48,0.99"></PersonPicture>
->>>>>>> Stashed changes
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="ProfessionalsActiveListView" ItemTemplate="{StaticResource ProfessionalsActiveListViewTemplate}" Tapped="ProjectsActiveListView_Tapped" ItemClick="ProjectsActiveListView_ItemClick" />
     </Grid>
 
     <Page.Resources>
-        <DataTemplate x:Key="InactivesProfessionalListViewTemplate" x:DataType="models:PFProject">
-            <StackPanel  Margin="20,80,775,11" CornerRadius="15" BorderThickness="1" BorderBrush="#ADA98B">
-                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                    <TextBlock Height="25" Text="{Binding TitlePJ }"></TextBlock>
-                </StackPanel>
+
+        <DataTemplate x:Key="ProfessionalsActiveListViewTemplate" x:DataType="models1:PFProfessional" >
+
+            <StackPanel Margin="715,161,110,691" Background="#A8DF7C" CornerRadius="15">
+                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" />
+                <PersonPicture Margin="-95,-60,450,-110" Name="" ProfilePicture="{Binding ResponsibleProfessional.PictureP}" Height="100" Width="100"/>
                 <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                    <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"></TextBlock>
+                    <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.NameP}" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                    <SymbolIcon Symbol="Setting"/>
-                </StackPanel>
+                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
                 <StackPanel Height="23" Margin="130, 5">
-                    <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
+                    <TextBlock Height="23" Text="Profesional:" FontWeight="Bold"></TextBlock>
                 </StackPanel>
                 <StackPanel Height="23" Margin="130,-5">
-                    <TextBlock Text="{Binding ResponsibleProfessional.NameP}"></TextBlock>
+                    <TextBlock Text="{Binding  ResponsibleProfessional.NameP}"></TextBlock>
                 </StackPanel>
-                <Button x:Name="btnSee" Height="30" Width="65" Content="See" Margin="130, 20" CornerRadius="5"/>
-                <PersonPicture  ProfilePicture="{Binding PicturePJ}" Margin="0,-500,570,-340"></PersonPicture>
             </StackPanel>
+
         </DataTemplate>
+
     </Page.Resources>
 </Page>
