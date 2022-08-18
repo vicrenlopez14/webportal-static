@@ -100,8 +100,6 @@ namespace ProFind.Lib.Admin.Views
             {
                 SucessfulCreation_tt = true;
                 new AdminNavigationController().GoBack();
-
-                
             }
         }
     }
