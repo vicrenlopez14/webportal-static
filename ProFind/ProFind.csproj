@@ -131,9 +131,6 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
-    <Compile Include="Lib\Admin\Views\Actualizar-Project\Actulizar-Project.xaml.cs">
-      <DependentUpon>Actulizar-Project.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml.cs">
       <DependentUpon>AdminCreate.xaml</DependentUpon>
     </Compile>
@@ -277,12 +274,9 @@
     <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Professional\Actualizar-Project\Actulizar-Project.xaml.cs">
-      <DependentUpon>Actulizar-Project.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
-    <Compile Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
-      <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
+    <Compile Include="Lib\Professional\Views\ActualizarProject\ActualizarProject.xaml.cs">
+      <DependentUpon>ActualizarProject.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Professional\Views\Activos_Page\Page_Activos.xaml.cs">
       <DependentUpon>Page_Activos.xaml</DependentUpon>
@@ -292,6 +286,9 @@
     </Compile>
     <Compile Include="Lib\Professional\Views\Dashboard_Page\Dashboard_Page.xaml.cs">
       <DependentUpon>Dashboard_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Professional\Views\EliminarProject\EliminarProject.xaml.cs">
+      <DependentUpon>EliminarProject.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Professional\Views\Inactivos_Page\Page_Inactivos.xaml.cs">
       <DependentUpon>Page_Inactivos.xaml</DependentUpon>
@@ -408,10 +405,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Lib\Admin\Views\Actualizar-Project\Actulizar-Project.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -588,11 +581,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\Professional\Actualizar-Project\Actulizar-Project.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\Professional\eliminar-projetc\Eliminacio-Projetcs.xaml">
+    <Page Include="Lib\Professional\Views\ActualizarProject\ActualizarProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -607,6 +596,10 @@
     <Page Include="Lib\Professional\Views\Dashboard_Page\Dashboard_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Professional\Views\EliminarProject\EliminarProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Professional\Views\Inactivos_Page\Page_Inactivos.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -685,7 +678,7 @@
       <Version>6.2.13</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.8.0</Version>
+      <Version>2.8.1</Version>
     </PackageReference>
     <PackageReference Include="MySql.Data">
       <Version>8.0.30</Version>

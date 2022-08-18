@@ -44,9 +44,10 @@ public class ProfessionalController : CrudController<PFProfessional>
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<HttpStatusCode>> Login([FromBody] LoginProfessional loginProfessional)
+    public async Task<ActionResult<HttpStatusCode>> Login(RegisterClient loginProfessional)
     {
-        return (await _dataSource.Login(loginProfessional.EmailP, loginProfessional.PasswordP)) ? Ok() : NotFound();
+        var (resultBool, resultObj) = await _dataSource.Login(loginProfessional.EmailC, loginProfessional.PasswordC);
+        return (resultBool) ? Ok(resultObj) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProfessional toUpdateObject)

@@ -19,7 +19,7 @@
 
     <Page.Resources>
 
-        <DataTemplate x:Key="ProjectsActiveListViewTemplate" x:DataType="models1:PFProject" >
+        <DataTemplate x:Key="ProjectsActiveListViewTemplate" x:DataType="models1:PFProfessional" >
 
             <StackPanel Margin="715,161,110,691" Background="#A8DF7C" CornerRadius="15">
                 <StackPanel Margin="-95,20,0,0" Height="27" Width="300" />

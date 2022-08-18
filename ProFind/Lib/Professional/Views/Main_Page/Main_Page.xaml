@@ -6,8 +6,8 @@
     xmlns:local="using:ProFind.Lib.Professional.Views.Main_Page"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Loaded="Page_Loaded_1"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
     <Grid>
@@ -28,18 +28,21 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
                 <muxc:NavigationViewItem
-                    Content="Dashboard"
-                    Icon="AllApps"
-                    Tag="Dashboard_Page" />
-                <muxc:NavigationViewItem
-                    Content="Active processes"
+                    Content="Active projects"
                     Icon="People"
-                    Tag="Processes_Page" />
-                <muxc:NavigationViewItem Content="Notifications" Tag="Notifications_Page">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BA;" />
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
+                    Tag="ActiveProjects_Page" />
+                <muxc:NavigationViewItem
+                    Content="Inactive projects"
+                    Icon="AllApps"
+                    Tag="InactiveProjects_Page" />
+                <muxc:NavigationViewItem
+                    Content="Notifications"
+                    Icon="AllApps"
+                    Tag="Notifications_Page" />
+                <muxc:NavigationViewItem
+                    Content="Proposals"
+                    Icon="AllApps"
+                    Tag="Activities_Page" />
             </muxc:NavigationView.MenuItems>
 
             <Frame Name="Professionals_ContentFrame" Margin="58,24,24,24">

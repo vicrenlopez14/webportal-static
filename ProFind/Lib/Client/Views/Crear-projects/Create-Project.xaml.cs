@@ -71,9 +71,14 @@ namespace ProFind.Lib.Client.Views.Crear_projects
 
                 if (_isFirstAdmin)
                 {
-                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
+        }
+
+        private void TxtDescription(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

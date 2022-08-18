@@ -27,7 +27,6 @@
                         Header="Title"
                         PlaceholderText="Title"
                         RenderTransformOrigin="0.6,0.536"
-                        TextChanged="TxtTitulo"
                         UseLayoutRounding="False">
                         <TextBox.RenderTransform>
                             <CompositeTransform
@@ -44,7 +43,6 @@
                         Header="Description"
                         PlaceholderText=""
                         RenderTransformOrigin="0.5,0.5"
-                        TextChanged="TxtDescription"
                         UseLayoutRounding="False">
                         <TextBox.RenderTransform>
                             <CompositeTransform Rotation="-0.195" />
@@ -59,8 +57,7 @@
                         Width="316"
                         Margin="50,15,0,0"
                         Header="Professional"
-                        PlaceholderText="San Salvador"
-                        SelectionChanged="Selection_Departamento">
+                        PlaceholderText="San Salvador">
                         <x:String>Ahuachapán</x:String>
                         <x:String>Cabañas</x:String>
                         <x:String>Chalatenango</x:String>
@@ -80,9 +77,7 @@
                         x:Name="Profession"
                         Width="331"
                         Margin="50,15,0,0"
-                        Header="Profession"
-                  
-                        SelectionChanged="txtProfession">
+                        Header="Profession">
                         <x:String>Credit card payment</x:String>
                         <x:String>Check (In person verify)</x:String>
                         <x:String>Cash (In person verify)</x:String>

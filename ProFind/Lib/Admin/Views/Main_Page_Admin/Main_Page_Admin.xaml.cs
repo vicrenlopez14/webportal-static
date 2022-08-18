@@ -4,6 +4,8 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.Global.Views.Preferences_Page;
+using ProFind.Lib.Admin.Views.Estado_del_proyecto;
+using ProFind.Lib.Admin.Views.Professionals_Page;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,12 +18,10 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
     {
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"Calendar_Page", typeof(Calendar_Page.Calendar_Page) },
-            {"Professionals_Page", typeof(Professionals_Page.Professionals_Page) },
-            {"Projects_Page", typeof(Projects_Page.Projects_Page) },
-            {"QuickView_Page", typeof(QuickView_Page.QuickView_Page) },
-            {"Preferences_Page", typeof(Preferences_Page) },
-            {"About_Page", typeof(About_Page) },
+            {"Administrators_Page", typeof(Calendar_Page.Calendar_Page) },
+            {"Calendar_Page", typeof(Page_Activos) },
+            {"Professionals_Page", typeof(Actives_Page) },
+            {"Clients_Page", typeof(QuickView_Page.QuickView_Page) },
             {"", typeof(Calendar_Page.Calendar_Page) }
         };
 

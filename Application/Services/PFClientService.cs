@@ -10,7 +10,11 @@ namespace Application.Services
     {
         public async Task<HttpStatusCode> Login(string email, string password)
         {
-            var loginClient = new LoginClient(email, password);
+            var loginClient = new RegisterClient
+            {
+                EmailC = email,
+                PasswordC = password
+            };
 
             var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Client/login", loginClient);
 

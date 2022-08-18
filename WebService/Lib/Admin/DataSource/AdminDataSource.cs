@@ -103,7 +103,7 @@ public class AdminDataSource
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Login(string email, string password)
+    public async Task<(bool, PFAdmin)> Login(string email, string password)
     {
         const string query = "SELECT * FROM Admin WHERE EmailA = @Email AND PasswordA = @Password;";
 
@@ -115,7 +115,8 @@ public class AdminDataSource
             ["Password"] = SHAPassword.ShaThisPassword(password)
         });
 
-        return await _connection.ExecuteAsync(query, dynamicParameters) > 0;
+        var result = (await _connection.QueryAsync<PFAdmin>(query, dynamicParameters)).ToList();
+        return ((result.Count()) > 0, result.First());
     }
 
     public async Task<bool> Update(string id, PFAdmin admin)

@@ -46,7 +46,7 @@ public class AdminController : CrudController<PFAdmin>
         return new ActionResult<IEnumerable<PFAdmin>>(Ok(result));
     }
 
-    
+
     public override async Task<ActionResult<HttpStatusCode>> Create(PFAdmin newObject)
     {
         newObject.IdA = await Nanoid.Nanoid.GenerateAsync();
@@ -56,9 +56,10 @@ public class AdminController : CrudController<PFAdmin>
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<HttpStatusCode>> Login([FromBody] LoginAdmin loginAdmin)
+    public async Task<ActionResult<HttpStatusCode>> Login(RegisterClient loginAdmin)
     {
-        return (await _dataSource.Login(loginAdmin.EmailA, loginAdmin.PasswordA)) ? Ok() : NotFound();
+        var (resultBool, resultObj) = await _dataSource.Login(loginAdmin.EmailC, loginAdmin.PasswordC);
+        return (resultBool) ? Ok(resultObj) : NotFound();
     }
 
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFAdmin toUpdateObject)

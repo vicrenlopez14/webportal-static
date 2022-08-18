@@ -43,13 +43,14 @@ public class ClientController : CrudController<PFClient>
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<HttpStatusCode>> Login([FromBody] LoginClient loginClient)
+    public async Task<ActionResult<HttpStatusCode>> Login(RegisterClient loginClient)
     {
-        return (await _dataSource.Login(loginClient.EmailC, loginClient.PasswordC)) ? Ok() : NotFound();
+        var (resultBool, resultObj) = await _dataSource.Login(loginClient.EmailC, loginClient.PasswordC);
+        return (resultBool) ? Ok(resultObj) : NotFound();
     }
 
     [HttpPost("register")]
-    public async Task<ActionResult<HttpStatusCode>> Register([FromBody] RegisterClient registerClient)
+    public async Task<ActionResult<HttpStatusCode>> Register(RegisterClient registerClient)
     {
         var registerResponse =
             await _dataSource.Register(registerClient.NameC, registerClient.EmailC, registerClient.PasswordC,

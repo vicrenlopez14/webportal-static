@@ -27,7 +27,6 @@ namespace ProFind.Lib.Admin.Views
     /// </summary>
     public sealed partial class Editar_User : Page
     {
-        private bool _isFirstAdmin;
 
         public bool SucessfulCreation_tt { get; private set; }
 
@@ -79,7 +78,6 @@ namespace ProFind.Lib.Admin.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _isFirstAdmin = (bool)e.Parameter;
 
         }
 
@@ -103,10 +101,7 @@ namespace ProFind.Lib.Admin.Views
                 SucessfulCreation_tt = true;
                 new clientNavigationController().GoBack();
 
-                if (_isFirstAdmin)
-                {
-                    new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
-                }
+                
             }
         }
     }

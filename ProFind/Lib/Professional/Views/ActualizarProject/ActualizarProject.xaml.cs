@@ -1,7 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
-using ProFind.Lib.Professional.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,29 +17,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Actualizar_Project
+namespace ProFind.Lib.Professional.Views.ActualizarProject
 {
     /// <summary>
-    /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Actulizar_Project : Page
+    public sealed partial class ActualizarProject : Page
     {
-        private bool _isFirstAdmin;
-
-        public bool SucessfulCreation_tt { get; private set; }
-
-        public Actulizar_Project()
+        public ActualizarProject()
         {
             this.InitializeComponent();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            _isFirstAdmin = (bool)e.Parameter;
-
         }
 
         private async void btnGuardarCambios_Click(object sender, RoutedEventArgs e)
@@ -63,13 +51,8 @@ namespace ProFind.Lib.Admin.Actualizar_Project
 
             if (respuesta == HttpStatusCode.OK)
             {
-                SucessfulCreation_tt = true;
                 new clientNavigationController().GoBack();
 
-                if (_isFirstAdmin)
-                {
-                    new AdminNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
-                }
             }
         }
     }

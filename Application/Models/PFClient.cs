@@ -54,8 +54,8 @@ namespace Application.Models
         {
         }
 
-        public string EmailC { get; }
-        public string PasswordC { get; }
+        public string EmailC { get; set; }
+        public string PasswordC { get; set; }
     }
 
     public class RegisterClient
@@ -69,9 +69,13 @@ namespace Application.Models
             PictureC = pictureC;
         }
 
-        public string NameC { get; }
-        public string EmailC { get; }
-        public string PasswordC { get; }
+        public RegisterClient()
+        {
+        }
+
+        public string NameC { get; set; }
+        public string EmailC { get; set; }
+        public string PasswordC { get; set; }
 
         public byte[] PictureC { get; set; }
     }

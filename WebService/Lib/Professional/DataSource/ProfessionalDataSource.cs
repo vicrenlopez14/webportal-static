@@ -103,7 +103,7 @@ public class ProfessionalDataSource
         return (await _connection.ExecuteAsync(query, dynamicParameters)) > 0;
     }
 
-    public async Task<bool> Login(string email, string password)
+    public async Task<(bool, PFProfessional)> Login(string email, string password)
     {
         const string query = "SELECT * FROM Professional "
                              + "WHERE EmailP = @Email AND PasswordP = @Password;";
@@ -116,9 +116,7 @@ public class ProfessionalDataSource
             ["Password"] = SHAPassword.ShaThisPassword(password)
         });
 
-        var res = await _connection.QueryAsync(query, dynamicParameters);
-
-        if (res == null) return false;
-        return true;
+        var result = (await _connection.QueryAsync<PFProfessional>(query, dynamicParameters)).ToList();
+        return ((result.Count()) > 0, result.First());
     }
 }

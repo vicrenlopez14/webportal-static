@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Professional.Controllers;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
+using ProFind.Lib.Admin.Views.Professionals_Page;
 
 namespace ProFind.Lib.Professional.Views.Main_Page
 {
@@ -11,16 +12,16 @@ namespace ProFind.Lib.Professional.Views.Main_Page
     {
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"Calendar_Page", typeof(Calendar_Page.Calendar_Page) },
-            {"Dashboard_Page", typeof(Dashboard_Page.Dashboard_Page) },
+            {"ActiveProjects_Page", typeof(Page_Activos) },
+            {"InactiveProjects_Page", typeof(Page_Inactivos) },
             {"Notifications_Page", typeof(Notifications_Page.Notifications_Page) },
-            {"Processes_Page", typeof(Page_Activos) },
+            {"Activities_Page", typeof(Actives_Page) },
             {"", typeof(Dashboard_Page.Dashboard_Page) }
         };
         public Main_Page_Professional()
         {
             this.InitializeComponent();
-            new AdminNavigationController().Init(Professionals_ContentFrame);
+            new ProfessionalNavigationController().Init(Professionals_ContentFrame);
 
         }
 
@@ -28,7 +29,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
         {
             if (args.IsSettingsInvoked)
             {
-                new AdminNavigationController().NavigateTo(typeof(Preferences_Page));
+                new ProfessionalNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -44,11 +45,11 @@ namespace ProFind.Lib.Professional.Views.Main_Page
 
             try
             {
-                new AdminNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
             }
             catch
             {
-                new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
+                new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
             }
         }
 
@@ -58,7 +59,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
 
         private void Page_Loaded_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
+            new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
         }
     }
 }

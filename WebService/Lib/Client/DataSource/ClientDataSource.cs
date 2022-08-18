@@ -92,7 +92,7 @@ public class ClientDataSource
         return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
     }
 
-    public async Task<bool> Login(string email, string password)
+    public async Task<(bool, PFClient)> Login(string email, string password)
     {
         const string query = "SELECT * FROM Client WHERE EmailC = @Email AND PasswordC = @Password;";
 
@@ -104,7 +104,8 @@ public class ClientDataSource
             ["Password"] = SHAPassword.ShaThisPassword(password)
         });
         
-        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+        var result = (await _connection.QueryAsync<PFClient>(query, dynamicParameters)).ToList();
+        return ((result.Count()) > 0, result.First());
     }
 
     private async Task<bool> CheckEmail(string email)
@@ -141,8 +142,8 @@ public class ClientDataSource
 
     public async Task<RegisterResponse> Register(string name, string email, string password, byte[] picture)
     {
-        var checkEmail = await CheckEmail(email);
-        var checkPassword = CheckPassword(password);
+        var checkEmail = true;
+        var checkPassword = true;
 
         if (checkEmail && checkPassword)
         {

@@ -1,6 +1,5 @@
 ﻿using Application.Models;
 using Application.Services;
-using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Professional.Controllers;
 using System;
@@ -19,33 +18,19 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Professional.eliminar_projetc
+namespace ProFind.Lib.Professional.Views.EliminarProject
 {
     /// <summary>
-    /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Eliminacio_Projetcs : Page
+    public sealed partial class EliminarProject : Page
     {
-
-       
-
-        public Eliminacio_Projetcs()
+        public EliminarProject()
         {
             this.InitializeComponent();
             GetProjectsList2();
-
-
-
-
-        }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            _isFirstAdmin = (bool)e.Parameter;
-
         }
         public async void GetProjectsList2()
 
@@ -69,12 +54,7 @@ namespace ProFind.Lib.Professional.eliminar_projetc
             {
 
 
-                SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
-                if (_isFirstAdmin)
-                {
-                    new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
-                }
+                new ProfessionalNavigationController().GoBack();
             }
 
         }

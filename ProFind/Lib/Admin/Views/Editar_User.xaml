@@ -56,7 +56,6 @@
                                     d:LayoutRounding="Auto"
                                     Header="Password"
                                     MaxLength="16"
-                                    PasswordChanged="passwordBox_PasswordChanged"
             
                                     PlaceholderText="Password"
                                     RenderTransformOrigin="0.538,2.297"

@@ -18,10 +18,6 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
                 <muxc:NavigationViewItem
-                    Content="Dashboard"
-                    Icon="AllApps"
-                    Tag="Dashboard_Page" />
-                <muxc:NavigationViewItem
                     Content="Proyects"
                     Icon="AllApps"
                     Tag="Proyects_Page" />
