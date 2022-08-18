@@ -1,5 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
+using ProFind.Lib.Admin.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,6 +40,14 @@ namespace ProFind.Lib.Admin.Views.Client_List
 
             ClientListView.ItemsSource = ClientList;    
 
+        }
+
+        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PFClient clickedItem = e.ClickedItem as PFClient;
+
+            new AdminNavigationController().NavigateTo(typeof(
+                Lib.Admin.Views.UpdateDeleteClient.UpdateDeleteClient), clickedItem);
         }
     }
 }

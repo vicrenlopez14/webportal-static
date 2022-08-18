@@ -196,6 +196,9 @@
     <Compile Include="Lib\Admin\Views\Status_Page\Status_Page.xaml.cs">
       <DependentUpon>Status_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\UpdateDeleteClient\UpdateDeleteClient.xaml.cs">
+      <DependentUpon>UpdateDeleteClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Controllers\ClientNavigationController.cs" />
     <Compile Include="Lib\Client\Views\Calendar_Page\Calendar_Page.xaml.cs">
       <DependentUpon>Calendar_Page.xaml</DependentUpon>
@@ -488,6 +491,10 @@
     <Page Include="Lib\Admin\Views\Status_Page\Status_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Admin\Views\UpdateDeleteClient\UpdateDeleteClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Client\Views\Calendar_Page\Calendar_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
