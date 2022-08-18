@@ -221,6 +221,15 @@
     <Compile Include="Lib\Client\Views\Crear-projects\Create-Project.xaml.cs">
       <DependentUpon>Create-Project.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\CRUD\CreateClientPage.xaml.cs">
+      <DependentUpon>CreateClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Client\Views\CRUD\ReadPageClient.xaml.cs">
+      <DependentUpon>ReadPageClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Client\Views\CRUD\UpdatePageClient.xaml.cs">
+      <DependentUpon>UpdatePageClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
@@ -533,6 +542,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Client\Views\Crear-projects\Create-Project.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Client\Views\CRUD\CreateClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Client\Views\CRUD\ReadPageClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Client\Views\CRUD\UpdatePageClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
