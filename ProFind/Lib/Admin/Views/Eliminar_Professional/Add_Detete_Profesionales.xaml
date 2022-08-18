@@ -14,35 +14,32 @@
             <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="DeteteProfesionalListView" ItemTemplate="{StaticResource DeteteProfesionalListViewTemplate}" />
-    </Grid>
+        <ListView Name="DeteteProfesionalListView"  >
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models1:PFProject" >
 
-    <Page.Resources>
+                    <StackPanel  CornerRadius="15">
+                        <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
+                            <TextBlock Height="25" Text="Active projects"></TextBlock>
+                        </StackPanel>
+                        <Image Margin="-95,-30,450,-110"  Width="100" Height="100" Source="{Binding PicturePJ}"/>
 
-        <DataTemplate x:Key="DeteteProfesionalListViewTemplate" x:DataType="models1:PFProject" >
-
-            <StackPanel Margin="75,84,750,753" CornerRadius="15">
-                <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                    <TextBlock Height="25" Text="Active projects"></TextBlock>
-                </StackPanel>
-                <Image Margin="-95,-30,450,-110"  Width="100" Height="100" Source="{Binding PicturePJ}"/>
-
-                <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                    <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
-                </StackPanel>
-                <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                    <SymbolIcon Symbol="Setting"/>
-                </StackPanel>
-                <StackPanel Height="23" Margin="130, 5">
-                    <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
-                </StackPanel>
-                <StackPanel Height="23" Margin="130,-5">
-                    <TextBlock Text="{Binding  ResponsibleProfessional.NameP}"></TextBlock>
-                </StackPanel>
+                        <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
+                            <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
+                            <SymbolIcon Symbol="Setting"/>
+                        </StackPanel>
+                        <StackPanel Height="23" Margin="130, 5">
+                            <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Height="23" Margin="130,-5">
+                            <TextBlock Text="{Binding  ResponsibleProfessional.NameP}"></TextBlock>
+                        </StackPanel>
 
 
 
-                <Button
+                        <Button
                     x:Name="btnEliminar"
                     Width="75"
                     Height="30"
@@ -51,9 +48,11 @@
                     Content="Eliminar"
                     CornerRadius="5"
                     Foreground="White" Click="btnEliminar_Click" />
-            </StackPanel>
+                    </StackPanel>
 
-        </DataTemplate>
+                </DataTemplate>
 
-    </Page.Resources>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </Page>
