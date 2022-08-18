@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Clients" Style="{StaticResource HeaderTextBlockStyle}" Margin="80,39,1268,903" RenderTransformOrigin="0.638,0.776"/>
-        <ListView Name="ClientListView">
+        <ListView Name="ClientListView" ItemClick="ClientListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:PFClient">
                     <StackPanel CornerRadius="10" BorderThickness="1" BorderBrush="Black" Orientation="Horizontal" >

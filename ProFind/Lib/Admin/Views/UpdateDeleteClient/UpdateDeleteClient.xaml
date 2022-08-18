@@ -1,0 +1,110 @@
+﻿<Page
+    x:Class="ProFind.Lib.Admin.Views.UpdateDeleteClient.UpdateDeleteClient"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.Admin.Views.UpdateDeleteClient"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Loaded="Page_Loaded"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+
+    <Grid Margin="50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Grid.Row="0">
+            <TextBlock Margin="0,0,0,10" HorizontalAlignment="Center">Profile picture</TextBlock>
+            <PersonPicture
+                                    Name="ProfilePicture_pp"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    RenderTransformOrigin="0.48,0.99" />
+            <Button
+                                    Name="btnExaminar"
+                                    Margin="0,10,0,20"
+                                    HorizontalAlignment="Center"
+                                    Click="btnExaminar_Click"
+                                    Content="Charge"
+                                    CornerRadius="5" />
+            <TextBox
+                                    Name="NameC"
+                                    Width="460"
+                                    d:LayoutRounding="Auto"
+                                    Header="Name"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    TextChanged="TxtName"
+                                    UseLayoutRounding="False">
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195" />
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox
+                                    Name="Email"
+                                    Width="463"
+                                    Margin="0,15,0,0"
+                                    d:LayoutRounding="Auto"
+                                    Header="Email"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    TextChanged="TxtEmail"
+                                    UseLayoutRounding="False">
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.195" />
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox
+                                    Name="passwordBox"
+                                    Width="461"
+                                    Height="54"
+                                    Margin="0,15,0,0"
+                                    d:LayoutRounding="Auto"
+                                    Header="Password"
+                                    MaxLength="16"
+                                    RenderTransformOrigin="0.538,2.297"
+                                    UseLayoutRounding="False">
+                <TextBox.RenderTransform>
+                    <CompositeTransform SkewX="-1.005" TranslateX="-1.251" />
+                </TextBox.RenderTransform>
+            </TextBox>
+
+        </StackPanel>
+
+        <StackPanel
+                Grid.Column="1"
+                Margin="0,25"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+            <Button
+                    x:Name="btnActualizar"
+                    Grid.Row="1"
+                    Margin="50,0,0,0"
+                    Padding="{StaticResource SmallLeftTopRightBottomMargin}"
+                    VerticalAlignment="Top"
+                    Click="btnActualizar_Click"
+                    Content="Update"
+                    CornerRadius="5" />
+            <Button
+                    x:Name="btnDelete"
+                    Grid.Row="1"
+                    Margin="50,0"
+                    Padding="{StaticResource SmallLeftTopRightBottomMargin}"
+                    VerticalAlignment="Top"
+                    Content="Delete"
+                    CornerRadius="5"
+                    RenderTransformOrigin="1.663,0.216" Click="btnDelete_Click" />
+            <Button
+                    x:Name="btnCancelar"
+                    Grid.Row="1"
+                    Margin="0,0"
+                    Padding="{StaticResource SmallLeftTopRightBottomMargin}"
+                    VerticalAlignment="Top"
+                    Content="Cancel"
+                    CornerRadius="5"
+                    RenderTransformOrigin="1.663,0.216" Click="btnCancelar_Click" />
+        </StackPanel>
+
+    </Grid>
+
+</Page>
