@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Application.Services;
 using Newtonsoft.Json;
 using Nito.AsyncEx.Synchronous;
@@ -43,6 +44,11 @@ namespace Application.Models
             var result = infoTask.WaitAndUnwrapException();
 
             return result;
+        }
+
+        public Task<List<PFActivity>> ListObjectAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public async void FillFromId(string id)

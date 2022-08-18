@@ -17,32 +17,28 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_Administradores
+namespace ProFind.Lib.Admin.Views.Client_List
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Page_Reservados : Page
+    public sealed partial class Clients_List : Page
     {
-        public Page_Reservados()
+        public Clients_List()
         {
             this.InitializeComponent();
+            GetClientList();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        public async void GetClientList()
         {
+            var ClientService = new PfClientService();
+            List<PFClient> ClientList = new List<PFClient>();
 
-        }
-        public async void GetProjectsList()
+            ClientList = await ClientService.ListObjectAsync() as List<PFClient>;
 
-        {
-            var projectService = new PfProjectService();
+            ClientListView.ItemsSource = ClientList;    
 
-            List<PFProject> ActiveProjectsList = new List<PFProject>();
-
-            ActiveProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
-
-            ReservadosProjectsListView.ItemsSource = ActiveProjectsList;
         }
     }
 }

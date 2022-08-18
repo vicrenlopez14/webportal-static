@@ -134,6 +134,9 @@
     <Compile Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml.cs">
       <DependentUpon>AdminCreate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\Client_List\Clients_List.xaml.cs">
+      <DependentUpon>Clients_List.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
       <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,9 @@
     </Compile>
     <Compile Include="Lib\Admin\Views\ListaDe_Pagos.xaml.cs">
       <DependentUpon>ListaDe_Pagos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\LIsta-Actividades\Listas-Actividades.xaml.cs">
+      <DependentUpon>Listas-Actividades.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\Main_Page_Admin\Main_Page_Admin.xaml.cs">
       <DependentUpon>Main_Page_Admin.xaml</DependentUpon>
@@ -400,6 +406,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\Admin\Views\Client_List\Clients_List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\eliminar-projetc\Eliminacio-Projetcs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -439,6 +449,10 @@
     <Page Include="Lib\Admin\Views\ListaDe_Pagos.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Admin\Views\LIsta-Actividades\Listas-Actividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\Main_Page_Admin\Main_Page_Admin.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -677,7 +691,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\Admin\Models\" />
-    <Folder Include="Lib\Admin\Views\Estado_del_proyecto\Controls\" />
     <Folder Include="Lib\Client\Models\" />
     <Folder Include="Lib\Global\Models\" />
     <Folder Include="Lib\Professional\Models\" />

@@ -35,6 +35,15 @@ namespace ProFind.Lib.Professional.Views.Inactivos_Page
 
         }
 
+        public async void GetProjectsList()
+
+        {
+            var projectService = new PfProjectService();
+
+            List<PFProject> InactivoProjectsList = new List<PFProject>();
+
+        }
+
         public async void GetInactiveProjectList()
         {
             var answerInactives = new PfProjectService();

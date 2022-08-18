@@ -4,69 +4,61 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWP_Administradores"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
     <Grid>
-        <TextBlock Text="Reserved" Margin="22,20,-2,-5" FontWeight="Normal" FontSize="30" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
-        <StackPanel Background="#F3F2F6" Margin="20,80,775,707" BorderBrush="Black" CornerRadius="15">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Oil overhaul"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="Automotive" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                <SymbolIcon Symbol="Setting"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,-5">
-                <TextBlock Text="Ing. Maria Esperanza Granados"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 15">
-                <TextBlock Text="Date:" Height="23" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="31" Margin="130, -15">
-                <TextBlock Text="14/04/22" Height="23"></TextBlock>
-            </StackPanel>
-            <Button x:Name="btnIr" Height="30" Width="65" Content="Go" Margin="130, 15" Background="#3A2F59" Foreground="White" CornerRadius="5"/>
-        </StackPanel>
-        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="21,79,775,708" CornerRadius="15">
-            <AppBarSeparator HorizontalAlignment="Left" Margin="525,9,0,0" VerticalAlignment="Top" Height="35"/>
-        </Border>
-        <PersonPicture  ProfilePicture="https://segurossura.com/content/uploads/sites/10/2017/10/seguros-sura-5-razones-para-hacerle-mantenimiento-preventivo-a-tu-carro-mini.jpg" Margin="34,133,1366,767"></PersonPicture>
 
-
-        <StackPanel Margin="20,330,776,451" Background="#F3F2F6" CornerRadius="15">
-            <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                <TextBlock Height="25" Text="Medical Appointment"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                <TextBlock Text="General medicine" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
-                <SymbolIcon Symbol="Contact2"/>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 5">
-                <TextBlock Height="23" Text="Professional:" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130,-5">
-                <TextBlock Text="Dra. Lourdes Berrios"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="23" Margin="130, 15">
-                <TextBlock Text="Date:" Height="23" FontWeight="Bold"></TextBlock>
-            </StackPanel>
-            <StackPanel Height="31" Margin="130, -15">
-                <TextBlock Text="01/03/22" Height="23"></TextBlock>
-            </StackPanel>
-            <Button x:Name="btnIr1" Height="30" Width="65" Content="Go" Margin="130, 20" Background="#3A2F59" Foreground="White" CornerRadius="5"/>
-        </StackPanel>
-        <Border BorderBrush="#ADA98B" BorderThickness="1" Margin="19,331,776,451" CornerRadius="15">
-            <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="525,9,0,0" RenderTransformOrigin="0.531,0.886"/>
-        </Border>
-        <PersonPicture  ProfilePicture="https://www.pasadenahealthcenter.com/es/wp-content/uploads/2019/04/PHC.jpg" Margin="33,382,1367,518" RenderTransformOrigin="0.48,0.99"></PersonPicture>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="ReservadosProjectsListView" ItemTemplate="{StaticResource ReservadosProjectsListViewTemplate}" />
     </Grid>
+
+    <Page.Resources>
+        <DataTemplate x:Key="ReservadosProjectsListViewTemplate" x:DataType="models1:PFProject"  >
+            <StackPanel
+
+                Margin="366,337,430,500"
+                Background="#F4FAE1"
+                CornerRadius="15">
+                <StackPanel
+                    Width="300"
+                    Height="27"
+                    Margin="-95,20,0,0">
+                    <TextBlock Height="25" Text="{Binding TitlePJ}" />
+                </StackPanel>
+                <PersonPicture Margin="-30,-30,570,10" ProfilePicture="{Binding ResponsibleProfessional.PictureP}" RenderTransformOrigin="0.100,0." Height="100" Width="100"/>
+
+                <StackPanel
+                    Width="300"
+                    Height="27"
+                    Margin="550,-35,0,0">
+                    <TextBlock FontWeight="Bold" Margin="-240,-100,0,30" Height="30" Width="250" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" />
+                </StackPanel>
+                <StackPanel
+                    Width="20"
+                    Height="22"
+                    Margin="-425,-250,0,-70">
+                    <SymbolIcon Symbol="Contact2" />
+                </StackPanel>
+                <StackPanel Width="340" Height="23" Margin="130,5">
+                    <TextBlock
+                        Height="23"
+                        FontWeight="Bold"
+                        Margin="-20,-190,3,-70"
+                        Text="Professional:" />
+                </StackPanel>
+                <StackPanel Height="20" Width="340"  Margin="-20,-190,3,-70">
+                    <TextBlock Text="{Binding ResponsibleProfessional.NameP}" Height="31" />
+                </StackPanel>
+
+
+
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
 </Page>
