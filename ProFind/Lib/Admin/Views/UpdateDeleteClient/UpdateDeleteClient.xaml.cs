@@ -70,5 +70,15 @@ namespace ProFind.Lib.Admin.Views.UpdateDeleteClient
         {
             new AdminNavigationController().GoBack();
         }
+
+        private void btnExaminar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

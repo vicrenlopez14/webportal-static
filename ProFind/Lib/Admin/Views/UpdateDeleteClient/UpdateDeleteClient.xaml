@@ -35,7 +35,6 @@
                                     d:LayoutRounding="Auto"
                                     Header="Name"
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtName"
                                     UseLayoutRounding="False">
                 <TextBox.RenderTransform>
                     <CompositeTransform Rotation="-0.195" />
@@ -48,7 +47,6 @@
                                     d:LayoutRounding="Auto"
                                     Header="Email"
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtEmail"
                                     UseLayoutRounding="False">
                 <TextBox.RenderTransform>
                     <CompositeTransform Rotation="-0.195" />
