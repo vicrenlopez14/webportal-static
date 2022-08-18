@@ -48,24 +48,15 @@ namespace ProFind.Lib.Client.Views.Crear_projects
             PFProject project = new PFProject();
             var profession = new PFProfessional();
 
-
-
             project.ResponsibleProfessional = profession;
-
             project.TitlePJ = TitlePJ.Text;
             project.DescriptionPJ = DescriptionPJ.Text;
-
             project.Status = true ?PFProjectStatus.Active : PFProjectStatus.Inactive;
-
-
 
             var respuesta = await new PfProjectService().Update(project);
 
             if (respuesta == HttpStatusCode.OK)
             {
-
-
-
                 SucessfulCreation_tt = true;
                 new AdminNavigationController().GoBack();
 
