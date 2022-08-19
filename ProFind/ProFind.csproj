@@ -284,6 +284,9 @@
     <Compile Include="Lib\Client\Views\Pays_Page\Unauthorized_page.xaml.cs">
       <DependentUpon>Unauthorized_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\ProjectReadPage\ProjectReadPage.xaml.cs">
+      <DependentUpon>ProjectReadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
     <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
@@ -648,6 +651,10 @@
     <Page Include="Lib\Client\Views\Pays_Page\Unauthorized_page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Client\Views\ProjectReadPage\ProjectReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Global\Views\About_Page\About_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
