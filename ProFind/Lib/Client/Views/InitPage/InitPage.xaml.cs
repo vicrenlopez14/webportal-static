@@ -4,6 +4,8 @@ using Application.Services;
 using System.Threading.Tasks;
 using Application.Models;
 using ProFind.Lib.Global.Helpers;
+using Windows.UI.Popups;
+using System;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -106,6 +108,22 @@ namespace ProFind.Lib.Client.Views.InitPage
             else
             {
                 FailedAuth_tt.IsOpen = true;
+            }
+
+            if (string.IsNullOrEmpty(Name_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_tb.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
             }
         }
     }
