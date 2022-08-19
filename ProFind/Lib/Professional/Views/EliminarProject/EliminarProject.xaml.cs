@@ -27,6 +27,9 @@ namespace ProFind.Lib.Professional.Views.EliminarProject
     /// </summary>
     public sealed partial class EliminarProject : Page
     {
+
+        private string IdToDelete;
+
         public EliminarProject()
         {
             this.InitializeComponent();
@@ -46,10 +49,8 @@ namespace ProFind.Lib.Professional.Views.EliminarProject
 
         private async void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            PFProject Project = new PFProject();
 
-
-            var respuesta = await new PfProjectService().Delete(Project.IdPJ);
+            var respuesta = await new PfProjectService().Delete(IdToDelete);
             if (respuesta == HttpStatusCode.OK)
             {
 
@@ -57,6 +58,12 @@ namespace ProFind.Lib.Professional.Views.EliminarProject
                 new InAppNavigationController().GoBack();
             }
 
+        }
+
+        private void DeteteProfesionalListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PFProject ToDeleteProject = (PFProject)e.ClickedItem;
+            IdToDelete = ToDeleteProject.IdPJ;
         }
     }
 }
