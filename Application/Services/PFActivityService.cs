@@ -32,6 +32,18 @@ namespace Application.Services
             return Activity;
         }
 
+        public async Task<IEnumerable<PFActivity>> ListOfProject(string id)
+        {
+            IEnumerable<PFActivity> Activity = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Activity/Project/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                Activity = await response.Content.ReadAsAsync<IEnumerable<PFActivity>>();
+            }
+
+            return Activity;
+        }
+
         public async Task<IEnumerable<PFActivity>> ListPaginatedObjectAsync(int fromIndex) =>
             await ListPaginatedObjectAsync(fromIndex, -1);
 

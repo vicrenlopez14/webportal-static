@@ -19,6 +19,15 @@ namespace ProFind.Lib.Admin.Controllers
             return true;
         }
 
+        public bool GoBack(object parameter)
+        {
+            // Verify if 
+            if (pagesStack.Pop() == null) return false;
+
+            NavigateTo(pagesStack.Pop(), parameter);
+            return true;
+        }
+
         public void Init(Frame centralController)
         {
             BaseFrame = centralController;

@@ -1,4 +1,5 @@
 ﻿using Application.Services;
+using ProFind.Lib.Global.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,8 +32,17 @@ namespace ProFind.Lib.Client.Views.CRUD
 
         private async void InitializeData()
         {
-            ClientListView.ItemSource = await new PfClientService().ListObjectAsync();
+            ClientsListView.ItemsSource = await new PfClientService().ListObjectAsync();
         }
 
+        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void Add_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new ClientNavigationController().NavigateTo(typeof(CreateClientPage));
+        }
     }
 }

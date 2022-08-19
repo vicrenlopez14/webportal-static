@@ -43,7 +43,7 @@ public class ActivityDataSource
 
         return result;
     }
-    
+
     public async Task<IEnumerable<PFActivity>> OfProject(string ProjectId)
     {
         const string query =
@@ -54,7 +54,7 @@ public class ActivityDataSource
             ["ProjectId"] = ProjectId
         });
         var result = await _connection.QueryAsync<PFActivity>(query, dynamicParameters);
-        
+
         return result;
     }
 
@@ -71,7 +71,7 @@ public class ActivityDataSource
     public async Task<bool> Create(PFActivity Activity)
     {
         const string query =
-            "INSERT INTO Activity VALUES(@IdA, @TitleA, @DescriptionA, @ExpectedBeginA, @ExpectedEndA, @IdPJ1, @IdT1);";
+            "INSERT INTO Activity VALUES(@IdA, @TitleA, @DescriptionA, @ExpectedBeginA, @ExpectedEndA, @PictureA, @IdPJ1, @IdT1);";
 
         DynamicParameters dynamicParameters = new DynamicParameters();
 
@@ -83,6 +83,7 @@ public class ActivityDataSource
             ["DescriptionA"] = Activity.DescriptionA,
             ["ExpectedBeginA"] = Activity.ExpectedBeginA,
             ["ExpectedEndA"] = Activity.ExpectedEndA,
+            ["PictureA"] = Activity.PictureA,
             ["IdPJ1"] = Activity.IdPJ1,
             ["IdT1"] = Activity.IdT1
         });
@@ -93,7 +94,7 @@ public class ActivityDataSource
     public async Task<bool> Update(string id, PFActivity activity)
     {
         const string query =
-            "UPDATE Activity SET TitleA=@Title, DescriptionA=@Description, ExpectedBeginA=@ExpectedBegin, ExpectedEndA=@ExpectedEnd, IdPJ1=@IdPJ1, IdT1=@IdT1 WHERE IdA=@Id;";
+            "UPDATE Activity SET TitleA=@Title, DescriptionA=@Description, ExpectedBeginA=@ExpectedBegin, ExpectedEndA=@ExpectedEnd, PictureA=@Picture, IdPJ1=@IdPJ1, IdT1=@IdT1 WHERE IdA=@Id;";
 
         var dynamicParameters = new DynamicParameters();
         dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
@@ -103,6 +104,7 @@ public class ActivityDataSource
             ["Description"] = activity.DescriptionA,
             ["ExpectedBegin"] = activity.ExpectedBeginA,
             ["ExpectedEnd"] = activity.ExpectedEndA,
+            ["Picture"] = activity.PictureA,
             ["IdPJ1"] = activity.IdPJ1,
             ["IdT1"] = activity.IdT1
         });

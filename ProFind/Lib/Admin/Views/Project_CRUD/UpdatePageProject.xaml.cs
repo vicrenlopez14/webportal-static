@@ -2,6 +2,7 @@
 using Application.Services;
 using Org.BouncyCastle.Utilities.IO.Pem;
 using ProFind.Lib.Admin.Controllers;
+using ProFind.Lib.Admin.Views.ActivityCRUD;
 using ProFind.Lib.Global.Helpers;
 using System;
 using System.Collections.Generic;
@@ -144,6 +145,11 @@ namespace ProFind.Lib.Admin.Views.Project_CRUD
         {
             toManipulate.ResponsibleClient = clients[Client_cb.SelectedIndex];
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new AdminNavigationController().NavigateTo(typeof(ReadPageActivity), toManipulate);
         }
     }
 }
