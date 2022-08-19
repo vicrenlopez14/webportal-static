@@ -39,7 +39,7 @@ namespace ProFind.Lib.Client.Views.ProjectReadPage
 
 
 
-            ListProject = await projectServices.ListObjectAsync() as List<PFProject>;
+            ListProject = await projectServices.ListProjectsByUserAsync(PfClientService.client.IdC) as List<PFProject>;
 
             ProjectListView.ItemsSource = ListProject;  
         }
