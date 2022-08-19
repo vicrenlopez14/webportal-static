@@ -56,7 +56,7 @@ namespace ProFind.Lib.Admin.Views.Professionals_Page
         private void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             PFProfessional project = e.ClickedItem as PFProfessional;
-            new AdminNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage), project);
+            new InAppNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage), project);
         }
     }
 }

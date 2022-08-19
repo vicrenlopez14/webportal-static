@@ -42,17 +42,17 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
         {
             var project = e.ClickedItem as PFProfessional;
 
-            new AdminNavigationController().NavigateTo(typeof(CreatePageProfessional), project);
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProfessional), project);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(CreatePageProfessional));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProfessional));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(CreatePageProfessional));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProfessional));
         }
     }
 }

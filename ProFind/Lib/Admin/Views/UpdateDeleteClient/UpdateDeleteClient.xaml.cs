@@ -85,7 +85,7 @@ namespace ProFind.Lib.Admin.Views.UpdateDeleteClient
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().GoBack();
+            new Controllers.InAppNavigationController().GoBack();
         }
 
         private void btnExaminar_Click(object sender, RoutedEventArgs e)

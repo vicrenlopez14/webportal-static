@@ -102,7 +102,7 @@ namespace ProFind.Lib.Admin.Views.ActivityCRUD
 
             if (result == System.Net.HttpStatusCode.OK)
             {
-                new AdminNavigationController().GoBack(parentProject);
+                new InAppNavigationController().GoBack(parentProject);
             }
         }
 

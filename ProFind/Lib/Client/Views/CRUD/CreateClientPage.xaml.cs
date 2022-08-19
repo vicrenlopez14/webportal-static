@@ -1,5 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
+using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using System;
@@ -79,7 +80,7 @@ namespace ProFind.Lib.Client.Views.CRUD
 
 
             var res = await new PfClientService().Create(newObject);
-            if (res == System.Net.HttpStatusCode.OK) new ClientNavigationController().GoBack();
+            if (res == System.Net.HttpStatusCode.OK) new InAppNavigationController().GoBack();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Services;
+using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Controllers;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace ProFind.Lib.Client.Views.CRUD
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new ClientNavigationController().NavigateTo(typeof(CreateClientPage));
+            new InAppNavigationController().NavigateTo(typeof(CreateClientPage));
         }
     }
 }

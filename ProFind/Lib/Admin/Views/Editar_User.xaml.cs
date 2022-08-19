@@ -99,7 +99,7 @@ namespace ProFind.Lib.Admin.Views
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new Controllers.InAppNavigationController().GoBack();
             }
         }
     }

@@ -232,7 +232,6 @@
     <Compile Include="Lib\Admin\Views\UpdateDeleteClient\UpdateDeleteClient.xaml.cs">
       <DependentUpon>UpdateDeleteClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Client\Controllers\ClientNavigationController.cs" />
     <Compile Include="Lib\Client\Views\Calendar_Page\Calendar_Page.xaml.cs">
       <DependentUpon>Calendar_Page.xaml</DependentUpon>
     </Compile>
@@ -325,7 +324,6 @@
     <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
     <Compile Include="Lib\Professional\Views\ActualizarProject\ActualizarProject.xaml.cs">
       <DependentUpon>ActualizarProject.xaml</DependentUpon>
     </Compile>

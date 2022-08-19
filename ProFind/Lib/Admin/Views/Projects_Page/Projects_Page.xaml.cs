@@ -45,7 +45,7 @@ namespace ProFind.Lib.Admin.Views.Projects_Page
         {
             PFProject clickeditem = e.ClickedItem as PFProject;
 
-            new AdminNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage), clickeditem); 
+            new InAppNavigationController().NavigateTo(typeof(Lib.Admin.Views.InitPage.InitPage), clickeditem); 
         }
     }
 

@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -50,7 +51,7 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
 
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is bool)
             {
@@ -61,6 +62,7 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
             if (e.Parameter is PFProfessional)
             {
                 toManipulate = (PFProfessional)e.Parameter;
+                await loadUsefulThings();
                 FillFields(toManipulate);
                 ManipulationMode();
                 return;
@@ -74,6 +76,7 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
             FirstName1_tbx.Text = incomingProfessional.NameP;
             ProfilePicture_pp.ProfilePicture = incomingProfessional.PictureP.ToBitmapImage();
             profession_cbx.Text = incomingProfessional.Profession.NamePFS;
+            profession_cbx.SelectedIndex = 0;
             Afp.Text = incomingProfessional.AFPP;
             Dui.Text = incomingProfessional.DUIP;
             SeguroSocial.Text = incomingProfessional.ISSSP;
@@ -105,22 +108,27 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
             Confirm_passwordBox.Visibility = Visibility.Collapsed;
         }
 
-        public async void loadUsefulThings()
+        public async Task<bool> loadUsefulThings()
         {
             // Professions
             (professions, professionStrings) = await new PFProfessionService().GetComboboxChoices();
             profession_cbx.ItemsSource = null;
             profession_cbx.ItemsSource = professionStrings;
+            profession_cbx.SelectedIndex = 0;
 
             // Departments
             (departments, departmentsStrings) = await new PFDepartmentService().GetComboboxChoices();
             departamento.ItemsSource = null;
             departamento.ItemsSource = departmentsStrings;
+            departamento.SelectedIndex = 0;
 
             // Work-day types
             (workdaytypes, workdaytypestrings) = await new PFWorkDayTypeService().GetComboboxChoices();
             Jornada.ItemsSource = null;
             Jornada.ItemsSource = workdaytypestrings;
+            Jornada.SelectedIndex = 0;
+
+            return true;
         }
 
 
@@ -311,7 +319,9 @@ namespace ProFind.Lib.Admin.Views.Professional_CRUD
 
         private void ComboBox_SelectionProfesional(object sender, SelectionChangedEventArgs e)
         {
-            toManipulate.Profession = professions[profession_cbx.SelectedIndex];
+            if (professions.Count > 0 && profession_cbx.SelectedIndex> -1)
+                toManipulate.Profession = professions[profession_cbx.SelectedIndex];
+
             toManipulate.IdPFS1 = profession_cbx.SelectedIndex.ToString();
 
         }

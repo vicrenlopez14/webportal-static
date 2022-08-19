@@ -49,17 +49,17 @@ namespace ProFind.Lib.Admin.Views.ActivityCRUD
         {
             var activity = e.ClickedItem as PFActivity;
 
-            new AdminNavigationController().NavigateTo(typeof(CreatePageActivity), new Tuple<PFProject, PFActivity>(parentProject, activity));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), new Tuple<PFProject, PFActivity>(parentProject, activity));
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(CreatePageActivity), (parentProject));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), (parentProject));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(CreatePageActivity), (parentProject));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), (parentProject));
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)

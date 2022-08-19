@@ -41,12 +41,12 @@ namespace ProFind.Lib.Admin.Views.CRUD
         {
             var admin = e.ClickedItem as PFAdmin;
 
-            new AdminNavigationController().NavigateTo(typeof(UpdatePageAdmin), admin);
+            new InAppNavigationController().NavigateTo(typeof(UpdatePageAdmin), admin);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(CreatePageAdmin));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageAdmin));
         }
     }
 }

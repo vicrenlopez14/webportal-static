@@ -1,5 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
+using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using System;
@@ -77,7 +78,7 @@ namespace ProFind.Lib.Client.Views.CRUD
 
         private async void Back_btn_Click(object sender, RoutedEventArgs e)
         {   
-            new ClientNavigationController().GoBack();
+            new InAppNavigationController().GoBack();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

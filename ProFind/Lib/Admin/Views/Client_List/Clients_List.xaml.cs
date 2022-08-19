@@ -46,7 +46,7 @@ namespace ProFind.Lib.Admin.Views.Client_List
         {
             PFClient clickedItem = e.ClickedItem as PFClient;
 
-            new AdminNavigationController().NavigateTo(typeof(
+            new InAppNavigationController().NavigateTo(typeof(
                 Lib.Admin.Views.UpdateDeleteClient.UpdateDeleteClient), clickedItem);
         }
     }

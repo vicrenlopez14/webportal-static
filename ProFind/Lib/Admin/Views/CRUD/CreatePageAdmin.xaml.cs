@@ -47,7 +47,7 @@ namespace ProFind.Lib.Admin.Views.CRUD
 
             if (result == System.Net.HttpStatusCode.OK)
             {
-                new AdminNavigationController().GoBack();
+                new InAppNavigationController().GoBack();
             }
             if (string.IsNullOrEmpty(Name_tb.Text))
             {
