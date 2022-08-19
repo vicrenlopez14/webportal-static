@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -54,6 +55,22 @@ namespace ProFind.Lib.Admin.Views.UpdateDeleteClient
             if(result == System.Net.HttpStatusCode.OK)
             {
                 new GlobalNavigationController().GoBack();
+            }
+            if (string.IsNullOrEmpty(NameC.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(passwordBox.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
             }
         }
 

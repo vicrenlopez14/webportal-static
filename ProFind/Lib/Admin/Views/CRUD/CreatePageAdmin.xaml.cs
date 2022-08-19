@@ -2,7 +2,9 @@
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Helpers;
+using System;
 using System.Collections.Generic;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -46,6 +48,22 @@ namespace ProFind.Lib.Admin.Views.CRUD
             if (result == System.Net.HttpStatusCode.OK)
             {
                 new AdminNavigationController().GoBack();
+            }
+            if (string.IsNullOrEmpty(Name_tb.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_pb.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
             }
         }
 

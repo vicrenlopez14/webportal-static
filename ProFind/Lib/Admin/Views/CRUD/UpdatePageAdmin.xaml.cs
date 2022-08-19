@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,7 +37,7 @@ namespace ProFind.Lib.Admin.Views.CRUD
         {
             FirstName1_tbx.Text = toManipulate.NameA;
             Email_tbx.Text = toManipulate.EmailA;
-            Phone_tbx.Text = toManipulate.TelA;
+           
             Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
         }
 
@@ -62,11 +63,45 @@ namespace ProFind.Lib.Admin.Views.CRUD
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
             await new PFAdminService().Update(toManipulate);
+
+            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tbx.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_tbx.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
             await new PFAdminService().Delete(toManipulate.IdA);
+
+            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tbx.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_tbx.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
