@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,35 +9,15 @@ namespace Application.Services
 {
     public class PFProfessionalService : ICrudService<PFProfessional>
     {
-        public static PFProfessional loggedProfessional;
-
-        public async Task<(List<PFProfessional>, List<string>)> GetComboboxChoices()
-        {
-            List<PFProfessional> objects = new List<PFProfessional>();
-            List<string> objectStrings = new List<string>();
-
-            objects = (List<PFProfessional>) await new PFProfessionalService().ListObjectAsync();
-
-            foreach (var profession in objects)
-            {
-                objectStrings.Add(profession.NameP);
-            }
-
-            return (objects, objectStrings);
-        }
+        public static PFProfessional professional;
 
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginProfessional = new LoginProfessional(email, password);
 
 
-            HttpResponseMessage response =
+            var response =
                 await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Professional/login", loginProfessional);
-
-            if (response.IsSuccessStatusCode)
-            {
-                loggedProfessional = await response.Content.ReadAsAsync<PFProfessional>();
-            }
 
             return response.StatusCode;
         }
@@ -68,6 +49,11 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfessional>> ListPaginatedObjectAsync(int fromIndex) =>
             await ListPaginatedObjectAsync(fromIndex, -1);
 
+        public Task<(List<PFProfessional> professionals, List<string> professionalStrings)> GetComboboxChoices()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<PFProfessional>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFProfessional> professional = null;
@@ -97,6 +83,7 @@ namespace Application.Services
         {
             HttpResponseMessage response =
                 await WebAPIConnection.GetConnection.PostAsJsonAsync("api/Professional", toCreateObject);
+            response.EnsureSuccessStatusCode();
 
             return response.StatusCode;
         }

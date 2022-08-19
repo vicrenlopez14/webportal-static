@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,23 +9,7 @@ namespace Application.Services
 {
     public class PfClientService : ICrudService<PFClient>
     {
-        public static PFClient loggedClient;
-
-        public async Task<(List<PFClient>, List<string>)> GetComboboxChoices()
-        {
-            List<PFClient> objects = new List<PFClient>();
-            List<string> objectStrings = new List<string>();
-
-            objects = (List<PFClient>) await new PfClientService().ListObjectAsync();
-
-            foreach (var profession in objects)
-            {
-                objectStrings.Add(profession.NameC);
-            }
-
-            return (objects, objectStrings);
-        }
-
+        public static PFClient client;
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginClient = new RegisterClient
@@ -33,14 +18,7 @@ namespace Application.Services
                 PasswordC = password
             };
 
-
-            HttpResponseMessage response =
-                await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Client/login", loginClient);
-
-            if (response.IsSuccessStatusCode)
-            {
-                loggedClient = await response.Content.ReadAsAsync<PFClient>();
-            }
+            var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Client/login", loginClient);
 
             return response.StatusCode;
         }
@@ -76,6 +54,11 @@ namespace Application.Services
             }
 
             return client;
+        }
+
+        public Task<(List<PFClient> clients, List<string> clientStrings)> GetComboboxChoices()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<PFClient>> ListPaginatedObjectAsync(int fromIndex) =>

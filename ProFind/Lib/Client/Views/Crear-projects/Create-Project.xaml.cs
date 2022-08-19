@@ -1,5 +1,6 @@
 ﻿using Application.Models;
 using Application.Services;
+using Google.Protobuf.WellKnownTypes;
 using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Professional.Controllers;
 using System;
@@ -10,6 +11,7 @@ using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -65,9 +67,25 @@ namespace ProFind.Lib.Client.Views.Crear_projects
                     new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
+
+            if (string.IsNullOrEmpty(TitlePJ.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(DescriptionPJ.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
         }
 
         private void TxtDescription(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TitlePJ_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
