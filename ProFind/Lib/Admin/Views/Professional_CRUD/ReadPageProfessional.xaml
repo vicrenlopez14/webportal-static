@@ -30,7 +30,7 @@
                         HorizontalAlignment="Left"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="Created projects" />
+                        Text="Professionals" />
                     <Button
                         Grid.Column="1"
                         HorizontalAlignment="Center"
