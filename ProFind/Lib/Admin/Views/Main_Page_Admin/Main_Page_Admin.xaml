@@ -44,15 +44,7 @@
                     Tag="Clients_Page" />
             </muxc:NavigationView.MenuItems>
 
-            <muxc:NavigationView.PaneFooter>
-                <StackPanel Orientation="Vertical">
-                    <muxc:NavigationViewItemHeader Content="More" />
-                    <muxc:NavigationViewItem
-                        Content="Preferences"
-                        Icon="Setting"
-                        Tag="Preferences_Page" />
-                </StackPanel>
-            </muxc:NavigationView.PaneFooter>
+
             <Frame
                 x:Name="ContentFrame"
                 Margin="0"

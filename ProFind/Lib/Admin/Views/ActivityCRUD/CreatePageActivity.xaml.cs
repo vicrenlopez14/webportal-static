@@ -56,7 +56,7 @@ namespace ProFind.Lib.Admin.Views.ActivityCRUD
                 var param = (Tuple<PFProject, PFActivity>)e.Parameter;
                 parentProject = param.Item1;
                 toManipulate = param.Item2;
-
+                FillFields(toManipulate);
                 ManipulationMode();
             }
             else if (e.Parameter is PFProject)
@@ -65,9 +65,19 @@ namespace ProFind.Lib.Admin.Views.ActivityCRUD
                 CreationMode();
             }
         }
+        private void FillFields(PFActivity incomingActivity)
+        {
+            SelectedPicture_pp.Source = incomingActivity.PictureA.ToBitmapImage();
+            Title_tb.Text = incomingActivity.TitleA;
+            Description_tb.Text = incomingActivity.DescriptionA;
+            ExpectedBegin_dp.Date = incomingActivity.ExpectedBeginA;
+            ExpectedEnd_dp.Date = incomingActivity.ExpectedEndA;
+        }
 
         private void CreationMode()
         {
+            PageTitle.Text = "Creation";
+            PageSubtitle.Text = "Create a new activity for your project.";
             Create_btn.Visibility = Visibility.Visible;
             Update_btn.Visibility = Visibility.Collapsed;
             Reset_btn.Visibility = Visibility.Collapsed;
@@ -76,6 +86,8 @@ namespace ProFind.Lib.Admin.Views.ActivityCRUD
 
         private void ManipulationMode()
         {
+            PageTitle.Text = "Manipulation";
+            PageSubtitle.Text = "Update, delete and reset.";
             Create_btn.Visibility = Visibility.Collapsed;
             Update_btn.Visibility = Visibility.Visible;
             Reset_btn.Visibility = Visibility.Visible;

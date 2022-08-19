@@ -60,11 +60,8 @@ namespace ProFind.Lib.Client.Views.CRUD
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var res = await new PfClientService().Create(newObject);
-
-            if (res == System.Net.HttpStatusCode.OK) new ClientNavigationController().GoBack();
-
-            if (string.IsNullOrEmpty(Name_tb.Text)) {
+            if (string.IsNullOrEmpty(Name_tb.Text))
+            {
 
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
@@ -79,6 +76,10 @@ namespace ProFind.Lib.Client.Views.CRUD
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+
+
+            var res = await new PfClientService().Create(newObject);
+            if (res == System.Net.HttpStatusCode.OK) new ClientNavigationController().GoBack();
         }
     }
 }

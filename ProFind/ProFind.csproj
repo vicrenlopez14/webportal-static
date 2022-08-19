@@ -202,6 +202,12 @@
     <Compile Include="Lib\Admin\Views\Professional_Add\professional_information.xaml.cs">
       <DependentUpon>professional_information.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\Professional_CRUD\CreatePageProfessional.xaml.cs">
+      <DependentUpon>CreatePageProfessional.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\Professional_CRUD\ReadPageProfessional.xaml.cs">
+      <DependentUpon>ReadPageProfessional.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Projects_Page\Projects_Page.xaml.cs">
       <DependentUpon>Projects_Page.xaml</DependentUpon>
     </Compile>
@@ -532,6 +538,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\Professional_Add\professional_information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\Professional_CRUD\CreatePageProfessional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\Professional_CRUD\ReadPageProfessional.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

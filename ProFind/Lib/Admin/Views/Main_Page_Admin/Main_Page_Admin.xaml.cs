@@ -8,6 +8,8 @@ using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Admin.Views.CRUD;
 using ProFind.Lib.Admin.Views.Project_CRUD;
+using ProFind.Lib.Client.Views.CRUD;
+using ProFind.Lib.Admin.Views.Professional_CRUD;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,8 +24,8 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         {
             {"Administrators_Page", typeof(ReadPageAdmin) },
             {"Calendar_Page", typeof(ReadPageProject) },
-            {"Professionals_Page", typeof(ActivesPage) },
-            {"Clients_Page", typeof(QuickView_Page.QuickView_Page) },
+            {"Professionals_Page", typeof(ReadPageProfessional) },
+            {"Clients_Page", typeof(ReadPageClient) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
             {"", typeof(Calendar_Page.Calendar_Page) }

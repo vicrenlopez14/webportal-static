@@ -14,10 +14,11 @@
             <Grid>
                 <StackPanel Padding="100" Orientation="Vertical">
                     <TextBlock
+                        Name="PageTitle"
                         FontWeight="Bold"
                         Style="{StaticResource HeaderTextBlockStyle}"
                         Text="Creation" />
-                    <TextBlock>
+                    <TextBlock Name="PageSubtitle">
                         Create a new activity for your project.
                     </TextBlock>
                     <Image
