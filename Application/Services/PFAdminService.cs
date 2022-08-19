@@ -12,6 +12,8 @@ namespace Application.Services
 {
     public class PFAdminService : ICrudService<PFAdmin>
     {
+        private PFAdmin loggedAdmin;
+
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginAdmin = new RegisterClient
@@ -20,7 +22,14 @@ namespace Application.Services
                 PasswordC = password
             };
 
-            var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Admin/login", loginAdmin);
+
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Admin/login", loginAdmin);
+
+            if (response.IsSuccessStatusCode)
+            {
+                loggedAdmin = await response.Content.ReadAsAsync<PFAdmin>();
+            }
 
             return response.StatusCode;
         }

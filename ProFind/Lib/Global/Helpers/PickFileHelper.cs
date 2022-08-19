@@ -10,22 +10,18 @@ namespace ProFind.Lib.Global.Helpers
 {
     public static class PickFileHelper
     {
-        public async static Task<StorageFile> PickImage()
+        public static async Task<StorageFile> PickImage()
         {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            var picker = new Windows.Storage.Pickers.FileOpenPicker
+            {
+                ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
+                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary
+            };
             picker.FileTypeFilter.Add(".jpg");
             picker.FileTypeFilter.Add(".jpeg");
             picker.FileTypeFilter.Add(".png");
 
-            StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
-            {
-                // Application now has read/write access to the picked file
-
-              
-            }
+            var file = await picker.PickSingleFileAsync();
             return file;
         }
     }

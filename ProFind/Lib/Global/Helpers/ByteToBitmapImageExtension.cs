@@ -13,6 +13,8 @@ namespace ProFind.Lib.Global.Helpers
     {
         public static BitmapImage ToBitmapImage(this byte[] bytes)
         {
+            if (bytes == null)
+                return null;
             BitmapImage image = new BitmapImage();
             using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
             {

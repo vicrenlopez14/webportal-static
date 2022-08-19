@@ -37,7 +37,7 @@ namespace ProFind.Lib.Admin.Views.Admin_Page
 
             adminList = await adminService.ListObjectAsync() as List<PFAdmin>;
 
-            AdminListView.ItemSource = adminList;
+            AdminListView.ItemsSource = adminList;
         }
 
         private void AdminListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

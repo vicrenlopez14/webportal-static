@@ -41,6 +41,66 @@ public class ProjectDataSource
         return result.ToList();
     }
 
+    public async Task<IEnumerable<PFAdmin>> Search(IDictionary<string, string> searchCriteria)
+    {
+        const string query =
+            "SELECT * FROM Project WHERE( NameA LIKE '%@Name%') OR (soundex(NameA) = SOUNDEX('@Name'));";
+
+
+        DynamicParameters dynamicParameters = new DynamicParameters();
+
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
+        {
+            ["Name"] = searchCriteria["Name"]
+        });
+
+        var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
+
+        return result;
+    }
+
+    public async Task<IEnumerable<PFAdmin>> Search(string searchCriteria)
+    {
+        const string query =
+            "SELECT * FROM Project WHERE( project.TitlePJ LIKE '%@Name%') OR (soundex(TitlePJ) = SOUNDEX('@Name'));";
+        var dynamicParameters = new DynamicParameters();
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
+        {
+            ["Name"] = searchCriteria
+        });
+        var result = await _connection.QueryAsync<PFAdmin>(query, dynamicParameters);
+
+        return result;
+    }
+
+    public async Task<IEnumerable<PFProject>> GetProjectsOfAProfessional(string id)
+    {
+        const string query =
+            "SELECT * FROM Project WHERE IdP1 = @id";
+        var dynamicParameters = new DynamicParameters();
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
+        {
+            ["id"] = id
+        });
+        var result = await _connection.QueryAsync<PFProject>(query, dynamicParameters);
+
+        return result.ToList();
+    }
+
+    public async Task<IEnumerable<PFProject>> GetProjectsOfAClient(string id)
+    {
+        const string query =
+            "SELECT * FROM Project WHERE IdC1 = @id";
+        var dynamicParameters = new DynamicParameters();
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
+        {
+            ["id"] = id
+        });
+        var result = await _connection.QueryAsync<PFProject>(query, dynamicParameters);
+
+        return result.ToList();
+    }
+
     public async Task<bool> Create(PFProject Project)
     {
         const string query =

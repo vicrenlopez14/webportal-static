@@ -6,7 +6,8 @@
     xmlns:local="using:ProFind.Lib.Admin.Views.CRUD"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Margin="20"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
     <Grid>
@@ -18,83 +19,95 @@
             Margin="0,25"
             HorizontalAlignment="Center"
             Orientation="Vertical">
-            <TextBlock Margin="0,0,0,30" Style="{StaticResource SubheaderTextBlockStyle}">See, Update or Delete</TextBlock>
-            <Button HorizontalAlignment="Center" Click="Button_Click">Change picture</Button>
-            <TextBox
-                Name="FirstName1_tbx"
-                Width="460"
-                Margin="0,0,0,15"
-                d:LayoutRounding="Auto"
-                Header="First name"
-                PlaceholderText="Name"
-                RenderTransformOrigin="0.5,0.5"
-                Text="{x:Bind toManipulate.NameA}"
-                TextChanged="FirstName1_tbx_TextChanged"
-                UseLayoutRounding="False" />
-            <TextBox
-                Name="Email_tbx"
-                Width="460"
-                Margin="0,0,0,15"
-                d:LayoutRounding="Auto"
-                Header="Email"
-                PlaceholderText="Name"
-                RenderTransformOrigin="0.5,0.5"
-                Text="{x:Bind toManipulate.NameA}"
-                TextChanged="Email_tbx_TextChanged"
-                UseLayoutRounding="False" />
-            <muxc:NumberBox
-                Name="Phone_tbx"
-                Margin="0,0,0,15"
-                Header="Phone"
-                PlaceholderText="00000000"
-                ValueChanged="Phone_ValueChanged" />
-            <PasswordBox
-                Name="Password_tbx"
-                Width="461"
-                Height="54"
-                Margin="0,0,0,15"
-                d:LayoutRounding="Auto"
-                Header="New password"
-                MaxLength="16"
-                PasswordChanged="passwordBox_PasswordChanged"
-                PlaceholderText="Password"
-                RenderTransformOrigin="0.538,2.297"
-                UseLayoutRounding="False">
-                <PasswordBox.RenderTransform>
-                    <CompositeTransform SkewX="-1.005" TranslateX="-1.251" />
-                </PasswordBox.RenderTransform>
-            </PasswordBox>
-        </StackPanel>
-        <StackPanel
-            Grid.Column="0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
+            <ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.8*" />
+                        <RowDefinition Height="0.2*" />
+                    </Grid.RowDefinitions>
 
-            <Button
-                Name="Reset_btn"
-                Margin="15"
-                Click="Reset_btn_Click">
-                Reset
-            </Button>
-            <Button
-                Name="Update_btn"
-                Margin="15"
-                Click="Update_btn_Click">
-                Update
-            </Button>
-            <Button
-                Name="Delete_btn"
-                Margin="15"
-                Click="Delete_btn_Click">
-                Delete
-            </Button>
-            <Button
-                Name="Back_btn"
-                Margin="15"
-                Click="Back_btn_Click">
-                Back
-            </Button>
+                    <StackPanel Grid.Row="0" Orientation="Vertical">
+                        <TextBlock Margin="0,0,0,30" Style="{StaticResource SubheaderTextBlockStyle}">See, Update or Delete</TextBlock>
+                        <Image
+                            x:Name="Picture_img"
+                            Width="100"
+                            Height="100" />
+                        <Button HorizontalAlignment="Center" Click="Button_Click">Change picture</Button>
+                        <TextBox
+                            Name="FirstName1_tbx"
+                            Width="460"
+                            Margin="0,0,0,15"
+                            d:LayoutRounding="Auto"
+                            Header="First name"
+                            PlaceholderText="Name"
+                            RenderTransformOrigin="0.5,0.5"
+                            UseLayoutRounding="False" />
+                        <TextBox
+                            Name="Email_tbx"
+                            Width="460"
+                            Margin="0,0,0,15"
+                            d:LayoutRounding="Auto"
+                            Header="Email"
+                            PlaceholderText="Email"
+                            RenderTransformOrigin="0.5,0.5"
+                            UseLayoutRounding="False" />
+                        <muxc:NumberBox
+                            Name="Phone_tbx"
+                            Margin="0,0,0,15"
+                            Header="Phone"
+                            PlaceholderText="00000000" />
+                        <PasswordBox
+                            Name="Password_tbx"
+                            Width="461"
+                            Height="54"
+                            Margin="0,0,0,15"
+                            d:LayoutRounding="Auto"
+                            Header="New password"
+                            MaxLength="16"
+                            PlaceholderText="Password"
+                            RenderTransformOrigin="0.538,2.297"
+                            UseLayoutRounding="False">
+                            <PasswordBox.RenderTransform>
+                                <CompositeTransform SkewX="-1.005" TranslateX="-1.251" />
+                            </PasswordBox.RenderTransform>
+                        </PasswordBox>
+                    </StackPanel>
+
+
+                    <StackPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+
+                        <Button
+                            Name="Reset_btn"
+                            Margin="15"
+                            Click="Reset_btn_Click">
+                            Reset
+                        </Button>
+                        <Button
+                            Name="Update_btn"
+                            Margin="15"
+                            Click="Update_btn_Click">
+                            Update
+                        </Button>
+                        <Button
+                            Name="Delete_btn"
+                            Margin="15"
+                            Click="Delete_btn_Click">
+                            Delete
+                        </Button>
+                        <Button
+                            Name="Back_btn"
+                            Margin="15"
+                            Click="Back_btn_Click">
+                            Back
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+            </ScrollViewer>
         </StackPanel>
 
     </Grid>

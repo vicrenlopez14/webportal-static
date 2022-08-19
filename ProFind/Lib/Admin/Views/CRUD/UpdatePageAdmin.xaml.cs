@@ -34,12 +34,17 @@ namespace ProFind.Lib.Admin.Views.CRUD
         }
         private async void loadUsefulthings()
         {
+            FirstName1_tbx.Text = toManipulate.NameA;
+            Email_tbx.Text = toManipulate.EmailA;
+            Phone_tbx.Text = toManipulate.TelA;
+            Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             toManipulate = (PFAdmin)e.Parameter;
+            loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
@@ -49,6 +54,8 @@ namespace ProFind.Lib.Admin.Views.CRUD
             {
                 IdA = toManipulate.IdA,
             };
+
+            loadUsefulthings();
         }
 
 
@@ -72,24 +79,6 @@ namespace ProFind.Lib.Admin.Views.CRUD
             toManipulate.PictureA = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
         }
 
-        private void FirstName1_tbx_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            toManipulate.NameA = FirstName1_tbx.Text;
-        }
-
-        private void Email_tbx_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            toManipulate.EmailA = Email_tbx.Text;
-        }
-
-        private void Phone_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
-        {
-            toManipulate.TelA = ((int)Phone_tbx.Value).ToString();
-        }
-
-        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            toManipulate.PasswordA = Password_tbx.Password;
-        }
+       
     }
 }

@@ -17,12 +17,13 @@
         <muxc:NavigationView
             Name="navView"
             Grid.RowSpan="2"
+            BackRequested="navView_BackRequested"
             Header="Admin's panel"
             IsBackButtonVisible="Visible"
             IsBackEnabled="True"
             IsSettingsVisible="False"
             ItemInvoked="NavigationView_ItemInvoked"
-            PaneDisplayMode="Left" BackRequested="navView_BackRequested">
+            PaneDisplayMode="Left">
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
                 <muxc:NavigationViewItem
@@ -30,7 +31,7 @@
                     Icon="AllApps"
                     Tag="Administrators_Page" />
                 <muxc:NavigationViewItem
-                    Content="Calendar"
+                    Content="Projects"
                     Icon="Calendar"
                     Tag="Calendar_Page" />
                 <muxc:NavigationViewItem
@@ -45,23 +46,17 @@
 
             <muxc:NavigationView.PaneFooter>
                 <StackPanel Orientation="Vertical">
-                    <muxc:NavigationViewItemHeader Content="Más" />
+                    <muxc:NavigationViewItemHeader Content="More" />
                     <muxc:NavigationViewItem
                         Content="Preferences"
                         Icon="Setting"
                         Tag="Preferences_Page" />
-                    <muxc:NavigationViewItem
-                        Content="About"
-                        Icon="People"
-                        Tag="About_Page" />
                 </StackPanel>
             </muxc:NavigationView.PaneFooter>
-
-
             <Frame
                 x:Name="ContentFrame"
                 Margin="0"
-                Background="{StaticResource SystemControlBackgroundTransparentRevealBorderBrush}">
+                Background="Transparent">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition />

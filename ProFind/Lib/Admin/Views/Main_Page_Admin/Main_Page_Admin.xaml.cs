@@ -7,6 +7,7 @@ using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Admin.Views.CRUD;
+using ProFind.Lib.Admin.Views.Project_CRUD;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,7 +21,7 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
             {"Administrators_Page", typeof(ReadPageAdmin) },
-            {"Calendar_Page", typeof(Page_Activos) },
+            {"Calendar_Page", typeof(ReadPageProject) },
             {"Professionals_Page", typeof(ActivesPage) },
             {"Clients_Page", typeof(QuickView_Page.QuickView_Page) },
             {"Preferences_Page", typeof(Preferences_Page) },

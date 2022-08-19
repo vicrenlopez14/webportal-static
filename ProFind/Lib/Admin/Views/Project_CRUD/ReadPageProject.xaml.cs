@@ -1,6 +1,7 @@
 ﻿using Application.Models;
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
+using ProFind.Lib.Admin.Views.CRUD;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,14 +19,14 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views.CRUD
+namespace ProFind.Lib.Admin.Views.Project_CRUD
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ReadPageAdmin : Page
+    public sealed partial class ReadPageProject : Page
     {
-        public ReadPageAdmin()
+        public ReadPageProject()
         {
             this.InitializeComponent();
 
@@ -34,19 +35,24 @@ namespace ProFind.Lib.Admin.Views.CRUD
 
         private async void InitializeData()
         {
-            ProjectsListView.ItemsSource = await new PFAdminService().ListObjectAsync();
+            AdminsListView.ItemsSource = await new PfProjectService().ListObjectAsync();
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var admin = e.ClickedItem as PFAdmin;
+            var project = e.ClickedItem as PFProject;
 
-            new AdminNavigationController().NavigateTo(typeof(UpdatePageAdmin), admin);
+            new AdminNavigationController().NavigateTo(typeof(UpdatePageProject), project);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(CreatePageAdmin));
+            new AdminNavigationController().NavigateTo(typeof(CreatePageProject));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new AdminNavigationController().NavigateTo(typeof(CreatePageProject));
         }
     }
 }

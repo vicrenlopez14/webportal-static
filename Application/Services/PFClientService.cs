@@ -8,7 +8,23 @@ namespace Application.Services
 {
     public class PfClientService : ICrudService<PFClient>
     {
-        public static PFClient client;
+        public static PFClient loggedClient;
+
+        public async Task<(List<PFClient>, List<string>)> GetComboboxChoices()
+        {
+            List<PFClient> objects = new List<PFClient>();
+            List<string> objectStrings = new List<string>();
+
+            objects = (List<PFClient>) await new PfClientService().ListObjectAsync();
+
+            foreach (var profession in objects)
+            {
+                objectStrings.Add(profession.NameC);
+            }
+
+            return (objects, objectStrings);
+        }
+
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginClient = new RegisterClient
@@ -17,7 +33,14 @@ namespace Application.Services
                 PasswordC = password
             };
 
-            var response = await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Client/login", loginClient);
+
+            HttpResponseMessage response =
+                await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Client/login", loginClient);
+
+            if (response.IsSuccessStatusCode)
+            {
+                loggedClient = await response.Content.ReadAsAsync<PFClient>();
+            }
 
             return response.StatusCode;
         }

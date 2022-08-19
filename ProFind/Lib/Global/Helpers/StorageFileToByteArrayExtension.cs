@@ -12,19 +12,14 @@ namespace ProFind.Lib.Global.Helpers
     {
         public static async Task<byte[]> ToByteArrayAsync(this StorageFile file)
         {
-            // Read the bytes
-            byte[] result;
-            using (Stream stream = await file.OpenStreamForReadAsync())
+            using (var inputStream = await file.OpenSequentialReadAsync())
             {
-                using (var memoryStream = new MemoryStream())
-                {
+                var readStream = inputStream.AsStreamForRead();
 
-                    stream.CopyTo(memoryStream);
-                    result = memoryStream.ToArray();
-                }
+                var byteArray = new byte[readStream.Length];
+                await readStream.ReadAsync(byteArray, 0, byteArray.Length);
+                return byteArray;
             }
-
-            return result;
         }
     }
 }

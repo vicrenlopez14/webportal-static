@@ -43,6 +43,21 @@ public class ActivityDataSource
 
         return result;
     }
+    
+    public async Task<IEnumerable<PFActivity>> OfProject(string ProjectId)
+    {
+        const string query =
+            "SELECT * FROM Activity WHERE IdPJ1 = @ProjectId;";
+        DynamicParameters dynamicParameters = new DynamicParameters();
+        dynamicParameters.AddDynamicParams(new Dictionary<string, object>()
+        {
+            ["ProjectId"] = ProjectId
+        });
+        var result = await _connection.QueryAsync<PFActivity>(query, dynamicParameters);
+        
+        return result;
+    }
+
 
     public async Task<IEnumerable<PFActivity>> List()
     {

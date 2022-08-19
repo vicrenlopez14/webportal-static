@@ -8,15 +8,35 @@ namespace Application.Services
 {
     public class PFProfessionalService : ICrudService<PFProfessional>
     {
-        public static PFProfessional professional;
+        public static PFProfessional loggedProfessional;
+
+        public async Task<(List<PFProfessional>, List<string>)> GetComboboxChoices()
+        {
+            List<PFProfessional> objects = new List<PFProfessional>();
+            List<string> objectStrings = new List<string>();
+
+            objects = (List<PFProfessional>) await new PFProfessionalService().ListObjectAsync();
+
+            foreach (var profession in objects)
+            {
+                objectStrings.Add(profession.NameP);
+            }
+
+            return (objects, objectStrings);
+        }
 
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginProfessional = new LoginProfessional(email, password);
 
 
-            var response =
+            HttpResponseMessage response =
                 await WebAPIConnection.GetConnection.PostAsJsonAsync($"api/Professional/login", loginProfessional);
+
+            if (response.IsSuccessStatusCode)
+            {
+                loggedProfessional = await response.Content.ReadAsAsync<PFProfessional>();
+            }
 
             return response.StatusCode;
         }

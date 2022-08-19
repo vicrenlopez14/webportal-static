@@ -34,7 +34,7 @@ public class ProjectController : CrudController<PFProject>
         throw new NotImplementedException();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Create(PFProject newObject)
+    public override async Task<ActionResult<HttpStatusCode>> Create([FromBody] PFProject newObject)
     {
         newObject.IdPJ = await Nanoid.Nanoid.GenerateAsync();
 

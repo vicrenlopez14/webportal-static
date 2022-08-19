@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Application.Services;
 using Newtonsoft.Json;
 using Nito.AsyncEx.Synchronous;
@@ -57,7 +58,16 @@ namespace Application.Models
             set
             {
                 _idPS1 = value;
-                Status = int.Parse(_idPS1) == 1 ? PFProjectStatus.Inactive : PFProjectStatus.Active;
+                try
+                {
+                    Status = _idPS1 == null || int.Parse(_idPS1) == 1
+                        ? PFProjectStatus.Inactive
+                        : PFProjectStatus.Active;
+                }
+                catch (Exception e)
+                {
+                    Status = PFProjectStatus.Inactive;
+                }
             }
         }
 

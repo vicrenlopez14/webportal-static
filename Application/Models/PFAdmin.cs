@@ -59,7 +59,7 @@ namespace Application.Models
         public byte[] PictureA { get; set; }
         public string IdR1 { get; set; }
 
-        public PFRank Rank;
+        public PFRank Rank { get; set; }
     }
 
     public class LoginAdmin

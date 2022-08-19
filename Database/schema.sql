@@ -177,6 +177,8 @@ CREATE TABLE Project
 );
 
 DESCRIBE Project;
+
+SELECT * FROM Project;
 ################################################
 CREATE TABLE Activity
 (
