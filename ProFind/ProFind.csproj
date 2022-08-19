@@ -284,6 +284,9 @@
     <Compile Include="Lib\Client\Views\Pays_Page\Unauthorized_page.xaml.cs">
       <DependentUpon>Unauthorized_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\ProfessionalReadPage\ProfessionalReadPage.xaml.cs">
+      <DependentUpon>ProfessionalReadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Views\ProjectReadPage\ProjectReadPage.xaml.cs">
       <DependentUpon>ProjectReadPage.xaml</DependentUpon>
     </Compile>
@@ -651,6 +654,10 @@
     <Page Include="Lib\Client\Views\Pays_Page\Unauthorized_page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Client\Views\ProfessionalReadPage\ProfessionalReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Client\Views\ProjectReadPage\ProjectReadPage.xaml">
       <SubType>Designer</SubType>
