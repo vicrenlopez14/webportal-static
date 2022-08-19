@@ -9,18 +9,24 @@ namespace Application.Models
     public class PFProject
     {
         [JsonConstructor]
-        public PFProject(string idPj, string titlePj, string descriptionPj, PFProjectStatus status, string idP1,
-            string idC1, byte[] picturePj, float totalPricePj)
+        public PFProject(string idPs1, string idPj, string titlePj, string descriptionPj, PFProjectStatus status,
+            string idP1, PFProfessional responsibleProfessional, string idC1, PFClient responsibleClient,
+            byte[] picturePj, float totalPricePj, IEnumerable<PFActivity> activities)
         {
+            _idPS1 = idPs1;
             IdPJ = idPj;
             TitlePJ = titlePj;
             DescriptionPJ = descriptionPj;
             Status = status;
             IdP1 = idP1;
+            ResponsibleProfessional = responsibleProfessional;
             IdC1 = idC1;
+            ResponsibleClient = responsibleClient;
             PicturePJ = picturePj;
             TotalPricePJ = totalPricePj;
+            Activities = activities;
         }
+
 
         public PFProject()
         {
@@ -75,7 +81,6 @@ namespace Application.Models
 
         public string IdP1 { get; set; }
         public PFProfessional ResponsibleProfessional { get; set; }
-
 
         public string IdC1 { get; set; }
         public PFClient ResponsibleClient { get; set; }

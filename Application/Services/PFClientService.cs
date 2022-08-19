@@ -10,6 +10,7 @@ namespace Application.Services
     public class PfClientService : ICrudService<PFClient>
     {
         public static PFClient client;
+
         public async Task<HttpStatusCode> Login(string email, string password)
         {
             var loginClient = new RegisterClient
@@ -56,9 +57,19 @@ namespace Application.Services
             return client;
         }
 
-        public Task<(List<PFClient> clients, List<string> clientStrings)> GetComboboxChoices()
+        public async Task<(List<PFClient> clients, List<string> clientStrings)> GetComboboxChoices()
         {
-            throw new NotImplementedException();
+            List<PFClient> professions = new List<PFClient>();
+            List<string> professionStrings = new List<string>();
+
+            professions = (List<PFClient>) await new PfClientService().ListObjectAsync();
+
+            foreach (var profession in professions)
+            {
+                professionStrings.Add(profession.NameC);
+            }
+
+            return (professions, professionStrings);
         }
 
         public async Task<IEnumerable<PFClient>> ListPaginatedObjectAsync(int fromIndex) =>

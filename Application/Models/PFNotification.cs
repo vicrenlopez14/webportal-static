@@ -5,7 +5,7 @@ namespace Application.Models
 {
     public class PFNotification
     {
-        public PFNotification(string idN, string titleN, string descriptionN, DateTime dateTimeIssuedN, byte[] pictureN,
+        public PFNotification(string idN, string titleN, string descriptionN, DateTimeOffset dateTimeIssuedN, byte[] pictureN,
             string idPj2)
         {
             IdN = idN;
@@ -37,7 +37,7 @@ namespace Application.Models
         public string IdN { get; set; }
         public string TitleN { get; set; }
         public string DescriptionN { get; set; }
-        public DateTime DateTimeIssuedN { get; set; }
+        public DateTimeOffset DateTimeIssuedN { get; set; }
         public byte[] PictureN { get; set; }
 
         public string IdPJ2 { get; set; }

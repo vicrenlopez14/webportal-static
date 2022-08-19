@@ -131,6 +131,12 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\Admin\Controllers\AdminNavigationController.cs" />
+    <Compile Include="Lib\Admin\Views\ActivityCRUD\CreatePageActivity.xaml.cs">
+      <DependentUpon>CreatePageActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\ActivityCRUD\ReadPageActivity.xaml.cs">
+      <DependentUpon>ReadPageActivity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml.cs">
       <DependentUpon>AdminCreate.xaml</DependentUpon>
     </Compile>
@@ -437,6 +443,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Lib\Admin\Views\ActivityCRUD\CreatePageActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\ActivityCRUD\ReadPageActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\Admin_Create\AdminCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

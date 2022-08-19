@@ -9,6 +9,7 @@ using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,8 +37,6 @@ namespace ProFind.Lib.Professional.Views.ActualizarProject
             PFProject project = new PFProject();
             var profession = new PFProfessional();
 
-
-
             project.ResponsibleProfessional = profession;
 
             project.TitlePJ = TitlePJ.Text;
@@ -45,14 +44,27 @@ namespace ProFind.Lib.Professional.Views.ActualizarProject
             project.TotalPricePJ = float.Parse(TotalPricePJ.Text);
             project.Status = Inactivo.IsChecked == true ? PFProjectStatus.Active : PFProjectStatus.Inactive;
 
-
-
             var respuesta = await new PfProjectService().Update(project);
 
             if (respuesta == HttpStatusCode.OK)
             {
                 new AdminNavigationController().GoBack();
 
+            }
+
+            if (string.IsNullOrEmpty(TitlePJ.Text)){
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(DescriptionPJ.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(TotalPricePJ.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
             }
         }
     }

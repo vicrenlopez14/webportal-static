@@ -1,7 +1,10 @@
 ﻿using Application.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
+using WebService.Lib.Activity.DataSource;
+using WebService.Lib.Client.DataSource;
 using WebService.Lib.DataSource;
+using WebService.Lib.Professional.DataSource;
 
 namespace WebService.Lib.Project.DataSource;
 
@@ -27,18 +30,32 @@ public class ProjectDataSource
             ["id"] = id
         });
 
-        var result = await _connection.QueryAsync<PFProject>(query, dynamicParameters);
+        List<PFProject> result =
+            (await _connection.QueryAsync<PFProject>(query, dynamicParameters)).ToList();
 
-        return result.ToList()[0];
+        // Fill up nested objects
+        if (!result.Any())
+            return null;
+
+        return await FillUp(result.First());
     }
 
     public async Task<IEnumerable<PFProject>> List()
     {
         const string query = "SELECT * FROM Project;";
 
-        var result = await _connection.QueryAsync<PFProject>(query);
+        var result = (await _connection.QueryAsync<PFProject>(query)).ToList();
 
-        return result.ToList();
+        if (!result.Any()) return result.ToList();
+
+        // Fill nested objects
+        var filledList = new List<PFProject>();
+        foreach (var professional in result)
+        {
+            filledList.Add(await FillUp(professional));
+        }
+
+        return filledList;
     }
 
     public async Task<IEnumerable<PFAdmin>> Search(IDictionary<string, string> searchCriteria)
@@ -121,7 +138,28 @@ public class ProjectDataSource
             ["IdC1"] = Project.IdC1
         });
 
-        return (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+        var result = (await _connection.ExecuteAsync(query, dynamicParameters) > 0);
+
+        if (result == false) return false;
+
+        return await FillDown(Project);
+    }
+
+    private static async Task<PFProject> FillUp(PFProject unfilled)
+    {
+        if (!string.IsNullOrEmpty(unfilled.IdC1))
+            unfilled.ResponsibleClient = await new ClientDataSource().Get(unfilled.IdC1);
+        if (!string.IsNullOrEmpty(unfilled.IdP1))
+            unfilled.ResponsibleProfessional = await new ProfessionalDataSource().Get(unfilled.IdP1);
+
+        unfilled.Activities = await new ActivityDataSource().OfProject(unfilled.IdP1);
+
+        return unfilled;
+    }
+
+    private static async Task<bool> FillDown(PFProject unfilled)
+    {
+        return true;
     }
 
     public async Task<bool> Update(string id, PFProject Project)

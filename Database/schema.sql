@@ -185,14 +185,16 @@ CREATE TABLE Activity
     IdA            CHAR(21) PRIMARY KEY,
     TitleA         VARCHAR(50),
     DescriptionA   VARCHAR(500),
-    ExpectedBeginA DATETIME,
-    ExpectedEndA   DATETIME,
+    ExpectedBeginA DATE,
+    ExpectedEndA   DATE,
     PictureA       LONGBLOB,
     IdPJ1          CHAR(21),
     IdT1           CHAR(21),
     FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE,
     FOREIGN KEY (IdT1) REFERENCES Tag (IdT) ON DELETE CASCADE
 );
+
+SELECT * FROM Activity;
 
 ################################################
 CREATE TABLE Profession
@@ -213,7 +215,7 @@ CREATE TABLE Notification
     IdN             CHAR(21) PRIMARY KEY,
     TitleN          VARCHAR(50),
     DescriptionN    VARCHAR(500),
-    DateTimeIssuedN DATETIME,
+    DateTimeIssuedN DATE,
     PictureN        LONGBLOB,
     IdPJ2           CHAR(21),
     FOREIGN KEY (IdPJ2) REFERENCES Project (IdPJ) ON DELETE CASCADE

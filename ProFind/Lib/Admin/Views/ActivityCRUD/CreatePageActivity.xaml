@@ -1,9 +1,9 @@
 ﻿<Page
-    x:Class="ProFind.Lib.Admin.Views.Project_CRUD.UpdatePageProject"
+    x:Class="ProFind.Lib.Admin.Views.ActivityCRUD.CreatePageActivity"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProFind.Lib.Admin.Views.Project_CRUD"
+    xmlns:local="using:ProFind.Lib.Admin.Views.ActivityCRUD"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -13,18 +13,13 @@
         <ScrollViewer Grid.Column="1">
             <Grid>
                 <StackPanel Padding="100" Orientation="Vertical">
-                    <Grid>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock
-                                FontWeight="Bold"
-                                Style="{StaticResource HeaderTextBlockStyle}"
-                                Text="Update" />
-                            <TextBlock>
-                                Keep your data up to date.
-                            </TextBlock>
-                        </StackPanel>
-                        <Button HorizontalAlignment="Right" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1">See activities</Button>
-                    </Grid>
+                    <TextBlock
+                        FontWeight="Bold"
+                        Style="{StaticResource HeaderTextBlockStyle}"
+                        Text="Creation" />
+                    <TextBlock>
+                        Create a new activity for your project.
+                    </TextBlock>
                     <Image
                         Name="SelectedPicture_pp"
                         Width="100"
@@ -59,42 +54,16 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
                         TextChanged="Description_tb_TextChanged" />
-                    <muxc:NumberBox
-                        x:Name="TotalPrice_tb"
+                    <DatePicker
+                        Name="ExpectedBegin_dp"
                         Margin="0,15,0,0"
-                        PlaceholderText="Total price"
-                        ValueChanged="TotalPrice_tb_ValueChanged" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.33*" />
-                            <ColumnDefinition Width="0.33*" />
-                            <ColumnDefinition Width="0.33*" />
-                        </Grid.ColumnDefinitions>
-                        <ComboBox
-                            Name="InitialStatus_cb"
-                            Grid.Column="0"
-                            Margin="0,20"
-                            HorizontalAlignment="Center"
-                            Header="Initial status"
-                            SelectedIndex="0"
-                            SelectionChanged="InitialStatus_cb_SelectionChanged" />
-                        <ComboBox
-                            Name="Professional_cb"
-                            Grid.Column="1"
-                            Margin="0,20"
-                            HorizontalAlignment="Center"
-                            Header="Responsible professional"
-                            SelectedIndex="0"
-                            SelectionChanged="Professional_cb_SelectionChanged" />
-                        <ComboBox
-                            Name="Client_cb"
-                            Grid.Column="2"
-                            Margin="0,20"
-                            HorizontalAlignment="Center"
-                            Header="Client"
-                            SelectedIndex="0"
-                            SelectionChanged="Client_cb_SelectionChanged" />
-                    </Grid>
+                        DateChanged="ExpectedBegin_dp_DateChanged"
+                        Header="Expected begin" />
+                    <DatePicker
+                        Name="ExpectedEnd_dp"
+                        Margin="0,15,0,0"
+                        DateChanged="ExpectedEnd_dp_DateChanged"
+                        Header="Expected end" />
 
                     <Grid Margin="0,10,0,0" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
@@ -104,8 +73,16 @@
 
 
                     </Grid>
-
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button
+                            x:Name="Create_btn"
+                            Width="100"
+                            Margin="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Click="Create_btn_Click"
+                            Content="Create"
+                            Style="{StaticResource AccentButtonStyle}" />
                         <Button
                             x:Name="Update_btn"
                             Width="100"
@@ -134,6 +111,8 @@
                             Content="Delete"
                             Style="{StaticResource AccentButtonStyle}" />
                     </StackPanel>
+
+
 
                     <muxc:ProgressRing
                         x:Name="Creation_pr"

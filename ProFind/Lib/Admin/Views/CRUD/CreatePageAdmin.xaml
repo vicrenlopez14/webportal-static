@@ -81,7 +81,6 @@
                                 SelectionChanged="Rank_cb_SelectionChanged" />
                         </StackPanel>
                     </Grid>
-
                     <Button
                         x:Name="Create_btn"
                         Width="100"

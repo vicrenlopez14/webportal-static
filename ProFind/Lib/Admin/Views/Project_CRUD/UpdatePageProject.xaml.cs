@@ -2,6 +2,7 @@
 using Application.Services;
 using Org.BouncyCastle.Utilities.IO.Pem;
 using ProFind.Lib.Admin.Controllers;
+using ProFind.Lib.Admin.Views.ActivityCRUD;
 using ProFind.Lib.Global.Helpers;
 using System;
 using System.Collections.Generic;
@@ -137,13 +138,20 @@ namespace ProFind.Lib.Admin.Views.Project_CRUD
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             toManipulate.ResponsibleProfessional = professionals[Professional_cb.SelectedIndex];
+            toManipulate.IdP1 = professionals[Professional_cb.SelectedIndex].IdP;
 
         }
 
         private void Client_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             toManipulate.ResponsibleClient = clients[Client_cb.SelectedIndex];
+            toManipulate.IdC1 = clients[Client_cb.SelectedIndex].IdC;
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new AdminNavigationController().NavigateTo(typeof(ReadPageActivity), toManipulate);
         }
     }
 }

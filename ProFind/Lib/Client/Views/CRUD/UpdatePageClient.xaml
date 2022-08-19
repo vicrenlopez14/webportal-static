@@ -28,7 +28,7 @@
                 Header="First name"
                 PlaceholderText="Name"
                 RenderTransformOrigin="0.5,0.5"
-                Text="{x:Bind toManipulate.NameC}"
+                Text="{x:Bind ToManipulate.NameC}"
                 TextChanged="FirstName1_tbx_TextChanged"
                 UseLayoutRounding="False" />
             <TextBox
@@ -39,7 +39,7 @@
                 Header="Email"
                 PlaceholderText="Name"
                 RenderTransformOrigin="0.5,0.5"
-                Text="{x:Bind toManipulate.EmailC}"
+                Text="{x:Bind ToManipulate.EmailC}"
                 TextChanged="Email_tbx_TextChanged"
                 UseLayoutRounding="False" />
             <PasswordBox

@@ -10,8 +10,8 @@ namespace Application.Models
     public class PFActivity
     {
         [JsonConstructor]
-        public PFActivity(string idA, string titleA, string descriptionA, DateTime expectedBeginA,
-            DateTime expectedEndA, string idPj1, string idT1, byte[] pictureA)
+        public PFActivity(string idA, string titleA, string descriptionA, DateTimeOffset expectedBeginA,
+            DateTimeOffset expectedEndA, string idPj1, string idT1, byte[] pictureA)
         {
             IdA = idA;
             TitleA = titleA;
@@ -71,8 +71,8 @@ namespace Application.Models
         public string IdA { get; set; }
         public string TitleA { get; set; }
         public string DescriptionA { get; set; }
-        public DateTime ExpectedBeginA { get; set; }
-        public DateTime ExpectedEndA { get; set; }
+        public DateTimeOffset ExpectedBeginA { get; set; }
+        public DateTimeOffset ExpectedEndA { get; set; }
 
         public byte[] PictureA { get; set; }
 

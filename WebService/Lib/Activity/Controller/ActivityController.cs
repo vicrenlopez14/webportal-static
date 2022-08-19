@@ -23,6 +23,14 @@ public class ActivityController : CrudController<PFActivity>
         return Ok(result);
     }
 
+    // Method that gets the activities a project has
+    [HttpGet("project/{id}")]
+    public async Task<ActionResult<IEnumerable<PFActivity>>> GetProjectActivities(string id)
+    {
+        var result = await _dataSource.OfProject(id);
+        return Ok(result);
+    }
+
     public override async Task<ActionResult<IEnumerable<PFActivity>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();
@@ -35,14 +43,14 @@ public class ActivityController : CrudController<PFActivity>
         return (searchResult.Any() ? Ok(searchResult) : NotFound());
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Create(PFActivity newObject)
+    public override async Task<ActionResult<HttpStatusCode>> Create([FromBody] PFActivity newObject)
     {
         newObject.IdA = await Nanoid.Nanoid.GenerateAsync();
 
         return (await _dataSource.Create(newObject) ? Ok(newObject) : NotFound());
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFActivity toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id,[FromBody] PFActivity toUpdateObject)
     {
         return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }
