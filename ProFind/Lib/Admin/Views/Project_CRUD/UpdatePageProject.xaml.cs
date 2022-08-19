@@ -138,12 +138,14 @@ namespace ProFind.Lib.Admin.Views.Project_CRUD
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             toManipulate.ResponsibleProfessional = professionals[Professional_cb.SelectedIndex];
+            toManipulate.IdP1 = professionals[Professional_cb.SelectedIndex].IdP;
 
         }
 
         private void Client_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             toManipulate.ResponsibleClient = clients[Client_cb.SelectedIndex];
+            toManipulate.IdC1 = clients[Client_cb.SelectedIndex].IdC;
 
         }
 

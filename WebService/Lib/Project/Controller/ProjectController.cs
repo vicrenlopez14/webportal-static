@@ -41,7 +41,7 @@ public class ProjectController : CrudController<PFProject>
         return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound();
     }
 
-    public override async Task<ActionResult<HttpStatusCode>> Update(string id, PFProject toUpdateObject)
+    public override async Task<ActionResult<HttpStatusCode>> Update(string id, [FromBody] PFProject toUpdateObject)
     {
         return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
     }

@@ -46,7 +46,6 @@ namespace ProFind.Lib.Admin.Views.ActivityCRUD
         {
             (professionals, professionalStrings) = await new PFProfessionalService().GetComboboxChoices();
             (clients, clientStrings) = await new PfClientService().GetComboboxChoices();
-
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

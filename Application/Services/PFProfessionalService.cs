@@ -49,9 +49,19 @@ namespace Application.Services
         public async Task<IEnumerable<PFProfessional>> ListPaginatedObjectAsync(int fromIndex) =>
             await ListPaginatedObjectAsync(fromIndex, -1);
 
-        public Task<(List<PFProfessional> professionals, List<string> professionalStrings)> GetComboboxChoices()
+        public async Task<(List<PFProfessional> professionals, List<string> professionalStrings)> GetComboboxChoices()
         {
-            throw new NotImplementedException();
+            List<PFProfessional> professions = new List<PFProfessional>();
+            List<string> professionStrings = new List<string>();
+
+            professions = (List<PFProfessional>) await new PFProfessionalService().ListObjectAsync();
+
+            foreach (var profession in professions)
+            {
+                professionStrings.Add(profession.NameP);
+            }
+
+            return (professions, professionStrings);
         }
 
         public async Task<IEnumerable<PFProfessional>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
