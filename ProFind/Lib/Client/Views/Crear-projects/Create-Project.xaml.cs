@@ -2,7 +2,6 @@
 using Application.Services;
 using Google.Protobuf.WellKnownTypes;
 using ProFind.Lib.Admin.Controllers;
-using ProFind.Lib.Professional.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -60,11 +59,11 @@ namespace ProFind.Lib.Client.Views.Crear_projects
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
-                new AdminNavigationController().GoBack();
+                new InAppNavigationController().GoBack();
 
                 if (_isFirstAdmin)
                 {
-                    new ProfessionalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
+                    new InAppNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));
                 }
             }
 

@@ -89,7 +89,7 @@ namespace ProFind.Lib.Admin.Views.Project_CRUD
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().GoBack();
+            new InAppNavigationController().GoBack();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -151,7 +151,7 @@ namespace ProFind.Lib.Admin.Views.Project_CRUD
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().NavigateTo(typeof(ReadPageActivity), toManipulate);
+            new InAppNavigationController().NavigateTo(typeof(ReadPageActivity), toManipulate);
         }
     }
 }

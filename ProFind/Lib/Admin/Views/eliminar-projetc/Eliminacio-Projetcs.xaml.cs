@@ -2,7 +2,6 @@
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Controllers;
-using ProFind.Lib.Professional.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -64,7 +63,7 @@ namespace ProFind.Lib.Professional.eliminar_projetc
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
-                new ProfessionalNavigationController().GoBack();
+                new InAppNavigationController().GoBack();
                 if (_isFirstAdmin)
                 {
                     new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.InitPage.InitPage));

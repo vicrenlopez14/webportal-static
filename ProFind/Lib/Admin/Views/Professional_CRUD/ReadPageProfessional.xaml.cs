@@ -1,6 +1,7 @@
 ﻿using Application.Models;
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
+using ProFind.Lib.Admin.Views.Project_CRUD;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,54 +19,40 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views.ActivityCRUD
+namespace ProFind.Lib.Admin.Views.Professional_CRUD
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ReadPageActivity : Page
+    public sealed partial class ReadPageProfessional : Page
     {
-        PFProject parentProject;
-
-        public ReadPageActivity()
+        public ReadPageProfessional()
         {
             this.InitializeComponent();
 
             InitializeData();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            parentProject = (PFProject)e.Parameter;
-            PageHeader.Text = $"Activities related to {parentProject.TitlePJ}";
-        }
-
         private async void InitializeData()
         {
+            ProfessionalsListView.ItemsSource = await new PFProfessionalService().ListObjectAsync();
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var activity = e.ClickedItem as PFActivity;
+            var project = e.ClickedItem as PFProfessional;
 
-            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), new Tuple<PFProject, PFActivity>(parentProject, activity));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProfessional), project);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), (parentProject));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProfessional));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), (parentProject));
-        }
-
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            AdminsListView.ItemsSource = await new PFActivityService().ListOfProject(parentProject.IdPJ);
-
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProfessional));
         }
     }
 }

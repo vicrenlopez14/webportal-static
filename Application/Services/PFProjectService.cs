@@ -46,7 +46,19 @@ namespace Application.Services
 
             return project;
         }
+        
+        public async Task<IEnumerable<PFProject>> ListProjectsByUserAsync(string userId)
+        {
+            IEnumerable<PFProject> project = null;
+            HttpResponseMessage response = await WebAPIConnection.GetConnection.GetAsync($"api/Project/user/{userId}");
+            if (response.IsSuccessStatusCode)
+            {
+                project = await response.Content.ReadAsAsync<IEnumerable<PFProject>>();
+            }
 
+            return project;
+        }
+        
         public async Task<IEnumerable<PFProject>> Search(IDictionary<string, string> searchCriteria)
         {
             IEnumerable<PFProject> projects = null;

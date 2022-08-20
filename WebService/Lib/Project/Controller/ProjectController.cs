@@ -23,6 +23,13 @@ public class ProjectController : CrudController<PFProject>
         return Ok(result);
     }
 
+    [HttpGet("user/{id}")]
+    public async Task<ActionResult<IEnumerable<PFProject>>> GetUserProjects(string id)
+    {
+        var result = await _dataSource.GetProjectsOfAClient(id);
+        return Ok(result);
+    }
+    
     public override async Task<ActionResult<IEnumerable<PFProject>>> PaginatedList(int fromIndex, int? toIndex)
     {
         throw new NotImplementedException();

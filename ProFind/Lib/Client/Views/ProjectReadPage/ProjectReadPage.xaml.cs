@@ -1,6 +1,5 @@
-﻿using Application.Services;
-using ProFind.Lib.Admin.Controllers;
-using ProFind.Lib.Global.Controllers;
+﻿using Application.Models;
+using Application.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,32 +17,32 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Client.Views.CRUD
+namespace ProFind.Lib.Client.Views.ProjectReadPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ReadPageClient : Page
+    public sealed partial class ProjectReadPage : Page
     {
-        public ReadPageClient()
+
+        public ProjectReadPage()
         {
             this.InitializeComponent();
-            InitializeData();
+            GetProjectList();
         }
 
-        private async void InitializeData()
+        public async void GetProjectList()
         {
-            ClientsListView.ItemsSource = await new PfClientService().ListObjectAsync();
+            var projectServices = new PfProjectService();
+
+            List<PFProject> ListProject = new List<PFProject>();
+
+
+
+            ListProject = await projectServices.ListProjectsByUserAsync(PfClientService.client.IdC) as List<PFProject>;
+
+            ProjectListView.ItemsSource = ListProject;  
         }
 
-        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(CreateClientPage));
-        }
     }
 }

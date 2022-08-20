@@ -106,7 +106,7 @@ namespace ProFind.Lib.Admin.Views.CRUD
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
-            new AdminNavigationController().GoBack();
+            new InAppNavigationController().GoBack();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

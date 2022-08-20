@@ -48,7 +48,7 @@ namespace ProFind.Lib.Professional.Views.ActualizarProject
 
             if (respuesta == HttpStatusCode.OK)
             {
-                new AdminNavigationController().GoBack();
+                new InAppNavigationController().GoBack();
 
             }
 

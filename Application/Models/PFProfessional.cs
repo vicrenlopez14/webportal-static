@@ -8,7 +8,7 @@ namespace Application.Models
     public class PFProfessional
     {
         [JsonConstructor]
-        public PFProfessional(string idP, string nameP, DateTime dateBirthP, string emailP, string passwordP, bool activeP, bool sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTime hiringDateP, byte[] pictureP, string idCu1, PFCurriculum curriculum, string idPfs1, PFProfession profession, string idDp1, PFDepartment department, string idWdt1, PFWorkDayType workDayType)
+        public PFProfessional(string idP, string nameP, DateTimeOffset dateBirthP, string emailP, string passwordP, bool activeP, bool sexP, string duip, string afpp, string isssp, string zipCodeP, string salaryP, DateTimeOffset hiringDateP, byte[] pictureP, string idCu1, PFCurriculum curriculum, string idPfs1, PFProfession profession, string idDp1, PFDepartment department, string idWdt1, PFWorkDayType workDayType)
         {
             IdP = idP;
             NameP = nameP;
@@ -106,7 +106,7 @@ namespace Application.Models
 
         public string IdP { get; set; }
         public string NameP { get; set; }
-        public DateTime DateBirthP { get; set; }
+        public DateTimeOffset DateBirthP { get; set; }
         public string EmailP { get; set; }
         public string PasswordP { get; set; }
         public bool ActiveP { get; set; }
@@ -122,7 +122,7 @@ namespace Application.Models
 
         public string SalaryP { get; set; }
 
-        public DateTime HiringDateP { get; set; }
+        public DateTimeOffset HiringDateP { get; set; }
 
         public byte[] PictureP { get; set; }
 

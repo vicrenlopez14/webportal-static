@@ -56,24 +56,27 @@ namespace ProFind.Lib.Admin.Views.Project_CRUD
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var result = await new PfProjectService().Create(newObject);
-
-            if (result == System.Net.HttpStatusCode.OK)
-            {
-                new AdminNavigationController().GoBack();
-            }
             if (string.IsNullOrEmpty(Title_tb.Text))
             {
 
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
+                return;
             }
             else if (string.IsNullOrEmpty(Description_tb.Text))
             {
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
+                return;
             }
-           
+
+            var result = await new PfProjectService().Create(newObject);
+
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                new InAppNavigationController().GoBack();
+            }
+
         }
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)

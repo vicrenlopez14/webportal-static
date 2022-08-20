@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Views.Preferences_Page;
-using ProFind.Lib.Professional.Controllers;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Views.About_Page;
+using ProFind.Lib.Admin.Controllers;
 
 namespace ProFind.Lib.Professional.Views.Main_Page
 {
@@ -25,8 +25,8 @@ namespace ProFind.Lib.Professional.Views.Main_Page
         public Main_Page_Professional()
         {
             this.InitializeComponent();
-            new ProfessionalNavigationController().Init(Professionals_ContentFrame);
-            new ProfessionalNavigationController().NavigateTo(typeof(Page_Activos));
+            new InAppNavigationController().Init(Professionals_ContentFrame);
+            new InAppNavigationController().NavigateTo(typeof(Page_Activos));
 
         }
 
@@ -34,7 +34,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
         {
             if (args.IsSettingsInvoked)
             {
-                new ProfessionalNavigationController().NavigateTo(typeof(Preferences_Page));
+                new InAppNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -50,11 +50,11 @@ namespace ProFind.Lib.Professional.Views.Main_Page
 
             try
             {
-                new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                new InAppNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
             }
             catch
             {
-                new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
+                new InAppNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
             }
         }
 
@@ -64,7 +64,7 @@ namespace ProFind.Lib.Professional.Views.Main_Page
 
         private void Page_Loaded_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new ProfessionalNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
+            new InAppNavigationController().NavigateTo(DefinedPagesDictionary["Dashboard_Page"]);
         }
     }
 }

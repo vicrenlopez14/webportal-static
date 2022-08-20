@@ -202,6 +202,12 @@
     <Compile Include="Lib\Admin\Views\Professional_Add\professional_information.xaml.cs">
       <DependentUpon>professional_information.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\Professional_CRUD\CreatePageProfessional.xaml.cs">
+      <DependentUpon>CreatePageProfessional.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\Professional_CRUD\ReadPageProfessional.xaml.cs">
+      <DependentUpon>ReadPageProfessional.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\Projects_Page\Projects_Page.xaml.cs">
       <DependentUpon>Projects_Page.xaml</DependentUpon>
     </Compile>
@@ -226,7 +232,6 @@
     <Compile Include="Lib\Admin\Views\UpdateDeleteClient\UpdateDeleteClient.xaml.cs">
       <DependentUpon>UpdateDeleteClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Client\Controllers\ClientNavigationController.cs" />
     <Compile Include="Lib\Client\Views\Calendar_Page\Calendar_Page.xaml.cs">
       <DependentUpon>Calendar_Page.xaml</DependentUpon>
     </Compile>
@@ -278,6 +283,12 @@
     <Compile Include="Lib\Client\Views\Pays_Page\Unauthorized_page.xaml.cs">
       <DependentUpon>Unauthorized_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\ProfessionalReadPage\ProfessionalReadPage.xaml.cs">
+      <DependentUpon>ProfessionalReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Client\Views\ProjectReadPage\ProjectReadPage.xaml.cs">
+      <DependentUpon>ProjectReadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
     <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
@@ -319,7 +330,6 @@
     <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Professional\Controllers\ProfessionalNavigationController.cs" />
     <Compile Include="Lib\Professional\Views\ActualizarProject\ActualizarProject.xaml.cs">
       <DependentUpon>ActualizarProject.xaml</DependentUpon>
     </Compile>
@@ -535,6 +545,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\Admin\Views\Professional_CRUD\CreatePageProfessional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\Professional_CRUD\ReadPageProfessional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\Projects_Page\Projects_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -634,6 +652,14 @@
     <Page Include="Lib\Client\Views\Pays_Page\Unauthorized_page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Client\Views\ProfessionalReadPage\ProfessionalReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Client\Views\ProjectReadPage\ProjectReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Global\Views\About_Page\About_Page.xaml">
       <Generator>MSBuild:Compile</Generator>

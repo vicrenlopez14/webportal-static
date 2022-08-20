@@ -6,6 +6,7 @@ using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Global.Views.About_Page;
+using ProFind.Lib.Admin.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,14 +36,14 @@ namespace ProFind.Lib.Client.Views.Main_Page
         public Main_Page_Client()
         {
             this.InitializeComponent();
-            new ClientNavigationController().Init(ClientsContentFrame);
-            new ClientNavigationController().NavigateTo(typeof(Page_Activos));
+            new InAppNavigationController().Init(ClientsContentFrame);
+            new InAppNavigationController().NavigateTo(typeof(Page_Activos));
         }
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
-                new ClientNavigationController().NavigateTo(typeof(Preferences_Page));
+                new InAppNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -60,7 +61,7 @@ namespace ProFind.Lib.Client.Views.Main_Page
 
 
 
-            new ClientNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+            new InAppNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
         }
     }
 }

@@ -8,6 +8,9 @@ using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Admin.Views.CRUD;
 using ProFind.Lib.Admin.Views.Project_CRUD;
+using ProFind.Lib.Client.Views.CRUD;
+using ProFind.Lib.Admin.Views.Professional_CRUD;
+using ProFind.Lib.Global.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,8 +25,8 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         {
             {"Administrators_Page", typeof(ReadPageAdmin) },
             {"Calendar_Page", typeof(ReadPageProject) },
-            {"Professionals_Page", typeof(ActivesPage) },
-            {"Clients_Page", typeof(QuickView_Page.QuickView_Page) },
+            {"Professionals_Page", typeof(ReadPageProfessional) },
+            {"Clients_Page", typeof(ReadPageClient) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
             {"", typeof(Calendar_Page.Calendar_Page) }
@@ -32,16 +35,15 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
         public Main_Page_Admin()
         {
             this.InitializeComponent();
-            new AdminNavigationController().Init(ContentFrame);
-            new AdminNavigationController().NavigateTo(typeof(ReadPageAdmin));
-
+            new InAppNavigationController().Init(ContentFrame);
+            new InAppNavigationController().NavigateTo(typeof(ReadPageAdmin));
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
             {
-                new AdminNavigationController().NavigateTo(typeof(Preferences_Page));
+                new Controllers.InAppNavigationController().NavigateTo(typeof(Preferences_Page));
                 return;
             }
 
@@ -58,17 +60,17 @@ namespace ProFind.Lib.Admin.Views.Main_Page_Admin
             try
             {
                 navView.Header = item.Content;
-                new AdminNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                new Controllers.InAppNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
             }
             catch
             {
-                new AdminNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
+                new Controllers.InAppNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
             }
         }
 
         private void navView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
         {
-            new AdminNavigationController().GoBack();
+            new Controllers.InAppNavigationController().GoBack();
         }
     }
 }
