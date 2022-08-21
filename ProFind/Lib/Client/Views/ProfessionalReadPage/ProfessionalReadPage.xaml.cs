@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace ProFind.Lib.Client.Views.ProfessionalReadPage
         public ProfessionalReadPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void InitializeData()
+        {
+            ProfessionalsListView.ItemsSource = await new PFProfessionalService().ListObjectAsync();
         }
     }
 }
