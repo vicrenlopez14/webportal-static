@@ -88,6 +88,16 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Client.CreatePage
         {
             newObject.PasswordC = Password_pb.Password;
         }
+
+        private void Create_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PhoneNumber_tb_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+        {
+
+        }
     }
 
 }

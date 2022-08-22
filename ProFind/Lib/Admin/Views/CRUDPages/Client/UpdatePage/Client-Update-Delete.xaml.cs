@@ -102,7 +102,7 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Client.UpdatePage
             }
         }
 
-        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        private async void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().GoBack();
         }
@@ -110,6 +110,28 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Client.UpdatePage
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             toManipulate.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+        }
+
+        private async void Delete_btn_Click(object sender, RoutedEventArgs e)
+        {
+            await new PfClientService().Delete(toManipulate.IdC);
+
+            if (string.IsNullOrEmpty(Name1_tbx.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tbx.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_tbx.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
         }
     }
 }

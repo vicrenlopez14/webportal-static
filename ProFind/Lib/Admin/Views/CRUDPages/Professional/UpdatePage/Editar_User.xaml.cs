@@ -121,6 +121,11 @@ namespace ProFind.Lib.Admin.Views
 
         private void BtnBack(object sender, RoutedEventArgs e)
         {
+            new GlobalNavigationController().GoBack();
+        }
+
+        private void btnCancelarCambios_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

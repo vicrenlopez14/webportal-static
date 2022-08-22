@@ -49,7 +49,7 @@ namespace ProFind.Lib.Admin.Views.Admin_Page
         {
             PFAdmin clickedItem = (PFAdmin)e.ClickedItem;
 
-            new InAppNavigationController().NavigateTo(typeof(Lib.Admin.Views.UpdateDeleteClient.UpdateDeleteClient), clickedItem);
+            
 
         }
     }
