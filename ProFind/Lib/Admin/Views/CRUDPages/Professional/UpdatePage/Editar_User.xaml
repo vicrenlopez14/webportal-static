@@ -132,11 +132,10 @@
             </PasswordBox.RenderTransform>
         </PasswordBox>
         <Button
-            x:Name="btnCambiar"
-            Margin="1138,154,0,0"
-            VerticalAlignment="Top"
-            Content="Change image"
-            CornerRadius="5" />
+                                    Name="btnExaminar"
+                                    Click="btnExaminar_Click"
+                                    Content="Charge"
+                                    CornerRadius="5" Height="40" Width="177" Margin="1117,160,0,0" VerticalAlignment="Top" />
         <Button
             x:Name="btnGuardarCambios"
             Width="135"
@@ -152,8 +151,8 @@
             Height="47"
             Margin="643,229,0,0"
             VerticalAlignment="Top"
-            Content="Cancel changes"
-            CornerRadius="5" />
+            Content="Detete"
+            CornerRadius="5" Click="btnCancelarCambios_Click" />
         <PersonPicture
             Margin="1155,34,245,866"
             ProfilePicture="https://es.eserp.com/wp-content/uploads/2019/08/%C3%89tica-profesional-del-abogado.jpg"
@@ -172,5 +171,14 @@
                     TranslateY="-1.669" />
             </SymbolIcon.RenderTransform>
         </SymbolIcon>
+        <Button
+            x:Name="BtnBack"
+            Width="135"
+            Height="47"
+            Margin="750,325,0,0"
+            VerticalAlignment="Top"
+            Click="BtnBack"
+            Content="Back"
+            CornerRadius="5" />
     </Grid>
 </Page>

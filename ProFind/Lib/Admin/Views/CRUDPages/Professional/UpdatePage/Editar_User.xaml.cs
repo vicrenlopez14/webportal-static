@@ -2,12 +2,14 @@
 using Application.Services;
 using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -29,6 +31,9 @@ namespace ProFind.Lib.Admin.Views
     {
 
         public bool SucessfulCreation_tt { get; private set; }
+
+        byte[] pictureBytes;
+        private PFClient client;
 
         public Editar_User()
         {
@@ -84,11 +89,7 @@ namespace ProFind.Lib.Admin.Views
         private async void btnGuardarCambios_Click(object sender, RoutedEventArgs e)
         {
             PFProfessional professional = new PFProfessional();
-            var profession = new PFProfession();
-
-            
-
-            professional.Profession = profession;
+         
             professional.NameP = Fistname.Text + LastName.Text;
             professional.EmailP = Email.Text;
             professional.SalaryP = Salario.Text;
@@ -101,6 +102,26 @@ namespace ProFind.Lib.Admin.Views
                 SucessfulCreation_tt = true;
                 new Controllers.InAppNavigationController().GoBack();
             }
+        }
+
+        private async void btnExaminar_Click(object sender, RoutedEventArgs e)
+        {
+
+            pictureBytes = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
+        }
+
+        private async Task btnCancelarCambios_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            string IdToDelete = client.IdC;
+
+            var result = await new PfClientService().Delete(IdToDelete);
+
+            new GlobalNavigationController().GoBack();
+        }
+
+        private void BtnBack(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
