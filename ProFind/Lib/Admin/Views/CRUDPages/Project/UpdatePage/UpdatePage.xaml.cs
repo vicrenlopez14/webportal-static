@@ -34,7 +34,7 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Project.UpdatePage
 
         private List<PFClient> clients = new List<PFClient>();
         private List<string> clientStrings = new List<string>();
-        
+
         public UpdatePage()
         {
             this.InitializeComponent();
