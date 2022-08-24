@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Pdf;
 using Windows.Storage;
 
 namespace ProFind.Lib.Global.Helpers
@@ -23,6 +24,26 @@ namespace ProFind.Lib.Global.Helpers
 
             var file = await picker.PickSingleFileAsync();
             return file;
+        }
+
+        public static async Task<PdfDocument> PickPDF()
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker
+            {
+                ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
+                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary
+            };
+            picker.FileTypeFilter.Add(".pdf");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+
+            var file = await picker.PickSingleFileAsync();
+            StorageFile f = await
+
+        StorageFile.GetFileFromApplicationUriAsync(new Uri(file.Path));
+            PdfDocument doc = await PdfDocument.LoadFromFileAsync(f);
+
+            return doc;
         }
     }
 }

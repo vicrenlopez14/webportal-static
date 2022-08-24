@@ -53,7 +53,6 @@ DESCRIBE ADMIN;
 SELECT *
 FROM Admin;
 
-
 ###############################################
 CREATE TABLE Tag
 (
@@ -65,20 +64,6 @@ CREATE TABLE Tag
 );
 
 DESCRIBE Tag;
-
-
-###############################################
-CREATE TABLE Curriculum
-(
-    IdCU          CHAR(21) PRIMARY KEY,
-    StudiesCU     CHAR,
-    ExperiencesCU CHAR,
-    YearsCU       INT(2)
-);
-
-DESCRIBE Curriculum;
-
-SELECT * FROM Curriculum;
 
 ################################################
 CREATE TABLE Department
@@ -103,7 +88,8 @@ VALUES ('Ahuachapán'),
        ('La Unión'),
        ('Usulután');
 
-SELECT * FROM Department;
+SELECT *
+FROM Department;
 ################################################
 
 CREATE TABLE Professional
@@ -122,16 +108,16 @@ CREATE TABLE Professional
     SalaryP     FLOAT,
     HiringDateP DATE,
     PictureP    LONGBLOB,
-    IdCU1       CHAR(21),
+    CurriculumP LONGBLOB,
     IdPFS1      INT,
     IdDP1       INT,
     IdWDT1      INT,
-    FOREIGN KEY (IdCU1) REFERENCES Curriculum (IdCU) ON DELETE CASCADE,
     FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE,
     FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE,
     FOREIGN KEY (IdWDT1) REFERENCES WorkDayType (IdWDT) ON DELETE CASCADE
 );
-SELECT * FROM Professional;
+SELECT *
+FROM Professional;
 ###############################################
 CREATE TABLE WorkDayType
 (
@@ -178,7 +164,8 @@ CREATE TABLE Project
 
 DESCRIBE Project;
 
-SELECT * FROM Project;
+SELECT *
+FROM Project;
 ################################################
 CREATE TABLE Activity
 (
@@ -194,7 +181,8 @@ CREATE TABLE Activity
     FOREIGN KEY (IdT1) REFERENCES Tag (IdT) ON DELETE CASCADE
 );
 
-SELECT * FROM Activity;
+SELECT *
+FROM Activity;
 
 ################################################
 CREATE TABLE Profession
