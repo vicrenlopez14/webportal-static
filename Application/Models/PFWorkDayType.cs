@@ -1,6 +1,8 @@
 ﻿using Application.Services;
 using Newtonsoft.Json;
 using Nito.AsyncEx.Synchronous;
+using System;
+using System.Threading.Tasks;
 
 namespace Application.Models
 {
@@ -27,5 +29,10 @@ namespace Application.Models
 
         public string IdWDT { get; set; }
         public string NameWDT { get; set; }
+
+        public Task Create(PFWorkDayType newObject)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

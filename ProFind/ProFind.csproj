@@ -165,6 +165,15 @@
     <Compile Include="Lib\Admin\Views\CRUDPages\Professional\UpdatePage\Editar_User.xaml.cs">
       <DependentUpon>Editar_User.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\WorkDayType\CreatePage\Work-tyep-Create.xaml.cs">
+      <DependentUpon>Work-tyep-Create.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\WorkDayType\ListPage\List-Work.xaml.cs">
+      <DependentUpon>List-Work.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\WorkDayType\Update-DetetePage\Update-detetePage.xaml.cs">
+      <DependentUpon>Update-detetePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml.cs">
       <DependentUpon>CreatePageAdmin.xaml</DependentUpon>
     </Compile>
@@ -503,6 +512,18 @@
     <Page Include="Lib\Admin\Views\CRUDPages\Professional\UpdatePage\Editar_User.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\WorkDayType\CreatePage\Work-tyep-Create.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\WorkDayType\ListPage\List-Work.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\WorkDayType\Update-DetetePage\Update-detetePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml">
       <SubType>Designer</SubType>
@@ -885,12 +906,8 @@
     <Folder Include="Lib\Admin\Views\CRUDPages\Tag\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Tag\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Tag\UpdatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\WorkDayType\CreatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\WorkDayType\DeletePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\WorkDayType\ListPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\WorkDayType\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\WorkDayType\SearchPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\WorkDayType\UpdatePage\" />
     <Folder Include="Lib\Admin\Views\Estado_del_proyecto\Controls\" />
     <Folder Include="Lib\Client\Models\" />
     <Folder Include="Lib\Client\Views\CRUDPages\Activity\CreatePage\" />

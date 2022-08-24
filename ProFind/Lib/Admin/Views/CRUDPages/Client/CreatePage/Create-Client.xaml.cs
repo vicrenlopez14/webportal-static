@@ -89,9 +89,30 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Client.CreatePage
             newObject.PasswordC = Password_pb.Password;
         }
 
-        private void Create_btn_Click(object sender, RoutedEventArgs e)
+        private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
+            var result = await new PfClientService().Create(newObject);
 
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                new InAppNavigationController().GoBack();
+            }
+            if (string.IsNullOrEmpty(Name_tb.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_pb.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
         }
 
         private void PhoneNumber_tb_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
