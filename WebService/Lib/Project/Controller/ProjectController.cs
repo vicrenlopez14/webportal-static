@@ -56,6 +56,16 @@ public class ProjectController : CrudController<PFProject>
         return Ok(result);
     }
     
+    // Method to create a project that have a IdPS1 value of 3 named GetProposalProjects
+    [HttpPost("proposal")]
+    public async Task<ActionResult<PFProject>> CreateProposalProject([FromBody] PFProject newObject)
+    {
+        newObject.IdPJ = await Nanoid.Nanoid.GenerateAsync();
+        newObject.IdPS1 = 3.ToString();
+        return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound();
+    }
+    
+    
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, [FromBody] PFProject toUpdateObject)
     {
         return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();
