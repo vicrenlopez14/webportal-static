@@ -62,7 +62,7 @@ public class ProjectController : CrudController<PFProject>
     {
         newObject.IdPJ = await Nanoid.Nanoid.GenerateAsync();
         newObject.IdPS1 = 3.ToString();
-        return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound();
+        return await _dataSource.CreateProposal(newObject) ? Ok(newObject) : NotFound();
     }
     
     

@@ -89,14 +89,14 @@ public class ProjectDataSource
 
         return result;
     }
-    
+
     public async Task<IEnumerable<PFProject>> GetProposalProjects()
     {
         const string query = "SELECT * FROM Project WHERE IdPS1 = 3;";
         var result = await _connection.QueryAsync<PFProject>(query);
         return result;
     }
-    
+
 
     public async Task<IEnumerable<PFProject>> GetProjectsOfAProfessional(string id)
     {
@@ -111,6 +111,13 @@ public class ProjectDataSource
 
         return result.ToList();
     }
+
+    public async Task<bool> CreateProposal(PFProject Project)
+    {
+        Project.IdPS1 = 3.ToString();
+        return await Create(Project);
+    }
+
 
     public async Task<IEnumerable<PFProject>> GetProjectsOfAClient(string id)
     {
