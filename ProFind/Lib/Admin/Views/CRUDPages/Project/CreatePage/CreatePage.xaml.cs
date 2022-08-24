@@ -127,4 +127,5 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Project.CreatePage
             newObject.ResponsibleClient = clients[Client_cb.SelectedIndex];
         }
     }
+    
 }

@@ -27,19 +27,20 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Admin.UpdatePage
     /// </summary>
     public sealed partial class UpdatePage : Page
     {
-        PFAdmin toManipulate = new PFAdmin();
 
-        public UpdatePage()
-        {
-            this.InitializeComponent();
-        }
-        private async void loadUsefulthings()
-        {
-            FirstName1_tbx.Text = toManipulate.NameA;
-            Email_tbx.Text = toManipulate.EmailA;
+            PFAdmin toManipulate = new PFAdmin();
 
-            Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
-        }
+            public UpdatePage()
+            {
+                this.InitializeComponent();
+            }
+            private async void loadUsefulthings()
+            {
+                FirstName1_tbx.Text = toManipulate.NameA;
+                Email_tbx.Text = toManipulate.EmailA;
+
+                Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
+            }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -100,3 +101,5 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Admin.UpdatePage
 
     }
 }
+    
+
