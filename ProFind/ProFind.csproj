@@ -149,6 +149,18 @@
     <Compile Include="Lib\Admin\Views\Client_List\Clients_List.xaml.cs">
       <DependentUpon>Clients_List.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\Controls\InfoSideCurriculum.xaml.cs">
+      <DependentUpon>InfoSideCurriculum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\DeletePage\DeletePage.xaml.cs">
+      <DependentUpon>DeletePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml.cs">
       <DependentUpon>CreatePageAdmin.xaml</DependentUpon>
     </Compile>
@@ -228,9 +240,6 @@
     </Compile>
     <Compile Include="Lib\Admin\Views\Status_Page\Status_Page.xaml.cs">
       <DependentUpon>Status_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Admin\Views\Update-Delete-Professional\Professional.xaml.cs">
-      <DependentUpon>Professional.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\UpdateDeleteClient\UpdateDeleteClient.xaml.cs">
       <DependentUpon>UpdateDeleteClient.xaml</DependentUpon>
@@ -348,12 +357,6 @@
     <Compile Include="Lib\Professional\Views\EliminarProject\EliminarProject.xaml.cs">
       <DependentUpon>EliminarProject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\Professional\Views\Inactivos_Page\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\Professional\Views\Inactivos_Page\Page_Inactivos.xaml.cs">
-      <DependentUpon>Page_Inactivos.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\Professional\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
@@ -391,6 +394,7 @@
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\clients_bg.jpg" />
+    <Content Include="Assets\cv.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
@@ -486,6 +490,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\Client_List\Clients_List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\Controls\InfoSideCurriculum.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\DeletePage\DeletePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -592,10 +612,6 @@
     <Page Include="Lib\Admin\Views\Status_Page\Status_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\Admin\Views\Update-Delete-Professional\Professional.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Admin\Views\UpdateDeleteClient\UpdateDeleteClient.xaml">
       <SubType>Designer</SubType>
@@ -741,14 +757,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\Professional\Views\Inactivos_Page\BlankPage1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Lib\Professional\Views\Inactivos_Page\Page_Inactivos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Lib\Professional\Views\InitPage\InitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -837,6 +845,9 @@
     <PackageReference Include="Nito.AsyncEx.Tasks">
       <Version>5.1.2</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.EJ2.PdfViewer.AspNet.Core.Windows">
+      <Version>20.2.0.44</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-us\Resources.resw" />
@@ -858,12 +869,9 @@
     <Folder Include="Lib\Admin\Views\CRUDPages\Client\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Client\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Client\UpdatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\CreatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\ListPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\SearchPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\ListPage\" />
