@@ -149,6 +149,15 @@
     <Compile Include="Lib\Admin\Views\Client_List\Clients_List.xaml.cs">
       <DependentUpon>Clients_List.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Admin\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Admin\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Admin\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\Controls\InfoSideCurriculum.xaml.cs">
       <DependentUpon>InfoSideCurriculum.xaml</DependentUpon>
     </Compile>
@@ -159,6 +168,15 @@
       <DependentUpon>DeletePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Project\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Project\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Project\UpdatePage\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml.cs">
@@ -493,6 +511,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Admin\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Admin\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Admin\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\Controls\InfoSideCurriculum.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -506,6 +536,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Project\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Project\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Project\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -857,12 +899,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\Admin\Models\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Admin\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Admin\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Admin\ListPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Admin\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Admin\SearchPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Admin\UpdatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Client\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Client\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Client\ListPage\" />
@@ -896,12 +935,9 @@
     <Folder Include="Lib\Admin\Views\CRUDPages\ProjectStatus\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\ProjectStatus\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\ProjectStatus\UpdatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Project\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Project\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Project\ListPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Project\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Project\SearchPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Project\UpdatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Rank\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Rank\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Rank\ListPage\" />
