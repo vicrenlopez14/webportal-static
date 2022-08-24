@@ -48,6 +48,14 @@ public class ProjectController : CrudController<PFProject>
         return await _dataSource.Create(newObject) ? Ok(newObject) : NotFound();
     }
 
+    // Method to get the projects that have a IdPS1 value of 3 named GetProposalProjects
+    [HttpGet("proposal")]
+    public async Task<ActionResult<IEnumerable<PFProject>>> GetProposalProjects()
+    {
+        var result = await _dataSource.GetProposalProjects();
+        return Ok(result);
+    }
+    
     public override async Task<ActionResult<HttpStatusCode>> Update(string id, [FromBody] PFProject toUpdateObject)
     {
         return (await _dataSource.Update(id, toUpdateObject)) ? Ok(toUpdateObject) : NotFound();

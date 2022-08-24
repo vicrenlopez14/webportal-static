@@ -141,7 +141,8 @@ CREATE TABLE ProjectStatus
 
 INSERT INTO ProjectStatus (NamePS)
 VALUES ('Inactive'),
-       ('Active');
+       ('Active'),
+       ('Proposal');
 
 SELECT *
 FROM ProjectStatus;
