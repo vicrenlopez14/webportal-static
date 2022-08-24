@@ -1,7 +1,6 @@
 using Application.Models;
 using Dapper;
 using MySql.Data.MySqlClient;
-using WebService.Lib.Curriculum.DataSource;
 using WebService.Lib.DataSource;
 using WebService.Lib.Department.DataSource;
 using WebService.Lib.Profession.DataSource;
@@ -60,8 +59,6 @@ public class ProfessionalDataSource
 
     private static async Task<PFProfessional> FillUp(PFProfessional unfilled)
     {
-        if (!string.IsNullOrEmpty(unfilled.IdCU1))
-            unfilled.Curriculum = await new CurriculumDataSource().Get(unfilled.IdP);
         if (!string.IsNullOrEmpty(unfilled.IdPFS1))
             unfilled.Profession = await new ProfessionDataSource().Get(unfilled.IdPFS1);
         if (!string.IsNullOrEmpty(unfilled.IdDP1))
@@ -74,9 +71,6 @@ public class ProfessionalDataSource
 
     private static async Task<bool> FillDown(PFProfessional unfilled)
     {
-        if (unfilled.Curriculum != null)
-            unfilled.Curriculum = await new CurriculumDataSource().Get(unfilled.IdP);
-
         return true;
     }
 
@@ -103,7 +97,7 @@ public class ProfessionalDataSource
             ["Salary"] = professional.SalaryP,
             ["HiringDate"] = professional.HiringDateP,
             ["Picture"] = professional.PictureP,
-            ["Curriculum"] = professional.IdCU1,
+            ["Curriculum"] = professional.Curriculum,
             ["Profession"] = professional.Profession.IdPFS,
             ["Department"] = professional.Department.IdDP,
             ["WorkDayType"] = professional.WorkDayType.IdWDT,
