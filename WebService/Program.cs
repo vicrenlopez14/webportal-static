@@ -1,11 +1,25 @@
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using WebService.Data;
+using WebService.Models;
+using WebService.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<ProFindContext>(options =>
+    options.UseMySql(builder.Configuration["ConnectionStrings"], new MySqlServerVersion(new Version(8, 0, 27)))
+        .LogTo(Console.WriteLine, LogLevel.Information).EnableSensitiveDataLogging().EnableDetailedErrors());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.CustomOperationIds(description =>
+        description.TryGetMethodInfo(out var methodInfo) ? methodInfo.Name : null);
+});
 
 
 var app = builder.Build();
@@ -14,7 +28,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.DisplayOperationId());
 }
 
 app.UseHttpsRedirection();

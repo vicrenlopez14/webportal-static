@@ -209,3 +209,18 @@ CREATE TABLE Notification
     IdPJ2           CHAR(21),
     FOREIGN KEY (IdPJ2) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
+
+################################################
+CREATE TABLE Proposal
+(
+    IdPP           CHAR(21) PRIMARY KEY,
+    TitlePP        VARCHAR(50),
+    DescriptionPP  VARCHAR(500),
+    PicturePP      LONGBLOB,
+    SuggestedStart DATE,
+    SuggestedEnd   DATE,
+    IdP3           CHAR(21),
+    IdC3           CHAR(21),
+    FOREIGN KEY (IdP3) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE
+);
