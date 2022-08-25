@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
@@ -38,10 +37,8 @@ namespace ProFind.Lib.Client.Views.Main_Page
             this.InitializeComponent();
             new InAppNavigationController().Init(ClientsContentFrame);
             new InAppNavigationController().NavigateTo(typeof(Page_Activos));
-            
-            var adminService = new ProFindWS.Admin();
-            
         }
+
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)

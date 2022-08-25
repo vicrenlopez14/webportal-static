@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
@@ -27,10 +22,11 @@ namespace WebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Activity>>> GetActivities()
         {
-          if (_context.Activities == null)
-          {
-              return NotFound();
-          }
+            if (_context.Activities == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Activities.ToListAsync();
         }
 
@@ -38,10 +34,11 @@ namespace WebService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> GetActivity(string id)
         {
-          if (_context.Activities == null)
-          {
-              return NotFound();
-          }
+            if (_context.Activities == null)
+            {
+                return NotFound();
+            }
+
             var activity = await _context.Activities.FindAsync(id);
 
             if (activity == null)
@@ -88,10 +85,11 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Activity>> PostActivity(Activity activity)
         {
-          if (_context.Activities == null)
-          {
-              return Problem("Entity set 'ProFindContext.Activities'  is null.");
-          }
+            if (_context.Activities == null)
+            {
+                return Problem("Entity set 'ProFindContext.Activities'  is null.");
+            }
+
             _context.Activities.Add(activity);
             try
             {
@@ -109,7 +107,7 @@ namespace WebService.Controllers
                 }
             }
 
-            return CreatedAtAction("GetActivity", new { id = activity.IdA }, activity);
+            return CreatedAtAction("GetActivity", new {id = activity.IdA}, activity);
         }
 
         // DELETE: api/Activities/5
@@ -120,6 +118,7 @@ namespace WebService.Controllers
             {
                 return NotFound();
             }
+
             var activity = await _context.Activities.FindAsync(id);
             if (activity == null)
             {

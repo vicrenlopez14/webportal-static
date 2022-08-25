@@ -1,6 +1,4 @@
-﻿using Application.Models;
-using Application.Services;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using System;

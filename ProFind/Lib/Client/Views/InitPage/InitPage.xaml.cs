@@ -1,8 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
-using Application.Services;
 using System.Threading.Tasks;
-using Application.Models;
 using ProFind.Lib.Global.Helpers;
 using Windows.UI.Popups;
 using System;

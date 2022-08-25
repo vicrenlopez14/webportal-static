@@ -4,13 +4,10 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.Global.Views.Preferences_Page;
-using ProFind.Lib.Admin.Views.Estado_del_proyecto;
-using ProFind.Lib.Admin.Views.Professionals_Page;
 using ProFind.Lib.Admin.Views.CRUD;
 using ProFind.Lib.Admin.Views.Project_CRUD;
 using ProFind.Lib.Client.Views.CRUD;
 using ProFind.Lib.Admin.Views.Professional_CRUD;
-using ProFind.Lib.Global.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
