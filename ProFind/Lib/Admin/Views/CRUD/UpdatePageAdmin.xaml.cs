@@ -50,7 +50,7 @@ namespace ProFind.Lib.Admin.Views.CRUD
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            // Reset with the same ID
+          
             toManipulate = new PFAdmin()
             {
                 IdA = toManipulate.IdA,

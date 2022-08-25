@@ -116,6 +116,7 @@ namespace Application.Models
 
         public string IdWDT1 { get; set; }
         public PFWorkDayType WorkDayType { get; set; }
+        public object PictureC { get; set; }
     }
 
     public class LoginProfessional

@@ -61,6 +61,11 @@ namespace Application.Services
         public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex) =>
             await ListPaginatedObjectAsync(fromIndex, -1);
 
+        public Task Update(PFClient toManipulate)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<PFAdmin>> ListPaginatedObjectAsync(int fromIndex, int toIndex)
         {
             IEnumerable<PFAdmin> admin = null;

@@ -42,6 +42,7 @@ namespace Application.Models
         public string PasswordC { get; set; }
 
         public byte[] PictureC { get; set; }
+        public Task<byte[]> PictureA { get; set; }
 
         public Task<List<PFClient>> ListObjectAsync()
         {

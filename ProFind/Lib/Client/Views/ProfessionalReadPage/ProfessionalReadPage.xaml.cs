@@ -32,5 +32,10 @@ namespace ProFind.Lib.Client.Views.ProfessionalReadPage
         {
             ProfessionalsListView.ItemsSource = await new PFProfessionalService().ListObjectAsync();
         }
+
+        private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
