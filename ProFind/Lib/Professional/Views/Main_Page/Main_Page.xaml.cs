@@ -4,7 +4,6 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Admin.Views.Estado_del_proyecto;
 using ProFind.Lib.Admin.Views.Professionals_Page;
-using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.Admin.Controllers;
 

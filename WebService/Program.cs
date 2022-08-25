@@ -1,9 +1,6 @@
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebService.Data;
-using WebService.Models;
-using WebService.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
