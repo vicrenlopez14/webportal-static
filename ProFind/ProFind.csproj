@@ -170,6 +170,15 @@
     <Compile Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Notification\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Notification\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Notification\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\CRUDPages\Project\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -536,6 +545,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\CRUDPages\Curriculum\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Notification\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Notification\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Notification\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -911,12 +932,9 @@
     <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\ListPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Curriculum\SearchPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Notification\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\ListPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Notification\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\SearchPage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Notification\UpdatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\CreatePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\DeletePage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\ListPage\" />
