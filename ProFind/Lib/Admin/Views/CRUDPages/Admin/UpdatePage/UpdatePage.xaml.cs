@@ -1,7 +1,7 @@
-﻿using Application.Models;
-using Application.Services;
-using ProFind.Lib.Admin.Controllers;
+﻿using ProFind.Lib.Admin.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,19 +28,21 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Admin.UpdatePage
     public sealed partial class UpdatePage : Page
     {
 
-            PFAdmin toManipulate = new PFAdmin();
+        Activity activity = new Activity();
+        
+        
+        public UpdatePage()
+        {
+            this.InitializeComponent();
+            
+        }
+        private async void loadUsefulthings()
+        {
+            FirstName1_tbx.Text = toManipulate.NameA;
+            Email_tbx.Text = toManipulate.EmailA;
 
-            public UpdatePage()
-            {
-                this.InitializeComponent();
-            }
-            private async void loadUsefulthings()
-            {
-                FirstName1_tbx.Text = toManipulate.NameA;
-                Email_tbx.Text = toManipulate.EmailA;
-
-                Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
-            }
+            Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
+        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -101,5 +103,5 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Admin.UpdatePage
 
     }
 }
-    
+
 
