@@ -351,11 +351,6 @@
                     CornerRadius="5"
                     RenderTransformOrigin="1.663,0.216" Click="btnCancelar_Click" />
             </StackPanel>
-
         </Grid>
-
-
-
-
     </Grid>
 </Page>

@@ -164,6 +164,12 @@
     <Compile Include="Lib\Admin\Views\CRUDPages\Professional\CreatePage\CreatePageCrud.xaml.cs">
       <DependentUpon>CreatePageCrud.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Professional\DeletePage\Delete.xaml.cs">
+      <DependentUpon>Delete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Admin\Views\CRUDPages\Professional\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Admin\Views\CRUD\CreatePageAdmin.xaml.cs">
       <DependentUpon>CreatePageAdmin.xaml</DependentUpon>
     </Compile>
@@ -513,6 +519,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Admin\Views\CRUDPages\Professional\CreatePage\CreatePageCrud.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Professional\DeletePage\Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Admin\Views\CRUDPages\Professional\ListPage\ListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -885,8 +899,6 @@
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\UpdatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Professional\DeletePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Professional\ListPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\UpdatePage\" />
