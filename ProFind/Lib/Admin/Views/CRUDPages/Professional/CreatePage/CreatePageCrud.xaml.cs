@@ -2,6 +2,7 @@
 using Application.Services;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,6 +47,10 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Professional.CreatePage
         {
             this.InitializeComponent();
             loadUsefulThings();
+
+             APIConnection.Init();
+            var a = APIConnection.GetClient;
+            
         }
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)

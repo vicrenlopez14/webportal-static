@@ -8,7 +8,6 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class RanksController : ControllerBase
     {
         private readonly ProFindContext _context;
@@ -22,10 +21,11 @@ namespace WebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Rank>>> GetRanks()
         {
-          if (_context.Ranks == null)
-          {
-              return NotFound();
-          }
+            if (_context.Ranks == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Ranks.ToListAsync();
         }
 
@@ -33,10 +33,11 @@ namespace WebService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Rank>> GetRank(int id)
         {
-          if (_context.Ranks == null)
-          {
-              return NotFound();
-          }
+            if (_context.Ranks == null)
+            {
+                return NotFound();
+            }
+
             var rank = await _context.Ranks.FindAsync(id);
 
             if (rank == null)
@@ -83,14 +84,15 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Rank>> PostRank(Rank rank)
         {
-          if (_context.Ranks == null)
-          {
-              return Problem("Entity set 'ProFindContext.Ranks'  is null.");
-          }
+            if (_context.Ranks == null)
+            {
+                return Problem("Entity set 'ProFindContext.Ranks'  is null.");
+            }
+
             _context.Ranks.Add(rank);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRank", new { id = rank.IdR }, rank);
+            return CreatedAtAction("GetRank", new {id = rank.IdR}, rank);
         }
 
         // DELETE: api/Ranks/5
@@ -101,6 +103,7 @@ namespace WebService.Controllers
             {
                 return NotFound();
             }
+
             var rank = await _context.Ranks.FindAsync(id);
             if (rank == null)
             {

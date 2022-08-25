@@ -8,7 +8,6 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class TagsController : ControllerBase
     {
         private readonly ProFindContext _context;
@@ -22,10 +21,11 @@ namespace WebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tag>>> GetTags()
         {
-          if (_context.Tags == null)
-          {
-              return NotFound();
-          }
+            if (_context.Tags == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Tags.ToListAsync();
         }
 
@@ -33,10 +33,11 @@ namespace WebService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Tag>> GetTag(string id)
         {
-          if (_context.Tags == null)
-          {
-              return NotFound();
-          }
+            if (_context.Tags == null)
+            {
+                return NotFound();
+            }
+
             var tag = await _context.Tags.FindAsync(id);
 
             if (tag == null)
@@ -83,10 +84,11 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Tag>> PostTag(Tag tag)
         {
-          if (_context.Tags == null)
-          {
-              return Problem("Entity set 'ProFindContext.Tags'  is null.");
-          }
+            if (_context.Tags == null)
+            {
+                return Problem("Entity set 'ProFindContext.Tags'  is null.");
+            }
+
             _context.Tags.Add(tag);
             try
             {
@@ -104,7 +106,7 @@ namespace WebService.Controllers
                 }
             }
 
-            return CreatedAtAction("GetTag", new { id = tag.IdT }, tag);
+            return CreatedAtAction("GetTag", new {id = tag.IdT}, tag);
         }
 
         // DELETE: api/Tags/5
@@ -115,6 +117,7 @@ namespace WebService.Controllers
             {
                 return NotFound();
             }
+
             var tag = await _context.Tags.FindAsync(id);
             if (tag == null)
             {

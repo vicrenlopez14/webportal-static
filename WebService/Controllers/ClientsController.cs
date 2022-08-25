@@ -8,7 +8,6 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Administrators")]
     public class ClientsController : ControllerBase
     {
         private readonly ProFindContext _context;
@@ -18,14 +17,49 @@ namespace WebService.Controllers
             _context = context;
         }
 
+        // Register a client user method
+        // POST: api/Clients
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(client);
+                await _context.SaveChangesAsync();
+                return Ok(client);
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        // Login a client user method
+        // Login an Admin method
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                var clientFromDb =
+                    await _context.Clients.FirstOrDefaultAsync(a =>
+                        a.EmailC == client.EmailC && a.PasswordC == client.PasswordC);
+                if (clientFromDb != null)
+                {
+                    return Ok(clientFromDb);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
         // GET: api/Clients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
-          if (_context.Clients == null)
-          {
-              return NotFound();
-          }
+            if (_context.Clients == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Clients.ToListAsync();
         }
 
@@ -33,10 +67,11 @@ namespace WebService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(string id)
         {
-          if (_context.Clients == null)
-          {
-              return NotFound();
-          }
+            if (_context.Clients == null)
+            {
+                return NotFound();
+            }
+
             var client = await _context.Clients.FindAsync(id);
 
             if (client == null)
@@ -83,10 +118,11 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
-          if (_context.Clients == null)
-          {
-              return Problem("Entity set 'ProFindContext.Clients'  is null.");
-          }
+            if (_context.Clients == null)
+            {
+                return Problem("Entity set 'ProFindContext.Clients'  is null.");
+            }
+
             _context.Clients.Add(client);
             try
             {
@@ -104,7 +140,7 @@ namespace WebService.Controllers
                 }
             }
 
-            return CreatedAtAction("GetClient", new { id = client.IdC }, client);
+            return CreatedAtAction("GetClient", new {id = client.IdC}, client);
         }
 
         // DELETE: api/Clients/5
@@ -115,6 +151,7 @@ namespace WebService.Controllers
             {
                 return NotFound();
             }
+
             var client = await _context.Clients.FindAsync(id);
             if (client == null)
             {
