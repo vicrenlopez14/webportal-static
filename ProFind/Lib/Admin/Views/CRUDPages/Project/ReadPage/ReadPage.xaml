@@ -9,6 +9,7 @@
     xmlns:models="using:Application.Models"
     Style="{StaticResource PageStyle}">
 
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
