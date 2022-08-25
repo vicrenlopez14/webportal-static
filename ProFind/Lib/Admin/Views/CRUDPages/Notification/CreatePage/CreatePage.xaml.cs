@@ -19,7 +19,6 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Notification.CreatePage
         public CreatePage()
         {
             this.InitializeComponent();
-
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
@@ -38,7 +37,7 @@ namespace ProFind.Lib.Admin.Views.CRUDPages.Notification.CreatePage
                 return;
             }
 
-            var result = await new PFNotificationService ().Create(newObject);
+            var result = await new PFNotificationService().Create(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
