@@ -35,7 +35,7 @@
                     Width="100"
                     Height="100"
                     Margin="-95,-60,450,-110"
-                    ProfilePicture="{Binding ResponsibleProfessional.PictureP}" />
+                    ProfilePicture="{Binding PictureP}" />
                         <StackPanel
                     Width="300"
                     Height="27"
@@ -45,7 +45,7 @@
                         Height="30"
                         Margin="-250,-5,0,0"
                         FontWeight="Bold"
-                        Text="{Binding ResponsibleProfessional.NameP}" />
+                        Text="{Binding NameP}" />
                         </StackPanel>
                         <StackPanel
                     Width="20"
