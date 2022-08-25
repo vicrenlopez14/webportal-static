@@ -7,7 +7,6 @@ using WebService.Models;
 namespace WebService.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class ActivitiesController : ControllerBase
     {

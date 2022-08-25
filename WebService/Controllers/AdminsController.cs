@@ -8,7 +8,6 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Administrators")]
     public class AdminsController : ControllerBase
     {
         private readonly ProFindContext _context;
@@ -17,6 +16,39 @@ namespace WebService.Controllers
         {
             _context = context;
         }
+
+        // Register an Admin method
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(admin);
+                await _context.SaveChangesAsync();
+                return Ok(admin);
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        // Login an Admin method
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(Admin admin)
+        {
+            if (ModelState.IsValid)
+            {
+                var adminFromDb =
+                    await _context.Admins.FirstOrDefaultAsync(a =>
+                        a.EmailA == admin.EmailA && a.PasswordA == admin.PasswordA);
+                if (adminFromDb != null)
+                {
+                    return Ok(adminFromDb);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
 
         // GET: api/Admins
         [HttpGet]

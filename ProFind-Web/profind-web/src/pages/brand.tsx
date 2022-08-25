@@ -9,13 +9,13 @@ function BrandExample() {
                     <Navbar.Brand href="#home">Brand link</Navbar.Brand>
                 </Container>
             </Navbar>
-            <br />
+            <br/>
             <Navbar bg="light">
                 <Container>
                     <Navbar.Brand>Brand text</Navbar.Brand>
                 </Container>
             </Navbar>
-            <br />
+            <br/>
             <Navbar bg="dark">
                 <Container>
                     <Navbar.Brand href="#home">
@@ -29,7 +29,7 @@ function BrandExample() {
                     </Navbar.Brand>
                 </Container>
             </Navbar>
-            <br />
+            <br/>
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">

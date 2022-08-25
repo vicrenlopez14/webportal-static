@@ -7,7 +7,6 @@ using WebService.Models;
 namespace WebService.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "Administrators")]
     [ApiController]
     public class ProfessionalsController : ControllerBase
     {
@@ -17,6 +16,37 @@ namespace WebService.Controllers
         {
             _context = context;
         }
+
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(Professional professional)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(professional);
+                await _context.SaveChangesAsync();
+                return Ok(professional);
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(Professional professional)
+        {
+            if (ModelState.IsValid)
+            {
+                var professionalFromDb =
+                    await _context.Professionals.FirstOrDefaultAsync(a =>
+                        a.EmailP == professional.EmailP && a.PasswordP == professional.PasswordP);
+                if (professionalFromDb != null)
+                {
+                    return Ok(professionalFromDb);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
 
         // GET: api/Professionals
         [HttpGet]

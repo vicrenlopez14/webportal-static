@@ -8,7 +8,6 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class NotificationsController : ControllerBase
     {
         private readonly ProFindContext _context;

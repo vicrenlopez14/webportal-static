@@ -8,7 +8,6 @@ namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProposalsController : ControllerBase
     {
         private readonly ProFindContext _context;
@@ -22,10 +21,11 @@ namespace WebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Proposal>>> GetProposals()
         {
-          if (_context.Proposals == null)
-          {
-              return NotFound();
-          }
+            if (_context.Proposals == null)
+            {
+                return NotFound();
+            }
+
             return await _context.Proposals.ToListAsync();
         }
 
@@ -33,10 +33,11 @@ namespace WebService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Proposal>> GetProposal(string id)
         {
-          if (_context.Proposals == null)
-          {
-              return NotFound();
-          }
+            if (_context.Proposals == null)
+            {
+                return NotFound();
+            }
+
             var proposal = await _context.Proposals.FindAsync(id);
 
             if (proposal == null)
@@ -83,10 +84,11 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Proposal>> PostProposal(Proposal proposal)
         {
-          if (_context.Proposals == null)
-          {
-              return Problem("Entity set 'ProFindContext.Proposals'  is null.");
-          }
+            if (_context.Proposals == null)
+            {
+                return Problem("Entity set 'ProFindContext.Proposals'  is null.");
+            }
+
             _context.Proposals.Add(proposal);
             try
             {
@@ -104,7 +106,7 @@ namespace WebService.Controllers
                 }
             }
 
-            return CreatedAtAction("GetProposal", new { id = proposal.IdPp }, proposal);
+            return CreatedAtAction("GetProposal", new {id = proposal.IdPp}, proposal);
         }
 
         // DELETE: api/Proposals/5
@@ -115,6 +117,7 @@ namespace WebService.Controllers
             {
                 return NotFound();
             }
+
             var proposal = await _context.Proposals.FindAsync(id);
             if (proposal == null)
             {
