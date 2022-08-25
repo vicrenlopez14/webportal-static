@@ -920,9 +920,6 @@
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Notification\UpdatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Professional\CreatePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Professional\DeletePage\" />
-    <Folder Include="Lib\Admin\Views\CRUDPages\Professional\ListPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\ReadPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\SearchPage\" />
     <Folder Include="Lib\Admin\Views\CRUDPages\Professional\UpdatePage\" />
