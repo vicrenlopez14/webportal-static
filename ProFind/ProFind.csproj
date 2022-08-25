@@ -280,6 +280,9 @@
     <Compile Include="Lib\Client\Views\Crear-projects\Create-Project.xaml.cs">
       <DependentUpon>Create-Project.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Client\Views\CRUDPages\Activity\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Client\Views\CRUD\CreateClientPage.xaml.cs">
       <DependentUpon>CreateClientPage.xaml</DependentUpon>
     </Compile>
@@ -692,6 +695,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\Client\Views\CRUDPages\Activity\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\Client\Views\CRUD\CreateClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -979,7 +986,6 @@
     <Folder Include="Lib\Client\Views\CRUDPages\Activity\CreatePage\" />
     <Folder Include="Lib\Client\Views\CRUDPages\Activity\DeletePage\" />
     <Folder Include="Lib\Client\Views\CRUDPages\Activity\ListPage\" />
-    <Folder Include="Lib\Client\Views\CRUDPages\Activity\ReadPage\" />
     <Folder Include="Lib\Client\Views\CRUDPages\Activity\SearchPage\" />
     <Folder Include="Lib\Client\Views\CRUDPages\Activity\UpdatePage\" />
     <Folder Include="Lib\Client\Views\CRUDPages\Curriculum\CreatePage\" />
