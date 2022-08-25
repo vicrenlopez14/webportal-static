@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -18,53 +19,50 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.Admin.Views.CRUD
+namespace ProFind.Lib.Admin.Views.CRUDPages.Client.UpdatePage
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class UpdatePageAdmin : Page
+    public sealed partial class Client_Update_Delete : Page
     {
-        PFAdmin toManipulate = new PFAdmin();
+        PFClient toManipulate = new PFClient();
 
-        public UpdatePageAdmin()
+        public Client_Update_Delete()
         {
             this.InitializeComponent();
         }
         private async void loadUsefulthings()
         {
-            FirstName1_tbx.Text = toManipulate.NameA;
-            Email_tbx.Text = toManipulate.EmailA;
-           
-            Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
+            Name1_tbx.Text = toManipulate.NameC;
+            Email_tbx.Text = toManipulate.EmailC;
+            
+            Picture_img.Source = toManipulate.PictureC.ToBitmapImage();
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFAdmin)e.Parameter;
+            toManipulate = (PFClient)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-          
-            toManipulate = new PFAdmin()
+            toManipulate = new PFClient()
             {
-                IdA = toManipulate.IdA,
+                IdC = toManipulate.IdC,
             };
 
             loadUsefulthings();
         }
 
-
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFAdminService().Update(toManipulate);
+            await new PfClientService().Update(toManipulate); 
 
-            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
 
                 var dialog = new MessageDialog("The field is empty");
@@ -82,11 +80,11 @@ namespace ProFind.Lib.Admin.Views.CRUD
             }
         }
 
-        private async void Delete_btn_Click(object sender, RoutedEventArgs e)
+        private async Task Delete_btn_ClickAsync(object sender, RoutedEventArgs e)
         {
-            await new PFAdminService().Delete(toManipulate.IdA);
+            await new PfClientService().Delete(toManipulate.IdC);
 
-            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
 
                 var dialog = new MessageDialog("The field is empty");
@@ -104,16 +102,36 @@ namespace ProFind.Lib.Admin.Views.CRUD
             }
         }
 
-        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        private async void Back_btn_Click(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().GoBack();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate.PictureA = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            toManipulate.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
         }
 
-       
+        private async void Delete_btn_Click(object sender, RoutedEventArgs e)
+        {
+            await new PfClientService().Delete(toManipulate.IdC);
+
+            if (string.IsNullOrEmpty(Name1_tbx.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tbx.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_tbx.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+        }
     }
 }
