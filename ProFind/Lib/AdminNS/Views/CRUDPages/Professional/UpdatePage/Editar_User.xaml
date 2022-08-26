@@ -1,0 +1,175 @@
+﻿<Page
+    x:Class="ProFind.Lib.AdminNS.Views.Editar_User"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.AdminNS.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <SymbolIcon
+            Margin="42,67,1401,893"
+            d:LayoutRounding="Auto"
+            RenderTransformOrigin="4.432,-0.983"
+            Symbol="Edit"
+            UseLayoutRounding="False">
+            <SymbolIcon.RenderTransform>
+                <CompositeTransform
+                    Rotation="180.422"
+                    ScaleY="-1"
+                    TranslateX="-453.639"
+                    TranslateY="-1.669" />
+            </SymbolIcon.RenderTransform>
+        </SymbolIcon>
+        <SymbolIcon
+            Margin="42,134,1401,826"
+            d:LayoutRounding="Auto"
+            RenderTransformOrigin="4.432,-0.983"
+            Symbol="Edit"
+            UseLayoutRounding="False">
+            <SymbolIcon.RenderTransform>
+                <CompositeTransform
+                    Rotation="180.422"
+                    ScaleY="-1"
+                    TranslateX="-453.639"
+                    TranslateY="-1.669" />
+            </SymbolIcon.RenderTransform>
+        </SymbolIcon>
+        <SymbolIcon
+            Margin="48,205,1396,755"
+            d:LayoutRounding="Auto"
+            RenderTransformOrigin="4.432,-0.983"
+            Symbol="Mail"
+            UseLayoutRounding="False">
+            <SymbolIcon.RenderTransform>
+                <CompositeTransform
+                    Rotation="180.422"
+                    ScaleY="-1"
+                    TranslateX="-453.639"
+                    TranslateY="-1.669" />
+            </SymbolIcon.RenderTransform>
+        </SymbolIcon>
+        <SymbolIcon
+            Margin="570,88,872,872"
+            d:LayoutRounding="Auto"
+            RenderTransformOrigin="4.432,-0.983"
+            Symbol="Folder"
+            UseLayoutRounding="False">
+            <SymbolIcon.RenderTransform>
+                <CompositeTransform
+                    Rotation="180.422"
+                    ScaleY="-1"
+                    TranslateX="-453.639"
+                    TranslateY="-1.669" />
+            </SymbolIcon.RenderTransform>
+        </SymbolIcon>
+        <TextBox
+            Name="Email"
+            Margin="116,196,1024,746"
+            d:LayoutRounding="Auto"
+            Header="Email"
+            PlaceholderText="DanielRojas@Gmail.com"
+            RenderTransformOrigin="0.5,0.5"
+            TextChanged="TxtEmail"
+            UseLayoutRounding="False">
+            <TextBox.RenderTransform>
+                <CompositeTransform Rotation="-0.195" />
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox
+            Name="Fistname"
+            Margin="116,54,1024,888"
+            d:LayoutRounding="Auto"
+            Header="Fist Name"
+            PlaceholderText="Daniel Antonio"
+            RenderTransformOrigin="0.5,0.5"
+            TextChanged="TxFIstName"
+            UseLayoutRounding="False">
+            <TextBox.RenderTransform>
+                <CompositeTransform Rotation="-0.195" />
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox
+            Name="LastName"
+            Margin="116,122,1024,820"
+            d:LayoutRounding="Auto"
+            Header="Last Name"
+            PlaceholderText="Rojas Morales"
+            RenderTransformOrigin="0.5,0.5"
+            TextChanged="TxtLastName"
+            UseLayoutRounding="False">
+            <TextBox.RenderTransform>
+                <CompositeTransform Rotation="-0.195" />
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox
+            Name="Salario"
+            Margin="660,73,482,869"
+            d:LayoutRounding="Auto"
+            Header="Salary"
+            PlaceholderText="$1200"
+            RenderTransformOrigin="0.5,0.5"
+            TextChanged="TxtSalario"
+            UseLayoutRounding="False">
+            <TextBox.RenderTransform>
+                <CompositeTransform Rotation="-0.195" />
+            </TextBox.RenderTransform>
+        </TextBox>
+        <PasswordBox
+            x:Name="Confirm_passwordBox"
+            Height="54"
+            Margin="652,160,479,786"
+            d:LayoutRounding="Auto"
+            Header="Password"
+            MaxLength="16"
+            PlaceholderText="Password"
+            RenderTransformOrigin="0.538,2.297"
+            UseLayoutRounding="False">
+            <PasswordBox.RenderTransform>
+                <CompositeTransform SkewX="-1.005" TranslateX="-1.251" />
+            </PasswordBox.RenderTransform>
+        </PasswordBox>
+        <Button
+                                    Name="btnExaminar"
+                                    Click="btnExaminar_Click"
+                                    Content="Charge"
+                                    CornerRadius="5" Height="40" Width="177" Margin="1117,160,0,0" VerticalAlignment="Top" />
+        <Button
+            x:Name="btnGuardarCambios"
+            Width="135"
+            Height="47"
+            Margin="882,229,0,0"
+            VerticalAlignment="Top"
+            Click="btnGuardarCambios_Click"
+            Content="Save changes"
+            CornerRadius="5" />
+        <Button
+            x:Name="btnCancelarCambios"
+            Width="135"
+            Height="47"
+            Margin="643,229,0,0"
+            VerticalAlignment="Top"
+            Content="Detete"
+            CornerRadius="5" Click="btnCancelarCambios_Click" />
+        <PersonPicture
+            Margin="1155,34,245,866"
+            ProfilePicture="https://es.eserp.com/wp-content/uploads/2019/08/%C3%89tica-profesional-del-abogado.jpg"
+            RenderTransformOrigin="0.48,0.99" />
+        <SymbolIcon
+            Margin="570,172,872,788"
+            d:LayoutRounding="Auto"
+            RenderTransformOrigin="4.432,-0.983"
+            Symbol="Folder"
+            UseLayoutRounding="False">
+            <SymbolIcon.RenderTransform>
+                <CompositeTransform
+                    Rotation="180.422"
+                    ScaleY="-1"
+                    TranslateX="-453.639"
+                    TranslateY="-1.669" />
+            </SymbolIcon.RenderTransform>
+        </SymbolIcon>
+    </Grid>
+</Page>
