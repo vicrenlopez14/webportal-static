@@ -48,6 +48,115 @@ namespace WebService.Controllers
             return activity;
         }
 
+        [HttpGet("search/")]
+        public async Task<ActionResult<IEnumerable<Activity>>> SearchActivities([FromQuery] string projectId,
+            [FromQuery] string title)
+        {
+            var result = await (from act in _context.Activities
+                where (act.IdPj1 == projectId && act.TitleA.Contains(title))
+                select act).ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("search/paginated")]
+        public async Task<ActionResult<IEnumerable<Activity>>> SearchActivitiesPaginated([FromQuery] string projectId,
+            [FromQuery] string title, [FromQuery] string limit,
+            [FromQuery] string offset)
+        {
+            var query = (from act in _context.Activities
+                where (act.IdPj1 == projectId && act.TitleA.Contains(title))
+                select act);
+            
+            query = (from activity in _context.Activities select activity).OrderByDescending(x => x.ExpectedBeginA)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+        
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Activity>>> FilterActivities([FromQuery] DateOnly? expectedBegin,
+            [FromQuery] string? expectedBeginRel,
+            [FromQuery] DateOnly? expectedEnd, [FromQuery] string? expectedEndRel,
+            [FromQuery] string? idProject,
+            [FromQuery] string? idTag)
+        {
+            var query = _context.Activities.Where(act => true);
+
+            if (idProject != null)
+            {
+                query = _context.Activities.Where(act => act.IdPj1 == idProject);
+            }
+
+            if (idTag != null)
+            {
+                query = _context.Activities.Where(act => act.IdT1 == idTag);
+            }
+
+            if (expectedBegin != null)
+            {
+                switch (expectedBeginRel)
+                {
+                    case "lte":
+                        query = _context.Activities.Where(act => act.ExpectedBeginA <= expectedBegin);
+                        break;
+                    case "eq":
+                        query = _context.Activities.Where(act => act.ExpectedBeginA == expectedBegin);
+                        break;
+                    case "gte":
+                        query = _context.Activities.Where(act => act.ExpectedBeginA >= expectedBegin);
+                        break;
+                }
+            }
+
+            if (expectedEnd != null)
+            {
+                switch (expectedEndRel)
+                {
+                    case "lte":
+                        query = _context.Activities.Where(act => act.ExpectedEndA <= expectedEnd);
+                        break;
+                    case "eq":
+                        query = _context.Activities.Where(act => act.ExpectedEndA == expectedEnd);
+                        break;
+                    case "gte":
+                        query = _context.Activities.Where(act => act.ExpectedEndA >= expectedEnd);
+                        break;
+                }
+            }
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("paginated")]
+        public async Task<ActionResult<IEnumerable<Activity>>> GetActivitiesPaginated([FromQuery] string limit,
+            [FromQuery] string offset)
+        {
+            var query = (from activity in _context.Activities select activity).OrderByDescending(x => x.ExpectedBeginA)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            return await _context.Activities.ToListAsync();
+        }
+
         // PUT: api/Activities/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

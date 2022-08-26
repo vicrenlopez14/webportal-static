@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ProFind.Lib.Client.Views.Main_Page;
+using ProFind.Lib.ClientNS.Views.Main_Page;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 

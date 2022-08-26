@@ -70,7 +70,7 @@ namespace ProFind
 
                         if (await new PFAdminService().AreThereAdmins())
                         {
-                            rootFrame.Navigate(typeof(Lib.Client.Views.InitPage.InitPage), e.Arguments);
+                            rootFrame.Navigate(typeof(Lib.ClientNS.Views.InitPage.InitPage), e.Arguments);
                             new GlobalNavigationController().Init(rootFrame, typeof(InitPage));
 
                         }
