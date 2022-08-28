@@ -48,6 +48,53 @@ namespace WebService.Controllers
             return tag;
         }
 
+        [HttpGet("search/")]
+        public async Task<ActionResult<IEnumerable<Tag>>> SearchTags([FromQuery] string tagId,
+           [FromQuery] string nameTag)
+        {
+            var result = await (from tag in _context.Tags
+                where (tag.IdT == tagId && tag.NameT.Contains(nameTag))
+                select tag).ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+            return result;
+        }
+
+        [HttpGet("search/paginated")]
+        public async Task<ActionResult<IEnumerable<Tag>>> SearchTagPaginated([FromQuery] string tagId,
+            [FromQuery] string nameTag, [FromQuery] string limit, [FromQuery] string offset)
+        {
+            var query = (from tag in _context.Tags
+                         where (tag.IdT == tagId && tag.NameT.Contains(nameTag))
+                         select tag);
+
+            query = (from tag in _context.Tags select tag).OrderByDescending(x => x.NameT)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("paginated")]
+        public async Task<ActionResult<IEnumerable<Tag>>> GetTagPaginated([FromQuery] string limit,
+            [FromQuery] string offset)
+        {
+            var query = (from tag in _context.Tags select tag).OrderByDescending(x => x.NameT)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            return await _context.Tags.ToListAsync();
+        }
+
+
         // PUT: api/Tags/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
