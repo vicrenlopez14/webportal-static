@@ -18,8 +18,9 @@ namespace WebService.Controllers
         }
 
         // Register an Admin method
+        // POST: api/Admins/Register
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(Admin admin)
+        public async Task<IActionResult> RegisterAdmin(Admin admin)
         {
             if (ModelState.IsValid)
             {
@@ -32,8 +33,9 @@ namespace WebService.Controllers
         }
 
         // Login an Admin method
+        // POST: api/Admins/Login
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(Admin admin)
+        public async Task<IActionResult> LoginAdmin(Admin admin)
         {
             if (ModelState.IsValid)
             {

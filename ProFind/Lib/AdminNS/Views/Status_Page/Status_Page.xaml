@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="ProFind.Lib.AdminNS.Views.Status_Page.Status_Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.AdminNS.Views.Status_Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models"
+    mc:Ignorable="d"
+    Style="{StaticResource PageStyle}">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="StatusListView1" ItemTemplate="{StaticResource StatusListViewTemplate}" />
+    </Grid>
+
+    <Page.Resources>
+
+        <DataTemplate x:Key="StatusListViewTemplate" x:DataType="models1:PFProject" >
+
+           <StackPanel Margin="10,0,-10,0">
+            <StackPanel Margin="15,35,15,935" Height="30" Background="#2C933A">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Width="17" Height="15" Fill="#65E700" Margin="10, 0"/>
+                    <TextBlock Text="Connected professionals " TextAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+            <ListView Margin="0,-920,0,784" HorizontalAlignment="Center" Width="1462" Height="204">
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                            <TextBlock Text="{Binding  ResponsibleProfessional.NameP}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+            </ListView>
+
+            <StackPanel Margin="13,-800,17,739" Height="30" Background="#635225">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse Width="17" Height="15" Fill="#65E700" Margin="10, 0"/>
+                    <TextBlock Text="Connected clients (3)" TextAlignment="Center" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="White" SelectionChanged="TextBlock_SelectionChanged"/>
+                </StackPanel>
+            </StackPanel>
+
+            <ListView Margin="17,-740,0,590" HorizontalAlignment="Left" Width="1462" Height="204">
+                <ListViewItem HorizontalAlignment="Center">
+                    <StackPanel Height="28" Width="242" Orientation="Horizontal">
+                        <StackPanel Height="28" Width="44" HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Contact" HorizontalAlignment="Center" Margin="5"/>
+                        </StackPanel>
+                            <TextBlock Text="{Binding ResponsibleClient.NameC}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                
+
+       
+            </ListView>
+        </StackPanel>
+
+        </DataTemplate>
+
+    </Page.Resources>
+</Page>

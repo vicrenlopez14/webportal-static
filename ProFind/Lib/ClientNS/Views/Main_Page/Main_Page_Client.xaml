@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="ProFind.Lib.ClientNS.Views.Main_Page.Main_Page_Client"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <muxc:NavigationView
+            Name="navview"
+            Header="Welcome"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            ItemInvoked="NavigationView_ItemInvoked"
+            PaneDisplayMode="Left">
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItemHeader Content="ProFind.Work" />
+                <muxc:NavigationViewItem
+                    Content="Proyects"
+                    Icon="AllApps"
+                    Tag="Proyects_Page" />
+                <muxc:NavigationViewItem
+                    Content="Notifications"
+                    Icon="AllApps"
+                    Tag="Notifications_Page" />
+                <muxc:NavigationViewItem
+                    Content="Pays"
+                    Icon="AllApps"
+                    Tag="Pays_Page" />
+                <muxc:NavigationViewItem
+                    Content="Catalog"
+                    Icon="AllApps"
+                    Tag="Catalog_Page" />
+                <muxc:NavigationViewItem
+                    Content="Activities"
+                    Icon="AllApps"
+                    Tag="Activities_Page" />
+
+            </muxc:NavigationView.MenuItems>
+
+            <Frame Name="ClientsContentFrame" Margin="58,24,24,24">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition />
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+
+            <muxc:NavigationView.PaneFooter>
+                <StackPanel Orientation="Vertical">
+                    <muxc:NavigationViewItemHeader Content="Más" />
+                    <muxc:NavigationViewItem
+                        Content="Preferences"
+                        Icon="Setting"
+                        Tag="Preferences_Page" />
+                    <muxc:NavigationViewItem
+                        Content="About"
+                        Icon="People"
+                        Tag="About_Page" />
+                </StackPanel>
+            </muxc:NavigationView.PaneFooter>
+        </muxc:NavigationView>
+    </Grid>
+
+</Page>

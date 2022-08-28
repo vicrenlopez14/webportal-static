@@ -54,12 +54,12 @@ namespace ProFind.Lib.Global.Views.InitPage
 
         private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Admin.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(AdminNS.Views.InitPage.InitPage));
         }
 
         private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Professional.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
 
         }
 
@@ -69,7 +69,7 @@ namespace ProFind.Lib.Global.Views.InitPage
 
             if (result == System.Net.HttpStatusCode.OK)
             {
-                new GlobalNavigationController().NavigateTo(typeof(Lib.Professional.Views.Main_Page.Main_Page_Professional));
+                new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
             }
             else
             {

@@ -18,9 +18,9 @@ namespace WebService.Controllers
         }
 
         // Register a client user method
-        // POST: api/Clients
+        // POST: api/Clients/Register
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(Client client)
+        public async Task<IActionResult> RegisterClient(Client client)
         {
             if (ModelState.IsValid)
             {
@@ -34,8 +34,9 @@ namespace WebService.Controllers
 
         // Login a client user method
         // Login an Admin method
+        // POST: api/Clients/Login
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(Client client)
+        public async Task<IActionResult> LoginClient(Client client)
         {
             if (ModelState.IsValid)
             {

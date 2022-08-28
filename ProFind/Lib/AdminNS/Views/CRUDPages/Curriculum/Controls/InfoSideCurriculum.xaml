@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.Curriculum.Controls.InfoSideCurriculum"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.Curriculum.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    mc:Ignorable="d">
+
+    <StackPanel
+        Grid.Column="1"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <Image Width="150" Source="/Assets/cv.png" />
+        <TextBlock
+            Margin="0,50,0,20"
+            FontWeight="Medium"
+            Style="{StaticResource SubheaderTextBlockStyle}"
+            Text="Uploading your resume makes your profile more atractive!" />
+        <StackPanel
+            Margin="0,10"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <muxc:AnimatedIcon
+                x:Name="AnimatedIcon1"
+                VerticalAlignment="Center"
+                muxc:AnimatedIcon.State="Normal">
+                <muxc:AnimatedIcon.Source>
+                    <animatedvisuals:AnimatedSettingsVisualSource />
+                </muxc:AnimatedIcon.Source>
+                <muxc:AnimatedIcon.FallbackIconSource>
+                    <muxc:FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" />
+                </muxc:AnimatedIcon.FallbackIconSource>
+            </muxc:AnimatedIcon>
+            <TextBlock Margin="24,0,0,0" VerticalAlignment="Center">Make your resume public to be visible to all potential Clients.</TextBlock>
+        </StackPanel>
+        <StackPanel
+            Margin="0,10"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <muxc:AnimatedIcon
+                x:Name="AnimatedIcon2"
+                VerticalAlignment="Center"
+                muxc:AnimatedIcon.State="Normal">
+                <muxc:AnimatedIcon.Source>
+                    <animatedvisuals:AnimatedSettingsVisualSource />
+                </muxc:AnimatedIcon.Source>
+                <muxc:AnimatedIcon.FallbackIconSource>
+                    <muxc:FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE781;" />
+                </muxc:AnimatedIcon.FallbackIconSource>
+            </muxc:AnimatedIcon>
+            <TextBlock Margin="24,0,0,0" VerticalAlignment="Center">Speed up the application process.</TextBlock>
+        </StackPanel>
+        <StackPanel
+            Margin="0,10"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <muxc:AnimatedIcon
+                x:Name="AnimatedIcon3"
+                VerticalAlignment="Center"
+                muxc:AnimatedIcon.State="Normal">
+                <muxc:AnimatedIcon.Source>
+                    <animatedvisuals:AnimatedSettingsVisualSource />
+                </muxc:AnimatedIcon.Source>
+                <muxc:AnimatedIcon.FallbackIconSource>
+                    <muxc:FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE789;" />
+                </muxc:AnimatedIcon.FallbackIconSource>
+            </muxc:AnimatedIcon>
+            <TextBlock Margin="24,0,0,0" VerticalAlignment="Center">Make your resume public to be visible to all potential Clients.</TextBlock>
+        </StackPanel>
+
+    </StackPanel>
+
+</UserControl>

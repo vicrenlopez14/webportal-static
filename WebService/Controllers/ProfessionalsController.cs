@@ -18,7 +18,8 @@ namespace WebService.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(Professional professional)
+        // POST: api/Professionals/Register
+        public async Task<IActionResult> RegisterProfessional(Professional professional)
         {
             if (ModelState.IsValid)
             {
@@ -31,7 +32,8 @@ namespace WebService.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(Professional professional)
+        // POST: api/Professionals/Login
+        public async Task<IActionResult> LoginProfessional(Professional professional)
         {
             if (ModelState.IsValid)
             {
