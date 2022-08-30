@@ -84,6 +84,33 @@ namespace WebService.Controllers
             return result;
         }
 
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Rank>>> FilterRanks([FromQuery] string nameRanks,
+           [FromQuery] string? idR)
+
+        {
+            var query = _context.Ranks.Where(ranks => true);
+
+            if (nameRanks != null)
+            {
+                query = _context.Ranks.Where(ranks => ranks.NameR == nameRanks);
+            }
+
+            if (idR != null)
+            {
+                query = _context.Ranks.Where(ranks => ranks.NameR == nameRanks);
+            }
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
         [HttpGet("paginated")]
         public async Task<ActionResult<IEnumerable<Rank>>> GetRanksPaginated([FromQuery] string limit,
             [FromQuery] string offset)

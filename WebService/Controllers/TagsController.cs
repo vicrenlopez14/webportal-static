@@ -84,6 +84,33 @@ namespace WebService.Controllers
             return result;
         }
 
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Tag>>> FilterTags([FromQuery] string idTag,
+          [FromQuery] string? nameTag)
+
+        {
+            var query = _context.Tags.Where(tag => true);
+
+            if (nameTag != null)
+            {
+                query = _context.Tags.Where(tag => tag.NameT == nameTag);
+            }
+
+            if (idTag != null)
+            {
+                query = _context.Tags.Where(tag => tag.IdT == idTag);
+            }
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
         [HttpGet("paginated")]
         public async Task<ActionResult<IEnumerable<Tag>>> GetTagPaginated([FromQuery] string limit,
             [FromQuery] string offset)
