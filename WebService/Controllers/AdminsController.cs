@@ -140,7 +140,7 @@ namespace WebService.Controllers
                 }
             }
 
-            return CreatedAtAction("GetAdmin", new {id = admin.IdA}, admin);
+            return CreatedAtAction("GetAdmin", new { id = admin.IdA }, admin);
         }
 
         // DELETE: api/Admins/5
@@ -167,6 +167,83 @@ namespace WebService.Controllers
         private bool AdminExists(string id)
         {
             return (_context.Admins?.Any(e => e.IdA == id)).GetValueOrDefault();
+        }
+
+        [HttpGet("search/")]
+        public async Task<ActionResult<IEnumerable<Admin>>> SearcAdmins([FromQuery] string idA,
+          [FromQuery] string Name)
+        {
+            var result = await (from Admins in _context.Admins
+                                where (Admins.IdA == idA && Admins.NameA.Contains(Name))
+                                select Admins).ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("search/paginated")]
+        public async Task<ActionResult<IEnumerable<Admin>>> SearchAdmins([FromQuery] string idA,
+           [FromQuery] string Name, [FromQuery] string limit,
+           [FromQuery] string offset)
+        {
+            var query = (from admin in _context.Admins
+                         where (admin.IdA == idA && admin.NameA.Contains(Name))
+                         select admin);
+
+            query = (from Admin in _context.Admins select Admin).OrderByDescending(x => x.NameA)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Admin>>> FilterAdmins([FromQuery] string Name,
+           [FromQuery] string? name1,
+
+           [FromQuery] string? idAdmin)
+
+        {
+            var query = _context.Admins.Where(act => true);
+
+            if (idAdmin != null)
+            {
+                query = _context.Admins.Where(act => act.IdA == idAdmin);
+            }
+
+            if (Name != null)
+            {
+                query = _context.Admins.Where(act => act.NameA == name1);
+            }
+
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("paginated")]
+        public async Task<ActionResult<IEnumerable<Admin>>> GetAdminsPaginated([FromQuery] string limit,
+           [FromQuery] string offset)
+        {
+            var query = (from activity in _context.Admins select activity).OrderByDescending(x => x.NameA)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            return await _context.Admins.ToListAsync();
         }
     }
 }

@@ -140,7 +140,7 @@ namespace WebService.Controllers
                 }
             }
 
-            return CreatedAtAction("GetClient", new {id = client.IdC}, client);
+            return CreatedAtAction("GetClient", new { id = client.IdC }, client);
         }
 
         // DELETE: api/Clients/5
@@ -167,6 +167,85 @@ namespace WebService.Controllers
         private bool ClientExists(string id)
         {
             return (_context.Clients?.Any(e => e.IdC == id)).GetValueOrDefault();
+        }
+
+        [HttpGet("search/")]
+        public async Task<ActionResult<IEnumerable<Client>>>SearchCliens([FromQuery] string IdC,
+            [FromQuery] string Name)
+        {
+            var result = await (from clien in _context.Clients
+                                where (clien.IdC == IdC && clien.NameC.Contains(Name))
+                                select clien).ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+
+        [HttpGet("search/paginated")]
+        public async Task<ActionResult<IEnumerable<Client>>>SearchClient([FromQuery] string idC,
+         [FromQuery] string Name, [FromQuery] string limit,
+         [FromQuery] string offset)
+        {
+            var query = (from Client in _context.Clients
+                         where (Client.IdC == idC && Client.NameC.Contains(Name))
+                         select Client);
+
+            query = (from Client in _context.Clients select Client).OrderByDescending(x => x.NameC)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Client>>> FilterClients([FromQuery] string Name,
+           [FromQuery] string? name1,
+
+           [FromQuery] string? idclien)
+
+        {
+            var query = _context.Clients.Where(act => true);
+
+            if (idclien != null)
+            {
+                query = _context.Clients.Where(act => act.IdC == idclien);
+            }
+
+            if (Name != null)
+            {
+                query = _context.Clients.Where(act => act.NameC == name1);
+            }
+
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("paginated")]
+        public async Task<ActionResult<IEnumerable<Client>>> GetClientPaginated([FromQuery] string limit,
+          [FromQuery] string offset)
+        {
+            var query = (from Client in _context.Clients select Client).OrderByDescending(x => x.NameC)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            return await _context.Clients.ToListAsync();
         }
     }
 }
