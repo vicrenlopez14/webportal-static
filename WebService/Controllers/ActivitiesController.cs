@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
@@ -72,7 +71,7 @@ namespace WebService.Controllers
             var query = (from act in _context.Activities
                 where (act.IdPj1 == projectId && act.TitleA.Contains(title))
                 select act);
-            
+
             query = (from activity in _context.Activities select activity).OrderByDescending(x => x.ExpectedBeginA)
                 .Skip(int.Parse(offset)).Take(int.Parse(limit));
 
@@ -85,7 +84,7 @@ namespace WebService.Controllers
 
             return result;
         }
-        
+
         [HttpGet("filter/")]
         public async Task<ActionResult<IEnumerable<Activity>>> FilterActivities([FromQuery] DateOnly? expectedBegin,
             [FromQuery] string? expectedBeginRel,

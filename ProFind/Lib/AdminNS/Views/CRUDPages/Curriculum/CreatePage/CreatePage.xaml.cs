@@ -1,20 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using ProFind.Lib.Global.Helpers;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using ProFind.Lib.Global.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -39,23 +25,21 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Curriculum.CreatePage
 
         private void PDFPreviewMode()
         {
-            
+
         }
 
         private async void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             var pickedFile = await PickFileHelper.PickPDF();
 
-            if (pickedFile.IsAvailable)
+            if (pickedFile != null)
             {
-                newCurriculum = await pickedFile.ToByteArrayAsync();
 
-                if (newCurriculum != null)
-                {
-                    UploadResume_btn.IsChecked = true;
-                    UploadResume_btn.Content = pickedFile.Name;
-                }
+                UploadResume_btn.IsChecked = true;
+                UploadResume_btn.Content = "Loaded file";
             }
+
+            PDFPreview.LoadDocument(pickedFile);
         }
     }
 }

@@ -74,6 +74,7 @@
                                     RenderTransformOrigin="0.555,0.073"
                                     SelectedIndex="0"
                                     SelectionChanged="ComboBox_SelectionProfesional">
+
                                     <x:String>Law firm</x:String>
                                     <x:String>Automotive services</x:String>
                                     <x:String>General medicine</x:String>
@@ -134,19 +135,41 @@
                                 Subtitle="The new user can now log in with the defined credentials." />
 
                             <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock Margin="0,0,0,10" HorizontalAlignment="Center"><Run Text="Profile picture" /></TextBlock>
-                                <PersonPicture
-                                    x:Name="ProfilePicture_pp"
-                                    Margin="0,0,0,0"
-                                    HorizontalAlignment="Center"
-                                    RenderTransformOrigin="0.48,0.99" />
-                                <Button
-                                    x:Name="btnExaminar"
-                                    Margin="0,10,0,20"
-                                    HorizontalAlignment="Center"
-                                    Click="btnExaminar_Click"
-                                    Content="Charge"
-                                    CornerRadius="5" />
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <StackPanel Margin="0,0,25,0" Orientation="Vertical">
+                                        <TextBlock Margin="0,0,0,10" HorizontalAlignment="Center"><Run Text="Profile picture" /></TextBlock>
+                                        <PersonPicture
+                                            x:Name="ProfilePicture_pp"
+                                            Margin="0,0,0,0"
+                                            HorizontalAlignment="Center"
+                                            RenderTransformOrigin="0.48,0.99" />
+                                        <Button
+                                            x:Name="btnExaminar"
+                                            Margin="0,10,0,20"
+                                            HorizontalAlignment="Center"
+                                            Click="btnExaminar_Click"
+                                            Content="Charge"
+                                            CornerRadius="5" />
+                                    </StackPanel>
+                                    <StackPanel Margin="25,0,0,0" Orientation="Vertical">
+                                        <TextBlock Margin="0,0,0,10" HorizontalAlignment="Center"><Run Text="Curriculum" /></TextBlock>
+                                        <Image
+                                            Width="50"
+                                            Margin="0,0,0,0"
+                                            HorizontalAlignment="Center"
+                                            RenderTransformOrigin="0.48,0.99"
+                                            Source="Assets/pdf-file-format-symbol.png" />
+                                        <Button
+                                            x:Name="CargarCurriculum_btn"
+                                            Margin="0,10,0,20"
+                                            HorizontalAlignment="Center"
+                                            Click="btnExaminar_Click"
+                                            Content="Charge"
+                                            CornerRadius="5" />
+                                    </StackPanel>
+
+
+                                </StackPanel>
                                 <TextBox
                                     x:Name="Afp"
                                     Grid.RowSpan="2"
@@ -283,19 +306,15 @@
                                     <x:String>Check (In person verify)</x:String>
                                     <x:String>Cash (In person verify)</x:String>
                                 </ComboBox>
-                                <TextBox
+                                <muxc:NumberBox
                                     x:Name="Salario"
                                     Margin="50,15,0,0"
                                     d:LayoutRounding="Auto"
                                     Header="Base salary"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtSalario"
-                                    UseLayoutRounding="False">
-                                    <TextBox.RenderTransform>
-                                        <CompositeTransform Rotation="-0.195" />
-                                    </TextBox.RenderTransform>
-                                </TextBox>
+                                    ValueChanged="TxtSalario"
+                                    UseLayoutRounding="False" />
                                 <ComboBox
                                     x:Name="Jornada"
                                     Width="331"
@@ -332,13 +351,15 @@
                                 <ColumnDefinition Width="0.4*" />
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock>Choose your business location on the map.</TextBlock>
-                            <Custom:MapControl
-                                Name="LocationMap"
-                                Grid.Column="0"
-                                Loaded="MapControl_Loaded"
-                                MapServiceToken="22" />
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Choose your business location on the map.</TextBlock>
+                                <Custom:MapControl
+                                    Name="LocationMap"
+                                    Grid.Column="0"
+                                    Loaded="MapControl_Loaded"
+                                    MapServiceToken="22" />
 
+                            </StackPanel>
                         </Grid>
                     </PivotItem>
                 </Pivot>
@@ -356,7 +377,7 @@
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
                     Click="btnAgregar_Click"
-                    Content="Add"
+                    Content="Create"
                     CornerRadius="5" />
                 <Button
                     x:Name="btnCancelar"

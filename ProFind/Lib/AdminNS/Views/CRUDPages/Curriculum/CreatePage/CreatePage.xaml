@@ -8,6 +8,7 @@
     xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.Curriculum.CreatePage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:my="using:Syncfusion.Windows.PdfViewer"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
@@ -16,7 +17,9 @@
             <ColumnDefinition Width="0.6*" />
             <ColumnDefinition Width="0.4*" />
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Column="0">
+        <my:SfPdfViewerControl Name="PDFPreview" Grid.Column="0" />
+        <ScrollViewer Grid.Column="1">
+
             <!--  Upload a file to create a curriculum  -->
             <StackPanel
                 HorizontalAlignment="Center"
@@ -49,6 +52,7 @@
                 <CheckBox>I authorize this file to be uploaded publicily on Internet.</CheckBox>
             </StackPanel>
         </ScrollViewer>
-        <controls:InfoSideCurriculum />
+
+
     </Grid>
 </Page>

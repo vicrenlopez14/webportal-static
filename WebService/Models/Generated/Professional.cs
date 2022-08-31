@@ -37,6 +37,8 @@ namespace WebService.Models
         public DateOnly? HiringDateP { get; set; }
         public byte[]? PictureP { get; set; }
         public byte[]? CurriculumP { get; set; }
+        public double? LatitudeLocationP { get; set; }
+        public double? LongitudeLocationP { get; set; }
         [Column("IdPFS1")]
         public int? IdPfs1 { get; set; }
         [Column("IdDP1")]

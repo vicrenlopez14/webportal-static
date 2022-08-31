@@ -1,26 +1,13 @@
-﻿using Application.Models;
-using Application.Services;
-using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Services.Models;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,15 +18,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Professional.CreatePage
     /// </summary>
     public sealed partial class BlankPage2 : Page
     {
-        private List<PFProfession> professions = new List<PFProfession>();
-        private List<string> professionStrings = new List<string>();
-
-        private List<PFDepartment> departments = new List<PFDepartment>();
-        private List<string> departmentsStrings = new List<string>();
-
-        private List<PFWorkDayType> workdaytypes = new List<PFWorkDayType>();
-        private List<string> workdaytypestrings = new List<string>();
-
         byte[] pictureBytes;
 
         private bool _isFirstAdmin;
@@ -51,46 +29,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Professional.CreatePage
             loadUsefulThings();
 
             APIConnection.Init();
-            var a = APIConnection.GetClient;
-
+            var a = APIConnection.GetConnection;
         }
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
-            professional.NameP = FirstName1_tbx.Text + " " + LastName1_tbx.Text;
-
-            // Nested objects
-            var profession = new PFProfession();
-            profession = professions.Where(x => x.NamePFS == profession_cbx.SelectedValue).First();
-
-            professional.Department = new PFDepartment();
-            professional.Department = departments.Where(x => x.NameDP == departamento.SelectedValue).First();
-
-            professional.WorkDayType = new PFWorkDayType();
-            professional.WorkDayType = workdaytypes.Where(x => x.NameWDT == Jornada.SelectedValue).First();
-
-            professional.Profession = profession;
-            professional.EmailP = Email.Text;
-            professional.SexP = Sexo.Text == "Male";
-            professional.PasswordP = passwordBox.Password;
-
-            professional.HiringDateP = DateTime.Now;
-            professional.AFPP = Afp.Text;
-            professional.DUIP = Dui.Text;
-            professional.SalaryP = Salario.Text;
-            professional.ISSSP = SeguroSocial.Text;
-
-            var respuesta = await new PFProfessionalService().Create(professional);
-            if (respuesta == HttpStatusCode.OK)
-            {
-                SucessfulCreation_tt.IsOpen = true;
-
-                if (_isFirstAdmin)
-                {
-                    new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
-                }
-            }
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
@@ -142,23 +85,57 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Professional.CreatePage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+
+            Global.Services.Models.Professional professional = new Global.Services.Models.Professional
+            {
+                NameP = FirstName1_tbx.Text + " " + LastName1_tbx.Text
+            };
+
+            // Nested objects
+
+            professional.IdPfs1 = (profession_cbx.SelectedValue as Profession).IdPfs;
+            professional.IdDp1 = (departamento.SelectedItem as Department).IdDp;
+            professional.EmailP = Email.Text;
+            professional.SexP = Sexo.Text == "Male";
+            professional.PasswordP = passwordBox.Password;
+            var selectedDate = FechadeIngreso.Date.Value;
+            professional.HiringDateP = new DateOnly(selectedDate.Year, selectedDate.Month, selectedDate.Day, (int)selectedDate.DayOfWeek, selectedDate.DayOfYear);
+            professional.Afpp = Afp.Text;
+            professional.Duip = Dui.Text;
+            professional.SalaryP = Salario.Value;
+            professional.Isssp = SeguroSocial.Text;
+
+            try
+            {
+                var respuesta = await APIConnection.GetConnection.PostProfessionalAsync(professional);
+
+                SucessfulCreation_tt.IsOpen = true;
+
+                if (_isFirstAdmin)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+                }
+
+            }
+            catch
+            {
+
+            }
+
+
         }
         public async void loadUsefulThings()
         {
+            var professionsList = await APIConnection.GetConnection.GetProfessionsAsync();
+            profession_cbx.ItemsSource = professionsList;
+
             // Professions
-            (professions, professionStrings) = await new PFProfessionService().GetComboboxChoices();
-            profession_cbx.ItemsSource = null;
-            profession_cbx.ItemsSource = professionStrings;
+            profession_cbx.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync();
 
             // Departments
-            (departments, departmentsStrings) = await new PFDepartmentService().GetComboboxChoices();
-            departamento.ItemsSource = null;
-            departamento.ItemsSource = departmentsStrings;
+            departamento.ItemsSource = await APIConnection.GetConnection.GetDepartmentsAsync();
 
             // Work-day types
-            (workdaytypes, workdaytypestrings) = await new PFWorkDayTypeService().GetComboboxChoices();
-            Jornada.ItemsSource = null;
-            Jornada.ItemsSource = workdaytypestrings;
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -191,5 +168,5 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Professional.CreatePage
             await LocationMap.TrySetSceneAsync(MapScene.CreateFromLocationAndRadius(center, 3000));
         }
     }
-}
+
 }
