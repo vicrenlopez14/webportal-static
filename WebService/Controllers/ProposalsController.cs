@@ -47,6 +47,113 @@ namespace WebService.Controllers
             return proposal;
         }
 
+        [HttpGet("search/")]
+        public async Task<ActionResult<IEnumerable<Proposal>>> SearchProposals([FromQuery] string proposalsId,
+            [FromQuery] string titleProposals)
+        {
+            var result = await (from proposal in _context.Proposals 
+            where (proposal.IdPp == proposalsId && proposal.TitlePp.Contains(titleProposals))
+            select proposal).ToListAsync();
+
+            if(result.Any() == false)
+            {
+                return NotFound();
+            }
+            return result;
+        }
+
+        [HttpGet("search/paginated")]
+        public async Task<ActionResult<IEnumerable<Proposal>>> SearchProposalsPaginated([FromQuery] string proposalsId,
+            [FromQuery] string titleProposals, [FromQuery] string limit, [FromQuery] string offset)
+        {
+            var query = (from proposal in _context.Proposals
+                where (proposal.IdPp == proposalsId && proposal.TitlePp.Contains(titleProposals))
+                select proposal);
+
+            query = (from proposals in _context.Proposals select proposals).OrderByDescending(x => x.SuggestedStart)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            var result = await query.ToListAsync();
+
+            if(result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Proposal>>> FilterProposals([FromQuery] DateOnly? suggestedStart,
+            [FromQuery] string? suggestedStarRel,
+            [FromQuery] DateOnly? suggestedEnd, [FromQuery] string? suggestedEndRel,
+            [FromQuery] string? idProfessional,
+            [FromQuery] string? idClient)
+        {
+            var query = _context.Proposals.Where(proposal => true);
+
+            if (idProfessional != null)
+            {
+                query = _context.Proposals.Where(proposal => proposal.IdP3 == idProfessional);
+            }
+
+            if (idClient != null)
+            {
+                query = _context.Proposals.Where(proposal => proposal.IdC3 == idClient);
+            }
+
+            if (suggestedStart != null)
+            {
+                switch (suggestedStarRel)
+                {
+                    case "lte":
+                        query = _context.Proposals.Where(proposal => proposal.SuggestedStart <= suggestedStart);
+                        break;
+                    case "eq":
+                        query = _context.Proposals.Where(proposal => proposal.SuggestedStart == suggestedStart);
+                        break;
+                    case "gte":
+                        query = _context.Proposals.Where(proposal => proposal.SuggestedStart >= suggestedStart);
+                        break;
+                }
+            }
+
+            if (suggestedEnd != null)
+            {
+                switch (suggestedEndRel)
+                {
+                    case "lte":
+                        query = _context.Proposals.Where(proposal => proposal.SuggestedEnd <= suggestedEnd);
+                        break;
+                    case "eq":
+                        query = _context.Proposals.Where(proposal => proposal.SuggestedEnd == suggestedEnd);
+                        break;
+                    case "gte":
+                        query = _context.Proposals.Where(proposal => proposal.SuggestedEnd >= suggestedEnd);
+                        break;
+                }
+            }
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("paginated")]
+        public async Task<ActionResult<IEnumerable<Proposal>>> GetProposalsPaginated([FromQuery] string limit,
+            [FromQuery] string offset)
+        {
+            var query = (from proposals in _context.Proposals select proposals).OrderByDescending(x => x.SuggestedStart)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            return await _context.Proposals.ToListAsync();
+        }
+
         // PUT: api/Proposals/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

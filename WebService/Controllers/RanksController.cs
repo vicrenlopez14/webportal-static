@@ -47,6 +47,79 @@ namespace WebService.Controllers
             return rank;
         }
 
+        [HttpGet("search/")]
+        public async Task<ActionResult<IEnumerable<Rank>>> SearchRanks([FromQuery] string nameRanks)
+        {
+            var result = await (from rank in _context.Ranks 
+            where (rank.NameR.Contains(nameRanks))
+            select rank).ToListAsync();
+
+            if(result.Any() == false)
+            {
+                return NotFound();
+            }
+            return result;
+        }
+
+
+        [HttpGet("search/paginated")]
+        public async Task<ActionResult<IEnumerable<Rank>>> SearchRanksPaginated([FromQuery]
+            string nameRanks, [FromQuery] string limit, [FromQuery] string offset)
+        {
+            var query = from rank in _context.Ranks
+                         where rank.NameR.Contains(nameRanks)
+                         select rank;
+
+            query = (from rank in _context.Ranks select rank).OrderByDescending(x => x.NameR)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("filter/")]
+        public async Task<ActionResult<IEnumerable<Rank>>> FilterRanks([FromQuery] string nameRanks,
+           [FromQuery] string? idR)
+
+        {
+            var query = _context.Ranks.Where(ranks => true);
+
+            if (nameRanks != null)
+            {
+                query = _context.Ranks.Where(ranks => ranks.NameR == nameRanks);
+            }
+
+            if (idR != null)
+            {
+                query = _context.Ranks.Where(ranks => ranks.NameR == nameRanks);
+            }
+
+            var result = await query.ToListAsync();
+
+            if (result.Any() == false)
+            {
+                return NotFound();
+            }
+
+            return result;
+        }
+
+        [HttpGet("paginated")]
+        public async Task<ActionResult<IEnumerable<Rank>>> GetRanksPaginated([FromQuery] string limit,
+            [FromQuery] string offset)
+        {
+            var query = (from rank in _context.Ranks select rank).OrderByDescending(x => x.NameR)
+                .Skip(int.Parse(offset)).Take(int.Parse(limit));
+
+            return await _context.Ranks.ToListAsync();
+        }
+
         // PUT: api/Ranks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
