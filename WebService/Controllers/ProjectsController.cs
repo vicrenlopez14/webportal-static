@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Project = WebService.Models.Generated.Project;
 
 namespace WebService.Controllers
 {

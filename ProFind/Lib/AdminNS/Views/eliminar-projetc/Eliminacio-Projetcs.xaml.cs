@@ -1,14 +1,14 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
-using ProFind.Lib.Global.Controllers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.eliminar_projetc
+namespace ProFind.Lib.AdminNS.Views.eliminar_projetc
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.

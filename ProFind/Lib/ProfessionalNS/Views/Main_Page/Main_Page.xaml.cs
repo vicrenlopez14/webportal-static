@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
-using ProFind.Lib.AdminNS.Views.Professionals_Page;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage;
 
 namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
 {

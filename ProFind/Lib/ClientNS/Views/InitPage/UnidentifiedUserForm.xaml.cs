@@ -4,7 +4,7 @@ using ProFind.Lib.ProfessionalNS.Views.Main_Page;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace ProFind.Lib.Global.Views.InitPage
+namespace ProFind.Lib.ClientNS.Views.InitPage
 {
     public sealed partial class UnidentifiedUserForm : UserControl
     {

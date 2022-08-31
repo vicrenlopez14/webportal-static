@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Projectstatus = WebService.Models.Generated.Projectstatus;
 
 namespace WebService.Controllers
 {

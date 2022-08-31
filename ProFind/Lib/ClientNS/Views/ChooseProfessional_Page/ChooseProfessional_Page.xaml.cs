@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Controls;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.ChooseProfesional_Page
+namespace ProFind.Lib.ClientNS.Views.ChooseProfessional_Page
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.

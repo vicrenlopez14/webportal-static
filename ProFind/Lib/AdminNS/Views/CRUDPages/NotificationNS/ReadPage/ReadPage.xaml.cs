@@ -1,10 +1,10 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.Notification.ReadPage
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ReadPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -32,12 +32,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Notification.ReadPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(NotificationNS.CreatePage.CreatePage));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(NotificationNS.CreatePage.CreatePage));
         }
     }
 }

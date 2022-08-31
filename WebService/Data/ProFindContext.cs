@@ -1,5 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebService.Models;
+using Activity = WebService.Models.Generated.Activity;
+using Admin = WebService.Models.Generated.Admin;
+using Client = WebService.Models.Generated.Client;
+using Department = WebService.Models.Generated.Department;
+using Notification = WebService.Models.Generated.Notification;
+using Profession = WebService.Models.Generated.Profession;
+using Professional = WebService.Models.Generated.Professional;
+using Project = WebService.Models.Generated.Project;
+using Projectstatus = WebService.Models.Generated.Projectstatus;
+using Proposal = WebService.Models.Generated.Proposal;
+using Rank = WebService.Models.Generated.Rank;
+using Tag = WebService.Models.Generated.Tag;
+using Workdaytype = WebService.Models.Generated.Workdaytype;
 
 namespace WebService.Data
 {

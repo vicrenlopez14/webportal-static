@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebService.Models
+namespace WebService.Models.Generated
 {
     [Table("notification")]
     [Index("IdPj2", Name = "IdPJ2")]

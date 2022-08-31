@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Tag = WebService.Models.Generated.Tag;
 
 namespace WebService.Controllers
 {

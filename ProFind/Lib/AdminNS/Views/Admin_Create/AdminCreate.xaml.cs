@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -128,7 +129,7 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Create
         }
         private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Professional_Add.ProfessionalInformationAddition), isFirstAdmin);
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
         }
 
         private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
@@ -143,7 +144,7 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Create
 
         private void GoToProfessionals(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Professional_Add.ProfessionalInformationAddition), isFirstAdmin);
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
 
         }
     }

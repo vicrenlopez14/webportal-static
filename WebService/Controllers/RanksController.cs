@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Rank = WebService.Models.Generated.Rank;
 
 namespace WebService.Controllers
 {

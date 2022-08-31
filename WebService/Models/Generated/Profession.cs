@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebService.Models
+namespace WebService.Models.Generated
 {
     [Table("profession")]
     public partial class Profession

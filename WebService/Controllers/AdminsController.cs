@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Admin = WebService.Models.Generated.Admin;
 
 namespace WebService.Controllers
 {

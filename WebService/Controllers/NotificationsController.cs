@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Notification = WebService.Models.Generated.Notification;
 
 namespace WebService.Controllers
 {

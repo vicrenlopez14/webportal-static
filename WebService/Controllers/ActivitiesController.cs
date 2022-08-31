@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models;
+using Activity = WebService.Models.Generated.Activity;
 
 namespace WebService.Controllers
 {
