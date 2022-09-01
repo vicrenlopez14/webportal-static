@@ -2,11 +2,13 @@
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
+using System.Collections.Generic;
 using Windows.Devices.Geolocation;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
+using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,7 +21,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
     {
         byte[] pictureBytes;
 
-        private bool _isFirstAdmin;
 
 
         public BlankPage2()
@@ -31,8 +32,28 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             var a = APIConnection.GetConnection;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            
+            
+        }
+
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
+            List<TextBox> textBoxes = new List<TextBox> { 
+                FirstName1_tbx,
+                LastName1_tbx,
+                Email,
+                Afp,
+            };
+
+            textBoxes.ShowAlertsForEmptyTextBoxes();
+
+            Email.IsValidEmail();
+            
+            
+
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
@@ -49,8 +70,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+
             else if (string.IsNullOrEmpty(Dui.Text))
-            {
+                {
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
@@ -71,6 +93,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             }
             else if (string.IsNullOrEmpty(Email.Text))
             {
+                Email.IsValidEmail();
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
@@ -165,6 +188,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
             // retrieve map
             await LocationMap.TrySetSceneAsync(MapScene.CreateFromLocationAndRadius(center, 3000));
+        }
+
+        private void CargarCurriculum_Click(object sender, RoutedEventArgs e)
+        {
+            new Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog();
         }
     }
 

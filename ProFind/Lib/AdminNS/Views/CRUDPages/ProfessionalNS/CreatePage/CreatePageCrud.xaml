@@ -163,7 +163,7 @@
                                             x:Name="CargarCurriculum_btn"
                                             Margin="0,10,0,20"
                                             HorizontalAlignment="Center"
-                                            Click="btnExaminar_Click"
+                                            Click="CargarCurriculum_Click"
                                             Content="Charge"
                                             CornerRadius="5" />
                                     </StackPanel>

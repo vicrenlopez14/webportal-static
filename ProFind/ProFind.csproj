@@ -167,8 +167,8 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\Controls\InfoSideCurriculum.xaml.cs">
       <DependentUpon>InfoSideCurriculum.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\CreatePage.xaml.cs">
-      <DependentUpon>CreatePage.xaml</DependentUpon>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\CreateDialog.xaml.cs">
+      <DependentUpon>CreateDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\DeletePage\DeletePage.xaml.cs">
       <DependentUpon>DeletePage.xaml</DependentUpon>
@@ -349,6 +349,7 @@
     <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
     <Compile Include="Lib\Global\Helpers\Connection.cs" />
     <Compile Include="Lib\Global\Helpers\FieldsChecker.cs" />
+    <Compile Include="Lib\Global\Helpers\FieldValidatorExtension.cs" />
     <Compile Include="Lib\Global\Helpers\PickFileHelper.cs" />
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
@@ -580,9 +581,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\CreatePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\CreateDialog.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\DeletePage\DeletePage.xaml">
       <Generator>MSBuild:Compile</Generator>
