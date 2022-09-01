@@ -5,6 +5,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,14 +18,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
     public sealed partial class UpdatePage : Page
     {
 
-        Activity activity = new Activity();
-        
-        
+        Admin toManipulate = new Admin();
+
+
         public UpdatePage()
         {
             this.InitializeComponent();
 
-            
+
         }
         private async void loadUsefulthings()
         {
@@ -54,7 +56,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new AdminService().Update(toManipulate);
+            //await new AdminService().Update(toManipulate);
+            await APIConnection.GetConnection.GetAdminAsync("toManipulate");
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
@@ -75,8 +78,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new AdminService().Delete(toManipulate.IdA);
-
+            await APIConnection.GetConnection.DeleteAdminAsync(toManipulate.IdA);
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
