@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services.Models;
 using ProFind.Lib.Global.Views;
 
 
@@ -20,7 +21,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
     public sealed partial class CreatePage : Page
     {
  
-            private List<PFRank> ranks = new List<PFRank>();
+            private List<Rank> ranks = new List<Rank>();
             private List<string> rankStrings = new List<string>();
             private byte[] imageBytes;
             private bool isFirstAdmin = false;
@@ -35,7 +36,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
             public async void loadUsefulThings()
             {
-                ranks = (List<PFRank>)await new PfRankService().ListObjectAsync();
+                ranks = (List<Rank>)await new RankService().ListObjectAsync();
 
                 foreach (var rank in ranks)
                 {
@@ -108,10 +109,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 {
                     Creation_pr.IsActive = true;
 
-                    var toCreateAdmin = new PFAdmin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                    var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
                     toCreateAdmin.IdR1 = ranks[Rank_cb.SelectedIndex].IdR;
 
-                    var result = await new PFAdminService().Create(toCreateAdmin);
+                    var result = await new AdminService().Create(toCreateAdmin);
 
                     if (result == System.Net.HttpStatusCode.OK)
                     {

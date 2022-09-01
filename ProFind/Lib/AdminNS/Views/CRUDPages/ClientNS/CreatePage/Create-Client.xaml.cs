@@ -15,7 +15,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
     /// </summary>
     public sealed partial class Create_Client : Page
     {
-        private PFClient newObject = new PFClient();
+        private Client newObject = new Client();
 
 
         public Create_Client()
@@ -27,7 +27,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
         {
 
 
-            var result = await new PfClientService().Create(newObject);
+            var result = await new ClientService().Create(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
@@ -78,7 +78,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var result = await new PfClientService().Create(newObject);
+            var result = await new ClientService().Create(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

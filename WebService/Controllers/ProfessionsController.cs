@@ -51,7 +51,7 @@ namespace WebService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProfession(int id, Profession profession)
         {
-            if (id != profession.IdPfs)
+            if (id != profession.Ids)
             {
                 return BadRequest();
             }
@@ -89,7 +89,7 @@ namespace WebService.Controllers
             _context.Professions.Add(profession);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProfession", new { id = profession.IdPfs }, profession);
+            return CreatedAtAction("GetProfession", new { id = profession.Ids }, profession);
         }
 
         // DELETE: api/Professions/5
@@ -114,7 +114,7 @@ namespace WebService.Controllers
 
         private bool ProfessionExists(int id)
         {
-            return (_context.Professions?.Any(e => e.IdPfs == id)).GetValueOrDefault();
+            return (_context.Professions?.Any(e => e.Ids == id)).GetValueOrDefault();
         }
     }
 }

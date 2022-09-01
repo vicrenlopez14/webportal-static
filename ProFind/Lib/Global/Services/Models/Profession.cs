@@ -2,6 +2,6 @@
 {
     public partial class Profession
     {
-        public override string ToString() => NamePfs;
+        public override string ToString() => Names;
     }
 }

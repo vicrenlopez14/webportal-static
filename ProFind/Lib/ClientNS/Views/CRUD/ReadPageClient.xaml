@@ -28,7 +28,7 @@
 
                 <ListView Name="ClientsListView" ItemClick="ClientListView_ItemClick">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:PFClient">
+                        <DataTemplate x:DataType="models:Client">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"

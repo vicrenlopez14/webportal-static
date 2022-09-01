@@ -37,7 +37,7 @@
                     IsItemClickEnabled="True"
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:PFProfessional">
+                        <DataTemplate x:DataType="models:Professional">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"
@@ -55,7 +55,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind NameP}" />
-                                        <TextBlock Text="{x:Bind Profession.NamePFS}" />
+                                        <TextBlock Text="{x:Bind Profession.NameS}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

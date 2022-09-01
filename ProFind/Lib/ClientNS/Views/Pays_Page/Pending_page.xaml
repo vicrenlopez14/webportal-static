@@ -17,7 +17,7 @@
     </Grid>
     
     <Page.Resources>
-        <DataTemplate x:Key="ClientsPendingListViewTemplate" x:DataType="models1:PFProject">
+        <DataTemplate x:Key="ClientsPendingListViewTemplate" x:DataType="models1:Project">
             <StackPanel Orientation="Horizontal" Margin="-900,-800,10,10" Height="100" Width="500">
                 <StackPanel Background="#F9D13E" Margin="1,15" Height="100">
                     <SymbolIcon Symbol="Important" Height="79" Width="166"/>

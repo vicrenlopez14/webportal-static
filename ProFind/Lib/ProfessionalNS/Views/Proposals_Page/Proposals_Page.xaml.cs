@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -18,11 +20,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.Proposals_Page
 
         {
 
-            var projectService = new PfProjectService();
+            var projectService = new ProjectService();
 
-            List<PFProject> NotifiProfesionaList = new List<PFProject>();
+            List<Project> NotifiProfesionaList = new List<Project>();
 
-            NotifiProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+            NotifiProfesionaList = await projectService.ListObjectAsync() as List<Project>;
 
             ProposalsProfesionalListView.ItemsSource = NotifiProfesionaList;
         }

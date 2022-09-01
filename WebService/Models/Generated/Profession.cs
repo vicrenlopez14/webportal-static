@@ -7,10 +7,10 @@ namespace WebService.Models.Generated
     public partial class Profession
     {
         [Key]
-        [Column("IdPFS")]
-        public int IdPfs { get; set; }
-        [Column("NamePFS")]
+        [Column("IdS")]
+        public int Ids { get; set; }
+        [Column("NameS")]
         [StringLength(50)]
-        public string? NamePfs { get; set; }
+        public string? Names { get; set; }
     }
 }

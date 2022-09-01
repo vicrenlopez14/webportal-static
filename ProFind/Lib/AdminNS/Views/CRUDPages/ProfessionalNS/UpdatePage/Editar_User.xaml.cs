@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,7 +20,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
         public bool SucessfulCreation_tt { get; private set; }
 
         byte[] pictureBytes;
-        private PFClient client;
+        private Client client;
 
         public Editar_User()
         {
@@ -74,7 +75,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private async void btnGuardarCambios_Click(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
+            Professional professional = new Professional();
          
             professional.NameP = Fistname.Text + LastName.Text;
             professional.EmailP = Email.Text;
@@ -82,7 +83,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             professional.PasswordP = Confirm_passwordBox.Password;
 
 
-            var respuesta = await new PFProfessionalService().Update(professional);
+            var respuesta = await new ProfessionalService().Update(professional);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;
@@ -100,7 +101,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
         {
             string IdToDelete = client.IdC;
 
-            var result = await new PfClientService().Delete(IdToDelete);
+            var result = await new ClientService().Delete(IdToDelete);
 
             new GlobalNavigationController().GoBack();
         }

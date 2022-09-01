@@ -110,7 +110,7 @@ namespace WebService.Data
 
             modelBuilder.Entity<Profession>(entity =>
             {
-                entity.HasKey(e => e.IdPfs)
+                entity.HasKey(e => e.Ids)
                     .HasName("PRIMARY");
             });
 

@@ -18,10 +18,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         public async void GetClientList()
         {
-            var ClientService = new PfClientService();
-            List<PFClient> ClientList = new List<PFClient>();
+            var ClientService = new ClientService();
+            List<Client> ClientList = new List<Client>();
 
-            ClientList = await ClientService.ListObjectAsync() as List<PFClient>;
+            ClientList = await ClientService.ListObjectAsync() as List<Client>;
 
             ClientListView.ItemsSource = ClientList;    
 
@@ -29,7 +29,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PFClient clickedItem = e.ClickedItem as PFClient;
+            Client clickedItem = e.ClickedItem as Client;
 
            
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,15 +17,15 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
     public sealed partial class CreatePageActivity : Page
     {
 
-        private string[] status = Enum.GetNames(typeof(PFProjectStatus));
-        private List<PFProfessional> professionals = new List<PFProfessional>();
+        private string[] status = Enum.GetNames(typeof(ProjectStatus));
+        private List<Professional> professionals = new List<Professional>();
         private List<string> professionalStrings = new List<string>();
 
-        private List<PFClient> clients = new List<PFClient>();
+        private List<Client> clients = new List<Client>();
         private List<string> clientStrings = new List<string>();
 
-        private PFActivity toManipulate = new PFActivity();
-        private PFProject parentProject;
+        private Activity toManipulate = new Activity();
+        private Project parentProject;
         public CreatePageActivity()
         {
             this.InitializeComponent();
@@ -33,28 +34,28 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
 
         public async void loadUsefulThings()
         {
-            (professionals, professionalStrings) = await new PFProfessionalService().GetComboboxChoices();
-            (clients, clientStrings) = await new PfClientService().GetComboboxChoices();
+            (professionals, professionalStrings) = await new ProfessionalService().GetComboboxChoices();
+            (clients, clientStrings) = await new ClientService().GetComboboxChoices();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e.Parameter is Tuple<PFProject, PFActivity>)
+            if (e.Parameter is Tuple<Project, Activity>)
             {
-                var param = (Tuple<PFProject, PFActivity>)e.Parameter;
+                var param = (Tuple<Project, Activity>)e.Parameter;
                 parentProject = param.Item1;
                 toManipulate = param.Item2;
                 FillFields(toManipulate);
                 ManipulationMode();
             }
-            else if (e.Parameter is PFProject)
+            else if (e.Parameter is Project)
             {
-                parentProject = (PFProject)e.Parameter;
+                parentProject = (Project)e.Parameter;
                 CreationMode();
             }
         }
-        private void FillFields(PFActivity incomingActivity)
+        private void FillFields(Activity incomingActivity)
         {
             SelectedPicture_pp.Source = incomingActivity.PictureA.ToBitmapImage();
             Title_tb.Text = incomingActivity.TitleA;
@@ -87,7 +88,7 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
         {
             toManipulate.IdPJ1 = parentProject.IdPJ;
 
-            var result = await new PFActivityService().Create(toManipulate);
+            var result = await new ActivityService().Create(toManipulate);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
@@ -97,18 +98,18 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFActivityService().Update(toManipulate);
+            await new ActivityService().Update(toManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFActivityService().Delete(toManipulate.IdA);
+            await new ActivityService().Delete(toManipulate.IdA);
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
             // Reset with the same ID
-            toManipulate = new PFActivity()
+            toManipulate = new Activity()
             {
                 IdA = toManipulate.IdA,
 

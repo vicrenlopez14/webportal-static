@@ -19,7 +19,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
 
         private async void InitializeData()
         {
-            ClientsListView.ItemsSource = await new PfClientService().ListObjectAsync();
+            ClientsListView.ItemsSource = await new ClientService().ListObjectAsync();
         }
 
         private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)

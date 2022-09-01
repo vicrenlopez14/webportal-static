@@ -5,6 +5,8 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,15 +35,15 @@ namespace ProFind.Lib.ClientNS.Views.Crear_projects
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            PFProject project = new PFProject();
-            var profession = new PFProfessional();
+            Project project = new Project();
+            var profession = new Professional();
 
             project.ResponsibleProfessional = profession;
             project.TitlePJ = TitlePJ.Text;
             project.DescriptionPJ = DescriptionPJ.Text;
-            project.Status = true ?PFProjectStatus.Active : PFProjectStatus.Inactive;
+            project.Status = true ?ProjectStatus.Active : ProjectStatus.Inactive;
 
-            var respuesta = await new PfProjectService().Update(project);
+            var respuesta = await new ProjectService().Update(project);
 
             if (respuesta == HttpStatusCode.OK)
             {

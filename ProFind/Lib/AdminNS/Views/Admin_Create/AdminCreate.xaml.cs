@@ -9,6 +9,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
+using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,8 +21,7 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Create
     /// </summary>
     public sealed partial class AdminCreate : Page
     {
-        private List<PFRank> ranks = new List<PFRank>();
-        private List<string> rankStrings = new List<string>();
+        private List<Rank> ranks = new List<Rank>();
         private byte[] imageBytes;
         private bool isFirstAdmin = false;
 
@@ -34,16 +35,9 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Create
 
         public async void loadUsefulThings()
         {
-            ranks = (List<PFRank>)await new PfRankService().ListObjectAsync();
+            ranks = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
 
-            foreach (var rank in ranks)
-            {
-                rankStrings.Add(rank.NameR);
-            }
-
-            Rank_cb.ItemsSource = null;
-            Rank_cb.ItemsSource = rankStrings;
-
+            Rank_cb.ItemsSource = ranks;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -83,7 +77,6 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Create
 
                     SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
                 }
-
             }
             catch (Exception ex)
             {
@@ -107,15 +100,12 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Create
             {
                 Creation_pr.IsActive = true;
 
-                var toCreateAdmin = new PFAdmin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
-                toCreateAdmin.IdR1 = ranks[Rank_cb.SelectedIndex].IdR;
+                var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                toCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR.ToString();
 
-                var result = await new PFAdminService().Create(toCreateAdmin);
+                var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);
 
-                if (result == System.Net.HttpStatusCode.OK)
-                {
-                    ToggleThemeTeachingTip2.IsOpen = true;
-                }
+                ToggleThemeTeachingTip2.IsOpen = true;
             }
             catch (Exception ex)
             {

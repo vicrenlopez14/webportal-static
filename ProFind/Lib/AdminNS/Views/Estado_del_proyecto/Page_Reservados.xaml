@@ -15,14 +15,14 @@
         </Grid.ColumnDefinitions>
         <ListView Name="ReservadosProjectsListView">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:PFProject"  >
+                <DataTemplate x:DataType="models1:Project"  >
 
                     <StackPanel Background="#F4FAE1" BorderBrush="Black" CornerRadius="15">
                         <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
                             <TextBlock Height="25" Text="{Binding TitlePJ}"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                            <TextBlock Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="{Binding ResponsibleProfessional.Profession.NameS}" FontWeight="Bold"></TextBlock>
                         </StackPanel>
                         <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                             <SymbolIcon Symbol="Setting"/>

@@ -5,6 +5,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -15,7 +16,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
     /// </summary>
     public sealed partial class UpdatePageAdmin : Page
     {
-        PFAdmin toManipulate = new PFAdmin();
+        Admin toManipulate = new Admin();
 
         public UpdatePageAdmin()
         {
@@ -32,14 +33,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFAdmin)e.Parameter;
+            toManipulate = (Admin)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
           
-            toManipulate = new PFAdmin()
+            toManipulate = new Admin()
             {
                 IdA = toManipulate.IdA,
             };
@@ -50,7 +51,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFAdminService().Update(toManipulate);
+            await new AdminService().Update(toManipulate);
 
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
@@ -72,7 +73,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFAdminService().Delete(toManipulate.IdA);
+            await new AdminService().Delete(toManipulate.IdA);
 
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {

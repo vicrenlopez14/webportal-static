@@ -18,10 +18,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.ListPage
 
         public async void GetClientList()
         {
-            var ClientService = new PFWorkDayTypeService();
-            List<PFWorkDayType> ClientList = new List<PFWorkDayType>();
+            var ClientService = new WorkDayTypeService();
+            List<WorkDayType> ClientList = new List<WorkDayType>();
 
-            ClientList = await ClientService.ListObjectAsync() as List<PFWorkDayType>;
+            ClientList = await ClientService.ListObjectAsync() as List<WorkDayType>;
 
             ClientListView.ItemsSource = ClientList;
 
@@ -29,7 +29,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.ListPage
 
         private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PFWorkDayType clickedItem = e.ClickedItem as PFWorkDayType;
+            WorkDayType clickedItem = e.ClickedItem as WorkDayType;
 
 
         }

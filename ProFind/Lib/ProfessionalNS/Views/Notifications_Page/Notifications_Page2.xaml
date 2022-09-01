@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <ListView Name="NotificationsrofesionalListView">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:PFProject">
+                <DataTemplate x:DataType="models1:Project">
                     <StackPanel CornerRadius="15">
                         <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
                             <TextBlock Text= "Payment Notification" FontWeight="Bold"/>
@@ -29,7 +29,7 @@
                         <Button Margin="530,-60,0,0"  Content="Aware" Height="34" Width="128" />
 
 
-                        <TextBlock Margin="550,-210,2,2" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" Height="28"/>
+                        <TextBlock Margin="550,-210,2,2" Text="{Binding ResponsibleProfessional.Profession.NameS}" FontWeight="Bold" Height="28"/>
 
                         <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
                         <StackPanel Height="23" Margin="130, -30">

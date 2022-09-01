@@ -19,10 +19,10 @@ namespace ProFind.Lib.ClientNS.Views.ChooseProfessional_Page
 
         public async void GetChooseProfessionalLis()
         {
-            var professional = new PFProfessionalService();
-            List<PFProfessionService> chooseProfessionalList = new List<PFProfessionService>(); 
+            var professional = new ProfessionalService();
+            List<ProfessionService> chooseProfessionalList = new List<ProfessionService>(); 
 
-            chooseProfessionalList = await professional.ListObjectAsync() as List<PFProfessionService>;
+            chooseProfessionalList = await professional.ListObjectAsync() as List<ProfessionService>;
 
             chooseProfessionalListView.ItemsSource = chooseProfessionalList;
         }

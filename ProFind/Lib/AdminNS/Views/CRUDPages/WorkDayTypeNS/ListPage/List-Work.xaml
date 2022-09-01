@@ -16,7 +16,7 @@
         <TextBlock Text="Clients" Style="{StaticResource HeaderTextBlockStyle}" Margin="80,39,1268,903" RenderTransformOrigin="0.638,0.776"/>
         <ListView Name="ClientListView" ItemClick="ClientListView_ItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:PFWorkDayType">
+                <DataTemplate x:DataType="models:WorkDayType">
                     <StackPanel CornerRadius="10" BorderThickness="1" BorderBrush="Black" Orientation="Horizontal" >
                         <PersonPicture ProfilePicture="https://fixner.com/wp-content/uploads/2019/05/Registro-de-jornada.jpg" Height="73" Width="69" Margin="15,0"/>
                         <StackPanel Orientation="Vertical" Height="42">

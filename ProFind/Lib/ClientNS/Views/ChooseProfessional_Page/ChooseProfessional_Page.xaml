@@ -19,7 +19,7 @@
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="Choice professional" />
             <ListView Name="chooseProfessionalListView">
-                <DataTemplate x:DataType="models:PFProfessional">
+                <DataTemplate x:DataType="models:Professional">
                     <StackPanel
                         BorderBrush="Gray"
                         BorderThickness="1"
@@ -32,7 +32,7 @@
                             <TextBlock
                                 Margin="5,5,5,0"
                                 Foreground="white"
-                                Text="{Binding Profession.NamePFS}" />
+                                Text="{Binding Profession.NameS}" />
                         </StackPanel>
                         <Image
                             Width="103"

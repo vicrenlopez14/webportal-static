@@ -10,6 +10,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,15 +21,15 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
     /// </summary>
     public sealed partial class CreatePageProfessional : Page
     {
-        PFProfessional toManipulate = new PFProfessional();
+        Professional toManipulate = new Professional();
 
-        private List<PFProfession> professions = new List<PFProfession>();
+        private List<Profession> professions = new List<Profession>();
         private List<string> professionStrings = new List<string>();
 
-        private List<PFDepartment> departments = new List<PFDepartment>();
+        private List<Department> departments = new List<Department>();
         private List<string> departmentsStrings = new List<string>();
 
-        private List<PFWorkDayType> workdaytypes = new List<PFWorkDayType>();
+        private List<WorkDayType> workdaytypes = new List<WorkDayType>();
         private List<string> workdaytypestrings = new List<string>();
 
         byte[] pictureBytes;
@@ -49,9 +50,9 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
             }
 
             base.OnNavigatedTo(e);
-            if (e.Parameter is PFProfessional)
+            if (e.Parameter is Professional)
             {
-                toManipulate = (PFProfessional)e.Parameter;
+                toManipulate = (Professional)e.Parameter;
                 await loadUsefulThings();
                 FillFields(toManipulate);
                 ManipulationMode();
@@ -61,11 +62,11 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
             CreationMode();
         }
 
-        private void FillFields(PFProfessional incomingProfessional)
+        private void FillFields(Professional incomingProfessional)
         {
             FirstName1_tbx.Text = incomingProfessional.NameP;
             ProfilePicture_pp.ProfilePicture = incomingProfessional.PictureP.ToBitmapImage();
-            profession_cbx.Text = incomingProfessional.Profession.NamePFS;
+            profession_cbx.Text = incomingProfessional.Profession.NameS;
             profession_cbx.SelectedIndex = 0;
             Afp.Text = incomingProfessional.AFPP;
             Dui.Text = incomingProfessional.DUIP;
@@ -101,19 +102,19 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
         public async Task<bool> loadUsefulThings()
         {
             // Professions
-            (professions, professionStrings) = await new PFProfessionService().GetComboboxChoices();
+            (professions, professionStrings) = await new ProfessionService().GetComboboxChoices();
             profession_cbx.ItemsSource = null;
             profession_cbx.ItemsSource = professionStrings;
             profession_cbx.SelectedIndex = 0;
 
             // Departments
-            (departments, departmentsStrings) = await new PFDepartmentService().GetComboboxChoices();
+            (departments, departmentsStrings) = await new DepartmentService().GetComboboxChoices();
             departamento.ItemsSource = null;
             departamento.ItemsSource = departmentsStrings;
             departamento.SelectedIndex = 0;
 
             // Work-day types
-            (workdaytypes, workdaytypestrings) = await new PFWorkDayTypeService().GetComboboxChoices();
+            (workdaytypes, workdaytypestrings) = await new WorkDayTypeService().GetComboboxChoices();
             Jornada.ItemsSource = null;
             Jornada.ItemsSource = workdaytypestrings;
             Jornada.SelectedIndex = 0;
@@ -186,17 +187,17 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
-            PFProfessional professional = new PFProfessional();
+            Professional professional = new Professional();
             professional.NameP = FirstName1_tbx.Text;
 
             // Nested objects
-            var profession = new PFProfession();
-            profession = professions.Where(x => x.NamePFS == profession_cbx.SelectedValue).First();
+            var profession = new Profession();
+            profession = professions.Where(x => x.NameS == profession_cbx.SelectedValue).First();
 
-            professional.Department = new PFDepartment();
+            professional.Department = new Department();
             professional.Department = departments.Where(x => x.NameDP == departamento.SelectedValue).First();
 
-            professional.WorkDayType = new PFWorkDayType();
+            professional.WorkDayType = new WorkDayType();
             professional.WorkDayType = workdaytypes.Where(x => x.NameWDT == Jornada.SelectedValue).First();
 
             professional.Profession = profession;
@@ -210,7 +211,7 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
             professional.SalaryP = Salario.Text;
             professional.ISSSP = SeguroSocial.Text;
 
-            var respuesta = await new PFProfessionalService().Create(professional);
+            var respuesta = await new ProfessionalService().Create(professional);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt.IsOpen = true;
@@ -312,7 +313,7 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
             if (professions.Count > 0 && profession_cbx.SelectedIndex> -1)
                 toManipulate.Profession = professions[profession_cbx.SelectedIndex];
 
-            toManipulate.IdPFS1 = profession_cbx.SelectedIndex.ToString();
+            toManipulate.IdS1 = profession_cbx.SelectedIndex.ToString();
 
         }
 
@@ -323,9 +324,9 @@ namespace ProFind.Lib.AdminNS.Views.Professional_CRUD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
+            Professional professional = new Professional();
             professional.NameP = FirstName1_tbx.Text;
-            professional.Profession.NamePFS = profession_cbx.Text;
+            professional.Profession.NameS = profession_cbx.Text;
 
 
             if (passwordBox == Confirm_passwordBox)

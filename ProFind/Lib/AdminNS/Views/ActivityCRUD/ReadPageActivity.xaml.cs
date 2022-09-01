@@ -3,6 +3,7 @@ using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -13,7 +14,7 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
     /// </summary>
     public sealed partial class ReadPageActivity : Page
     {
-        PFProject parentProject;
+        Project parentProject;
 
         public ReadPageActivity()
         {
@@ -25,7 +26,7 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            parentProject = (PFProject)e.Parameter;
+            parentProject = (Project)e.Parameter;
             PageHeader.Text = $"Activities related to {parentProject.TitlePJ}";
         }
 
@@ -35,9 +36,9 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var activity = e.ClickedItem as PFActivity;
+            var activity = e.ClickedItem as Activity;
 
-            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), new Tuple<PFProject, PFActivity>(parentProject, activity));
+            new InAppNavigationController().NavigateTo(typeof(CreatePageActivity), new Tuple<Project, Activity>(parentProject, activity));
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
@@ -52,7 +53,7 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            AdminsListView.ItemsSource = await new PFActivityService().ListOfProject(parentProject.IdPJ);
+            AdminsListView.ItemsSource = await new ActivityService().ListOfProject(parentProject.IdPJ);
 
         }
     }

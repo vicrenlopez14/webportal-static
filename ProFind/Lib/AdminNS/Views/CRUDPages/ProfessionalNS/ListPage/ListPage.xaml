@@ -20,7 +20,7 @@
             Tapped="ProjectsActiveListView_Tapped" >
             <ListView.ItemTemplate>
 
-                <DataTemplate x:DataType="models1:PFProfessional">
+                <DataTemplate x:DataType="models1:Professional">
 
                     <StackPanel
                 Background="#A8DF7C"
@@ -44,7 +44,7 @@
                         Height="30"
                         Margin="-250,-5,0,0"
                         FontWeight="Bold"
-                        Text="{Binding Profession.NamePFS}" />
+                        Text="{Binding Profession.NameS}" />
                         </StackPanel>
                         <StackPanel
                     Width="20"

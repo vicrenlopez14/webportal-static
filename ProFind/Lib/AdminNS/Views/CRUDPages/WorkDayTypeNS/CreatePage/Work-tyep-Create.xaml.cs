@@ -10,7 +10,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.CreatePage
     /// </summary>
     public sealed partial class Work_tyep_Create : Page
     {
-        private PFWorkDayType newObject = new PFWorkDayType();
+        private WorkDayType newObject = new WorkDayType();
         public Work_tyep_Create()
         {
             this.InitializeComponent();
@@ -19,7 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.CreatePage
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
 
-            var result = await new PFWorkDayTypeService().Create(newObject);
+            var result = await new WorkDayTypeService().Create(newObject);
         }
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)

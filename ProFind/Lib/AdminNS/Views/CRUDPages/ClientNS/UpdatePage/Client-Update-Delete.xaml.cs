@@ -16,7 +16,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
     /// </summary>
     public sealed partial class Client_Update_Delete : Page
     {
-        PFClient toManipulate = new PFClient();
+        Client toManipulate = new Client();
 
         public Client_Update_Delete()
         {
@@ -32,13 +32,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFClient)e.Parameter;
+            toManipulate = (Client)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate = new PFClient()
+            toManipulate = new Client()
             {
                 IdC = toManipulate.IdC,
             };
@@ -48,7 +48,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PfClientService().Update(toManipulate); 
+            await new ClientService().Update(toManipulate); 
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
@@ -70,7 +70,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private async Task Delete_btn_ClickAsync(object sender, RoutedEventArgs e)
         {
-            await new PfClientService().Delete(toManipulate.IdC);
+            await new ClientService().Delete(toManipulate.IdC);
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
@@ -102,7 +102,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PfClientService().Delete(toManipulate.IdC);
+            await new ClientService().Delete(toManipulate.IdC);
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {

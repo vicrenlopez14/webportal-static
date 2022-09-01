@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,13 +21,13 @@ namespace ProFind.Lib.ClientNS.Views.ProjectReadPage
 
         public async void GetProjectList()
         {
-            var projectServices = new PfProjectService();
+            var projectServices = new ProjectService();
 
-            List<PFProject> ListProject = new List<PFProject>();
+            List<Project> ListProject = new List<Project>();
 
 
 
-            ListProject = await projectServices.ListProjectsByUserAsync(PfClientService.client.IdC) as List<PFProject>;
+            ListProject = await projectServices.ListProjectsByUserAsync(ClientService.client.IdC) as List<Project>;
 
             ProjectListView.ItemsSource = ListProject;  
         }

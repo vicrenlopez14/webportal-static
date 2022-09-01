@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,11 +26,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.EliminarProject
         public async void GetProjectsList2()
 
         {
-            var projectService = new PfProjectService();
+            var projectService = new ProjectService();
 
-            List<PFProject> DeteteProfesionaList = new List<PFProject>();
+            List<Project> DeteteProfesionaList = new List<Project>();
 
-            DeteteProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+            DeteteProfesionaList = await projectService.ListObjectAsync() as List<Project>;
 
             DeteteProfesionalListView.ItemsSource = DeteteProfesionaList;
         }
@@ -36,7 +38,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.EliminarProject
         private async void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
 
-            var respuesta = await new PfProjectService().Delete(IdToDelete);
+            var respuesta = await new ProjectService().Delete(IdToDelete);
             if (respuesta == HttpStatusCode.OK)
             {
 
@@ -48,7 +50,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.EliminarProject
 
         private void DeteteProfesionalListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PFProject ToDeleteProject = (PFProject)e.ClickedItem;
+            Project ToDeleteProject = (Project)e.ClickedItem;
             IdToDelete = ToDeleteProject.IdPJ;
         }
     }

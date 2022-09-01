@@ -67,7 +67,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         private async Task Button_Click_5Async(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var registerClient = new RegisterClient(Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
-            var result = await new PfClientService().Register(registerClient);
+            var result = await new ClientService().Register(registerClient);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
@@ -97,7 +97,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var registerClient = new RegisterClient(Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
-            var result = await new PfClientService().Register(registerClient);
+            var result = await new ClientService().Register(registerClient);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

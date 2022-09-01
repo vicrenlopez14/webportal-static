@@ -93,7 +93,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
             // Nested objects
 
-            professional.IdPfs1 = (profession_cbx.SelectedValue as Profession).IdPfs;
+            professional.Ids1 = (profession_cbx.SelectedValue as Profession).Ids;
             professional.IdDp1 = (departamento.SelectedItem as Department).IdDp;
             professional.EmailP = Email.Text;
             professional.SexP = Sexo.Text == "Male";

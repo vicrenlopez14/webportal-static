@@ -37,14 +37,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFAdmin)e.Parameter;
+            toManipulate = (Admin)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
             // Reset with the same ID
-            toManipulate = new PFAdmin()
+            toManipulate = new Admin()
             {
                 IdA = toManipulate.IdA,
             };
@@ -55,7 +55,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFAdminService().Update(toManipulate);
+            await new AdminService().Update(toManipulate);
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
@@ -76,7 +76,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFAdminService().Delete(toManipulate.IdA);
+            await new AdminService().Delete(toManipulate.IdA);
 
         }
 

@@ -14,7 +14,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.Update_DetetePage
     /// </summary>
     public sealed partial class Update_detetePage : Page
     {
-       PFWorkDayType toManipulate = new PFWorkDayType();
+       WorkDayType toManipulate = new WorkDayType();
 
         public Update_detetePage()
         {
@@ -28,13 +28,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.Update_DetetePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFWorkDayType)e.Parameter;
+            toManipulate = (WorkDayType)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFWorkDayTypeService().Update(toManipulate);
+            await new WorkDayTypeService().Update(toManipulate);
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
@@ -52,7 +52,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.Update_DetetePage
 
         private void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate = new PFWorkDayType()
+            toManipulate = new WorkDayType()
             {
                 IdWDT = toManipulate.IdWDT,
             };
@@ -62,7 +62,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.WorkDayTypeNS.Update_DetetePage
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFWorkDayTypeService().Delete(toManipulate.IdWDT);
+            await new WorkDayTypeService().Delete(toManipulate.IdWDT);
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {

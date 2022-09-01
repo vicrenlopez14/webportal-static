@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,10 +21,10 @@ namespace ProFind.Lib.ClientNS.Views.Notifications_Page
 
         public async void GetProjectsList()
         {
-            var projectService = new PfProjectService();
-            List<PFProject> clientNotificationList = new List<PFProject>();
+            var projectService = new ProjectService();
+            List<Project> clientNotificationList = new List<Project>();
 
-            clientNotificationList = await projectService.ListObjectAsync() as List<PFProject>;
+            clientNotificationList = await projectService.ListObjectAsync() as List<Project>;
 
             CientNotificationListView.ItemsSource = clientNotificationList;
         }

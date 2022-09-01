@@ -20,7 +20,7 @@
 
         <Page.Resources>
 
-            <DataTemplate x:Key="QuickViewListViewTemplate" x:DataType="models1:PFProject" >
+            <DataTemplate x:Key="QuickViewListViewTemplate" x:DataType="models1:Project" >
             <StackPanel Margin="59,94,751,761">
                 <StackPanel Orientation="Horizontal" Height="122" Width="654" Margin="10">
                     <PersonPicture ProfilePicture="https://planetafacil.plenainclusion.org/wp-content/uploads/2020/04/bell-1096280_1280-820x820.png"/>

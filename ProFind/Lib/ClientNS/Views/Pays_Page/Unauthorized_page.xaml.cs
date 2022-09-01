@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -18,10 +20,10 @@ namespace ProFind.Lib.ClientNS.Views.Pays_Page
 
         public async void GetProjectUnauthorizedList()
         {
-            var projectUnauthorizedService = new PfProjectService();
-            List<PFProject> projectUnauthorizedList = new List<PFProject>();
+            var projectUnauthorizedService = new ProjectService();
+            List<Project> projectUnauthorizedList = new List<Project>();
 
-            projectUnauthorizedList = await projectUnauthorizedService.ListObjectAsync() as List<PFProject>;
+            projectUnauthorizedList = await projectUnauthorizedService.ListObjectAsync() as List<Project>;
 
             clientsUnauthorizedListView.ItemsSource = projectUnauthorizedList;
         }

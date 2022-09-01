@@ -68,7 +68,7 @@ namespace ProFind
                     {
                         await WebAPIConnection.IsServerAlive();
 
-                        if (await new PFAdminService().AreThereAdmins())
+                        if (await new AdminService().AreThereAdmins())
                         {
                             rootFrame.Navigate(typeof(Lib.ClientNS.Views.InitPage.InitPage), e.Arguments);
                             new GlobalNavigationController().Init(rootFrame, typeof(InitPage));

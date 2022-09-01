@@ -9,6 +9,8 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,14 +21,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
     /// </summary>
     public sealed partial class ProfessionalInformationAddition : Page
     {
-        private List<PFProfession> professions = new List<PFProfession>();
-        private List<string> professionStrings = new List<string>();
+        private List<Profession> professions = new List<Profession>();
 
-        private List<PFDepartment> departments = new List<PFDepartment>();
-        private List<string> departmentsStrings = new List<string>();
-
-        private List<PFWorkDayType> workdaytypes = new List<PFWorkDayType>();
-        private List<string> workdaytypestrings = new List<string>();
+        private List<Department> departments = new List<Department>();
 
         byte[] pictureBytes;
 
@@ -41,19 +38,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         public async void loadUsefulThings()
         {
             // Professions
-            (professions, professionStrings) = await new PFProfessionService().GetComboboxChoices();
-            profession_cbx.ItemsSource = null;
-            profession_cbx.ItemsSource = professionStrings;
+            profession_cbx.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync();
 
             // Departments
-            (departments, departmentsStrings) = await new PFDepartmentService().GetComboboxChoices();
-            departamento.ItemsSource = null;
-            departamento.ItemsSource = departmentsStrings;
+            departamento.ItemsSource = await APIConnection.GetConnection.GetDepartmentsAsync();
 
-            // Work-day types
-            (workdaytypes, workdaytypestrings) = await new PFWorkDayTypeService().GetComboboxChoices();
-            Jornada.ItemsSource = null;
-            Jornada.ItemsSource = workdaytypestrings;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -125,17 +114,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
+            Professional professional = new Professional();
             professional.NameP = FirstName1_tbx.Text + " " + LastName1_tbx.Text;
 
             // Nested objects
-            var profession = new PFProfession();
-            profession = professions.Where(x => x.NamePFS == profession_cbx.SelectedValue).First();
+            var profession = new Profession();
+            profession = professions.Where(x => x.NameS == profession_cbx.SelectedValue).First();
 
-            professional.Department = new PFDepartment();
+            professional.Department = new Department();
             professional.Department = departments.Where(x => x.NameDP == departamento.SelectedValue).First();
 
-            professional.WorkDayType = new PFWorkDayType();
+            professional.WorkDayType = new WorkDayType();
             professional.WorkDayType = workdaytypes.Where(x => x.NameWDT == Jornada.SelectedValue).First();
 
             professional.Profession = profession;
@@ -149,7 +138,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             professional.SalaryP = Salario.Text;
             professional.ISSSP = SeguroSocial.Text;
 
-            var respuesta = await new PFProfessionalService().Create(professional);
+            var respuesta = await new ProfessionalService().Create(professional);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt.IsOpen = true;
@@ -261,9 +250,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PFProfessional professional = new PFProfessional();
+            Professional professional = new Professional();
             professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
-            professional.Profession.NamePFS = profession_cbx.Text;
+            professional.Profession.NameS = profession_cbx.Text;
 
 
             if (passwordBox == Confirm_passwordBox)

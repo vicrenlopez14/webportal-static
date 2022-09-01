@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <ListView Name="ProposalsProfesionalListView" >
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:PFProject">
+                <DataTemplate x:DataType="models1:Project">
                     <StackPanel CornerRadius="15">
                         <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
                             <TextBlock Text="{Binding TitlePJ}" FontWeight="Bold"/>
@@ -27,7 +27,7 @@
                         <PersonPicture Margin="-550,-20,0,0" ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" RenderTransformOrigin="0.48,0.99" Height="100" Width="100"/>
                         <Button Margin="530,-60,0,0"  Content="Decline" Height="34" Width="128" />
                         <Button Margin="530,-140,0,0"  Content="Accept" Height="34" Width="128" />
-                        <TextBlock Margin="550,-210,2,2" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" Height="28"/>
+                        <TextBlock Margin="550,-210,2,2" Text="{Binding ResponsibleProfessional.Profession.NameS}" FontWeight="Bold" Height="28"/>
                         <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
                         <StackPanel Height="23" Margin="130, -30">
                             <TextBlock Margin="-5, -100, 0,-70"  Height="53" Text="Cliente:" FontWeight="Bold" FontSize="15" Width="378"/>

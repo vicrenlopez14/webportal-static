@@ -4,7 +4,9 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -15,13 +17,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private PFProject newObject = new PFProject();
+        private Project newObject = new Project();
 
-        private string[] status = Enum.GetNames(typeof(PFProjectStatus));
-        private List<PFProfessional> professionals = new List<PFProfessional>();
+        private string[] status = Enum.GetNames(typeof(ProjectStatus));
+        private List<Professional> professionals = new List<Professional>();
         private List<string> professionalStrings = new List<string>();
 
-        private List<PFClient> clients = new List<PFClient>();
+        private List<Client> clients = new List<Client>();
         private List<string> clientStrings = new List<string>();
 
         public CreatePage()
@@ -32,8 +34,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         public async void loadUsefulThings()
         {
-            (professionals, professionalStrings) = await new PFProfessionalService().GetComboboxChoices();
-            (clients, clientStrings) = await new PfClientService().GetComboboxChoices();
+            (professionals, professionalStrings) = await new ProfessionalService().GetComboboxChoices();
+            (clients, clientStrings) = await new ClientService().GetComboboxChoices();
 
             InitialStatus_cb.ItemsSource = status;
             Professional_cb.ItemsSource = professionalStrings;
@@ -57,7 +59,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
                 return;
             }
 
-            var result = await new PfProjectService().Create(newObject);
+            var result = await new ProjectService().Create(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
@@ -96,13 +98,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            PFProjectStatus selectedStatus = PFProjectStatus.Inactive;
+            ProjectStatus selectedStatus = ProjectStatus.Inactive;
 
             if (InitialStatus_cb.SelectedIndex == 1)
-                selectedStatus = PFProjectStatus.Active;
+                selectedStatus = ProjectStatus.Active;
 
             newObject.Status = selectedStatus;
-            newObject.IdPS1 = selectedStatus == PFProjectStatus.Inactive ? "0" : "1";
+            newObject.IdPS1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";
         }
 
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)

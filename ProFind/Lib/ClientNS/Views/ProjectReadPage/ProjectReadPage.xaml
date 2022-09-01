@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <ListView Name="ProjectListView">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:PFProject" >
+                <DataTemplate x:DataType="models1:Project" >
                     <StackPanel CornerRadius="15">
                         <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
                             <TextBlock Height="25" Text="Projects"></TextBlock>
@@ -24,7 +24,7 @@
                         <Image Margin="-95,-30,450,-110"  Width="100" Height="100" Source="{Binding PicturePJ}"/>
 
                         <StackPanel Margin="550,-35,0,0" Height="27" Width="300">
-                            <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold"/>
+                            <TextBlock Margin="-250,-5,0,0" Width="180" Height="30" Text="{Binding ResponsibleProfessional.Profession.NameS}" FontWeight="Bold"/>
                         </StackPanel>
                         <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22">
                             <SymbolIcon Symbol="Setting"/>

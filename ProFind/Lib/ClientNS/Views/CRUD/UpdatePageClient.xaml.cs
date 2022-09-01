@@ -16,7 +16,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
     public sealed partial class UpdatePageClient : Page
     {
 
-        PFClient ToManipulate = new PFClient();
+        Client ToManipulate = new Client();
 
         public UpdatePageClient()
         {
@@ -26,12 +26,12 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ToManipulate = (PFClient)e.Parameter;
+            ToManipulate = (Client)e.Parameter;
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            ToManipulate = new PFClient()
+            ToManipulate = new Client()
             {
                 IdC = ToManipulate.IdC,
             };
@@ -55,12 +55,12 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
                 await dialog.ShowAsync();
             }
 
-            await new PfClientService().Update(ToManipulate);
+            await new ClientService().Update(ToManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PfClientService().Delete(ToManipulate.IdC);
+            await new ClientService().Delete(ToManipulate.IdC);
         }
 
         private async void Back_btn_Click(object sender, RoutedEventArgs e)

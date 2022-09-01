@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
         <ListView Name="ReservadosProjectsListView">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:PFProject">
+                <DataTemplate x:DataType="models1:Project">
                     <StackPanel Background="#F4FAE1" CornerRadius="15">
                         <StackPanel
                             Width="300"
@@ -39,7 +39,7 @@
                                 Height="30"
                                 Margin="-240,-100,0,30"
                                 FontWeight="Bold"
-                                Text="{Binding ResponsibleProfessional.Profession.NamePFS}" />
+                                Text="{Binding ResponsibleProfessional.Profession.NameS}" />
                         </StackPanel>
                         <StackPanel
                             Width="20"

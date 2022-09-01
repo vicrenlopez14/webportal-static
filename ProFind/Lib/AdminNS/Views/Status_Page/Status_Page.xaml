@@ -19,7 +19,7 @@
 
     <Page.Resources>
 
-        <DataTemplate x:Key="StatusListViewTemplate" x:DataType="models1:PFProject" >
+        <DataTemplate x:Key="StatusListViewTemplate" x:DataType="models1:Project" >
 
            <StackPanel Margin="10,0,-10,0">
             <StackPanel Margin="15,35,15,935" Height="30" Background="#2C933A">

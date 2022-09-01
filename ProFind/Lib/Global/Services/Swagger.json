@@ -2013,11 +2013,11 @@
     "Profession": {
       "type": "object",
       "properties": {
-        "idPfs": {
+        "ids": {
           "format": "int32",
           "type": "integer"
         },
-        "namePfs": {
+        "names": {
           "maxLength": 50,
           "minLength": 0,
           "type": "string"
@@ -2091,7 +2091,7 @@
           "format": "byte",
           "type": "string"
         },
-        "idPfs1": {
+        "ids1": {
           "format": "int32",
           "type": "integer"
         },

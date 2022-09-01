@@ -2,6 +2,7 @@
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,13 +25,13 @@ namespace ProFind.Lib.ClientNS.Views.Notifications_Page
 
         private async void btnSend_Click_1(object sender, RoutedEventArgs e)
         {
-            PFNotification ClientNotification = new PFNotification();
+            Notification ClientNotification = new Notification();
             ClientNotification.Project.ResponsibleClient.NameC = ClientName_txb.Text;
             ClientNotification.TitleN = Title_txb.Text;
             ClientNotification.DescriptionN = Description_txb.Text;
-            ClientNotification.Project.ResponsibleProfessional.Profession.NamePFS = TypeProfession_txb.Text;
+            ClientNotification.Project.ResponsibleProfessional.Profession.NameS = TypeProfession_txb.Text;
 
-            var answer = new PFNotificationService();
+            var answer = new NotificationService();
             await answer.Create(ClientNotification);
 
             if (string.IsNullOrEmpty(ClientName_txb.Text))

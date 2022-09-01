@@ -4,6 +4,7 @@ using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -14,7 +15,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private PFNotification newObject = new PFNotification();
+        private Notification newObject = new Notification();
 
         public CreatePage()
         {
@@ -37,7 +38,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
                 return;
             }
 
-            var result = await new PFNotificationService().Create(newObject);
+            var result = await new NotificationService().Create(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

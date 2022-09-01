@@ -16,7 +16,7 @@
         <ListView Name="clientsRealizedView" ItemTemplate="{StaticResource ClientsRealizedListViewTemplate}"/>
     </Grid>
     <Page.Resources>
-        <DataTemplate x:Key="ClientsRealizedListViewTemplate" x:DataType="models1:PFProject">
+        <DataTemplate x:Key="ClientsRealizedListViewTemplate" x:DataType="models1:Project">
             <StackPanel Orientation="Horizontal" Margin="-900,-800,10,10" Height="100" Width="500">
                 <StackPanel Background="#CAFF78" Margin="1,15" Height="100">
                     <SymbolIcon Symbol="Accept" Height="79" Width="166"/>

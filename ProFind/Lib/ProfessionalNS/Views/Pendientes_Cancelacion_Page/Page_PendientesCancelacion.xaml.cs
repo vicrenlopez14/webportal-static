@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,11 +26,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.Pendientes_Cancelacion_Page
 
         public async void GetPendienteCancel()
         {
-            var PendienteCancelService = new PfProjectService();
+            var PendienteCancelService = new ProjectService();
 
-            List<PFProject> PendienteCancelList = new List<PFProject>();
+            List<Project> PendienteCancelList = new List<Project>();
 
-            PendienteCancelList = await PendienteCancelService.ListObjectAsync() as List<PFProject>;
+            PendienteCancelList = await PendienteCancelService.ListObjectAsync() as List<Project>;
 
             PendientesCancelacionListView.ItemsSource = PendienteCancelList;
         }

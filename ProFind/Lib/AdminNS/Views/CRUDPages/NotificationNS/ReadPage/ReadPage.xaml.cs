@@ -1,6 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,12 +21,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ReadPage
 
         private async void InitializeData()
         {
-            NotificationListView.ItemsSource = await new PFNotificationService().ListObjectAsync();
+            NotificationListView.ItemsSource = await new NotificationService().ListObjectAsync();
         }
 
         private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var notification = e.ClickedItem as PFNotification;
+            var notification = e.ClickedItem as Notification;
 
             new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), notification);
         }

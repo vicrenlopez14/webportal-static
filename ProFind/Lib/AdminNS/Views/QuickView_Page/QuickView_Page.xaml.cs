@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,11 +26,11 @@ namespace ProFind.Lib.AdminNS.Views.QuickView_Page
         public async void GetProjectsList()
 
         {
-            var projectService = new PfProjectService();
+            var projectService = new ProjectService();
 
-            List<PFProject> QuickViewList = new List<PFProject>();
+            List<Project> QuickViewList = new List<Project>();
 
-            QuickViewList = await projectService.ListObjectAsync() as List<PFProject>;
+            QuickViewList = await projectService.ListObjectAsync() as List<Project>;
 
             QuickViewListView.ItemsSource = QuickViewList;
         }

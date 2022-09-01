@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,14 +22,15 @@ namespace ProFind.Lib.ProfessionalNS.Views.Activos_Page
         {
 
         }
+        
         public async void GetProjectsList()
 
         {
-            var projectService = new PfProjectService();
+            var projectService = new ProjectService();
 
-            List<PFProject> ActiveProjectsList = new List<PFProject>();
+            List<Project> ActiveProjectsList = new List<Project>();
 
-            ActiveProjectsList = await projectService.ListObjectAsync() as List<PFProject>;
+            ActiveProjectsList = await projectService.ListObjectAsync() as List<Project>;
 
             ActiveProjectsListView.ItemsSource = ActiveProjectsList;
         }

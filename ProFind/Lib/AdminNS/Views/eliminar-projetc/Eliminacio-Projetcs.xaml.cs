@@ -4,7 +4,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,21 +35,21 @@ namespace ProFind.Lib.AdminNS.Views.eliminar_projetc
         public async void GetProjectsList()
 
         {
-            var projectService = new PfProjectService();
+            var projectService = new ProjectService();
 
-            List<PFProject> DeteteProfesionaList = new List<PFProject>();
+            List<Project> DeteteProfesionaList = new List<Project>();
 
-            DeteteProfesionaList = await projectService.ListObjectAsync() as List<PFProject>;
+            DeteteProfesionaList = await projectService.ListObjectAsync() as List<Project>;
 
             DeteteProfesionalListView.ItemsSource = DeteteProfesionaList;
         }
 
         private async void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            PFProject Project = new PFProject();
+            Project Project = new Project();
 
 
-            var respuesta = await new PfProjectService().Delete(Project.IdPJ);
+            var respuesta = await new ProjectService().Delete(Project.IdPJ);
             if (respuesta == HttpStatusCode.OK)
             {
                 SucessfulCreation_tt = true;

@@ -39,7 +39,7 @@ namespace ProFind.Lib.AdminNS.Views.InitPage
 
         private async Task Button_Click_5Async(object sender, RoutedEventArgs e)
         {
-            var result = await new PFAdminService().Login(Email_tb.Text, Password_tb.Password);
+            var result = await new AdminService().Login(Email_tb.Text, Password_tb.Password);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
@@ -53,7 +53,7 @@ namespace ProFind.Lib.AdminNS.Views.InitPage
 
         private async void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            var result = await new PFAdminService().Login(Email_tb.Text, Password_tb.Password);
+            var result = await new AdminService().Login(Email_tb.Text, Password_tb.Password);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

@@ -48,7 +48,7 @@
                     ItemClick="AdminListView_ItemClick"
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:PFActivity">
+                        <DataTemplate x:DataType="models:Activity">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"

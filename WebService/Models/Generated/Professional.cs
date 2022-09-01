@@ -6,7 +6,7 @@ namespace WebService.Models.Generated
 {
     [Table("professional")]
     [Index("IdDp1", Name = "IdDP1")]
-    [Index("IdPfs1", Name = "IdPFS1")]
+    [Index("Ids1", Name = "IdS1")]
     [Index("IdWdt1", Name = "IdWDT1")]
     public partial class Professional
     {
@@ -39,8 +39,8 @@ namespace WebService.Models.Generated
         public byte[]? CurriculumP { get; set; }
         public double? LatitudeLocationP { get; set; }
         public double? LongitudeLocationP { get; set; }
-        [Column("IdPFS1")]
-        public int? IdPfs1 { get; set; }
+        [Column("IdS1")]
+        public int? Ids1 { get; set; }
         [Column("IdDP1")]
         public int? IdDp1 { get; set; }
         [Column("IdWDT1")]

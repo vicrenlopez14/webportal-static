@@ -1,6 +1,7 @@
 ﻿using ProFind.Lib.Global.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services.Models;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -12,7 +13,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.DeletePage
     /// </summary>
     public sealed partial class Delete : Page
     {
-        PFProfessional toManipulate = new PFProfessional();
+        Professional toManipulate = new Professional();
         byte[] pictureBytes;
 
 
@@ -23,7 +24,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.DeletePage
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            await new PFProfessionalService().Delete(toManipulate.IdP);
+            await new ProfessionalService().Delete(toManipulate.IdP);
         }
 
         private async void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -36,7 +37,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.DeletePage
             SeguroSocial.Text = toManipulate.ISSSP;
             Email.Text = toManipulate.EmailP;
             Salario.Text = toManipulate.SalaryP;
-            await new PFProfessionalService().Update(toManipulate);
+            await new ProfessionalService().Update(toManipulate);
         }
 
         private async void btnExaminar_Click(object sender, RoutedEventArgs e)

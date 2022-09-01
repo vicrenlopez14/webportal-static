@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
         <ListView Name="CientNotificationListView">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:PFNotification">
+                <DataTemplate x:DataType="models1:Notification">
                     <StackPanel
                         Grid.ColumnSpan="2"
                         Background="{StaticResource ButtonBackgroundThemeBrush}"

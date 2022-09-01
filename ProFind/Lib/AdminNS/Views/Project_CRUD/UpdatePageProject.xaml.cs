@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,12 +18,12 @@ namespace ProFind.Lib.AdminNS.Views.Project_CRUD
     /// </summary>
     public sealed partial class UpdatePageProject : Page
     {
-        PFProject toManipulate = new PFProject();
-        private string[] status = Enum.GetNames(typeof(PFProjectStatus));
-        private List<PFProfessional> professionals = new List<PFProfessional>();
+        Project toManipulate = new Project();
+        private string[] status = Enum.GetNames(typeof(ProjectStatus));
+        private List<Professional> professionals = new List<Professional>();
         private List<string> professionalStrings = new List<string>();
 
-        private List<PFClient> clients = new List<PFClient>();
+        private List<Client> clients = new List<Client>();
         private List<string> clientStrings = new List<string>();
         public UpdatePageProject()
         {
@@ -29,8 +31,8 @@ namespace ProFind.Lib.AdminNS.Views.Project_CRUD
         }
         private async void loadUsefulthings()
         {
-            (professionals, professionalStrings) = await new PFProfessionalService().GetComboboxChoices();
-            (clients, clientStrings) = await new PfClientService().GetComboboxChoices();
+            (professionals, professionalStrings) = await new ProfessionalService().GetComboboxChoices();
+            (clients, clientStrings) = await new ClientService().GetComboboxChoices();
 
             InitialStatus_cb.ItemsSource = status;
             Professional_cb.ItemsSource = professionalStrings;
@@ -49,14 +51,14 @@ namespace ProFind.Lib.AdminNS.Views.Project_CRUD
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFProject)e.Parameter;
+            toManipulate = (Project)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
             // Reset with the same ID
-            toManipulate = new PFProject()
+            toManipulate = new Project()
             {
                 IdPJ = toManipulate.IdPJ,
 
@@ -67,12 +69,12 @@ namespace ProFind.Lib.AdminNS.Views.Project_CRUD
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PfProjectService().Update(toManipulate);
+            await new ProjectService().Update(toManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PfProjectService().Delete(toManipulate.IdPJ);
+            await new ProjectService().Delete(toManipulate.IdPJ);
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
@@ -114,13 +116,13 @@ namespace ProFind.Lib.AdminNS.Views.Project_CRUD
 
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            PFProjectStatus selectedStatus = PFProjectStatus.Inactive;
+            ProjectStatus selectedStatus = ProjectStatus.Inactive;
 
             if (InitialStatus_cb.SelectedIndex == 1)
-                selectedStatus = PFProjectStatus.Active;
+                selectedStatus = ProjectStatus.Active;
 
             toManipulate.Status = selectedStatus;
-            toManipulate.IdPS1 = selectedStatus == PFProjectStatus.Inactive ? "0" : "1";
+            toManipulate.IdPS1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";
         }
 
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)

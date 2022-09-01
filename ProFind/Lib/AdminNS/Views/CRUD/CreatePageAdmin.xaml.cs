@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -15,8 +16,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
     /// </summary>
     public sealed partial class CreatePageAdmin : Page
     {
-        private PFAdmin newObject = new PFAdmin();
-        private List<PFRank> ranks = new List<PFRank>();
+        private Admin newObject = new Admin();
+        private List<Rank> ranks = new List<Rank>();
         private List<string> rankStrings = new List<string>();
 
         public CreatePageAdmin()
@@ -27,7 +28,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
 
         public async void loadUsefulThings()
         {
-            ranks = (List<PFRank>)await new PfRankService().ListObjectAsync();
+            ranks = (List<Rank>)await new RankService().ListObjectAsync();
 
             foreach (var rank in ranks)
             {
@@ -41,7 +42,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var result = await new PFAdminService().Create(newObject);
+            var result = await new AdminService().Create(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

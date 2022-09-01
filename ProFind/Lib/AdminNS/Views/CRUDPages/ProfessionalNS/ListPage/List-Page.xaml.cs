@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,8 +21,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
 
         public async void GetProjectsList()
         {
-            var professionalService = new PFProfessionalService();
-            List<PFProject> activeProfessionalsList = new List<PFProject>();
+            var professionalService = new ProfessionalService();
+            List<Project> activeProfessionalsList = new List<Project>();
 
 
             IDictionary<string, string> criteries = new Dictionary<string, string>()
@@ -29,7 +30,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
                 ["ActiveP"] = "1"
             };
 
-            activeProfessionalsList = await professionalService.Search(criteries) as List<PFProject>;
+            activeProfessionalsList = await professionalService.Search(criteries) as List<Project>;
 
             DashboardProfessionalsActiveListView.ItemsSource = activeProfessionalsList;
         }
@@ -41,7 +42,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
 
         private void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PFProfessional project = e.ClickedItem as PFProfessional;
+            Professional project = e.ClickedItem as Professional;
             new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.InitPage.InitPage), project);
         }
     }

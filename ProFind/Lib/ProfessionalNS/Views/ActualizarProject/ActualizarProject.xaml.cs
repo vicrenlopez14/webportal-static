@@ -4,6 +4,8 @@ using System.Net;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,17 +23,17 @@ namespace ProFind.Lib.ProfessionalNS.Views.ActualizarProject
 
         private async void btnGuardarCambios_Click(object sender, RoutedEventArgs e)
         {
-            PFProject project = new PFProject();
-            var profession = new PFProfessional();
+            Project project = new Project();
+            var profession = new Professional();
 
             project.ResponsibleProfessional = profession;
 
             project.TitlePJ = TitlePJ.Text;
             project.DescriptionPJ = DescriptionPJ.Text;
             project.TotalPricePJ = float.Parse(TotalPricePJ.Text);
-            project.Status = Inactivo.IsChecked == true ? PFProjectStatus.Active : PFProjectStatus.Inactive;
+            project.Status = Inactivo.IsChecked == true ? ProjectStatus.Active : ProjectStatus.Inactive;
 
-            var respuesta = await new PfProjectService().Update(project);
+            var respuesta = await new ProjectService().Update(project);
 
             if (respuesta == HttpStatusCode.OK)
             {

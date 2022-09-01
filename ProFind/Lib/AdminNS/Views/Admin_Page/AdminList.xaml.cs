@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -17,10 +18,10 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Page
 
         public async void GetAdminList()
         {
-            var adminService = new PFAdminService();
-            List<PFAdmin> adminList = new List<PFAdmin>();
+            var adminService = new AdminService();
+            List<Admin> adminList = new List<Admin>();
 
-            adminList = await adminService.ListObjectAsync() as List<PFAdmin>;
+            adminList = await adminService.ListObjectAsync() as List<Admin>;
 
             AdminListView.ItemsSource = adminList;
         }
@@ -32,7 +33,7 @@ namespace ProFind.Lib.AdminNS.Views.Admin_Page
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PFAdmin clickedItem = (PFAdmin)e.ClickedItem;
+            Admin clickedItem = (Admin)e.ClickedItem;
 
             
 

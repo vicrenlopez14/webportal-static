@@ -14,7 +14,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
     /// </summary>
     public sealed partial class CreateClientPage : Page
     {
-        private PFClient newObject = new PFClient();
+        private Client newObject = new Client();
         public CreateClientPage()
         {
             this.InitializeComponent();
@@ -65,7 +65,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
             }
 
 
-            var res = await new PfClientService().Create(newObject);
+            var res = await new ClientService().Create(newObject);
             if (res == System.Net.HttpStatusCode.OK) new InAppNavigationController().GoBack();
         }
     }

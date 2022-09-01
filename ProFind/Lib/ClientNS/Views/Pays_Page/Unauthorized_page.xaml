@@ -17,7 +17,7 @@
     </Grid>
     
     <Page.Resources>
-        <DataTemplate x:Key="ClientsUnauthorizedListViewTemplate" x:DataType="models1:PFProject">
+        <DataTemplate x:Key="ClientsUnauthorizedListViewTemplate" x:DataType="models1:Project">
             <StackPanel Orientation="Horizontal" Margin="-900,-800,10,10" Height="100" Width="500">
                 <StackPanel Background="#FF7773" Margin="1,15">
                     <SymbolIcon Symbol="ReportHacked" Height="79" Width="166"/>

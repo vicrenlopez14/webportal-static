@@ -11051,10 +11051,10 @@ namespace ProFind.Lib.Global.Services.Models
         /// <summary>
         /// Initializes a new instance of the Profession class.
         /// </summary>
-        public Profession(int? idPfs = default(int?), string namePfs = default(string))
+        public Profession(int? ids = default(int?), string names = default(string))
         {
-            this.IdPfs = idPfs;
-            this.NamePfs = namePfs;
+            this.Ids = ids;
+            this.Names = names;
             CustomInit();
         }
 
@@ -11065,13 +11065,13 @@ namespace ProFind.Lib.Global.Services.Models
 
         /// <summary>
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "idPfs")]
-        public int? IdPfs { get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ids")]
+        public int? Ids { get; set; }
 
         /// <summary>
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "namePfs")]
-        public string NamePfs { get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "names")]
+        public string Names { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -11081,15 +11081,15 @@ namespace ProFind.Lib.Global.Services.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.NamePfs != null)
+            if (this.Names != null)
             {
-                if (this.NamePfs.Length > 50)
+                if (this.Names.Length > 50)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "NamePfs", 50);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "Names", 50);
                 }
-                if (this.NamePfs.Length < 0)
+                if (this.Names.Length < 0)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "NamePfs", 0);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Names", 0);
                 }
             }
         }
@@ -11118,7 +11118,7 @@ namespace ProFind.Lib.Global.Services.Models
         /// <summary>
         /// Initializes a new instance of the Professional class.
         /// </summary>
-        public Professional(string idP = default(string), string nameP = default(string), DateOnly dateBirthP = default(DateOnly), string emailP = default(string), string passwordP = default(string), bool? activeP = default(bool?), bool? sexP = default(bool?), string duip = default(string), string afpp = default(string), string isssp = default(string), string zipCodeP = default(string), double? salaryP = default(double?), DateOnly hiringDateP = default(DateOnly), byte[] pictureP = default(byte[]), byte[] curriculumP = default(byte[]), int? idPfs1 = default(int?), int? idDp1 = default(int?), int? idWdt1 = default(int?))
+        public Professional(string idP = default(string), string nameP = default(string), DateOnly dateBirthP = default(DateOnly), string emailP = default(string), string passwordP = default(string), bool? activeP = default(bool?), bool? sexP = default(bool?), string duip = default(string), string afpp = default(string), string isssp = default(string), string zipCodeP = default(string), double? salaryP = default(double?), DateOnly hiringDateP = default(DateOnly), byte[] pictureP = default(byte[]), byte[] curriculumP = default(byte[]), int? ids1 = default(int?), int? idDp1 = default(int?), int? idWdt1 = default(int?))
         {
             this.IdP = idP;
             this.NameP = nameP;
@@ -11135,7 +11135,7 @@ namespace ProFind.Lib.Global.Services.Models
             this.HiringDateP = hiringDateP;
             this.PictureP = pictureP;
             this.CurriculumP = curriculumP;
-            this.IdPfs1 = idPfs1;
+            this.Ids1 = ids1;
             this.IdDp1 = idDp1;
             this.IdWdt1 = idWdt1;
             CustomInit();
@@ -11223,8 +11223,8 @@ namespace ProFind.Lib.Global.Services.Models
 
         /// <summary>
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "idPfs1")]
-        public int? IdPfs1 { get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ids1")]
+        public int? Ids1 { get; set; }
 
         /// <summary>
         /// </summary>

@@ -24,7 +24,7 @@
             ItemClick="AdminListView_ItemClick"
             SelectionChanged="AdminListView_SelectionChanged">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:PFAdmin">
+                <DataTemplate x:DataType="models:Admin">
                     <StackPanel
                         BorderBrush="Black"
                         BorderThickness="1"

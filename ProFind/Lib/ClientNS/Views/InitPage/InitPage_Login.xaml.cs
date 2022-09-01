@@ -20,7 +20,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var result = await new PfClientService().Login(Email_tb.Text, Password_tb.Password);
+            var result = await new ClientService().Login(Email_tb.Text, Password_tb.Password);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

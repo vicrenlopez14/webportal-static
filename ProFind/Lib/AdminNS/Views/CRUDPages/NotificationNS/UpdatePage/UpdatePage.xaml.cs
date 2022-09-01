@@ -3,6 +3,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -13,7 +14,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
     /// </summary>
     public sealed partial class UpdatePage : Page
     {
-        PFNotification toManipulate = new PFNotification();
+        Notification toManipulate = new Notification();
 
         public UpdatePage()
         {
@@ -31,14 +32,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (PFNotification)e.Parameter;
+            toManipulate = (Notification)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
             // Reset with the same ID
-            toManipulate = new PFNotification()
+            toManipulate = new Notification()
             {
                 IdN = toManipulate.IdN,
 
@@ -49,12 +50,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFNotificationService().Update(toManipulate);
+            await new NotificationService().Update(toManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new PFNotificationService().Delete(toManipulate.IdN);
+            await new NotificationService().Delete(toManipulate.IdN);
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)

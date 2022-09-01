@@ -45,7 +45,7 @@
                     ItemClick="NotificationListView_ItemClick"
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:PFNotification">
+                        <DataTemplate x:DataType="models:Notification">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"

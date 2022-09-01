@@ -16,7 +16,7 @@ namespace ProFind.Lib.ClientNS.Views.ProfessionalReadPage
 
         private async void InitializeData()
         {
-            ProfessionalsListView.ItemsSource = await new PFProfessionalService().ListObjectAsync();
+            ProfessionalsListView.ItemsSource = await new ProfessionalService().ListObjectAsync();
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)

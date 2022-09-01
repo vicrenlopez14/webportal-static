@@ -15,7 +15,7 @@
         <ListView Name="ActiveProjectsListView" >
             <ListView.ItemTemplate>
 
-                <DataTemplate x:DataType="models1:PFActivity">
+                <DataTemplate x:DataType="models1:Activity">
                     <StackPanel
                 Background="#F4FAE1"
                 CornerRadius="15">
