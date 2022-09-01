@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebService.Models;
 using Activity = WebService.Models.Generated.Activity;
 using Admin = WebService.Models.Generated.Admin;
 using Client = WebService.Models.Generated.Client;

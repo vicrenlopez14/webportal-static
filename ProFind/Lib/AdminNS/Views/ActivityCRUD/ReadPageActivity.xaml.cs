@@ -3,7 +3,7 @@ using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -53,8 +53,7 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            AdminsListView.ItemsSource = await new ActivityService().ListOfProject(parentProject.IdPJ);
-
+            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
         }
     }
 }

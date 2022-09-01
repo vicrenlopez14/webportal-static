@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
-using WebService.Models;
 using Admin = WebService.Models.Generated.Admin;
 
 namespace WebService.Controllers
@@ -171,7 +170,7 @@ namespace WebService.Controllers
         }
 
         [HttpGet("search/")]
-        public async Task<ActionResult<IEnumerable<Admin>>> SearcAdmins([FromQuery] string idA,
+        public async Task<ActionResult<IEnumerable<Admin>>> SearchAdmins([FromQuery] string idA,
           [FromQuery] string Name)
         {
             var result = await (from Admins in _context.Admins

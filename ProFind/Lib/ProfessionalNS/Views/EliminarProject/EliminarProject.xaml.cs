@@ -4,7 +4,6 @@ using System.Net;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
-using ProFind.Lib.Global.Services.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 

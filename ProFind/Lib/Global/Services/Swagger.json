@@ -141,6 +141,238 @@
         }
       }
     },
+    "/api/Activities/search": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "operationId": "SearchActivities",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "title",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Activity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Activities/search/paginated": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "operationId": "SearchActivitiesPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Activity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Activities/filter": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "operationId": "FilterActivities",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Day",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayOfWeek"
+          },
+          {
+            "in": "query",
+            "name": "DayOfYear",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayNumber",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "expectedBeginRel",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Day",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayOfWeek"
+          },
+          {
+            "in": "query",
+            "name": "DayOfYear",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayNumber",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "expectedEndRel",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idProject",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idTag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Activity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Activities/paginated": {
+      "get": {
+        "tags": [
+          "Activities"
+        ],
+        "operationId": "GetActivitiesPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Activity"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Admins/Register": {
       "post": {
         "tags": [
@@ -331,6 +563,165 @@
         }
       }
     },
+    "/api/Admins/search": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "SearchAdmins",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "idA",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Admin"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admins/search/paginated": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "SearchAdmins",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "idA",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Admin"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admins/filter": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "FilterAdmins",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "name1",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idAdmin",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Admin"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admins/paginated": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "operationId": "GetAdminsPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Admin"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Clients/Register": {
       "post": {
         "tags": [
@@ -517,6 +908,165 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Clients/search": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "SearchCliens",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "IdC",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Clients/search/paginated": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "SearchClient",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "idC",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Clients/filter": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "FilterClients",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "name1",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idclien",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Clients/paginated": {
+      "get": {
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "GetClientPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Client"
+              }
+            }
           }
         }
       }
@@ -1536,6 +2086,238 @@
         }
       }
     },
+    "/api/Proposals/search": {
+      "get": {
+        "tags": [
+          "Proposals"
+        ],
+        "operationId": "SearchProposals",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "proposalsId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "titleProposals",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proposal"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Proposals/search/paginated": {
+      "get": {
+        "tags": [
+          "Proposals"
+        ],
+        "operationId": "SearchProposalsPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "proposalsId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "titleProposals",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proposal"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Proposals/filter": {
+      "get": {
+        "tags": [
+          "Proposals"
+        ],
+        "operationId": "FilterProposals",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "Year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Day",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayOfWeek"
+          },
+          {
+            "in": "query",
+            "name": "DayOfYear",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayNumber",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "suggestedStarRel",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Year",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Month",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Day",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayOfWeek"
+          },
+          {
+            "in": "query",
+            "name": "DayOfYear",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "DayNumber",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "suggestedEndRel",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idProfessional",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idClient",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proposal"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Proposals/paginated": {
+      "get": {
+        "tags": [
+          "Proposals"
+        ],
+        "operationId": "GetProposalsPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proposal"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Ranks": {
       "get": {
         "tags": [
@@ -1675,6 +2457,150 @@
         }
       }
     },
+    "/api/Ranks/search": {
+      "get": {
+        "tags": [
+          "Ranks"
+        ],
+        "operationId": "SearchRanks",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "nameRanks",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rank"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Ranks/search/paginated": {
+      "get": {
+        "tags": [
+          "Ranks"
+        ],
+        "operationId": "SearchRanksPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "nameRanks",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rank"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Ranks/filter": {
+      "get": {
+        "tags": [
+          "Ranks"
+        ],
+        "operationId": "FilterRanks",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "nameRanks",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "idR",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rank"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Ranks/paginated": {
+      "get": {
+        "tags": [
+          "Ranks"
+        ],
+        "operationId": "GetRanksPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Rank"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Tags": {
       "get": {
         "tags": [
@@ -1807,6 +2733,160 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Tags/search": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "SearchTags",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tagId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "nameTag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tags/search/paginated": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "SearchTagPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tagId",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "nameTag",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tags/filter": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "FilterTags",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "idTag",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "nameTag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tags/paginated": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "operationId": "GetTagPaginated",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tag"
+              }
+            }
           }
         }
       }
@@ -2090,6 +3170,14 @@
         "curriculumP": {
           "format": "byte",
           "type": "string"
+        },
+        "latitudeLocationP": {
+          "format": "double",
+          "type": "number"
+        },
+        "longitudeLocationP": {
+          "format": "double",
+          "type": "number"
         },
         "ids1": {
           "format": "int32",

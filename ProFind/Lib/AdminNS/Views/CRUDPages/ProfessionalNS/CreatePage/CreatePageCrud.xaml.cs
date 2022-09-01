@@ -1,7 +1,6 @@
 ﻿using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
-using ProFind.Lib.Global.Services.Models;
 using System;
 using Windows.Devices.Geolocation;
 using Windows.UI.Popups;

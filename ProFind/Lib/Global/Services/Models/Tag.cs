@@ -1,4 +1,4 @@
-﻿namespace ProFind.Lib.Global.Services.Models
+﻿namespace ProFind.Lib.Global.Services
 {
     public partial class Tag
     {

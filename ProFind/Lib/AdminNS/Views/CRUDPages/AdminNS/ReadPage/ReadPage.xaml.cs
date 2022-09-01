@@ -2,7 +2,6 @@
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.AdminNS.Views.CRUD;
-using ProFind.Lib.Global.Services.Models;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 

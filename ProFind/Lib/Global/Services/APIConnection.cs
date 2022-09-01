@@ -2,14 +2,14 @@
 {
     public class APIConnection
     {
-        private static WebService _service;
+        private static WebServiceClient _service;
 
-        public static WebService GetConnection { get => _service; }
+        public static WebServiceClient GetConnection { get => _service; }
 
         public static async void Init()
         {
 
-            _service = new WebService();
+            _service = new WebServiceClient(new System.Net.Http.HttpClient());
 
         }
     }

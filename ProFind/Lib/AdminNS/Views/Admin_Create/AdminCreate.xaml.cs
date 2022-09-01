@@ -9,7 +9,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
-using ProFind.Lib.Global.Services.Models;
 using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238

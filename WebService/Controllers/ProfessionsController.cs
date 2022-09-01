@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
-using WebService.Models;
 using Profession = WebService.Models.Generated.Profession;
 
 namespace WebService.Controllers

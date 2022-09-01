@@ -120,6 +120,7 @@ CREATE TABLE Professional
 );
 SELECT *
 FROM Professional;
+
 ###############################################
 CREATE TABLE WorkDayType
 (
