@@ -27,7 +27,7 @@ namespace ProFind.Lib.AdminNS.Views.ActivityCRUD
         {
             base.OnNavigatedTo(e);
             parentProject = (Project)e.Parameter;
-            PageHeader.Text = $"Activities related to {parentProject.TitlePJ}";
+            PageHeader.Text = $"Activities related to {parentProject.TitlePj}";
         }
 
         private async void InitializeData()
