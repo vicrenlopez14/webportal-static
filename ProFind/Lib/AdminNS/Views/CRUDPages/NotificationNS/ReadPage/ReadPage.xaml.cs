@@ -2,6 +2,8 @@
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Services.Models;
+using Org.BouncyCastle.Utilities.IO.Pem;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -18,10 +20,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ReadPage
 
             InitializeData();
         }
-
         private async void InitializeData()
         {
-            NotificationListView.ItemsSource = await new NotificationService().ListObjectAsync();
+            NotificationListView.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
         }
 
         private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)

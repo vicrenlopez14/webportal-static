@@ -7,6 +7,7 @@ using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,7 +20,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
     {
         private Project newObject = new Project();
 
-        private string[] status = Enum.GetNames(typeof(ProjectStatus));
+        private string[] status = Enum.GetNames(typeof(Projectstatus));
         private List<Professional> professionals = new List<Professional>();
         private List<string> professionalStrings = new List<string>();
 
@@ -59,7 +60,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
                 return;
             }
 
-            var result = await new ProjectService().Create(newObject);
+            var result = await APIConnection.GetConnection.PostProjectAsync(newObject);
 
             if (result == System.Net.HttpStatusCode.OK)
             {
@@ -75,33 +76,33 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-            newObject.PicturePJ = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            newObject.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.TitlePJ = Title_tb.Text;
+            newObject.TitlePj = Title_tb.Text;
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.DescriptionPJ = Description_tb.Text;
+            newObject.DescriptionPj= Description_tb.Text;
         }
 
 
 
         private void TotalPrice_tb_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
         {
-            newObject.TotalPricePJ = (float)sender.Value;
+            newObject.TotalPricePj = (float)sender.Value;
         }
 
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ProjectStatus selectedStatus = ProjectStatus.Inactive;
+            Projectstatus selectedStatus = Projectstatus.Inactive;
 
             if (InitialStatus_cb.SelectedIndex == 1)
-                selectedStatus = ProjectStatus.Active;
+                selectedStatus = Projectstatus.Active;
 
             newObject.Status = selectedStatus;
             newObject.IdPS1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";

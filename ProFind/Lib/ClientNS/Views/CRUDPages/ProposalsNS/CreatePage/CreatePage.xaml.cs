@@ -1,48 +1,59 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using ProFind.Lib.AdminNS.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
-using ProFind.Lib.Global.Services.Models;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Services.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class UpdatePage : Page
+    public sealed partial class CreatePage : Page
     {
-        Notification toManipulate = new Notification();
+        Proposal toManipulate = new Proposal();
 
-        public UpdatePage()
+        public CreatePage()
         {
             this.InitializeComponent();
         }
         private async void loadUsefulthings()
         {
 
-            SelectedPicture_pp.Source = toManipulate.PictureN.ToBitmapImage();
-            Title_tb.Text = toManipulate.TitleN ?? "";
-            Description_tb.Text = toManipulate.DescriptionN ?? "";
+            SelectedPicture_pp.Source = toManipulate.PicturePp.ToBitmapImage();
+            Title_tb.Text = toManipulate.TitlePp ?? "";
+            Description_tb.Text = toManipulate.DescriptionPp ?? "";
 
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            toManipulate = (Notification)e.Parameter;
+            toManipulate = (Proposal)e.Parameter;
             loadUsefulthings();
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
             // Reset with the same ID
-            toManipulate = new Notification()
+            toManipulate = new Proposal()
             {
-                IdN = toManipulate.IdN,
+                IdPp = toManipulate.IdPp,
 
             };
             loadUsefulthings();
@@ -51,13 +62,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            //await new NotificationService().Update(toManipulate);
-            await APIConnection.GetConnection.GetNotificationsAsync();
+
+            var toUpdateProposal = new Proposal("", Title_tb.Text, Description_tb.Text);
+            await APIConnection.GetConnection.PutProposalAsync(toManipulate.IdPp, toManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await APIConnection.GetConnection.DeleteNotificationAsync(toManipulate.IdN);
+            await APIConnection.GetConnection.DeleteProposalAsync(toManipulate.IdPp);
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
@@ -67,7 +79,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            toManipulate.PicturePp = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
         }
 
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
@@ -78,18 +90,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
             var pickedFile = await PickFileHelper.PickImage();
-            toManipulate.PictureN = await (pickedFile).ToByteArrayAsync();
+            toManipulate.PicturePp = await (pickedFile).ToByteArrayAsync();
             SelectedPicture_tbk.Text = pickedFile.DisplayName;
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            toManipulate.TitleN = Title_tb.Text;
+            toManipulate.TitlePp = Title_tb.Text;
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            toManipulate.DescriptionN = Description_tb.Text;
+            toManipulate.DescriptionPp = Description_tb.Text;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

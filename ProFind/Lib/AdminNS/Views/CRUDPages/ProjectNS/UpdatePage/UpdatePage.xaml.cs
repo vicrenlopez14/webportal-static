@@ -8,6 +8,7 @@ using ProFind.Lib.AdminNS.Views.ActivityCRUD;
 using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,7 +20,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
     public sealed partial class UpdatePage : Page
     {
         Project toManipulate = new Project();
-        private string[] status = Enum.GetNames(typeof(ProjectStatus));
+        private string[] status = Enum.GetNames(typeof(Projectstatus));
         private List<Professional> professionals = new List<Professional>();
         private List<string> professionalStrings = new List<string>();
 
@@ -39,10 +40,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
             Professional_cb.ItemsSource = professionalStrings;
             Client_cb.ItemsSource = clientStrings;
 
-            SelectedPicture_pp.Source = toManipulate.PicturePJ.ToBitmapImage();
-            Title_tb.Text = toManipulate.TitlePJ ?? "";
-            Description_tb.Text = toManipulate.DescriptionPJ ?? "";
-            TotalPrice_tb.Text = ((int)toManipulate.TotalPricePJ).ToString();
+            SelectedPicture_pp.Source = toManipulate.PicturePj.ToBitmapImage();
+            Title_tb.Text = toManipulate.TitlePj?? "";
+            Description_tb.Text = toManipulate.DescriptionPj ?? "";
+            TotalPrice_tb.Text = ((int)toManipulate.TotalPricePj).ToString();
             InitialStatus_cb.SelectedIndex = ((int)toManipulate.Status) - 1;
             Professional_cb.SelectedIndex = professionals.FindIndex(x => x.IdP == toManipulate.ResponsibleProfessional.IdP);
             Client_cb.SelectedIndex = clients.FindIndex(x => x.IdC == toManipulate.ResponsibleClient.IdC);
@@ -61,7 +62,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
             // Reset with the same ID
             toManipulate = new Project()
             {
-                IdPJ = toManipulate.IdPJ,
+                IdPj = toManipulate.IdP1,
 
             };
             loadUsefulthings();
@@ -70,12 +71,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new ProjectService().Update(toManipulate);
+            //await new ProjectService().Update(toManipulate);
+            await APIConnection.GetConnection.GetAdminAsync(toManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new ProjectService().Delete(toManipulate.IdPJ);
+            await APIConnection.GetConnection.DeleteProjectAsync(toManipulate.IdPj);
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
@@ -85,7 +87,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate.PicturePJ = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            toManipulate.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
         }
 
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
@@ -96,23 +98,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
             var pickedFile = await PickFileHelper.PickImage();
-            toManipulate.PicturePJ = await (pickedFile).ToByteArrayAsync();
+            toManipulate.PicturePj = await (pickedFile).ToByteArrayAsync();
             SelectedPicture_tbk.Text = pickedFile.DisplayName;
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            toManipulate.TitlePJ = Title_tb.Text;
+            toManipulate.TitlePj = Title_tb.Text;
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            toManipulate.DescriptionPJ = Description_tb.Text;
+            toManipulate.DescriptionPj = Description_tb.Text;
         }
 
         private void TotalPrice_tb_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
         {
-            toManipulate.TotalPricePJ = (int)TotalPrice_tb.Value;
+            toManipulate.TotalPricePj = (int)TotalPrice_tb.Value;
         }
 
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -123,7 +125,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
                 selectedStatus = ProjectStatus.Active;
 
             toManipulate.Status = selectedStatus;
-            toManipulate.IdPS1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";
+            toManipulate.IdPs1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";
         }
 
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
