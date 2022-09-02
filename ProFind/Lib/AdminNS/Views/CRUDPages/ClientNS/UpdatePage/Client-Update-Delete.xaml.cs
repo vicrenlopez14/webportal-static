@@ -19,21 +19,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
     public sealed partial class Client_Update_Delete : Page
     {
 
-        private byte[] imageBytes;
+    
         Client id = new Client();
 
         public Client_Update_Delete()
         {
             this.InitializeComponent();
         }
-   
-   
 
-      
+
+
+
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteClient = new Client("", Name1_tbx.Text, Email_tbx.Text, Password_tbx.Password, imageBytes);
+            byte[] da = id.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+            var toUpdapteClient = new Client("", Name1_tbx.Text, Email_tbx.Text, Password_tbx.Password, da);
 
             await APIConnection.GetConnection.PutClientAsync(id.IdC, toUpdapteClient);
 

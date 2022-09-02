@@ -10938,6 +10938,15 @@ namespace ProFind.Lib.Global.Services.Models
             CustomInit();
         }
 
+        public Notification(string v, string text1, string text2, string dayFormat, byte[] imageBytes)
+        {
+            V = v;
+            Text1 = text1;
+            Text2 = text2;
+            DayFormat = dayFormat;
+            ImageBytes = imageBytes;
+        }
+
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
@@ -10972,6 +10981,11 @@ namespace ProFind.Lib.Global.Services.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "idPj2")]
         public string IdPj2 { get; set; }
+        public string V { get; }
+        public string Text1 { get; }
+        public string Text2 { get; }
+        public string DayFormat { get; }
+        public byte[] ImageBytes { get; }
 
         /// <summary>
         /// Validate the object.

@@ -120,9 +120,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
             try
             {
+                byte[] da = id.PictureP = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
 
-                var toCreateProfessions = new Professional("", FirstName1_tbx.Text, Nacimiento.Date, Email.Text, passwordBox.Password, true, Sexo.SelectedValue == "Masculino" ? true : false, Dui.Text, Afp.Text, SeguroSocial.Text, CodigoPostal.Text, int.Parse(Salario.Text), FechadeIngreso.Date, imageBytes, curriculo, pro.Ids, depa.IdDp);
+                var toCreateProfessions = new Professional("", FirstName1_tbx.Text, Nacimiento.DayFormat, Email.Text, passwordBox.Password, true, Sexo.SelectedValue == "Masculino" ? true : false, Dui.Text, Afp.Text, SeguroSocial.Text, CodigoPostal.Text, int.Parse(Salario.Text), FechadeIngreso.Date, da, curriculo, pro.Ids, depa.IdDp);
 
 
                await APIConnection.GetConnection.PutProfessionalAsync(id.IdP,toCreateProfessions);

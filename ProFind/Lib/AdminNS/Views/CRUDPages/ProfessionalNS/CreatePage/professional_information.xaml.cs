@@ -24,13 +24,15 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         Profession pro = new Profession();
         Department depa = new Department();
 
+        Professional toManipulate = new Professional();
+
         private List<Department> departments = new List<Department>();
 
-        private byte[] imageBytes;
+       
 
         private byte[] curriculo;
 
-        private bool _isFirstAdmin;
+     
         public ProfessionalInformationAddition()
         {
             this.InitializeComponent();
@@ -50,8 +52,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            _isFirstAdmin = (bool)e.Parameter;
+            
 
         }
 
@@ -121,8 +122,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             try
             {
 
+                byte[] da = toManipulate.PictureP = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateProfessions = new Professional("", FirstName1_tbx.Text, Nacimiento.Date, Email.Text, passwordBox.Password, true, Sexo.SelectedValue == "Masculino" ? true: false, Dui.Text, Afp.Text, SeguroSocial.Text, CodigoPostal.Text, int.Parse(Salario.Text), FechadeIngreso.Date, imageBytes, curriculo, pro.Ids, depa.IdDp );
+                var toCreateProfessions = new Professional("", FirstName1_tbx.Text, Nacimiento.DayFormat, Email.Text, passwordBox.Password, true, Sexo.SelectedValue == "Masculino" ? true: false, Dui.Text, Afp.Text, SeguroSocial.Text, CodigoPostal.Text, int.Parse(Salario.Text), FechadeIngreso.Date, da, curriculo, pro.Ids, depa.IdDp );
 
 
                 var result = await APIConnection.GetConnection.PostProfessionalAsync(toCreateProfessions);

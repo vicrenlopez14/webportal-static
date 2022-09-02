@@ -17,11 +17,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
     /// </summary>
     public sealed partial class Create_Client : Page
     {
-       
 
+        Client toManipulate = new Client();
    
-        private byte[] imageBytes;
-
         public Create_Client()
         {
             this.InitializeComponent();
@@ -32,8 +30,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
             try
             {
                 Creation_pr.IsActive = true;
+                byte[] da = toManipulate.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Client(Name_tb.Text, Email_tb.Text, Password_pb.Password, "", imageBytes);
+                var toCreateClien = new Client(Name_tb.Text, Email_tb.Text, Password_pb.Password, "", da);
                
 
                 var result = await APIConnection.GetConnection.PostClientAsync(toCreateClien);
@@ -80,14 +79,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
             try
             {
                 Creation_pr.IsActive = true;
+                byte[] da = toManipulate.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Client(Name_tb.Text, Email_tb.Text, Password_pb.Password, "", imageBytes);
+                var toCreateClien = new Client(Name_tb.Text, Email_tb.Text, Password_pb.Password, "", da);
 
 
                 var result = await APIConnection.GetConnection.PostClientAsync(toCreateClien);
 
-                
-    
             }
             catch (Exception ex)
             {

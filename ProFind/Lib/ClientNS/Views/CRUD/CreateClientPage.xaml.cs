@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
+﻿using MySql.Data.MySqlClient.Memcached;
+using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
 using System;
 using Windows.UI.Popups;
@@ -14,7 +15,6 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
     /// </summary>
     public sealed partial class CreateClientPage : Page
     {
-        private Client newObject = new Client();
         public CreateClientPage()
         {
             this.InitializeComponent();
@@ -22,27 +22,27 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
 
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
-            PictureSelection_btn.IsChecked = !PictureSelection_btn.IsChecked;
+            
         }
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-            newObject.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+           
         }
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.NameC = Name_tb.Text;
+            
         }
 
         private void Email_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.EmailC = Email_tb.Text;
+            
         }
 
         private void Password_pb_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            newObject.PasswordC = Password_pb.Password;
+            
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
@@ -65,8 +65,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUD
             }
 
 
-            var res = await new ClientService().Create(newObject);
-            if (res == System.Net.HttpStatusCode.OK) new InAppNavigationController().GoBack();
+            
         }
     }
 }
