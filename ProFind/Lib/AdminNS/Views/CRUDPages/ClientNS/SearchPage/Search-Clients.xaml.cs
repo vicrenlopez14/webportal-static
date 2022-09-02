@@ -30,7 +30,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.SearchPage
 
         private void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            APIConnection.GetConnection.
+
+            
+
+
         }
     }
 }
