@@ -1,17 +1,29 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage;
 using ProFind.Lib.Global.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUD
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ReadPageAdmin : Page
+    public sealed partial class ListPage : Page
     {
         List<Admin> DEBUG_LIST = new List<Admin> {
             new Admin() {
@@ -34,7 +46,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
 
         };
 
-        public ReadPageAdmin()
+        public ListPage()
         {
             this.InitializeComponent();
 
@@ -43,19 +55,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
 
         private async void InitializeData()
         {
-            ProjectsListView.ItemsSource = await new AdminService().ListObjectAsync();
+            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var admin = e.ClickedItem as Admin;
 
-            new InAppNavigationController().NavigateTo(typeof(UpdatePageAdmin), admin);
+            new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), admin);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePageAdmin));
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
     }
 }

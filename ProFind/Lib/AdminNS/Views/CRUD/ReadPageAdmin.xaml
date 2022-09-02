@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUD"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:ProFind.Lib.Global.Services"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:services="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
@@ -30,7 +30,7 @@
                     IsItemClickEnabled="True"
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Admin">
+                        <DataTemplate x:DataType="services:Admin">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"

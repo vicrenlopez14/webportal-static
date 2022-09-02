@@ -1,12 +1,11 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.ListPage.ListPage"
+    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.ListPage"
+    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:services="using:ProFind.Lib.Global.Services"
-    xmlns:syncfusion="using Syncfusion.Pdf"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -27,11 +26,11 @@
                     Text="Registered administrators" />
                 <ListView
                     Name="AdminsListView"
-                    d:ItemsSource=""
                     IsItemClickEnabled="True"
-                    SelectionMode="None">
+                    SelectionMode="None" 
+                    d:ItemsSource="">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="syncfusion:PDFDocument">
+                        <DataTemplate x:DataType="services:Admin">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"
@@ -42,7 +41,7 @@
                                         Width="69"
                                         Height="73"
                                         Margin="15,0"
-                                        ProfilePicture="{Binding Picture}" />
+                                        ProfilePicture="{Binding PictureA}" />
                                     <StackPanel Height="42" Orientation="Vertical">
                                         <TextBlock
                                             Height="21"
