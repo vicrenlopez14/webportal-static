@@ -1,10 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
@@ -12,6 +8,61 @@ namespace ProFind.Lib.Global.Helpers
 {
     public static class TextBoxValidatorExtension
     {
+        #region ShowAlerts
+        public static async void ShowAlertsForEmptyTextBoxes(this List<TextBox> textBoxes)
+        {
+            var emptyTextBoxes = textBoxes.EmptyTextBoxes();
+
+            // Foreach over emptyTextBoxes
+            foreach (var textBox in emptyTextBoxes)
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+        }
+
+        // ShowAlertsForIsValid
+        public static async void ShowAlertsForIsValid(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = textBoxes.InvalidTextBoxes();
+
+            // Foreach over invalidTextBoxes
+            foreach (var textBox in invalidTextBoxes)
+            {
+                var dialog = new MessageDialog("The field is invalid");
+                await dialog.ShowAsync();
+            }
+        }
+
+        // ShowAlertsForPhoneNumber
+        public static async void ShowAlertsForPhoneNumber(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = textBoxes.IsValidPhoneTextBoxes();
+
+            // Foreach over invalidTextBoxes
+            foreach (var textBox in invalidTextBoxes)
+            {
+                var dialog = new MessageDialog("The field is invalid");
+                await dialog.ShowAsync();
+            }
+        }
+
+        // ShowAlertsForEmail
+        public static async void ShowAlertsForEmail(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = textBoxes.IsValidEmailTextBoxes();
+
+            // Foreach over invalidTextBoxes
+            foreach (var textBox in invalidTextBoxes)
+            {
+                var dialog = new MessageDialog("The field is invalid");
+                await dialog.ShowAsync();
+            }
+        }
+
+
+        // 
+
         // Verify a List of TextBoxes are not empty
         public static List<TextBox> EmptyTextBoxes(this List<TextBox> textBoxes)
         {
@@ -28,18 +79,104 @@ namespace ProFind.Lib.Global.Helpers
             return emptyTextBoxes;
         }
 
-        public static async void ShowAlertsForEmptyTextBoxes(this List<TextBox> textBoxes)
+        // InvalidTextBoxes
+        public static List<TextBox> InvalidTextBoxes(this List<TextBox> textBoxes)
         {
-            var emptyTextBoxes = textBoxes.EmptyTextBoxes();
+            var invalidTextBoxes = new List<TextBox>();
 
-            // Foreach over emptyTextBoxes
-            foreach (var textBox in emptyTextBoxes)
+            foreach (var textBox in textBoxes)
             {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                if (!textBox.IsValid())
+                {
+                    invalidTextBoxes.Add(textBox);
+                }
             }
+
+            return invalidTextBoxes;
         }
 
+        // IsValidPhoneTextBoxes
+        public static List<TextBox> IsValidPhoneTextBoxes(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = new List<TextBox>();
+
+            foreach (var textBox in textBoxes)
+            {
+                if (!textBox.IsValidPhone())
+                {
+                    invalidTextBoxes.Add(textBox);
+                }
+            }
+
+            return invalidTextBoxes;
+        }
+
+        // IsValidEmailTextBoxes
+        public static List<TextBox> IsValidEmailTextBoxes(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = new List<TextBox>();
+
+            foreach (var textBox in textBoxes)
+            {
+                if (!textBox.IsValidEmail())
+                {
+                    invalidTextBoxes.Add(textBox);
+                }
+            }
+
+            return invalidTextBoxes;
+        }
+
+        // IsValidNameTextboxes
+        public static List<TextBox> IsValidNameTextboxes(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = new List<TextBox>();
+
+            foreach (var textBox in textBoxes)
+            {
+                if (!textBox.IsValidName())
+                {
+                    invalidTextBoxes.Add(textBox);
+                }
+            }
+
+            return invalidTextBoxes;
+        }
+
+        // IsValidNumberTextboxes
+        public static List<TextBox> IsValidNumberTextboxes(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = new List<TextBox>();
+
+            foreach (var textBox in textBoxes)
+            {
+                if (!textBox.IsValidNumber())
+                {
+                    invalidTextBoxes.Add(textBox);
+                }
+            }
+
+            return invalidTextBoxes;
+        }
+
+        // IsValidDateTextboxes
+        public static List<TextBox> IsValidDateTextboxes(this List<TextBox> textBoxes)
+        {
+            var invalidTextBoxes = new List<TextBox>();
+
+            foreach (var textBox in textBoxes)
+            {
+                if (!textBox.IsValidDate())
+                {
+                    invalidTextBoxes.Add(textBox);
+                }
+            }
+
+            return invalidTextBoxes;
+        }
+        
+
+        #region Validations
         public static bool IsValid(this TextBox textBox)
         {
             return !string.IsNullOrEmpty(textBox.Text);
