@@ -432,6 +432,18 @@
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\CreatePage\CreateDialog.xaml.cs">
+      <DependentUpon>CreateDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\DeletePage\DeletePage.xaml.cs">
+      <DependentUpon>DeletePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\ReadPage\ReadDialog.xaml.cs">
+      <DependentUpon>ReadDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -944,6 +956,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\CreatePage\CreateDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\DeletePage\DeletePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\ReadPage\ReadDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\UpdatePage\UpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\CreatePage\CreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1249,7 +1277,6 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ClientNS\UpdatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\CreatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\DeletePage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\ListPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\UpdatePage\.gitkeep" />
