@@ -185,6 +185,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\ListPage\ListPage.xaml.cs">
       <DependentUpon>ListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\ReadPage\ReadDialog.xaml.cs">
+      <DependentUpon>ReadDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\UpdatePage\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
@@ -638,6 +641,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\ReadPage\ReadDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
