@@ -1,5 +1,7 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Services.Models;
 using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
@@ -15,8 +17,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
     /// </summary>
     public sealed partial class Create_Client : Page
     {
-        private Client newObject = new Client();
+       
 
+   
+        private byte[] imageBytes;
 
         public Create_Client()
         {
@@ -25,30 +29,25 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private async Task Create_btn_ClickAsync(object sender, RoutedEventArgs e)
         {
-
-
-            var result = await new ClientService().Create(newObject);
-
-            if (result == System.Net.HttpStatusCode.OK)
+            try
             {
-                new InAppNavigationController().GoBack();
-            }
-            if (string.IsNullOrEmpty(Name_tb.Text))
-            {
+                Creation_pr.IsActive = true;
 
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                var toCreateClien = new Client(Name_tb.Text, Email_tb.Text, Password_pb.Password, "", imageBytes);
+               
+
+                var result = await APIConnection.GetConnection.PostClientAsync(toCreateClien);
+
             }
-            else if (string.IsNullOrEmpty(Email_tb.Text))
+            catch (Exception ex)
             {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                Console.WriteLine(ex.Message);
             }
-            else if (string.IsNullOrEmpty(Password_pb.Password))
+            finally
             {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                Creation_pr.IsActive = false;
             }
+
         }
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
@@ -57,48 +56,46 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-            newObject.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+           
 
         }
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.NameC = Name_tb.Text;
+            
         }
 
         private void Email_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.EmailC = Email_tb.Text;
+            
         }
 
         private void Password_pb_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            newObject.PasswordC = Password_pb.Password;
+           
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var result = await new ClientService().Create(newObject);
+            try
+            {
+                Creation_pr.IsActive = true;
 
-            if (result == System.Net.HttpStatusCode.OK)
-            {
-                new InAppNavigationController().GoBack();
-            }
-            if (string.IsNullOrEmpty(Name_tb.Text))
-            {
+                var toCreateClien = new Client(Name_tb.Text, Email_tb.Text, Password_pb.Password, "", imageBytes);
 
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+
+                var result = await APIConnection.GetConnection.PostClientAsync(toCreateClien);
+
+                
+    
             }
-            else if (string.IsNullOrEmpty(Email_tb.Text))
+            catch (Exception ex)
             {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                Console.WriteLine(ex.Message);
             }
-            else if (string.IsNullOrEmpty(Password_pb.Password))
+            finally
             {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                Creation_pr.IsActive = false;
             }
         }
 

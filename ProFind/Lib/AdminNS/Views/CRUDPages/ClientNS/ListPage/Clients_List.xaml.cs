@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Services.Models;
+using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -10,6 +12,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
     /// </summary>
     public sealed partial class Clients_List : Page
     {
+        Client Id1 = new Client();
         public Clients_List()
         {
             this.InitializeComponent();
@@ -18,12 +21,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         public async void GetClientList()
         {
-            var ClientService = new ClientService();
-            List<Client> ClientList = new List<Client>();
-
-            ClientList = await ClientService.ListObjectAsync() as List<Client>;
-
-            ClientListView.ItemsSource = ClientList;    
+            await APIConnection.GetConnection.GetClientAsync(Id1.IdC);
 
         }
 

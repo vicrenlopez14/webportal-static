@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -17,45 +18,36 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
     public sealed partial class UpdatePage : Page
     {
 
-        Activity activity = new Activity();
-        
-        
+
+        private byte[] imageBytes;
+        Admin id = new Admin();
+
         public UpdatePage()
         {
             this.InitializeComponent();
 
-            
-        }
-        private async void loadUsefulthings()
-        {
-            FirstName1_tbx.Text = toManipulate.NameA;
-            Email_tbx.Text = toManipulate.EmailA;
 
-            Picture_img.Source = toManipulate.PictureA.ToBitmapImage();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            toManipulate = (Admin)e.Parameter;
-            loadUsefulthings();
-        }
+
+
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            // Reset with the same ID
-            toManipulate = new Admin()
-            {
-                IdA = toManipulate.IdA,
-            };
 
-            loadUsefulthings();
         }
 
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new AdminService().Update(toManipulate);
+
+
+
+            var toUpdapteAdmin = new Admin("", FirstName1_tbx.Text, Email_tbx.Text, Telefono_tbx.Text, Password_tbx.Password, imageBytes);
+
+            await APIConnection.GetConnection.PutAdminAsync(id.IdA, toUpdapteAdmin);
+
+
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
@@ -76,9 +68,30 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new AdminService().Delete(toManipulate.IdA);
 
+            await APIConnection.GetConnection.DeleteAdminAsync(id.IdA);
+
+
+            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Email_tbx.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
+            else if (string.IsNullOrEmpty(Password_tbx.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
         }
+
+
+
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -87,10 +100,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate.PictureA = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
         }
 
     }
 }
+
 
 

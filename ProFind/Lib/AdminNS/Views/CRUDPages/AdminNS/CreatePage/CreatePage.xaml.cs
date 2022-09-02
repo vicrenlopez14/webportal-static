@@ -36,7 +36,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
             public async void loadUsefulThings()
             {
-                ranks = (List<Rank>)await new RankService().ListObjectAsync();
+                ranks = (List<Rank>)await new Rank().ListObjectAsync();
 
                 foreach (var rank in ranks)
                 {

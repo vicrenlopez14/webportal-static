@@ -48,7 +48,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind NameA}" />
-                                        <TextBlock Text="{x:Bind Rank.NameR}" />
+                                        <TextBlock Text="{x:Bind models:Rank}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

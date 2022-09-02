@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Services.Models;
+using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -12,6 +13,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
+        Professional Id1 = new Professional();
         public ReadPage()
         {
             this.InitializeComponent();
@@ -20,18 +22,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
         public async void GetProjectsList()
 
         {
-            var professionalService = new ProfessionalService();
-
-            List<Project> activeProfessionalsList = new List<Project>();
-
-            IDictionary<string, string> criteries = new Dictionary<string, string>()
-            {
-                ["ActiveP"] = "1"
-            };
-
-            activeProfessionalsList = await professionalService.Search(criteries) as List<Project>;
-
-            DashboardProfessionalsActiveListView.ItemsSource = activeProfessionalsList;
+            await APIConnection.GetConnection.GetProfessionalAsync(Id1.IdP);
+           
         }
 
         private async void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)

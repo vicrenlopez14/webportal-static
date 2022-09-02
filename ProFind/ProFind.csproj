@@ -161,6 +161,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ClientNS\ListPage\Clients_List.xaml.cs">
       <DependentUpon>Clients_List.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ClientNS\SearchPage\Search-Clients.xaml.cs">
+      <DependentUpon>Search-Clients.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ClientNS\UpdatePage\Client-Update-Delete.xaml.cs">
       <DependentUpon>Client-Update-Delete.xaml</DependentUpon>
     </Compile>
@@ -193,9 +196,6 @@
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\DeletePage\Delete.xaml.cs">
       <DependentUpon>Delete.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\ListPage\List-Page.xaml.cs">
-      <DependentUpon>List-Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\ListPage\ListPage.xaml.cs">
       <DependentUpon>ListPage.xaml</DependentUpon>
@@ -572,6 +572,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ClientNS\SearchPage\Search-Clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ClientNS\UpdatePage\Client-Update-Delete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -615,10 +619,6 @@
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\DeletePage\Delete.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\ListPage\List-Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\ListPage\ListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -1000,6 +1000,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\AdminNS\Models\" />
+    <Folder Include="Lib\AdminNS\Views\CRUDPages\ClientNS\ReadPage\" />
     <Folder Include="Lib\AdminNS\Views\Estado_del_proyecto\Controls\" />
     <Folder Include="Lib\ClientNS\Models\" />
     <Folder Include="Lib\Global\Models\" />
@@ -1012,16 +1013,10 @@
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\DeletePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\SearchPage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\UpdatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ClientNS\CreatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ClientNS\ListPage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ClientNS\ReadPage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ClientNS\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ClientNS\UpdatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\.gitkeep" />
@@ -1030,8 +1025,6 @@
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\DeletePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ListPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\NotificationNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\NotificationNS\DeletePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\NotificationNS\ListPage\.gitkeep" />
@@ -1066,15 +1059,12 @@
     <None Include="Lib\AdminNS\Views\CRUDPages\RankNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\RankNS\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ReadPage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\TagNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\TagNS\DeletePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\TagNS\ListPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\TagNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\TagNS\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\TagNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\UpdatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\WorkDayTypeNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\WorkDayTypeNS\ListPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\WorkDayTypeNS\ReadPage\.gitkeep" />

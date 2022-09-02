@@ -11118,7 +11118,7 @@ namespace ProFind.Lib.Global.Services.Models
         /// <summary>
         /// Initializes a new instance of the Professional class.
         /// </summary>
-        public Professional(string idP = default(string), string nameP = default(string), DateOnly dateBirthP = default(DateOnly), string emailP = default(string), string passwordP = default(string), bool? activeP = default(bool?), bool? sexP = default(bool?), string duip = default(string), string afpp = default(string), string isssp = default(string), string zipCodeP = default(string), double? salaryP = default(double?), DateOnly hiringDateP = default(DateOnly), byte[] pictureP = default(byte[]), byte[] curriculumP = default(byte[]), int? ids1 = default(int?), int? idDp1 = default(int?), int? idWdt1 = default(int?))
+        public Professional(string idP = default(string), string nameP = default(string), DateOnly dateBirthP = default(DateOnly), string emailP = default(string), string passwordP = default(string), bool? activeP = default(bool?), bool? sexP = default(bool?), string duip = default(string), string afpp = default(string), string isssp = default(string), string zipCodeP = default(string), double? salaryP = default(double?), DateOnly hiringDateP = default(DateOnly), byte[] pictureP = default(byte[]), byte[] curriculumP = default(byte[]), int? ids1 = default(int?), int? idDp1 = default(int?))
         {
             this.IdP = idP;
             this.NameP = nameP;
@@ -11137,7 +11137,7 @@ namespace ProFind.Lib.Global.Services.Models
             this.CurriculumP = curriculumP;
             this.Ids1 = ids1;
             this.IdDp1 = idDp1;
-            this.IdWdt1 = idWdt1;
+            
             CustomInit();
         }
 
