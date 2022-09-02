@@ -1,4 +1,6 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
+using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -11,6 +13,26 @@ namespace ProFind.Lib.AdminNS.Views.CRUD
     /// </summary>
     public sealed partial class ReadPageAdmin : Page
     {
+        List<Admin> DEBUG_LIST = new List<Admin> {
+            new Admin() {
+                IdA = "1",
+                NameA = "Admin 1",
+                EmailA = "example@mail.com",
+                PasswordA = "123456",
+            },
+            new Admin() {
+                IdA = "2",
+                NameA = "Admin 2",
+                EmailA = "example@mail.com",
+                PasswordA = "123456",
+                },
+            new Admin() {
+                IdA = "3",
+                NameA = "Admin 3",
+                EmailA = "example@mail.com",
+                
+        };
+
         public ReadPageAdmin()
         {
             this.InitializeComponent();

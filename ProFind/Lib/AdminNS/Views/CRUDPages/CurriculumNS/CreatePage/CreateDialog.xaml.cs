@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
 using Syncfusion.Pdf;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -25,6 +26,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
         public CreateDialog(PdfDocument document)
         {
             UpdateMode();
+
+            PDFPreview.Load(document);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -68,6 +71,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
         {
             SideHeader_txt.Text = SideHeader_UPDATEMODE;
             SideText_txt.Text = SideText_UPDATEMODE;
+
+            
         }
 
     }

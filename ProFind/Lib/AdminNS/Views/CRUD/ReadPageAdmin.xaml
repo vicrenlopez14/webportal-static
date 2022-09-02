@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUD"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:Application.Models"
+    xmlns:models="using:ProFind.Lib.Global.Services"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
@@ -48,7 +48,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind NameA}" />
-                                        <TextBlock Text="{x:Bind Rank.NameR}" />
+                                        <TextBlock Text="" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
