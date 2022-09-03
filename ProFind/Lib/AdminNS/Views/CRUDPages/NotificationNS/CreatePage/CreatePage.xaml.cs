@@ -16,7 +16,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private Notification newObject = new Notification();
+
+        Notification toManipulate = new Notification();
 
         public CreatePage()
         {
@@ -39,13 +40,32 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
                 return;
             }
 
+<<<<<<< HEAD
             var result = await APIConnection.GetConnection.PostNotificationAsync(newObject); 
+=======
+>>>>>>> Daniel-Rama2
 
-            if (result == System.Net.HttpStatusCode.OK)
+            try
             {
-                new InAppNavigationController().GoBack();
-            }
+                Creation_pr.IsActive = true;
+                byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
+                var toCreateClien = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.DateFormat, da, "" );
+
+
+                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Creation_pr.IsActive = false;
+            }
         }
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
@@ -55,18 +75,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-            newObject.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+           
 
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.TitleN = Title_tb.Text;
+           
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.DescriptionN = Description_tb.Text;
+           
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+
         }
     }
 }

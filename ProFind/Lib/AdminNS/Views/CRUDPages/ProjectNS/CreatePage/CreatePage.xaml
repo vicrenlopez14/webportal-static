@@ -5,8 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+<<<<<<< HEAD
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
+=======
+    Style="{StaticResource PageStyle}">
+>>>>>>> Daniel-Rama2
 
     <Grid>
         <Grid>
@@ -61,11 +65,13 @@
                             ValueChanged="TotalPrice_tb_ValueChanged" />
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.33*" />
-                                <ColumnDefinition Width="0.33*" />
-                                <ColumnDefinition Width="0.33*" />
+                                <ColumnDefinition Width="433*" />
+                                <ColumnDefinition Width="378*" />
+                                <ColumnDefinition Width="57*"/>
+                                <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
                             <ComboBox
+<<<<<<< HEAD
                                 Name="InitialStatus_cb"
                                 Grid.Column="0"
                                 Margin="0,20"
@@ -90,7 +96,30 @@
                                 Header="Client"
                                 SelectedIndex="0"
                                 SelectionChanged="Client_cb_SelectionChanged" />
+=======
+                            Name="InitialStatus_cb"
+                            HorizontalAlignment="Center"
+                            Header="Initial status"
+                            SelectedIndex="0"
+                            SelectionChanged="InitialStatus_cb_SelectionChanged" VerticalAlignment="Center" />
+                            <ComboBox
+                            Name="Professional_cb"
+                            Grid.Column="1"
+                            Margin="141,0,0,0"
+                            Header="Responsible professional"
+                            SelectedIndex="0"
+                            SelectionChanged="Professional_cb_SelectionChanged" VerticalAlignment="Center" />
+                            <ComboBox
+                            Name="Client_cb"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            Header="Client"
+                            SelectedIndex="0"
+                            SelectionChanged="Client_cb_SelectionChanged" VerticalAlignment="Center" />
+>>>>>>> Daniel-Rama2
                         </Grid>
+
+                       
 
                         <Grid Margin="0,10,0,0" VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>

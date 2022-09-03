@@ -24,11 +24,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ReadPage
 
         private async void InitializeData()
         {
-<<<<<<< HEAD
-            ProjectsListView.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
-=======
             await APIConnection.GetConnection.GetAdminAsync(Id1.IdA);
->>>>>>> Daniel-Rama2
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)

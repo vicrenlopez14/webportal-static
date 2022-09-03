@@ -4,7 +4,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
-using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
+
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services.Models;
 using ProFind.Lib.Global.Services;
@@ -18,6 +18,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
+<<<<<<< HEAD
         private Project newObject = new Project();
 
         private string[] status = Enum.GetNames(typeof(Projectstatus));
@@ -26,26 +27,36 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private List<Client> clients = new List<Client>();
         private List<string> clientStrings = new List<string>();
+=======
+        Project toManipulate = new Project();
+>>>>>>> Daniel-Rama2
 
         public CreatePage()
         {
             this.InitializeComponent();
-            loadUsefulThings();
+            Cargar();
+
         }
 
-        public async void loadUsefulThings()
+        private async void Cargar()
         {
-            (professionals, professionalStrings) = await new ProfessionalService().GetComboboxChoices();
-            (clients, clientStrings) = await new ClientService().GetComboboxChoices();
+            InitialStatus_cb.ItemsSource = await APIConnection.GetConnection.GetProjectstatusesAsync();
 
-            InitialStatus_cb.ItemsSource = status;
-            Professional_cb.ItemsSource = professionalStrings;
-            Client_cb.ItemsSource = clientStrings;
+            Professional_cb.ItemsSource = await APIConnection.GetConnection.GetProfessionalsAsync();
+            Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
+
         }
 
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
+            byte[] da = toManipulate.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+            var toCreateClien = new Project("", Title_tb.Text, Description_tb.Text,da, TotalPrice_tb.Value, (InitialStatus_cb.SelectedItem as Projectstatus).IdPs, (Professional_cb.SelectedItem as Professional).IdP,  (Client_cb.SelectedItem as Client).IdC );
+
+
+            var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
+
             if (string.IsNullOrEmpty(Title_tb.Text))
             {
 
@@ -60,14 +71,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
                 return;
             }
 
+<<<<<<< HEAD
             var result = await APIConnection.GetConnection.PostProjectAsync(newObject);
+=======
+           
+>>>>>>> Daniel-Rama2
 
-            if (result == System.Net.HttpStatusCode.OK)
-            {
-                new InAppNavigationController().GoBack();
-            }
+           
 
         }
+       
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
@@ -76,29 +89,46 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             newObject.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+=======
+           
+>>>>>>> Daniel-Rama2
 
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
+<<<<<<< HEAD
             newObject.TitlePj = Title_tb.Text;
+=======
+            
+>>>>>>> Daniel-Rama2
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
+<<<<<<< HEAD
             newObject.DescriptionPj = Description_tb.Text;
+=======
+            
+>>>>>>> Daniel-Rama2
         }
 
 
 
         private void TotalPrice_tb_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
         {
+<<<<<<< HEAD
             newObject.TotalPricePj = (float)sender.Value;
+=======
+           
+>>>>>>> Daniel-Rama2
         }
 
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+<<<<<<< HEAD
             Projectstatus selectedStatus = Projectstatus.Inactive;
 
             if (InitialStatus_cb.SelectedIndex == 1)
@@ -106,16 +136,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
             newObject.Status = selectedStatus;
             newObject.IdPS1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";
+=======
+           
+>>>>>>> Daniel-Rama2
         }
 
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            newObject.ResponsibleProfessional = professionals[Professional_cb.SelectedIndex];
+          
         }
 
         private void Client_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            newObject.ResponsibleClient = clients[Client_cb.SelectedIndex];
+          
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
