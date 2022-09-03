@@ -43,7 +43,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
 
             await APIConnection.GetConnection.PutNotificationAsync(toManipulate.IdN, toUpdapteNoti);
 
-            await APIConnection.GetConnection.s();
+            
 
 
         }

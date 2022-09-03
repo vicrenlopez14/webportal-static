@@ -42,12 +42,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
         {
 
 
+
             byte[] da = id.PictureA = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
             var toUpdapteAdmin = new Admin("", FirstName1_tbx.Text, Email_tbx.Text, Telefono_tbx.Text, Password_tbx.Password, da);
 
             await APIConnection.GetConnection.PutAdminAsync(id.IdA, toUpdapteAdmin);
 
+
+
+            
+            await APIConnection.GetConnection.GetAdminAsync("toManipulate");
 
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
