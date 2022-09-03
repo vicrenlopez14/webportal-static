@@ -115,37 +115,21 @@ CREATE TABLE Professional
     IdDP1              INT,
     IdWDT1             INT,
     FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE,
-    FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE,
-    FOREIGN KEY (IdWDT1) REFERENCES WorkDayType (IdWDT) ON DELETE CASCADE
+    FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE
 );
 SELECT *
 FROM Professional;
 
 ###############################################
-CREATE TABLE WorkDayType
-(
-    IdWDT   INT AUTO_INCREMENT PRIMARY KEY,
-    NameWDT VARCHAR(25)
-);
-
-INSERT INTO WorkDayType (NameWDT)
-VALUES ('Diurnal'),
-       ('Nocturnal');
-
-SELECT *
-FROM WorkDayType;
-
-###############################################
 CREATE TABLE ProjectStatus
 (
-    IdPS   INT AUTO_INCREMENT PRIMARY KEY,
-    NamePS VARCHAR(20)
+    IdPS          CHAR(21) PRIMARY KEY,
+    NamePS        VARCHAR(20),
+    DescriptionPS VARCHAR(150),
+    ColorPS       VARCHAR(6),
+    IdPJ3         CHAR(21),
+    FOREIGN KEY (IdPJ3) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
-
-INSERT INTO ProjectStatus (NamePS)
-VALUES ('Inactive'),
-       ('Active'),
-       ('Proposal');
 
 SELECT *
 FROM ProjectStatus;

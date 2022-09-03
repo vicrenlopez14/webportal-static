@@ -87,7 +87,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newObject.DescriptionPj= Description_tb.Text;
+            newObject.DescriptionPj = Description_tb.Text;
         }
 
 
@@ -117,6 +117,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         {
             newObject.ResponsibleClient = clients[Client_cb.SelectedIndex];
         }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialogResult result = await new SelectProfessionalDialog().ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                newObject.IdP1 = SelectProfessionalDialog.SelectedProfessional.IdP;
+            }
+        }
     }
-    
+
 }

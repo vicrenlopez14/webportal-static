@@ -1,6 +1,10 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
+﻿using Microsoft.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Views;
 using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
@@ -16,136 +20,121 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private List<Professional> professionals = new List<Professional>();
-        private List<string> professionalStrings = new List<string>();
+        private List<Rank> ranks = new List<Rank>();
+        private byte[] imageBytes;
+        private bool isFirstAdmin = false;
 
-        private List<Client> clients = new List<Client>();
-        private List<string> clientStrings = new List<string>();
-
-        private Activity toManipulate = new Activity();
-        private Project parentProject;
         public CreatePage()
         {
+
             this.InitializeComponent();
             loadUsefulThings();
+
         }
 
         public async void loadUsefulThings()
         {
-            professionals = await APIConnection.GetConnection.GetProfessionalsAsync() as List<Professional>;
-            clients = await APIConnection.GetConnection.GetClientsAsync() as List<Client>;
+            ranks = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
+
+            Rank_cb.ItemsSource = ranks;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e.Parameter is Tuple<Project, Activity>)
+            isFirstAdmin = (bool)e.Parameter;
+        }
+
+        private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender,
+            Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Clients_Login));
+        }
+
+        private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(AdminNS.Views.InitPage.InitPage));
+        }
+
+        private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+        }
+
+        private async void PictureSelection_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            try
             {
-                var param = (Tuple<Project, Activity>)e.Parameter;
-                parentProject = param.Item1;
-                toManipulate = param.Item2;
-                FillFields(toManipulate);
-                ManipulationMode();
+                Creation_pr.IsActive = true;
+
+                var file = await PickFileHelper.PickImage();
+
+                if (file != null)
+                {
+                    SelectedPicture_tbk.Text = file.Name;
+                    imageBytes = await file.ToByteArrayAsync();
+
+                    SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                }
             }
-            else if (e.Parameter is Project)
+            catch (Exception ex)
             {
-                parentProject = (Project)e.Parameter;
-                CreationMode();
+                Console.WriteLine(ex.Message);
             }
-        }
-        private void FillFields(Activity incomingActivity)
-        {
-            SelectedPicture_pp.Source = incomingActivity.PictureA.ToBitmapImage();
-            Title_tb.Text = incomingActivity.TitleA;
-            Description_tb.Text = incomingActivity.DescriptionA;
-            ExpectedBegin_dp.Date = incomingActivity.ExpectedBeginA;
-            ExpectedEnd_dp.Date = incomingActivity.ExpectedEndA;
-        }
-
-        private void CreationMode()
-        {
-            PageTitle.Text = "Creation";
-            PageSubtitle.Text = "Create a new activity for your project.";
-            Create_btn.Visibility = Visibility.Visible;
-            Update_btn.Visibility = Visibility.Collapsed;
-            Reset_btn.Visibility = Visibility.Collapsed;
-            Delete_btn.Visibility = Visibility.Collapsed;
-        }
-
-        private void ManipulationMode()
-        {
-            PageTitle.Text = "Manipulation";
-            PageSubtitle.Text = "Update, delete and reset.";
-            Create_btn.Visibility = Visibility.Collapsed;
-            Update_btn.Visibility = Visibility.Visible;
-            Reset_btn.Visibility = Visibility.Visible;
-            Delete_btn.Visibility = Visibility.Visible;
-        }
-
-        private async void Create_btn_Click(object sender, RoutedEventArgs e)
-        {
-            toManipulate.IdPJ1 = parentProject.IdPJ;
-
-            var result = await new ActivityService().Create(toManipulate);
-
-            if (result == System.Net.HttpStatusCode.OK)
+            finally
             {
-                new InAppNavigationController().GoBack(parentProject);
+                Creation_pr.IsActive = false;
+                PictureSelection_btn.IsChecked = false;
             }
         }
 
-        private async void Update_btn_Click(object sender, RoutedEventArgs e)
+        private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            await APIConnection.GetConnection.PutActivityAsync(toManipulate.IdA, toManipulate);
+            SelectedPicture_pp.DisplayName = Name_tb.Text;
         }
 
-        private async void Delete_btn_Click(object sender, RoutedEventArgs e)
+        private async void Create_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await APIConnection.GetConnection.DeleteActivityAsync(toManipulate.IdA);
-        }
-
-        private async void Reset_btn_Click(object sender, RoutedEventArgs e)
-        {
-            // Reset with the same ID
-            toManipulate = new Activity()
+            try
             {
-                IdA = toManipulate.IdA,
+                Creation_pr.IsActive = true;
 
-            };
-            loadUsefulThings();
+                var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                toCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR.ToString();
+
+                var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);
+
+                ToggleThemeTeachingTip2.IsOpen = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Creation_pr.IsActive = false;
+            }
+
+        }
+        private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
         }
 
-
-        private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
+        private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
         {
-            PictureSelection_btn.IsChecked = !PictureSelection_btn.IsChecked;
+
         }
 
-        private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
+        private void ToggleThemeTeachingTip2_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
         {
-            var pickedFile = await PickFileHelper.PickImage();
-            toManipulate.PictureA = await (pickedFile).ToByteArrayAsync();
-            SelectedPicture_tbk.Text = pickedFile.Name;
+            CreateProfessionals_btn.Visibility = Visibility.Visible;
         }
 
-        private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
+        private void GoToProfessionals(object sender, RoutedEventArgs e)
         {
-            toManipulate.TitleA = Title_tb.Text;
-        }
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
 
-        private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            toManipulate.DescriptionA = Description_tb.Text;
-        }
-
-        private void ExpectedBegin_dp_DateChanged(object sender, DatePickerValueChangedEventArgs e)
-        {
-            toManipulate.ExpectedBeginA = ExpectedBegin_dp.Date;
-        }
-
-        private void ExpectedEnd_dp_DateChanged(object sender, DatePickerValueChangedEventArgs e)
-        {
-            toManipulate.ExpectedEndA = ExpectedBegin_dp.Date;
         }
     }
 }

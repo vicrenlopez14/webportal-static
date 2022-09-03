@@ -1,16 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace WebService.Models.Generated
+namespace WebService.Models.Generated;
+
+[Table("profession")]
+public partial class Profession
 {
-    [Table("profession")]
-    public partial class Profession
-    {
-        [Key]
-        [Column("IdS")]
-        public int Ids { get; set; }
-        [Column("NameS")]
-        [StringLength(50)]
-        public string? Names { get; set; }
-    }
+    [Key]
+    [Column("IdPFS")]
+    public int IdPfs { get; set; }
+    [Column("NamePFS")]
+    [StringLength(50)]
+    public string? NamePfs { get; set; }
 }

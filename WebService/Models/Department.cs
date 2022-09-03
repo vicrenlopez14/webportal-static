@@ -1,7 +1,7 @@
-﻿namespace WebService.Models
+﻿// ReSharper disable once CheckNamespace
+namespace WebService.Models.Generated;
+
+public partial class Department
 {
-    public partial class Department
-    {
       
-    }
 }

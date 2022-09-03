@@ -131,26 +131,14 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\AdminNS\Controllers\AdminNavigationController.cs" />
-    <Compile Include="Lib\AdminNS\Views\ActivityCRUD\CreatePageActivity.xaml.cs">
-      <DependentUpon>CreatePageActivity.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\ActivityCRUD\ReadPageActivity.xaml.cs">
-      <DependentUpon>ReadPageActivity.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Admin_Create\AdminCreate.xaml.cs">
-      <DependentUpon>AdminCreate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Admin_Page\AdminList.xaml.cs">
-      <DependentUpon>AdminList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Calendar_Page\Calendar_Page.xaml.cs">
-      <DependentUpon>Calendar_Page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ListPage\ListPage.xaml.cs">
       <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
@@ -222,6 +210,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\SelectProfessionalDialog.xaml.cs">
+      <DependentUpon>SelectProfessionalDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml.cs" />
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\UpdatePage\UpdatePage.xaml.cs" />
     <Compile Include="Lib\AdminNS\Views\CRUDPages\WorkDayTypeNS\CreatePage\Work-tyep-Create.xaml.cs" />
@@ -231,73 +222,11 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\WorkDayTypeNS\Update-DetetePage\Update-detetePage.xaml.cs">
       <DependentUpon>Update-detetePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\eliminar-projetc\Eliminacio-Projetcs.xaml.cs">
-      <DependentUpon>Eliminacio-Projetcs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Estado_del_proyecto\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_Activos.xaml.cs">
-      <DependentUpon>Page_Activos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_Inactivos.xaml.cs">
-      <DependentUpon>Page_Inactivos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_PendientesCancelacion.xaml.xaml.cs">
-      <DependentUpon>Page_PendientesCancelacion.xaml.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_Reservados.xaml.cs">
-      <DependentUpon>Page_Reservados.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Estado_del_proyecto\ProjectService.cs" />
     <Compile Include="Lib\AdminNS\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\LIsta-Actividades\Listas-Actividades.xaml.cs">
-      <DependentUpon>Listas-Actividades.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\ListaDe_Pagos.xaml.cs">
-      <DependentUpon>ListaDe_Pagos.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\AdminNS\Views\Main_Page_Admin\Main_Page_Admin.xaml.cs">
       <DependentUpon>Main_Page_Admin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Professional_CRUD\CreatePageProfessional.xaml.cs">
-      <DependentUpon>CreatePageProfessional.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Professional_CRUD\ReadPageProfessional.xaml.cs">
-      <DependentUpon>ReadPageProfessional.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Projects_Page\Projects_Page.xaml.cs">
-      <DependentUpon>Projects_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Projects_Page\Projects_Page2.xaml.cs">
-      <DependentUpon>Projects_Page2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Project_CRUD\CreatePageProject.xaml.cs">
-      <DependentUpon>CreatePageProject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Project_CRUD\ReadPageProject.xaml.cs">
-      <DependentUpon>ReadPageProject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Project_CRUD\UpdatePageProject.xaml.cs">
-      <DependentUpon>UpdatePageProject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\QuickView_Page\QuickView_Page.xaml.cs">
-      <DependentUpon>QuickView_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\Status_Page\Status_Page.xaml.cs">
-      <DependentUpon>Status_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\UpdateDeleteClient.cs" />
-    <Compile Include="Lib\ClientNS\Views\Calendar_Page\Calendar_Page.xaml.cs">
-      <DependentUpon>Calendar_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml.cs">
-      <DependentUpon>ChooseProfessional_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Crear-projects\Create-Project.xaml.cs">
-      <DependentUpon>Create-Project.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
@@ -314,15 +243,6 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUD\CreateClientPage.xaml.cs">
-      <DependentUpon>CreateClientPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUD\ReadPageClient.xaml.cs">
-      <DependentUpon>ReadPageClient.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUD\UpdatePageClient.xaml.cs">
-      <DependentUpon>UpdatePageClient.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ClientNS\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
@@ -334,33 +254,6 @@
     </Compile>
     <Compile Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml.cs">
       <DependentUpon>Main_Page_Client.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Notifications_Page\NotificationCreation_Page.xaml.cs">
-      <DependentUpon>NotificationCreation_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Notifications_Page\Notifications_Page.xaml.cs">
-      <DependentUpon>Notifications_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Notifications_Page\Notifications_Page2.xaml.cs">
-      <DependentUpon>Notifications_Page2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Pays_Page\Pays_Page.xaml.cs">
-      <DependentUpon>Pays_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Pays_Page\Pending_page.xaml.cs">
-      <DependentUpon>Pending_page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Pays_Page\Realized_Page.xaml.cs">
-      <DependentUpon>Realized_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Pays_Page\Unauthorized_page.xaml.cs">
-      <DependentUpon>Unauthorized_page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\ProfessionalReadPage\ProfessionalReadPage.xaml.cs">
-      <DependentUpon>ProfessionalReadPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\ProjectReadPage\ProjectReadPage.xaml.cs">
-      <DependentUpon>ProjectReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
@@ -420,15 +313,6 @@
     <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Activos_Page\Page_Activos.xaml.cs">
-      <DependentUpon>Page_Activos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\ActualizarProject\ActualizarProject.xaml.cs">
-      <DependentUpon>ActualizarProject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Calendar_Page\Calendar_Page.xaml.cs">
-      <DependentUpon>Calendar_Page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -462,35 +346,11 @@
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Dashboard_Page\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\EliminarProject\EliminarProject.xaml.cs">
-      <DependentUpon>EliminarProject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Inactivos_Page\BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\Main_Page\Main_Page.xaml.cs">
       <DependentUpon>Main_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Notifications_Page\Notifications_Page.xaml.cs">
-      <DependentUpon>Notifications_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Notifications_Page\Notifications_Page2.xaml.cs">
-      <DependentUpon>Notifications_Page2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Pendientes_Cancelacion_Page\Page_PendientesCancelacion.xaml.cs">
-      <DependentUpon>Page_PendientesCancelacion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Proposals_Page\Proposals_Page.xaml.cs">
-      <DependentUpon>Proposals_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\Reservados_Page\Page_Reservados.xaml.cs">
-      <DependentUpon>Page_Reservados.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -561,13 +421,11 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Lib\AdminNS\Controllers\Dummy.txt" />
     <Content Include="Lib\AdminNS\ViewModels\Dummy.txt" />
-    <Content Include="Lib\AdminNS\Views\Dummy.txt" />
     <Content Include="Lib\ClientNS\Controllers\Dummy.txt" />
     <Content Include="Lib\ClientNS\Services\Dummy.txt" />
     <Content Include="Lib\ClientNS\ViewModels\Dummy.txt" />
     <Content Include="Lib\Global\ViewModels\Dummy.txt" />
     <Content Include="Lib\Global\Views\Dummy.txt" />
-    <Content Include="Lib\pdf-file-format-symbol.png" />
     <Content Include="Lib\ProfessionalNS\Controllers\Dummy.txt" />
     <Content Include="Lib\ProfessionalNS\Services\Dummy.txt" />
     <Content Include="Lib\ProfessionalNS\ViewModels\Dummy.txt" />
@@ -584,31 +442,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Lib\AdminNS\Views\ActivityCRUD\CreatePageActivity.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\ActivityCRUD\ReadPageActivity.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Admin_Create\AdminCreate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Admin_Page\AdminList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Calendar_Page\Calendar_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\CreatePage\CreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -704,6 +546,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\SelectProfessionalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -724,91 +570,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\AdminNS\Views\eliminar-projetc\Eliminacio-Projetcs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Estado_del_proyecto\BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_Activos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_Inactivos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_PendientesCancelacion.xaml.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Estado_del_proyecto\Page_Reservados.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\AdminNS\Views\InitPage\InitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\AdminNS\Views\LIsta-Actividades\Listas-Actividades.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\ListaDe_Pagos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\AdminNS\Views\Main_Page_Admin\Main_Page_Admin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Professional_CRUD\CreatePageProfessional.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Professional_CRUD\ReadPageProfessional.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Projects_Page\Projects_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Projects_Page\Projects_Page2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Project_CRUD\CreatePageProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Project_CRUD\ReadPageProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Project_CRUD\UpdatePageProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\QuickView_Page\QuickView_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\Status_Page\Status_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Calendar_Page\Calendar_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\ChooseProfessional_Page\ChooseProfessional_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Crear-projects\Create-Project.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -832,18 +598,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUD\CreateClientPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\CRUD\ReadPageClient.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\CRUD\UpdatePageClient.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ClientNS\Views\InitPage\InitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -857,42 +611,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Notifications_Page\NotificationCreation_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Notifications_Page\Notifications_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Notifications_Page\Notifications_Page2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Pays_Page\Pays_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Pays_Page\Pending_page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Pays_Page\Realized_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Pays_Page\Unauthorized_page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\ProfessionalReadPage\ProfessionalReadPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\ProjectReadPage\ProjectReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -940,18 +658,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Activos_Page\Page_Activos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\ActualizarProject\ActualizarProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Calendar_Page\Calendar_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ReadPage\ReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -996,43 +702,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Dashboard_Page\BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\EliminarProject\EliminarProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Inactivos_Page\BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ProfessionalNS\Views\InitPage\InitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ProfessionalNS\Views\Main_Page\Main_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Notifications_Page\Notifications_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Notifications_Page\Notifications_Page2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Pendientes_Cancelacion_Page\Page_PendientesCancelacion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Proposals_Page\Proposals_Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\Reservados_Page\Page_Reservados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1123,8 +797,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\AdminNS\Models\" />
-    <Folder Include="Lib\AdminNS\Views\CRUD\" />
-    <Folder Include="Lib\AdminNS\Views\Estado_del_proyecto\Controls\" />
     <Folder Include="Lib\ClientNS\Models\" />
     <Folder Include="Lib\Global\Models\" />
     <Folder Include="Lib\ProfessionalNS\Models\" />
@@ -1133,7 +805,6 @@
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\DeletePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ListPage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\SearchPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\UpdatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\.gitkeep" />

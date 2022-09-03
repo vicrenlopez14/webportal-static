@@ -69,5 +69,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         {
             new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
+
+        private void ProfessionalsListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

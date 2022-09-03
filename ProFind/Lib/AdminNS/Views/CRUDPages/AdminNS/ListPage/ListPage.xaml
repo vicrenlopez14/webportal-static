@@ -26,9 +26,9 @@
                     Text="Registered administrators" />
                 <ListView
                     Name="AdminsListView"
+                    d:ItemsSource=""
                     IsItemClickEnabled="True"
-                    SelectionMode="None" 
-                    d:ItemsSource="">
+                    SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="services:Admin">
                             <StackPanel

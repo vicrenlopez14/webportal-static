@@ -1,4 +1,14 @@
-﻿namespace WebService.Models
+﻿// ReSharper disable once CheckNamespace
+namespace WebService.Models.Generated;
+
+public partial class Projectstatus { }
+
+public static class ProjectStatusExtensions
 {
-    public partial class Projectstatus { }
+    // Assign id
+    public static Projectstatus AssignId(this Projectstatus projectstatus)
+    {
+        projectstatus.IdPs = Utils.ShaOperations.GenerateUID();
+        return projectstatus;
+    }
 }
