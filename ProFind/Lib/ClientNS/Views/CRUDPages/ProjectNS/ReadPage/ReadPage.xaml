@@ -1,13 +1,11 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage"
+    x:Class="ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:models1="using:ProFind.Lib.Global.Services.Models"
+    xmlns:models1="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
-
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -79,6 +77,5 @@
             VerticalAlignment="Center">
             <Button Name="Add_btn" Click="Add_btn_Click">Add</Button>
         </StackPanel>
-
     </Grid>
 </Page>
