@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,29 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
         public ReadPage()
         {
             this.InitializeComponent();
+
+            InitializeData();
+        }
+        private async void InitializeData()
+        {
+            NotificationListView.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
+        }
+
+        private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var notification = e.ClickedItem as Notification;
+
+            new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), notification);
+        }
+
+        private void Add_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(NotificationNS.CreatePage.CreatePage));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(NotificationNS.CreatePage.CreatePage));
         }
     }
 }
