@@ -8,11 +8,14 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.CurriculumNS.ReadPage
     {
         public ReadDialog()
         {
-            this.InitializeComponent();
+            
+            
         }
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+
+        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+         
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

@@ -1,5 +1,4 @@
 ﻿using ProFind.Lib.Global.Helpers;
-using ProFind.Lib.Global.Services;
 using Syncfusion.Pdf;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

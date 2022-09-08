@@ -2,11 +2,11 @@
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.CRUDPages.CurriculumNS.ReadPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.TagNS.UpdatePage
 {
-    public sealed partial class ReadDialog : ContentDialog
+    public sealed partial class UpdateDialog : ContentDialog
     {
-        public ReadDialog()
+        public UpdateDialog()
         {
             this.InitializeComponent();
         }

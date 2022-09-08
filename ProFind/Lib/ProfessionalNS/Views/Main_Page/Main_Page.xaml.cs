@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Views.Preferences_Page;
-using ProFind.Lib.AdminNS.Views.Estado_del_proyecto;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage;
