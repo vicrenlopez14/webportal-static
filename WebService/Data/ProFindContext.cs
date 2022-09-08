@@ -20,6 +20,7 @@ namespace WebService.Data
         public virtual DbSet<Activity> Activities { get; set; } = null!;
         public virtual DbSet<Activitycomment> Activitycomments { get; set; } = null!;
         public virtual DbSet<Admin> Admins { get; set; } = null!;
+        public virtual DbSet<Changepasswordcode> Changepasswordcodes { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
         public virtual DbSet<Department> Departments { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
@@ -34,6 +35,10 @@ namespace WebService.Data
         public virtual DbSet<Proposal> Proposals { get; set; } = null!;
         public virtual DbSet<Proposalnotification> Proposalnotifications { get; set; } = null!;
         public virtual DbSet<Rank> Ranks { get; set; } = null!;
+        public virtual DbSet<Securityansweradmin> Securityansweradmins { get; set; } = null!;
+        public virtual DbSet<Securityanswerclient> Securityanswerclients { get; set; } = null!;
+        public virtual DbSet<Securityanswerprofessional> Securityanswerprofessionals { get; set; } = null!;
+        public virtual DbSet<Securityquestion> Securityquestions { get; set; } = null!;
         public virtual DbSet<Supportticket> Supporttickets { get; set; } = null!;
         public virtual DbSet<Tag> Tags { get; set; } = null!;
         public virtual DbSet<Tagtemplate> Tagtemplates { get; set; } = null!;
@@ -91,6 +96,18 @@ namespace WebService.Data
                 entity.Property(e => e.IdR1).IsFixedLength();
 
                 entity.Property(e => e.PasswordA).IsFixedLength();
+            });
+
+            modelBuilder.Entity<Changepasswordcode>(entity =>
+            {
+                entity.HasKey(e => e.IdCpc)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdCpc).IsFixedLength();
+
+                entity.Property(e => e.CodeCpc).IsFixedLength();
+
+                entity.Property(e => e.IdC1).IsFixedLength();
             });
 
             modelBuilder.Entity<Client>(entity =>
@@ -237,6 +254,50 @@ namespace WebService.Data
             {
                 entity.HasKey(e => e.IdR)
                     .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<Securityansweradmin>(entity =>
+            {
+                entity.HasKey(e => e.IdSa)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdSa).IsFixedLength();
+
+                entity.Property(e => e.IdA1).IsFixedLength();
+
+                entity.Property(e => e.IdSq1).IsFixedLength();
+            });
+
+            modelBuilder.Entity<Securityanswerclient>(entity =>
+            {
+                entity.HasKey(e => e.IdSa)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdSa).IsFixedLength();
+
+                entity.Property(e => e.IdC1).IsFixedLength();
+
+                entity.Property(e => e.IdSq1).IsFixedLength();
+            });
+
+            modelBuilder.Entity<Securityanswerprofessional>(entity =>
+            {
+                entity.HasKey(e => e.IdSa)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdSa).IsFixedLength();
+
+                entity.Property(e => e.IdP1).IsFixedLength();
+
+                entity.Property(e => e.IdSq1).IsFixedLength();
+            });
+
+            modelBuilder.Entity<Securityquestion>(entity =>
+            {
+                entity.HasKey(e => e.IdSq)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdSq).IsFixedLength();
             });
 
             modelBuilder.Entity<Supportticket>(entity =>

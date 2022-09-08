@@ -53,6 +53,61 @@ DESCRIBE ADMIN;
 SELECT *
 FROM Admin;
 
+###########################################
+#Security questions
+CREATE TABLE SecurityQuestion
+(
+    IdSQ   CHAR(21) PRIMARY KEY,
+    NameSQ VARCHAR(50) UNIQUE
+);
+
+###########################################
+#Security answers
+CREATE TABLE SecurityAnswerClients
+(
+    IdSA     CHAR(21) PRIMARY KEY,
+    AnswerSA VARCHAR(50),
+    IdSQ1    CHAR(21),
+    IdC1     CHAR(21),
+    FOREIGN KEY (IdSQ1) REFERENCES SecurityQuestion (IdSQ) ON DELETE CASCADE,
+    FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
+###########################################
+#Security answers for professionals
+CREATE TABLE SecurityAnswerProfessionals
+(
+    IdSA     CHAR(21) PRIMARY KEY,
+    AnswerSA VARCHAR(50),
+    IdSQ1    CHAR(21),
+    IdP1     CHAR(21),
+    FOREIGN KEY (IdSQ1) REFERENCES SecurityQuestion (IdSQ) ON DELETE CASCADE,
+    FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE
+);
+
+###########################################
+#Security answers for admins
+CREATE TABLE SecurityAnswerAdmins
+(
+    IdSA     CHAR(21) PRIMARY KEY,
+    AnswerSA VARCHAR(50),
+    IdSQ1    CHAR(21),
+    IdA1     CHAR(21),
+    FOREIGN KEY (IdSQ1) REFERENCES SecurityQuestion (IdSQ) ON DELETE CASCADE,
+    FOREIGN KEY (IdA1) REFERENCES Admin (IdA) ON DELETE CASCADE
+);
+
+###############################################
+# Change password codes
+CREATE TABLE ChangePasswordCode
+(
+    IdCPC       CHAR(21) PRIMARY KEY,
+    CodeCPC     CHAR(64),
+    VerifiedCPC BOOLEAN,
+    IdC1        CHAR(21),
+    FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
 ###############################################
 CREATE TABLE Tag
 (
@@ -225,7 +280,8 @@ CREATE TABLE ActivityComment
     IdP5             CHAR(21),
     IdC5             CHAR(21),
     FOREIGN KEY (IdA1) REFERENCES Activity (IdA) ON DELETE CASCADE,
-    FOREIGN KEY (IdP5) REFERENCES Professional (IdP) ON DELETE CASCADE
+    FOREIGN KEY (IdP5) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC5) REFERENCES Client (IdC) ON DELETE CASCADE
 );
 
 ################################################
@@ -263,7 +319,7 @@ CREATE TABLE Proposal
     SuggestedStart DATE,
     SuggestedEnd   DATE,
     Seen           BOOLEAN,
-    RevisionStatus ENUM ('pending', 'planning', 'accepted', 'rejected', 'clientaccepted', 'topay', 'paid'),
+    RevisionStatus ENUM ('pending', 'planning', 'rejected', 'clientaccepted', 'topay', 'readytostart'),
     IdP3           CHAR(21),
     IdC3           CHAR(21),
     FOREIGN KEY (IdP3) REFERENCES Professional (IdP) ON DELETE CASCADE,
@@ -327,23 +383,28 @@ CREATE TABLE Message
 #Support ticket
 CREATE TABLE SupportTicket
 (
-    IdST              CHAR(21) PRIMARY KEY,
-    TitleST           VARCHAR(50),
-    ContentST         VARCHAR(500),
-    ImageST           LONGBLOB,
-    DocumentST        LONGBLOB,
-    LocationST        VARCHAR(100),
-    AudioST           LONGBLOB,
-    DateTimeST        DATE,
-    TicketStatusST    ENUM ('taken', 'pending', 'actiontaken'),
-    SuggestedActionST ENUM ('checkproject', 'checkactivity', 'checkproposal', 'checkpayment', 'checkchat', 'closeticket'),
-    IdP5              CHAR(21),
-    IdC5              CHAR(21),
-    IdA2              CHAR(21),
-    IdPJ4             CHAR(21),
-    IdACT1            CHAR(21),
-    IdPP2             CHAR(21),
-    IdPPY1            CHAR(21),
+    IdST               CHAR(21) PRIMARY KEY,
+    TitleST            VARCHAR(50),
+    ContentST          VARCHAR(500),
+    ImageST            LONGBLOB,
+    DocumentST         LONGBLOB,
+    LocationST         VARCHAR(100),
+    AudioST            LONGBLOB,
+    DateTimeST         DATE,
+    TicketStatusST     ENUM ('taken', 'pending', 'actiontaken'),
+    SuggestedActionST  ENUM ('checkproject', 'checkactivity', 'checkproposal', 'checkpayment', 'checkchat', 'closeticket'),
+    ResponseContentST  VARCHAR(500),
+    ResponseImageST    LONGBLOB,
+    ResponseDocumentST LONGBLOB,
+    ResponseLocationST VARCHAR(100),
+    ResponseAudioST    LONGBLOB,
+    IdP5               CHAR(21),
+    IdC5               CHAR(21),
+    IdA2               CHAR(21),
+    IdPJ4              CHAR(21),
+    IdACT1             CHAR(21),
+    IdPP2              CHAR(21),
+    IdPPY1             CHAR(21),
     FOREIGN KEY (IdP5) REFERENCES Professional (IdP) ON DELETE CASCADE,
     FOREIGN KEY (IdC5) REFERENCES Client (IdC) ON DELETE CASCADE,
     FOREIGN KEY (IdA2) REFERENCES Activity (IdA) ON DELETE CASCADE,

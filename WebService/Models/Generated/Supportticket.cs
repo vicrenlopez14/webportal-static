@@ -41,6 +41,18 @@ namespace WebService.Models.Generated
         public string? TicketStatusSt { get; set; }
         [Column("SuggestedActionST", TypeName = "enum('checkproject','checkactivity','checkproposal','checkpayment','checkchat','closeticket')")]
         public string? SuggestedActionSt { get; set; }
+        [Column("ResponseContentST")]
+        [StringLength(500)]
+        public string? ResponseContentSt { get; set; }
+        [Column("ResponseImageST")]
+        public byte[]? ResponseImageSt { get; set; }
+        [Column("ResponseDocumentST")]
+        public byte[]? ResponseDocumentSt { get; set; }
+        [Column("ResponseLocationST")]
+        [StringLength(100)]
+        public string? ResponseLocationSt { get; set; }
+        [Column("ResponseAudioST")]
+        public byte[]? ResponseAudioSt { get; set; }
         [StringLength(21)]
         public string? IdP5 { get; set; }
         [StringLength(21)]

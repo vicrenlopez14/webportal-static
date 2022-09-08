@@ -8,6 +8,7 @@ namespace WebService.Models.Generated
 {
     [Table("activitycomment")]
     [Index("IdA1", Name = "IdA1")]
+    [Index("IdC5", Name = "IdC5")]
     [Index("IdP5", Name = "IdP5")]
     public partial class Activitycomment
     {
