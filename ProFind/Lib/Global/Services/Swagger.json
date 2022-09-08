@@ -1210,6 +1210,142 @@
         }
       }
     },
+    "/api/Messages": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "operationId": "GetMessages",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Message"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Messages"
+        ],
+        "operationId": "PostMessage",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          }
+        }
+      }
+    },
+    "/api/Messages/{id}": {
+      "get": {
+        "tags": [
+          "Messages"
+        ],
+        "operationId": "GetMessage",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Messages"
+        ],
+        "operationId": "PutMessage",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Messages"
+        ],
+        "operationId": "DeleteMessage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Notifications": {
       "get": {
         "tags": [
@@ -1675,6 +1811,142 @@
         }
       }
     },
+    "/api/Projectpays": {
+      "get": {
+        "tags": [
+          "Projectpays"
+        ],
+        "operationId": "GetProjectpays",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Projectpay"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projectpays"
+        ],
+        "operationId": "PostProjectpay",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Projectpay"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Projectpay"
+            }
+          }
+        }
+      }
+    },
+    "/api/Projectpays/{id}": {
+      "get": {
+        "tags": [
+          "Projectpays"
+        ],
+        "operationId": "GetProjectpay",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Projectpay"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Projectpays"
+        ],
+        "operationId": "PutProjectpay",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Projectpay"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projectpays"
+        ],
+        "operationId": "DeleteProjectpay",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Projects": {
       "get": {
         "tags": [
@@ -1940,6 +2212,142 @@
             "required": true,
             "type": "integer",
             "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Projecttemplates": {
+      "get": {
+        "tags": [
+          "Projecttemplates"
+        ],
+        "operationId": "GetProjecttemplates",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Projecttemplate"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projecttemplates"
+        ],
+        "operationId": "PostProjecttemplate",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Projecttemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Projecttemplate"
+            }
+          }
+        }
+      }
+    },
+    "/api/Projecttemplates/{id}": {
+      "get": {
+        "tags": [
+          "Projecttemplates"
+        ],
+        "operationId": "GetProjecttemplate",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Projecttemplate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Projecttemplates"
+        ],
+        "operationId": "PutProjecttemplate",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Projecttemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projecttemplates"
+        ],
+        "operationId": "DeleteProjecttemplate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2600,6 +3008,686 @@
         }
       }
     },
+    "/api/Securityansweradmins": {
+      "get": {
+        "tags": [
+          "Securityansweradmins"
+        ],
+        "operationId": "GetSecurityansweradmins",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Securityansweradmin"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Securityansweradmins"
+        ],
+        "operationId": "PostSecurityansweradmin",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityansweradmin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityansweradmin"
+            }
+          }
+        }
+      }
+    },
+    "/api/Securityansweradmins/{id}": {
+      "get": {
+        "tags": [
+          "Securityansweradmins"
+        ],
+        "operationId": "GetSecurityansweradmin",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityansweradmin"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Securityansweradmins"
+        ],
+        "operationId": "PutSecurityansweradmin",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityansweradmin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Securityansweradmins"
+        ],
+        "operationId": "DeleteSecurityansweradmin",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Securityanswerclients": {
+      "get": {
+        "tags": [
+          "Securityanswerclients"
+        ],
+        "operationId": "GetSecurityanswerclients",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Securityanswerclient"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Securityanswerclients"
+        ],
+        "operationId": "PostSecurityanswerclient",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerclient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerclient"
+            }
+          }
+        }
+      }
+    },
+    "/api/Securityanswerclients/{id}": {
+      "get": {
+        "tags": [
+          "Securityanswerclients"
+        ],
+        "operationId": "GetSecurityanswerclient",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerclient"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Securityanswerclients"
+        ],
+        "operationId": "PutSecurityanswerclient",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerclient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Securityanswerclients"
+        ],
+        "operationId": "DeleteSecurityanswerclient",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Securityanswerprofessionals": {
+      "get": {
+        "tags": [
+          "Securityanswerprofessionals"
+        ],
+        "operationId": "GetSecurityanswerprofessionals",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Securityanswerprofessional"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Securityanswerprofessionals"
+        ],
+        "operationId": "PostSecurityanswerprofessional",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerprofessional"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerprofessional"
+            }
+          }
+        }
+      }
+    },
+    "/api/Securityanswerprofessionals/{id}": {
+      "get": {
+        "tags": [
+          "Securityanswerprofessionals"
+        ],
+        "operationId": "GetSecurityanswerprofessional",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerprofessional"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Securityanswerprofessionals"
+        ],
+        "operationId": "PutSecurityanswerprofessional",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityanswerprofessional"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Securityanswerprofessionals"
+        ],
+        "operationId": "DeleteSecurityanswerprofessional",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Securityquestions": {
+      "get": {
+        "tags": [
+          "Securityquestions"
+        ],
+        "operationId": "GetSecurityquestions",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Securityquestion"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Securityquestions"
+        ],
+        "operationId": "PostSecurityquestion",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityquestion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityquestion"
+            }
+          }
+        }
+      }
+    },
+    "/api/Securityquestions/{id}": {
+      "get": {
+        "tags": [
+          "Securityquestions"
+        ],
+        "operationId": "GetSecurityquestion",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Securityquestion"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Securityquestions"
+        ],
+        "operationId": "PutSecurityquestion",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Securityquestion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Securityquestions"
+        ],
+        "operationId": "DeleteSecurityquestion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Supporttickets": {
+      "get": {
+        "tags": [
+          "Supporttickets"
+        ],
+        "operationId": "GetSupporttickets",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Supportticket"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Supporttickets"
+        ],
+        "operationId": "PostSupportticket",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Supportticket"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Supportticket"
+            }
+          }
+        }
+      }
+    },
+    "/api/Supporttickets/{id}": {
+      "get": {
+        "tags": [
+          "Supporttickets"
+        ],
+        "operationId": "GetSupportticket",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Supportticket"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Supporttickets"
+        ],
+        "operationId": "PutSupportticket",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Supportticket"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Supporttickets"
+        ],
+        "operationId": "DeleteSupportticket",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Tags": {
       "get": {
         "tags": [
@@ -2889,6 +3977,142 @@
           }
         }
       }
+    },
+    "/api/Tagtemplates": {
+      "get": {
+        "tags": [
+          "Tagtemplates"
+        ],
+        "operationId": "GetTagtemplates",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tagtemplate"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tagtemplates"
+        ],
+        "operationId": "PostTagtemplate",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Tagtemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Tagtemplate"
+            }
+          }
+        }
+      }
+    },
+    "/api/Tagtemplates/{id}": {
+      "get": {
+        "tags": [
+          "Tagtemplates"
+        ],
+        "operationId": "GetTagtemplate",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Tagtemplate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tagtemplates"
+        ],
+        "operationId": "PutTagtemplate",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Tagtemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tagtemplates"
+        ],
+        "operationId": "DeleteTagtemplate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -3052,6 +4276,51 @@
         },
         "nameDp": {
           "maxLength": 30,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "idM": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "contentM": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageM": {
+          "format": "byte",
+          "type": "string"
+        },
+        "documentM": {
+          "format": "byte",
+          "type": "string"
+        },
+        "locationM": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "audioM": {
+          "format": "byte",
+          "type": "string"
+        },
+        "dateTimeM": {
+          "$ref": "#/definitions/DateOnly"
+        },
+        "idP4": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idC4": {
+          "maxLength": 21,
           "minLength": 0,
           "type": "string"
         }
@@ -3234,6 +4503,62 @@
         }
       }
     },
+    "Projectpay": {
+      "type": "object",
+      "properties": {
+        "idPpy": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "percentagePpy": {
+          "format": "float",
+          "type": "number"
+        },
+        "conceptPpy": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "amountPpy": {
+          "format": "float",
+          "type": "number"
+        },
+        "currencyPpy": {
+          "maxLength": 3,
+          "minLength": 0,
+          "type": "string"
+        },
+        "hasLimitDatePpy": {
+          "type": "boolean"
+        },
+        "limitDatePpy": {
+          "$ref": "#/definitions/DateOnly"
+        },
+        "defaultAmountPpy": {
+          "format": "float",
+          "type": "number"
+        },
+        "payStatusPpy": {
+          "type": "string"
+        },
+        "idP3": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idC3": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idPj3": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
     "Projectstatus": {
       "type": "object",
       "properties": {
@@ -3258,6 +4583,45 @@
           "type": "string"
         },
         "idPj3": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Projecttemplate": {
+      "type": "object",
+      "properties": {
+        "idPt": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "titlePt": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descriptionPt": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "picturePt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "totalPricePt": {
+          "format": "float",
+          "type": "number"
+        },
+        "saveTagsPt": {
+          "type": "boolean"
+        },
+        "saveProjectPaysPt": {
+          "type": "boolean"
+        },
+        "idP1": {
           "maxLength": 21,
           "minLength": 0,
           "type": "string"
@@ -3324,6 +4688,199 @@
         }
       }
     },
+    "Securityansweradmin": {
+      "type": "object",
+      "properties": {
+        "idSa": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "answerSa": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idSq1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idA1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Securityanswerclient": {
+      "type": "object",
+      "properties": {
+        "idSa": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "answerSa": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idSq1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idC1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Securityanswerprofessional": {
+      "type": "object",
+      "properties": {
+        "idSa": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "answerSa": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idSq1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idP1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Securityquestion": {
+      "type": "object",
+      "properties": {
+        "idSq": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "nameSq": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Supportticket": {
+      "type": "object",
+      "properties": {
+        "idSt": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "titleSt": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "contentSt": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "imageSt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "documentSt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "locationSt": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "audioSt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "dateTimeSt": {
+          "$ref": "#/definitions/DateOnly"
+        },
+        "ticketStatusSt": {
+          "type": "string"
+        },
+        "suggestedActionSt": {
+          "type": "string"
+        },
+        "responseContentSt": {
+          "maxLength": 500,
+          "minLength": 0,
+          "type": "string"
+        },
+        "responseImageSt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "responseDocumentSt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "responseLocationSt": {
+          "maxLength": 100,
+          "minLength": 0,
+          "type": "string"
+        },
+        "responseAudioSt": {
+          "format": "byte",
+          "type": "string"
+        },
+        "idP5": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idC5": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idA2": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idPj4": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idAct1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idPp2": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idPpy1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
     "Tag": {
       "type": "object",
       "properties": {
@@ -3343,6 +4900,31 @@
           "type": "string"
         },
         "idPj1": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        }
+      }
+    },
+    "Tagtemplate": {
+      "type": "object",
+      "properties": {
+        "idTt": {
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
+        },
+        "nameTt": {
+          "maxLength": 50,
+          "minLength": 0,
+          "type": "string"
+        },
+        "colorTt": {
+          "format": "byte",
+          "maxLength": 3,
+          "type": "string"
+        },
+        "idPt1": {
           "maxLength": 21,
           "minLength": 0,
           "type": "string"

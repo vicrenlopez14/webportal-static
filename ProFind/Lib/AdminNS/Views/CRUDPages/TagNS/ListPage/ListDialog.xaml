@@ -1,11 +1,15 @@
-﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.TagNS.ListPage.ListPage"
+﻿<ContentDialog
+    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.TagNS.ListPage.ListDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.TagNS.ListPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:services="using:ProFind.Lib.Global.Services"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Title="Tags for this project"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonText="Done"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    SecondaryButtonText="Cancel"
     mc:Ignorable="d">
 
     <Grid>
@@ -65,4 +69,5 @@
             <Button Name="Add_btn" Click="Add_btn_Click">Add</Button>
         </StackPanel>
     </Grid>
-</Page>
+
+</ContentDialog>

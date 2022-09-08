@@ -5,26 +5,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.ReadPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:my="using:Syncfusion.Windows.PdfViewer"
-    Title="Curriculum Previewer"
+    Title="Name of the tag"
     DefaultButton="Primary"
     IsSecondaryButtonEnabled="False"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     PrimaryButtonText="Ok"
     mc:Ignorable="d">
 
-    <Grid
-        Width="500"
-        Height="500"
-        HorizontalAlignment="Center">
+    <Grid Width="500" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.05*" />
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.05*" />
+            <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
-        <my:SfPdfViewerControl Name="PDFPreview" Grid.Column="1" />
-
-
+        <StackPanel Grid.Column="0">
+            <muxc:ColorPicker Name="ColorSelector" />
+        </StackPanel>
     </Grid>
 
 </ContentDialog>

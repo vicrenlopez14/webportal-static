@@ -18,7 +18,7 @@
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <muxc:ColorPicker Name="ColorSelector"/>
+            <muxc:ColorPicker Name="ColorSelector" />
         </StackPanel>
         <ScrollViewer Grid.Column="1">
             <!--  Upload a file to create a curriculum  -->

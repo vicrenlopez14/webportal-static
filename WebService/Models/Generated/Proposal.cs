@@ -26,7 +26,7 @@ namespace WebService.Models.Generated
         public DateOnly? SuggestedStart { get; set; }
         public DateOnly? SuggestedEnd { get; set; }
         public bool? Seen { get; set; }
-        [Column(TypeName = "enum('pending','planning','accepted','rejected','clientaccepted','topay','paid')")]
+        [Column(TypeName = "enum('pending','planning','rejected','clientaccepted','topay','readytostart')")]
         public string? RevisionStatus { get; set; }
         [StringLength(21)]
         public string? IdP3 { get; set; }
