@@ -40,10 +40,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
                 return;
             }
 
-<<<<<<< HEAD
-            var result = await APIConnection.GetConnection.PostNotificationAsync(newObject); 
-=======
->>>>>>> Daniel-Rama2
+          
+
 
             try
             {
