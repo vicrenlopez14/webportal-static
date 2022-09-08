@@ -1,15 +1,25 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
+﻿using Org.BouncyCastle.Utilities.IO.Pem;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ProFind.Lib.Global.Services.Models;
-using ProFind.Lib.Global.Services;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -40,19 +50,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
                 return;
             }
 
-<<<<<<< HEAD
-          
-
-=======
-            var result = await APIConnection.GetConnection.PostNotificationAsync(newObject); 
->>>>>>> 6c629b1918d29218accf4be353fda22927bbef90
+            var result = await APIConnection.GetConnection.PostNotificationAsync(newObject);
 
             try
             {
                 Creation_pr.IsActive = true;
                 byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.DateFormat, da, "" );
+                var toCreateClien = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.DateFormat, da, "");
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
@@ -77,18 +82,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-           
+
 
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-           
+
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-           
+
         }
 
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)

@@ -42,6 +42,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
         private void ProposalListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var proposal = e.ClickedItem as Proposal;
+
+
+            new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), proposal);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
