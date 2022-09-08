@@ -4,15 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebService.Models.Generated;
-
-[Table("department")]
-public partial class Department
+namespace WebService.Models.Generated
 {
-    [Key]
-    [Column("IdDP")]
-    public int IdDp { get; set; }
-    [Column("NameDP")]
-    [StringLength(30)]
-    public string? NameDp { get; set; }
+    [Table("department")]
+    public partial class Department
+    {
+        [Key]
+        [Column("IdDP")]
+        public int IdDp { get; set; }
+        [Column("NameDP")]
+        [StringLength(30)]
+        public string? NameDp { get; set; }
+    }
 }

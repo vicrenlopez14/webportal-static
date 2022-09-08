@@ -56,9 +56,10 @@ FROM Admin;
 ###############################################
 CREATE TABLE Tag
 (
-    IdT   CHAR(21) PRIMARY KEY,
-    NameT VARCHAR(50),
-    IdPJ1 CHAR(21),
+    IdT    CHAR(21) PRIMARY KEY,
+    NameT  VARCHAR(50),
+    ColorT BINARY(3),
+    IdPJ1  CHAR(21),
 
     FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
@@ -154,6 +155,46 @@ DESCRIBE Project;
 
 SELECT *
 FROM Project;
+
+###############################################
+# ProjectTemplate
+CREATE TABLE ProjectTemplate
+(
+    IdPT              CHAR(21) PRIMARY KEY,
+    TitlePT           VARCHAR(50),
+    DescriptionPT     VARCHAR(50),
+    PicturePT         LONGBLOB,
+    TotalPricePT      FLOAT,
+    SaveTagsPT        BOOLEAN,
+    SaveProjectPaysPT BOOLEAN,
+    IdP1              CHAR(21),
+    FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE
+);
+
+###############################################
+# TagTemplate
+CREATE TABLE TagTemplate
+(
+    IdTT    CHAR(21) PRIMARY KEY,
+    NameTT  VARCHAR(50),
+    ColorTT BINARY(3),
+    IdPT1   CHAR(21),
+    FOREIGN KEY (IdPT1) REFERENCES ProjectTemplate (IdPT) ON DELETE CASCADE
+);
+
+###############################################
+# ProposalPayTemplate
+CREATE TABLE ProjectPayTemplate
+(
+    IdPPT          CHAR(21) PRIMARY KEY,
+    TitlePPT       VARCHAR(50),
+    DescriptionPPT VARCHAR(50),
+    PicturePPT     LONGBLOB,
+    TotalPricePPT  FLOAT,
+    IdPT1          CHAR(21),
+    FOREIGN KEY (IdPT1) REFERENCES ProjectTemplate (IdPT) ON DELETE CASCADE
+);
+
 ################################################
 CREATE TABLE Activity
 (
@@ -171,6 +212,21 @@ CREATE TABLE Activity
 
 SELECT *
 FROM Activity;
+
+###############################################
+# Activity comments
+CREATE TABLE ActivityComment
+(
+    IdAC             CHAR(21) PRIMARY KEY,
+    CommentAC        VARCHAR(500),
+    DateAC           DATE,
+    AskToCheckChatAC BOOLEAN,
+    IdA1             CHAR(21),
+    IdP5             CHAR(21),
+    IdC5             CHAR(21),
+    FOREIGN KEY (IdA1) REFERENCES Activity (IdA) ON DELETE CASCADE,
+    FOREIGN KEY (IdP5) REFERENCES Professional (IdP) ON DELETE CASCADE
+);
 
 ################################################
 CREATE TABLE Profession
@@ -206,8 +262,93 @@ CREATE TABLE Proposal
     PicturePP      LONGBLOB,
     SuggestedStart DATE,
     SuggestedEnd   DATE,
+    Seen           BOOLEAN,
+    RevisionStatus ENUM ('pending', 'planning', 'accepted', 'rejected', 'clientaccepted', 'topay', 'paid'),
     IdP3           CHAR(21),
     IdC3           CHAR(21),
     FOREIGN KEY (IdP3) REFERENCES Professional (IdP) ON DELETE CASCADE,
     FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
+################################################
+# Proposal Pay, include Professional, Client and Project
+CREATE TABLE ProjectPay
+(
+    IdPPY            CHAR(21) PRIMARY KEY,
+    PercentagePPY    FLOAT,
+    ConceptPPY       VARCHAR(500),
+    AmountPPY        FLOAT,
+    CurrencyPPY      VARCHAR(3),
+    HasLimitDatePPY  BOOLEAN,
+    LimitDatePPY     DATE,
+    DefaultAmountPPY FLOAT,
+    PayStatusPPY     ENUM ('pending', 'done', 'rejected'),
+    IdP3             CHAR(21),
+    IdC3             CHAR(21),
+    IdPJ3            CHAR(21),
+    FOREIGN KEY (IdP3) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE,
+    FOREIGN KEY (IdPJ3) REFERENCES Project (IdPJ) ON DELETE CASCADE
+);
+
+################################################
+# Proposal notification
+CREATE TABLE ProposalNotification
+(
+    IdPN      CHAR(21) PRIMARY KEY,
+    ContentPN VARCHAR(500),
+    ImagePN   LONGBLOB,
+    ActionPN  ENUM ('chat', 'resend', 'support', 'checktoapprove'),
+    IdPP1     CHAR(21),
+    IdP4      CHAR(21),
+    IdC4      CHAR(21),
+    FOREIGN KEY (IdPP1) REFERENCES Proposal (IdPP) ON DELETE CASCADE,
+    FOREIGN KEY (IdP4) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC4) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
+################################################
+CREATE TABLE Message
+(
+    IdM       CHAR(21) PRIMARY KEY,
+    ContentM  VARCHAR(500),
+    ImageM    LONGBLOB,
+    DocumentM LONGBLOB,
+    LocationM VARCHAR(100),
+    AudioM    LONGBLOB,
+    DateTimeM DATE,
+    IdP4      CHAR(21),
+    IdC4      CHAR(21),
+    FOREIGN KEY (IdP4) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC4) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
+################################################
+#Support ticket
+CREATE TABLE SupportTicket
+(
+    IdST              CHAR(21) PRIMARY KEY,
+    TitleST           VARCHAR(50),
+    ContentST         VARCHAR(500),
+    ImageST           LONGBLOB,
+    DocumentST        LONGBLOB,
+    LocationST        VARCHAR(100),
+    AudioST           LONGBLOB,
+    DateTimeST        DATE,
+    TicketStatusST    ENUM ('taken', 'pending', 'actiontaken'),
+    SuggestedActionST ENUM ('checkproject', 'checkactivity', 'checkproposal', 'checkpayment', 'checkchat', 'closeticket'),
+    IdP5              CHAR(21),
+    IdC5              CHAR(21),
+    IdA2              CHAR(21),
+    IdPJ4             CHAR(21),
+    IdACT1            CHAR(21),
+    IdPP2             CHAR(21),
+    IdPPY1            CHAR(21),
+    FOREIGN KEY (IdP5) REFERENCES Professional (IdP) ON DELETE CASCADE,
+    FOREIGN KEY (IdC5) REFERENCES Client (IdC) ON DELETE CASCADE,
+    FOREIGN KEY (IdA2) REFERENCES Activity (IdA) ON DELETE CASCADE,
+    FOREIGN KEY (IdPJ4) REFERENCES Project (IdPJ) ON DELETE CASCADE,
+    FOREIGN KEY (IdACT1) REFERENCES Activity (IdA) ON DELETE CASCADE,
+    FOREIGN KEY (IdPP2) REFERENCES Proposal (IdPP) ON DELETE CASCADE,
+    FOREIGN KEY (IdPPY1) REFERENCES ProjectPay (IdPPY) ON DELETE CASCADE
 );

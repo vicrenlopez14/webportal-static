@@ -1912,8 +1912,7 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "in": "body",
@@ -3093,11 +3092,11 @@
     "Profession": {
       "type": "object",
       "properties": {
-        "ids": {
+        "idPfs": {
           "format": "int32",
           "type": "integer"
         },
-        "names": {
+        "namePfs": {
           "maxLength": 50,
           "minLength": 0,
           "type": "string"
@@ -3179,7 +3178,7 @@
           "format": "double",
           "type": "number"
         },
-        "ids1": {
+        "idPfs1": {
           "format": "int32",
           "type": "integer"
         },
@@ -3239,11 +3238,27 @@
       "type": "object",
       "properties": {
         "idPs": {
-          "format": "int32",
-          "type": "integer"
+          "maxLength": 21,
+          "minLength": 0,
+          "type": "string"
         },
         "namePs": {
           "maxLength": 20,
+          "minLength": 0,
+          "type": "string"
+        },
+        "descriptionPs": {
+          "maxLength": 150,
+          "minLength": 0,
+          "type": "string"
+        },
+        "colorPs": {
+          "maxLength": 6,
+          "minLength": 0,
+          "type": "string"
+        },
+        "idPj3": {
+          "maxLength": 21,
           "minLength": 0,
           "type": "string"
         }
@@ -3276,6 +3291,12 @@
         },
         "suggestedEnd": {
           "$ref": "#/definitions/DateOnly"
+        },
+        "seen": {
+          "type": "boolean"
+        },
+        "revisionStatus": {
+          "type": "string"
         },
         "idP3": {
           "maxLength": 21,
@@ -3314,6 +3335,11 @@
         "nameT": {
           "maxLength": 50,
           "minLength": 0,
+          "type": "string"
+        },
+        "colorT": {
+          "format": "byte",
+          "maxLength": 3,
           "type": "string"
         },
         "idPj1": {
