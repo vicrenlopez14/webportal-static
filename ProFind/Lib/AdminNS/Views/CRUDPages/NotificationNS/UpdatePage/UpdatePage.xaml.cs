@@ -16,42 +16,40 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
     {
         Notification toManipulate = new Notification();
 
+        private byte[] imageBytes;
+
         public UpdatePage()
         {
             this.InitializeComponent();
         }
-        private async void loadUsefulthings()
-        {
+       
 
-            SelectedPicture_pp.Source = toManipulate.PictureN.ToBitmapImage();
-            Title_tb.Text = toManipulate.TitleN ?? "";
-            Description_tb.Text = toManipulate.DescriptionN ?? "";
-
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            toManipulate = (Notification)e.Parameter;
-            loadUsefulthings();
-        }
-
+      
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            // Reset with the same ID
-            toManipulate = new Notification()
-            {
-                IdN = toManipulate.IdN,
+            Title_tb.Text = "";
+            Description_tb.Text = "";
 
-            };
-            loadUsefulthings();
+
         }
 
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             //await new NotificationService().Update(toManipulate);
             await APIConnection.GetConnection.GetNotificationsAsync();
+=======
+            byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+            var toUpdapteNoti = new Notification("", Title_tb.Text, Description_tb.Text, fecha.DayFormat, da);
+
+            await APIConnection.GetConnection.PutNotificationAsync(toManipulate.IdN, toUpdapteNoti);
+
+            
+
+
+>>>>>>> Daniel-Rama2
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
@@ -66,7 +64,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
         }
 
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
@@ -83,12 +81,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            toManipulate.TitleN = Title_tb.Text;
+           
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            toManipulate.DescriptionN = Description_tb.Text;
+  
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

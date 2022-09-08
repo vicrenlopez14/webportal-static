@@ -58,6 +58,7 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
                         TextChanged="Description_tb_TextChanged" />
+                    <DatePicker x:Name="fecha" Header="DateTime" />
 
                     <Grid Margin="0,60,0,0" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>

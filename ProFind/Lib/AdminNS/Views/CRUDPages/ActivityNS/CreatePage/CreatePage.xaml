@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ScrollViewer Grid.Column="1">
+        <ScrollViewer Grid.Column="1" ViewChanged="ScrollViewer_ViewChanged">
             <Grid>
                 <StackPanel Padding="100" Orientation="Vertical">
                     <TextBlock

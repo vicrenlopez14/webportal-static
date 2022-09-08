@@ -4,37 +4,79 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:ProFind.Lib.Global.Services.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:ProFind.Lib.Global.Services.Models" xmlns:models11="using:ProFind.Lib.Global.Services"
     mc:Ignorable="d"
-    Style="{StaticResource PageStyle}">
+   Style="{StaticResource PageStyle}">
 
     <Grid>
-
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" />
-            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="00 *" />
         </Grid.ColumnDefinitions>
-        <ListView Name="ProposalsProfesionalListView" >
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models1:Project">
-                    <StackPanel CornerRadius="15">
-                        <StackPanel Margin="-95,20,0,0" Height="27" Width="300" >
-                            <TextBlock Text="{Binding TitlePJ}" FontWeight="Bold"/>
-                        </StackPanel>
-                        <PersonPicture Margin="-550,-20,0,0" ProfilePicture="https://imagenes.lainformacion.com/files/image_656_370/uploads/imagenes/2022/06/04/fotografia-de-una-entrevista-de-trabajo.jpeg" RenderTransformOrigin="0.48,0.99" Height="100" Width="100"/>
-                        <Button Margin="530,-60,0,0"  Content="Decline" Height="34" Width="128" />
-                        <Button Margin="530,-140,0,0"  Content="Accept" Height="34" Width="128" />
-                        <TextBlock Margin="550,-210,2,2" Text="{Binding ResponsibleProfessional.Profession.NamePFS}" FontWeight="Bold" Height="28"/>
-                        <StackPanel Margin="-425, -100, 0,-70" Width="20" Height="22"/>
-                        <StackPanel Height="23" Margin="130, -30">
-                            <TextBlock Margin="-5, -100, 0,-70"  Height="53" Text="Cliente:" FontWeight="Bold" FontSize="15" Width="378"/>
-                        </StackPanel>
-                        <StackPanel Height="23" Margin="130,10">
-                            <TextBlock Margin="-25, -60, 0,-70" Text="{Binding  ResponsibleClient.NameC}" Width="372" Height="68"/>
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackPanel>
+            <StackPanel
+                Margin="20"
+                Padding="20"
+                Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.9*" />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Margin="20"
+                        HorizontalAlignment="Left"
+                        RenderTransformOrigin="0.638,0.776"
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Created notifications" />
+                    <Button
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        Click="Button_Click"
+                        Style="{StaticResource AccentButtonStyle}">
+                        Add more
+                    </Button>
+                </Grid>
+                <ListView
+                    Name="ProposalListView"
+                    IsItemClickEnabled="True"
+                    ItemClick="ProposalListView_ItemClick"
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models11:Proposal">
+                            <StackPanel
+                                BorderBrush="Gray"
+                                BorderThickness="0.5"
+                                CornerRadius="16"
+                                Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
+                                    <PersonPicture
+                                        Width="69"
+                                        Height="73"
+                                        Margin="15,0"
+                                        ProfilePicture="{Binding PicturePp}" />
+                                    <StackPanel Height="42" Orientation="Vertical">
+                                        <TextBlock
+                                            Height="21"
+                                            FontWeight="Medium"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="{x:Bind TitlePp}" />
+                                        <TextBlock Text="{x:Bind DescriptionPp}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Button Name="Add_btn" Click="Add_btn_Click">Add</Button>
+        </StackPanel>
     </Grid>
 </Page>

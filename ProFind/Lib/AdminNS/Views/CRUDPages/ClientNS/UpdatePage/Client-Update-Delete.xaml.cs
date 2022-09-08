@@ -1,5 +1,7 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Services.Models;
 using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
@@ -16,61 +18,33 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
     /// </summary>
     public sealed partial class Client_Update_Delete : Page
     {
-        Client toManipulate = new Client();
+
+    
+        Client id = new Client();
 
         public Client_Update_Delete()
         {
             this.InitializeComponent();
         }
-        private async void loadUsefulthings()
-        {
-            Name1_tbx.Text = toManipulate.NameC;
-            Email_tbx.Text = toManipulate.EmailC;
-            
-            Picture_img.Source = toManipulate.PictureC.ToBitmapImage();
-        }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            toManipulate = (Client)e.Parameter;
-            loadUsefulthings();
-        }
 
-        private async void Reset_btn_Click(object sender, RoutedEventArgs e)
-        {
-            toManipulate = new Client()
-            {
-                IdC = toManipulate.IdC,
-            };
 
-            loadUsefulthings();
-        }
+
+
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new ClientService().Update(toManipulate); 
+            byte[] da = id.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-            if (string.IsNullOrEmpty(Name1_tbx.Text))
-            {
+            var toUpdapteClient = new Client("", Name1_tbx.Text, Email_tbx.Text, Password_tbx.Password, da);
 
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Email_tbx.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Password_tbx.Password))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
+            await APIConnection.GetConnection.PutClientAsync(id.IdC, toUpdapteClient);
+
         }
 
         private async Task Delete_btn_ClickAsync(object sender, RoutedEventArgs e)
         {
-            await new ClientService().Delete(toManipulate.IdC);
+
+            await APIConnection.GetConnection.DeleteClientAsync(id.IdC);
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
@@ -97,12 +71,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            toManipulate.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+          
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new ClientService().Delete(toManipulate.IdC);
+            await APIConnection.GetConnection.DeleteClientAsync(id.IdC);
 
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
