@@ -39,13 +39,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
                 return;
             }
 
-<<<<<<< HEAD
-          
-
-=======
-            var result = await APIConnection.GetConnection.PostNotificationAsync(newObject); 
->>>>>>> 6c629b1918d29218accf4be353fda22927bbef90
-
             try
             {
                 Creation_pr.IsActive = true;
