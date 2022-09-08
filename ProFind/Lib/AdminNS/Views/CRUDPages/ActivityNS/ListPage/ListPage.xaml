@@ -7,10 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:services="using:ProFind.Lib.Global.Services"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="0.5*" />
@@ -58,5 +57,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
-
 </Page>

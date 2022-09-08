@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -18,12 +19,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
 
     private async void InitializeData()
     {
-        NotificationListView.ItemsSource = await new PFNotificationService().ListObjectAsync();
+        NotificationListView.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
     }
 
     private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
     {
-        var notification = e.ClickedItem as PFNotification;
+        var notification = e.ClickedItem as Notification;
 
         new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), notification);
     }
@@ -38,4 +39,4 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
         new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
     }
 }
-}
+
