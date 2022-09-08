@@ -32,10 +32,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            this.Hide();
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            this.Hide();
         }
 
         private async void AnimateButtons()
@@ -50,7 +52,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage
         {
             var pickedFile = await PickFileHelper.PickPDF();
 
-            if (pickedFile != null)
+            if (pickedFile != null) 
             {
 
                 UploadResume_btn.IsChecked = true;
