@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -11,31 +12,35 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
+        public ReadPage()
+        {
             this.InitializeComponent();
 
-        InitializeData();
-    }
+            InitializeData();
+        }
 
-    private async void InitializeData()
-    {
-        NotificationListView.ItemsSource = await new PFNotificationService().ListObjectAsync();
-    }
 
-    private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        var notification = e.ClickedItem as PFNotification;
+        private async void InitializeData()
+        {
+            NotificationListView.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
+        }
 
-        new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), notification);
-    }
+        private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var notification = e.ClickedItem as Notification;
 
-    private void Add_btn_Click(object sender, RoutedEventArgs e)
-    {
-        new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
-    }
+            new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), notification);
+        }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+        private void Add_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+        }
     }
 }
-}
+
