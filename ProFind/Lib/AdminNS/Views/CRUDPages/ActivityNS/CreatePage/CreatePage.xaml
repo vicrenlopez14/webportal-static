@@ -113,8 +113,6 @@
                             Style="{StaticResource AccentButtonStyle}" />
                     </StackPanel>
 
-
-
                     <muxc:ProgressRing
                         x:Name="Creation_pr"
                         Margin="0,20,0,0"

@@ -33,7 +33,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage
         }
         private async void InitializeData()
         {
-            await APIConnection.GetConnection.GetNotificationAsync(Id1.IdN);
+        
+
         }
         
     }
