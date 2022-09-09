@@ -46,7 +46,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind NamePs}" />
-                                        <TextBlock Text="{x:Bind }" />
+                                        <TextBlock Text="{x:Bind DescriptionPs}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
