@@ -19,6 +19,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
         public CreatePage()
         {
             this.InitializeComponent();
+            InkCanvas.InkPresenter.InputDeviceTypes = Windows.UI.Core.CoreInputDeviceTypes.Mouse | Windows.UI.Core.CoreInputDeviceTypes.Pen;
         }
         private async void loadUsefulthings()
         {

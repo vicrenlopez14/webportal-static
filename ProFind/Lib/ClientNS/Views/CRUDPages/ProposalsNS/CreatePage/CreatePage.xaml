@@ -61,10 +61,26 @@
                         </Grid.ColumnDefinitions>
                     </Grid>
 
+                    <DatePicker
+                        Name="ExpectedBegin_dp"
+                        Margin="0,15,0,0"
+                        DateChanged="ExpectedBegin_dp_DateChanged"
+                        Header="Expected begin" />
+                    <DatePicker
+                        Name="ExpectedEnd_dp"
+                        Margin="0,15,0,0"
+                        DateChanged="ExpectedEnd_dp_DateChanged"
+                        Header="Expected end" />
+
+                    <StackPanel Height="296" Width="486" Background="white">
+                        <InkCanvas x:Name="InkCanvas"  Height="224" Width="486" Margin="0,30,0,0"  />
+                        <InkToolbar x:Name="InkToolbar" HorizontalAlignment="Center" VerticalAlignment="Top" TargetInkCanvas="{x:Bind InkCanvas}" />
+                    </StackPanel>
+                        
                     <Button
                         x:Name="Create_btn"
                         Width="100"
-                        Margin="0,50,0,0"
+                        Margin="0,20,0,0"
                         HorizontalAlignment="Center"
                         Click="Create_btn_Click"
                         Content="Create"

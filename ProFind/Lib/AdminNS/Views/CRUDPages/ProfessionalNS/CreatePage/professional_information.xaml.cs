@@ -20,13 +20,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
     /// </summary>
     public sealed partial class ProfessionalInformationAddition : Page
     {
-        private List<Profession> professions = new List<Profession>();
+        Profession pro = new Profession();
+        Department depa = new Department();
+
+        Professional toManipulate = new Professional();
 
         private List<Department> departments = new List<Department>();
 
-        byte[] pictureBytes;
+       
 
-        private bool _isFirstAdmin;
+        private byte[] curriculo;
+
+     
         public ProfessionalInformationAddition()
         {
             this.InitializeComponent();
@@ -46,8 +51,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            _isFirstAdmin = (bool)e.Parameter;
+            
 
         }
 
@@ -113,51 +117,32 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            Professional professional = new Professional();
-            professional.NameP = FirstName1_tbx.Text + " " + LastName1_tbx.Text;
 
-            // Nested objects
-            var profession = new Profession();
-            profession = professions.Where(x => x.NameS == profession_cbx.SelectedValue).First();
-
-            professional.Department = new Department();
-            professional.Department = departments.Where(x => x.NameDP == departamento.SelectedValue).First();
-
-            professional.WorkDayType = new WorkDayType();
-            professional.WorkDayType = workdaytypes.Where(x => x.NameWDT == Jornada.SelectedValue).First();
-
-            professional.Profession = profession;
-            professional.EmailP = Email.Text;
-            professional.SexP = Sexo.Text == "Male";
-            professional.PasswordP = passwordBox.Password;
-
-            professional.HiringDateP = DateTime.Now;
-            professional.AFPP = Afp.Text;
-            professional.DUIP = Dui.Text;
-            professional.SalaryP = Salario.Text;
-            professional.ISSSP = SeguroSocial.Text;
-
-            var respuesta = await new ProfessionalService().Create(professional);
-            if (respuesta == HttpStatusCode.OK)
+            try
             {
-                SucessfulCreation_tt.IsOpen = true;
 
-                if (_isFirstAdmin)
-                {
-                    new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
-                }
+                byte[] da = toManipulate.PictureP = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+                var toCreateProfessions = new Professional("", FirstName1_tbx.Text, Nacimiento.DayFormat, Email.Text, passwordBox.Password, true, Sexo.SelectedValue == "Masculino" ? true: false, Dui.Text, Afp.Text, SeguroSocial.Text, CodigoPostal.Text, int.Parse(Salario.Text), FechadeIngreso.Date, da, curriculo, pro.Ids, depa.IdDp );
+
+
+                var result = await APIConnection.GetConnection.PostProfessionalAsync(toCreateProfessions);
+
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
+
+
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
-            else if (string.IsNullOrEmpty(LastName1_tbx.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
+          
             else if (string.IsNullOrEmpty(Afp.Text))
             {
                 var dialog = new MessageDialog("The field is empty");
@@ -204,7 +189,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+          
         }
 
         private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
@@ -218,18 +203,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_isFirstAdmin)
-                FirstProfessional_tt.IsOpen = true;
+           
         }
 
         private async void btnExaminar_Click(object sender, RoutedEventArgs e)
         {
-            pictureBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            
         }
 
         private void TxtFIstName(TextBlock sender, TextChangedEventArgs e)
         {
-            ProfilePicture_pp.DisplayName = sender.Text;
+            
         }
 
         private void TxtLastName(object sender, TextChangedEventArgs e)
@@ -239,7 +223,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void ComboBox_SelectionProfesional(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -249,24 +233,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Professional professional = new Professional();
-            professional.NameP = FirstName1_tbx.Text + LastName1_tbx.Text;
-            professional.Profession.NameS = profession_cbx.Text;
-
-
-            if (passwordBox == Confirm_passwordBox)
-            {
-                professional.PasswordP = passwordBox.Password;
-            }
-            else
-            {
-
-            }
+           
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            FechadeIngreso.Date = DateTime.Today;
+
         }
 
         private void TxtFIstName(object sender, TextChangedEventArgs e)

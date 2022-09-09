@@ -12,6 +12,30 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
         public ReadPage()
         {
             this.InitializeComponent();
+
+            InitializeData();
+        }
+
+        private async void InitializeData()
+        {
+            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetProjectsAsync();
+        }
+
+        private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var project = e.ClickedItem as Project;
+
+            new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
+        }
+
+        private void Add_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProject));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(CreatePageProject));
         }
     }
 }

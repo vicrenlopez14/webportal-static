@@ -135,5 +135,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
             new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
 
         }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+
+        }
     }
 }

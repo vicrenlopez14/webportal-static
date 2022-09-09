@@ -69,7 +69,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
                 var file = await PickFileHelper.PickImage();
 
+<<<<<<< HEAD
                 if (file != null)
+=======
+            }
+
+            public async void loadUsefulThings()
+            {
+                ranks = (List<Rank>)await new Rank().ListObjectAsync();
+
+                foreach (var rank in ranks)
+>>>>>>> Daniel-Rama2
                 {
                     SelectedPicture_tbk.Text = file.Name;
                     imageBytes = await file.ToByteArrayAsync();

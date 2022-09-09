@@ -9,13 +9,14 @@
     Style="{StaticResource PageStyle}">
 
     <Grid>
-        <ScrollViewer Grid.Column="1">
+        <ScrollViewer Grid.Column="1" ViewChanged="ScrollViewer_ViewChanged">
             <Grid>
                 <StackPanel Padding="100" Orientation="Vertical">
                     <TextBlock
                         FontWeight="Bold"
                         Style="{StaticResource HeaderTextBlockStyle}"
                         Text="Creation" />
+
                     <TextBlock>
                         Create a new notification.
                     </TextBlock>
@@ -44,7 +45,7 @@
                         </TextBlock>
                     </StackPanel>
                     <TextBox
-                        x:Name="Title_tb"
+                        x:Name="Title_tb1"
                         Margin="0,30,0,0"
                         PlaceholderText="Title"
                         TextChanged="Title_tb_TextChanged" />
@@ -53,6 +54,7 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
                         TextChanged="Description_tb_TextChanged" />
+                    <CalendarDatePicker x:Name="Caledar" PlaceholderText="Pick a date" Header="Calendar" />
 
                     <Grid Margin="0,10,0,0" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
