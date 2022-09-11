@@ -11862,6 +11862,7 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]
     public partial class Client
     {
+       
         [Newtonsoft.Json.JsonProperty("idC", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC { get; set; }
@@ -12479,7 +12480,6 @@ namespace ProFind.Lib.Global.Services
         public string IdPt1 { get; set; }
 
     }
-
 
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]

@@ -334,7 +334,10 @@
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
     <Compile Include="Lib\Global\Services\Models\Activity.cs" />
     <Compile Include="Lib\Global\Services\Models\Admin.cs" />
+    <Compile Include="Lib\Global\Services\Models\Client.cs" />
+    <Compile Include="Lib\Global\Services\Models\DateOnly.cs" />
     <Compile Include="Lib\Global\Services\Models\Department.cs" />
+    <Compile Include="Lib\Global\Services\Models\Message.cs" />
     <Compile Include="Lib\Global\Services\Models\Profession.cs" />
     <Compile Include="Lib\Global\Services\Models\Professional.cs" />
     <Compile Include="Lib\Global\Services\Models\Project.cs" />
