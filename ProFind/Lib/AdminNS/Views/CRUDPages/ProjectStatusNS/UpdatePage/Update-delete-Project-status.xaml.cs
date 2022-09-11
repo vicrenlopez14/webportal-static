@@ -37,5 +37,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectStatusNS.UpdatePage
             
             await APIConnection.GetConnection.DeleteProjectstatusAsync(idNo);
         }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
