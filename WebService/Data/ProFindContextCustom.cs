@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace WebService.Data;
 
-public class ProFindContextCustom
+public partial class ProFindContext
 {
-    
+  
 }

@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebService.Models.Generated
 {
     [Table("notification")]
-    [Index("IdPj2", Name = "IdPJ2")]
+    [Index("IdPj2", Name = "FK_Notification_Project")]
     public partial class Notification
     {
         [Key]
@@ -20,5 +22,9 @@ namespace WebService.Models.Generated
         [Column("IdPJ2")]
         [StringLength(21)]
         public string? IdPj2 { get; set; }
+
+        [ForeignKey("IdPj2")]
+        [InverseProperty("Notifications")]
+        public virtual Project? IdPj2Navigation { get; set; }
     }
 }

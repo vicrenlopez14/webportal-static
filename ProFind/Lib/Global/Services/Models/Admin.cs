@@ -2,6 +2,10 @@
 {
     public partial class Admin
     {
+        public Admin()
+        {
+            
+        }
         public Admin(string idA, string nameA, string emailA, string telA, string passwordA, byte[] pictureA, string idR1)
         {
             IdA = idA;
