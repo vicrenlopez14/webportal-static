@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.InitPage
+namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -24,7 +24,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
             if (result == System.Net.HttpStatusCode.OK)
             {
-                new GlobalNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.Main_Page.Main_Page_Client));
+                new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Client));
 
             }
             else
@@ -46,7 +46,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(AdminNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
 
         }
 
@@ -58,7 +58,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
 
         }
     }

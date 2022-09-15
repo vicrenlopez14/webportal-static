@@ -1,4 +1,10 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using ProFind.Lib.ProfessionalNS.Controllers;
+using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
+using System.Collections.Generic;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -10,12 +16,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
     public sealed partial class UpdatePage : Page
     {
         Project toManipulate = new Project();
-        private string[] status = Enum.GetNames(typeof(Projectstatus));
         private List<Professional> professionals = new List<Professional>();
-        private List<string> professionalStrings = new List<string>();
 
         private List<Client> clients = new List<Client>();
-        private List<string> clientStrings = new List<string>();
 
         public UpdatePage()
         {
@@ -23,20 +26,18 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
         }
         private async void loadUsefulthings()
         {
-            (professionals, professionalStrings) = await new ProfessionalService().GetComboboxChoices();
-            (clients, clientStrings) = await new ClientService().GetComboboxChoices();
+            professionals = await APIConnection.GetConnection.GetProfessionalsAsync() as List<Professional>;
+            clients = await APIConnection.GetConnection.GetClientsAsync() as List<Client>;
 
-            InitialStatus_cb.ItemsSource = status;
-            Professional_cb.ItemsSource = professionalStrings;
-            Client_cb.ItemsSource = clientStrings;
+            Professional_cb.ItemsSource = professionals;
+            Client_cb.ItemsSource = clients;
 
             SelectedPicture_pp.Source = toManipulate.PicturePj.ToBitmapImage();
             Title_tb.Text = toManipulate.TitlePj ?? "";
             Description_tb.Text = toManipulate.DescriptionPj ?? "";
             TotalPrice_tb.Text = ((int)toManipulate.TotalPricePj).ToString();
-            InitialStatus_cb.SelectedIndex = ((int)toManipulate.Status) - 1;
-            Professional_cb.SelectedIndex = professionals.FindIndex(x => x.IdP == toManipulate.ResponsibleProfessional.IdP);
-            Client_cb.SelectedIndex = clients.FindIndex(x => x.IdC == toManipulate.ResponsibleClient.IdC);
+            Professional_cb.SelectedItem =  toManipulate.IdP1Navigation;
+            Client_cb.SelectedItem = toManipulate.IdC1Navigation;
 
         }
 
@@ -61,8 +62,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            //await new ProjectService().Update(toManipulate);
-            await APIConnection.GetConnection.GetAdminAsync(toManipulate);
+            await APIConnection.GetConnection.PutProjectAsync(toManipulate.IdPj, toManipulate);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
@@ -109,32 +109,29 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ProjectStatus selectedStatus = ProjectStatus.Inactive;
+            Projectstatus selectedStatus = InitialStatus_cb.SelectedItem as Projectstatus;
 
-            if (InitialStatus_cb.SelectedIndex == 1)
-                selectedStatus = ProjectStatus.Active;
-
-            toManipulate.Status = selectedStatus;
-            toManipulate.IdPs1 = selectedStatus == ProjectStatus.Inactive ? "0" : "1";
+            toManipulate.IdPs1Navigation = selectedStatus;
+            toManipulate.IdPs1 = selectedStatus.IdPs;
         }
 
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            toManipulate.ResponsibleProfessional = professionals[Professional_cb.SelectedIndex];
+            toManipulate.IdP1Navigation = professionals[Professional_cb.SelectedIndex];
             toManipulate.IdP1 = professionals[Professional_cb.SelectedIndex].IdP;
 
         }
 
         private void Client_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            toManipulate.ResponsibleClient = clients[Client_cb.SelectedIndex];
+            toManipulate.IdC1Navigation = Client_cb.SelectedItem as Client;
             toManipulate.IdC1 = clients[Client_cb.SelectedIndex].IdC;
-
+   
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ReadPageActivity), toManipulate);
+            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.ReadPage.ReadPage), toManipulate);
         }
     }
 }

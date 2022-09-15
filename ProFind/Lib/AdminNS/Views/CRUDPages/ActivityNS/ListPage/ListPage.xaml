@@ -1,9 +1,9 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPage"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.ListPage.ListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.ListPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:services="using:ProFind.Lib.Global.Services"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"

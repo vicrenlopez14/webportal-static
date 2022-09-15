@@ -1,8 +1,10 @@
 ﻿using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Services;
 using ProFind.Lib.Global.Views.FirstUsePage;
 using ProFind.Lib.Global.Views.InitPage;
 using ProFind.Lib.Global.Views.ServerNotAvailable;
 using System;
+using System.Linq;
 using System.Net.NetworkInformation;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -63,12 +65,11 @@ namespace ProFind
                     // Cuando no se restaura la pila de navegación, navegar a la primera página,
                     // configurando la nueva página pasándole la información requerida como
                     //parámetro de navegación
-                    WebAPIConnection.Run();
+                    var areThereAdmins = (await APIConnection.GetConnection.GetAdminsAsync()).Any();
+
                     try
                     {
-                        await WebAPIConnection.IsServerAlive();
-
-                        if (await new AdminService().AreThereAdmins())
+                        if (areThereAdmins)
                         {
                             rootFrame.Navigate(typeof(Lib.ClientNS.Views.InitPage.InitPage), e.Arguments);
                             new GlobalNavigationController().Init(rootFrame, typeof(InitPage));

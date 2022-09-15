@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage.Create_page"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"

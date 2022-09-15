@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Controls;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.CreatePage
 {
     public sealed partial class SelectProfessionalDialog : ContentDialog
     {

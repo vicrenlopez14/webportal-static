@@ -1,7 +1,6 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ProFind.Lib.AdminNS.Views.Main_Page_Admin;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 

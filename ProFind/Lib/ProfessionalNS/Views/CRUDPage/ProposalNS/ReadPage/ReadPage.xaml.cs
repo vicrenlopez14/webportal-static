@@ -1,5 +1,5 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
-using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
+﻿using ProFind.Lib.ProfessionalNS.Controllers;
+using ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage;
 using ProFind.Lib.Global.Services;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ReadPage.ReadPage"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProposalsNS.ReadPage.ReadPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ReadPage"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProposalsNS.ReadPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:models1="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">

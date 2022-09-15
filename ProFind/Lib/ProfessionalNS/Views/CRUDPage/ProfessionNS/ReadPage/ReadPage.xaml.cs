@@ -1,4 +1,4 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
+﻿using ProFind.Lib.ProfessionalNS.Controllers;
 using ProFind.Lib.Global.Services;
 using Windows.UI.Xaml.Controls;
 
@@ -28,7 +28,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionNS.ReadPage
         private async void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Professional project = e.ClickedItem as Professional;
-            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.InitPage.InitPage), project);
+            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage), project);
         }
     }
 }

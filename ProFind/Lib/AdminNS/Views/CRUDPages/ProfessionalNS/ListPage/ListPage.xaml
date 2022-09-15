@@ -1,10 +1,11 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.ListPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models1="using:Application.Models" xmlns:models11="using:ProFind.Lib.Global.Services.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:services="using:ProFind.Lib.Global.Services"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -20,7 +21,7 @@
             Tapped="ProjectsActiveListView_Tapped" >
             <ListView.ItemTemplate>
 
-                <DataTemplate x:DataType="models11:Professional">
+                <DataTemplate x:DataType="services:Professional">
 
                     <StackPanel
                 Background="#A8DF7C"

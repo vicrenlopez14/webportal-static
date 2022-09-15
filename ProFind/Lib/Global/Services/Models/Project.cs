@@ -2,6 +2,11 @@
 {
     public partial class Project
     {
+        public Project()
+        {
+
+        }
+
         public Project(string idPj, string titlePj, string descriptionPj, byte[] picturePj, float? totalPricePj, int? idPs1, string idP1, string idC1)
         {
             IdPj = idPj;

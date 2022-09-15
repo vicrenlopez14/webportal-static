@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
 
-namespace ProFind.Lib.AdminNS.Controllers
+namespace ProFind.Lib.ProfessionalNS.Controllers
 {
     public class InAppNavigationController : IViewNavigator<Type, Frame>
     {

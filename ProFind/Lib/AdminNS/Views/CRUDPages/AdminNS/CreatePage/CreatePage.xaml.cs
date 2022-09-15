@@ -4,7 +4,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Controls;
-using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Views;
@@ -13,7 +12,7 @@ using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -39,6 +38,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             Rank_cb.ItemsSource = ranks;
         }
 
+
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -53,7 +54,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(AdminNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
         }
 
         private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -84,18 +85,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 PictureSelection_btn.IsChecked = false;
             }
         }
-        public async void loadUsefulThings()
-        {
-            ranks = (List<Rank>)await APIConnection.GetConnection.GetRanksAsync();
-
-            foreach (var rank in ranks)
-            {
-                SelectedPicture_tbk.Text = file.Name;
-                imageBytes = await file.ToByteArrayAsync();
-
-                SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
-            }
-        }
+     
 
 
 

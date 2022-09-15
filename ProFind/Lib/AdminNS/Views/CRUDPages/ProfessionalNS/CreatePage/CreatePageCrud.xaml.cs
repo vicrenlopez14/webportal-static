@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -192,7 +192,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void CargarCurriculum_Click(object sender, RoutedEventArgs e)
         {
-            new Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog();
+            new Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog();
         }
     }
 

@@ -1,10 +1,11 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage.Editar_User"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.UpdatePage.Editar_User"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProFind.Lib.AdminNS.Views"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.UpdatePage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 

@@ -32,12 +32,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
         private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(AdminNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
         }
 
         private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ClientNS.Views.InitPage.InitPage_Login));
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage_Login));
 
         }
 

@@ -2,12 +2,12 @@
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ProfessionalNS.Controllers;
 using ProFind.Lib.Global.Services;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -33,7 +33,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
         {
 
         }
-
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {

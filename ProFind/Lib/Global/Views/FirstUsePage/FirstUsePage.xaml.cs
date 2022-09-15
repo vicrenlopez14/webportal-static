@@ -18,7 +18,7 @@ namespace ProFind.Lib.Global.Views.FirstUsePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(AdminCreate), true);
+            new GlobalNavigationController().NavigateTo(typeof(AdminNS.Views.CRUDPages.AdminNS.CreatePage.CreatePage), true);
         }
     }
 }
