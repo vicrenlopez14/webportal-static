@@ -1,18 +1,19 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage;
-using ProFind.Lib.Global.Controllers;
-using ProFind.Lib.Global.Helpers;
-using ProFind.Lib.Global.Services;
-using ProFind.Lib.Global.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Views;
+using Rank = ProFind.Lib.Global.Services.Rank;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.CreatePage
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -52,12 +53,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.CreatePage
 
         private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
         }
 
         private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
         }
 
         private async void PictureSelection_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -98,8 +99,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.CreatePage
             {
                 Creation_pr.IsActive = true;
 
-                var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
-                toCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR.ToString();
+                //var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                //toCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR.ToString();
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);
 

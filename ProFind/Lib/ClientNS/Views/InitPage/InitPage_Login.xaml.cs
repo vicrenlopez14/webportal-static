@@ -1,12 +1,13 @@
-﻿using ProFind.Lib.Global.Controllers;
-using System;
+﻿using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.ClientNS.Views.Main_Page;
+using ProFind.Lib.Global.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.InitPage
+namespace ProFind.Lib.ClientNS.Views.InitPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -24,7 +25,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
             if (result == System.Net.HttpStatusCode.OK)
             {
-                new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Client));
+                new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
 
             }
             else
@@ -46,19 +47,19 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(InitPage));
 
         }
 
         private void Professionals_Login_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(InitPage));
 
         }
 
         private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(InitPage));
 
         }
     }

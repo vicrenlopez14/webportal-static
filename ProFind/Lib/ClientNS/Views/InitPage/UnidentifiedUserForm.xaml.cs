@@ -1,10 +1,12 @@
 ﻿using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Views.Main_Page_Admin;
+using ProFind.Lib.ClientNS.Views.Main_Page;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.ProfessionalNS.Views.Main_Page;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace ProFind.Lib.ProfessionalNS.Views.InitPage
+namespace ProFind.Lib.ClientNS.Views.InitPage
 {
     public sealed partial class UnidentifiedUserForm : UserControl
     {
@@ -38,16 +40,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
             switch (mail)
             {
                 case "admin@profind.work":
-                    new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.Main_Page_Admin.Main_Page_Admin));
+                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Admin));
                     break;
                 case "professional@profind.work":
                     new GlobalNavigationController().NavigateTo(typeof(Main_Page_Professional));
                     break;
                 case "client@profind.work":
-                    new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.Main_Page.Main_Page_Client));
+                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
                     break;
                 default:
-                    new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.Main_Page.Main_Page_Client));
+                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
                     break;
             }
 

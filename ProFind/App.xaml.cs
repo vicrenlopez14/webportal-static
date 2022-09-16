@@ -29,6 +29,7 @@ namespace ProFind
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
+            APIConnection.Init();
         }
 
         /// <summary>
@@ -65,6 +66,7 @@ namespace ProFind
                     // Cuando no se restaura la pila de navegación, navegar a la primera página,
                     // configurando la nueva página pasándole la información requerida como
                     //parámetro de navegación
+                    
                     var areThereAdmins = (await APIConnection.GetConnection.GetAdminsAsync()).Any();
 
                     try

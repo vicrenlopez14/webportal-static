@@ -1,10 +1,10 @@
-﻿using ProFind.Lib.Global.Services;
+﻿using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services;
 using Syncfusion.Pdf;
-using Windows.UI.Xaml.Controls;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.ReadPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.ReadPage
 {
     public sealed partial class ReadDialog : ContentDialog
     {

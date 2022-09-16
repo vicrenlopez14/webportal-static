@@ -59,7 +59,7 @@ namespace ProFind.Lib.Global.Views.InitPage
 
         private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ClientNS.Views.InitPage.InitPage));
 
         }
 

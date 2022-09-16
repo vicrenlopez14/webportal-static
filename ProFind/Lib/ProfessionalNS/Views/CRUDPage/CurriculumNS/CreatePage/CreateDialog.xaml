@@ -1,9 +1,8 @@
 ﻿<ContentDialog
-    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.CreatePage.CreateDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:my="using:Syncfusion.Windows.PdfViewer"

@@ -1,7 +1,4 @@
-﻿using ProFind.Lib.Global.Controllers;
-using ProFind.Lib.Global.Helpers;
-using ProFind.Lib.Global.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Windows.Devices.Geolocation;
 using Windows.UI.Popups;
@@ -9,10 +6,17 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.ClientNS.Views.InitPage;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.CreatePage;
+using Department = ProFind.Lib.Global.Services.Department;
+using Profession = ProFind.Lib.Global.Services.Profession;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -135,7 +139,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
                 if (_isFirstAdmin)
                 {
-                    new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+                    new GlobalNavigationController().NavigateTo(typeof(InitPage));
                 }
 
             }
@@ -162,7 +166,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(InitPage));
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -192,7 +196,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void CargarCurriculum_Click(object sender, RoutedEventArgs e)
         {
-            new Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog();
+            new CreateDialog();
         }
     }
 

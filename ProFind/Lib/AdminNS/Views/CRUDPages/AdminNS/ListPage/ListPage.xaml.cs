@@ -1,12 +1,13 @@
-﻿using ProFind.Lib.ProfessionalNS.Controllers;
-using ProFind.Lib.Global.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
+using Admin = ProFind.Lib.Global.Services.Admin;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.ListPage
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

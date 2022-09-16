@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Global.Views.About_Page;
-using ProFind.Lib.ProfessionalNS.Controllers;
 
 namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
 {

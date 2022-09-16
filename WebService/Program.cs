@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebService.Data;
 
@@ -26,7 +27,14 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger(o => o.SerializeAsV2 = true);
+    
+    app.UseSwagger(o =>
+    {
+     o.PreSerializeFilters.Add((swagger, httpReq) =>
+     {
+         swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"{httpReq.Scheme}://{httpReq.Host.Value}" } };
+     });   
+    });
     app.UseSwaggerUI(c => c.DisplayOperationId());
 }
 

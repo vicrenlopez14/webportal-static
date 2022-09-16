@@ -5,6 +5,7 @@
     xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:models1="using:ProFind.Lib.Global.Services"
+    xmlns:models="using:ProFind.Lib.Global.Services.Models"
     Style="{StaticResource PageStyle}">
 
     <Grid>
@@ -43,7 +44,7 @@
                     ItemClick="AdminListView_ItemClick"
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models1:Project">
+                        <DataTemplate x:DataType="models:Project">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"

@@ -1,11 +1,11 @@
-﻿using ProFind.Lib.Global.Services;
-using System.Collections.Generic;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Services;
+using Profession = ProFind.Lib.Global.Services.Profession;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionNS.UpdatePage
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.

@@ -1,11 +1,11 @@
-﻿using ProFind.Lib.Global.Helpers;
-using Syncfusion.Pdf;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.Global.Helpers;
+using Syncfusion.Pdf;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.CreatePage
 {
     public sealed partial class CreateDialog : ContentDialog
     {
@@ -26,7 +26,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.CurriculumNS.CreatePage
         {
             UpdateMode();
 
-            PDFPreview.Load(document);
+            PDFPreview.LoadDocument(document);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

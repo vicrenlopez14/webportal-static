@@ -1,8 +1,9 @@
-﻿using ProFind.Lib.ProfessionalNS.Controllers;
-using ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.CreatePage;
-using ProFind.Lib.Global.Services;
+﻿using ProFind.Lib.Global.Services;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
+using Proposal = ProFind.Lib.Global.Services.Proposal;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 

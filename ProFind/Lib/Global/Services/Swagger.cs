@@ -85,12 +85,12 @@ namespace ProFind.Lib.Global.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string expectedBeginRel, string expectedEndRel, string idProject, string idTag);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(System.DateTimeOffset? expectedBegin, string expectedBeginRel, System.DateTimeOffset? expectedEnd, string expectedEndRel, string idProject, string idTag);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string expectedBeginRel, string expectedEndRel, string idProject, string idTag, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(System.DateTimeOffset? expectedBegin, string expectedBeginRel, System.DateTimeOffset? expectedEnd, string expectedEndRel, string idProject, string idTag, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -796,12 +796,12 @@ namespace ProFind.Lib.Global.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string suggestedStarRel, string suggestedEndRel, string idProfessional, string idClient);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(System.DateTimeOffset? suggestedStart, string suggestedStarRel, System.DateTimeOffset? suggestedEnd, string suggestedEndRel, string idProfessional, string idClient);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string suggestedStarRel, string suggestedEndRel, string idProfessional, string idClient, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(System.DateTimeOffset? suggestedStart, string suggestedStarRel, System.DateTimeOffset? suggestedEnd, string suggestedEndRel, string idProfessional, string idClient, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1295,7 +1295,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -1372,7 +1372,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -1450,7 +1450,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -1680,7 +1680,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -1771,7 +1771,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -1825,45 +1825,29 @@ namespace ProFind.Lib.Global.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string expectedBeginRel, string expectedEndRel, string idProject, string idTag)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(System.DateTimeOffset? expectedBegin, string expectedBeginRel, System.DateTimeOffset? expectedEnd, string expectedEndRel, string idProject, string idTag)
         {
-            return FilterActivitiesAsync(yearQuery, monthQuery, dayQuery, dayOfWeekQuery, dayOfYearQuery, dayNumberQuery, expectedBeginRel, expectedEndRel, idProject, idTag, System.Threading.CancellationToken.None);
+            return FilterActivitiesAsync(expectedBegin, expectedBeginRel, expectedEnd, expectedEndRel, idProject, idTag, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string expectedBeginRel, string expectedEndRel, string idProject, string idTag, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Activity>> FilterActivitiesAsync(System.DateTimeOffset? expectedBegin, string expectedBeginRel, System.DateTimeOffset? expectedEnd, string expectedEndRel, string idProject, string idTag, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Activities/filter?");
-            if (yearQuery != null)
+            if (expectedBegin != null)
             {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Year") + "=").Append(System.Uri.EscapeDataString(ConvertToString(yearQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (monthQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Month") + "=").Append(System.Uri.EscapeDataString(ConvertToString(monthQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Day") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayOfWeekQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("DayOfWeek") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayOfWeekQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayOfYearQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("DayOfYear") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayOfYearQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayNumberQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("DayNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayNumberQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(System.Uri.EscapeDataString("expectedBegin") + "=").Append(System.Uri.EscapeDataString(expectedBegin.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (expectedBeginRel != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("expectedBeginRel") + "=").Append(System.Uri.EscapeDataString(ConvertToString(expectedBeginRel, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (expectedEnd != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("expectedEnd") + "=").Append(System.Uri.EscapeDataString(expectedEnd.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (expectedEndRel != null)
             {
@@ -1886,7 +1870,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -1969,7 +1953,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2185,7 +2169,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2262,7 +2246,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2340,7 +2324,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2570,7 +2554,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2661,7 +2645,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2748,7 +2732,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -2831,7 +2815,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3047,7 +3031,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3124,7 +3108,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3202,7 +3186,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3432,7 +3416,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3523,7 +3507,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3610,7 +3594,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3693,7 +3677,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3767,7 +3751,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3844,7 +3828,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -3922,7 +3906,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4214,7 +4198,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4291,7 +4275,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4369,7 +4353,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4590,7 +4574,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4667,7 +4651,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -4745,7 +4729,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5108,7 +5092,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5185,7 +5169,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5263,7 +5247,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5484,7 +5468,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5561,7 +5545,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5639,7 +5623,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5860,7 +5844,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -5937,7 +5921,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6015,7 +5999,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6236,7 +6220,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6313,7 +6297,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6391,7 +6375,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6612,7 +6596,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6689,7 +6673,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6767,7 +6751,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -6988,7 +6972,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7065,7 +7049,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7143,7 +7127,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7364,7 +7348,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7441,7 +7425,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7519,7 +7503,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7749,7 +7733,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7840,7 +7824,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -7894,45 +7878,29 @@ namespace ProFind.Lib.Global.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string suggestedStarRel, string suggestedEndRel, string idProfessional, string idClient)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(System.DateTimeOffset? suggestedStart, string suggestedStarRel, System.DateTimeOffset? suggestedEnd, string suggestedEndRel, string idProfessional, string idClient)
         {
-            return FilterProposalsAsync(yearQuery, monthQuery, dayQuery, dayOfWeekQuery, dayOfYearQuery, dayNumberQuery, suggestedStarRel, suggestedEndRel, idProfessional, idClient, System.Threading.CancellationToken.None);
+            return FilterProposalsAsync(suggestedStart, suggestedStarRel, suggestedEnd, suggestedEndRel, idProfessional, idClient, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(int? yearQuery, int? monthQuery, int? dayQuery, object dayOfWeekQuery, int? dayOfYearQuery, int? dayNumberQuery, string suggestedStarRel, string suggestedEndRel, string idProfessional, string idClient, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Proposal>> FilterProposalsAsync(System.DateTimeOffset? suggestedStart, string suggestedStarRel, System.DateTimeOffset? suggestedEnd, string suggestedEndRel, string idProfessional, string idClient, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Proposals/filter?");
-            if (yearQuery != null)
+            if (suggestedStart != null)
             {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Year") + "=").Append(System.Uri.EscapeDataString(ConvertToString(yearQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (monthQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Month") + "=").Append(System.Uri.EscapeDataString(ConvertToString(monthQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Day") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayOfWeekQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("DayOfWeek") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayOfWeekQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayOfYearQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("DayOfYear") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayOfYearQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
-            if (dayNumberQuery != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("DayNumber") + "=").Append(System.Uri.EscapeDataString(ConvertToString(dayNumberQuery, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(System.Uri.EscapeDataString("suggestedStart") + "=").Append(System.Uri.EscapeDataString(suggestedStart.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (suggestedStarRel != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("suggestedStarRel") + "=").Append(System.Uri.EscapeDataString(ConvertToString(suggestedStarRel, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (suggestedEnd != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("suggestedEnd") + "=").Append(System.Uri.EscapeDataString(suggestedEnd.Value.ToString("s", System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             if (suggestedEndRel != null)
             {
@@ -7955,7 +7923,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8038,7 +8006,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8112,7 +8080,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8189,7 +8157,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8267,7 +8235,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8493,7 +8461,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8580,7 +8548,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8663,7 +8631,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8746,7 +8714,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8820,7 +8788,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8897,7 +8865,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -8975,7 +8943,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9196,7 +9164,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9273,7 +9241,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9351,7 +9319,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9572,7 +9540,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9649,7 +9617,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9727,7 +9695,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -9948,7 +9916,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10025,7 +9993,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10103,7 +10071,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10324,7 +10292,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10401,7 +10369,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10479,7 +10447,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10700,7 +10668,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10777,7 +10745,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -10855,7 +10823,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11085,7 +11053,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11176,7 +11144,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11259,7 +11227,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11342,7 +11310,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11416,7 +11384,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11493,7 +11461,7 @@ namespace ProFind.Lib.Global.Services
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11571,7 +11539,7 @@ namespace ProFind.Lib.Global.Services
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -11889,10 +11857,10 @@ namespace ProFind.Lib.Global.Services
         public string DescriptionA { get; set; }
 
         [Newtonsoft.Json.JsonProperty("expectedBeginA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly ExpectedBeginA { get; set; }
+        public System.DateTimeOffset? ExpectedBeginA { get; set; }
 
         [Newtonsoft.Json.JsonProperty("expectedEndA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly ExpectedEndA { get; set; }
+        public System.DateTimeOffset? ExpectedEndA { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] PictureA { get; set; }
@@ -11905,10 +11873,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdT1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idT1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idT1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Tag IdT1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activitycomments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11931,7 +11899,7 @@ namespace ProFind.Lib.Global.Services
         public string CommentAc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("dateAc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly DateAc { get; set; }
+        public System.DateTimeOffset? DateAc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("askToCheckChatAc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? AskToCheckChatAc { get; set; }
@@ -11948,13 +11916,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC5 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Activity IdA1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC5Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP5Navigation { get; set; }
 
     }
@@ -11988,7 +11956,7 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("idR1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdR1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idR1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idR1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Rank IdR1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("securityansweradmins", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12028,7 +11996,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC1Navigation { get; set; }
 
     }
@@ -12085,53 +12053,10 @@ namespace ProFind.Lib.Global.Services
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]
-    public partial class DateOnly
-    {
-        [Newtonsoft.Json.JsonProperty("year", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Year { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("month", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Month { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("day", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Day { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("dayOfWeek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DayOfWeek? DayOfWeek { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("dayOfYear", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DayOfYear { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("dayNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DayNumber { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]
-    public enum DayOfWeek
-    {
-
-        _0 = 0,
-
-        _1 = 1,
-
-        _2 = 2,
-
-        _3 = 3,
-
-        _4 = 4,
-
-        _5 = 5,
-
-        _6 = 6,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]
     public partial class Department
     {
-        [Newtonsoft.Json.JsonProperty("idDp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdDp { get; set; }
+        [Newtonsoft.Json.JsonProperty("idDp", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int IdDp { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nameDp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(30)]
@@ -12167,7 +12092,7 @@ namespace ProFind.Lib.Global.Services
         public byte[] AudioM { get; set; }
 
         [Newtonsoft.Json.JsonProperty("dateTimeM", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly DateTimeM { get; set; }
+        public System.DateTimeOffset? DateTimeM { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idP4", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
@@ -12177,10 +12102,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC4 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP4Navigation { get; set; }
 
     }
@@ -12201,7 +12126,7 @@ namespace ProFind.Lib.Global.Services
         public string DescriptionN { get; set; }
 
         [Newtonsoft.Json.JsonProperty("dateTimeIssuedN", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly DateTimeIssuedN { get; set; }
+        public System.DateTimeOffset? DateTimeIssuedN { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureN", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] PictureN { get; set; }
@@ -12210,7 +12135,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPj2 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj2Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj2Navigation { get; set; }
 
     }
@@ -12218,8 +12143,8 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]
     public partial class Profession
     {
-        [Newtonsoft.Json.JsonProperty("idPfs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdPfs { get; set; }
+        [Newtonsoft.Json.JsonProperty("idPfs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int IdPfs { get; set; }
 
         [Newtonsoft.Json.JsonProperty("namePfs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(50)]
@@ -12242,7 +12167,7 @@ namespace ProFind.Lib.Global.Services
         public string NameP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("dateBirthP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly DateBirthP { get; set; }
+        public System.DateTimeOffset? DateBirthP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("emailP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
@@ -12278,7 +12203,7 @@ namespace ProFind.Lib.Global.Services
         public float? SalaryP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("hiringDateP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly HiringDateP { get; set; }
+        public System.DateTimeOffset? HiringDateP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] PictureP { get; set; }
@@ -12301,10 +12226,10 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("idWdt1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdWdt1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idDp1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idDp1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Department IdDp1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPfs1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPfs1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Profession IdPfs1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activitycomments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12369,13 +12294,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPs1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPs1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projectstatus IdPs1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activities", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12420,7 +12345,7 @@ namespace ProFind.Lib.Global.Services
         public bool? HasLimitDatePpy { get; set; }
 
         [Newtonsoft.Json.JsonProperty("limitDatePpy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly LimitDatePpy { get; set; }
+        public System.DateTimeOffset? LimitDatePpy { get; set; }
 
         [Newtonsoft.Json.JsonProperty("defaultAmountPpy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public float? DefaultAmountPpy { get; set; }
@@ -12440,13 +12365,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPj3 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC3Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP3Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj3Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("supporttickets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12479,7 +12404,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPt1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projecttemplate IdPt1Navigation { get; set; }
 
     }
@@ -12539,7 +12464,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdP1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("projectpaytemplates", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12569,10 +12494,10 @@ namespace ProFind.Lib.Global.Services
         public byte[] PicturePp { get; set; }
 
         [Newtonsoft.Json.JsonProperty("suggestedStart", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly SuggestedStart { get; set; }
+        public System.DateTimeOffset? SuggestedStart { get; set; }
 
         [Newtonsoft.Json.JsonProperty("suggestedEnd", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly SuggestedEnd { get; set; }
+        public System.DateTimeOffset? SuggestedEnd { get; set; }
 
         [Newtonsoft.Json.JsonProperty("seen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Seen { get; set; }
@@ -12588,10 +12513,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC3 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC3Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP3Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("proposalnotifications", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12631,13 +12556,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC4 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPp1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPp1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Proposal IdPp1Navigation { get; set; }
 
     }
@@ -12645,8 +12570,8 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.1.0))")]
     public partial class Rank
     {
-        [Newtonsoft.Json.JsonProperty("idR", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? IdR { get; set; }
+        [Newtonsoft.Json.JsonProperty("idR", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int IdR { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nameR", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(50)]
@@ -12676,10 +12601,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdA1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Admin IdA1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Securityquestion IdSq1Navigation { get; set; }
 
     }
@@ -12703,10 +12628,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Securityquestion IdSq1Navigation { get; set; }
 
     }
@@ -12730,10 +12655,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdP { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPNavigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdPNavigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idSqNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idSqNavigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Securityquestion IdSqNavigation { get; set; }
 
     }
@@ -12789,7 +12714,7 @@ namespace ProFind.Lib.Global.Services
         public byte[] AudioSt { get; set; }
 
         [Newtonsoft.Json.JsonProperty("dateTimeSt", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DateOnly DateTimeSt { get; set; }
+        public System.DateTimeOffset? DateTimeSt { get; set; }
 
         [Newtonsoft.Json.JsonProperty("ticketStatusSt", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string TicketStatusSt { get; set; }
@@ -12842,25 +12767,25 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPpy1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA2Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Admin IdA2Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idAct1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idAct1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Activity IdAct1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC5Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP5Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPp2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPp2Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Proposal IdPp2Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPpy1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPpy1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projectpay IdPpy1Navigation { get; set; }
 
     }
@@ -12884,7 +12809,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPj { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPjNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPjNavigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPjNavigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activities", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12911,7 +12836,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPt1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projecttemplate IdPt1Navigation { get; set; }
 
     }

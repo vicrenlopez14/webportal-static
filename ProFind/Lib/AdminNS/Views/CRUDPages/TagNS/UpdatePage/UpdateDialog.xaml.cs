@@ -2,7 +2,7 @@
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.TagNS.UpdatePage
+namespace ProFind.Lib.AdminNS.Views.CRUDPages.TagNS.UpdatePage
 {
     public sealed partial class UpdateDialog : ContentDialog
     {

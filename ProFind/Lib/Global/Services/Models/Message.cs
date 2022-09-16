@@ -1,6 +1,9 @@
-﻿namespace ProFind.Lib.Global.Services.Models
+﻿namespace ProFind.Lib.Global.Services
 {
-    internal class Message
+    public partial class Message
     {
+      
+
+        public override string ToString() => ContentM;
     }
 }

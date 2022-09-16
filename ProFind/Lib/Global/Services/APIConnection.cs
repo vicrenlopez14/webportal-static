@@ -1,4 +1,6 @@
-﻿namespace ProFind.Lib.Global.Services
+﻿using System;
+
+namespace ProFind.Lib.Global.Services
 {
     public class APIConnection
     {
@@ -8,9 +10,10 @@
 
         public static async void Init()
         {
+            var client = new System.Net.Http.HttpClient();
+            client.BaseAddress = new Uri("http://localhost:5000");
 
-            _service = new WebServiceClient(new System.Net.Http.HttpClient());
-
+            _service = new WebServiceClient(client);
         }
     }
 }

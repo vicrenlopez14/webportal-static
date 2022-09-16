@@ -3,7 +3,7 @@
 {
     public partial class Department
     {
-        public Department(int? idDp, string nameDp)
+        public Department(int idDp, string nameDp)
         {
             IdDp = idDp;
             NameDp = nameDp;

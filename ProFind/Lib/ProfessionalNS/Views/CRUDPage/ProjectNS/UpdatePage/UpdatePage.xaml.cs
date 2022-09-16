@@ -1,10 +1,14 @@
-﻿using ProFind.Lib.ProfessionalNS.Controllers;
-using ProFind.Lib.Global.Helpers;
+﻿using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Controllers;
+using Client = ProFind.Lib.Global.Services.Client;
+using Professional = ProFind.Lib.Global.Services.Professional;
+using Project = ProFind.Lib.Global.Services.Project;
+using Projectstatus = ProFind.Lib.Global.Services.Projectstatus;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -131,7 +135,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPages.ActivityNS.ReadPage.ReadPage), toManipulate);
+            new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPage.ReadPage), toManipulate);
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using ProFind.Lib.ProfessionalNS.Controllers;
+﻿using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Services;
-using Windows.UI.Xaml.Controls;
+using Admin = ProFind.Lib.Global.Services.Admin;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionalNS.ReadPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.AdminNS.ReadPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.

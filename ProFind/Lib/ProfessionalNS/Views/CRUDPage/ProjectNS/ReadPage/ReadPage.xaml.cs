@@ -1,7 +1,8 @@
-﻿using ProFind.Lib.ProfessionalNS.Controllers;
-using ProFind.Lib.Global.Services;
+﻿using ProFind.Lib.Global.Services;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
+using Project = ProFind.Lib.Global.Services.Project;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 

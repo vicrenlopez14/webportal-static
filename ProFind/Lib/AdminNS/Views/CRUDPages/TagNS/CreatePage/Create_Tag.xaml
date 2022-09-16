@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPages.TagNS.CreatePage.Create_Tag"
+    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.TagNS.CreatePage.Create_Tag"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.TagNS.CreatePage"
