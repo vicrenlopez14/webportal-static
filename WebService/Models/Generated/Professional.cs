@@ -29,7 +29,8 @@ namespace WebService.Models.Generated
         public string IdP { get; set; } = null!;
         [StringLength(50)]
         public string? NameP { get; set; }
-        public DateOnly? DateBirthP { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? DateBirthP { get; set; }
         [StringLength(21)]
         public string? EmailP { get; set; }
         [StringLength(64)]
@@ -48,7 +49,8 @@ namespace WebService.Models.Generated
         [StringLength(10)]
         public string? ZipCodeP { get; set; }
         public float? SalaryP { get; set; }
-        public DateOnly? HiringDateP { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? HiringDateP { get; set; }
         public byte[]? PictureP { get; set; }
         public byte[]? CurriculumP { get; set; }
         public double? LatitudeLocationP { get; set; }

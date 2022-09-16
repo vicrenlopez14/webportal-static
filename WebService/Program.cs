@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ProFindContext>(options =>
-    options.UseMySql(builder.Configuration["ConnectionStrings"], new MySqlServerVersion(new Version(8, 0, 27)))
+    options.UseMySql(builder.Configuration["DatabaseConnectionString"], new MySqlServerVersion(new Version(8, 0, 27)))
         .LogTo(Console.WriteLine, LogLevel.Information).EnableSensitiveDataLogging().EnableDetailedErrors());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

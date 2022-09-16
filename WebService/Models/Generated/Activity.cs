@@ -15,7 +15,7 @@ namespace WebService.Models.Generated
         {
             Activitycomments = new HashSet<Activitycomment>();
             Supporttickets = new HashSet<Supportticket>();
-            }
+        }
 
         [Key]
         [StringLength(21)]
@@ -24,8 +24,10 @@ namespace WebService.Models.Generated
         public string? TitleA { get; set; }
         [StringLength(500)]
         public string? DescriptionA { get; set; }
-        public DateOnly? ExpectedBeginA { get; set; }
-        public DateOnly? ExpectedEndA { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? ExpectedBeginA { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? ExpectedEndA { get; set; }
         public byte[]? PictureA { get; set; }
         [Column("IdPJ1")]
         [StringLength(21)]

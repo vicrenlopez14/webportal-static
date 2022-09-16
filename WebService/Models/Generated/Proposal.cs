@@ -29,8 +29,10 @@ namespace WebService.Models.Generated
         public string? DescriptionPp { get; set; }
         [Column("PicturePP")]
         public byte[]? PicturePp { get; set; }
-        public DateOnly? SuggestedStart { get; set; }
-        public DateOnly? SuggestedEnd { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? SuggestedStart { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? SuggestedEnd { get; set; }
         public bool? Seen { get; set; }
         [Column(TypeName = "enum('pending','planning','rejected','clientaccepted','topay','readytostart')")]
         public string? RevisionStatus { get; set; }

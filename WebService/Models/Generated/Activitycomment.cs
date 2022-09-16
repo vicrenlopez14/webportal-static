@@ -19,8 +19,8 @@ namespace WebService.Models.Generated
         [Column("CommentAC")]
         [StringLength(500)]
         public string? CommentAc { get; set; }
-        [Column("DateAC")]
-        public DateOnly? DateAc { get; set; }
+        [Column("DateAC", TypeName = "datetime")]
+        public DateTime? DateAc { get; set; }
         [Column("AskToCheckChatAC")]
         public bool? AskToCheckChatAc { get; set; }
         [StringLength(21)]

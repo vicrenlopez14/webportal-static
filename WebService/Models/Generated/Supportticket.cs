@@ -35,8 +35,8 @@ namespace WebService.Models.Generated
         public string? LocationSt { get; set; }
         [Column("AudioST")]
         public byte[]? AudioSt { get; set; }
-        [Column("DateTimeST")]
-        public DateOnly? DateTimeSt { get; set; }
+        [Column("DateTimeST", TypeName = "datetime")]
+        public DateTime? DateTimeSt { get; set; }
         [Column("TicketStatusST", TypeName = "enum('taken','pending','actiontaken')")]
         public string? TicketStatusSt { get; set; }
         [Column("SuggestedActionST", TypeName = "enum('checkproject','checkactivity','checkproposal','checkpayment','checkchat','closeticket')")]

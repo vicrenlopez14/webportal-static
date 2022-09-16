@@ -86,9 +86,9 @@ public class ProposalsController : ControllerBase
     }
 
     [HttpGet("filter/")]
-    public async Task<ActionResult<IEnumerable<Proposal>>> FilterProposals([FromQuery] DateOnly? suggestedStart,
+    public async Task<ActionResult<IEnumerable<Proposal>>> FilterProposals([FromQuery] DateTime? suggestedStart,
         [FromQuery] string? suggestedStarRel,
-        [FromQuery] DateOnly? suggestedEnd, [FromQuery] string? suggestedEndRel,
+        [FromQuery] DateTime? suggestedEnd, [FromQuery] string? suggestedEndRel,
         [FromQuery] string? idProfessional,
         [FromQuery] string? idClient)
     {

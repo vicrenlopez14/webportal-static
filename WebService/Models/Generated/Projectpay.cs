@@ -33,8 +33,8 @@ namespace WebService.Models.Generated
         public string? CurrencyPpy { get; set; }
         [Column("HasLimitDatePPY")]
         public bool? HasLimitDatePpy { get; set; }
-        [Column("LimitDatePPY")]
-        public DateOnly? LimitDatePpy { get; set; }
+        [Column("LimitDatePPY", TypeName = "datetime")]
+        public DateTime? LimitDatePpy { get; set; }
         [Column("DefaultAmountPPY")]
         public float? DefaultAmountPpy { get; set; }
         [Column("PayStatusPPY", TypeName = "enum('pending','done','rejected')")]

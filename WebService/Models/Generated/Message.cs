@@ -21,7 +21,8 @@ namespace WebService.Models.Generated
         [StringLength(100)]
         public string? LocationM { get; set; }
         public byte[]? AudioM { get; set; }
-        public DateOnly? DateTimeM { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? DateTimeM { get; set; }
         [StringLength(21)]
         public string? IdP4 { get; set; }
         [StringLength(21)]

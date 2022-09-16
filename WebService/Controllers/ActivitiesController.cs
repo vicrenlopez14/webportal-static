@@ -87,9 +87,9 @@ public class ActivitiesController : ControllerBase
     }
 
     [HttpGet("filter/")]
-    public async Task<ActionResult<IEnumerable<Activity>>> FilterActivities([FromQuery] DateOnly? expectedBegin,
+    public async Task<ActionResult<IEnumerable<Activity>>> FilterActivities([FromQuery] DateTime? expectedBegin,
         [FromQuery] string? expectedBeginRel,
-        [FromQuery] DateOnly? expectedEnd, [FromQuery] string? expectedEndRel,
+        [FromQuery] DateTime? expectedEnd, [FromQuery] string? expectedEndRel,
         [FromQuery] string? idProject,
         [FromQuery] string? idTag)
     {
