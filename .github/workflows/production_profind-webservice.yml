@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-    workingDirectory: WebService/
     runs-on: ubuntu-latest
 
     steps:
@@ -23,9 +22,11 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
+        working-directory: ./WebService/
         run: dotnet build --configuration Release
 
       - name: dotnet publish
+        working-directory: ./WebService/
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
