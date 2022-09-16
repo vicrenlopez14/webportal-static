@@ -259,7 +259,7 @@ public class AdminsController : ControllerBase
     }
 
     [HttpGet("search/paginated")]
-    public async Task<ActionResult<IEnumerable<Admin>>> SearchAdmins([FromQuery] string idA,
+    public async Task<ActionResult<IEnumerable<Admin>>> SearchAdminsPaginated([FromQuery] string idA,
         [FromQuery] string Name, [FromQuery] string limit,
         [FromQuery] string offset)
     {
