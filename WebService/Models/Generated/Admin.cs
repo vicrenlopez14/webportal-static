@@ -12,6 +12,7 @@ namespace WebService.Models.Generated
     {
         public Admin()
         {
+            Changepasswordcodes = new HashSet<Changepasswordcode>();
             Securityansweradmins = new HashSet<Securityansweradmin>();
             Supporttickets = new HashSet<Supportticket>();
         }
@@ -34,6 +35,8 @@ namespace WebService.Models.Generated
         [ForeignKey("IdR1")]
         [InverseProperty("Admins")]
         public virtual Rank? IdR1Navigation { get; set; }
+        [InverseProperty("IdA1Navigation")]
+        public virtual ICollection<Changepasswordcode> Changepasswordcodes { get; set; }
         [InverseProperty("IdA1Navigation")]
         public virtual ICollection<Securityansweradmin> Securityansweradmins { get; set; }
         [InverseProperty("IdA2Navigation")]

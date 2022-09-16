@@ -14,6 +14,7 @@ namespace WebService.Models.Generated
         public Professional()
         {
             Activitycomments = new HashSet<Activitycomment>();
+            Changepasswordcodes = new HashSet<Changepasswordcode>();
             Messages = new HashSet<Message>();
             Projectpays = new HashSet<Projectpay>();
             Projects = new HashSet<Project>();
@@ -70,6 +71,8 @@ namespace WebService.Models.Generated
         public virtual Profession? IdPfs1Navigation { get; set; }
         [InverseProperty("IdP5Navigation")]
         public virtual ICollection<Activitycomment> Activitycomments { get; set; }
+        [InverseProperty("IdP1Navigation")]
+        public virtual ICollection<Changepasswordcode> Changepasswordcodes { get; set; }
         [InverseProperty("IdP4Navigation")]
         public virtual ICollection<Message> Messages { get; set; }
         [InverseProperty("IdP3Navigation")]

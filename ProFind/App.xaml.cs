@@ -1,13 +1,16 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.Global.Views.FirstUsePage;
 using ProFind.Lib.Global.Views.InitPage;
 using ProFind.Lib.Global.Views.ServerNotAvailable;
+using Syncfusion.XPS;
 using System;
 using System.Linq;
 using System.Net.NetworkInformation;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -19,6 +22,8 @@ namespace ProFind
     /// </summary>
     sealed partial class App : Windows.UI.Xaml.Application
     {
+        private Windows.System.ProtocolForResultsOperation _operation = null;
+
         /// <summary>
         /// Inicializa el objeto de aplicación Singleton. Esta es la primera línea de código creado
         /// ejecutado y, como tal, es el equivalente lógico de main() o WinMain().
@@ -28,8 +33,57 @@ namespace ProFind
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
 
-            APIConnection.Init();
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            if (args.Kind == ActivationKind.Protocol)
+            {
+                ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
+
+                InitializeFromActivated(eventArgs);
+            }
+        }
+
+        private void InitializeFromActivated(IActivatedEventArgs args)
+        {
+            // Window management
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+            {
+                rootFrame = new Frame();
+                Window.Current.Content = rootFrame;
+            }
+
+            // Code specific to launch for results
+            var protocolForResultsArgs = (ProtocolForResultsActivatedEventArgs)args;
+
+            if (protocolForResultsArgs.Uri.Segments[1] == "recover-password")
+            {
+                switch (protocolForResultsArgs.Uri.Segments[2])
+                {
+                    //for admins
+                    case "admin":
+                        rootFrame.Navigate(typeof(Lib.AdminNS.Views.Operations.PasswordChangePage.PasswordChangePage), protocolForResultsArgs);
+                        new GlobalNavigationController().Init(rootFrame, typeof(PasswordChangePage), protocolForResultsArgs.Uri.Segments[3]);
+                        break;
+                    //for professionals
+                    case "professional":
+                        rootFrame.Navigate(typeof(Lib.ProfessionalNS.Views.Operations.PasswordChangePage.PasswordChangePage), protocolForResultsArgs);
+                        new GlobalNavigationController().Init(rootFrame, typeof(PasswordChangePage), protocolForResultsArgs.Uri.Segments[3]);
+                        break;
+                    // for clients
+                    case "client":
+                        rootFrame.Navigate(typeof(Lib.ClientNS.Views.Operations.PasswordChangePage.PasswordChangePage), protocolForResultsArgs);
+                        new GlobalNavigationController().Init(rootFrame, typeof(PasswordChangePage), protocolForResultsArgs.Uri.Segments[3]);
+                        break;
+                }
+
+                _operation = protocolForResultsArgs.ProtocolForResultsOperation;
+                _operation.ReportCompleted(new ValueSet { { "redirected", true } });
+            }
+
+            Window.Current.Activate();
         }
 
         /// <summary>
@@ -94,6 +148,7 @@ namespace ProFind
                 Window.Current.Activate();
             }
         }
+
 
         /// <summary>
         /// Se invoca cuando la aplicación la inicia normalmente el usuario final. Se usarán otros puntos

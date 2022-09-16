@@ -1,3 +1,4 @@
+using Azure.Communication.Email;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -20,7 +21,6 @@ builder.Services.AddSwaggerGen(c =>
     c.CustomOperationIds(description =>
         description.TryGetMethodInfo(out var methodInfo) ? methodInfo.Name : null);
 });
-
 
 var app = builder.Build();
 

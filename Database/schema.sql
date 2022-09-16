@@ -170,11 +170,16 @@ CREATE TABLE SecurityAnswerAdmins
 # Change password codes
 CREATE TABLE ChangePasswordCode
 (
-    IdCPC       CHAR(21) PRIMARY KEY,
-    CodeCPC     CHAR(64),
-    VerifiedCPC BOOLEAN,
-    IdC1        CHAR(21),
-    CONSTRAINT FK_Client_ChangePasswordCode FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE
+    IdCPC         CHAR(21) PRIMARY KEY,
+    VerifiedCPC   BOOLEAN,
+    ValidCPC      BOOLEAN,
+    IssueDateCPC  DATE,
+    IdC1          CHAR(21),
+    IdA1          CHAR(21),
+    IdP1          CHAR(21),
+    CONSTRAINT FK_Client_ChangePasswordCode FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE,
+    CONSTRAINT FK_Admin_ChangePasswordCode FOREIGN KEY (IdA1) REFERENCES Admin (IdA) ON DELETE CASCADE,
+    CONSTRAINT FK_Professional_ChangePasswordCode FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE
 );
 
 ###############################################
