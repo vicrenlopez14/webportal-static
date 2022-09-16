@@ -43,6 +43,14 @@
           <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
         <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badgeAndTileText"/>
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="profind" DesiredView="default">
+            <uap:Logo>Assets\400x400-logo.png</uap:Logo>
+            <uap:DisplayName>ProFind</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 

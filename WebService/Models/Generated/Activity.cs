@@ -15,7 +15,7 @@ namespace WebService.Models.Generated
         {
             Activitycomments = new HashSet<Activitycomment>();
             Supporttickets = new HashSet<Supportticket>();
-            }
+        }
 
         [Key]
         [StringLength(21)]

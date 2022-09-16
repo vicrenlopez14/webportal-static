@@ -25,6 +25,13 @@ namespace ProFind.Lib.Global.Controllers
             NavigateTo(initialView);
         }
 
+        public void Init(Frame centralController, Type initialView, object parameter)
+        {
+            Init(centralController);
+            NavigateTo(initialView, parameter);
+        }
+
+
         public void Init(Frame centralController)
         {
             BaseFrame = centralController;

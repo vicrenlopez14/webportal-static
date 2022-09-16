@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Communication.Email;
+using Azure.Communication.Email.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models.Generated;
@@ -51,6 +53,75 @@ public class AdminsController : ControllerBase
         return BadRequest(ModelState);
     }
 
+    // POST: api/Admins/SendRecoveryEmail
+    [HttpPost("SendRecoveryEmail")]
+    public async Task<IActionResult> SendRecoveryEmail(string email)
+    {
+        if (ModelState.IsValid)
+        {
+            var adminFromDb = await _context.Admins.FirstOrDefaultAsync(a => a.EmailA == email);
+            if (adminFromDb != null)
+            {
+                // Make any other code for this user invalid
+                var otherCodes =
+                    await _context.Changepasswordcodes.Where(c => c.IdA1 == adminFromDb.IdA).ToListAsync();
+
+                foreach (var otherCode in otherCodes)
+                {
+                    otherCode.ValidCpc = false;
+                    otherCode.VerifiedCpc = false;
+                    _context.Update(otherCode);
+                }
+
+                // Creation of the code to be sent to the user
+                string verificationCode = Utils.ShaOperations.GenerateUID();
+                _context.Changepasswordcodes.Add(new Changepasswordcode
+                {
+                    IdCpc = verificationCode,
+                    IdA1 = adminFromDb.IdA, // Id of the admin
+                    VerifiedCpc = false, // Not until a client verifies it
+                    ValidCpc = true, // Made invalid once the code is used
+                    IssueDateCpc = DateOnly.FromDateTime(DateTime.Now)
+                });
+
+                // Send email
+                EmailContent emailContent = new EmailContent("Password recovery");
+                emailContent.Html =
+                    $"In order to recover your password, please access this link: <a>https://profind.work/recover-password/admin/{verificationCode}</a>";
+                List<EmailAddress> emailAddresses = new List<EmailAddress>
+                    { new EmailAddress(adminFromDb.EmailA) { DisplayName = adminFromDb.NameA } };
+                EmailRecipients emailRecipients = new EmailRecipients(emailAddresses);
+                EmailMessage emailMessage = new EmailMessage("donotreply@profind.work", emailContent, emailRecipients);
+                SendEmailResult emailResult =
+                    Utils.EmailClientUtil.GetEmailClient.Send(emailMessage, CancellationToken.None);
+
+                return Ok("Password recovery link has been sent to the indicated email address.");
+            }
+        }
+
+        return BadRequest(ModelState);
+    }
+
+    // Method to verify a password recovery code
+    // POST: api/Admins/VerifyRecoveryCode
+    [HttpPost("VerifyRecoveryCode")]
+    public async Task<IActionResult> VerifyRecoveryCode(string code)
+    {
+        if (ModelState.IsValid)
+        {
+            var codeFromDb = await _context.Changepasswordcodes.FirstOrDefaultAsync(c => c.IdCpc == code);
+            if (codeFromDb != null)
+            {
+                if (codeFromDb.ValidCpc == true && codeFromDb.VerifiedCpc == false)
+                {
+                    Redirect($"profind://recover-password/admin/{code}");
+                    return Ok(codeFromDb.IdA1);
+                }
+            }
+        }
+
+        return BadRequest(ModelState);
+    }
 
     // GET: api/Admins
     [HttpGet]
@@ -208,10 +279,10 @@ public class AdminsController : ControllerBase
 
         return result;
     }
+
     [HttpGet("filter/")]
     public async Task<ActionResult<IEnumerable<Admin>>> FilterAdmins([FromQuery] string Name,
         [FromQuery] string? name1,
-
         [FromQuery] string? idAdmin)
 
     {

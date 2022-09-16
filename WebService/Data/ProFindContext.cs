@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using Microsoft.EntityFrameworkCore.Metadata;
 using WebService.Models.Generated;
 
@@ -9,7 +8,6 @@ namespace WebService.Data
 {
     public partial class ProFindContext : DbContext
     {
-
         public ProFindContext()
         {
         }
@@ -56,14 +54,11 @@ namespace WebService.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
             modelBuilder.UseCollation("utf8mb4_general_ci")
                 .HasCharSet("utf8mb4");
 
             modelBuilder.Entity<Activity>(entity =>
             {
-              
-
                 entity.HasKey(e => e.IdA)
                     .HasName("PRIMARY");
 
@@ -144,15 +139,29 @@ namespace WebService.Data
 
                 entity.Property(e => e.IdCpc).IsFixedLength();
 
-                entity.Property(e => e.CodeCpc).IsFixedLength();
+                entity.Property(e => e.IdA1).IsFixedLength();
 
                 entity.Property(e => e.IdC1).IsFixedLength();
+
+                entity.Property(e => e.IdP1).IsFixedLength();
+
+                entity.HasOne(d => d.IdA1Navigation)
+                    .WithMany(p => p.Changepasswordcodes)
+                    .HasForeignKey(d => d.IdA1)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Admin_ChangePasswordCode");
 
                 entity.HasOne(d => d.IdC1Navigation)
                     .WithMany(p => p.Changepasswordcodes)
                     .HasForeignKey(d => d.IdC1)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Client_ChangePasswordCode");
+
+                entity.HasOne(d => d.IdP1Navigation)
+                    .WithMany(p => p.Changepasswordcodes)
+                    .HasForeignKey(d => d.IdP1)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Professional_ChangePasswordCode");
             });
 
             modelBuilder.Entity<Client>(entity =>

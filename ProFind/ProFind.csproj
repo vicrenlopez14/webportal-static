@@ -393,6 +393,9 @@
     <Compile Include="Lib\AdminNS\Views\Main_Page_Admin\Main_Page_Admin.xaml.cs">
       <DependentUpon>Main_Page_Admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
+      <DependentUpon>PasswordChangePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -441,6 +444,9 @@
     </Compile>
     <Compile Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml.cs">
       <DependentUpon>Main_Page_Client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ClientNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
+      <DependentUpon>PasswordChangePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
@@ -556,6 +562,9 @@
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\Main_Page\Main_Page.xaml.cs">
       <DependentUpon>Main_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
+      <DependentUpon>PasswordChangePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -743,6 +752,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -806,6 +819,10 @@
     <Page Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Global\Views\About_Page\About_Page.xaml">
       <SubType>Designer</SubType>
@@ -927,6 +944,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1015,6 +1036,7 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\.gitkeep" />
     <None Include="ProFind_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
