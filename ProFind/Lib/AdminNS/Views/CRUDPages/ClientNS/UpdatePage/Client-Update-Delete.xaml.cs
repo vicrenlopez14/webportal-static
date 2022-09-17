@@ -27,9 +27,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         }
 
 
-
-
-
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
             byte[] da = id.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();

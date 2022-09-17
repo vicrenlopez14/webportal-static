@@ -30,18 +30,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
         {
             var proposal = e.ClickedItem as Proposal;
 
-
-            new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), proposal);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+           
         }
     }
 }

@@ -20,21 +20,20 @@ namespace ProFind.Lib.ClientNS.Views.Main_Page
 
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"Proyects_Page", typeof(Page_Activos) },
-            {"Notifications_Page", typeof(ActivesPage) },
-            {"Pays_Page", typeof(Pays_Page.Pays_Page) },
-            {"Catalog_Page", typeof(ActivesPage) },
-            {"Activities_Page", typeof(ActivesPage) },
+            {"Proyects_Page", typeof(CRUDPages.ProjectNS.ReadPage.ReadPage) },
+            {"Notifications_Page", typeof(CRUDPages.NotificationNS.ReadPage.ReadPage) },
+            {"Catalog_Page", typeof(CRUDPages.NotificationNS.ReadPage.ReadPage) }, 
+            {"Activities_Page", typeof(CRUDPages.NotificationNS.ReadPage.ReadPage) }, 
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
-            {"", typeof(Page_Activos) }
+            {"", typeof(CRUDPages.ProjectNS.ReadPage.ReadPage) }
         };
 
         public Main_Page_Client()
         {
             this.InitializeComponent();
             new InAppNavigationController().Init(ClientsContentFrame);
-            new InAppNavigationController().NavigateTo(typeof(Page_Activos));
+            new InAppNavigationController().NavigateTo(typeof(CRUDPages.ProjectNS.ReadPage.ReadPage));
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)

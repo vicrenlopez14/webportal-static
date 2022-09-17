@@ -175,9 +175,9 @@ public class ClientsController : ControllerBase
     public async Task<ActionResult<IEnumerable<Client>>> SearchCliens([FromQuery] string IdC,
         [FromQuery] string Name)
     {
-        var result = await (from clien in _context.Clients
-            where (clien.IdC == IdC && clien.NameC.Contains(Name))
-            select clien).ToListAsync();
+        var result = await (from client in _context.Clients
+            where (client.IdC == IdC && client.NameC.Contains(Name))
+            select client).ToListAsync();
 
         if (result.Any() == false)
         {
