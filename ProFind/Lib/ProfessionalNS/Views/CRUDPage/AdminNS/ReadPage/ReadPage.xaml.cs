@@ -27,8 +27,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.AdminNS.ReadPage
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var admin = e.ClickedItem as Admin;
-
-            new InAppNavigationController().NavigateTo(typeof(UpdatePageAdmin), admin);
         }
     }
 }

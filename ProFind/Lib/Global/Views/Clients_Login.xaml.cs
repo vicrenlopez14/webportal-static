@@ -3,6 +3,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using Windows.ApplicationModel.Background;
+using ProFind.Lib.ClientNS.Views.Main_Page;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
