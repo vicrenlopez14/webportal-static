@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Services;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -13,7 +14,7 @@ namespace ProFind.Lib.Global.Views.InitPage
     {
         public InitPage()
         {
-            WebAPIConnection.Run();
+            
 
             this.InitializeComponent();
         }
@@ -65,16 +66,7 @@ namespace ProFind.Lib.Global.Views.InitPage
 
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var result = await new ProfessionalService().Login(Email_tb.Text, Password_tb.Password);
-
-            if (result == System.Net.HttpStatusCode.OK)
-            {
-                new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-            }
-            else
-            {
-                FailedAuth_tt.IsOpen = true;
-            }
+            
         }
     }
 }

@@ -103,7 +103,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             {
                 Creation_pr.IsActive = true;
 
-                var toCreateAdmin = new Admin("",Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                var toCreateAdmin = new Admin{IdA = "", NameA = Name_tb.Text, EmailA = Email_tb.Text, PasswordA = Password_pb.Password, IdR1 = int.Parse(Rank_cb.Text)  , TelA = PhoneNumber_tb.Text, PictureA = imageBytes  };
                 toCreateAdmin.IdR1 = int.Parse((Rank_cb.SelectedItem as Rank).IdR.ToString());
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);

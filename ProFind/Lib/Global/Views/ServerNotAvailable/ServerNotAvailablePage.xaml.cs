@@ -25,7 +25,7 @@ namespace ProFind.Lib.Global.Views.ServerNotAvailable
                 try
                 {
                     // Retry
-                    await WebAPIConnection.IsServerAlive();
+                   // await WebAPIConnection.IsServerAlive();
 
                     // If everything went ok, go back
                     new GlobalNavigationController().GoBack();

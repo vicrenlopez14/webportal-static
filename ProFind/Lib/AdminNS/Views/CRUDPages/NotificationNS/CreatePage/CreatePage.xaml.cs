@@ -43,12 +43,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
             {
                 Creation_pr.IsActive = true;
 
-                
-                
-               
-                var ToCreateClient = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.Date, imageBytes, id.IdC );
 
-                var result = await APIConnection.GetConnection.PostNotificationAsync(ToCreateClient);
+
+
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb.Text, DescriptionN = Description_tb.Text, IdPj2 = Project_cb.Text, PictureN = imageBytes, DateTimeIssuedN = Caledar.Date, IdPj2Navigation = toManipulate.IdPj2Navigation };
+
+                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 
 
 

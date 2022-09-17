@@ -19,7 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.TagNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toCreateClien = new Tag(int.Parse(""), Name_tb.Text);
+            var toCreateClien = new Tag { IdT = "", NameT = Name_tb.Text };
 
             await APIConnection.GetConnection.PostTagAsync(toCreateClien);
         }

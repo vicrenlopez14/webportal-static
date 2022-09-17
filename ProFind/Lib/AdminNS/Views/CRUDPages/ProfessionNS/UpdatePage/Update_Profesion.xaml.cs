@@ -21,7 +21,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
             int idNo = pro.IdPfs;
-            var toUpdateProfession = new Profession(int.Parse(""), Name_tb.Text);
+            var toUpdateProfession = new Profession { NamePfs = Name_tb.Text };
             await APIConnection.GetConnection.PutProfessionAsync(idNo, toUpdateProfession);
         }
 

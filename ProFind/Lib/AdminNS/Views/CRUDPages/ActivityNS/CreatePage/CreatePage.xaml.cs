@@ -22,6 +22,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
     {
        
         private byte[] imageBytes;
+        Professional id2; 
         private bool isFirstAdmin = false;
         Project id = new Project();
 
@@ -70,7 +71,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
                     SelectedPicture_tbk.Text = file.Name;
                     imageBytes = await file.ToByteArrayAsync();
 
-                    SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
                 }
             }
             catch (Exception ex)
@@ -94,8 +95,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
             try
             {
                 Creation_pr.IsActive = true;
-                
-                var toCreateAdmin = new Activity("", Title_tb.Text, Description_tb.Text,ExpectedBegin_dp.Date, ExpectedEnd_dp.Date, imageBytes, id.IdPj,    );
+
+                var toCreateAdmin = new Activity { IdA = "", TitleA = Title_tb.Text, DescriptionA = Description_tb.Text, ExpectedBeginA = ExpectedBegin_dp.Date, ExpectedEndA = ExpectedEnd_dp.Date, PictureA = imageBytes, IdPj1 = id.IdPj,   };
                
 
                 var result = await APIConnection.GetConnection.PostActivityAsync(toCreateAdmin);

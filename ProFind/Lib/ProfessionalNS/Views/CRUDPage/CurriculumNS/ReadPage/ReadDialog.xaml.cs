@@ -12,7 +12,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.ReadPage
         {
             
 
-            PDFPreview.Load(document);
+            //PDFPreview.Load(document);
         }
 
 

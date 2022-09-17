@@ -24,7 +24,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toCreateClien = new Rank(int.Parse(""), Name_tb.Text);
+            var toCreateClien = new Rank { IdR =  int.Parse(""), NameR =  Name_tb.Text };
 
 
             var result = await APIConnection.GetConnection.PostRankAsync(toCreateClien);

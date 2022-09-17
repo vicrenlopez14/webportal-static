@@ -27,7 +27,7 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
         {
             this.InitializeComponent();
             new InAppNavigationController().Init(ContentFrame);
-            new InAppNavigationController().NavigateTo(typeof(CRUDPages.AdminNS.ListPage.ReadPage));
+            
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)

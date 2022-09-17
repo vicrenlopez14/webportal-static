@@ -26,7 +26,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.UpdatePage
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
             int idNo = pro.IdR;
-            var toUpdateProfession = new Rank(int.Parse(""), Name_tb.Text);
+            var toUpdateProfession = new Rank { NameR = Name_tb.Text };
             await APIConnection.GetConnection.PutRankAsync(idNo, toUpdateProfession);
         }
 

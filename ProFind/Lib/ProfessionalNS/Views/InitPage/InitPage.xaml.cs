@@ -45,17 +45,15 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var result = await new ProfessionalService().Login(Email_tb.Text, Password_tb.Password);
+            var result =  new Professional{ EmailP = Email_tb.Text, PasswordP =  Password_tb.Password };
             await APIConnection.GetConnection.LoginProfessionalAsync(result);
 
-            if (result == System.Net.HttpStatusCode.OK)
-            {
+           
                 new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-            }
-            else
-            {
+           
+            
                 FailedAuth_tt.IsOpen = true;
-            }
+            
 
             if (string.IsNullOrEmpty(Email_tb.Text))
             {
