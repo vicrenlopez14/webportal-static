@@ -1,0 +1,44 @@
+body::before {
+  display: block;
+  content: '';
+  height: 60px;
+}
+
+img.rounded-circle:hover{
+ border-radius: 20px;
+ width: 140px;
+}
+.anima:hover{
+  filter: grayscale(30%);
+  -webkit-transform:scale(1.3);transform:scale(1.3);
+}
+.Anima2:hover{
+  -webkit-transform:scale(1.3);transform:scale(0.8);
+}
+.card:hover{
+  transform: translateY(-10px); 
+  animation-duration: 3s;
+  transition: transform 0,2s ease-in-out;
+  transform-origin: center;
+  animation-name: slidein;
+  
+}
+
+.card:hover .cover__card img{
+  transform: scale(1.1);
+}
+
+
+
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
