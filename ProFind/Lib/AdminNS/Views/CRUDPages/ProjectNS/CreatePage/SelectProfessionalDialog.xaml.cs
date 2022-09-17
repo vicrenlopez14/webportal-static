@@ -16,7 +16,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private  async void LoadData()
         {
-            ProfessionalsListView.ItemSource = await APIConnection.GetConnection.GetProfessionalsAsync();
+         await APIConnection.GetConnection.GetProfessionalsAsync();
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

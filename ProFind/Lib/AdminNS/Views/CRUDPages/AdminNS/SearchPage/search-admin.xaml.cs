@@ -22,7 +22,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.SearchPage
         {
            var Resul =   await APIConnection.GetConnection.SearchAdminsAsync(id.IdA, Search_admin1.Text);
 
-            await APIConnection.GetConnection.GetAdminAsync(Resul);
+            await APIConnection.GetConnection.GetAdminAsync(id.IdA);
 
         }
     }

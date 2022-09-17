@@ -19,7 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
         }
         private async void InitializeData()
         {
-            int idNo = Id1.IdR.GetValueOrDefault();
+            int idNo = Id1.IdR;
             await APIConnection.GetConnection.GetProjectstatusAsync(idNo);
         }
     }

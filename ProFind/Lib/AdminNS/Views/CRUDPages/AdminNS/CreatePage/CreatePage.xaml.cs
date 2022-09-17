@@ -94,7 +94,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SelectedPicture_pp.DisplayName = Name_tb.Text;
+            
         }
 
         private async void Create_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -103,7 +103,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             {
                 Creation_pr.IsActive = true;
 
-                var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
+                var toCreateAdmin = new Admin("",Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
                 toCreateAdmin.IdR1 = int.Parse((Rank_cb.SelectedItem as Rank).IdR.ToString());
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);

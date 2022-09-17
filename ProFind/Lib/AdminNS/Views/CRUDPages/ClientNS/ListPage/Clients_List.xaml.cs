@@ -11,7 +11,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
     /// </summary>
     public sealed partial class Clients_List : Page
     {
-        Client Id1 = new Client();
+        Client Id1; 
         public Clients_List()
         {
             this.InitializeComponent();

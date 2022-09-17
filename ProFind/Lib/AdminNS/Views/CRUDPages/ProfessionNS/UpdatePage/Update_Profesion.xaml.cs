@@ -20,14 +20,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            int idNo = pro.Ids.GetValueOrDefault();
+            int idNo = pro.IdPfs;
             var toUpdateProfession = new Profession(int.Parse(""), Name_tb.Text);
             await APIConnection.GetConnection.PutProfessionAsync(idNo, toUpdateProfession);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            int idNo = pro.IdPfs.GetValueOrDefault();
+            int idNo = pro.IdPfs;
 
             await APIConnection.GetConnection.DeleteProfessionAsync(idNo);
             

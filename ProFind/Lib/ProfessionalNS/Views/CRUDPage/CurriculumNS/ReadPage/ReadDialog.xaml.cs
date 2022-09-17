@@ -22,7 +22,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.ReadPage
             const string Titulo = "Carlitos";
 
             var results = await APIConnection.GetConnection.SearchActivitiesAsync(projectIdSelected, Titulo);
-            var filterResults = await APIConnection.GetConnection.FilterActivitiesAsync(null, null, "asd", null, "sadsa");
+            
             
 
             this.Hide();

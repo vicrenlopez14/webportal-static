@@ -14,8 +14,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-
+        private byte[] imageBytes;
         Notification toManipulate = new Notification();
+        Client id;
 
         public CreatePage()
         {
@@ -41,12 +42,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
             try
             {
                 Creation_pr.IsActive = true;
-                byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.DateFormat, da, "" );
+                
+                
+               
+                var ToCreateClient = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.Date, imageBytes, id.IdC );
 
-
-                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+                var result = await APIConnection.GetConnection.PostNotificationAsync(ToCreateClient);
 
 
 

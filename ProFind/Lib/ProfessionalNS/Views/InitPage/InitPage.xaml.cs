@@ -5,6 +5,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.ClientNS.Views.InitPage;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -45,6 +46,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var result = await new ProfessionalService().Login(Email_tb.Text, Password_tb.Password);
+            await APIConnection.GetConnection.LoginProfessionalAsync(result);
 
             if (result == System.Net.HttpStatusCode.OK)
             {

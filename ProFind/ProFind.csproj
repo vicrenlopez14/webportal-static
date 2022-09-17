@@ -273,8 +273,8 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ListPageAdmin.xaml.cs">
+      <DependentUpon>ListPageAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\SearchPage\search-admin.xaml.cs">
       <DependentUpon>search-admin.xaml</DependentUpon>
@@ -317,9 +317,6 @@
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\NotificationNS\UpdatePage\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\CreatePage\CreatePageCrud.xaml.cs">
-      <DependentUpon>CreatePageCrud.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\CreatePage\professional_information.xaml.cs">
       <DependentUpon>professional_information.xaml</DependentUpon>
@@ -426,7 +423,6 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\UpdatePage.xaml.cs" />
     <Compile Include="Lib\ClientNS\Views\CRUDPages\TagNS\ListPage\ListDialog.xaml.cs">
       <DependentUpon>ListDialog.xaml</DependentUpon>
     </Compile>
@@ -595,11 +591,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ReadPage.xaml">
+    <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ListPageAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -656,10 +648,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\NotificationNS\UpdatePage\UpdatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProfessionalNS\CreatePage\CreatePageCrud.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1040,7 +1028,6 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\ListPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\SearchPage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\UpdatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\.gitkeep" />
@@ -1050,7 +1037,9 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\.gitkeep" />
     <None Include="ProFind_TemporaryKey.pfx" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

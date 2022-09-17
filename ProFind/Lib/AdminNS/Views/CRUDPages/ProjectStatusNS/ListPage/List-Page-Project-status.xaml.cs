@@ -19,7 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectStatusNS.ListPage
         }
         private async void InitializeData()
         {
-            int idNo = Id1.IdPs.GetValueOrDefault();
+            int idNo = int.Parse(Id1.IdPs);
             await APIConnection.GetConnection.GetProjectstatusAsync(idNo);
         }
     }

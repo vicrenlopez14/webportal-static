@@ -14,7 +14,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
     /// </summary>
     public sealed partial class UpdatePage : Page
     {
-        Notification toManipulate = new Notification();
+        Notification toManipulate;
 
         public UpdatePage()
         {
@@ -50,12 +50,14 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new NotificationService().Update(toManipulate);
+            var ToCreateClient = new Notification("", Title_tb.Text, Description_tb.Text,toManipulate,);
+
+            await APIConnection.GetConnection.PutNotificationAsync(toManipulate.IdN, ToCreateClient);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            await new NotificationService().Delete(toManipulate.IdN);
+            await APIConnection.GetConnection.DeleteNotificationAsync(toManipulate.IdN);
         }
 
         private void Back_btn_Click(object sender, RoutedEventArgs e)

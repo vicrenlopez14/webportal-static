@@ -20,24 +20,20 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private List<Rank> ranks = new List<Rank>();
+       
         private byte[] imageBytes;
         private bool isFirstAdmin = false;
+        Project id = new Project();
 
         public CreatePage()
         {
 
             this.InitializeComponent();
-            loadUsefulThings();
+            
 
         }
 
-        public async void loadUsefulThings()
-        {
-            ranks = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
-
-            Rank_cb.ItemsSource = ranks;
-        }
+       
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -90,7 +86,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SelectedPicture_pp.DisplayName = Name_tb.Text;
+           
         }
 
         private async void Create_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -98,13 +94,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
             try
             {
                 Creation_pr.IsActive = true;
+                
+                var toCreateAdmin = new Activity("", Title_tb.Text, Description_tb.Text,ExpectedBegin_dp.Date, ExpectedEnd_dp.Date, imageBytes, id.IdPj,    );
+               
 
-                //var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
-                //toCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR.ToString();
+                var result = await APIConnection.GetConnection.PostActivityAsync(toCreateAdmin);
 
-                var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);
-
-                ToggleThemeTeachingTip2.IsOpen = true;
+                
             }
             catch (Exception ex)
             {
@@ -128,7 +124,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
 
         private void ToggleThemeTeachingTip2_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
         {
-            CreateProfessionals_btn.Visibility = Visibility.Visible;
+            
         }
 
         private void GoToProfessionals(object sender, RoutedEventArgs e)

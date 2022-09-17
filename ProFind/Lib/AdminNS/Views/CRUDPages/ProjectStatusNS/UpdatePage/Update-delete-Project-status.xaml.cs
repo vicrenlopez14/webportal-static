@@ -25,16 +25,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectStatusNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            int idNo = pro.IdPs.GetValueOrDefault();
+           
             var toUpdateProfession = new Projectstatus(int.Parse(""), Name_tb.Text);
-            await APIConnection.GetConnection.PutProjectstatusAsync(idNo, toUpdateProfession);
+            await APIConnection.GetConnection.PutProjectstatusAsync(pro.IdPs, toUpdateProfession);
            
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            int idNo = pro.IdPs.GetValueOrDefault();
-            
+            int idNo = int.Parse(pro.IdPs);
+
             await APIConnection.GetConnection.DeleteProjectstatusAsync(idNo);
         }
 
