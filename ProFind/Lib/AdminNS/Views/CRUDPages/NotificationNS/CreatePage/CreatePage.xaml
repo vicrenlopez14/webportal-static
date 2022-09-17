@@ -18,7 +18,7 @@
                         FontWeight="Bold"
                         Style="{StaticResource HeaderTextBlockStyle}"
                         Text="Creation" />
-                        
+
                         <TextBlock>
                         Create a new notification.
                         </TextBlock>
@@ -64,6 +64,11 @@
                                 <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
                         </Grid>
+                        <ComboBox
+                                x:Name="Project_cb"
+                                Header="Project"
+                                SelectedIndex="0"
+                                SelectionChanged="Client_cb_SelectionChanged" Width="127" />
 
                         <Button
                         x:Name="Create_btn"

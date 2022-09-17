@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.ClientNS.Views.Main_Page;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -18,7 +19,6 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         byte[] pictureBytes;
         public InitPage()
         {
-            WebAPIConnection.Run();
 
             this.InitializeComponent();
         }
@@ -67,17 +67,13 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async Task Button_Click_5Async(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var registerClient = new RegisterClient(Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
-            var result = await new ClientService().Register(registerClient);
+            var registerClient = new Client("",Name_tb.Text, Email_tb.Text,  Password_tb.Password,  pictureBytes );
+            await APIConnection.GetConnection.LoginClientAsync(registerClient);
 
-            if (result == System.Net.HttpStatusCode.OK)
-            {
                 new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-            }
-            else
-            {
+            
                 FailedAuth_tt.IsOpen = true;
-            }
+            
         }
 
         private void Name_tb_TextChanged(TextBlock sender, TextChangedEventArgs e)
@@ -97,17 +93,12 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var registerClient = new RegisterClient(Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
-            var result = await new ClientService().Register(registerClient);
+            var registerClient = new Client("", Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
+            await APIConnection.GetConnection.LoginClientAsync(registerClient);
 
-            if (result == System.Net.HttpStatusCode.OK)
-            {
-                new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
-            }
-            else
-            {
-                FailedAuth_tt.IsOpen = true;
-            }
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
+
+            FailedAuth_tt.IsOpen = true;
 
             if (string.IsNullOrEmpty(Name_tb.Text))
             {

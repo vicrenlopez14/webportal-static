@@ -29,7 +29,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPage
         {
             var project = e.ClickedItem as Project;
 
-            new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
+           // new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

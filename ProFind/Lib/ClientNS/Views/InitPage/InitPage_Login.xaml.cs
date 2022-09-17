@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.ClientNS.Views.Main_Page;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -14,6 +15,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
     /// </summary>
     public sealed partial class InitPage_Login : Page
     {
+        Admin id; 
         public InitPage_Login()
         {
             this.InitializeComponent();
@@ -21,17 +23,17 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var result = await new ClientService().Login(Email_tb.Text, Password_tb.Password);
+            var result = new Admin{EmailA = Email_tb.Text, PasswordA = Password_tb.Password};
+            await APIConnection.GetConnection.LoginAdminAsync(result);
 
-            if (result == System.Net.HttpStatusCode.OK)
-            {
+        
+          
                 new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
 
-            }
-            else
-            {
+            
+            
                 FailedAuth_tt.IsOpen = true;
-            }
+            
 
             if (string.IsNullOrEmpty(Email_tb.Text))
             {

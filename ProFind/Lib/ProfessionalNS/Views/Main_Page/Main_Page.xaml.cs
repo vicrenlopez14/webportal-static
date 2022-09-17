@@ -11,19 +11,19 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
     {
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"ActiveProjects_Page", typeof(Page_Activos) },
-            {"InactiveProjects_Page", typeof(Page_Inactivos) },
-            {"Notifications_Page", typeof(Notifications_Page.Notifications_Page) },
-            {"Activities_Page", typeof(ActivesPage) },
+            {"ActiveProjects_Page", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
+            {"InactiveProjects_Page", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
+            {"Notifications_Page", typeof(CRUDPage.NotificationNS.ReadPage.ReadPage) },
+            {"Activities_Page", typeof(CRUDPage.ActivityNS.ReadPage.ReadPage) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
-            {"", typeof(Page_Activos) }
+            {"", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) }
         };
         public Main_Page_Professional()
         {
             this.InitializeComponent();
             new InAppNavigationController().Init(Professionals_ContentFrame);
-            new InAppNavigationController().NavigateTo(typeof(Page_Activos));
+            new InAppNavigationController().NavigateTo(typeof(CRUDPage.ProjectNS.ReadPage.ReadPage));
 
         }
 

@@ -11,7 +11,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages
     /// </summary>
     public sealed partial class Search_Page_Clients : Page
     {
-        Client id = new Client();
+        Client id;
 
         public Search_Page_Clients()
         {
@@ -20,9 +20,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages
 
         private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            var Resul = await APIConnection.GetConnection.SearchAdminsAsync(id.IdC, Search_Client.text);
+            var Resul = await APIConnection.GetConnection.SearchAdminsAsync(id.IdC, Search_Client.Text);
 
-            await APIConnection.GetConnection.GetAdminAsync(Resul);
+            await APIConnection.GetConnection.GetAdminAsync(id.IdC);
         }
     }
 }

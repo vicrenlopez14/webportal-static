@@ -26,7 +26,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.CreatePage
         {
             UpdateMode();
 
-            PDFPreview.LoadDocument(document);
+           // PDFPreview.LoadDocument(document);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

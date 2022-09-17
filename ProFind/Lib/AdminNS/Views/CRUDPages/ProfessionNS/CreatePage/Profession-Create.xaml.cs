@@ -19,7 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toCreateClien = new  Profession( int.Parse("") ,Name_tb.Text);
+            var toCreateClien = new Profession { IdPfs =  int.Parse(""), NamePfs =  Name_tb.Text };
 
 
             var result = await APIConnection.GetConnection.PostProfessionAsync(toCreateClien);

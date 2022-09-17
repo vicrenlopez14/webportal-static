@@ -9,6 +9,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
 {
     public sealed partial class CreateDialog : ContentDialog
     {
+      
         const string SideText_CREATEMODE = "Use our uploader to save your resume and reach thousands of potential Clients.";
         const string SideHeader_CREATEMODE = "Save your resume";
         const string SideText_UPDATEMODE = "Update your information and provide the most recent data to your Clients.";
@@ -26,7 +27,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
         {
             UpdateMode();
 
-            PDFPreview.Load(document);
+            //PDFPreview.Load(document);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

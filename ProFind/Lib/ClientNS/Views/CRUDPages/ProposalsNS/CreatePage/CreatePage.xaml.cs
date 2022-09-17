@@ -53,7 +53,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
 
-            var toUpdateProposal = new Proposal("", Title_tb.Text, Description_tb.Text);
+            var toUpdateProposal = new Proposal { IdPp =  "", TitlePp = Title_tb.Text, DescriptionPp =  Description_tb.Text };
             await APIConnection.GetConnection.PutProposalAsync(toManipulate.IdPp, toManipulate);
         }
 

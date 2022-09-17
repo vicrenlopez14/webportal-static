@@ -35,7 +35,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
         {
             byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-            var toUpdapteNoti = new Notification("", Title_tb.Text, Description_tb.Text, fecha.DayFormat, da);
+            var toUpdapteNoti = new Notification { IdN = toManipulate.IdN, TitleN = Title_tb.Text, DescriptionN = Description_tb.Text, DateTimeIssuedN = toManipulate.DateTimeIssuedN, IdPj2 = toManipulate.IdPj2, IdPj2Navigation = toManipulate.IdPj2Navigation, PictureN = imageBytes };
 
             await APIConnection.GetConnection.PutNotificationAsync(toManipulate.IdN, toUpdapteNoti);
         }

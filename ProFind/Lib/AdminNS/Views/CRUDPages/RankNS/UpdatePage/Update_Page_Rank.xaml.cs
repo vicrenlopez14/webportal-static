@@ -25,14 +25,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            int idNo = pro.IdR.GetValueOrDefault();
-            var toUpdateProfession = new Rank(int.Parse(""), Name_tb.Text);
+            int idNo = pro.IdR;
+            var toUpdateProfession = new Rank { NameR = Name_tb.Text };
             await APIConnection.GetConnection.PutRankAsync(idNo, toUpdateProfession);
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
-            int idNo = pro.IdR.GetValueOrDefault();
+            int idNo = pro.IdR;
 
             await APIConnection.GetConnection.DeleteRankAsync(idNo);
         }

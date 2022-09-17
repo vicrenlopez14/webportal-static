@@ -29,17 +29,16 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage
         {
             var project = e.ClickedItem as Project;
 
-            new InAppNavigationController().NavigateTo(typeof(UpdatePage), project);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage));
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage));
+
         }
     }
 }

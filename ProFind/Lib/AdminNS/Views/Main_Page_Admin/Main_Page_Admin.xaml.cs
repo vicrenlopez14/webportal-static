@@ -16,20 +16,18 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
     {
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"Activities", typeof(ReadPageAdmin) },
-            {"Calendar_Page", typeof(ReadPageProject) },
-            {"Professionals_Page", typeof(ReadPageProfessional) },
-            {"Clients_Page", typeof(ReadPageClient) },
+            {"Activities", typeof(CRUDPages.ActivityNS.ReadPage.ReadPage) },
+            {"Professionals_Page", typeof(CRUDPages.ProfessionalNS.ListPage.ReadPage) },
+            {"Clients_Page", typeof(CRUDPages.ClientNS.ListPage.Clients_List) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
-            {"", typeof(Calendar_Page.Calendar_Page) }
         };
 
         public Main_Page_Admin()
         {
             this.InitializeComponent();
             new InAppNavigationController().Init(ContentFrame);
-            new InAppNavigationController().NavigateTo(typeof(ReadPageAdmin));
+            
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)

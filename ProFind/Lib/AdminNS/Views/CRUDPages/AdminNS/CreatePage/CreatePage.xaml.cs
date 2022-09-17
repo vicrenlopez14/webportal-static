@@ -57,12 +57,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
         }
 
         private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
         }
 
         private async void PictureSelection_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -94,7 +94,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SelectedPicture_pp.DisplayName = Name_tb.Text;
+            
         }
 
         private async void Create_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -103,8 +103,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             {
                 Creation_pr.IsActive = true;
 
-                var toCreateAdmin = new Admin(Name_tb.Text, Email_tb.Text, PhoneNumber_tb.Text, Password_pb.Password, "", imageBytes);
-                toCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR.ToString();
+                var toCreateAdmin = new Admin{IdA = "", NameA = Name_tb.Text, EmailA = Email_tb.Text, PasswordA = Password_pb.Password, IdR1 = int.Parse(Rank_cb.Text)  , TelA = PhoneNumber_tb.Text, PictureA = imageBytes  };
+                toCreateAdmin.IdR1 = int.Parse((Rank_cb.SelectedItem as Rank).IdR.ToString());
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);
 

@@ -12,7 +12,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.ReadPage
         {
             
 
-            PDFPreview.Load(document);
+            //PDFPreview.Load(document);
         }
 
 
@@ -22,7 +22,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.ReadPage
             const string Titulo = "Carlitos";
 
             var results = await APIConnection.GetConnection.SearchActivitiesAsync(projectIdSelected, Titulo);
-            var filterResults = await APIConnection.GetConnection.FilterActivitiesAsync(null, null, "asd", null, "sadsa");
+            
             
 
             this.Hide();

@@ -16,6 +16,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
     {
 
         Notification toManipulate = new Notification();
+        private byte[] imageBytes;
 
         public CreatePage()
         {
@@ -38,14 +39,13 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
                 return;
             }
 
-            var result = await APIConnection.GetConnection.PostNotificationAsync(newObject);
 
             try
             {
-                Creation_pr.IsActive = true;
+               
                 byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Notification("", Title_tb.Text, Description_tb.Text, Caledar.DateFormat, da, "");
+                var toCreateClien = new Notification {TitleN = Title_tb.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes };
 
                 var toCreatTeclient = new Notification
                 {
@@ -63,7 +63,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
             }
             finally
             {
-                Creation_pr.IsActive = false;
+               
             }
         }
 

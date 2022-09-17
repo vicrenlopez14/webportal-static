@@ -20,8 +20,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
     {
         Project toManipulate = new Project();
 
-     
 
+        private byte[] imageBytes;
 
         public CreatePage()
         {
@@ -44,7 +44,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         {
             byte[] da = toManipulate.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-            var toCreateClien = new Project("", Title_tb.Text, Description_tb.Text, da, TotalPrice_tb.Value, (InitialStatus_cb.SelectedItem as Projectstatus).IdPs, (Professional_cb.SelectedItem as Professional).IdP, (Client_cb.SelectedItem as Client).IdC);
+            var toCreateClien = new Project { IdPj =  "", TitlePj =  Title_tb.Text, DescriptionPj =  Description_tb.Text, PicturePj = imageBytes , TotalPricePj = int.Parse( TotalPrice_tb.Text), IdPs1 = (InitialStatus_cb.SelectedItem as Projectstatus).IdPs, IdP1 = (Professional_cb.SelectedItem as Professional).IdP, IdC1 = (Client_cb.SelectedItem as Client).IdC };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);

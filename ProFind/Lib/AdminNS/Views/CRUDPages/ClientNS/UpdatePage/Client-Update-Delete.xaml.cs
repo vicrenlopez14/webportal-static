@@ -18,16 +18,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
     public sealed partial class Client_Update_Delete : Page
     {
 
-    
-        Client id = new Client();
+
+        Client id;
 
         public Client_Update_Delete()
         {
             this.InitializeComponent();
         }
-
-
-
 
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
