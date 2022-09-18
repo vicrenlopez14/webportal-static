@@ -15,7 +15,7 @@
         <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Foreground="White" HorizontalAlignment="Center" Margin="0,194,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top"/>
         <TextBox Name="mail_tb" HorizontalAlignment="Center" Margin="0,289,0,0" TextWrapping="Wrap" PlaceholderText="Type your email" VerticalAlignment="Top" Width="300"/>
         <PasswordBox Name="pass_tb" HorizontalAlignment="Center" Margin="0,342,0,0" PlaceholderText="Type your password" VerticalAlignment="Top" Width="300"/>
-        <Button HorizontalAlignment="Center" Content="Login" Margin="0,395,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button HorizontalAlignment="Center" Content="Login" Margin="0,395,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Center" Name="warning_tb" Margin="0,257,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Page>

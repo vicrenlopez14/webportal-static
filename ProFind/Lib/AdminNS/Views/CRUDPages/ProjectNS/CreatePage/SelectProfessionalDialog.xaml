@@ -18,7 +18,7 @@
             Name="ProfessionalsListView"
             d:ItemsSource=""
             IsItemClickEnabled="True"
-            ItemClick="ProfessionalsListView_ItemClick"
+           
             SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Professional">

@@ -31,7 +31,7 @@
                                 x:Name="Picture_img"
                                 Width="100"
                                 Height="100" />
-                            <Button HorizontalAlignment="Center" Click="Button_Click">Change picture</Button>
+                            <Button HorizontalAlignment="Center">Change picture</Button>
                             <TextBox
                                 Name="FirstName1_tbx"
                                 Width="460"
@@ -92,25 +92,25 @@
                             <Button
                                 Name="Reset_btn"
                                 Margin="15"
-                                Click="Reset_btn_Click">
+                               >
                                 Reset
                             </Button>
                             <Button
                                 Name="Update_btn"
                                 Margin="15"
-                                Click="Update_btn_Click">
+                               >
                                 Update
                             </Button>
                             <Button
                                 Name="Delete_btn"
                                 Margin="15"
-                                Click="Delete_btn_Click">
+                               >
                                 Delete
                             </Button>
                             <Button
                                 Name="Back_btn"
                                 Margin="15"
-                                Click="Back_btn_Click">
+                               >
                                 Back
                             </Button>
                         </StackPanel>

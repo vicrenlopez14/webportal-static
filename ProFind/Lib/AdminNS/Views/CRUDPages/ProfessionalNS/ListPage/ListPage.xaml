@@ -16,8 +16,8 @@
         </Grid.ColumnDefinitions>
         <ListView
             Name="DashboardProfessionalsActiveListView"
-            ItemClick="ProjectsActiveListView_ItemClick"
-            Tapped="ProjectsActiveListView_Tapped" >
+           
+            >
             <ListView.ItemTemplate>
 
                 <DataTemplate x:DataType="services:Professional">

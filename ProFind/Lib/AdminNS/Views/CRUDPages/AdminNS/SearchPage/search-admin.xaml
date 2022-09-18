@@ -12,8 +12,8 @@
         
         QueryIcon="Find"
         x:Name="Search_admin1"
-        QuerySubmitted="Control2_QuerySubmitted"
-        SuggestionChosen="Control2_SuggestionChosen" Margin="266,180,156,0"/>
+       
+       />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -32,7 +32,7 @@
                     <ListView
                     Name="ProjectsListView"
                     IsItemClickEnabled="True"
-                    ItemClick="AdminListView_ItemClick"
+                   
                     SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="services:Admin">
@@ -67,7 +67,7 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-                <Button Name="Add_btn" Click="Add_btn_Click">Add</Button>
+                <Button Name="Add_btn">Add</Button>
             </StackPanel>
 
         </Grid>

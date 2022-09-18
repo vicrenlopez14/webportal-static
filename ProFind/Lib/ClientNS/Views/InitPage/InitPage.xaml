@@ -37,7 +37,7 @@
                         Name="btnExaminar"
                         Margin="0,10,0,20"
                         HorizontalAlignment="Center"
-                        Click="btnExaminar_Click"
+                       
                         Content="Charge"
                         CornerRadius="5" />
                     <TextBlock
@@ -46,7 +46,7 @@
                         Text="Register" />
                     <RichTextBlock SelectionHighlightColor="Green">
                         <Paragraph>
-                            Already have an account?<Hyperlink Click="Hyperlink_Click" NavigateUri="https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Documents.Hyperlink">Log in to your account</Hyperlink>
+                            Already have an account?<Hyperlink>Log in to your account</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                     <TextBox
@@ -71,7 +71,7 @@
                         Width="100"
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
-                        Click="Button_Click_5"
+                       
                         Content="Register"
                         Style="{StaticResource AccentButtonStyle}" />
 
@@ -146,12 +146,12 @@
                         <Button
                             x:Name="Administrators_Login"
                             Margin="0,0,10,0"
-                            Click="Button_Click_4"
+                           
                             Content="Administrators" />
                         <Button
                             x:Name="Professionals_Login"
                             Margin="10,0,0,0"
-                            Click="Professionals_Login_Click"
+                           
                             Content="Professionals" />
                     </StackPanel>
 

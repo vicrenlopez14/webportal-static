@@ -35,7 +35,7 @@
                     <Button
                         Grid.Column="1"
                         HorizontalAlignment="Center"
-                        Click="Button_Click"
+                       
                         Style="{StaticResource AccentButtonStyle}">
                         Add more
                     </Button>
@@ -43,7 +43,7 @@
                 <ListView
                     Name="NotificationListView"
                     IsItemClickEnabled="True"
-                    ItemClick="NotificationListView_ItemClick"
+                   
                     SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Notification">
@@ -78,7 +78,7 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <Button Name="Add_btn" Click="Add_btn_Click">Add</Button>
+            <Button Name="Add_btn">Add</Button>
         </StackPanel>
     </Grid>
 </Page>

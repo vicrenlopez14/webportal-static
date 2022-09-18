@@ -36,7 +36,7 @@
                                 Width="150"
                                 HorizontalAlignment="Left"
                                
-                                Click="PictureSelection_btn_Click"
+                               
                                 Content="Select a picture" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
@@ -59,7 +59,7 @@
                             x:Name="TotalPrice_tb"
                             Margin="0,15,0,0"
                             PlaceholderText="Total price"
-                            ValueChanged="TotalPrice_tb_ValueChanged" />
+                            />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="433*" />
@@ -75,7 +75,7 @@
                                 HorizontalAlignment="Center"
                                 Header="Initial status"
                                 SelectedIndex="0"
-                                SelectionChanged="InitialStatus_cb_SelectionChanged" />
+                                />
                             <StackPanel Grid.Column="1" Orientation="Vertical">
                                 <TextBlock
                                    
@@ -87,8 +87,8 @@
                             x:Name="Professional_cb"
                            
                             SelectedIndex="0"
-                            SelectionChanged="Professional_cb_SelectionChanged" Width="162" />
-                                <Button HorizontalAlignment="Center" Margin="20" Click="Button_Click">Select</Button>
+                            />
+                                <Button HorizontalAlignment="Center" Margin="20">Select</Button>
 
                             </StackPanel>
                             <ComboBox
@@ -97,14 +97,14 @@
                                 Margin="349,20,0,0"
                                 Header="Client"
                                 SelectedIndex="0"
-                                SelectionChanged="Client_cb_SelectionChanged" Grid.ColumnSpan="3" Width="127" />
+                                />
 
 
                         </Grid>
                         <Button
                             x:Name="Create_btn"
                             Width="100"
-                            Click="Create_btn_Click"
+                           
                             Content="Create"
                             Style="{StaticResource AccentButtonStyle}" />
 

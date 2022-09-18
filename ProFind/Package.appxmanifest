@@ -8,14 +8,14 @@
 
   <Identity
     Name="8dcb8dee-5795-4834-ab18-17d7a1736e0b"
-    Publisher="CN=vicrenlopez"
+    Publisher="CN=group4studios"
     Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="8dcb8dee-5795-4834-ab18-17d7a1736e0b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ProFind</DisplayName>
-    <PublisherDisplayName>vicrenlopez</PublisherDisplayName>
+    <PublisherDisplayName>Group 4 Studios</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

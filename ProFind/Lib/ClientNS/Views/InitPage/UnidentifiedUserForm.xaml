@@ -12,7 +12,7 @@
     <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="Introduce tu correo electrónico" VerticalAlignment="Top" Style="{ThemeResource SubtitleTextBlockStyle}" FocusVisualPrimaryBrush="White" Foreground="White"/>
         <TextBox x:Uid="Mail_tb" Name="Mail_tb" HorizontalAlignment="Center" Margin="0,56,0,0" TextWrapping="Wrap" PlaceholderText="ejemplo@correo.com" VerticalAlignment="Top" Width="274" KeyDown="mail_tb_KeyDown"/>
-        <Button HorizontalAlignment="Center" Content="Continuar" Margin="0,105,0,0" VerticalAlignment="Top" IsEnabled="True" Foreground="White" Click="Button_Click">
+        <Button HorizontalAlignment="Center" Content="Continuar" Margin="0,105,0,0" VerticalAlignment="Top" IsEnabled="True" Foreground="White">
             <Button.Background>
                 <AcrylicBrush TintColor="#CC133EAE"/>
             </Button.Background>

@@ -21,7 +21,7 @@
                 SelectionHighlightColor="Green"
                 Style="{StaticResource BaseRichTextBlockStyle}">
                 <Paragraph>
-                    Please check your internet connection and contact the developers on<Hyperlink Click="Hyperlink_Click" NavigateUri="mailto:support@profind.com">support@profind.com</Hyperlink>
+                    Please check your internet connection and contact the developers on<Hyperlink>support@profind.com</Hyperlink>
                 </Paragraph>
             </RichTextBlock>
             <muxc:ProgressRing

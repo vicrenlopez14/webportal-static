@@ -37,7 +37,7 @@
                     <TextBlock x:Uid="YouAreInTheLoginForProfessionalInitPage" Margin="0,0,0,20">You are in the log in page for Professionals</TextBlock>
                     <RichTextBlock SelectionHighlightColor="Green">
                         <Paragraph x:Uid="ForgotPasswordInitPageProfessional">
-                            Forgot password?<Hyperlink Click="Hyperlink_Click" NavigateUri="https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Documents.Hyperlink">Click here</Hyperlink>
+                            Forgot password?<Hyperlink>Click here</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                     <TextBox
@@ -56,7 +56,7 @@
                         Width="100"
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
-                        Click="Button_Click_5"
+                       
                         Content="Log in"
                         Style="{StaticResource AccentButtonStyle}" />
 
@@ -73,13 +73,13 @@
                             x:Uid="AdministratorsInitPageProfessionals"
                             x:Name="Administrators_Login"
                             Margin="0,0,10,0"
-                            Click="Button_Click_4"
+                           
                             Content="Administrators" />
                         <Button
                             x:Uid="ClientsInitPageProfessionals"
                             x:Name="Clients_Login"
                             Margin="10,0,0,0"
-                            Click="Professionals_Login_Click"
+                           
                             Content="Clients" />
                     </StackPanel>
 

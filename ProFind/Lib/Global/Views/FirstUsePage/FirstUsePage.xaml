@@ -29,7 +29,7 @@
                 FontWeight="Medium">
                 We need to do some things before to make this instance usable
             </TextBlock>
-            <Button HorizontalAlignment="Center" Style="{StaticResource AccentButtonStyle}" Click="Button_Click">
+            <Button HorizontalAlignment="Center" Style="{StaticResource AccentButtonStyle}">
                 Create the first administrator account
             </Button>
         </StackPanel>

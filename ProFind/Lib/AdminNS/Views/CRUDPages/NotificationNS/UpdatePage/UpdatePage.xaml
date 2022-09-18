@@ -22,7 +22,7 @@
                                 Keep your data up to date.
                             </TextBlock>
                         </StackPanel>
-                        <Button HorizontalAlignment="Right" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1">See notification</Button>
+                        <Button HorizontalAlignment="Right" Style="{StaticResource AccentButtonStyle}">See notification</Button>
                     </Grid>
                     <Image
                         Name="SelectedPicture_pp"
@@ -39,7 +39,7 @@
                             Width="150"
                             HorizontalAlignment="Left"
                            
-                            Click="PictureSelection_btn_Click"
+                           
                             Content="Select a picture" />
                         <TextBlock
                             Name="SelectedPicture_tbk"
@@ -76,7 +76,7 @@
                             Margin="50,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Click="Update_btn_Click"
+                           
                             Content="Update"
                             Style="{StaticResource AccentButtonStyle}" />
                         <Button
@@ -85,7 +85,7 @@
                             Margin="50,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Click="Reset_btn_Click"
+                           
                             Content="Reset"
                             Style="{StaticResource AccentButtonStyle}" />
                         <Button
@@ -94,14 +94,14 @@
                             Margin="50,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Click="Delete_btn_Click"
+                           
                             Content="Delete"
                             Style="{StaticResource AccentButtonStyle}" />
                         <Button
                             x:Name="Back_btn"
                             Width="100"
                             Margin="50,0"
-                            Click="Back_btn_Click"
+                           
                             Content="Back"
                             Style="{StaticResource AccentButtonStyle}" />
                     </StackPanel>

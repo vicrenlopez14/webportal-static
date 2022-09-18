@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid>
-            <ScrollViewer Grid.Column="1" ViewChanged="ScrollViewer_ViewChanged">
+            <ScrollViewer Grid.Column="1">
                 <Grid>
                     <StackPanel Padding="100" Orientation="Vertical">
                         <TextBlock
@@ -37,7 +37,7 @@
                             Width="150"
                             HorizontalAlignment="Left"
                            
-                            Click="PictureSelection_btn_Click"
+                           
                             Content="Select a picture" />
                             <TextBlock
                             Name="SelectedPicture_tbk"
@@ -68,14 +68,14 @@
                                 x:Name="Project_cb"
                                 Header="Project"
                                 SelectedIndex="0"
-                                SelectionChanged="Client_cb_SelectionChanged" Width="127" />
+                                />
 
                         <Button
                         x:Name="Create_btn"
                         Width="100"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="Create_btn_Click"
+                       
                         Content="Create"
                         Style="{StaticResource AccentButtonStyle}" />
 

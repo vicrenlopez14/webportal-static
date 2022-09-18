@@ -29,7 +29,7 @@
                             x:Name="Picture_img"
                             Width="100"
                             Height="100" />
-                        <Button HorizontalAlignment="Center" Click="Button_Click" Content="Change picture"/>
+                        <Button HorizontalAlignment="Center"/>
                         <TextBox
                             x:Name="Name1_tbx"
                             Width="460"
@@ -81,19 +81,19 @@
                         <Button
                             x:Name="Reset_btn"
                             Margin="15"
-                            Click="Reset_btn_Click" Content="Reset"/>
+                           />
                         <Button
                             x:Name="Update_btn"
                             Margin="15"
-                            Click="Update_btn_Click" Content="Update"/>
+                           />
                         <Button
                             x:Name="Delete_btn"
                             Margin="15"
-                            Click="Delete_btn_Click" Content="Delete"/>
+                           />
                         <Button
                             x:Name="Back_btn"
                             Margin="15"
-                            Click="Back_btn_Click" Content="Back"/>
+                           />
                     </StackPanel>
                 </Grid>
 

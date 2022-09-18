@@ -9,7 +9,7 @@
     Style="{StaticResource PageStyle}">
 
     <Grid>
-        <ScrollViewer Grid.Column="1" ViewChanged="ScrollViewer_ViewChanged">
+        <ScrollViewer Grid.Column="1">
             <Grid>
                 <StackPanel Padding="100" Orientation="Vertical">
                     <TextBlock
@@ -35,7 +35,7 @@
                             Width="150"
                             HorizontalAlignment="Left"
                            
-                            Click="PictureSelection_btn_Click"
+                           
                             Content="Select a picture" />
                         <TextBlock
                             Name="SelectedPicture_tbk"
@@ -59,14 +59,14 @@
                                 x:Name="Project_cb"
                                 Header="Project"
                                 SelectedIndex="0"
-                                SelectionChanged="Client_cb_SelectionChanged" Width="127" />
+                                />
                     <ComboBox
                                 Name="Client_cb"
                                 Grid.Column="1"
                                 Margin="180,-55,0,0"
                                 Header="Client"
                                 SelectedIndex="0"
-                                SelectionChanged="Client_cb_SelectionChanged" Grid.ColumnSpan="3" Width="127" />
+                                />
 
 
 
@@ -82,7 +82,7 @@
                         Width="100"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="Create_btn_Click"
+                       
                         Content="Create"
                         Style="{StaticResource AccentButtonStyle}" />
 

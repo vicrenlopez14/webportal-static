@@ -37,7 +37,7 @@
                             Width="150"
                             HorizontalAlignment="Left"
                            
-                            Click="PictureSelection_btn_Click"
+                           
                             Content="Select a picture" />
                         <TextBlock
                             Name="SelectedPicture_tbk"
@@ -62,13 +62,13 @@
                     <DatePicker
                         Name="ExpectedBegin_dp"
                         Margin="0,15,0,0"
-                        DateChanged="ExpectedBegin_dp_DateChanged"
+                       
                         Header="Expected begin"
                         IsEnabled="False" />
                     <DatePicker
                         Name="ExpectedEnd_dp"
                         Margin="0,15,0,0"
-                        DateChanged="ExpectedEnd_dp_DateChanged"
+                       
                         Header="Expected end"
                         IsEnabled="False" />
 
@@ -87,7 +87,7 @@
                             Margin="50,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Click="Update_btn_Click"
+                           
                             Content="Update"
                             Style="{StaticResource AccentButtonStyle}" />
                         <Button
@@ -96,7 +96,7 @@
                             Margin="50,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Click="Reset_btn_Click"
+                           
                             Content="Reset"
                             Style="{StaticResource AccentButtonStyle}" />
                         <Button
@@ -105,7 +105,7 @@
                             Margin="50,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Click="Delete_btn_Click"
+                           
                             Content="Delete"
                             Style="{StaticResource AccentButtonStyle}" />
                     </StackPanel>

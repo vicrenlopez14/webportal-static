@@ -8,7 +8,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ScrollViewer Grid.Column="1" ViewChanged="ScrollViewer_ViewChanged">
+        <ScrollViewer Grid.Column="1">
             <Grid>
                 <StackPanel Padding="100" Orientation="Vertical">
                     <TextBlock
@@ -40,7 +40,7 @@
                         Width="100"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="Update_btn_Click"
+                       
                         Content="Update"
                         Style="{StaticResource AccentButtonStyle}" />
 
@@ -49,7 +49,7 @@
                         Width="100"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="Delete_btn_Click"
+                       
                         Content="Create"
                         Style="{StaticResource AccentButtonStyle}" />
 

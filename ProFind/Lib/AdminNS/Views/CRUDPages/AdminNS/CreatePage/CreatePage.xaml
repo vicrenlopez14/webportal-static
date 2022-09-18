@@ -16,11 +16,11 @@
         <muxc:TeachingTip
             x:Name="ToggleThemeTeachingTip2"
             Title="Administrator created successfuly!"
-            ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick"
+           
             ActionButtonContent="Professionals create"
-            CloseButtonClick="ToggleThemeTeachingTip2_CloseButtonClick"
+           
             CloseButtonContent="Got it! Let me create more"
-            Closed="ToggleThemeTeachingTip2_Closed"
+           
             IsLightDismissEnabled="True"
             PlacementMargin="20"
             PreferredPlacement="Auto"
@@ -74,7 +74,7 @@
                                 Grid.Column="0"
                                 Width="150"
                                 HorizontalAlignment="Left"
-                                Click="PictureSelection_btn_Click"
+                               
                                 Content="Select a picture" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
@@ -103,7 +103,7 @@
                         Width="100"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="Create_btn_Click"
+                       
                         Content="Create"
                         Style="{StaticResource AccentButtonStyle}" />
 
@@ -112,7 +112,7 @@
                         Width="200"
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
-                        Click="GoToProfessionals"
+                       
                         Content="Go to Professionals creation"
                         Visibility="Collapsed" />
 
