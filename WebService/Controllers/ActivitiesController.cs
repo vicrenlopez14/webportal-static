@@ -7,7 +7,7 @@ using Activity = WebService.Models.Generated.Activity;
 
 namespace WebService.Controllers;
 
-[Authorize]
+
 [Route("api/[controller]")]
 [ApiController]
 public class ActivitiesController : ControllerBase
