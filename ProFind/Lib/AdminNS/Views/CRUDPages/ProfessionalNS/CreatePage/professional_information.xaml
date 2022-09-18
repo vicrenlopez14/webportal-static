@@ -45,7 +45,7 @@
                                     Header="Name"
                                     PlaceholderText="Name"
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtFIstName"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -140,7 +140,7 @@
                                     Header="AFP"
                                     PlaceholderText="AFP"
                                     RenderTransformOrigin="0.6,0.536"
-                                    TextChanged="TxtAFP"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform
@@ -157,7 +157,7 @@
                                     Header="DUI #"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtDui"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -171,7 +171,7 @@
                                     Header="ISSS #"
                                     PlaceholderText="Seguro"
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtNum_SeguroSocial"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -190,7 +190,7 @@
                                     Header="Position in the company"
                                     PlaceholderText="Position"
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtPuestoDeTrabajo"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -228,7 +228,7 @@
                                     Header="Postal Code"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtCodigo_Postal"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -241,7 +241,7 @@
                                     Header="Email"
                                     PlaceholderText="mail@example.com"
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtEmail"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -275,7 +275,7 @@
                                     Header="Base salary"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    TextChanged="TxtSalario"
+                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />

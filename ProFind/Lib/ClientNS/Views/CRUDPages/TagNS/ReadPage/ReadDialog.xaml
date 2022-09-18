@@ -10,7 +10,7 @@
     Title="Name of the tag"
     DefaultButton="Primary"
     IsSecondaryButtonEnabled="False"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
     PrimaryButtonText="Ok"
     mc:Ignorable="d">
 

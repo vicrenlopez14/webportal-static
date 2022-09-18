@@ -6,9 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Title="Create a new tag"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
     PrimaryButtonText="Create"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    
     SecondaryButtonText="Cancel"
     mc:Ignorable="d">
 

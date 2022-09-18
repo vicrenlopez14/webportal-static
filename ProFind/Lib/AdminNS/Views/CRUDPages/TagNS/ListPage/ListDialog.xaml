@@ -6,9 +6,9 @@
     xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPages.TagNS.ListPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:services="using:ProFind.Lib.Global.Services"
     Title="Tags for this project"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
     PrimaryButtonText="Done"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    
     SecondaryButtonText="Cancel"
     mc:Ignorable="d">
 

@@ -24,16 +24,16 @@
                     Text="ThemeMode" />
                 <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
                     <RadioButton
-                        Checked="OnThemeRadioButtonChecked"
+                       
                         Content="Light"
                         KeyDown="OnThemeRadioButtonKeyDown"
                         Tag="Light" />
                     <RadioButton
-                        Checked="OnThemeRadioButtonChecked"
+                       
                         Content="Dark"
                         Tag="Dark" />
                     <RadioButton
-                        Checked="OnThemeRadioButtonChecked"
+                       
                         Content="Use system setting"
                         Tag="Default" />
                 </StackPanel>
@@ -45,12 +45,12 @@
                 <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="This option enables sound effects in the app." />
                 <StackPanel x:Name="SoundPanel" Margin="0,10,0,0">
                     <RadioButton
-                        Checked="OnThemeRadioButtonChecked"
+                       
                         Content="On"
                         KeyDown="OnThemeRadioButtonKeyDown"
                         Tag="On" />
                     <RadioButton
-                        Checked="OnThemeRadioButtonChecked"
+                       
                         Content="Off"
                         Tag="Off" />
                 </StackPanel>
@@ -60,16 +60,16 @@
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="Language" />
                 <RadioButton
-                    Checked="OnThemeRadioButtonChecked"
+                   
                     Content="Spanish"
                     KeyDown="OnThemeRadioButtonKeyDown"
                     Tag="spanish" />
                 <RadioButton
-                    Checked="OnThemeRadioButtonChecked"
+                   
                     Content="English"
                     Tag="english" />
                 <RadioButton
-                    Checked="OnThemeRadioButtonChecked"
+                   
                     Content="French"
                     Tag="french" />
             </StackPanel>

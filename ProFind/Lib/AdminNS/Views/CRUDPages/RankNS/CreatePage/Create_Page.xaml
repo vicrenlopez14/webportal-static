@@ -28,7 +28,7 @@
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
                         PlaceholderText="Name"
-                        TextChanged="Title_tb_TextChanged" />
+                         />
 
                         <Grid Margin="0,10,0,0" VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>

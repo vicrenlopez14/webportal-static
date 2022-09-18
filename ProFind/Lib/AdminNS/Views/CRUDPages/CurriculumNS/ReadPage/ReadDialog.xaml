@@ -9,7 +9,7 @@
     Title="Curriculum Previewer"
     DefaultButton="Primary"
     IsSecondaryButtonEnabled="False"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
     PrimaryButtonText="Ok"
     mc:Ignorable="d">
 

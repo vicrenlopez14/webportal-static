@@ -9,7 +9,7 @@
 
     <Grid>
         <AutoSuggestBox PlaceholderText="Search"
-        TextChanged="Control2_TextChanged"
+        
         QueryIcon="Find"
         x:Name="Search_admin1"
         QuerySubmitted="Control2_QuerySubmitted"

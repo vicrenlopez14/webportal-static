@@ -7,9 +7,9 @@
     xmlns:services="using:ProFind.Lib.Global.Services"
     Title="Select a professional"
     DefaultButton="Primary"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
     PrimaryButtonText="Select"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    
     SecondaryButtonText="Cancel"
     mc:Ignorable="d">
 

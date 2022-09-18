@@ -45,7 +45,7 @@
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
                         PlaceholderText="Name"
-                        TextChanged="Name_tb_TextChanged" />
+                         />
                     <TextBox
                         x:Name="Email_tb"
                         Margin="0,15,0,0"
@@ -75,7 +75,7 @@
                                 Width="150"
                                 HorizontalAlignment="Left"
                                 Click="PictureSelection_btn_Click"
-                                Content="Select a picture" Checked="PictureSelection_btn_Checked" />
+                                Content="Select a picture" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"

@@ -13,7 +13,7 @@
             <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
         <AutoSuggestBox PlaceholderText="Search"
-        TextChanged="Control2_TextChanged"
+        
         QueryIcon="Find"
         x:Name="Search_Client"
         QuerySubmitted="Control2_QuerySubmitted"

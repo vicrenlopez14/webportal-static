@@ -42,7 +42,7 @@
                             Grid.Column="0"
                             Width="150"
                             HorizontalAlignment="Left"
-                            Checked="PictureSelection_btn_Checked"
+                           
                             Click="PictureSelection_btn_Click"
                             Content="Select a picture" />
                         <TextBlock
@@ -56,12 +56,12 @@
                         x:Name="Title_tb"
                         Margin="0,30,0,0"
                         PlaceholderText="Title"
-                        TextChanged="Title_tb_TextChanged" />
+                         />
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
-                        TextChanged="Description_tb_TextChanged" />
+                         />
                     <muxc:NumberBox
                         x:Name="TotalPrice_tb"
                         Margin="0,15,0,0"
