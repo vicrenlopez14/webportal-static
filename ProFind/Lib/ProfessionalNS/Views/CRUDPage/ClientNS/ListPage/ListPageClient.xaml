@@ -1,14 +1,12 @@
 ﻿<Page
-    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage.ReadPage"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage.ListPageClient"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:models="using:ProFind.Lib.Global.Services"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:services="using:ProFind.Lib.Global.Services"
     mc:Ignorable="d"
-    Style="{StaticResource PageStyle}">
-
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,33 +18,18 @@
                 Margin="20"
                 Padding="20"
                 Orientation="Vertical">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.9*" />
-                        <ColumnDefinition Width="0.1*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Grid.Column="0"
-                        Margin="20"
-                        HorizontalAlignment="Left"
-                        RenderTransformOrigin="0.638,0.776"
-                        Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="Created notifications" />
-                    <Button
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                       
-                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1">
-                        Add more
-                    </Button>
-                </Grid>
+                <TextBlock
+                    Margin="20"
+                    RenderTransformOrigin="0.638,0.776"
+                    Style="{StaticResource SubheaderTextBlockStyle}"
+                    Text=" My Clients List" />
                 <ListView
-                    Name="NotificationListView"
+                    Name="AdminsListView"
                     IsItemClickEnabled="True"
                    
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Notification">
+                        <DataTemplate x:DataType="services:Client">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"
@@ -57,18 +40,18 @@
                                         Width="69"
                                         Height="73"
                                         Margin="15,0"
-                                        ProfilePicture="{Binding PictureN}" />
+                                        ProfilePicture="{Binding  PictureC}" />
                                     <StackPanel Height="42" Orientation="Vertical">
                                         <TextBlock
                                             Height="21"
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
-                                            Text="{x:Bind TitleN}" />
-                                        <TextBlock Text="{x:Bind DescriptionN}" />
+                                            Text="{x:Bind NameC}" />
+                                        <TextBlock Text="" />
+                                        <TextBlock Text="{x:Bind EmailC}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -78,7 +61,8 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <Button Name="Add_btn" Click="Add_btn_Click_1">Update</Button>
+            <Button Name="Add_btn" Click="Add_btn_Click">Chat</Button>
         </StackPanel>
+
     </Grid>
 </Page>

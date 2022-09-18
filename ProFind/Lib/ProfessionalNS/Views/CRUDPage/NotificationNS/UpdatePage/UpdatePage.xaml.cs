@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,9 +38,39 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
             loadUsefulthings();
         }
 
-        private async void Reset_btn_Click(object sender, RoutedEventArgs e)
+       
+      
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            // Reset with the same ID
+            new InAppNavigationController().NavigateTo(typeof(ReadPage.ReadPage), toManipulate);
+        }
+
+        private void Title_tb_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Description_tb_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            var ToCreateClient = new Notification { IdN = toManipulate.IdN, TitleN = Title_tb.Text, DescriptionN = Description_tb.Text, DateTimeIssuedN = toManipulate.DateTimeIssuedN, IdPj2 = toManipulate.IdPj2, IdPj2Navigation = toManipulate.IdPj2Navigation, PictureN = imageBytes };
+
+
+            
+            await APIConnection.GetConnection.PutNotificationAsync(toManipulate.IdN, ToCreateClient);
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage.ReadPage));
+
+        }
+
+        private void Reset_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            
             toManipulate = new Notification()
             {
                 IdN = toManipulate.IdN,
@@ -48,55 +79,31 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
             loadUsefulthings();
         }
 
-
-        private async void Update_btn_Click(object sender, RoutedEventArgs e)
-        {
-            var ToCreateClient = new Notification { IdN = toManipulate.IdN , TitleN = Title_tb.Text , DescriptionN = Description_tb.Text, DateTimeIssuedN = toManipulate.DateTimeIssuedN, IdPj2 = toManipulate.IdPj2, IdPj2Navigation = toManipulate.IdPj2Navigation, PictureN = imageBytes };
-
-
-            await APIConnection.GetConnection.PutNotificationAsync(toManipulate.IdN, ToCreateClient);
-        }
-
-        private async void Delete_btn_Click(object sender, RoutedEventArgs e)
+        private async void Delete_btn_Click_1(object sender, RoutedEventArgs e)
         {
             await APIConnection.GetConnection.DeleteNotificationAsync(toManipulate.IdN);
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage.ReadPage));
+
         }
 
-        private void Back_btn_Click(object sender, RoutedEventArgs e)
+        private void Back_btn_Click_1(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().GoBack();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
-        }
-
-        private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
+        private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
         {
             var pickedFile = await PickFileHelper.PickImage();
-            toManipulate.PictureN = await (pickedFile).ToByteArrayAsync();
+            toManipulate.PictureN = await(pickedFile).ToByteArrayAsync();
             SelectedPicture_tbk.Text = pickedFile.DisplayName;
+           imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
         }
 
-        private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            toManipulate.TitleN = Title_tb.Text;
-        }
-
-        private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            toManipulate.DescriptionN = Description_tb.Text;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ReadPage.ReadPage), toManipulate);
+         
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage.ReadPage));
+       
         }
     }
 }

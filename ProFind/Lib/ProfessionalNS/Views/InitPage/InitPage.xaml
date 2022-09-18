@@ -44,12 +44,12 @@
                         x:Uid="EmailInitPageProfessional"
                         x:Name="Email_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Email" />
+                        PlaceholderText="Email" TextChanged="Email_tb_TextChanged" />
                     <PasswordBox
                         x:Uid="PasswordInitPageProfessional"
                         Name="Password_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Password" />
+                        PlaceholderText="Password" PasswordChanged="Password_tb_PasswordChanged" />
 
                     <Button
                         x:Uid="LogInInitPageProfessionalII"
@@ -58,7 +58,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Log in"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click" />
 
                     <TextBlock
                         x:Uid="OtherAccesWaysInitpageProfessinal"
@@ -74,13 +74,13 @@
                             x:Name="Administrators_Login"
                             Margin="0,0,10,0"
                            
-                            Content="Administrators" />
+                            Content="Administrators" Click="Administrators_Login_Click" />
                         <Button
                             x:Uid="ClientsInitPageProfessionals"
                             x:Name="Clients_Login"
                             Margin="10,0,0,0"
                            
-                            Content="Clients" />
+                            Content="Clients" Click="Clients_Login_Click" />
                     </StackPanel>
 
 
