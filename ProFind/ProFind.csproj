@@ -454,6 +454,7 @@
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
+    <Compile Include="Lib\Global\Services\Generated.cs" />
     <Compile Include="Lib\Global\Services\Models\Activity.cs" />
     <Compile Include="Lib\Global\Services\Models\Admin.cs" />
     <Compile Include="Lib\Global\Services\Models\Client.cs" />

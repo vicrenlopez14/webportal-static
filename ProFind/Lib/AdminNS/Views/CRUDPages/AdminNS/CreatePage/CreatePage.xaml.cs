@@ -22,6 +22,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
+        private Admin ToCreateAdmin = new Admin();
         private List<Rank> ranks = new List<Rank>();
         private byte[] imageBytes;
         private bool isFirstAdmin = false;
@@ -39,6 +40,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             ranks = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
 
             Rank_cb.ItemsSource = ranks;
+            ToCreateAdmin = new Admin();
         }
 
 
@@ -49,23 +51,44 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             isFirstAdmin = (bool)e.Parameter;
         }
 
-        private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender,
-            Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+
+        private void ToggleThemeTeachingTip2_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Clients_Login));
+            CreateProfessionals_btn.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void GoToProfessionals(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
+
         }
 
-        private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Name_tb_TextChanged_1(object sender, TextChangedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+            ToCreateAdmin.NameA = Name_tb.Text;
         }
 
-        private async void PictureSelection_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Email_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ToCreateAdmin.EmailA = Email_tb.Text;
+        }
+
+        private void PhoneNumber_tb_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+        {
+            ToCreateAdmin.TelA = PhoneNumber_tb.Text;
+        }
+
+        private void Password_pb_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ToCreateAdmin.PasswordA = PhoneNumber_tb.Text;
+        }
+
+        private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -75,7 +98,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
                 if (file != null)
                 {
-
+                    ToCreateAdmin.PictureA = await file.ToByteArrayAsync();
                 }
             }
             catch (Exception ex)
@@ -88,56 +111,53 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 PictureSelection_btn.IsChecked = false;
             }
         }
-     
 
-
-
-        private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
+        private void Rank_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            var selectedRank = Rank_cb.SelectedItem as Rank;
+            ToCreateAdmin.IdR1 = selectedRank.IdR;
         }
 
-        private async void Create_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
                 Creation_pr.IsActive = true;
 
-                var toCreateAdmin = new Admin{IdA = "", NameA = Name_tb.Text, EmailA = Email_tb.Text, PasswordA = Password_pb.Password, IdR1 = int.Parse(Rank_cb.Text)  , TelA = PhoneNumber_tb.Text, PictureA = imageBytes  };
-                toCreateAdmin.IdR1 = int.Parse((Rank_cb.SelectedItem as Rank).IdR.ToString());
-
-                var result = await APIConnection.GetConnection.PostAdminAsync(toCreateAdmin);
-
+                ToCreateAdmin.IdA = "";
+                
+                var result = await APIConnection.GetConnection.PostAdminAsync(ToCreateAdmin);
                 ToggleThemeTeachingTip2.IsOpen = true;
+
             }
-            catch (Exception ex)
+            catch (ProFindServicesException ex)
             {
-                Console.WriteLine(ex.Message);
+                if (ex.StatusCode == 201)
+                {
+                ToggleThemeTeachingTip2.IsOpen = true;
+
+                }
             }
             finally
             {
                 Creation_pr.IsActive = false;
             }
-
         }
-        private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
+
+        private void ToggleThemeTeachingTip2_ActionButtonClick_1(TeachingTip sender, object args)
         {
             new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
+
         }
 
-        private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
+        private void ToggleThemeTeachingTip2_CloseButtonClick_1(TeachingTip sender, object args)
         {
 
         }
 
-        private void ToggleThemeTeachingTip2_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
+        private void CreateProfessionals_btn_Click(object sender, RoutedEventArgs e)
         {
-            CreateProfessionals_btn.Visibility = Visibility.Visible;
-        }
-
-        private void GoToProfessionals(object sender, RoutedEventArgs e)
-        {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
 
         }
     }

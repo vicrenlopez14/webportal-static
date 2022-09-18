@@ -120,8 +120,9 @@ namespace ProFind
                     // Cuando no se restaura la pila de navegación, navegar a la primera página,
                     // configurando la nueva página pasándole la información requerida como
                     //parámetro de navegación
-                    
-                    var areThereAdmins = (await APIConnection.GetConnection.GetAdminsAsync()).Any();
+
+                    var admins = (await APIConnection.GetConnection.GetAdminsAsync());
+                    var areThereAdmins = admins == null ? false : admins.Count() > 0;
 
                     try
                     {
@@ -133,7 +134,7 @@ namespace ProFind
                         }
                         else
                         {
-                            rootFrame.Navigate(typeof(Lib.Global.Views.FirstUsePage.FirstUsePage), e.Arguments);
+                            rootFrame.Navigate(typeof(FirstUsePage), e.Arguments);
                             new GlobalNavigationController().Init(rootFrame, typeof(FirstUsePage));
                         }
                     }

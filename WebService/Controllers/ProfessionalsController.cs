@@ -59,7 +59,8 @@ public class ProfessionalsController : ControllerBase
             return NotFound();
         }
 
-        return await _context.Professionals.ToListAsync();
+        return await _context.Professionals.Include(comments => comments.Activitycomments)
+            .Include(supportTickets => supportTickets.Supporttickets).ToListAsync();
     }
 
     // GET: api/Professionals/5
@@ -121,7 +122,7 @@ public class ProfessionalsController : ControllerBase
         {
             return Problem("Entity set 'ProFindContext.Professionals'  is null.");
         }
-        
+
         professional.AssignId();
         _context.Professionals.Add(professional);
         try
@@ -140,7 +141,7 @@ public class ProfessionalsController : ControllerBase
             }
         }
 
-        return CreatedAtAction("GetProfessional", new {id = professional.IdP}, professional);
+        return CreatedAtAction("GetProfessional", new { id = professional.IdP }, professional);
     }
 
     // DELETE: api/Professionals/5
