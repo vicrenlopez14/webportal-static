@@ -28,16 +28,23 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
         public ListPageClient()
         {
             this.InitializeComponent();
+            GetProjectsList();
         }
         public async void GetProjectsList()
         {
 
-            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetClientAsync(id.IdC);
+          Activities_lw.ItemsSource = await APIConnection.GetConnection.GetClientAsync(id.IdC);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ChatPage.ChatPageCLient));
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.SearchPage.SearchPageClient));
 
         }
     }

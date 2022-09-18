@@ -23,7 +23,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
 
         private async void InitializeData()
         {
-            var proposalList = await APIConnection.GetConnection.GetProposalsAsync();
+
+            ProposalListView.ItemsSource = await APIConnection.GetConnection.GetProposalsAsync();
         }
 
         private void ProposalListView_ItemClick(object sender, ItemClickEventArgs e)

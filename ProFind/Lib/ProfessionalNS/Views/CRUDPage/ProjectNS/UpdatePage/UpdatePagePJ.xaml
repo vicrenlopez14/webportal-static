@@ -1,11 +1,12 @@
 ﻿<Page
-    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.UpdatePage"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.UpdatePagePJ"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Style="{StaticResource PageStyle}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <ScrollViewer Grid.Column="1">
@@ -24,7 +25,7 @@
                         <Button
                             HorizontalAlignment="Right"
                            
-                            Style="{StaticResource AccentButtonStyle}">
+                            Style="{StaticResource AccentButtonStyle}" Click="Button_Click">
                             See activities
                         </Button>
                     </Grid>
@@ -44,7 +45,7 @@
                             HorizontalAlignment="Left"
                            
                            
-                            Content="Select a picture" />
+                            Content="Select a picture" Click="PictureSelection_btn_Click" />
                         <TextBlock
                             Name="SelectedPicture_tbk"
                             Margin="10,0,0,0"
@@ -55,12 +56,12 @@
                     <TextBox
                         x:Name="Title_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title"
+                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged"
                          />
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description"
+                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged"
                          />
                     <muxc:NumberBox
                         x:Name="TotalPrice_tb"
@@ -76,26 +77,9 @@
                         <ComboBox
                             Name="InitialStatus_cb"
                             Grid.Column="0"
-                            Margin="0,20"
-                            HorizontalAlignment="Center"
+                            Margin="0,30,0,0"
                             Header="Initial status"
-                            SelectedIndex="0"
-                            />
-                        <ComboBox
-                            Name="Professional_cb"
-                            Grid.Column="1"
-                            Margin="0,20"
-                            HorizontalAlignment="Center"
-                            Header="Responsible professional"
-                            SelectedIndex="0"
-                            />
-                        <ComboBox
-                            Name="Client_cb"
-                            Grid.Column="2"
-                            Margin="0,20"
-                            HorizontalAlignment="Center"
-                            Header="Client"
-                            SelectedIndex="0"
+                            SelectedIndex="0" SelectionChanged="InitialStatus_cb_SelectionChanged"
                             />
                     </Grid>
 
@@ -117,7 +101,7 @@
                             VerticalAlignment="Center"
                            
                             Content="Update"
-                            Style="{StaticResource AccentButtonStyle}" />
+                            Style="{StaticResource AccentButtonStyle}" Click="Update_btn_Click" />
                         <Button
                             x:Name="Reset_btn"
                             Width="100"

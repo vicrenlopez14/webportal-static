@@ -27,13 +27,13 @@
                         HorizontalAlignment="Left"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="Created notifications" />
+                        Text="List Proposal" />
                     <Button
                         Grid.Column="1"
                         HorizontalAlignment="Center"
                        
                         Style="{StaticResource AccentButtonStyle}">
-                        Add more
+                        Proposal notifications
                     </Button>
                 </Grid>
                 <ListView

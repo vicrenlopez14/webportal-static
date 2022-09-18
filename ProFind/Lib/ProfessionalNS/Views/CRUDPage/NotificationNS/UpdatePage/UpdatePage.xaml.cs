@@ -59,7 +59,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
         private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
         {
 
-            var ToCreateClient = new Notification { IdN = toManipulate.IdN, TitleN = Title_tb.Text, DescriptionN = Description_tb.Text, DateTimeIssuedN = toManipulate.DateTimeIssuedN, IdPj2 = toManipulate.IdPj2, IdPj2Navigation = toManipulate.IdPj2Navigation, PictureN = imageBytes };
+            var ToCreateClient = new Notification { IdN = toManipulate.IdN, TitleN = Title_tb.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes };
 
 
             

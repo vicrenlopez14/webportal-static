@@ -28,13 +28,6 @@
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
                         Text="Created projects" />
-                    <Button
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                       
-                        Style="{StaticResource AccentButtonStyle}">
-                        Add more
-                    </Button>
                 </Grid>
                 <ListView
                     Name="AdminsListView"
@@ -60,7 +53,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind TitlePj}" />
-                                        <TextBlock Text="{x:Bind IdP1Navigation.NameP}" />
+                                        <TextBlock Text="{x:Bind IdC1Navigation.NameC}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

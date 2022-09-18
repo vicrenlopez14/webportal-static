@@ -44,5 +44,20 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.ListPage
         {
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.UpdatePage.UpdatePageActivi));
         }
+
+        private void Activities_lw_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage.CreatePageActivi));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.SearchPage.SearchPage));
+        }
     }
 }

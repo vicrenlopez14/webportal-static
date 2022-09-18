@@ -10,59 +10,72 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00 *" />
+            <ColumnDefinition Width="32*" />
+            <ColumnDefinition Width="43*" />
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <StackPanel
-                Margin="20"
-                Padding="20"
-                Orientation="Vertical">
-                <TextBlock
-                    Margin="20"
-                    RenderTransformOrigin="0.638,0.776"
-                    Style="{StaticResource SubheaderTextBlockStyle}"
-                    Text=" My Clients List" />
-                <ListView
-                    Name="AdminsListView"
-                    IsItemClickEnabled="True"
-                   
-                    SelectionMode="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="services:Client">
-                            <StackPanel
-                                BorderBrush="Gray"
-                                BorderThickness="0.5"
-                                CornerRadius="16"
-                                Orientation="Horizontal">
-                                <StackPanel Orientation="Horizontal">
-                                    <PersonPicture
-                                        Width="69"
-                                        Height="73"
-                                        Margin="15,0"
-                                        ProfilePicture="{Binding  PictureC}" />
-                                    <StackPanel Height="42" Orientation="Vertical">
-                                        <TextBlock
-                                            Height="21"
-                                            FontWeight="Medium"
-                                            Style="{StaticResource BodyTextBlockStyle}"
-                                            Text="{x:Bind NameC}" />
-                                        <TextBlock Text="" />
-                                        <TextBlock Text="{x:Bind EmailC}" />
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Button Name="Add_btn" Click="Add_btn_Click">Chat</Button>
-        </StackPanel>
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Search CLient" Grid.Column="1" Margin="484,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" />
+        <TextBlock
+                        Grid.Column="0"
+                        Margin="20,20,0,928"
+                        HorizontalAlignment="Left"
+                        RenderTransformOrigin="0.638,0.776"
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="List CLients" Grid.ColumnSpan="2" Width="1095"
+            
+            />
+
+
+        <ListView Name="Activities_lw" SelectionChanged="Activities_lw_SelectionChanged" Grid.ColumnSpan="2" Margin="31,94,31,52">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="services:Client">
+                    <StackPanel Background="#F4FAE1" CornerRadius="15">
+                        <StackPanel
+                            Width="300"
+                            Height="27"
+                            Margin="-95,20,0,0">
+                            <TextBlock Height="25" Text="{Binding NameC}" />
+                        </StackPanel>
+                        <Image
+                            Width="100"
+                            Height="100"
+                            Margin="-2,-30,570,10"
+                            Source="{Binding PictureC}" />
+
+                        <StackPanel
+                            Width="20"
+                            Height="22"
+                            Margin="-425,-250,0,-70">
+                            <SymbolIcon Symbol="Contact2" />
+                        </StackPanel>
+                        <StackPanel
+                            Width="340"
+                            Height="23"
+                            Margin="130,5">
+                            <TextBlock
+                                Height="23"
+                                Margin="-20,-190,3,-70"
+                                FontWeight="Bold"
+                                Text="Email:" />
+                        </StackPanel>
+                        <StackPanel
+                            Width="340"
+                            Height="20"
+                            Margin="-20,-190,3,-70">
+                            <TextBlock Height="31" Text="{Binding EmailC}" />
+
+                        </StackPanel>
+                        <StackPanel
+                         Grid.Column="1"
+                         HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                            <Button Name="Add_btn" Click="Add_btn_Click">Chat</Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
 
     </Grid>
 </Page>

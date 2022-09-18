@@ -12,24 +12,23 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionNS.ReadPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
-        Professional Id1 = new Professional();
+         Profession Id1;
 
         public ReadPage()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            InitializeData();
         }
-        public async void GetProjectsList()
-
+        private async void InitializeData()
         {
-            await APIConnection.GetConnection.GetProfessionalAsync(Id1.IdP);
-
+            int idNo = Id1.IdPfs;
+            await APIConnection.GetConnection.GetProfessionAsync(idNo);
         }
 
         private async void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Professional project = e.ClickedItem as Professional;
-            new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.InitPage.InitPage), project);
+           
+            
         }
     }
 }
