@@ -21,7 +21,7 @@
             ItemClick="ProfessionalsListView_ItemClick"
             SelectionMode="Single">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="services:Professional">
                     <StackPanel
                         BorderBrush="Gray"
                         BorderThickness="0.5"

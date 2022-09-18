@@ -3,9 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:models1="using:ProFind.Lib.Global.Services"
-    xmlns:models="using:ProFind.Lib.Global.Services.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:models="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
     <Grid>
@@ -62,7 +60,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind TitlePj}" />
-                                        <TextBlock Text="{x:Bind ResponsibleProfessional.NameP}" />
+                                        <TextBlock Text="{x:Bind IdP1Navigation.NameP}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

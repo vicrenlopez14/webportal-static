@@ -3,7 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:ProFind.Lib.Global.Services.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:models="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
     <Grid>
@@ -47,7 +48,7 @@
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind NameA}" />
-                                        <TextBlock Text="{x:Bind Rank.NameR}" />
+                                        <TextBlock Text="{x:Bind IdR1Navigation.NameR}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

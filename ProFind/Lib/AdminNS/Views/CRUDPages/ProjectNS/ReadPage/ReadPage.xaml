@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:models1="using:ProFind.Lib.Global.Services.Models"
+    xmlns:models1="using:ProFind.Lib.Global.Services.Models" xmlns:services="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
 
@@ -45,7 +45,7 @@
                     ItemClick="AdminListView_ItemClick"
                     SelectionMode="None">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models1:Project">
+                        <DataTemplate x:DataType="services:Project">
                             <StackPanel
                                 BorderBrush="Gray"
                                 BorderThickness="0.5"
@@ -62,8 +62,8 @@
                                             Height="21"
                                             FontWeight="Medium"
                                             Style="{StaticResource BodyTextBlockStyle}"
-                                            Text="{x:Bind TitlePJ}" />
-                                        <TextBlock Text="{x:Bind ResponsibleProfessional.NameP}" />
+                                            Text="{x:Bind TitlePj}" />
+                                        <TextBlock Text="{x:Bind IdP1Navigation.NameP}" />
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

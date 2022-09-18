@@ -93,7 +93,7 @@
                                 x:Name="Rank_cb"
                                 Margin="5,0,0,0"
                                 HorizontalAlignment="Right"
-                                ItemsSource="{x:Bind rankStrings}"
+                                ItemsSource="{x:Bind ranks}"
                                 SelectedIndex="0" />
                         </StackPanel>
                     </Grid>
