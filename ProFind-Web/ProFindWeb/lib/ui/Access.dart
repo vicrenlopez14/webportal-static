@@ -5,11 +5,16 @@ class AccessPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        child: Text(
-          'Users access',
-          style: TextStyle(fontSize: 30),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Access'),
+      ),
+      body: Center(
+        child: Container(
+          child: Text(
+            'Access page',
+            style: TextStyle(fontSize: 30),
+          ),
         ),
       ),
     );

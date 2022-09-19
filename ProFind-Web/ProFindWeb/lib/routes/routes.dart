@@ -1,14 +1,16 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:profindweb/ui/Access.dart';
+import 'package:profindweb/ui/Catalog.dart';
 import 'package:profindweb/ui/HomePage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const String routeHome = '/';
 const String routeLandingPage = 'landing-page';
+const String routeCatalog = 'catalog';
 const String routeLandingPageSpanish = '$routeLandingPage/es';
 const String routeLandingPageEnglish = '$routeLandingPage/en';
-const String routeAccess = '/access';
+const String routeAccess = 'access';
 
 final navKey = new GlobalKey<NavigatorState>();
 
@@ -25,6 +27,8 @@ class RouteGenerator {
         break;
       case routeAccess:
         return MaterialPageRoute(builder: (_) => AccessPage());
+      case routeCatalog:
+        return MaterialPageRoute(builder: (_) => CatalogPage());
 
       default:
         return MaterialPageRoute(

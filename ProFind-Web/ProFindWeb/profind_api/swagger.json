@@ -1684,7 +1684,7 @@
         "tags": [
           "LoginAdmin"
         ],
-        "operationId": "Login",
+        "operationId": "LoginOAUTHAdmin",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1716,7 +1716,7 @@
         "tags": [
           "LoginClient"
         ],
-        "operationId": "Login",
+        "operationId": "LoginOAUTHClient",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1748,7 +1748,7 @@
         "tags": [
           "LoginProfessional"
         ],
-        "operationId": "Login",
+        "operationId": "LoginOAUTHProfessional",
         "requestBody": {
           "content": {
             "application/json": {

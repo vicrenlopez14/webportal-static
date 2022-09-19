@@ -30,7 +30,7 @@ public class LoginProfessionalController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost]
-    public ActionResult Login([FromBody] ProfessionalLogin professionalLogin)
+    public ActionResult LoginOAUTHProfessional([FromBody] ProfessionalLogin professionalLogin)
     {
         var professional = Authenticate(professionalLogin);
         if (professional != null)

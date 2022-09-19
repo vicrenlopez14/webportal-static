@@ -30,7 +30,7 @@ public class LoginAdminController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost]
-    public ActionResult Login([FromBody] AdminLogin adminLogin)
+    public ActionResult LoginOAUTHAdmin([FromBody] AdminLogin adminLogin)
     {
         var admin = Authenticate(adminLogin);
         if (admin != null)
