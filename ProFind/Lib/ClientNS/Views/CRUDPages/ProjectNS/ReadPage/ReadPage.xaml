@@ -28,14 +28,14 @@
                         HorizontalAlignment="Left"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="Created projects" />
+                        Text="List projects" />
                     <Button
                         x:Uid="AddMoresReadPageClientsIII"
                         Grid.Column="1"
                         HorizontalAlignment="Center"
                        
-                        Style="{StaticResource AccentButtonStyle}">
-                        Add more
+                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1">
+                        Search
                     </Button>
                 </Grid>
                 <ListView

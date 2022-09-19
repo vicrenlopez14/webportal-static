@@ -13,6 +13,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
+        Activity Id; 
         public ReadPage()
         {
             this.InitializeComponent();
@@ -22,7 +23,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPage
 
         private async void InitializeData()
         {
-            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetActivitiesAsync();
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetActivityAsync(Id.IdA);
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -35,6 +36,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPage
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.SearchPage.SearchPage));
         }
     }
 }
