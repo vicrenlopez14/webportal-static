@@ -468,12 +468,7 @@
     <Compile Include="Lib\Global\Services\Models\Proposal.cs" />
     <Compile Include="Lib\Global\Services\Models\Rank.cs" />
     <Compile Include="Lib\Global\Services\Models\Tag.cs" />
-    <Compile Include="Lib\Global\Services\Notification.cs" />
-    <Compile Include="Lib\Global\Services\Swagger.cs">
-      <DependentUpon>Swagger.json</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
+    <Compile Include="Lib\Global\Services\Models\Notification.cs" />
     <Compile Include="Lib\Global\Views\About_Page\About_Page.xaml.cs">
       <DependentUpon>About_Page.xaml</DependentUpon>
     </Compile>
@@ -1003,10 +998,6 @@
     <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\DeletePage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SearchPage\.gitkeep" />
-    <None Include="Lib\Global\Services\Swagger.json">
-      <Generator>NSwagCodeGenerator</Generator>
-      <LastGenOutput>Swagger.cs</LastGenOutput>
-    </None>
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\DeletePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\.gitkeep" />
