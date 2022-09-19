@@ -47,5 +47,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.SearchPage.SearchPageClient));
 
         }
+        private void Activities_lw_SelectionChanged(object sender, ItemClickEventArgs e)
+        {
+            var project = e.ClickedItem as Project;
+
+            // new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
+        }
     }
 }

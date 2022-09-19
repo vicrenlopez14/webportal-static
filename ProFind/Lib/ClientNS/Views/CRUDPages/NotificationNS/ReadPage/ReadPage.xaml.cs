@@ -22,6 +22,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
         private async void InitializeData()
         {
             NotificationListView.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage));
         }
 
         private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -33,12 +34,12 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+        
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            
         }
     }
 }

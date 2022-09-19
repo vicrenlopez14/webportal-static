@@ -17,28 +17,32 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.SearchPage
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPageA
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class SearchPagePJ : Page
+    public sealed partial class ReadPageActivi : Page
     {
-        Project id; 
-        public SearchPagePJ()
+        Activity Id;
+        public ReadPageActivi()
         {
             this.InitializeComponent();
-        }
+            InitializeData();
 
-        private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            //ClientListView.ItemsSource = await APIConnection.GetConnection.SearchProjectAsync(id.IdPj, Search_Client.Text);
         }
-        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
+        private async void InitializeData()
         {
-            var project = e.ClickedItem as Project;
-
-          
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetActivityAsync(Id.IdA);
         }
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.SearchPage.SearchPage));
+        }
+        private void Add_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.SearchPage.SearchPage));
+        }
+       
     }
 }

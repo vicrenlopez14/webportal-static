@@ -32,12 +32,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ReadPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage.CreatePageNoti));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage.CreatePage));
+            
         }
     }
 }

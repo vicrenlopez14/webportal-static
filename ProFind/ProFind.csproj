@@ -393,8 +393,8 @@
     <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
       <DependentUpon>PasswordChangePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml.cs">
-      <DependentUpon>ReadPage.xaml</DependentUpon>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPageA\ReadPageActivi.xaml.cs">
+      <DependentUpon>ReadPageActivi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\SearchPage\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
@@ -781,7 +781,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml">
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPageA\ReadPageActivi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1061,7 +1061,6 @@
   <ItemGroup>
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ReadPage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\RankNS\ReadPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProjectStatusNS\SearchPage\.gitkeep" />
     <None Include="Lib\Global\Services\Swagger.json">

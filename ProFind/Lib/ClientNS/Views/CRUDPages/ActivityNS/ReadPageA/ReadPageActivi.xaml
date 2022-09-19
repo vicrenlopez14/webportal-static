@@ -1,10 +1,12 @@
 ﻿<Page
-    x:Class="ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPage.ReadPage"
+    x:Class="ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPageA.ReadPageActivi"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPageA"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:models11="using:ProFind.Lib.Global.Services"
-    Style="{StaticResource PageStyle}">
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models11="using:ProFind.Lib.Global.Services"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,7 +24,7 @@
             />
 
 
-        <ListView Name="Activities_lw" SelectionChanged="Activities_lw_SelectionChanged" Grid.ColumnSpan="2" Margin="31,94,31,52">
+        <ListView Name="Activities_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models11:Activity">
                     <StackPanel Background="#F4FAE1" CornerRadius="15">

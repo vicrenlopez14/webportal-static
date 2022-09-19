@@ -33,5 +33,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.SearchPage
         {
             //ClientListView.ItemsSource = await APIConnection.GetConnection.SearchProjectAsync(id.IdPj, Search_Client.Text);
         }
+        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var project = e.ClickedItem as Project;
+
+            // new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
+        }
     }
 }
