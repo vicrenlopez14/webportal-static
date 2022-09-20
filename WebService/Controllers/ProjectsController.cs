@@ -127,6 +127,35 @@ public class ProjectsController : ControllerBase
         return NoContent();
     }
 
+    [HttpGet("filter/")]
+    public async Task<ActionResult<IEnumerable<Project>>> FilterProjects([FromQuery] string? projectStatusId,
+        [FromQuery] string? TitlePJ)
+    {
+        var result = await (from proj in _context.Projects
+                            where (
+                            (projectStatusId == null ? true : proj.IdPs1 == projectStatusId) &&
+                            (TitlePJ == null ? true : proj.TitlePj.Contains(TitlePJ)))
+                            select proj).ToListAsync();
+
+        if (result.Any() == false) return NotFound();
+        else return result;
+
+    }
+
+    [HttpGet("search/")]
+    public async Task<ActionResult<IEnumerable<Project>>> SearchProjects([FromQuery] string TitlePJ)
+    {
+        if (TitlePJ.Length == 0) return await GetProjects();
+        else
+        {
+            var result = await (from proj in _context.Projects where (
+                                proj.TitlePj.Contains(TitlePJ)) select proj).ToListAsync();
+
+            if (result.Any() == false) return NotFound();
+            else return result;
+        }
+    }
+
     private bool ProjectExists(string id)
     {
         return (_context.Projects?.Any(e => e.IdPj == id)).GetValueOrDefault();

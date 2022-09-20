@@ -172,7 +172,7 @@ public class ProfessionalsController : ControllerBase
         else
         {
             var result = await (from prof in _context.Professionals where (prof.NameP.Contains(name)) select prof).ToListAsync();
-            if (result.Any()) return NotFound();
+            if (result.Any() == false) return NotFound();
             else return result;
         }
 
