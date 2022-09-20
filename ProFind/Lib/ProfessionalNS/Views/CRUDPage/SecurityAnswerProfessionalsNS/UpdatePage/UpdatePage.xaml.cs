@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,8 +25,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
     public sealed partial class UpdatePage : Page
     {
         Securityanswerprofessional id;
-        Client Id22;
-        Securityquestion ID2;
+
         public UpdatePage()
         {
             this.InitializeComponent();
@@ -33,14 +33,42 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteAnswerProfessional = await new Securityanswerprofessional { AnswerSa = Answer1_tb.Text, IdP = Id22.IdC, IdSq = ID2.IdSq };
 
-            await APIConnection.GetConnection.PostSecurityanswerprofessionalAsync(int.Parse( id.IdSq), toUpdapteAnswerProfessional);
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(Answer1_tb.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+            try
+            {
+
+                var toUpdateAnswerProfessional = new Securityanswerprofessional { IdSa = "", AnswerSa = Answer1_tb.Text };
+
+                var result = await APIConnection.GetConnection.PostSecurityanswerprofessionalAsync(toUpdateAnswerProfessional);
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            finally
+            {
+
+            }
         }
     }
 }

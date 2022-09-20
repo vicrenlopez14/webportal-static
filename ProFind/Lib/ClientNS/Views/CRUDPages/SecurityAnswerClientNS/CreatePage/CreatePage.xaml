@@ -14,27 +14,28 @@
             <TextBlock Text="Answer the following questions, to improve your account security." TextAlignment="Center" Height="22"/>
         </StackPanel>
 
-        <!--<ListView
+        <ListView
             Name="SecurityAnswerClientListView"
             IsItemClickEnabled="True"
-            ItemClick="SecurityAnswerClientListView_ItemClick"
             SelectionMode="None" IsSynchronizedWithCurrentItem="False">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Securityanswerclient">-->
-                    <StackPanel Margin="0,187,0,475" HorizontalAlignment="Center" Width="602" BorderBrush="Gray" BorderThickness="1" Padding="30">
+                <DataTemplate x:DataType="models:Securityanswerclient">
+                    <StackPanel Margin="0,187,0,531" HorizontalAlignment="Center" Width="602" Padding="30">
                         <TextBlock Text="Answer the following questions." TextAlignment="Left" FontWeight="Medium"/>
                         <TextBlock Text="{x:Bind IdSq1Navigation.NameSq}" Margin="0,10,0,0" FontWeight="SemiBold"/>
-                        <TextBox PlaceholderText="Type your answer" Margin="0,5,0,0" Height="70" Name="Answer1_tb"/>
-                        <TextBlock Text="{x:Bind IdSq1Navigation.NameSq}" Margin="0,10,0,0" FontWeight="SemiBold"/>
-                        <TextBox PlaceholderText="Type your answer" Margin="0,5,0,0" Height="70" Name="Answer2_tb" />
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,35,0,0" >
-                            <Button Name="btnSend" Content="Send" Margin="0,0,40,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click"/>
-                            <Button Name="btnCancel" Content="Cancel" Style="{StaticResource AccentButtonStyle}" Click="btnCancel_Click"/>
-                        </StackPanel>
                     </StackPanel>
-                <!--</DataTemplate>
+                </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
+
+            <StackPanel Margin="462,280,477,531">
+                <TextBox PlaceholderText="Type your answer" Margin="0,5,0,0" Height="78" Name="Answer1_tb" Width="533"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,35,0,0" >
+                    <Button Name="btnSend" Content="Send" Margin="0,0,40,0" Style="{StaticResource AccentButtonStyle}" Click="btnSend_Click" />
+                    <Button Name="btnCancel" Content="Cancel" Style="{StaticResource AccentButtonStyle}" Click="btnCancel_Click"/>
+                </StackPanel>
+                <StackPanel/>
+            </StackPanel>
     </Grid>
 </Page>

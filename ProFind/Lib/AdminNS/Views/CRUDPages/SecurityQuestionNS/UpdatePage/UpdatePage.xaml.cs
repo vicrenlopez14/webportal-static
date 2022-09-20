@@ -34,9 +34,24 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.SecurityQuestionNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteQuestion = new Securityquestion(id.IdSq = Question1_tb.Text, id.IdSq = Question2_tb.Text);
+           
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            var toUpdapteQuestion = new Securityquestion(id.IdSq = Question1_tb.Text, "");
 
             await APIConnection.GetConnection.PostSecurityquestionAsync(toUpdapteQuestion);
+        }
+
+        private void btnCancel_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

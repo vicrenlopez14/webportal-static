@@ -25,15 +25,17 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.CreatePage
     public sealed partial class CreatePage : Page
     {
 
-        Securityanswerclient toManipulate = new Securityanswerclient();
-        Client id;
-        Securityquestion ID2;
         public CreatePage()
         {
             this.InitializeComponent();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void btnSend_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(Answer1_tb.Text))
             {
@@ -42,20 +44,14 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.CreatePage
                 await dialog.ShowAsync();
                 return;
             }
-            else if (string.IsNullOrEmpty(Answer2_tb.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-                return;
-            }
 
             try
             {
 
-                var toCreateAnswerClient = new Securityanswerclient { IdSa = "", AnswerSa = Answer1_tb.Text, IdC1 = id.IdC, IdSq1 =  ID2.IdSq };
+                var toCreateAnswerClient = new Securityanswerclient { IdSa = "", AnswerSa = Answer1_tb.Text };
 
                 var result = await APIConnection.GetConnection.PostSecurityanswerclientAsync(toCreateAnswerClient);
-              
+
             }
 
             catch (Exception ex)
@@ -66,6 +62,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.CreatePage
             {
 
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,9 +33,32 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteAnswerClient = new Securityanswerclient { IdSq1 = id.IdSq1 };
+            if (string.IsNullOrEmpty(Answer1_tb.Text))
+            {
 
-            await APIConnection.GetConnection.PostSecurityanswerclientAsync(toUpdapteAnswerClient);
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+            try
+            {
+
+                var toUpdateAnswerClient = new Securityanswerclient { IdSa = "", AnswerSa = Answer1_tb.Text };
+
+                var result = await APIConnection.GetConnection.PostSecurityanswerclientAsync(toUpdateAnswerClient);
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            finally
+            {
+
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

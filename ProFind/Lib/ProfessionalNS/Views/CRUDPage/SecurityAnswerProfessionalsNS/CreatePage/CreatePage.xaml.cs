@@ -31,6 +31,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
 
         private async void btnSend_Click(object sender, RoutedEventArgs e)
         {
+          
+        }
+
+        private async void btnSend_Click_1(object sender, RoutedEventArgs e)
+        {
             if (string.IsNullOrEmpty(Answer1_tb.Text))
             {
 
@@ -38,18 +43,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
                 await dialog.ShowAsync();
                 return;
             }
-          
 
             try
             {
 
-                var toCreateAnswerProfessional = new Securityanswerprofessional { };
-
+                var toCreateAnswerProfessional = new Securityanswerprofessional { IdSa = "", AnswerSa = Answer1_tb.Text };
 
                 var result = await APIConnection.GetConnection.PostSecurityanswerprofessionalAsync(toCreateAnswerProfessional);
 
-
             }
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -60,5 +63,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
             }
         }
 
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

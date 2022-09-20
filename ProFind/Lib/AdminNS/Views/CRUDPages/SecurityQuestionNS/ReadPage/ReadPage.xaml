@@ -17,7 +17,6 @@
         <ListView
             Name="QuestionsListView"
             IsItemClickEnabled="True"
-            ItemClick="QuestionsListView_ItemClick"
             SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Securityquestion">
