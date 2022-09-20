@@ -11591,6 +11591,15 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Securityquestion
     {
+        private string text1;
+        private string text2;
+
+        public Securityquestion(string text1, string text2)
+        {
+            this.text1 = text1;
+            this.text2 = text2;
+        }
+
         [Newtonsoft.Json.JsonProperty("idSq", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdSq { get; set; }
