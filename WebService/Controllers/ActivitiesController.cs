@@ -90,63 +90,17 @@ public class ActivitiesController : ControllerBase
 
     [HttpGet("filter/")]
     public async Task<ActionResult<IEnumerable<Activity>>> FilterActivities([FromQuery] DateTime? expectedBegin,
-        [FromQuery] string? expectedBeginRel,
-        [FromQuery] DateTime? expectedEnd, [FromQuery] string? expectedEndRel,
+        [FromQuery] DateTime? expectedEnd,
         [FromQuery] string? idProject,
         [FromQuery] string? idTag)
     {
-        var query = _context.Activities.Where(act => true);
-
-        if (idProject != null)
-        {
-            query = _context.Activities.Where(act => act.IdPj1 == idProject);
-        }
-
-        if (idTag != null)
-        {
-            query = _context.Activities.Where(act => act.IdT1 == idTag);
-        }
-
-        if (expectedBegin != null)
-        {
-            switch (expectedBeginRel)
-            {
-                case "lte":
-                    query = _context.Activities.Where(act => act.ExpectedBeginA <= expectedBegin);
-                    break;
-                case "eq":
-                    query = _context.Activities.Where(act => act.ExpectedBeginA == expectedBegin);
-                    break;
-                case "gte":
-                    query = _context.Activities.Where(act => act.ExpectedBeginA >= expectedBegin);
-                    break;
-            }
-        }
-
-        if (expectedEnd != null)
-        {
-            switch (expectedEndRel)
-            {
-                case "lte":
-                    query = _context.Activities.Where(act => act.ExpectedEndA <= expectedEnd);
-                    break;
-                case "eq":
-                    query = _context.Activities.Where(act => act.ExpectedEndA == expectedEnd);
-                    break;
-                case "gte":
-                    query = _context.Activities.Where(act => act.ExpectedEndA >= expectedEnd);
-                    break;
-            }
-        }
-
-        var result = await query.ToListAsync();
-
-        if (result.Any() == false)
-        {
-            return NotFound();
-        }
-
-        return result;
+        var result = await (from act in _context.Activities where (
+                            (expectedBegin == null ? true : expectedBegin<=act.ExpectedBeginA) &&
+                            (expectedEnd == null ? true : expectedEnd >= act.ExpectedEndA) &&
+                            (idProject == null ? true : idProject == act.IdPj1) &&
+                            (idTag == null ? true : idTag == act.IdT1)) select act).ToListAsync();
+        if (result.Any() == false) return NotFound();
+        else return result;
     }
 
     [HttpGet("paginated")]

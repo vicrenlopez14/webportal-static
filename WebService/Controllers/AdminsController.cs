@@ -281,32 +281,17 @@ public class AdminsController : ControllerBase
     }
 
     [HttpGet("filter/")]
-    public async Task<ActionResult<IEnumerable<Admin>>> FilterAdmins([FromQuery] string Name,
-        [FromQuery] string? name1,
-        [FromQuery] string? idAdmin)
+    public async Task<ActionResult<IEnumerable<Admin>>> FilterAdmins([FromQuery] string? Name,
+        [FromQuery] string? Rank)
 
     {
-        var query = _context.Admins.Where(act => true);
+        var result = await (from admin in _context.Admins where (
+                            (Name==null ? true : admin.NameA.Contains(Name)) &&
+                            (Rank == null ? true : admin.IdR1.ToString() == Rank)) select admin).ToListAsync();
 
-        if (idAdmin != null)
-        {
-            query = _context.Admins.Where(act => act.IdA == idAdmin);
-        }
+        if (result.Any() == false) return NotFound();
+        else return result;
 
-        if (Name != null)
-        {
-            query = _context.Admins.Where(act => act.NameA == name1);
-        }
-
-
-        var result = await query.ToListAsync();
-
-        if (result.Any() == false)
-        {
-            return NotFound();
-        }
-
-        return result;
     }
 
     [HttpGet("paginated")]

@@ -172,19 +172,16 @@ public class ClientsController : ControllerBase
     }
 
     [HttpGet("search/")]
-    public async Task<ActionResult<IEnumerable<Client>>> SearchCliens([FromQuery] string IdC,
-        [FromQuery] string Name)
+    public async Task<ActionResult<IEnumerable<Client>>> SearchCliens([FromQuery] string Name)
     {
-        var result = await (from client in _context.Clients
-            where (client.IdC == IdC && client.NameC.Contains(Name))
-            select client).ToListAsync();
-
-        if (result.Any() == false)
+        if (Name.Length == 0) return await GetClients();
+        else
         {
-            return NotFound();
-        }
+            var result = await (from client in _context.Clients where (client.NameC.Contains(Name)) select client).ToListAsync();
 
-        return result;
+            if (result.Any() == false) return NotFound();
+            else return result;
+        }
     }
 
 
