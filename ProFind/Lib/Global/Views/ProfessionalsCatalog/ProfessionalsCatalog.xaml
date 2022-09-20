@@ -85,21 +85,31 @@
                         </ListView>
                     </StackPanel>
                 </Grid>
-                <StackPanel Name="Step2_g" Orientation="Vertical">
-                    <TextBlock d:Text="Here the list of professionals availabe for the profession you selected" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center"/>
-                    <AutoSuggestBox Margin="100 10" PlaceholderText="Type a control name"
-        TextChanged="Control2_TextChanged"
-        QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-        
-        />
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Grid Name="Step2_g">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="0.8*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Vertical">
+                        <TextBlock d:Text="Here the list of professionals availabe for the profession you selected" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+                            <AutoSuggestBox Grid.Column="0" Name="SearchBox_asb" Header="Full name" Margin="30 10" PlaceholderText="Carlos Bur..." TextChanged="Control2_TextChanged" QueryIcon="Find" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Name="DepartmentSelection_cb" Header="Department" VerticalAlignment="Center" Width="200" PlaceholderText="Any" SelectionChanged="DepartmentSelection_cb_SelectionChanged"/>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
                         <Grid Margin="0 25 0 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition Width="0.5*"/>
                             </Grid.ColumnDefinitions>
                         </Grid>
-                        <ListView Name="ProfessionalsListViewCol1" >
+                        <ListView Name="ProfessionalsListViewCol1" ItemClick="ProfessionalsListViewCol1_ItemClick" SelectionMode="Single">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="services:Professional">
                                     <Button Width="400" Height="200"
@@ -128,12 +138,11 @@
                                                 <TextBlock/>
                                             </StackPanel>
                                         </Grid>
-
                                     </Button>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <ListView Name="ProfessionalsListViewCol2">
+                        <ListView Name="ProfessionalsListViewCol2" ItemClick="ProfessionalsListViewCol1_ItemClick" SelectionMode="Single">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="services:Professional">
                                     <Button Width="400" Height="200"
@@ -168,7 +177,8 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                </StackPanel>
+                    <Button Grid.Row="2" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Button_Click">Back to Profession selection</Button>
+                </Grid>
                 <Grid Name="Step3_g"></Grid>
             </FlipView>
             <controls:PipsPager x:Name="FlipViewPipsPager"

@@ -57,7 +57,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
                 UploadResume_btn.Content = "Loaded file";
             }
 
-            PDFPreview.LoadDocument(pickedFile);
+            PDFPreview.LoadDocument(pickedFile.ToPdfLoadedDocument());
         }
 
 

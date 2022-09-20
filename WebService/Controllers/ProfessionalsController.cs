@@ -145,15 +145,16 @@ public class ProfessionalsController : ControllerBase
     }
 
     [HttpGet("filter/")]
-    public async Task<ActionResult<IEnumerable<Professional>>> SearchProfessionals([FromQuery] string? professionId,
+    public async Task<ActionResult<IEnumerable<Professional>>> FilterProfessionals([FromQuery] string? professionId,
         [FromQuery] string? departmentId,
         [FromQuery] string? name)
     {
         var result = await (from prof in _context.Professionals
-                            where ( (professionId==null ? true : prof.IdDp1.ToString() == departmentId) && 
-                            (name==null ? true :  prof.NameP.Contains(name)) 
-                            && (departmentId == null ? true : prof.IdPfs1.ToString() == departmentId))
-                            select prof).ToListAsync();
+                where ((professionId == null || prof.IdDp1.ToString() == departmentId) &&
+                       (name == null || prof.NameP.Contains(name))
+                       && (departmentId == null || prof.IdPfs1.ToString() == departmentId))
+                select prof).Include(x => professionId != null ? x.IdPfs1Navigation : null)
+            .Include(x => departmentId != null ? x.IdDp1Navigation : null).ToListAsync();
 
         if (result.Any() == false)
         {
@@ -166,17 +167,17 @@ public class ProfessionalsController : ControllerBase
     [HttpGet("search/")]
     public async Task<ActionResult<IEnumerable<Professional>>> SearchProfessionals([FromQuery] string name)
     {
-        if(name.Length == 0)
+        if (name.Length == 0)
         {
             return await GetProfessionals();
         }
         else
         {
-            var result = await (from prof in _context.Professionals where (prof.NameP.Contains(name)) select prof).ToListAsync();
+            var result = await (from prof in _context.Professionals where (prof.NameP.Contains(name)) select prof)
+                .ToListAsync();
             if (result.Any() == false) return NotFound();
             else return result;
         }
-
     }
 
     // DELETE: api/Professionals/5
