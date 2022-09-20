@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProFind.Lib.Global.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +18,21 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CreatePage : Page
     {
+
+        public Professional SelectedProfessional;
+
         public CreatePage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+
         }
     }
 }

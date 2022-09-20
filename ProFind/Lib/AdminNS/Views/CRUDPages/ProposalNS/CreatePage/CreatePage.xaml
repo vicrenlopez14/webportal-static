@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:services="using:ProFind.Lib.Global.Services"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -70,9 +70,34 @@
                             </StackPanel>
                         </PivotItem>
                         <PivotItem Header="People">
-                            <StackPanel>
-                                
-                            </StackPanel>
+                            <Grid HorizontalAlignment="Left" Margin="0 25 0 0" Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.4*"/>
+                                    <ColumnDefinition Width="0.6*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Name="ProfessionalImage_img" d:Source="Assets/400x400-logo.png"></Image>
+                                <StackPanel Width="500" Background="{StaticResource LuminousAcrylicBrush}" d:Background="Transparent" FocusVisualPrimaryThickness="2" FocusVisualSecondaryThickness="1" FocusVisualMargin="-3" FocusVisualPrimaryBrush="{StaticResource SystemControlFocusVisualPrimaryBrush}" FocusVisualSecondaryBrush="{StaticResource SystemControlFocusVisualSecondaryBrush}"><TextBlock Text="Selected professional" Style="{StaticResource DetailBodyBaseMediumStyle}"/>
+                                    <TextBlock Name="ProfessionalName_tb" d:Text="Carlos Burgos" Style="{StaticResource SubheaderTextBlockStyle}"></TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Profession: " Margin="0 0 15 0" FontWeight="Bold"/>
+                                        <TextBlock x:Name="ProfessionalProfession_tb" d:Text="Automotive services" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Department: " Margin="0 0 15 0" FontWeight="Bold"/>
+                                        <TextBlock x:Name="ProfessionalDepartment_tb" d:Text="Cabañas" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Work-Day Type: " Margin="0 0 15 0" FontWeight="Bold"/>
+                                        <TextBlock x:Name="ProfessionalWorkDayType_tb" d:Text="Diurnal" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="In ProFind since: " Margin="0 0 15 0" FontWeight="Bold"/>
+                                        <TextBlock x:Name="ProfessionalHiringDate_tb" d:Text="19/09/2022" />
+                                    </StackPanel>
+                                    <HyperlinkButton Name="ViewCurriculum_btn" Content="View curriculum" Margin="0 10 0 0"/>
+                                    <TextBlock/>
+                                </StackPanel>
+                            </Grid>
                         </PivotItem>
                     </Pivot>
                     <Grid Margin="0,10,0,0" VerticalAlignment="Center">

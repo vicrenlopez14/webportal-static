@@ -1052,6 +1052,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
+    <Folder Include="Lib\Global\Controls\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
