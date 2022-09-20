@@ -16,6 +16,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
         {
             base.OnNavigatedTo(e);
 
+            
         }
     }
 }

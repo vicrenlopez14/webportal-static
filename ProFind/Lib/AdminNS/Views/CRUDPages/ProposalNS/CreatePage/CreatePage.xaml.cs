@@ -30,6 +30,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
         public CreatePage()
         {
             this.InitializeComponent();
+            AddEvents();
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
         }
 
         private void RestartVars()
