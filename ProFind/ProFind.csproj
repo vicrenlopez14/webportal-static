@@ -270,6 +270,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\SearchPage\SearchPageActivi.xaml.cs">
+      <DependentUpon>SearchPageActivi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -589,6 +592,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\SearchPage\SearchPageActivi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1021,7 +1028,6 @@
     <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\DeletePage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\UpdatePage\.gitkeep" />
@@ -1052,6 +1058,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
+    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

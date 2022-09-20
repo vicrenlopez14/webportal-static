@@ -100,8 +100,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
                
 
                 var result = await APIConnection.GetConnection.PostActivityAsync(toCreateAdmin);
+                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPage));
 
-                
+
             }
             catch (Exception ex)
             {
@@ -136,6 +137,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
 
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
+
+        }
+
+        private void Reset_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Title_tb.Text = "";
+            Description_tb.Text = ""; 
 
         }
     }
