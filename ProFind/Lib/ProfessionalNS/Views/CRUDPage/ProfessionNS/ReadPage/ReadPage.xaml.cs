@@ -21,7 +21,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionNS.ReadPage
         }
         private async void InitializeData()
         {
-            int idNo = Id1.IdPfs;
+            int idNo = (int)Id1.IdPfs;
             await APIConnection.GetConnection.GetProfessionAsync(idNo);
         }
 

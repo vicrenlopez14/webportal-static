@@ -20,7 +20,7 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
             {"ProjectsOverview_Page", null},
             //Projects overview
             {"Projects_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage.List_Page_Projects)},
-            {"Activity_Page", typeof(Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPage) },
+            {"Activity_Page", typeof(Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPageActivi) },
             //People
             {"Administrators_Page", typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPageAdmin)},
             {"Clients_Page", typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List)},
