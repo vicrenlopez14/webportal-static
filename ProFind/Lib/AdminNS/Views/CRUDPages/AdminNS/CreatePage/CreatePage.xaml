@@ -16,15 +16,12 @@
         <muxc:TeachingTip
             x:Name="ToggleThemeTeachingTip2"
             Title="Administrator created successfuly!"
-           
             ActionButtonContent="Professionals create"
-           
             CloseButtonContent="Got it! Let me create more"
-           
             IsLightDismissEnabled="True"
             PlacementMargin="20"
             PreferredPlacement="Auto"
-            Subtitle="Now you can start creating profiles for your professionals." />
+            Subtitle="Now you can start creating profiles for your professionals." ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick_1" CloseButtonClick="ToggleThemeTeachingTip2_CloseButtonClick_1" />
 
         <Image
             Grid.Column="0"
@@ -45,20 +42,20 @@
                     <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Name"
+                        PlaceholderText="Name" TextChanged="Name_tb_TextChanged_1"
                          />
                     <TextBox
                         x:Name="Email_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Email" />
+                        PlaceholderText="Email" TextChanged="Email_tb_TextChanged" />
                     <muxc:NumberBox
                         x:Name="PhoneNumber_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Phone number" />
+                        PlaceholderText="Phone number" ValueChanged="PhoneNumber_tb_ValueChanged" />
                     <PasswordBox
                         x:Name="Password_pb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Password" />
+                        PlaceholderText="Password" PasswordChanged="Password_pb_PasswordChanged" />
 
                     <Grid Margin="0,10,0,0" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
@@ -75,7 +72,7 @@
                                 Width="150"
                                 HorizontalAlignment="Left"
                                
-                                Content="Select a picture" />
+                                Content="Select a picture" Click="PictureSelection_btn_Click_1" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"
@@ -94,7 +91,7 @@
                                 Margin="5,0,0,0"
                                 HorizontalAlignment="Right"
                                 ItemsSource="{x:Bind ranks}"
-                                SelectedIndex="0" />
+                                SelectedIndex="0" SelectionChanged="Rank_cb_SelectionChanged" />
                         </StackPanel>
                     </Grid>
 
@@ -105,7 +102,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Create"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
 
                     <Button
                         x:Name="CreateProfessionals_btn"
@@ -114,7 +111,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Go to Professionals creation"
-                        Visibility="Collapsed" />
+                        Visibility="Collapsed" Click="CreateProfessionals_btn_Click" />
 
                     <muxc:ProgressRing
                         x:Name="Creation_pr"

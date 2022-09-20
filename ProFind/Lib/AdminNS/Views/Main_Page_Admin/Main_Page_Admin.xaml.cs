@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.Global.Views.Preferences_Page;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,18 +17,28 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
     {
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"Activities", typeof(CRUDPages.ActivityNS.ReadPage.ReadPage) },
-            {"Professionals_Page", typeof(CRUDPages.ProfessionalNS.ListPage.ReadPage) },
-            {"Clients_Page", typeof(CRUDPages.ClientNS.ListPage.Clients_List) },
-            {"Preferences_Page", typeof(Preferences_Page) },
-            {"About_Page",typeof(About_Page) },
+            {"ProjectsOverview_Page", null},
+            //Projects overview
+            {"Projects_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage.List_Page_Projects)},
+            {"Activity_Page", typeof(Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPageActivi) },
+            //People
+            {"Administrators_Page", typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPageAdmin)},
+            {"Clients_Page", typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List)},
+            {"Professionals_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage)},
+            //Notification center
+            {"GeneralNotifications_Page", typeof(Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage.List_Page)},
+            {"ProposalNotifications_Page", null },
+            //Footer
+            {"Preferences_Page", typeof(Preferences_Page)},
+            {"Profile_Page", typeof(About_Page) },
+
         };
 
         public Main_Page_Admin()
         {
             this.InitializeComponent();
             new InAppNavigationController().Init(ContentFrame);
-            
+
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
@@ -48,15 +59,21 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
             }
             sender.Header = item.Content.ToString();
 
-            try
+            var page = DefinedPagesDictionary[selectedItemTag];
+
+            if (page != null)
             {
-                navView.Header = item.Content;
-                new Controllers.InAppNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
+                try
+                {
+                    navView.Header = item.Content;
+                    new Controllers.InAppNavigationController().NavigateTo(page);
+                }
+                catch
+                {
+                    new Controllers.InAppNavigationController().NavigateTo(DefinedPagesDictionary["Preferences_Page"]);
+                }
             }
-            catch
-            {
-                new Controllers.InAppNavigationController().NavigateTo(DefinedPagesDictionary["Calendar_Page"]);
-            }
+          
         }
 
         private void navView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)

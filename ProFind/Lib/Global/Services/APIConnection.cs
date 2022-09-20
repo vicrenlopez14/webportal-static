@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 
 namespace ProFind.Lib.Global.Services
 {
@@ -6,12 +8,27 @@ namespace ProFind.Lib.Global.Services
     {
         private static WebServiceClient _service;
 
-        public static WebServiceClient GetConnection { get => _service; }
-
-        public static async void Init()
+        public static WebServiceClient GetConnection
         {
-            var client = new System.Net.Http.HttpClient();
-            client.BaseAddress = new Uri("http://localhost:5000");
+            get
+            {
+                if (_service == null)
+                    Init();
+                return _service;
+            }
+        }
+        public static void Init()
+        {
+            var handler = new HttpClientHandler();
+            handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+            handler.ServerCertificateCustomValidationCallback =
+                (httpRequestMessage, cert, cetChain, policyErrors) =>
+                {
+                    return true;
+                };
+
+            var client = new HttpClient(handler);
+            client.BaseAddress = new Uri("http://localhost:5073");
 
             _service = new WebServiceClient(client);
         }

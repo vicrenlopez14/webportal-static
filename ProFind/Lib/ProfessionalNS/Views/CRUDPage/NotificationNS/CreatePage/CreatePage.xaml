@@ -36,7 +36,7 @@
                             HorizontalAlignment="Left"
                            
                            
-                            Content="Select a picture" />
+                            Content="Select a picture" Click="PictureSelection_btn_Click_1" />
                         <TextBlock
                             Name="SelectedPicture_tbk"
                             Margin="10,0,0,0"
@@ -47,12 +47,12 @@
                     <TextBox
                         x:Name="Title_tb1"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title"
+                        PlaceholderText="Title" TextChanged="Title_tb1_TextChanged"
                          />
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description"
+                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1"
                          />
                     <CalendarDatePicker x:Name="Caledar" PlaceholderText="Pick a date" Header="Calendar" />
                     <ComboBox
@@ -84,7 +84,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Create"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
 
                     <d:ProgressRing
                         x:Name="Creation_pr"

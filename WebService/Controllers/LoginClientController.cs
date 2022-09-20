@@ -30,7 +30,7 @@ public class LoginClientController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost]
-    public ActionResult Login([FromBody] ClientLogin clientLogin)
+    public ActionResult LoginOAUTHClient([FromBody] ClientLogin clientLogin)
     {
         var client = Authenticate(clientLogin);
         if (client != null)

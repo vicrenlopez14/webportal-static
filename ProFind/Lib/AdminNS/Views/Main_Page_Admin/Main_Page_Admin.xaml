@@ -23,26 +23,127 @@
             IsSettingsVisible="False"
             ItemInvoked="NavigationView_ItemInvoked"
             PaneDisplayMode="Left">
+
+            <muxc:NavigationView.AutoSuggestBox>
+                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
+            </muxc:NavigationView.AutoSuggestBox>
+
+            <muxc:NavigationView.PaneCustomContent>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <muxc:PersonPicture x:Name="LoggedUser_pp" Grid.Column="0" Margin="10" Width="50" />
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Name="LoggedUserName_tb" d:Text="Víctor López" Style="{StaticResource DetailBodyStyle}" FontWeight="Bold"/>
+                        <TextBlock Name="LoggedUserEmail_tb" d:Text="vicren.lopez@outlook.com" />
+                    </StackPanel>
+                </Grid>
+            </muxc:NavigationView.PaneCustomContent>
+
+
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
+                <!--Projects overview-->
                 <muxc:NavigationViewItem
-                    Content="Administrators"
-                    Icon="AllApps"
-                    Tag="Administrators_Page" />
+                    Content="Projects overview"
+                    Tag="ProjectsOverview_Page" >
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;" />
+                    </muxc:NavigationViewItem.Icon>
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem
+                        Content="Projects"
+                        Icon="Calendar"
+                        Tag="Projects_Page" />
+                        <muxc:NavigationViewItem
+                        Content="Activity"
+                        Icon="Mail"
+                        Tag="Activity_Page" />
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+                <!--People-->
                 <muxc:NavigationViewItem
-                    Content="Projects"
-                    Icon="Calendar"
-                    Tag="Calendar_Page" />
+                    Content="People"
+                    Tag="People_Page" >
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE716;" />
+                    </muxc:NavigationViewItem.Icon>
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem
+                            Content="Administrators"
+                            Icon="AllApps"
+                            Tag="Administrators_Page" />
+                        <muxc:NavigationViewItem
+                            Content="Clients"
+                            Icon="Mail"
+                            Tag="Clients_Page" />
+                        <muxc:NavigationViewItem
+                            Content="Professionals"
+                            Icon="People"
+                            Tag="Professionals_Page" />
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+                <!--Platform-->
                 <muxc:NavigationViewItem
-                    Content="Professionals"
-                    Icon="People"
-                    Tag="Professionals_Page" />
+                    Content="Platform"
+                    Tag="Activity_Page"
+                    >
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDAF;" />
+                    </muxc:NavigationViewItem.Icon>
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem
+                            Content="Professions"
+                            Icon="Mail"
+                            Tag="Professions_Page" />
+                        <muxc:NavigationViewItem
+                            Content="Work-Day Types"
+                            Icon="Mail"
+                            Tag="Workdaytype_Page" />
+                        <muxc:NavigationViewItem
+                            Content="Ranks"
+                            Icon="Mail"
+                            Tag="Ranks_Page" />
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+                <!--Notification center-->
                 <muxc:NavigationViewItem
-                    Content="Clients"
-                    Icon="Mail"
-                    Tag="Clients_Page" />
-            </muxc:NavigationView.MenuItems>
+                    Content="Notification center"
+                    Tag="Projecttype_Page">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7E7;" />
+                    </muxc:NavigationViewItem.Icon>
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem
+                            Content="General"
+                            Tag="GeneralNotifications_Page">
+                            <muxc:NavigationViewItem.InfoBadge>
+                                <muxc:InfoBadge x:Name="Projects_ib" Value="0" Opacity="1"/>
+                            </muxc:NavigationViewItem.InfoBadge>
+                        </muxc:NavigationViewItem>
+                        <muxc:NavigationViewItem
+                            Content="Proposals"
+                            Tag="ProposalNotifications_Page">
+                            <muxc:NavigationViewItem.InfoBadge>
+                                <muxc:InfoBadge x:Name="Proposals_ib" Value="0" Opacity="1"/>
+                            </muxc:NavigationViewItem.InfoBadge>
+                        </muxc:NavigationViewItem>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
 
+            </muxc:NavigationView.MenuItems>
+            <muxc:NavigationView.FooterMenuItems>
+                <muxc:NavigationViewItem Content="Preferences" Tag="Preferences_Page">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Content="Profile" Tag="Profile_Page" Icon="Contact" ></muxc:NavigationViewItem>
+            </muxc:NavigationView.FooterMenuItems>
 
             <Frame
                 x:Name="ContentFrame"

@@ -14,7 +14,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
             {"ActiveProjects_Page", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
             {"InactiveProjects_Page", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
             {"Notifications_Page", typeof(CRUDPage.NotificationNS.ReadPage.ReadPage) },
-            {"Activities_Page", typeof(CRUDPage.ActivityNS.ReadPage.ReadPage) },
+            {"Activities_Page", typeof(CRUDPage.ActivityNS.UpdatePage.UpdatePageActivi) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
             {"", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) }

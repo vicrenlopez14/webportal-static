@@ -26,34 +26,28 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
         }
 
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            new GlobalNavigationController().NavigateTo(typeof(Clients_Login));
 
+        private void Administrators_Login_Click(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.Int_Page.Int_Page));
         }
 
-        private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Clients_Login_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ClientNS.Views.InitPage.InitPage));
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.InitPage.InitPage));
         }
 
-        private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(InitPage_Login));
-
-        }
-
-        private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            var result =  new Professional{ EmailP = Email_tb.Text, PasswordP =  Password_tb.Password };
+            var result = new Professional { EmailP = Email_tb.Text, PasswordP = Password_tb.Password };
             await APIConnection.GetConnection.LoginProfessionalAsync(result);
 
-           
-                new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-           
-            
-                FailedAuth_tt.IsOpen = true;
-            
+
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
+
+
+            FailedAuth_tt.IsOpen = true;
+
 
             if (string.IsNullOrEmpty(Email_tb.Text))
             {
@@ -65,6 +59,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+        }
+
+        private void Email_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Password_tb_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

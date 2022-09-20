@@ -132,7 +132,7 @@ public class AdminsController : ControllerBase
             return NotFound();
         }
 
-        return await _context.Admins.ToListAsync();
+        return await _context.Admins.Include(x => x.IdR1Navigation).ToListAsync();
     }
 
     // GET: api/Admins/5
