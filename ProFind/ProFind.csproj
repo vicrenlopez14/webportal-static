@@ -381,6 +381,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml.cs">
       <DependentUpon>Update_Page_Rank.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\AnswerPage\AnswerPage.xaml.cs">
+      <DependentUpon>AnswerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\TagNS\CreatePage\CreateDialog.xaml.cs">
       <DependentUpon>CreateDialog.xaml</DependentUpon>
     </Compile>
@@ -740,6 +743,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\AnswerPage\AnswerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
