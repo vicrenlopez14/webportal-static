@@ -1,6 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Services;
 using Profession = ProFind.Lib.Global.Services.Profession;
+using ProFind.Lib.Global.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,7 +21,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
         private async void InitializeData()
         {
             int idNo = (int)Id1.IdPfs;
-            await APIConnection.GetConnection.GetProfessionAsync(idNo);
+            Activities_lw.ItemsSource =  await APIConnection.GetConnection.GetProfessionAsync(idNo);
+        }
+
+        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.CreatePage.Profession_Create));
+
+        }
+
+        private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage.Update_Profesion));
+
         }
     }
 }
