@@ -196,7 +196,6 @@
     <Content Include="Lib\ClientNS\Services\Dummy.txt" />
     <Content Include="Lib\ClientNS\ViewModels\Dummy.txt" />
     <Content Include="Lib\Global\ViewModels\Dummy.txt" />
-    <Content Include="Lib\Global\Views\Dummy.txt" />
     <Content Include="Lib\ProfessionalNS\Controllers\Dummy.txt" />
     <Content Include="Lib\ProfessionalNS\Services\Dummy.txt" />
     <Content Include="Lib\ProfessionalNS\ViewModels\Dummy.txt" />
@@ -440,6 +439,9 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\DeletePage\DeletePage.xaml.cs">
       <DependentUpon>DeletePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -474,6 +476,7 @@
     <Compile Include="Lib\Global\Helpers\PickFileHelper.cs" />
     <Compile Include="Lib\Global\Helpers\ScrollViewerUtils.cs" />
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
+    <Compile Include="Lib\Global\Helpers\TextBoxExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
     <Compile Include="Lib\Global\Services\Generated.cs" />
@@ -851,6 +854,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\DeletePage\DeletePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

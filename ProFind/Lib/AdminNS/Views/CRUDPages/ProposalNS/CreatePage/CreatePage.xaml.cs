@@ -1,5 +1,7 @@
-﻿using ProFind.Lib.Global.Helpers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using Syncfusion.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,23 +18,32 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
 {
     public sealed partial class CreatePage : Page
     {
-
-        public Professional SelectedProfessional;
+        private byte[] SelectedPictureBytes;
+        private Proposal ToSendProposal;
+        private Professional SelectedProfessional;
 
         public CreatePage()
         {
             this.InitializeComponent();
         }
 
+        private void RestartVars()
+        {
+            ToSendProposal = null;
+            SelectedProfessional = null;
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            // Restart vars
+            RestartVars();
 
             try
             {
@@ -41,7 +52,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
             catch
             {
                 SelectedProfessional = new Professional();
-            } finally
+            }
+            finally
             {
                 LoadPageData();
             }
@@ -58,6 +70,46 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
         private async void ViewCurriculum_btn_Click(object sender, RoutedEventArgs e)
         {
             await new CurriculumNS.ReadPage.ReadDialog(SelectedProfessional.CurriculumP.ToPdfLoadedDocument()).ShowAsync();
+        }
+
+        private async void Create_btn_Click(object sender, RoutedEventArgs e)
+        {
+            ToSendProposal = new Proposal
+            {
+                PicturePp = SelectedPictureBytes,
+                TitlePp = Title_tb.Text,
+                DescriptionPp = Description_tb.Text,
+                SuggestedStart = SuggestedBegin_dp.ToDateTime(),
+                SuggestedEnd = SuggestedEnd_dp.ToDateTime(),
+                IdP3 = SelectedProfessional.IdP,
+            };
+
+            try
+            {
+                await APIConnection.GetConnection.PostProposalAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 200 || ex.StatusCode == 201)
+                {
+                    var contentDialog = new ContentDialog
+                    {
+                        Title = "Proposal sent!",
+                        Content = "The professional you selected will review the proposal, then you'll receive a response.",
+                        PrimaryButtonText = "Ok",
+                    };
+
+                    await contentDialog.ShowAsync();
+
+                    new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPage));
+                }
+            }
+
+        }
+
+        private async void Cancel_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().GoBack();
         }
     }
 }

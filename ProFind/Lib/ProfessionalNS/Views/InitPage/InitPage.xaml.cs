@@ -39,7 +39,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var result = new Professional { EmailP = Email_tb.Text, PasswordP = Password_tb.Password };
+            var result = new ProfessionalLogin { Email = Email_tb.Text, Password = Password_tb.Password };
             await APIConnection.GetConnection.LoginProfessionalAsync(result);
 
 

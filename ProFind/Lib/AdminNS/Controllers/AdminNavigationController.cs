@@ -10,6 +10,13 @@ namespace ProFind.Lib.AdminNS.Controllers
         private static Stack<Type> pagesStack = new Stack<Type>();
         private static Frame BaseFrame;
 
+        public void Init(Frame centralController)
+        {
+            BaseFrame = centralController;
+        }
+
+        #region BackMethods
+
         public bool GoBack()
         {
             // Verify if 
@@ -28,11 +35,9 @@ namespace ProFind.Lib.AdminNS.Controllers
             return true;
         }
 
-        public void Init(Frame centralController)
-        {
-            BaseFrame = centralController;
-        }
+        #endregion
 
+        #region NavigateMethods
         public void NavigateTo(Type view)
         {
             pagesStack.Push(view);
@@ -44,5 +49,14 @@ namespace ProFind.Lib.AdminNS.Controllers
             pagesStack.Push(view);
             BaseFrame.Navigate(view, parameter);
         }
+        #endregion
+
+        #region StateManagementMethods
+
+        public static void Clear() => pagesStack.Clear();
+
+        public static bool CanGoBack() => pagesStack.Peek() != null;
+
+        #endregion
     }
 }

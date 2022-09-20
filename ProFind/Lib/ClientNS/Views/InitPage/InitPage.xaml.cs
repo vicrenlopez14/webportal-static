@@ -67,13 +67,18 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async Task Button_Click_5Async(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var registerClient = new Client("",Name_tb.Text, Email_tb.Text,  Password_tb.Password,  pictureBytes );
+            var registerClient = new ClientLogin
+            {
+                Email = Email_tb.Text,
+                Password = Password_tb.Password
+            };
+
             await APIConnection.GetConnection.LoginClientAsync(registerClient);
 
-                new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-            
-                FailedAuth_tt.IsOpen = true;
-            
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
+
+            FailedAuth_tt.IsOpen = true;
+
         }
 
         private void Name_tb_TextChanged(TextBlock sender, TextChangedEventArgs e)
@@ -93,7 +98,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var registerClient = new Client("", Name_tb.Text, Email_tb.Text, Password_tb.Password, pictureBytes);
+            var registerClient = new ClientLogin { Email = Email_tb.Text, Password = Password_tb.Password };
             await APIConnection.GetConnection.LoginClientAsync(registerClient);
 
             new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));

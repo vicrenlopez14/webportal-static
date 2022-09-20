@@ -23,7 +23,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var result = new Admin{EmailA = Email_tb.Text, PasswordA = Password_tb.Password};
+            var result = new AdminLogin{Email = Email_tb.Text, Password = Password_tb.Password};
             await APIConnection.GetConnection.LoginAdminAsync(result);
 
         

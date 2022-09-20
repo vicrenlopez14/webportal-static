@@ -37,8 +37,6 @@
                             Grid.Column="0"
                             Width="150"
                             HorizontalAlignment="Left"
-                           
-                           
                             Content="Select a picture" />
                                     <TextBlock
                             Name="SelectedPicture_tbk"
@@ -57,16 +55,17 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
                          />
-                                <DatePicker
-                        Name="ExpectedBegin_dp"
-                        Margin="0,15,0,0"
+                                <StackPanel Orientation="Horizontal">
+                                    <CalendarDatePicker
+                        Name="SuggestedBegin_dp"
+                        Margin="0,15,15,0"
                        
-                        Header="Expected begin" />
-                                <DatePicker
-                        Name="ExpectedEnd_dp"
-                        Margin="0,15,0,0"
-                       
-                        Header="Expected end" />
+                        Header="Suggested begin" />
+                                    <CalendarDatePicker
+                        Name="SuggestedEnd_dp"
+                        Margin="15,15,0,0"
+                        Header="Suggested end" />
+                                </StackPanel>
                             </StackPanel>
                         </PivotItem>
                         <PivotItem Header="People">
@@ -102,45 +101,20 @@
                             <ColumnDefinition Width="0.3*" />
                         </Grid.ColumnDefinitions>
                     </Grid>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button
                             x:Name="Create_btn"
                             Width="100"
-                            Margin="50"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                           
-                            Content="Create"
-                            Style="{StaticResource AccentButtonStyle}" />
+                            Margin="0 0 15 0"
+                            Content="Send"
+                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click" />
                         <Button
-                            x:Name="Update_btn"
+                            x:Name="Cancel_btn"
                             Width="100"
-                            Margin="50,0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                           
-                            Content="Update"
-                            Style="{StaticResource AccentButtonStyle}" />
-                        <Button
-                            x:Name="Reset_btn"
-                            Width="100"
-                            Margin="50,0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                           
-                            Content="Reset"
-                            Style="{StaticResource AccentButtonStyle}" />
-                        <Button
-                            x:Name="Delete_btn"
-                            Width="100"
-                            Margin="50,0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                           
-                            Content="Delete"
-                            Style="{StaticResource AccentButtonStyle}" />
+                            Margin="15 0 0 0"
+                            Content="Cancel"
+                            Style="{StaticResource AccentButtonStyle}" Click="Cancel_btn_Click" />
                     </StackPanel>
-
                     <muxc:ProgressRing
                         x:Name="Creation_pr"
                         Margin="0,20,0,0"
