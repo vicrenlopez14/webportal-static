@@ -144,6 +144,41 @@ public class ProfessionalsController : ControllerBase
         return CreatedAtAction("GetProfessional", new { id = professional.IdP }, professional);
     }
 
+    [HttpGet("filter/")]
+    public async Task<ActionResult<IEnumerable<Professional>>> SearchProfessionals([FromQuery] string? professionId,
+        [FromQuery] string? departmentId,
+        [FromQuery] string? name)
+    {
+        var result = await (from prof in _context.Professionals
+                            where ( (professionId==null ? true : prof.IdDp1.ToString() == departmentId) && 
+                            (name==null ? true :  prof.NameP.Contains(name)) 
+                            && (departmentId == null ? true : prof.IdPfs1.ToString() == departmentId))
+                            select prof).ToListAsync();
+
+        if (result.Any() == false)
+        {
+            return NotFound();
+        }
+
+        return result;
+    }
+
+    [HttpGet("search/")]
+    public async Task<ActionResult<IEnumerable<Professional>>> SearchProfessionals([FromQuery] string name)
+    {
+        if(name.Length == 0)
+        {
+            return await GetProfessionals();
+        }
+        else
+        {
+            var result = await (from prof in _context.Professionals where (prof.NameP.Contains(name)) select prof).ToListAsync();
+            if (result.Any() == false) return NotFound();
+            else return result;
+        }
+
+    }
+
     // DELETE: api/Professionals/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProfessional(string id)

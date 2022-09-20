@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
+using Windows.System;
 
 namespace ProFind.Lib.Global.Helpers
 {
@@ -22,6 +24,27 @@ namespace ProFind.Lib.Global.Helpers
             {
                 return false;
             }
+        }
+
+        public static bool CheckRangeDate(DateTimeOffset begin, DateTimeOffset end)
+        {
+            return begin >= DateTimeOffset.Now && end >= begin;
+        }
+
+        public static bool CheckDateUp (DateTimeOffset date)
+        {
+            return date >= DateTimeOffset.Now;
+        }
+
+        public static bool CheckDateDown (DateTimeOffset date)
+        {
+            return date <= DateTimeOffset.Now;
+        }
+
+        public static bool OnlyLetters(Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if ((e.Key >= VirtualKey.A && e.Key <= VirtualKey.Z) || (e.Key == VirtualKey.Back)) return true;
+            else return false;
         }
 
         public static bool CheckPassword(string pass)

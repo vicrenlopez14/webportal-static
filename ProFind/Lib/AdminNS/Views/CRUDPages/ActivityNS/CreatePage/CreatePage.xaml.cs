@@ -130,5 +130,68 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
             Description_tb.Text = ""; 
 
         }
+
+        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            
+        }
+
+        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            bool ok = true;
+            if(!FieldsChecker.CheckRangeDate(ExpectedBegin_dp.Date, ExpectedEnd_dp.Date))
+            {
+                TtDates.IsOpen = true; ok = false;
+            }
+            if(Title_tb.Text.Length < 3)
+            {
+                TtTitle.IsOpen = true; ok = false;
+            }
+            if(Description_tb.Text.Length < 3)
+            {
+                TtDescription.IsOpen = true; ok = false;
+            }
+
+            if (ok)
+            {
+                try
+                {
+                    Creation_pr.IsActive = true;
+
+                    var toCreateAdmin = new Activity { IdA = "", TitleA = Title_tb.Text, DescriptionA = Description_tb.Text, ExpectedBeginA = ExpectedBegin_dp.Date, ExpectedEndA = ExpectedEnd_dp.Date, PictureA = imageBytes, IdPj1 = id.IdPj, };
+
+
+                    var result = await APIConnection.GetConnection.PostActivityAsync(toCreateAdmin);
+
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Creation_pr.IsActive = false;
+                }
+            }
+            
+        }
+
+        private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void Update_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Reset_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Title_tb.Text = "";
+            Description_tb.Text = "";
+            ExpectedBegin_dp.
+        }
     }
 }

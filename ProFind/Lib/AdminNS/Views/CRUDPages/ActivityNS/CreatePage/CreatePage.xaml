@@ -100,6 +100,30 @@
                         x:Name="Creation_pr"
                         Margin="0,20,0,0"
                         IsActive="False" />
+                    <muxc:TeachingTip x:Name="TtDates"
+                        Target="{x:Bind ExpectedEnd_dp}"
+                        Title="Invalid Dates"
+                        Subtitle="The begin date have to be lower or equal than the end date and greater or equal than today">
+                        <muxc:TeachingTip.IconSource>
+                            <muxc:SymbolIconSource Symbol="Refresh" />
+                        </muxc:TeachingTip.IconSource>
+                    </muxc:TeachingTip>
+                    <muxc:TeachingTip x:Name="TtTitle"
+                        Target="{x:Bind Title_tb}"
+                        Title="Invalid Title"
+                        Subtitle="The title has to be of at least 3 characters">
+                        <muxc:TeachingTip.IconSource>
+                            <muxc:SymbolIconSource Symbol="Refresh" />
+                        </muxc:TeachingTip.IconSource>
+                    </muxc:TeachingTip>
+                    <muxc:TeachingTip x:Name="TtDescription"
+                        Target="{x:Bind Description_tb}"
+                        Title="Invalid Description"
+                        Subtitle="The description has to be of at least 3 characters">
+                        <muxc:TeachingTip.IconSource>
+                            <muxc:SymbolIconSource Symbol="Refresh" />
+                        </muxc:TeachingTip.IconSource>
+                    </muxc:TeachingTip>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
