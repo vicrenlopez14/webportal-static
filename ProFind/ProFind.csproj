@@ -336,6 +336,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionNS\UpdatePage\Update_Profesion.xaml.cs">
       <DependentUpon>Update_Profesion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfileAdminNS\ProfileAdminNS.xaml.cs">
+      <DependentUpon>ProfileAdminNS.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -377,6 +380,30 @@
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml.cs">
       <DependentUpon>Update_Page_Rank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerClientsNS\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerProfessionalsNS\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityQuestionNS\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityQuestionNS\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\SecurityQuestionNS\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\TagNS\CreatePage\CreateDialog.xaml.cs">
       <DependentUpon>CreateDialog.xaml</DependentUpon>
@@ -431,6 +458,15 @@
     </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\TagNS\ListPage\ListDialog.xaml.cs">
       <DependentUpon>ListDialog.xaml</DependentUpon>
@@ -552,6 +588,15 @@
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\TagNS\CreatePage\CreateDialog.xaml.cs">
       <DependentUpon>CreateDialog.xaml</DependentUpon>
@@ -680,6 +725,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ProfileAdminNS\ProfileAdminNS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\CreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -733,6 +782,38 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerAdmins\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerClientsNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityAnswerProfessionalsNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityQuestionNS\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityQuestionNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\SecurityQuestionNS\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -805,6 +886,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -933,6 +1026,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
