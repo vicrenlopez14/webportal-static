@@ -37,13 +37,13 @@ public class AdminsController : ControllerBase
     // Login an Admin method
     // POST: api/Admins/Login
     [HttpPost("Login")]
-    public async Task<IActionResult> LoginAdmin(Admin admin)
+    public async Task<IActionResult> LoginAdmin(AdminLogin admin)
     {
         if (ModelState.IsValid)
         {
             var adminFromDb =
                 await _context.Admins.FirstOrDefaultAsync(a =>
-                    a.EmailA == admin.EmailA && a.PasswordA == admin.PasswordA);
+                    a.EmailA == admin.Email && a.PasswordA == admin.Password);
             if (adminFromDb != null)
             {
                 return Ok(adminFromDb);
@@ -285,13 +285,14 @@ public class AdminsController : ControllerBase
         [FromQuery] string? Rank)
 
     {
-        var result = await (from admin in _context.Admins where (
-                            (Name==null ? true : admin.NameA.Contains(Name)) &&
-                            (Rank == null ? true : admin.IdR1.ToString() == Rank)) select admin).ToListAsync();
+        var result = await (from admin in _context.Admins
+            where (
+                (Name == null ? true : admin.NameA.Contains(Name)) &&
+                (Rank == null ? true : admin.IdR1.ToString() == Rank))
+            select admin).ToListAsync();
 
         if (result.Any() == false) return NotFound();
         else return result;
-
     }
 
     [HttpGet("paginated")]

@@ -261,6 +261,7 @@
     </Compile>
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\AdminNS\Controllers\AdminNavigationController.cs" />
+    <Compile Include="Lib\AdminNS\Controllers\LoggedAdminStore.cs" />
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -402,6 +403,7 @@
     <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
       <DependentUpon>PasswordChangePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ClientNS\Controllers\LoggedClientStore.cs" />
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPageA\ReadPageActivi.xaml.cs">
       <DependentUpon>ReadPageActivi.xaml</DependentUpon>
     </Compile>
@@ -525,6 +527,7 @@
     <Compile Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml.cs">
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Controllers\LoggedProfessionalStore.cs" />
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePageActivi.xaml.cs">
       <DependentUpon>CreatePageActivi.xaml</DependentUpon>
     </Compile>
@@ -1128,9 +1131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\UpdatePage\" />
-    <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SearchPage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
-    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

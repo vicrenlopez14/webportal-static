@@ -51,7 +51,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Log in"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click" />
 
                     <TextBlock
                         Margin="0,30,0,0"

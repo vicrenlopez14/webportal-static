@@ -74,7 +74,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ReadPage
 
 
                 await APIConnection.GetConnection.PutActivityAsync(id1.IdA,toCreateAdmin);
-                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPage));
+                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPageActivi));
 
 
             }
@@ -105,7 +105,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ReadPage
 
 
                 await APIConnection.GetConnection.DeleteActivityAsync(id1.IdA);
-                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPage));
+                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPageActivi));
 
 
             }

@@ -48,7 +48,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
             FailedAuth_tt.IsOpen = true;
 
-
             if (string.IsNullOrEmpty(Email_tb.Text))
             {
                 var dialog = new MessageDialog("The field is empty");

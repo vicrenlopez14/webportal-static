@@ -33,13 +33,13 @@ public class ProfessionalsController : ControllerBase
 
     [HttpPost("Login")]
     // POST: api/Professionals/Login
-    public async Task<IActionResult> LoginProfessional(Professional professional)
+    public async Task<IActionResult> LoginProfessional(ProfessionalLogin professional)
     {
         if (ModelState.IsValid)
         {
             var professionalFromDb =
                 await _context.Professionals.FirstOrDefaultAsync(a =>
-                    a.EmailP == professional.EmailP && a.PasswordP == professional.PasswordP);
+                    a.EmailP == professional.Email && a.PasswordP == professional.Password);
             if (professionalFromDb != null)
             {
                 return Ok(professionalFromDb);

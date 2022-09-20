@@ -74,7 +74,7 @@ namespace ProFind.Lib.Global.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ProFindServicesException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LoginAdminAsync(Admin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task LoginAdminAsync(AdminLogin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
@@ -139,7 +139,7 @@ namespace ProFind.Lib.Global.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ProFindServicesException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LoginClientAsync(Client body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task LoginClientAsync(ClientLogin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
@@ -284,7 +284,7 @@ namespace ProFind.Lib.Global.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ProFindServicesException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LoginProfessionalAsync(Professional body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task LoginProfessionalAsync(ProfessionalLogin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
@@ -1501,7 +1501,7 @@ namespace ProFind.Lib.Global.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ProFindServicesException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task LoginAdminAsync(Admin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task LoginAdminAsync(AdminLogin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Admins/Login");
@@ -2420,7 +2420,7 @@ namespace ProFind.Lib.Global.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ProFindServicesException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task LoginClientAsync(Client body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task LoginClientAsync(ClientLogin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Clients/Login");
@@ -4429,7 +4429,7 @@ namespace ProFind.Lib.Global.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ProFindServicesException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task LoginProfessionalAsync(Professional body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task LoginProfessionalAsync(ProfessionalLogin body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/Professionals/Login");
@@ -11015,10 +11015,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdT1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idT1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idT1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Tag IdT1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activitycomments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11058,13 +11058,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC5 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Activity IdA1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC5Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP5Navigation { get; set; }
 
     }
@@ -11098,7 +11098,7 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("idR1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdR1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idR1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idR1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Rank IdR1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("changepasswordcodes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11136,7 +11136,7 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("validCpc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? ValidCpc { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("issueDateCpc", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("issueDateCpc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateOnly IssueDateCpc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idC1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11151,13 +11151,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdP1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Admin IdA1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP1Navigation { get; set; }
 
     }
@@ -11227,22 +11227,22 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class DateOnly
     {
-        [Newtonsoft.Json.JsonProperty("year", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("year", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Year { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("month", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("month", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Month { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("day", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("day", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Day { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("dayOfWeek", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dayOfWeek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DayOfWeek? DayOfWeek { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("dayOfYear", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dayOfYear", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? DayOfYear { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("dayNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("dayNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? DayNumber { get; set; }
 
     }
@@ -11270,7 +11270,7 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Department
     {
-        [Newtonsoft.Json.JsonProperty("idDp", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idDp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdDp { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nameDp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11317,10 +11317,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC4 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP4Navigation { get; set; }
 
     }
@@ -11350,7 +11350,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPj2 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj2Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj2Navigation { get; set; }
 
     }
@@ -11358,7 +11358,7 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Profession
     {
-        [Newtonsoft.Json.JsonProperty("idPfs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPfs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdPfs { get; set; }
 
         [Newtonsoft.Json.JsonProperty("namePfs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11441,10 +11441,10 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("idWdt1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdWdt1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idDp1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idDp1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Department IdDp1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPfs1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPfs1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Profession IdPfs1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activitycomments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11523,13 +11523,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPs1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPs1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projectstatus IdPs1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activities", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11594,13 +11594,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPj3 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC3Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP3Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj3Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("supporttickets", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11633,7 +11633,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPt1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projecttemplate IdPt1Navigation { get; set; }
 
     }
@@ -11693,7 +11693,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdP1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP1Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("projectpaytemplates", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11742,10 +11742,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC3 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC3Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP3Navigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("proposalnotifications", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11785,13 +11785,13 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC4 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPp1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPp1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Proposal IdPp1Navigation { get; set; }
 
     }
@@ -11799,7 +11799,7 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Rank
     {
-        [Newtonsoft.Json.JsonProperty("idR", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idR", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdR { get; set; }
 
         [Newtonsoft.Json.JsonProperty("nameR", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -11830,10 +11830,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdA1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Admin IdA1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Securityquestion IdSq1Navigation { get; set; }
 
     }
@@ -11857,10 +11857,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdC1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idSq1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Securityquestion IdSq1Navigation { get; set; }
 
     }
@@ -11884,10 +11884,10 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdP { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPNavigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdPNavigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idSqNavigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idSqNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Securityquestion IdSqNavigation { get; set; }
 
     }
@@ -11895,15 +11895,6 @@ namespace ProFind.Lib.Global.Services
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Securityquestion
     {
-        private string text1;
-        private string text2;
-
-        public Securityquestion(string text1, string text2)
-        {
-            this.text1 = text1;
-            this.text2 = text2;
-        }
-
         [Newtonsoft.Json.JsonProperty("idSq", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdSq { get; set; }
@@ -12005,25 +11996,25 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPpy1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idA2Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idA2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Admin IdA2Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idAct1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idAct1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Activity IdAct1Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Client IdC5Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idP5Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP5Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj4Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPj4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPj4Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPp2Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPp2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Proposal IdPp2Navigation { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPpy1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPpy1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projectpay IdPpy1Navigation { get; set; }
 
     }
@@ -12047,7 +12038,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPj { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPjNavigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPjNavigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Project IdPjNavigation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("activities", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12074,7 +12065,7 @@ namespace ProFind.Lib.Global.Services
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdPt1 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idPt1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Projecttemplate IdPt1Navigation { get; set; }
 
     }

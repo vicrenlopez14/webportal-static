@@ -36,13 +36,13 @@ public class ClientsController : ControllerBase
     // Login an Admin method
     // POST: api/Clients/Login
     [HttpPost("Login")]
-    public async Task<IActionResult> LoginClient(Client client)
+    public async Task<IActionResult> LoginClient(ClientLogin client)
     {
         if (ModelState.IsValid)
         {
             var clientFromDb =
                 await _context.Clients.FirstOrDefaultAsync(a =>
-                    a.EmailC == client.EmailC && a.PasswordC == client.PasswordC);
+                    a.EmailC == client.Email && a.PasswordC == client.Password);
             if (clientFromDb != null)
             {
                 return Ok(clientFromDb);

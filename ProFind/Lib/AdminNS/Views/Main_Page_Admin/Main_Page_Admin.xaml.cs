@@ -16,8 +16,6 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
     /// </summary>
     public sealed partial class Main_Page_Admin : Page
     {
-       
-
         public Main_Page_Admin()
         {
             this.InitializeComponent();

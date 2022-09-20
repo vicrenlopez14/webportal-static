@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using ProFind.Lib.Global.Services;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -26,16 +27,23 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
 
         private void Professionals_Login_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Admins_Login_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
-       
-
-      
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var adminLogin = new AdminLogin
+            {
+                Email = Email_tb.Text,
+                Password = Password_tb.Password,
+            };
+            
+            await APIConnection.GetConnection.LoginAdminAsync(body: adminLogin);
+        }
     }
 }
