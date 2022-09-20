@@ -39,7 +39,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.SearchPage
         {
             var project = e.ClickedItem as Project;
 
-            // new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
+          
         }
     }
 }
