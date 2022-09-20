@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProFind.Lib.Global.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,14 +23,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.SearchPage
     /// </summary>
     public sealed partial class SearchPageActivi : Page
     {
+        Activity id; 
         public SearchPageActivi()
         {
             this.InitializeComponent();
         }
 
-        private void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
+        private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
 
+        {
+            ClientListView.ItemsSource = await APIConnection.GetConnection.SearchActivitiesAsync(id.IdA, Search_Client.Text);
+
+        }
+        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var project = e.ClickedItem as Project;
+
+            // new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
         }
     }
 }
