@@ -38,17 +38,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
                 await dialog.ShowAsync();
                 return;
             }
-            else if (string.IsNullOrEmpty(Answer2_tb.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-                return;
-            }
+          
 
             try
             {
 
-                var toCreateAnswerProfessional = new Securityanswerprofessional(Answer1_tb.Text, Answer2_tb.Text);
+                var toCreateAnswerProfessional = new Securityanswerprofessional { };
 
 
                 var result = await APIConnection.GetConnection.PostSecurityanswerprofessionalAsync(toCreateAnswerProfessional);

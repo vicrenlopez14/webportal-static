@@ -23,6 +23,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
     /// </summary>
     public sealed partial class UpdatePage : Page
     {
+        Securityanswerprofessional id;
+        Client Id22;
+        Securityquestion ID2;
         public UpdatePage()
         {
             this.InitializeComponent();
@@ -30,9 +33,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.SecurityAnswerProfessionalsN
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteAnswerProfessional = new Securityanswerprofessional(Answer1_tb.Text, Answer2_tb.Text);
+            var toUpdapteAnswerProfessional = await new Securityanswerprofessional { AnswerSa = Answer1_tb.Text, IdP = Id22.IdC, IdSq = ID2.IdSq };
 
-            await APIConnection.GetConnection.PostSecurityanswerprofessionalAsync(id.IdSa, toUpdapteAnswerProfessional);
+            await APIConnection.GetConnection.PostSecurityanswerprofessionalAsync(int.Parse( id.IdSq), toUpdapteAnswerProfessional);
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

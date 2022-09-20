@@ -26,7 +26,8 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.CreatePage
     {
 
         Securityanswerclient toManipulate = new Securityanswerclient();
-
+        Client id;
+        Securityquestion ID2;
         public CreatePage()
         {
             this.InitializeComponent();
@@ -51,7 +52,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.CreatePage
             try
             {
 
-                var toCreateAnswerClient = new Securityanswerclient(Answer1_tb.Text, Answer2_tb.Text);
+                var toCreateAnswerClient = new Securityanswerclient { IdSa = "", AnswerSa = Answer1_tb.Text, IdC1 = id.IdC, IdSq1 =  ID2.IdSq };
 
                 var result = await APIConnection.GetConnection.PostSecurityanswerclientAsync(toCreateAnswerClient);
               

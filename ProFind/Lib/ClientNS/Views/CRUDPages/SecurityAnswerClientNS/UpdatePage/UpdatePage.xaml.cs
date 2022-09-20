@@ -32,7 +32,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.UpdatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteAnswerClient = new Securityanswerclient(id.IdSq1);
+            var toUpdapteAnswerClient = new Securityanswerclient { IdSq1 = id.IdSq1 };
 
             await APIConnection.GetConnection.PostSecurityanswerclientAsync(toUpdapteAnswerClient);
         }
