@@ -36,7 +36,7 @@
                         Grid.Column="1"
                         HorizontalAlignment="Center"
                        
-                        Style="{StaticResource AccentButtonStyle}">
+                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1">
                         Add more
                     </Button>
                 </Grid>
@@ -78,7 +78,7 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <Button Name="Add_btn">Add</Button>
+            <Button Name="Add_btn" Click="Add_btn_Click_1">Update</Button>
         </StackPanel>
     </Grid>
 </Page>

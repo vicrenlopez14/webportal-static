@@ -6,14 +6,24 @@
     xmlns:models11="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
-    <Grid>
+    <Grid Margin="0,10,0,0">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" />
-            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="751*" />
+            <ColumnDefinition Width="749*" />
         </Grid.ColumnDefinitions>
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Search " Grid.Column="1" Margin="484,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="32" Width="99" />
+        <TextBlock
+                        Grid.Column="0"
+                        Margin="20,20,0,928"
+                        HorizontalAlignment="Left"
+                        RenderTransformOrigin="0.638,0.776"
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="List Professional" Grid.ColumnSpan="2" Width="1203"
+            
+            />
         <ListView
-            Name="DashboardProfessionalsActiveListView"
+            Name="DashboardProfessionalsActiveListView" Margin="20,104,56,45" Grid.ColumnSpan="2"
            
             >
             <ListView.ItemTemplate>

@@ -15,15 +15,25 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
     public sealed partial class CreatePage : Page
     {
         private byte[] imageBytes;
-
+        Project id1;
+        Client id2;
+        private Client ranks2;
+        private Project ranks = new Project();
         Notification toManipulate = new Notification();
         Professional id; 
 
         public CreatePage()
         {
             this.InitializeComponent();
+            loadUsefulThings();
         }
-
+        public async void loadUsefulThings()
+        {
+            ranks = await APIConnection.GetConnection.GetProjectAsync(id1.IdPj);
+            ranks2 = await APIConnection.GetConnection.GetClientAsync(id2.IdC);
+            Project_cb.ItemsSource = ranks;
+            Client_cb.ItemsSource = ranks2;
+        }
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
            
@@ -87,6 +97,85 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
             
+        }
+
+        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(Title_tb1.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+
+
+
+            try
+            {
+
+                byte[] da = toManipulate.PictureN = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdPj2 = Project_cb.Text, PictureN = imageBytes, DateTimeIssuedN = Caledar.Date, IdPj2Navigation = toManipulate.IdPj2Navigation };
+
+
+                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void Title_tb1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Description_tb_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+
+                var file = await PickFileHelper.PickImage();
+
+                if (file != null)
+                {
+                    SelectedPicture_tbk.Text = file.Name;
+                    imageBytes = await file.ToByteArrayAsync();
+
+                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+                PictureSelection_btn.IsChecked = false;
+            }
         }
     }
 }

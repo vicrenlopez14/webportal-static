@@ -28,17 +28,21 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
         {
             var notification = e.ClickedItem as Notification;
 
-            new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), notification);
+            
         }
 
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
+        
+
+        
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage.CreatePage));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage.UpdatePage));
         }
     }
 }

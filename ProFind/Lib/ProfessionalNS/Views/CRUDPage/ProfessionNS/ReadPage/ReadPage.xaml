@@ -6,14 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:services="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
-    <Grid>
+    <Grid Margin="0,134,56,0" HorizontalAlignment="Right" Width="1444">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*" />
-            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="640*" />
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="695*" />
         </Grid.ColumnDefinitions>
+        <TextBlock
+                    Margin="35,-103,45,921"
+                    RenderTransformOrigin="0.638,0.776"
+                    Style="{StaticResource SubheaderTextBlockStyle}"
+                    Text="Profession List" Grid.ColumnSpan="4" />
         <ListView
-            Name="DashboardProfessionalsActiveListView"
+            Name="DashboardProfessionalsActiveListView" Margin="10,0,0,10" Grid.ColumnSpan="4"
            
             >
             <ListView.ItemTemplate>
