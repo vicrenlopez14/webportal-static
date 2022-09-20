@@ -87,14 +87,10 @@
                                         <TextBlock x:Name="ProfessionalDepartment_tb" d:Text="Cabañas" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Work-Day Type: " Margin="0 0 15 0" FontWeight="Bold"/>
-                                        <TextBlock x:Name="ProfessionalWorkDayType_tb" d:Text="Diurnal" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="In ProFind since: " Margin="0 0 15 0" FontWeight="Bold"/>
                                         <TextBlock x:Name="ProfessionalHiringDate_tb" d:Text="19/09/2022" />
                                     </StackPanel>
-                                    <HyperlinkButton Name="ViewCurriculum_btn" Content="View curriculum" Margin="0 10 0 0"/>
+                                    <HyperlinkButton Name="ViewCurriculum_btn" Content="View curriculum" Margin="0 10 0 0" Click="ViewCurriculum_btn_Click"/>
                                     <TextBlock/>
                                 </StackPanel>
                             </Grid>

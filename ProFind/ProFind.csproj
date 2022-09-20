@@ -466,9 +466,11 @@
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
     <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
     <Compile Include="Lib\Global\Helpers\Connection.cs" />
+    <Compile Include="Lib\Global\Helpers\DefinedPagesDictionary.cs" />
     <Compile Include="Lib\Global\Helpers\FieldsChecker.cs" />
     <Compile Include="Lib\Global\Helpers\FieldValidatorExtension.cs" />
     <Compile Include="Lib\Global\Helpers\PickFileHelper.cs" />
+    <Compile Include="Lib\Global\Helpers\ScrollViewerUtils.cs" />
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
@@ -513,6 +515,9 @@
     </Compile>
     <Compile Include="Lib\Global\Views\Preferences_Page\Preferences_Page.xaml.cs">
       <DependentUpon>Preferences_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Global\Views\ProfessionalsCatalog\ProfessionalsCatalog.xaml.cs">
+      <DependentUpon>ProfessionalsCatalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Global\Views\Professionals_Login.xaml.cs">
       <DependentUpon>Professionals_Login.xaml</DependentUpon>
@@ -911,6 +916,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Global\Views\Preferences_Page\Preferences_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\Global\Views\ProfessionalsCatalog\ProfessionalsCatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

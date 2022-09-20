@@ -47,7 +47,7 @@ namespace ProFind.Lib.Global.Helpers
             return bytes;
         }
 
-        public static async Task<PdfLoadedDocument> PickPDF()
+        public static async Task<byte[]> PickPDF()
         {
             //Opens a file picker.
             var picker = new FileOpenPicker();
@@ -57,14 +57,13 @@ namespace ProFind.Lib.Global.Helpers
             picker.FileTypeFilter.Add(".pdf");
             var file = await picker.PickSingleFileAsync();
             if (file == null) return null;
-            //Reads the stream of the loaded PDF document.
-            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            Stream fileStream = stream.AsStreamForRead();
-            byte[] buffer = new byte[fileStream.Length];
-            fileStream.Read(buffer, 0, buffer.Length);
-            //Loads the PDF document.
-            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(buffer);
-            return loadedDocument;
+           
+            return await file.ToByteArrayAsync();
+        }
+
+        public  static PdfLoadedDocument ToPdfLoadedDocument(this byte[] file)
+        {
+            return new PdfLoadedDocument(file);
         }
     }
 }

@@ -22,9 +22,6 @@
             <ColumnDefinition Width="0.8*" />
             <ColumnDefinition Width="0.05*" />
         </Grid.ColumnDefinitions>
-        <my:SfPdfViewerControl Name="PDFPreview" Grid.Column="1" />
-
-
+        <my:SfPdfViewerControl Name="PDFPreviewControl" Grid.Column="1" />
     </Grid>
-
 </ContentDialog>
