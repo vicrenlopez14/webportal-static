@@ -21,6 +21,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
         public UpdatePage()
         {
             this.InitializeComponent();
+            AddEvents();
         }
         private async void loadUsefulthings()
         {
@@ -104,6 +105,24 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.UpdatePage
          
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage.ReadPage));
        
+        }
+
+        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
         }
     }
 }
