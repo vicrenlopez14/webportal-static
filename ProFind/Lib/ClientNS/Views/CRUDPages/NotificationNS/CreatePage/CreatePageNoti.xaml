@@ -52,13 +52,13 @@
                         x:Uid="TitleCreatePageClientsII"
                         x:Name="Title_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged"
+                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged" KeyDown="Title_tb_KeyDown"
                          />
                         <TextBox
                         x:Uid="DescriptionCreatePageClientsII"
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged"
+                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged" KeyDown="Description_tb_KeyDown"
                          />
                         <CalendarDatePicker x:Uid="CalendarCreatePageClients" x:Name="Caledar" PlaceholderText="Pick a date" Header="Calendar" />
 
