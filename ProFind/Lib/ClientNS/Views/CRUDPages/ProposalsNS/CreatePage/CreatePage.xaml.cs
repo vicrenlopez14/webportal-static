@@ -33,12 +33,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             this.InitializeComponent();
             AddEvents();
         }
-        private void AddEvents()
-        {
-            Title_tb.OnEnterNextField();
-            Description_tb.OnEnterNextField();
-
-        }
+      
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -72,22 +67,9 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
 
         }
 
+
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
-        }
-
-        private void Title_tb_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
-
-        }
-
-        private void Description_tb_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
 
         }
 
