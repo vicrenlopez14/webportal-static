@@ -51,12 +51,12 @@ Style="{StaticResource PageStyle}">
                     <TextBox
                         x:Name="Title_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged_1"
+                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged_1" KeyDown="Title_tb_KeyDown"
                          />
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1"
+                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1" KeyDown="Description_tb_KeyDown"
                          />
 
                     <Grid Margin="0,60,0,0" VerticalAlignment="Center">

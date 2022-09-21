@@ -47,12 +47,12 @@
                     <TextBox
                         x:Name="Title_tb1"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title" TextChanged="Title_tb1_TextChanged"
+                        PlaceholderText="Title" TextChanged="Title_tb1_TextChanged" KeyUp="Title_tb1_KeyUp"
                          />
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1"
+                        PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1" KeyUp="Description_tb_KeyUp"
                          />
                     <CalendarDatePicker x:Name="Caledar" PlaceholderText="Pick a date" Header="Calendar" />
                     <ComboBox
