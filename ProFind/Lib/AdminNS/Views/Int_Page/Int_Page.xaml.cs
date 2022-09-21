@@ -27,7 +27,7 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-
+            new InAppNavigationController().NavigateTo(typeof(Operations.PasswordChangePage.SendEmailPage));
         }
 
         private void Professionals_Login_Click(object sender, RoutedEventArgs e)

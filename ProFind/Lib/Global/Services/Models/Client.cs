@@ -2,6 +2,10 @@
 {
     public partial class Client
     {
+        public Client()
+        {
+
+        }
         public Client(string idC, string nameC, string emailC, string passwordC, byte[] pictureC)
         {
             IdC = idC;

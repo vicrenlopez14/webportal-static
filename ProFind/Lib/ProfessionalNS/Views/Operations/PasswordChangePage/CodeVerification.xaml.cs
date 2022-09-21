@@ -1,5 +1,6 @@
-﻿using Admin = ProFind.Lib.Global.Services.Admin;
-using ProFind.Lib.AdminNS.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
+using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,19 +15,17 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using ProFind.Lib.Global.Helpers;
-using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
+namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PasswordChangePage : Page
+    public sealed partial class CodeVerification : Page
     {
-        public PasswordChangePage()
+        public CodeVerification()
         {
             this.InitializeComponent();
         }
@@ -34,7 +33,7 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e != null)
+            if(e.Parameter != null)
             {
                 email = e.ToString();
             }
@@ -42,20 +41,20 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+            new InAppNavigationController().NavigateTo(typeof(SendEmailPage));
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if(Password_pb.Password != Confirmation_pb.Password || (!FieldsChecker.CheckPassword(Password_pb.Password)))
+            try
             {
-
+                await APIConnection.GetConnection.VerifyRecoveryCodeAsync(Code_tb.Text);
+                new InAppNavigationController().NavigateTo(typeof(PasswordChangePage),email);
             }
-            var toChangePassword = new Admin();
-            toChangePassword.PasswordA = Password_pb.Password;
-            var id = await APIConnection.GetConnection.GetAdminFromEmailAsync(email);
-            await APIConnection.GetConnection.PutAdminAsync(id.IdA,toChangePassword);
-            new InAppNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+            catch
+            {
+                ToggleThemeTeachingTip1.IsOpen = true;
+            }
         }
     }
 }
