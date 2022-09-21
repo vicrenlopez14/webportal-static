@@ -25,6 +25,16 @@ namespace ProFind.Lib.Global.Helpers
                     PressTabKey();
             };
         }
+        
+        public static void OnEnterNextField(this PasswordBox passwordBox)
+        {
+            passwordBox.KeyDown += delegate(object sender, KeyRoutedEventArgs e)
+            {
+                if (e.Key == VirtualKey.Enter)
+                    PressTabKey();
+            };
+        }
+
 
         private static void PressTabKey()
         {
