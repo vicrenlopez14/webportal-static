@@ -4,6 +4,8 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Global.Views.About_Page;
+using ProFind.Lib.ProfessionalNS.Controllers;
+using ProFind.Lib.Global.Helpers;
 
 namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
 {
@@ -11,10 +13,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
     {
         static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
         {
-            {"ActiveProjects_Page", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
-            {"InactiveProjects_Page", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
-            {"Notifications_Page", typeof(CRUDPage.NotificationNS.ReadPage.ReadPage) },
-            {"Activities_Page", typeof(CRUDPage.ActivityNS.UpdatePage.UpdatePageActivi) },
+            {"Projects_Page_Professionals", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
+            {"Activity_Page_Professionals", typeof(CRUDPage.ActivityNS.ListPage.LisPageActivi) },
+            {"Clients_Page_Professionals", typeof(CRUDPage.NotificationNS.ReadPage.ReadPage) },
+            {"GeneralNotifications_Page_Professionals", typeof(CRUDPage.NotificationNS.ReadPage.ReadPage) },
+            {"ProposalNotifications_Page_Professionals", typeof(CRUDPage.NotificationNS.ReadPage.ReadPage) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
             {"", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) }
@@ -25,6 +28,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
             new InAppNavigationController().Init(Professionals_ContentFrame);
             new InAppNavigationController().NavigateTo(typeof(CRUDPage.ProjectNS.ReadPage.ReadPage));
 
+            LoadLoggedProfessionalData();
+        }
+
+        private void LoadLoggedProfessionalData()
+        {
+            var loggedUserInfo = LoggedProfessionalStore.LoggedProfessional;
+
+            LoggedUser_pp.ProfilePicture = loggedUserInfo.PictureP.ToBitmapImage();
+            LoggedUserName_tb.Text = loggedUserInfo.NameP;
+            LoggedUserEmail_tb.Text = loggedUserInfo.EmailP;
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)

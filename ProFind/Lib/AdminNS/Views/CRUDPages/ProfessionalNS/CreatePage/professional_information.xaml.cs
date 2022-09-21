@@ -12,6 +12,7 @@ using Profession = ProFind.Lib.Global.Services.Profession;
 using Professional = ProFind.Lib.Global.Services.Professional;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.ClientNS.Views.InitPage;
+using ProFind.Lib.Global.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -159,7 +160,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 {
                     var dialog = new MessageDialog("Professional created successfully, ProFind is now ready to work.");
                     await dialog.ShowAsync();
-                    new InAppNavigationController().NavigateTo(typeof(InitPage));
+                    new GlobalNavigationController().NavigateTo(typeof(InitPage));
                 }
                 else
                 {

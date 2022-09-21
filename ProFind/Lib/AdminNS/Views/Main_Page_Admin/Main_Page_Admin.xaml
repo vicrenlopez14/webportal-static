@@ -24,10 +24,6 @@
             ItemInvoked="NavigationView_ItemInvoked"
             PaneDisplayMode="Left">
 
-            <muxc:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
-            </muxc:NavigationView.AutoSuggestBox>
-
             <muxc:NavigationView.PaneCustomContent>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -43,8 +39,6 @@
                     </StackPanel>
                 </Grid>
             </muxc:NavigationView.PaneCustomContent>
-
-
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
                 <!--Projects overview-->
@@ -100,10 +94,6 @@
                             Content="Professions"
                             Icon="Mail"
                             Tag="Professions_Page" />
-                        <muxc:NavigationViewItem
-                            Content="Work-Day Types"
-                            Icon="Mail"
-                            Tag="Workdaytype_Page" />
                         <muxc:NavigationViewItem
                             Content="Ranks"
                             Icon="Mail"

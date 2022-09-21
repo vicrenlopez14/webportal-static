@@ -28,7 +28,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
 
         }
 
-
         private void Administrators_Login_Click(object sender, RoutedEventArgs e)
         {
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.Int_Page.Int_Page));
@@ -46,13 +45,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
             try
             {
                 await APIConnection.GetConnection.LoginProfessionalAsync(result);
-
             }
             catch (ProFindServicesException ex)
             {
                 if (ex.StatusCode == 201)
                 {
-                    new InAppNavigationController().NavigateTo(typeof(Main_Page_Professional));
+                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Professional));
                 }
                 else if (ex.StatusCode == 400)
                 {
@@ -60,7 +58,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
                     await dialog.ShowAsync();
                 } else
                 {
-                    throw ex;
+                    {
+                        var dialog = new MessageDialog("Something went wrong, try again later.");
+                        await dialog.ShowAsync();
+                    }
                 }
 
                 Console.WriteLine(ex.Message);

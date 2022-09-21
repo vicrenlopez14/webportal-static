@@ -1,4 +1,9 @@
-﻿using ProFind.Lib.Global.Services;
+﻿using MySqlX.XDevAPI.Common;
+using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Views.Main_Page;
+using System;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -42,8 +47,44 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
                 Email = Email_tb.Text,
                 Password = Password_tb.Password,
             };
-            
-            await APIConnection.GetConnection.LoginAdminAsync(body: adminLogin);
+
+
+            try
+            {
+                await APIConnection.GetConnection.LoginAdminAsync(body: adminLogin);
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 201)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Admin.Main_Page_Admin));
+                }
+                else if (ex.StatusCode == 400)
+                {
+                    var dialog = new MessageDialog("Incorrect, check your credentials.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    {
+                        var dialog = new MessageDialog("Something went wrong, try again later.");
+                        await dialog.ShowAsync();
+                    }
+                }
+
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Professionals_Login_Click_1(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+
+        }
+
+        private void Clients_Login_Click(object sender, RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.InitPage.InitPage));
         }
     }
 }

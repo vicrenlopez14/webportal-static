@@ -6,6 +6,7 @@ using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.ProfessionalNS.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,11 +17,44 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
     /// </summary>
     public sealed partial class Main_Page_Admin : Page
     {
+        public static Dictionary<string, Type> DefinedPagesDictionary = new Dictionary<string, Type>()
+        {
+            #region AdminPages
+            {"ProjectsOverview_Page", null},
+            //Projects overview
+            {"Projects_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage.List_Page_Projects)},
+            {"Activity_Page", typeof(Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPageActivi) },
+            //People
+            {"Administrators_Page", typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPageAdmin)},
+            {"Clients_Page", typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List)},
+            {"Professionals_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage)},
+            // Platform
+            {"Professions_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage.List_Page) },
+            {"Ranks_Page", typeof(Lib.AdminNS.Views.CRUDPages.RankNS.ListPage.List_Ranks) },
+            //Notification center
+            {"GeneralNotifications_Page", typeof(Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage.List_Page)},
+            {"ProposalNotifications_Page", null },
+            #endregion
+
+            //Footer
+            {"Preferences_Page", typeof(Preferences_Page)},
+            {"Profile_Page", typeof(About_Page) },
+        };
+
         public Main_Page_Admin()
         {
             this.InitializeComponent();
             new InAppNavigationController().Init(ContentFrame);
+            LoadLoggedAdminData();
+        }
 
+        private void LoadLoggedAdminData()
+        {
+            var loggedUserInfo = LoggedAdminStore.LoggedAdmin;
+
+            LoggedUser_pp.ProfilePicture = loggedUserInfo.PictureA.ToBitmapImage();
+            LoggedUserName_tb.Text = loggedUserInfo.NameA;
+            LoggedUserEmail_tb.Text = loggedUserInfo.EmailA;
         }
 
         private void NavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
@@ -41,7 +75,7 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
             }
             sender.Header = item.Content.ToString();
 
-            var page = PagesDefinition.DefinedPagesDictionary[selectedItemTag];
+            var page = DefinedPagesDictionary[selectedItemTag];
 
             if (page != null)
             {
@@ -52,10 +86,10 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
                 }
                 catch
                 {
-                    new Controllers.InAppNavigationController().NavigateTo(PagesDefinition.DefinedPagesDictionary["Preferences_Page"]);
+                    new Controllers.InAppNavigationController().NavigateTo(DefinedPagesDictionary["Preferences_Page"]);
                 }
             }
-          
+
         }
 
         private void navView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)

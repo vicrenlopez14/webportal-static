@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Communication.Email.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models.Generated;
@@ -99,6 +100,75 @@ public class ProfessionalsController : ControllerBase
         }
 
         return professional;
+    }
+        // POST: api/Admins/SendRecoveryEmail
+    [HttpPost("SendRecoveryEmail")]
+    public async Task<IActionResult> SendRecoveryEmailProfessionals(string email)
+    {
+        if (ModelState.IsValid)
+        {
+            var professionalFromDb = await _context.Professionals.FirstOrDefaultAsync(a => a.EmailP == email);
+            if (professionalFromDb != null)
+            {
+                // Make any other code for this user invalid
+                var otherCodes =
+                    await _context.Changepasswordcodes.Where(c => c.IdC1 == professionalFromDb.IdP).ToListAsync();
+
+                foreach (var otherCode in otherCodes)
+                {
+                    otherCode.ValidCpc = false;
+                    _context.Update(otherCode);
+                }
+
+                // Creation of the code to be sent to the user
+                // Random code with 4 digits
+                var random = new Random();
+                var verificationCode = random.Next(1000, 9999).ToString();
+                _context.Changepasswordcodes.Add(new Changepasswordcode
+                {
+                    IdCpc = verificationCode,
+                    IdP1 = professionalFromDb.IdP, // Id of the admin
+                    ValidCpc = true, // Made invalid once the code is used
+                });
+
+                // Send email
+                EmailContent emailContent = new EmailContent("Password recovery");
+                emailContent.Html =
+                    $"In order to recover your password, please enter this code in the app: {verificationCode}";
+                List<EmailAddress> emailAddresses = new List<EmailAddress>
+                    { new EmailAddress(professionalFromDb.EmailP) { DisplayName = professionalFromDb.NameP } };
+                EmailRecipients emailRecipients = new EmailRecipients(emailAddresses);
+                EmailMessage emailMessage = new EmailMessage("donotreply@profind.work", emailContent, emailRecipients);
+                SendEmailResult emailResult =
+                    Utils.EmailClientUtil.GetEmailClient.Send(emailMessage, CancellationToken.None);
+
+                return Ok("Password recovery code has been sent to the indicated email address.");
+            }
+        }
+
+        return BadRequest(ModelState);
+    }
+
+    // Method to verify a password recovery code
+    // POST: api/Admins/VerifyRecoveryCode
+    [HttpPost("VerifyRecoveryCode")]
+    public async Task<IActionResult> VerifyRecoveryCodeProfessionals(string code)
+    {
+        if (ModelState.IsValid)
+        {
+            var codeFromDb = await _context.Changepasswordcodes.FirstOrDefaultAsync(c => c.IdCpc == code);
+            if (codeFromDb != null)
+            {
+                if (codeFromDb.ValidCpc == true)
+                {
+                    codeFromDb.ValidCpc = false;
+                    _context.Update(codeFromDb);
+                    return Ok("Code is valid.");
+                }
+            }
+        }
+
+        return BadRequest(ModelState);
     }
 
     // PUT: api/Professionals/5

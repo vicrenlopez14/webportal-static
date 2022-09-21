@@ -53,18 +53,6 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
             new GlobalNavigationController().NavigateTo(typeof(InitPage_Login));
 
         }
-
-        private void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new GlobalNavigationController().NavigateTo(typeof(InitPage));
-        }
-
-        private void Professionals_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new GlobalNavigationController().NavigateTo(typeof(InitPage));
-
-        }
-
         private async Task Button_Click_5Async(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var registerClient = new ClientLogin
@@ -120,6 +108,16 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+        }
+
+        private void Administrators_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.Int_Page.Int_Page));
+        }
+
+        private void Professionals_Login_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
         }
     }
 }

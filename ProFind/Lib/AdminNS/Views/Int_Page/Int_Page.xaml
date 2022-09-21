@@ -65,12 +65,12 @@
                             x:Name="Professionals_Login"
                             Margin="0,0,10,0"
                            
-                            Content="Professionals" />
+                            Content="Professionals" Click="Professionals_Login_Click_1" />
                         <Button
                             x:Name="Clients_Login"
                             Margin="10,0,0,0"
                            
-                            Content="Clients" />
+                            Content="Clients" Click="Clients_Login_Click" />
                     </StackPanel>
 
 

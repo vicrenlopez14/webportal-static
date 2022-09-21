@@ -55,7 +55,7 @@ public class AdminsController : ControllerBase
 
     // POST: api/Admins/SendRecoveryEmail
     [HttpPost("SendRecoveryEmail")]
-    public async Task<IActionResult> SendRecoveryEmail(string email)
+    public async Task<IActionResult> SendRecoveryEmailAdmins(string email)
     {
         if (ModelState.IsValid)
         {
@@ -104,7 +104,7 @@ public class AdminsController : ControllerBase
     // Method to verify a password recovery code
     // POST: api/Admins/VerifyRecoveryCode
     [HttpPost("VerifyRecoveryCode")]
-    public async Task<IActionResult> VerifyRecoveryCode(string code)
+    public async Task<IActionResult> VerifyRecoveryCodeAdmins(string code)
     {
         if (ModelState.IsValid)
         {
