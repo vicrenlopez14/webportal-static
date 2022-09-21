@@ -4,6 +4,9 @@ using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Services;
 using Project = ProFind.Lib.Global.Services.Project;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
+using System.Collections.Generic;
+using System.Linq;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,7 +26,15 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage
 
         private async void InitializeData()
         {
-            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetProjectsAsync();
+            var loggendProject = LoggedClientStore.LoggedClient;
+            var Projects = await APIConnection.GetConnection.GetProjectsAsync();
+            var RelatedProject = new List<Project>();
+
+            var RelatedProject2 = Projects.Where(c => c.IdPj == loggendProject.IdC).ToList();
+
+            RelatedProject.AddRange(RelatedProject2);
+
+            AdminsListView.ItemsSource = RelatedProject;
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)

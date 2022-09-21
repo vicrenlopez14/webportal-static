@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,13 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
         }
         private async void InitializeData()
         {
-            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetProposalAsync(Id.IdPp);
+            var loggendClient = LoggedClientStore.LoggedClient;
+            var Proposals = await APIConnection.GetConnection.GetProposalsAsync();
+            var RelatePropals = Proposals.Where(c => c.IdC3 == loggendClient.IdC).ToList();
+           
+           
+
+            Activities_lw.ItemsSource = RelatePropals;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

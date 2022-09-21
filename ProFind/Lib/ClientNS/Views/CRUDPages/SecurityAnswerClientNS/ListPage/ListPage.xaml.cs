@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using System;
@@ -35,7 +36,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.SecurityAnswerClientNS.ListPage
 
         private async void InitializeData()
         {
-            SecurityAnswerClientListView.ItemsSource = await APIConnection.GetConnection.GetSecurityanswerclientsAsync();
+            var loggendClient = LoggedClientStore.LoggedClient;
+            var SecurityASw = await APIConnection.GetConnection.GetSecurityanswerclientsAsync();
+            var RelatePropals = SecurityASw.Where(c => c.IdC1 == loggendClient.IdC).ToList();
+
+            SecurityAnswerClientListView.ItemsSource = RelatePropals;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)

@@ -20,8 +20,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
         }
         private async void InitializeData()
         {
-            int idNo = (int)Id1.IdPfs;
-            Activities_lw.ItemsSource =  await APIConnection.GetConnection.GetProfessionAsync(idNo);
+            
+            Activities_lw.ItemsSource =  await APIConnection.GetConnection.GetProfessionsAsync();
         }
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)

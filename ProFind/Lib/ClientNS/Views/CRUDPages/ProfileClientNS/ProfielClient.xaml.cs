@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Services;
+﻿using ProFind.Lib.ClientNS.Controllers;
+using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +32,15 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProfileClientNS
 
         private async void InitializeData()
         {
-            ListViewProfileClient.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
+            var loggendClient = LoggedClientStore.LoggedClient;
+            var client = await APIConnection.GetConnection.GetClientsAsync();
+            var RelatedClient = new List<Client>();
+
+            var RelatedClient2 = client.Where(c => c.IdC == loggendClient.IdC).ToList();
+
+            RelatedClient.AddRange(RelatedClient2);
+
+            ListViewProfileClient.ItemsSource = RelatedClient;
         }
     }
 }

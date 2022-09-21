@@ -19,7 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage
         }
         private async void InitializeData()
         {
-            Activities_lw.ItemsSource = APIConnection.GetConnection.GetNotificationAsync(Id1.IdN);
+            Activities_lw.ItemsSource = APIConnection.GetConnection.GetNotificationsAsync();
 
         }
 

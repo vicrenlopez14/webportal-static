@@ -32,7 +32,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         public async void GetProjectsList()
         {
 
-            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetProjectsAsync();
+            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

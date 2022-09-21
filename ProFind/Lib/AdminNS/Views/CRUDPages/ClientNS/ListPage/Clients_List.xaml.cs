@@ -22,7 +22,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
         public async void GetProjectsList()
         {
 
-            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetClientAsync(Id1.IdC);
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
         }
 
         private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)

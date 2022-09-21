@@ -27,7 +27,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProfessionalNS.ReadPage
         public async void GetProjectsList()
 
         {
-            // Only the professionals related to this client
+            
             var loggedClient = LoggedClientStore.LoggedClient;
             var relatedProf = (from Project in loggedClient.Projects
                                where Project.IdC1 == loggedClient.IdC

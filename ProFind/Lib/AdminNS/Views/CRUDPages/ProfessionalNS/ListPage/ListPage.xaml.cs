@@ -23,7 +23,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
         public async void GetProjectsList()
 
         {
-            await APIConnection.GetConnection.GetProfessionalAsync(Id1.IdP);
+            await APIConnection.GetConnection.GetProfessionalsAsync();
            
         }
 
