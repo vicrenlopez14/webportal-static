@@ -1306,8 +1306,15 @@
     <None Include="ProFind_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Lib\AdminNS\Views\CRUDPages\ProjectPayNS\CreatePage\" />
+    <Folder Include="Lib\AdminNS\Views\CRUDPages\ProjectPayNS\FilterPage\" />
+    <Folder Include="Lib\AdminNS\Views\CRUDPages\ProjectPayNS\UpdatePage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\UpdatePage\" />
+    <Folder Include="Lib\ClientNS\Views\CRUDPages\ProjectPayNS\FilterPage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
+    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectPayNS\CreatePage\" />
+    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectPayNS\FilterPage\" />
+    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectPayNS\UpdatePage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
