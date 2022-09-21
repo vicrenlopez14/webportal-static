@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Client = ProFind.Lib.Global.Services.Client;
+using ProFind.Lib.AdminNS.Controllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +29,33 @@ namespace ProFind.Lib.ClientNS.Views.Operations.PasswordChangePage
         public PasswordChangePage()
         {
             this.InitializeComponent();
+        }
+        private string email;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e != null)
+            {
+                email = e.ToString();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(InitPage.InitPage_Login));
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if(Password_pb.Password != Confirmation_pb.Password || (!FieldsChecker.CheckPassword(Password_pb.Password)))
+            {
+
+            }
+            var toChangePassword = new Client();
+            toChangePassword.PasswordC = Password_pb.Password;
+            var id = await APIConnection.GetConnection.GetClientByEmailAsync(email);
+            await APIConnection.GetConnection.PutClientAsync(id.IdC,toChangePassword);
+            new InAppNavigationController().NavigateTo(typeof(InitPage.InitPage_Login));
         }
     }
 }

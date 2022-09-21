@@ -429,8 +429,8 @@
     <Compile Include="Lib\AdminNS\Views\Main_Page_Admin\Main_Page_Admin.xaml.cs">
       <DependentUpon>Main_Page_Admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\EmailSent.xaml.cs">
-      <DependentUpon>EmailSent.xaml</DependentUpon>
+    <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\CodeVerification.xaml.cs">
+      <DependentUpon>CodeVerification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
       <DependentUpon>PasswordChangePage.xaml</DependentUpon>
@@ -511,8 +511,14 @@
     <Compile Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml.cs">
       <DependentUpon>Main_Page_Client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ClientNS\Views\Operations\PasswordChangePage\CodeVerification.xaml.cs">
+      <DependentUpon>CodeVerification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClientNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
       <DependentUpon>PasswordChangePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ClientNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml.cs">
+      <DependentUpon>SendEmailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
@@ -672,8 +678,14 @@
     <Compile Include="Lib\ProfessionalNS\Views\Main_Page\Main_Page.xaml.cs">
       <DependentUpon>Main_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\CodeVerification.xaml.cs">
+      <DependentUpon>CodeVerification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
       <DependentUpon>PasswordChangePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml.cs">
+      <DependentUpon>SendEmailPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -901,7 +913,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\AdminNS\Views\Operations\PasswordChangePage\EmailSent.xaml">
+    <Page Include="Lib\AdminNS\Views\Operations\PasswordChangePage\CodeVerification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1009,9 +1021,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ClientNS\Views\Operations\PasswordChangePage\CodeVerification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Lib\ClientNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\Global\Views\About_Page\About_Page.xaml">
       <SubType>Designer</SubType>
@@ -1185,9 +1205,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\CodeVerification.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Button.xaml">
       <Generator>MSBuild:Compile</Generator>

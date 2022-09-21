@@ -1,4 +1,6 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Helpers;
+using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,21 +18,28 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
+namespace ProFind.Lib.ClientNS.Views.Operations.PasswordChangePage
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EmailSent : Page
+    public sealed partial class SendEmailPage : Page
     {
-        public EmailSent()
+        public SendEmailPage()
         {
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+            string email = Email_tb.Text;
+            if (!FieldsChecker.CheckEmail(email))
+            {
+                ToggleThemeTeachingTip1.IsOpen = true;
+                return;
+            }
+            await APIConnection.GetConnection.SendRecoveryEmailAsync(email);
+            new InAppNavigationController().NavigateTo(typeof(CodeVerification),email);
         }
     }
 }
