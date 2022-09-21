@@ -36,6 +36,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         {
             this.InitializeComponent();
             loadUsefulThings();
+            AddEvents();
+
+        }
+        private void AddEvents()
+        {
+            FirstName1_tbx.OnEnterNextField();
+            Afp.OnEnterNextField();
+            Dui.OnEnterNextField();
+            SeguroSocial.OnEnterNextField();
+            position.OnEnterNextField();
+            CodigoPostal.OnEnterNextField();
+            Email.OnEnterNextField();
+            Salario.OnEnterNextField();
 
         }
 

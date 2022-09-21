@@ -186,6 +186,7 @@
                                     Header="Birth date" />
                                 <TextBox
                                     Margin="0,15,0,0"
+                                    Name="position"
                                     d:LayoutRounding="Auto"
                                     Header="Position in the company"
                                     PlaceholderText="Position"
