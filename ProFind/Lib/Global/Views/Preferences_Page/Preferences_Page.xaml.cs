@@ -42,7 +42,7 @@ namespace ProFind.Lib.Global.Views.Preferences_Page
                 selectedIndex = 2;
             }
 
-            ThemeModeRadioButtons.SelectedIndex = selectedIndex;
+           
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)

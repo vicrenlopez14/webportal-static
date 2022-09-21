@@ -98,7 +98,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
 
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage.List_Page_Projects));
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
 
 
 
