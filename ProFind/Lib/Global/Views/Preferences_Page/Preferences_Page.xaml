@@ -19,7 +19,7 @@
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="Preferences" />
                 <Rectangle Height="50" />
-                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Edit" Margin="0,0,10,0"/>
                         <TextBlock
@@ -28,7 +28,7 @@
                     Text="Dark Mode" />
                     </StackPanel>
 
-                    <ToggleSwitch IsOn="False" OnContent="Enabled" OffContent="Disabled"  Header="This option enables sound effects in the app." />
+                    <ToggleSwitch Name="DarkModeToggleSwitch" IsOn="False" OnContent="Enabled" OffContent="Disabled"  Header="This option enables sound effects in the app." Toggled="DarkModeToggleSwitch_Toggled" />
 
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0 15 0 0">
@@ -40,8 +40,8 @@
                             Text="SoundMode" />
                     </StackPanel>
                     <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="" />
-                    <ToggleSwitch Header="This option enables sound effects in the app." IsOn="False" OnContent="On" OffContent="Off"/>
-                 
+                    <ToggleSwitch Name="SoundEffectsToggleSwitch" Header="This option enables sound effects in the app." IsOn="False" OnContent="On" OffContent="Off" Toggled="SoundEffectsToggleSwitch_Toggled"/>
+
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Visibility="Collapsed" Margin="0 15 0 0">
                     <StackPanel Orientation="Horizontal">
@@ -51,11 +51,7 @@
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="Language" />
                     </StackPanel>
-                    <muxc:RadioButtons Name="LanguageRadioButtons" SelectedIndex="1"  MaxColumns="3" Header="Change interface text language." SelectionChanged="Language_SelectionChanged">
-                        <x:String>Spanish</x:String>
-                        <x:String>English</x:String>
-                        <x:String>French</x:String>
-                    </muxc:RadioButtons>
+                    <ToggleSwitch Header="Change interface text language." IsOn="True" OnContent="English" OffContent="Spanish"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

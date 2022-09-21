@@ -19,8 +19,13 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionNS.ReadPage
         }
         private async void InitializeData()
         {
+<<<<<<< HEAD
            
             await APIConnection.GetConnection.GetProfessionsAsync();
+=======
+            //int idNo = (int)Id1.IdPfs;
+            //await APIConnection.GetConnection.GetProfessionAsync(idNo);
+>>>>>>> 3dff7887ad5586e81c1d06a2fe0aeba7ee47f2ef
         }
 
         private async void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)

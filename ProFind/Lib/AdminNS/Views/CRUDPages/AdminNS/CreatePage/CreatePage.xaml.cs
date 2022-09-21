@@ -89,7 +89,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Password_pb_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            ToCreateAdmin.PasswordA = PhoneNumber_tb.Text;
+            ToCreateAdmin.PasswordA = Password_pb.Password;
         }
 
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)

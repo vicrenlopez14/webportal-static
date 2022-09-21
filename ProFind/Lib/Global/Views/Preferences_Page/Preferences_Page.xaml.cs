@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProFind.Lib.Global.Helpers;
+using System;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,23 +27,11 @@ namespace ProFind.Lib.Global.Views.Preferences_Page
 
         private void LoadSettings()
         {
-            int selectedIndex = 2;
-            
-            var applicationTheme = App.Current.RequestedTheme;
-            if (applicationTheme == ApplicationTheme.Dark)
-            {
-                selectedIndex = 1;
-            }
-            else if (applicationTheme == ApplicationTheme.Light)
-            {
-                selectedIndex = 0;
-            }
-            else
-            {
-                selectedIndex = 2;
-            }
 
+<<<<<<< HEAD
            
+=======
+>>>>>>> 3dff7887ad5586e81c1d06a2fe0aeba7ee47f2ef
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)
@@ -55,19 +44,30 @@ namespace ProFind.Lib.Global.Views.Preferences_Page
 
         }
 
-        private void ThemeMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DarkModeToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-          
+            if (DarkModeToggleSwitch.IsOn)
+            {
+                ApplicationData.Current.LocalSettings.Values["DarkMode"] = true;
+            }
+            else
+            {
+                ApplicationData.Current.LocalSettings.Values["DarkMode"] = false;
+            }
         }
 
-        private void SoundMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SoundEffectsToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            if (SoundEffectsToggleSwitch.IsOn)
+            {
+                ElementSoundPlayer.State = ElementSoundPlayerState.On;
+            }
+            else
+            {
+                {
+                    ElementSoundPlayer.State = ElementSoundPlayerState.Off;
+                }
+            }
         }
     }
 }
