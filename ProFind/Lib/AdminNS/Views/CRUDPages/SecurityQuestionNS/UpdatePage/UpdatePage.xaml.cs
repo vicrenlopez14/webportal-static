@@ -23,7 +23,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.SecurityQuestionNS.UpdatePage
     /// </summary>
     public sealed partial class UpdatePage : Page
     {
-        Securityquestion id;
+        Securityquestion ToUpdateQuestion;
 
         public UpdatePage()
         {
@@ -33,9 +33,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.SecurityQuestionNS.UpdatePage
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var toUpdapteQuestion = new Securityquestion(id.IdSq = Question1_tb.Text, "");
+            var toCreateQuestions = new Securityquestion
+            {
+                IdSq = "",
+                NameSq = Question1_tb.Text
+            };
 
-            await APIConnection.GetConnection.PostSecurityquestionAsync(toUpdapteQuestion);
+            await APIConnection.GetConnection.PostSecurityquestionAsync(ToUpdateQuestion);
         }
 
         private void btnCancel_Click_1(object sender, RoutedEventArgs e)

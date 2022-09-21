@@ -42,7 +42,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.SecurityQuestionNS.CreatePage
             try
             {
 
-                var toCreateQuestions = new Securityquestion(Question1_tb.Text, "");
+                var toCreateQuestions = new Securityquestion
+                {
+                    IdSq = "",
+                    NameSq = Question1_tb.Text
+                };
 
                 var result = await APIConnection.GetConnection.PostSecurityquestionAsync(toCreateQuestions);
 

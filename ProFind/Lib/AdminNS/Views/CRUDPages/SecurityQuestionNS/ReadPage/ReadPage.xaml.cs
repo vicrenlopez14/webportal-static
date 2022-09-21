@@ -25,7 +25,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.SecurityQuestionNS.ReadPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
-        Securityquestion toManipulate = new Securityquestion("", "");
+        Securityquestion toManipulate = new Securityquestion();
 
         public ReadPage()
         {
