@@ -469,14 +469,14 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\DeletePage\DeletePage.xaml.cs">
-      <DependentUpon>DeletePage.xaml</DependentUpon>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPAge.xaml.cs">
+      <DependentUpon>ListPAge.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\ReadPage.xaml.cs">
-      <DependentUpon>ReadPage.xaml</DependentUpon>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\SecurityAnswerClientNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
@@ -636,8 +636,14 @@
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\UpdatePagePJ.xaml.cs">
       <DependentUpon>UpdatePagePJ.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\Accept or Deny\AcceptOrDeny.xaml.cs">
+      <DependentUpon>AcceptOrDeny.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\SecurityAnswerProfessionalsNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
@@ -947,15 +953,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\DeletePage\DeletePage.xaml">
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPAge.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPage.xaml">
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\ReadPage.xaml">
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1131,7 +1137,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\Accept or Deny\AcceptOrDeny.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1219,15 +1233,10 @@
   <ItemGroup>
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\SearchPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\SearchPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProfessionalNS\SearchPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\SearchPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProjectStatusNS\SearchPage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\CreatePage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\DeletePage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ReadPage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\DeletePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ReadPage\.gitkeep" />
@@ -1251,16 +1260,12 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\SearchPage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\ReadPage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\.gitkeep" />
     <None Include="ProFind_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\UpdatePage\" />
-    <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

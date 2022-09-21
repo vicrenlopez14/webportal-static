@@ -18,25 +18,34 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class CreatePage : Page
+    public sealed partial class AcceptOrDeny : Page
     {
         private byte[] imageBytes;
-        Client IdC;
-        Professional IdP;
-        public CreatePage()
+        Professional Id;
+        Proposal Denegada;
+        public AcceptOrDeny()
         {
             this.InitializeComponent();
-            AddEvents();
+            Cargar();
         }
         private void AddEvents()
         {
             Title_tb.OnEnterNextField();
             Description_tb.OnEnterNextField();
+            TotalPrice_tb.OnEnterNextField();
+
+        }
+
+        private async void Cargar()
+        {
+                     
+            Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
+            InitialStatus_cb.ItemsSource = await APIConnection.GetConnection.GetProjectstatusesAsync();
 
         }
 
@@ -44,16 +53,13 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
         {
             try
             {
-              
+               
 
                 var file = await PickFileHelper.PickImage();
 
                 if (file != null)
                 {
-                    SelectedPicture_tbk.Text = file.Name;
-                    imageBytes = await file.ToByteArrayAsync();
-
-                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                  imageBytes  = await file.ToByteArrayAsync();
                 }
             }
             catch (Exception ex)
@@ -67,61 +73,41 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             }
         }
 
-        private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Title_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
             else e.Handled = false;
-
         }
 
         private void Description_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
             else e.Handled = false;
+        }
+
+        private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyFloats(e,TotalPrice_tb.Text)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private async void Create_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdPs1 = (InitialStatus_cb.SelectedItem as Projectstatus).IdPs, IdP1 = Id.IdP , IdC1 = (Client_cb.SelectedItem as Client).IdC };
+
+
+            var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
+
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage.List_Page_Projects));
+
+
 
         }
 
-        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
+
+        private async void Decline_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-
-
-                var toCreateAdmin = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = ExpectedBegin_dp.Date, SuggestedEnd = Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = IdC.IdC, IdP3 = IdP.IdP };
-
-
-
-
-                var result = await APIConnection.GetConnection.PostProposalAsync(toCreateAdmin);
-                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-               
-            }
-        }
-
-        private void Reset_btn_Click(object sender, RoutedEventArgs e)
-        {
-            Title_tb.Text = "";
-            Description_tb.Text = "";
-
+            await APIConnection.GetConnection.DeleteProposalAsync(Denegada.IdPp);
         }
     }
 }

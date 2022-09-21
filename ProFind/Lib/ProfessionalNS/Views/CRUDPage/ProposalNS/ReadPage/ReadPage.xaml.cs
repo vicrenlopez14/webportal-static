@@ -14,6 +14,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
+       
         public ReadPage()
         {
             this.InitializeComponent();
@@ -24,7 +25,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
         private async void InitializeData()
         {
 
-            ProposalListView.ItemsSource = await APIConnection.GetConnection.GetProposalsAsync();
+           Activities_lw.ItemsSource = await APIConnection.GetConnection.GetProposalsAsync();
         }
 
         private void ProposalListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -35,12 +36,17 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-           
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.SearchPage.SearchPage));
         }
     }
 }

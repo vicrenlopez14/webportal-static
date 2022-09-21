@@ -27,7 +27,7 @@ namespace ProFind.Lib.Global.Helpers
             #endregion
 
             #region ClientPages
-            {"Proposals_Page_Client", typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPage) },
+            {"Proposals_Page_Client", typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge) },
             #endregion
 
             //Footer
