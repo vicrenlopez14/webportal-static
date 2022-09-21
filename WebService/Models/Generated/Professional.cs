@@ -32,7 +32,7 @@ namespace WebService.Models.Generated
         public string? NameP { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DateBirthP { get; set; }
-        [StringLength(21)]
+        [StringLength(255)]
         public string? EmailP { get; set; }
         [StringLength(64)]
         public string? PasswordP { get; set; }

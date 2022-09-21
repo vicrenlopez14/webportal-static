@@ -82,6 +82,26 @@ public class ClientsController : ControllerBase
 
         return client;
     }
+    
+    // Get from email
+    // GET: api/Clients/5
+    [HttpGet("GetByEmail/{email}")]
+    public async Task<ActionResult<Client>> GetClientByEmail(string email)
+    {
+        if (_context.Clients == null)
+        {
+            return NotFound();
+        }
+
+        var client = await _context.Clients.FirstOrDefaultAsync(a => a.EmailC == email);
+
+        if (client == null)
+        {
+            return NotFound();
+        }
+
+        return client;
+    }
 
     // PUT: api/Clients/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

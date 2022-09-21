@@ -27,7 +27,7 @@ namespace WebService.Models.Generated
         public string IdC { get; set; } = null!;
         [StringLength(50)]
         public string? NameC { get; set; }
-        [StringLength(50)]
+        [StringLength(255)]
         public string? EmailC { get; set; }
         [StringLength(64)]
         public string? PasswordC { get; set; }

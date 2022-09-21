@@ -81,7 +81,7 @@ public class AdminsController : ControllerBase
                     IdA1 = adminFromDb.IdA, // Id of the admin
                     VerifiedCpc = false, // Not until a client verifies it
                     ValidCpc = true, // Made invalid once the code is used
-                    IssueDateCpc = DateOnly.FromDateTime(DateTime.Now)
+                    IssueDateCpc = DateTime.Now
                 });
 
                 // Send email
@@ -153,6 +153,27 @@ public class AdminsController : ControllerBase
 
         return admin;
     }
+    
+    // Get admin from email
+    // GET: api/Admins/GetAdminFromEmail
+    [HttpGet("GetByEmail/{email}")]
+    public async Task<ActionResult<Admin>> GetAdminFromEmail(string email)
+    {
+        if (_context.Admins == null)
+        {
+            return NotFound();
+        }
+
+        var admin = await _context.Admins.FirstOrDefaultAsync(a => a.EmailA == email);
+
+        if (admin == null)
+        {
+            return NotFound();
+        }
+
+        return admin;
+    }
+    
 
     // PUT: api/Admins/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

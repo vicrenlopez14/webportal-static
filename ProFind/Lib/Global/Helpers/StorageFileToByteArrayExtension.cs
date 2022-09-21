@@ -9,6 +9,8 @@ namespace ProFind.Lib.Global.Helpers
     {
         public static async Task<byte[]> ToByteArrayAsync(this StorageFile file)
         {
+            if (file == null)
+                return null;
             using (var inputStream = await file.OpenSequentialReadAsync())
             {
                 var readStream = inputStream.AsStreamForRead();

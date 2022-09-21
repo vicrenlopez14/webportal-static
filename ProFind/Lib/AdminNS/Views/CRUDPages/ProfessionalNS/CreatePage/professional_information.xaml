@@ -131,7 +131,7 @@
                                     HorizontalAlignment="Center"
                                    
                                     Content="Charge"
-                                    CornerRadius="5" />
+                                    CornerRadius="5" Click="btnExaminar_Click_1" />
                                 <TextBox
                                     Name="Afp"
                                     Grid.RowSpan="2"
@@ -253,20 +253,10 @@
                                     Margin="50,15,0,0"
                                     Header="Sex"
                                     PlaceholderText="Male"
+                                    SelectedIndex="0"
                                    >
                                     <x:String>Male</x:String>
                                     <x:String>Female</x:String>
-                                </ComboBox>
-                                <ComboBox
-                                    Name="MedotoPago"
-                                    Width="331"
-                                    Margin="50,15,0,0"
-                                    Header="Payment method"
-                                    PlaceholderText="Credit card payment"
-                                   >
-                                    <x:String>Credit card payment</x:String>
-                                    <x:String>Check (In person verify)</x:String>
-                                    <x:String>Cash (In person verify)</x:String>
                                 </ComboBox>
                                 <TextBox
                                     Name="Salario"
@@ -281,16 +271,6 @@
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
                                 </TextBox>
-                                <ComboBox
-                                    Name="Jornada"
-                                    Width="331"
-                                    Margin="50,15,0,0"
-                                    Header="Work-day type"
-                                    PlaceholderText=""
-                                   >
-                                    <x:String>Diurnal</x:String>
-                                    <x:String>Nocturnal</x:String>
-                                </ComboBox>
                                 <StackPanel Margin="50,15,0,0" Orientation="Horizontal">
                                     <CalendarDatePicker
                                         Name="FechadeIngreso"

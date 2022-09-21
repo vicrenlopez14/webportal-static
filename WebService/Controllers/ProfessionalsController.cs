@@ -81,6 +81,25 @@ public class ProfessionalsController : ControllerBase
 
         return professional;
     }
+    
+    // Get from email
+    [HttpGet("GetByEmail/{email}")]
+    public async Task<ActionResult<Professional>> GetProfessionalByEmail(string email)
+    {
+        if (_context.Professionals == null)
+        {
+            return NotFound();
+        }
+
+        var professional = await _context.Professionals.FirstOrDefaultAsync(a => a.EmailP == email);
+
+        if (professional == null)
+        {
+            return NotFound();
+        }
+
+        return professional;
+    }
 
     // PUT: api/Professionals/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

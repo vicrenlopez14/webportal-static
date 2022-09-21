@@ -10,6 +10,8 @@ using ProFind.Lib.Global.Services;
 using Department = ProFind.Lib.Global.Services.Department;
 using Profession = ProFind.Lib.Global.Services.Profession;
 using Professional = ProFind.Lib.Global.Services.Professional;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Views.InitPage;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,7 +33,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private byte[] curriculo;
 
-     
+
         public ProfessionalInformationAddition()
         {
             this.InitializeComponent();
@@ -43,15 +45,22 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         {
             // Professions
             profession_cbx.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync();
+            profession_cbx.SelectedIndex = 0;
 
             // Departments
             departamento.ItemsSource = await APIConnection.GetConnection.GetDepartmentsAsync();
+            departamento.SelectedIndex = 0;
 
+            // Hiring date
+            FechadeIngreso.Date = DateTime.Now;
+
+            // Birth date
+            Nacimiento.Date = DateTime.Now;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+
 
         }
 
@@ -121,20 +130,43 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             try
             {
 
-                byte[] da = toManipulate.PictureP = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
-
-                var toCreateProfessions = new Professional { IdP = "", NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = passwordBox.Password, ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageBytes, IdDp1 = int.Parse(departamento.Text), IdPfs1 = int.Parse(profession_cbx.Text), ZipCodeP = CodigoPostal.Text, HiringDateP = FechadeIngreso.Date };
-
-
+                var toCreateProfessions = new Professional
+                {
+                    IdP = "",
+                    NameP = FirstName1_tbx.Text,
+                    EmailP = Email.Text,
+                    Afpp = Afp.Text,
+                    Isssp = SeguroSocial.Text,
+                    Duip = Dui.Text,
+                    DateBirthP = Nacimiento.Date,
+                    SalaryP = int.Parse(Salario.Text),
+                    SexP = true,
+                    PasswordP = passwordBox.Password,
+                    ActiveP = Sexo.SelectedValue == "Male" ? true : false,
+                    PictureP = imageBytes,
+                    IdDp1 = (departamento.SelectedItem as Department).IdDp ,
+                    IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,
+                    ZipCodeP = CodigoPostal.Text,
+                    HiringDateP = FechadeIngreso.Date
+                };
 
                 var result = await APIConnection.GetConnection.PostProfessionalAsync(toCreateProfessions);
 
             }
-            catch (Exception ex)
+            catch (ProFindServicesException ex)
             {
-                Console.WriteLine(ex.Message);
+                if (ex.StatusCode == 201)
+                {
+                    var dialog = new MessageDialog("Professional created successfully, ProFind is now ready to work.");
+                    await dialog.ShowAsync();
+                    new InAppNavigationController().NavigateTo(typeof(InitPage));
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Error creating professional");
+                    await dialog.ShowAsync();
+                }
             }
-           
 
 
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
@@ -143,7 +175,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
-          
+
             else if (string.IsNullOrEmpty(Afp.Text))
             {
                 var dialog = new MessageDialog("The field is empty");
@@ -190,7 +222,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void ToggleThemeTeachingTip2_ActionButtonClick(TeachingTip sender, object args)
         {
-          
+
         }
 
         private void ToggleThemeTeachingTip2_CloseButtonClick(TeachingTip sender, object args)
@@ -204,17 +236,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private async void btnExaminar_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void TxtFIstName(TextBlock sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         private void TxtLastName(object sender, TextChangedEventArgs e)
@@ -224,7 +256,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void ComboBox_SelectionProfesional(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -234,7 +266,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -245,6 +277,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private void TxtFIstName(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
+        {
+            imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+            ProfilePicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
         }
     }
 }

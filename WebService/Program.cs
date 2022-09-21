@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Azure.Communication.Email;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -21,6 +22,9 @@ builder.Services.AddSwaggerGen(c =>
     c.CustomOperationIds(description =>
         description.TryGetMethodInfo(out var methodInfo) ? methodInfo.Name : null);
 });
+
+builder.Services.AddControllers()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 

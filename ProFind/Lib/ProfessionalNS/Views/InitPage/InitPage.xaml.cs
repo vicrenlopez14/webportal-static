@@ -6,6 +6,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.ClientNS.Views.InitPage;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ProfessionalNS.Views.Main_Page;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -40,11 +42,26 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var result = new ProfessionalLogin { Email = Email_tb.Text, Password = Password_tb.Password };
-            await APIConnection.GetConnection.LoginProfessionalAsync(result);
 
+            try
+            {
+                await APIConnection.GetConnection.LoginProfessionalAsync(result);
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 201)
+                {
+                   
+                    new InAppNavigationController().NavigateTo(typeof(Main_Page_Professional));
+                }
+                else if (ex.StatusCode == 400)
+                {
+                    var dialog = new MessageDialog("Incorrect, check your credentials.");
+                    await dialog.ShowAsync();
+                }
 
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-
+                Console.WriteLine(ex.Message);
+            }
 
             FailedAuth_tt.IsOpen = true;
 
