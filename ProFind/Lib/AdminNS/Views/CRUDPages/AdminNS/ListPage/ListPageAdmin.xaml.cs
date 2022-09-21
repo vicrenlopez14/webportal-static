@@ -53,5 +53,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage.UpdatePage));
 
         }
+
+        private void Generate_Report_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

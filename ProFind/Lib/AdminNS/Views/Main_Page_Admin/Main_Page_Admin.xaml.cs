@@ -25,6 +25,7 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
             {"Projects_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage.List_Page_Projects)},
             {"Activity_Page", typeof(Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage.ListPageActivi) },
             //People
+            {"People_Page", typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPageAdmin) },
             {"Administrators_Page", typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPageAdmin)},
             {"Clients_Page", typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List)},
             {"Professionals_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage)},
@@ -32,6 +33,7 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
             {"Professions_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage.List_Page) },
             {"Ranks_Page", typeof(Lib.AdminNS.Views.CRUDPages.RankNS.ListPage.List_Ranks) },
             //Notification center
+            {"Projecttype_Page",  typeof(Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage.List_Page)},
             {"GeneralNotifications_Page", typeof(Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage.List_Page)},
             {"ProposalNotifications_Page", null },
             #endregion

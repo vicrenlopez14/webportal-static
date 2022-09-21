@@ -45,9 +45,10 @@ public class AdminsController : ControllerBase
     {
         if (ModelState.IsValid)
         {
+            var hashedPassword = ShaOperations.ShaPassword(admin.Password);
             var adminFromDb =
                 await _context.Admins.FirstOrDefaultAsync(a =>
-                    a.EmailA == admin.Email && a.PasswordA == Utils.ShaOperations.ShaPassword(admin.Password));
+                    a.EmailA == admin.Email && a.PasswordA == hashedPassword);
             if (adminFromDb != null)
             {
                 return Ok(adminFromDb);
@@ -221,7 +222,7 @@ public class AdminsController : ControllerBase
         }
 
         admin.AssignId();
-        admin.PasswordA = Utils.ShaOperations.ShaPassword(admin.PasswordA);
+        admin.PasswordA = ShaOperations.ShaPassword(admin.PasswordA);
         _context.Admins.Add(admin);
         try
         {
