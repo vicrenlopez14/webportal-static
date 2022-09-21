@@ -29,7 +29,7 @@
                             x:Name="Picture_img"
                             Width="100"
                             Height="100" />
-                        <Button HorizontalAlignment="Center"/>
+                        <Button Name="UploadPicture_btn" HorizontalAlignment="Center" Content="Upload a new one" Click="UploadPicture_btn_Click"/>
                         <TextBox
                             x:Name="Name1_tbx"
                             Width="460"
@@ -38,7 +38,7 @@
                             Header=" Name"
                             PlaceholderText="Name"
                             RenderTransformOrigin="0.5,0.5"
-                            UseLayoutRounding="False" KeyDown="Name1_tbx_KeyDown" />
+                            UseLayoutRounding="False" KeyDown="Name1_tbx_KeyDown" TextChanged="Name1_tbx_TextChanged" />
                         <TextBox
                             x:Name="Email_tbx"
                             Width="460"
@@ -47,13 +47,7 @@
                             Header="Email"
                             PlaceholderText="Email"
                             RenderTransformOrigin="0.5,0.5"
-                            UseLayoutRounding="False" KeyDown="Email_tbx_KeyDown" />
-
-                        <muxc:NumberBox
-                            x:Name="Phone_tbx"
-                            Margin="0,0,0,15"
-                            Header="Phone"
-                            PlaceholderText="00000000" />
+                            UseLayoutRounding="False" KeyDown="Email_tbx_KeyDown" TextChanged="Email_tbx_TextChanged" />
                         <PasswordBox
                             x:Name="Password_tbx"
                             Width="461"
@@ -79,24 +73,19 @@
                         Orientation="Horizontal">
 
                         <Button
-                            x:Name="Reset_btn"
-                            Content="Resent"
-                            Margin="15"
-                           />
-                        <Button
                             x:Name="Update_btn"
                             Content="Update"
-                            Margin="15"
+                            Margin="15" Click="Update_btn_Click_1"
                            />
                         <Button
                             x:Name="Delete_btn"
                             Content="Delete"
-                            Margin="15"
+                            Margin="15" Click="Delete_btn_Click_1"
                            />
                         <Button
                             x:Name="Back_btn"
                             Content="Back"
-                            Margin="15"
+                            Margin="15" Click="Back_btn_Click_1"
                            />
                     </StackPanel>
                 </Grid>

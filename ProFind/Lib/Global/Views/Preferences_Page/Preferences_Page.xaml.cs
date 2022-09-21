@@ -1,5 +1,7 @@
 ﻿using ProFind.Lib.Global.Helpers;
 using System;
+using System.Diagnostics;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -64,6 +66,19 @@ namespace ProFind.Lib.Global.Views.Preferences_Page
                     ElementSoundPlayer.State = ElementSoundPlayerState.Off;
                 }
             }
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AppRestartFailureReason result =
+            await CoreApplication.RequestRestartAsync("");
+            if (result == AppRestartFailureReason.NotInForeground ||
+            result == AppRestartFailureReason.RestartPending ||
+            result == AppRestartFailureReason.Other)
+            {
+                Debug.WriteLine("RequestRestartAsync failed: {0}", result);
+            }
+
         }
     }
 }

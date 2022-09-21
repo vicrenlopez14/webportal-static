@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using Client = ProFind.Lib.Global.Services.Client;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -14,7 +15,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
     /// </summary>
     public sealed partial class Create_page : Page
     {
-       
+
         private byte[] imageBytes;
         public Create_page()
         {
@@ -26,7 +27,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
             Name_tb.OnEnterNextField();
             Email_tb.OnEnterNextField();
             PhoneNumber_tb.OnEnterNextField();
-           
+
 
 
         }
@@ -37,23 +38,61 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
         {
             try
             {
-
-               
-
-                var ToCreateAdmin = new Client("", Name_tb.Text, Email_tb.Text, Password_pb.Password, imageBytes); 
-               
+                var ToCreateAdmin = new Client("", Name_tb.Text, Email_tb.Text, Password_pb.Password, imageBytes);
 
                 var result = await APIConnection.GetConnection.PostClientAsync(ToCreateAdmin);
 
+                // Show a success content dialog
+                var dialog = new ContentDialog()
+                {
+                    Title = "Success",
+                    Content = "Client created successfully",
+                    CloseButtonText = "Ok"
+                };
+                await dialog.ShowAsync();
+
+
                 ToggleThemeTeachingTip2.IsOpen = true;
             }
-            catch (Exception ex)
+            catch (ProFindServicesException ex)
             {
-                Console.WriteLine(ex.Message);
+                if (ex.StatusCode == 400)
+                {
+                    var dialog = new ContentDialog()
+                    {
+                        Title = "Error",
+                        Content = "The client already exists",
+                        CloseButtonText = "Ok"
+                    };
+                    await dialog.ShowAsync();
+                }
+                else if (ex.StatusCode == 201 || ex.StatusCode == 200)
+                {
+                    // Show a success content dialog
+                    var dialog = new ContentDialog()
+                    {
+                        Title = "Success",
+                        Content = "Client created successfully",
+                        CloseButtonText = "Ok"
+                    };
+                    await dialog.ShowAsync();
+
+                }
+                else
+                {
+                    var dialog = new ContentDialog()
+                    {
+                        Title = "Error",
+                        Content = "The client already exists",
+                        CloseButtonText = "Ok"
+                    };
+                    await dialog.ShowAsync();
+                }
             }
             finally
             {
-                
+                // Go back to clients list
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List));
             }
         }
 

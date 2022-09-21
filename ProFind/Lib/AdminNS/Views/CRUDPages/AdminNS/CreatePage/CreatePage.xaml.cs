@@ -11,6 +11,7 @@ using ProFind.Lib.Global.Services;
 using ProFind.Lib.Global.Views;
 using Admin = ProFind.Lib.Global.Services.Admin;
 using Rank = ProFind.Lib.Global.Services.Rank;
+using ProFind.Lib.AdminNS.Controllers;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -57,7 +58,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            isFirstAdmin = (bool)e.Parameter;
+
+            if (e.Parameter != null)
+                isFirstAdmin = (bool)e.Parameter;
         }
 
 
@@ -136,15 +139,21 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 ToCreateAdmin.IdA = "";
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(ToCreateAdmin);
-                ToggleThemeTeachingTip2.IsOpen = true;
+
+                if (isFirstAdmin)
+                    ToggleThemeTeachingTip2.IsOpen = true;
+                else
+                    new InAppNavigationController().GoBack();
 
             }
             catch (ProFindServicesException ex)
             {
                 if (ex.StatusCode == 201)
                 {
-                    ToggleThemeTeachingTip2.IsOpen = true;
-
+                    if (isFirstAdmin)
+                        ToggleThemeTeachingTip2.IsOpen = true;
+                    else
+                        new InAppNavigationController().GoBack();
                 }
             }
             finally

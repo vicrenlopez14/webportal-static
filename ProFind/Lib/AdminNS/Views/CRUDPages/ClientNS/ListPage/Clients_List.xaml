@@ -13,14 +13,16 @@
             <ColumnDefinition Width="32*" />
             <ColumnDefinition Width="43*" />
         </Grid.ColumnDefinitions>
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Search CLient" Grid.Column="1" Margin="484,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" />
+        <Button Style="{StaticResource AccentButtonStyle}" Content="Search" Grid.Column="1" Margin="484,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" />
+        <Button Style="{StaticResource AccentButtonStyle}" Name="CreateClient_btn" Content="Create" Grid.Column="1" VerticalAlignment="Top" Click="CreateClient_btn_Click"  />
+        <Button Style="{StaticResource AccentButtonStyle}" Name="UpdateClient_btn" Content="Update" Grid.Column="1" VerticalAlignment="Top" Click="UpdateClient_btn_Click"   />
         <TextBlock
                         Grid.Column="0"
                         Margin="20,20,0,928"
                         HorizontalAlignment="Left"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="List CLients" Grid.ColumnSpan="2" Width="1095"
+                        Text="List Clients" Grid.ColumnSpan="2" Width="1095"
             
             />
 
