@@ -16,12 +16,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ReadPage
     {
         private byte[] imageBytes;
         Professional id2;
-        Activity id1; 
+        Activity id1;
         private bool isFirstAdmin = false;
         Project id = new Project();
         public ReadPage()
         {
             this.InitializeComponent();
+            AddEvents();
+        }
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+
         }
 
         public Activity ModelActivity { get; set; }
@@ -117,6 +124,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ReadPage
             {
                 Creation_pr.IsActive = false;
             }
+        }
+
+        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
         }
     }
 }

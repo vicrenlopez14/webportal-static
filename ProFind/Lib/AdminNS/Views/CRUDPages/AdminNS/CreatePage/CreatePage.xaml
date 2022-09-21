@@ -42,16 +42,16 @@
                     <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Name" TextChanged="Name_tb_TextChanged_1"
+                        PlaceholderText="Name" TextChanged="Name_tb_TextChanged_1" KeyDown="Name_tb_KeyDown"
                          />
                     <TextBox
                         x:Name="Email_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Email" TextChanged="Email_tb_TextChanged" />
+                        PlaceholderText="Email" TextChanged="Email_tb_TextChanged" KeyDown="Email_tb_KeyDown" />
                     <muxc:NumberBox
                         x:Name="PhoneNumber_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Phone number" ValueChanged="PhoneNumber_tb_ValueChanged" />
+                        PlaceholderText="Phone number" ValueChanged="PhoneNumber_tb_ValueChanged" KeyDown="PhoneNumber_tb_KeyDown" />
                     <PasswordBox
                         x:Name="Password_pb"
                         Margin="0,15,0,0"

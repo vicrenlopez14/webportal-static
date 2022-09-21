@@ -44,12 +44,12 @@
                     <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Name"
+                        PlaceholderText="Name" KeyDown="Name_tb_KeyDown"
                          />
                     <TextBox
                         x:Name="Email_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Email" />
+                        PlaceholderText="Email" KeyDown="Email_tb_KeyDown" />
 
                     <muxc:NumberBox
                         x:Name="PhoneNumber_tb"

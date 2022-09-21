@@ -21,6 +21,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
         public CreatePage()
         {
             this.InitializeComponent();
+            AddEvents();
+        }
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
