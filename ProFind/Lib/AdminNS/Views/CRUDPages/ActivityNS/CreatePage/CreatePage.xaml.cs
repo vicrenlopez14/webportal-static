@@ -202,5 +202,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
             if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
             else e.Handled = false;
         }
+
+        private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

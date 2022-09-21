@@ -54,7 +54,7 @@
                         Header="Descriptin"
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
-                        TextWrapping="Wrap" KeyDown="Description_tb_KeyDown"
+                        TextWrapping="Wrap" KeyDown="Description_tb_KeyDown" TextChanged="Description_tb_TextChanged"
                          />
                     <DatePicker
                         Name="ExpectedBegin_dp"
