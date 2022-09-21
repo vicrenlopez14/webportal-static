@@ -46,18 +46,21 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
             try
             {
                 await APIConnection.GetConnection.LoginProfessionalAsync(result);
+
             }
             catch (ProFindServicesException ex)
             {
                 if (ex.StatusCode == 201)
                 {
-                   
                     new InAppNavigationController().NavigateTo(typeof(Main_Page_Professional));
                 }
                 else if (ex.StatusCode == 400)
                 {
                     var dialog = new MessageDialog("Incorrect, check your credentials.");
                     await dialog.ShowAsync();
+                } else
+                {
+                    throw ex;
                 }
 
                 Console.WriteLine(ex.Message);

@@ -17,14 +17,10 @@ namespace WebService.Models.Generated
         [StringLength(21)]
         public string IdCpc { get; set; } = null!;
         [Column("CodeCPC")]
-        [StringLength(64)]
+        [StringLength(4)]
         public string? CodeCpc { get; set; }
         [Column("ValidCPC")]
         public bool? ValidCpc { get; set; }
-        [Column("VerifiedCPC")]
-        public bool? VerifiedCpc { get; set; }
-        [Column("IssueDateCPC", TypeName = "datetime")]
-        public DateTime? IssueDateCpc { get; set; }
         [StringLength(21)]
         public string? IdC1 { get; set; }
         [StringLength(21)]

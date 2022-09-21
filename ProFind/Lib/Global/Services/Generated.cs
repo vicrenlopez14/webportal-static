@@ -11358,17 +11358,11 @@ namespace ProFind.Lib.Global.Services
         public string IdCpc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("codeCpc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(64)]
+        [System.ComponentModel.DataAnnotations.StringLength(4)]
         public string CodeCpc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("validCpc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? ValidCpc { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("verifiedCpc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? VerifiedCpc { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("issueDateCpc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? IssueDateCpc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idC1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
