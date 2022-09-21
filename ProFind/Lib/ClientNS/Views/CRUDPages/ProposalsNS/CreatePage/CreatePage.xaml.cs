@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.ClientNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
@@ -26,7 +27,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
     public sealed partial class CreatePage : Page
     {
         private byte[] imageBytes;
-        Client IdC;
+        
         Professional IdP;
         public CreatePage()
         {
@@ -77,8 +78,8 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             try
             {
 
-
-                var toCreateAdmin = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = ExpectedBegin_dp.Date, SuggestedEnd = Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = IdC.IdC, IdP3 = IdP.IdP };
+                var loggendClient = LoggedClientStore.LoggedClient;
+                var toCreateAdmin = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = ExpectedBegin_dp.Date, SuggestedEnd = Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = loggendClient.IdC, IdP3 = IdP.IdP };
 
 
 

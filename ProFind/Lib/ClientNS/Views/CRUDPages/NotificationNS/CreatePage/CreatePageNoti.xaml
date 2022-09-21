@@ -60,7 +60,6 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description" TextChanged="Description_tb_TextChanged" KeyDown="Description_tb_KeyDown"
                          />
-                        <CalendarDatePicker />
 
                         <Grid Margin="0,10,0,0" VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
@@ -68,6 +67,7 @@
                                 <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
                         </Grid>
+                        <CalendarDatePicker />
 
                         <Button
                        
