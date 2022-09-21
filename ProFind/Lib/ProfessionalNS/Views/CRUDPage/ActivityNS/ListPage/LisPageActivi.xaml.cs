@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
@@ -58,7 +59,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.ListPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.UpdatePage.UpdatePageActivi));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.UpdatePage.UpdatePageActivi));
         }
 
         private void Activities_lw_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,12 +69,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.ListPage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage.CreatePageActivi));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage.CreatePageActivi));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.SearchPage.SearchPage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.SearchPage.SearchPage));
         }
     }
 }

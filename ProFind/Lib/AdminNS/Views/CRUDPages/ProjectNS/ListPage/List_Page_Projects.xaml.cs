@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using ProFind.Lib.Global.Services;
+using Windows.UI.Xaml.Controls;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -12,6 +13,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ListPage
         public List_Page_Projects()
         {
             this.InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            {
+                var projects = await APIConnection.GetConnection.GetProjectsAsync();
+                ProjectsListView.ItemsSource = projects;
+            }
         }
     }
 }

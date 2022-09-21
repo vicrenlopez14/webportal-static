@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
@@ -55,20 +56,20 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ChatPage.ChatPageCLient));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ChatPage.ChatPageCLient));
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.SearchPage.SearchPageClient));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.SearchPage.SearchPageClient));
 
         }
         private void Activities_lw_SelectionChanged(object sender, ItemClickEventArgs e)
         {
-            var project = e.ClickedItem as Project;
+            var client = e.ClickedItem as Client;
 
-            // new InAppNavigationController().NavigateTo(typeof(UpdatePageProject), project);
+            //new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ReadPage), client);
         }
     }
 }

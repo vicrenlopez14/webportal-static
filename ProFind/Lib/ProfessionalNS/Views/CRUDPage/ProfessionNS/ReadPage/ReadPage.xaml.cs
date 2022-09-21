@@ -12,8 +12,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionNS.ReadPage
     /// </summary>
     public sealed partial class ReadPage : Page
     {
-         Profession Id1;
-
         public ReadPage()
         {
             this.InitializeComponent();

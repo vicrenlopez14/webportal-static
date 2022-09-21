@@ -2,6 +2,8 @@
 using ProFind.Lib.Global.Services;
 using Rank = ProFind.Lib.Global.Services.Rank;
 using ProFind.Lib.Global.Controllers;
+using System.Collections.Generic;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -12,7 +14,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
     /// </summary>
     public sealed partial class List_Ranks : Page
     {
-        Rank Id1 = new Rank();
         public List_Ranks()
         {
             this.InitializeComponent();
@@ -20,19 +21,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
         }
         private async void InitializeData()
         {
-            int idNo = (int)Id1.IdR;
-          Activities_lw.ItemsSource =  await APIConnection.GetConnection.GetProjectstatusAsync(idNo);
+            Ranks_lw.ItemsSource = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
         }
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage.Create_Page));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage.Create_Page));
 
         }
 
         private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.UpdatePage.Update_Page_Rank));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.UpdatePage.Update_Page_Rank));
 
         }
     }

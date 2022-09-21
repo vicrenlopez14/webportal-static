@@ -15,7 +15,7 @@
             <ColumnDefinition Width="0.5*" />
         </Grid.ColumnDefinitions>
         <ListView
-            Name="DashboardProfessionalsActiveListView"
+            Name="ProfessionalsListView" ItemClick="ProjectsActiveListView_ItemClick"
            
             >
             <ListView.ItemTemplate>
