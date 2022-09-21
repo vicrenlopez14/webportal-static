@@ -69,25 +69,24 @@ public class AdminsController : ControllerBase
                 foreach (var otherCode in otherCodes)
                 {
                     otherCode.ValidCpc = false;
-                    otherCode.VerifiedCpc = false;
                     _context.Update(otherCode);
                 }
 
                 // Creation of the code to be sent to the user
-                string verificationCode = Utils.ShaOperations.GenerateUID();
+                // Random code with 4 digits
+                var random = new Random();
+                var verificationCode = random.Next(1000, 9999).ToString();
                 _context.Changepasswordcodes.Add(new Changepasswordcode
                 {
                     IdCpc = verificationCode,
                     IdA1 = adminFromDb.IdA, // Id of the admin
-                    VerifiedCpc = false, // Not until a client verifies it
                     ValidCpc = true, // Made invalid once the code is used
-                    IssueDateCpc = DateTime.Now
                 });
 
                 // Send email
                 EmailContent emailContent = new EmailContent("Password recovery");
                 emailContent.Html =
-                    $"In order to recover your password, please access this link: <a>https://profind.work/recover-password/admin/{verificationCode}</a>";
+                    $"In order to recover your password, please enter this code in the app: {verificationCode}";
                 List<EmailAddress> emailAddresses = new List<EmailAddress>
                     { new EmailAddress(adminFromDb.EmailA) { DisplayName = adminFromDb.NameA } };
                 EmailRecipients emailRecipients = new EmailRecipients(emailAddresses);
@@ -95,7 +94,7 @@ public class AdminsController : ControllerBase
                 SendEmailResult emailResult =
                     Utils.EmailClientUtil.GetEmailClient.Send(emailMessage, CancellationToken.None);
 
-                return Ok("Password recovery link has been sent to the indicated email address.");
+                return Ok("Password recovery code has been sent to the indicated email address.");
             }
         }
 
@@ -112,10 +111,11 @@ public class AdminsController : ControllerBase
             var codeFromDb = await _context.Changepasswordcodes.FirstOrDefaultAsync(c => c.IdCpc == code);
             if (codeFromDb != null)
             {
-                if (codeFromDb.ValidCpc == true && codeFromDb.VerifiedCpc == false)
+                if (codeFromDb.ValidCpc == true)
                 {
-                    Redirect($"profind://recover-password/admin/{code}");
-                    return Ok(codeFromDb.IdA1);
+                    codeFromDb.ValidCpc = false;
+                    _context.Update(codeFromDb);
+                    return Ok("Code is valid.");
                 }
             }
         }
@@ -153,7 +153,7 @@ public class AdminsController : ControllerBase
 
         return admin;
     }
-    
+
     // Get admin from email
     // GET: api/Admins/GetAdminFromEmail
     [HttpGet("GetByEmail/{email}")]
@@ -173,7 +173,7 @@ public class AdminsController : ControllerBase
 
         return admin;
     }
-    
+
 
     // PUT: api/Admins/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
