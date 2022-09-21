@@ -36,12 +36,12 @@ namespace ProFind.Lib.Global.Helpers
             else if (number.Length > 0 && e.Key == VirtualKey.Decimal && !number.Contains(".")) return true;
             else return false;
         }
-        public static bool CheckDateUp (DateTimeOffset date)
+        public static bool CheckDateUp(DateTimeOffset date)
         {
             return date >= DateTimeOffset.Now;
         }
 
-        public static bool CheckDateDown (DateTimeOffset date)
+        public static bool CheckDateDown(DateTimeOffset date)
         {
             return date <= DateTimeOffset.Now;
         }
