@@ -3,6 +3,9 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.ClientNS.Controllers;
+using System.Linq;
+using System.Collections.Generic;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,8 +24,23 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
         }
         private async void InitializeData()
         {
-            NotificationListView.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage));
+            var loggendClient = LoggedClientStore.LoggedClient;
+            var project = await APIConnection.GetConnection.GetProjectsAsync();
+            var Notification = await APIConnection.GetConnection.GetNotificationsAsync();
+
+            var RelatedProjects = project.Where(c => c.IdC1 == loggendClient.IdC).ToList();
+
+            var RelatedNotification = new List<Notification>();
+
+
+            foreach (var Projects in project)
+            {
+                var RelatedANotificationsForRelatedProject = Notification.Where(n => n.IdPj2 == Projects.IdPj).ToList();
+                RelatedNotification.AddRange(RelatedANotificationsForRelatedProject);
+            }
+
+            NotificationListView.ItemsSource = RelatedNotification ;
+           
         }
 
         private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)

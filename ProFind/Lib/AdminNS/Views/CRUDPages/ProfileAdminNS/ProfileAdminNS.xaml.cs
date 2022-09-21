@@ -1,4 +1,6 @@
-﻿using ProFind.Lib.Global.Services;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
+using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +33,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfileAdminNS
 
         private async void InitializeData()
         {
-            ListViewProfileAdmin.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
+            var loggendAdmin = LoggedAdminStore.LoggedAdmin;
+            var client = await APIConnection.GetConnection.GetAdminsAsync();
+            var RelatedAdmin = new List<Admin>();
+
+            var RelatedClient2 = client.Where(c => c.IdA == loggendAdmin.IdA).ToList();
+
+            RelatedAdmin.AddRange(RelatedClient2);
+            ListViewProfileAdmin.ItemsSource = RelatedAdmin;
         }
     }
 }
