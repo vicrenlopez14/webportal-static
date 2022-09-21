@@ -35,11 +35,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
 
         private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-          
+         
         }
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
+            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage.ProfessionalInformationAddition));
         }
         
     }

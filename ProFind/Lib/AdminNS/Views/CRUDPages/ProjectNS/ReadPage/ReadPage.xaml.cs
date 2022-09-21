@@ -49,7 +49,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
         }
     }
 }

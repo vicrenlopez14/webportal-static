@@ -21,7 +21,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
         }
         private async void InitializeData()
         {
-            Professions_lw.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync() as List<Profession>;
+            ProfessionalsListView.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync() as List<Profession>;
         }
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)

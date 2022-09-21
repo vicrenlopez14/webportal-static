@@ -20,7 +20,7 @@
             >
             <ListView.ItemTemplate>
 
-                <DataTemplate x:DataType="services:Profession">
+                <DataTemplate x:DataType="services:Professional">
                     <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -31,7 +31,7 @@
                                 <Image
                                     Width="100"
                                     Height="100"
-                                    Source="https://www.muypymes.com/wp-content/uploads/2012/04/profesionales.jpg" />
+                                    Source="{Binding PictureP}" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
                                 <StackPanel>
@@ -44,13 +44,13 @@
                                     <TextBlock
                                 FontWeight="Bold"
                                 Text="Name:" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding NamePfs}" />
+                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding NameP}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock
                                 FontWeight="Bold"
-                                Text="" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="" />
+                                Text="E-mail" />
+                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding EmailP}" />
                                 </StackPanel>
                                 <StackPanel
                                      Grid.Column="1"
@@ -65,8 +65,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Search Activity" Grid.Column="1" VerticalAlignment="Top" Click="Button_Click_2" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Activity" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Professional" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
         </StackPanel>
     </Grid>
 </Page>

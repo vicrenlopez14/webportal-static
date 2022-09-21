@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListView Grid.Column="0" Name="Notifications_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
+        <ListView Grid.Column="0" Name="Notifications_lw"  Grid.ColumnSpan="2" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Notification">
                     <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
@@ -63,7 +63,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Activity" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Notification" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
         </StackPanel>
     </Grid>
 </Page>
