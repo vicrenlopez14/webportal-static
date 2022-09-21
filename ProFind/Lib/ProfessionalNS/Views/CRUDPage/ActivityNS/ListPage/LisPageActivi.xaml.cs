@@ -48,7 +48,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.ListPage
                 relatedActivities.AddRange(relatedActivitiesForThisProject);
             }
 
-
             Activities_lw.ItemsSource = relatedActivities.ToList();
         }
 
