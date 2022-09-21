@@ -30,10 +30,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
         {
 
             this.InitializeComponent();
+            AddEvents();
 
 
         }
-
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField(); 
+           
+        }
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -183,6 +189,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage
             Description_tb.Text = "";
             ExpectedBegin_dp.Date = DateTime.Now;
             ExpectedEnd_dp.Date = DateTime.Now;
+        }
+
+        private void Title_tb_KeyDown_1(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

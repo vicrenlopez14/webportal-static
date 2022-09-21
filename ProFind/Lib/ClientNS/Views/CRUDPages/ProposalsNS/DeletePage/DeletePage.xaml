@@ -49,7 +49,7 @@
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description"
+                        PlaceholderText="Description" KeyDown="Description_tb_KeyDown"
                          />
 
                     <Grid Margin="0,10,0,0" VerticalAlignment="Center">

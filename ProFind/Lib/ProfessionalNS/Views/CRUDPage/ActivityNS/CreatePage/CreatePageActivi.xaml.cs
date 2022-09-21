@@ -29,9 +29,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage
         Professional id2;
         private bool isFirstAdmin = false;
         Project id = new Project();
+
         public CreatePageActivi()
         {
             this.InitializeComponent();
+            AddEvents();
         }
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
@@ -99,6 +101,24 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage
         {
             Title_tb.Text = "";
             Description_tb.Text = "";
+        }
+
+        private void Title_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if(FieldsChecker.OnlyLetters(e)) e.Handled = true;  
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
         }
     }
 }

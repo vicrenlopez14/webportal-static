@@ -46,7 +46,7 @@
                                     PlaceholderText="Name"
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="FirstName1_tbx_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -141,7 +141,7 @@
                                     PlaceholderText="AFP"
                                     RenderTransformOrigin="0.6,0.536"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="Afp_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform
                                             Rotation="-0.195"
@@ -172,7 +172,7 @@
                                     PlaceholderText="Seguro"
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="SeguroSocial_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -191,7 +191,7 @@
                                     PlaceholderText="Position"
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="TextBox_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -229,7 +229,7 @@
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="CodigoPostal_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -242,7 +242,7 @@
                                     PlaceholderText="mail@example.com"
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="Email_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -276,7 +276,7 @@
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False">
+                                    UseLayoutRounding="False" KeyDown="Salario_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>

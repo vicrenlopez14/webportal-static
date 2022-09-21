@@ -47,14 +47,14 @@
                     <TextBox
                         x:Name="Title_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged"
+                        PlaceholderText="Title" TextChanged="Title_tb_TextChanged" KeyDown="Title_tb_KeyDown_1"
                          />
                     <TextBox
                         x:Name="Description_tb"
                         Header="Descriptin"
                         Margin="0,15,0,0"
                         PlaceholderText="Description"
-                        TextWrapping="Wrap"
+                        TextWrapping="Wrap" KeyDown="Description_tb_KeyDown" TextChanged="Description_tb_TextChanged"
                          />
                     <DatePicker
                         Name="ExpectedBegin_dp"

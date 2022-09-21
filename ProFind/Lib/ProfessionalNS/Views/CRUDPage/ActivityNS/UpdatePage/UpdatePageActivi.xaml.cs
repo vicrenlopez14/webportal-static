@@ -106,5 +106,23 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.UpdatePage
         {
             await APIConnection.GetConnection.DeleteActivityAsync( id33.IdA);
         }
+
+        private void Title_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+        }
     }
 }

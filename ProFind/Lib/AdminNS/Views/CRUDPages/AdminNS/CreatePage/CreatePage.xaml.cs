@@ -32,6 +32,15 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
             this.InitializeComponent();
             loadUsefulThings();
+            AddEvents();
+
+        }
+        private void AddEvents()
+        {
+            Name_tb.OnEnterNextField();
+           Email_tb.OnEnterNextField();
+            PhoneNumber_tb.OnEnterNextField();
+
 
         }
 
@@ -159,6 +168,24 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         {
             new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
 
+        }
+
+        private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+
+        }
+
+        private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.CheckEmail(Email_tb.Text)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void PhoneNumber_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+           
         }
     }
 }

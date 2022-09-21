@@ -24,8 +24,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         public Client_Update_Delete()
         {
             this.InitializeComponent();
+            AddEvents();
         }
+        private void AddEvents()
+        {
+            Name1_tbx.OnEnterNextField();
+            Email_tbx.OnEnterNextField();
+           Phone_tbx.OnEnterNextField();
 
+
+
+        }
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -90,6 +99,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+        }
+
+        private void Name1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Email_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.CheckEmail(Email_tbx.Text)) e.Handled = true;
+            else e.Handled = false;
         }
     }
 }

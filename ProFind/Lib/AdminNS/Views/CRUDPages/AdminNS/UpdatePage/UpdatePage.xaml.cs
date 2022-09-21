@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Services;
 using Admin = ProFind.Lib.Global.Services.Admin;
+using ProFind.Lib.Global.Helpers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +23,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
         public UpdatePage()
         {
             this.InitializeComponent();
+            loadUsefulthings();
+        }
+        private void AddEvents()
+        {
+            FirstName1_tbx.OnEnterNextField();
+            Email_tbx.OnEnterNextField();
+            Phone_tbx.OnEnterNextField();
+           
+
+
         }
 
         private async void loadUsefulthings()
@@ -74,6 +85,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
             }
+            else if (string.IsNullOrEmpty(Phone_tbx.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+            }
             else if (string.IsNullOrEmpty(Password_tbx.Password))
             {
                 var dialog = new MessageDialog("The field is empty");
@@ -95,6 +111,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         }
 
+        private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+
+        }
+
+        private void Email_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.CheckEmail(Email_tbx.Text)) e.Handled = true;
+            else e.Handled = false;
+
+        }
     }
 }
 

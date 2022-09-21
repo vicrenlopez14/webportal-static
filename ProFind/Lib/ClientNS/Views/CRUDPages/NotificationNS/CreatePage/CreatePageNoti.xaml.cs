@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -29,6 +30,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
         public CreatePageNoti()
         {
             this.InitializeComponent();
+            AddEvents();
         }
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
@@ -93,6 +95,24 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
             {
 
             }
+        }
+
+        private void Title_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
         }
     }
 }

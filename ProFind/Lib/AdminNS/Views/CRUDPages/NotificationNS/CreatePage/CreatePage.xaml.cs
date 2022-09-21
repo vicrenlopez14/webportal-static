@@ -21,6 +21,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
         public CreatePage()
         {
             this.InitializeComponent();
+            AddEvents();
+        }
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
@@ -87,6 +94,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.CreatePage
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
 
+        }
+
+        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
         }
     }
 }

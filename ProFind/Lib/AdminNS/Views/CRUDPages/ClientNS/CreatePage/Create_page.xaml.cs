@@ -19,9 +19,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
         public Create_page()
         {
             this.InitializeComponent();
+            AddEvents();
+        }
+        private void AddEvents()
+        {
+            Name_tb.OnEnterNextField();
+            Email_tb.OnEnterNextField();
+            PhoneNumber_tb.OnEnterNextField();
+           
+
+
         }
 
-      
+
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +60,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
             PictureSelection_btn.IsChecked = !PictureSelection_btn.IsChecked;
+        }
+
+        private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.CheckEmail(Email_tb.Text)) e.Handled = true;
+            else e.Handled = false;
         }
     }
 }
