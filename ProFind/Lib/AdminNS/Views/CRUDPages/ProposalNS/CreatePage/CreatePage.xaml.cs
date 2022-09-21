@@ -108,7 +108,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
 
                     await contentDialog.ShowAsync();
 
-                    new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPage));
+                    new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
                 }
             }
 

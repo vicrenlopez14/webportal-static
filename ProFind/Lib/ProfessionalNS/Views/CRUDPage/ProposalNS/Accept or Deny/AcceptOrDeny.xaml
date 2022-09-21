@@ -1,13 +1,12 @@
 ﻿<Page
-    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage"
+    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    Style="{StaticResource PageStyle}"
-    mc:Ignorable="d">
-
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid>
@@ -37,7 +36,7 @@
                                 HorizontalAlignment="Left"
                                
                                
-                                Content="Select a picture" />
+                                Content="Select a picture" Click="PictureSelection_btn_Click" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"
@@ -67,6 +66,15 @@
                                 <ColumnDefinition Width="57*"/>
                                 <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Orientation="Vertical"/>
+                            <ComboBox
+                                Name="Client_cb"
+                                Grid.Column="1"
+                                Margin="24,20,0,0"
+                                Header="Client"
+                                SelectedIndex="0" Width="217"
+                                />
+
                             <ComboBox
 
                                 Name="InitialStatus_cb"
@@ -76,37 +84,20 @@
                                 Header="Initial status"
                                 SelectedIndex="0"
                                 />
-                            <StackPanel Grid.Column="1" Orientation="Vertical">
-                                <TextBlock
-                                   
-                                    Margin="0,22"
-                                    HorizontalAlignment="Center"
-                                    d:Text="Selected professional" />
-                                <ComboBox
-                                   Margin="110,-20,0,0"
-                            x:Name="Professional_cb"
-                           
-                            SelectedIndex="0" Width="99"
-                            />
-                                <Button HorizontalAlignment="Center" Margin="20">Select</Button>
-
-                            </StackPanel>
-                            <ComboBox
-                                Name="Client_cb"
-                                Grid.Column="1"
-                                Margin="349,20,0,0"
-                                Header="Client"
-                                SelectedIndex="0" Grid.ColumnSpan="2" Width="85"
-                                />
-
-
                         </Grid>
                         <Button
                             x:Name="Create_btn"
-                            Width="100"
+                            Width="160"
                            
-                            Content="Create"
-                            Style="{StaticResource AccentButtonStyle}" />
+                            Content="Accept and Create"
+                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click" />
+                        <Button
+                            x:Name="Decline"
+                            Width="160"
+                           
+                            Content="Decline"
+                            Margin="200,-30,3,33"
+                            Style="{StaticResource AccentButtonStyle}" Click="Decline_Click" RenderTransformOrigin="0.528,0.531" />
 
 
 
@@ -117,7 +108,7 @@
                             </Grid.ColumnDefinitions>
                         </Grid>
 
-                        <muxc:ProgressRing
+                        <d:ProgressRing
                             x:Name="Creation_pr"
                             Margin="0,20,0,0"
                             IsActive="False" />

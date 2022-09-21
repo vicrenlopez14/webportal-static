@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
@@ -18,17 +19,18 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class CreatePage : Page
+    public sealed partial class UpdatePage : Page
     {
         private byte[] imageBytes;
         Client IdC;
         Professional IdP;
-        public CreatePage()
+        Proposal IPP;
+        public UpdatePage()
         {
             this.InitializeComponent();
             AddEvents();
@@ -44,7 +46,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
         {
             try
             {
-              
+
 
                 var file = await PickFileHelper.PickImage();
 
@@ -62,7 +64,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             }
             finally
             {
-                
+
                 PictureSelection_btn.IsChecked = false;
             }
         }
@@ -74,6 +76,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
+           
 
         }
 
@@ -97,12 +100,12 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             {
 
 
-                var toCreateAdmin = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = ExpectedBegin_dp.Date, SuggestedEnd = Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = IdC.IdC, IdP3 = IdP.IdP };
+                var toCreateAdmin = new Proposal {  TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = Theend.Date, PicturePp = imageBytes };
 
 
 
 
-                var result = await APIConnection.GetConnection.PostProposalAsync(toCreateAdmin);
+                 await APIConnection.GetConnection.PutProposalAsync(IPP.IdPp,toCreateAdmin);
                 new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
 
 
@@ -113,33 +116,19 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             }
             finally
             {
-               
+
             }
         }
 
-        private void Reset_btn_Click(object sender, RoutedEventArgs e)
+        private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            Title_tb.Text = "";
-            Description_tb.Text = "";
-
+            await APIConnection.GetConnection.DeleteProposalAsync(IPP.IdPp);
+            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
         }
 
-        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private void Create_btn_Click_12(object sender, RoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
-        }
-
-        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
-        }
-
-        private void AddEvents()
-        {
-            Title_tb.OnEnterNextField();
-            Description_tb.OnEnterNextField();
+            new InAppNavigationController().GoBack();
         }
     }
 }
