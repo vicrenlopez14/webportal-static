@@ -111,7 +111,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-          
+            
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ProFind.Lib.Global.Helpers
     {
         public static bool CheckEmail(string email)
         {
-            string expresion = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9]+)*(.[a-z]{2,4})$";
+            string expresion = "^[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9]+)(.[a-z]{2,4})$";
             if (Regex.IsMatch(email, expresion))
             {
                 if (Regex.Replace(email, expresion, string.Empty).Length == 0)
@@ -36,12 +36,12 @@ namespace ProFind.Lib.Global.Helpers
             else if (number.Length > 0 && e.Key == VirtualKey.Decimal && !number.Contains(".")) return true;
             else return false;
         }
-        public static bool CheckDateUp (DateTimeOffset date)
+        public static bool CheckDateUp(DateTimeOffset date)
         {
             return date >= DateTimeOffset.Now;
         }
 
-        public static bool CheckDateDown (DateTimeOffset date)
+        public static bool CheckDateDown(DateTimeOffset date)
         {
             return date <= DateTimeOffset.Now;
         }
