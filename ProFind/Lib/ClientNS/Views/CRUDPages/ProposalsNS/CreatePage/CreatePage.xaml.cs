@@ -70,7 +70,6 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
