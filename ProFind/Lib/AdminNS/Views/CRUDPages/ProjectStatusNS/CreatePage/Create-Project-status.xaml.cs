@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Services;
 using Projectstatus = ProFind.Lib.Global.Services.Projectstatus;
+using ProFind.Lib.Global.Helpers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,6 +31,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectStatusNS.CreatePage
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
         }
     }
 }

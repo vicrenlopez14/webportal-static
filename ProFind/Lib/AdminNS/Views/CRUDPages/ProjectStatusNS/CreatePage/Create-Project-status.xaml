@@ -27,7 +27,7 @@
                         <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Name"
+                        PlaceholderText="Name" KeyDown="Name_tb_KeyDown"
                          />
 
                         <Grid Margin="0,10,0,0" VerticalAlignment="Center">
