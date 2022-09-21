@@ -23,7 +23,6 @@
             
             />
 
-
         <ListView Name="Activities_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models11:Activity">

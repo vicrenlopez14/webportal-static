@@ -220,6 +220,9 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime">
       <Version>2.3.24</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
+      <Version>7.1.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.8.1</Version>
     </PackageReference>
