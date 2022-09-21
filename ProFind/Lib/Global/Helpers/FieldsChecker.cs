@@ -46,6 +46,11 @@ namespace ProFind.Lib.Global.Helpers
             if ((e.Key >= VirtualKey.A && e.Key <= VirtualKey.Z) || (e.Key == VirtualKey.Back)) return true;
             else return false;
         }
+        public static bool OnlyInts(Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if ((e.Key >= VirtualKey.Number0 && e.Key <= VirtualKey.Number9) || (e.Key == VirtualKey.Back)) return true;
+            else return false;
+        }
 
         public static bool CheckPassword(string pass)
         {

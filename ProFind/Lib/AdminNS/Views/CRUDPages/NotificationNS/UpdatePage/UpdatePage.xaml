@@ -51,12 +51,12 @@
                     <TextBox
                         x:Name="Title_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Title"
+                        PlaceholderText="Title" KeyDown="Title_tb_KeyDown"
                          />
                     <TextBox
                         x:Name="Description_tb"
                         Margin="0,15,0,0"
-                        PlaceholderText="Description"
+                        PlaceholderText="Description" KeyDown="Description_tb_KeyDown"
                          />
                     <DatePicker x:Name="fecha" Header="DateTime" />
 

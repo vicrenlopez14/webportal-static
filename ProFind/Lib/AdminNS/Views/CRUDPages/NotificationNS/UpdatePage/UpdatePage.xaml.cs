@@ -20,10 +20,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
         public UpdatePage()
         {
             this.InitializeComponent();
-        }
-       
+            AddEvents();
 
-      
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+
+        }
+
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
             Title_tb.Text = "";
@@ -80,6 +87,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage), toManipulate);
+        }
+
+        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
         }
     }
 }
