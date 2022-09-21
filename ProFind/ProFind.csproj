@@ -429,8 +429,14 @@
     <Compile Include="Lib\AdminNS\Views\Main_Page_Admin\Main_Page_Admin.xaml.cs">
       <DependentUpon>Main_Page_Admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\EmailSent.xaml.cs">
+      <DependentUpon>EmailSent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml.cs">
       <DependentUpon>PasswordChangePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml.cs">
+      <DependentUpon>SendEmailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Controllers\LoggedClientStore.cs" />
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNS\ReadPageA\ReadPageActivi.xaml.cs">
@@ -895,7 +901,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\AdminNS\Views\Operations\PasswordChangePage\EmailSent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\AdminNS\Views\Operations\PasswordChangePage\PasswordChangePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
