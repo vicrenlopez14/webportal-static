@@ -6,24 +6,30 @@
     xmlns:models11="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
-    <Grid Margin="0,10,0,0">
+    <Grid Margin="0,10,0,0" Padding="20">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="751*" />
-            <ColumnDefinition Width="749*" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <Button Style="{StaticResource AccentButtonStyle}" Content="Search " Grid.Column="1" Margin="484,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="32" Width="99" />
-        <TextBlock
-                        Grid.Column="0"
-                        Margin="20,20,0,928"
-                        HorizontalAlignment="Left"
-                        RenderTransformOrigin="0.638,0.776"
-                        Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="List Professional" Grid.ColumnSpan="2" Width="1203"
-            
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Left" Orientation="Vertical">
+            <TextBlock
+                RenderTransformOrigin="0.638,0.776"
+                Style="{StaticResource SubheaderTextBlockStyle}"
+                Text="List Professional" Width="1203" Height="42"
             />
+            <AutoSuggestBox PlaceholderText="Search"
+        TextChanged="Control2_TextChanged"
+        QueryIcon="Find"
+        x:Name="Search_Client"
+        Margin="0 15 0 0"
+        Height="34"/>
+        </StackPanel>
         <ListView
-            Name="DashboardProfessionalsActiveListView" Margin="20,104,56,45" Grid.ColumnSpan="2"
+            Name="DashboardProfessionalsActiveListView" Margin="20,104,56,45" Grid.ColumnSpan="2" ItemClick="DashboardProfessionalsActiveListView_ItemClick"
+            IsItemClickEnabled="True"
+            SelectionMode="Single"
            
             >
             <ListView.ItemTemplate>
@@ -60,7 +66,7 @@
                     Margin="-425,-100,0,-70" />
                         <StackPanel Height="23" Margin="130,5">
                             <TextBlock
-                        x:Uid="ProfessionalReadPageClientsII"
+                       
                         Height="23"
                         FontWeight="Bold"
                         Text="Professional:" />

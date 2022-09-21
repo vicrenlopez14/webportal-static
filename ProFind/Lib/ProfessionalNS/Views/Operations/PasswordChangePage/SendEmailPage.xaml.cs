@@ -38,7 +38,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
                 ToggleThemeTeachingTip1.IsOpen = true;
                 return;
             }
-            await APIConnection.GetConnection.SendRecoveryEmailAsync(email);
+            await APIConnection.GetConnection.SendRecoveryEmailProfessionalsAsync(email);
             new InAppNavigationController().NavigateTo(typeof(CodeVerification),email);
         }
     }

@@ -20,7 +20,7 @@
                 TintOpacity="0.6" />
         </Grid.Resources>
         <muxc:NavigationView
-            x:Uid="WelcomeMainPageProfessionals"
+           
             Header="Welcome"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
@@ -47,7 +47,7 @@
                 <!--Projects overview-->
                 <muxc:NavigationViewItem
                     Content="Projects overview"
-                    Tag="ProjectsOverview_Page" >
+                    Tag="ProjectsOverview_Page_Professionals" >
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;" />
                     </muxc:NavigationViewItem.Icon>
@@ -67,28 +67,6 @@
                             Content="Clients"
                             Icon="People"
                             Tag="Clients_Page_Professionals" />
-                <!--Platform-->
-                <muxc:NavigationViewItem
-                    Content="Platform"
-                    Tag="Activity_Page">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDAF;" />
-                    </muxc:NavigationViewItem.Icon>
-                    <muxc:NavigationViewItem.MenuItems>
-                        <muxc:NavigationViewItem
-                            Content="Professions"
-                            Icon="Mail"
-                            Tag="Professions_Page" />
-                        <muxc:NavigationViewItem
-                            Content="Work-Day Types"
-                            Icon="Mail"
-                            Tag="Workdaytype_Page" />
-                        <muxc:NavigationViewItem
-                            Content="Ranks"
-                            Icon="Mail"
-                            Tag="Ranks_Page" />
-                    </muxc:NavigationViewItem.MenuItems>
-                </muxc:NavigationViewItem>
                 <!--Notification center-->
                 <muxc:NavigationViewItem
                     Content="Notification center"
@@ -135,7 +113,7 @@
 
         </muxc:NavigationView>
         <Button
-            x:Uid="ButtonMainPageProfessional"
+           
             Margin="-533,-43,0,0"
             VerticalAlignment="Top"
             Content="Button" />

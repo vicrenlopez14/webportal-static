@@ -6,6 +6,8 @@ using ProFind.Lib.ClientNS.Views.Main_Page;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using MySqlX.XDevAPI.Common;
+using ProFind.Lib.ClientNS.Controllers;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -50,22 +52,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender,
             Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(InitPage_Login));
-
-        }
-        private async Task Button_Click_5Async(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            var registerClient = new ClientLogin
-            {
-                Email = Email_tb.Text,
-                Password = Password_tb.Password
-            };
-
-            await APIConnection.GetConnection.LoginClientAsync(registerClient);
-
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-
-            FailedAuth_tt.IsOpen = true;
+          
 
         }
 
@@ -74,42 +61,11 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
             ProfilePicture_pp.DisplayName = sender.Text;
         }
 
-        private async void btnExaminar_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            pictureBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
-        }
 
         private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-
-        private async void Button_Click_5(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            var registerClient = new ClientLogin { Email = Email_tb.Text, Password = Password_tb.Password };
-            await APIConnection.GetConnection.LoginClientAsync(registerClient);
-
-            new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.Main_Page.Main_Page_Professional));
-
-            FailedAuth_tt.IsOpen = true;
-
-            if (string.IsNullOrEmpty(Name_tb.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Email_tb.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Password_tb.Password))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-        }
-
         private void Administrators_Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             new GlobalNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.Int_Page.Int_Page));
@@ -118,6 +74,80 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         private void Professionals_Login_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             new GlobalNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.InitPage.InitPage));
+        }
+
+        private async void btnExaminar_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            pictureBytes = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
+        }
+
+        private async void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(Name_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Email_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Password_tb.Password))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+            var registerClient = new Client
+            {
+                IdC = "",
+                NameC = Name_tb.Text,
+                EmailC = Email_tb.Text,
+                PasswordC = Password_tb.Password,
+                PictureC = pictureBytes,
+            };
+
+            try
+            {
+                await APIConnection.GetConnection.RegisterClientAsync(registerClient);
+
+                LoggedClientStore.LoggedClient = await APIConnection.GetConnection.GetClientByEmailAsync(Email_tb.Text);
+
+                new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 201)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
+                }
+                else if (ex.StatusCode == 400)
+                {
+                    var dialog = new MessageDialog("Incorrect, check your credentials.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    {
+                        var dialog = new MessageDialog("Something went wrong, try again later.");
+                        await dialog.ShowAsync();
+                    }
+                }
+
+                Console.WriteLine(ex.Message);
+            }
+
+            
+        }
+
+        private void Hyperlink_Click_1(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(InitPage_Login));
         }
     }
 }

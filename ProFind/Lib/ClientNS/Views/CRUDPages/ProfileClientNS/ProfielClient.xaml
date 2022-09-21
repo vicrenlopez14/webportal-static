@@ -19,7 +19,7 @@
         </StackPanel>
 
         <ListView
-            x:Uid="ListViewProfileClient"
+           
             Name="ListViewProfileClient">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Client">

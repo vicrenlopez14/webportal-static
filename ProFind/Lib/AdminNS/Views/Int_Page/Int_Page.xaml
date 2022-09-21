@@ -37,7 +37,7 @@
                         </Paragraph>
                     </RichTextBlock>
                     <TextBox
-                        x:Name="Email_tb"
+                        Name="Email_tb"
                         Margin="0,15,0,0"
                         PlaceholderText="Email" />
                     <PasswordBox

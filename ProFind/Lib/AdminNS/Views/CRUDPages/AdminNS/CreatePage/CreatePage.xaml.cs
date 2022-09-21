@@ -38,9 +38,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         private void AddEvents()
         {
             Name_tb.OnEnterNextField();
-           Email_tb.OnEnterNextField();
+            Email_tb.OnEnterNextField();
             PhoneNumber_tb.OnEnterNextField();
-
+            Password_pb.OnEnterNextField();
 
         }
 
@@ -134,7 +134,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 Creation_pr.IsActive = true;
 
                 ToCreateAdmin.IdA = "";
-                
+
                 var result = await APIConnection.GetConnection.PostAdminAsync(ToCreateAdmin);
                 ToggleThemeTeachingTip2.IsOpen = true;
 
@@ -143,7 +143,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             {
                 if (ex.StatusCode == 201)
                 {
-                ToggleThemeTeachingTip2.IsOpen = true;
+                    ToggleThemeTeachingTip2.IsOpen = true;
 
                 }
             }
@@ -185,7 +185,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void PhoneNumber_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
     }
 }

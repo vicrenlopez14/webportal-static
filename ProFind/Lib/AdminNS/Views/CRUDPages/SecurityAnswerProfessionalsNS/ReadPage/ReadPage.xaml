@@ -15,7 +15,7 @@
         </StackPanel>
 
         <ListView
-            x:Uid="ListViewSecurityAnswerProfessionals"
+           
             Name="SecurityAnswerProfessionalsListView"
             IsItemClickEnabled="True"
             SelectionMode="None">

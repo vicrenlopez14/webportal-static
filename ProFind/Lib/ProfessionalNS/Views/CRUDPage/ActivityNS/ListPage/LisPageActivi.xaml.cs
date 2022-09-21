@@ -1,5 +1,6 @@
 ﻿using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,12 +33,28 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.ListPage
         }
         public async void GetProjectsList()
         {
-            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetActivityAsync( Id.IdA);
+            var loggedProfessional = LoggedProfessionalStore.LoggedProfessional;
+            var projects = await APIConnection.GetConnection.GetProjectsAsync();
+
+            // Projects where loggedProfessional is related
+            var relatedProjects = projects.Where(p => p.IdP1 == loggedProfessional.IdP).ToList();
+            
+            // Activities where loggedProfessional is related through a project
+            var relatedActivities = new List<Activity>();
+            foreach (var project in relatedProjects)
+            {
+                var activities = await APIConnection.GetConnection.GetActivitiesAsync();
+                var relatedActivitiesForThisProject = activities.Where(a => a.IdPj1 == project.IdPj).ToList();
+                relatedActivities.AddRange(relatedActivitiesForThisProject);
+            }
+
+
+            Activities_lw.ItemsSource = relatedActivities.ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)

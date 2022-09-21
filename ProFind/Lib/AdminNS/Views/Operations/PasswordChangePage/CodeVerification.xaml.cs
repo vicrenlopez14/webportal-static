@@ -47,7 +47,7 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
         {
             try
             {
-                await APIConnection.GetConnection.VerifyRecoveryCodeAsync(Code_tb.Text);
+                await APIConnection.GetConnection.VerifyRecoveryCodeAdminsAsync(Code_tb.Text);
                 new InAppNavigationController().NavigateTo(typeof(PasswordChangePage),email);
             }
             catch

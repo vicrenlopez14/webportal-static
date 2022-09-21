@@ -20,7 +20,7 @@
         </StackPanel>
 
         <ListView
-            x:Uid="ListViewProfileAdmin"
+           
             Name="ListViewProfileAdmin">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Admin">

@@ -1,5 +1,6 @@
 ﻿using MySqlX.XDevAPI.Common;
 using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Views.Main_Page;
@@ -21,6 +22,14 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
         {
             this.InitializeComponent();
         }
+
+        // validations
+        private static void ValidationsSetUp()
+        {
+           
+        }
+        
+        
         private void RichTextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
@@ -53,6 +62,11 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
             try
             {
                 await APIConnection.GetConnection.LoginAdminAsync(body: adminLogin);
+
+                LoggedAdminStore.LoggedAdmin = await APIConnection.GetConnection.GetAdminFromEmailAsync(Email_tb.Text);
+
+                new GlobalNavigationController().NavigateTo(typeof(Main_Page_Admin.Main_Page_Admin));
+                
             }
             catch (ProFindServicesException ex)
             {

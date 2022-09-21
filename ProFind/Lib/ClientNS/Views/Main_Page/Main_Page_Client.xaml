@@ -37,7 +37,7 @@
                 <muxc:NavigationViewItem
                         Content="Catalog"
                         FontWeight="Medium"
-                        Tag="Activity_Page_Clients" >
+                        Tag="Catalog_Page" >
                     <muxc:NavigationViewItem.Icon>
                         <SymbolIcon Symbol="Find"/>
                     </muxc:NavigationViewItem.Icon>

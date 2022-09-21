@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models.Generated;
+using WebService.Utils;
 using Client = WebService.Models.Generated.Client;
 
 namespace WebService.Controllers;
@@ -25,6 +26,8 @@ public class ClientsController : ControllerBase
     {
         if (ModelState.IsValid)
         {
+            client.AssignId();
+            client.PasswordC = ShaOperations.ShaPassword(client.PasswordC);
             _context.Add(client);
             await _context.SaveChangesAsync();
             return Ok(client);
@@ -43,7 +46,7 @@ public class ClientsController : ControllerBase
         {
             var clientFromDb =
                 await _context.Clients.FirstOrDefaultAsync(a =>
-                    a.EmailC == client.Email && a.PasswordC == client.Password);
+                    a.EmailC == client.Email && a.PasswordC == Utils.ShaOperations.ShaPassword(client.Password));
             if (clientFromDb != null)
             {
                 return Ok(clientFromDb);
@@ -64,8 +67,8 @@ public class ClientsController : ControllerBase
 
         return await _context.Clients.ToListAsync();
     }
-    
-        // POST: api/Admins/SendRecoveryEmail
+
+    // POST: api/Admins/SendRecoveryEmail
     [HttpPost("SendRecoveryEmail")]
     public async Task<IActionResult> SendRecoveryEmailClients(string email)
     {
@@ -153,7 +156,7 @@ public class ClientsController : ControllerBase
 
         return client;
     }
-    
+
     // Get from email
     // GET: api/Clients/5
     [HttpGet("GetByEmail/{email}")]
@@ -216,6 +219,7 @@ public class ClientsController : ControllerBase
         }
 
         client.AssignId();
+        client.PasswordC = Utils.ShaOperations.ShaPassword(client.PasswordC);
         _context.Clients.Add(client);
         try
         {
@@ -233,7 +237,7 @@ public class ClientsController : ControllerBase
             }
         }
 
-        return CreatedAtAction("GetClient", new {id = client.IdC}, client);
+        return CreatedAtAction("GetClient", new { id = client.IdC }, client);
     }
 
     // DELETE: api/Clients/5
@@ -268,7 +272,8 @@ public class ClientsController : ControllerBase
         if (Name.Length == 0) return await GetClients();
         else
         {
-            var result = await (from client in _context.Clients where (client.NameC.Contains(Name)) select client).ToListAsync();
+            var result = await (from client in _context.Clients where (client.NameC.Contains(Name)) select client)
+                .ToListAsync();
 
             if (result.Any() == false) return NotFound();
             else return result;

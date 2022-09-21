@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models.Generated;
+using WebService.Utils;
 using Admin = WebService.Models.Generated.Admin;
 
 namespace WebService.Controllers;
@@ -26,6 +27,9 @@ public class AdminsController : ControllerBase
     {
         if (ModelState.IsValid)
         {
+            admin.AssignId();
+            admin.PasswordA = ShaOperations.ShaPassword(admin.PasswordA);
+
             _context.Add(admin);
             await _context.SaveChangesAsync();
             return Ok(admin);
@@ -43,7 +47,7 @@ public class AdminsController : ControllerBase
         {
             var adminFromDb =
                 await _context.Admins.FirstOrDefaultAsync(a =>
-                    a.EmailA == admin.Email && a.PasswordA == admin.Password);
+                    a.EmailA == admin.Email && a.PasswordA == Utils.ShaOperations.ShaPassword(admin.Password));
             if (adminFromDb != null)
             {
                 return Ok(adminFromDb);
@@ -217,6 +221,7 @@ public class AdminsController : ControllerBase
         }
 
         admin.AssignId();
+        admin.PasswordA = Utils.ShaOperations.ShaPassword(admin.PasswordA);
         _context.Admins.Add(admin);
         try
         {

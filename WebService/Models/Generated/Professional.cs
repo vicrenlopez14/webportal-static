@@ -60,8 +60,6 @@ namespace WebService.Models.Generated
         public int? IdPfs1 { get; set; }
         [Column("IdDP1", TypeName = "int(11)")]
         public int? IdDp1 { get; set; }
-        [Column("IdWDT1", TypeName = "int(11)")]
-        public int? IdWdt1 { get; set; }
 
         [ForeignKey("IdDp1")]
         [InverseProperty("Professionals")]

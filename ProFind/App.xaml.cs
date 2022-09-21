@@ -128,13 +128,13 @@ namespace ProFind
                     {
                         if (areThereAdmins)
                         {
-                            rootFrame.Navigate(typeof(Lib.ClientNS.Views.InitPage.InitPage), e.Arguments);
-                            new GlobalNavigationController().Init(rootFrame, typeof(InitPage));
+                            //rootFrame.Navigate(typeof(Lib.ClientNS.Views.InitPage.InitPage), e.Arguments);
+                            new GlobalNavigationController().Init(rootFrame, typeof(Lib.ClientNS.Views.InitPage.InitPage));
 
                         }
                         else
                         {
-                            rootFrame.Navigate(typeof(FirstUsePage), e.Arguments);
+                            //rootFrame.Navigate(typeof(FirstUsePage), e.Arguments);
                             new GlobalNavigationController().Init(rootFrame, typeof(FirstUsePage));
                         }
                     }

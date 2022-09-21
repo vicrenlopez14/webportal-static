@@ -17,13 +17,13 @@
                 Padding="20"
                 Orientation="Vertical">
                 <TextBlock
-                    x:Uid="RegisteredAdministratorsReadPageClients"
+                   
                     Margin="20"
                     RenderTransformOrigin="0.638,0.776"
                     Style="{StaticResource SubheaderTextBlockStyle}"
                     Text="Registered administrators" />
                 <ListView
-                    x:Uid="ProjectsListViewReadPageClients"
+                   
                     Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
@@ -61,7 +61,7 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <Button x:Uid="AddReadPageClientsIV" Name="Add_btn">Add</Button>
+            <Button>Add</Button>
         </StackPanel>
     </Grid>
 </Page>

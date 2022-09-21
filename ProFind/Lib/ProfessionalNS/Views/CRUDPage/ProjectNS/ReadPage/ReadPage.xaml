@@ -30,7 +30,7 @@
                         Text="Created projects" />
                 </Grid>
                 <ListView
-                    Name="AdminsListView"
+                    Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
                     SelectionMode="None">

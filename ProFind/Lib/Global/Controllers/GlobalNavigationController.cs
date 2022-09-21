@@ -18,7 +18,6 @@ namespace ProFind.Lib.Global.Controllers
             return true;
         }
 
-
         public void Init(Frame centralController, Type initialView)
         {
             Init(centralController);

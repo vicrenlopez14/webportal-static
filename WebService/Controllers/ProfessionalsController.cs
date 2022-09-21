@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebService.Data;
 using WebService.Models.Generated;
+using WebService.Utils;
 using Professional = WebService.Models.Generated.Professional;
 
 namespace WebService.Controllers;
@@ -24,6 +25,9 @@ public class ProfessionalsController : ControllerBase
     {
         if (ModelState.IsValid)
         {
+            professional.AssignId();
+            professional.PasswordP = ShaOperations.ShaPassword(professional.PasswordP);
+
             _context.Add(professional);
             await _context.SaveChangesAsync();
             return Ok(professional);
@@ -40,7 +44,8 @@ public class ProfessionalsController : ControllerBase
         {
             var professionalFromDb =
                 await _context.Professionals.FirstOrDefaultAsync(a =>
-                    a.EmailP == professional.Email && a.PasswordP == professional.Password);
+                    a.EmailP == professional.Email &&
+                    a.PasswordP == Utils.ShaOperations.ShaPassword(professional.Password));
             if (professionalFromDb != null)
             {
                 return Ok(professionalFromDb);
@@ -82,7 +87,7 @@ public class ProfessionalsController : ControllerBase
 
         return professional;
     }
-    
+
     // Get from email
     [HttpGet("GetByEmail/{email}")]
     public async Task<ActionResult<Professional>> GetProfessionalByEmail(string email)
@@ -101,7 +106,8 @@ public class ProfessionalsController : ControllerBase
 
         return professional;
     }
-        // POST: api/Admins/SendRecoveryEmail
+
+    // POST: api/Admins/SendRecoveryEmail
     [HttpPost("SendRecoveryEmail")]
     public async Task<IActionResult> SendRecoveryEmailProfessionals(string email)
     {
@@ -213,6 +219,7 @@ public class ProfessionalsController : ControllerBase
         }
 
         professional.AssignId();
+        professional.PasswordP = Utils.ShaOperations.ShaPassword(professional.PasswordP);
         _context.Professionals.Add(professional);
         try
         {

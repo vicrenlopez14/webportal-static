@@ -3,6 +3,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using Project = ProFind.Lib.Global.Services.Project;
+using ProFind.Lib.ProfessionalNS.Controllers;
+using System.Linq;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,7 +24,13 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 
         private async void InitializeData()
         {
-            AdminsListView.ItemsSource = await APIConnection.GetConnection.GetProjectsAsync();
+            var loggedProfessional = LoggedProfessionalStore.LoggedProfessional;
+            var projects = await APIConnection.GetConnection.GetProjectsAsync();
+            
+            // Projects where loggedProfessional is related
+            var relatedProjects = projects.Where(p => p.IdP1 == loggedProfessional.IdP).ToList();
+
+            ProjectsListView.ItemsSource = relatedProjects;
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)

@@ -34,25 +34,9 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         void ButtonClickHomeMethod()
         {
 
-            var mail = Mail_tb.Text;
 
 
-            switch (mail)
-            {
-                case "admin@profind.work":
-                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Admin));
-                    break;
-                case "professional@profind.work":
-                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Professional));
-                    break;
-                case "client@profind.work":
-                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
-                    break;
-                default:
-                    new GlobalNavigationController().NavigateTo(typeof(Main_Page_Client));
-                    break;
-            }
-
+        
 
         }
     }

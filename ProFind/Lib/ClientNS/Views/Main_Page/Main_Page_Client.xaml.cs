@@ -24,11 +24,13 @@ namespace ProFind.Lib.ClientNS.Views.Main_Page
         {
             {"Projects_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage) },
             {"Notifications_Page", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },
-            {"Catalog_Page", typeof(Lib.Global.Views.ProfessionalsCatalog.ProfessionalsCatalog) },
+            {"Catalog_Page", typeof(Lib.ClientNS.Views.ProfessionalsCatalog.ProfessionalsCatalog) },
             {"Activity_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.ActivityNS.ReadPageA.ReadPageActivi) },
             {"Professionals_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.ProfessionalNS.ReadPage.ReadPage) },
             {"GeneralNotifications_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },
             {"ProposalNotifications_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },
+            {"ProjectsOverview_Page", typeof(Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage) },
+            {"Projecttype_Page", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
             {"", typeof(CRUDPages.ProjectNS.ReadPage.ReadPage) }
@@ -63,16 +65,12 @@ namespace ProFind.Lib.ClientNS.Views.Main_Page
             var item = args.InvokedItemContainer;
             string selectedItemTag = item.Tag.ToString();
 
-            if (selectedItemTag.Contains("_"))
-            {
-                var split = selectedItemTag.Split('_');
-                // Pending
-
-            }
             sender.Header = item.Content.ToString();
 
-
-
+            if (DefinedPagesDictionary[selectedItemTag] == null)
+            {
+                new InAppNavigationController().NavigateTo(DefinedPagesDictionary["Projects_Page_Clients"]);
+            }
 
             new InAppNavigationController().NavigateTo(DefinedPagesDictionary[selectedItemTag]);
         }
