@@ -30,7 +30,12 @@ namespace ProFind.Lib.Global.Helpers
         {
             return begin >= DateTimeOffset.Now && end >= begin;
         }
-
+        public static bool OnlyFloats(Windows.UI.Xaml.Input.KeyRoutedEventArgs e, string number)
+        {
+            if ((e.Key >= VirtualKey.Number0 && e.Key <= VirtualKey.Number9) || (e.Key == VirtualKey.Back)) return true;
+            else if (number.Length > 0 && e.Key == VirtualKey.Decimal && !number.Contains(".")) return true;
+            else return false;
+        }
         public static bool CheckDateUp (DateTimeOffset date)
         {
             return date >= DateTimeOffset.Now;

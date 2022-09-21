@@ -301,7 +301,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            
+            if (FieldsChecker.OnlyFloats(e, Salario.Text)) e.Handled = true;
+            else e.Handled = false;
         }
 
         private void Nacimiento_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
