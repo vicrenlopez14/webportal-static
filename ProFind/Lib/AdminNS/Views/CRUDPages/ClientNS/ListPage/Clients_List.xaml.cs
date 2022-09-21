@@ -2,6 +2,8 @@
 using ProFind.Lib.Global.Services;
 using Client = ProFind.Lib.Global.Services.Client;
 using ProFind.Lib.Global.Controllers;
+using System.Collections.Generic;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,13 +18,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
         public Clients_List()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            GetClientsList();
         }
 
-        public async void GetProjectsList()
+        public async void GetClientsList()
         {
-
-            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetClientsAsync() as List<Client>;
         }
 
         private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -34,13 +35,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages.Search_Page_Clients));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages.Search_Page_Clients));
 
         }
 
         private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage.Client_Update_Delete));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage.Client_Update_Delete));
 
         }
     }

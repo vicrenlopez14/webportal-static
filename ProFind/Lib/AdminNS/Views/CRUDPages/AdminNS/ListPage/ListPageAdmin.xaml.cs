@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -27,9 +28,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         public ListPageAdmin()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            GetAdminsList();
         }
-        public async void GetProjectsList()
+        public async void GetAdminsList()
         {
 
             AdminsListView.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
@@ -37,19 +38,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage.CreatePage));
         
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.SearchPage.search_admin));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.SearchPage.search_admin));
 
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage.UpdatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage.UpdatePage));
 
         }
     }

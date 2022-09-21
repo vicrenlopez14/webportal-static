@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -27,32 +28,32 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ListPage
         public ListPageActivi()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            GetActivitiesList();
 
         }
-        public async void GetProjectsList()
+        public async void GetActivitiesList()
         {
-            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetProjectsAsync();
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetActivitiesAsync();
         }
 
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage.CreatePage));
         }
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.CreatePage.CreatePage));
         }
 
         private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.SearchPage.SearchPageActivi));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.SearchPage.SearchPageActivi));
         }
 
         private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ReadPage.ReadPage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.ReadPage.ReadPage));
         }
     }
 }

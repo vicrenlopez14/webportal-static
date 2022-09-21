@@ -3,6 +3,7 @@ using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.ClientNS.Views.InitPage;
 using ProFind.Lib.Global.Services;
 using Professional = ProFind.Lib.Global.Services.Professional;
+using System.Collections.Generic;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -18,19 +19,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
         public ReadPage()
         {
             this.InitializeComponent();
-            GetProjectsList();
+            GetProfessionalsList();
         }
-        public async void GetProjectsList()
-
+        public async void GetProfessionalsList()
         {
-            await APIConnection.GetConnection.GetProfessionalsAsync();
-           
+            ProfessionalsListView.ItemsSource = await APIConnection.GetConnection.GetProfessionalsAsync() as List<Professional>;
         }
 
         private async void ProjectsActiveListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Professional project = e.ClickedItem as Professional;
-            new InAppNavigationController().NavigateTo(typeof(InitPage), project);
+            Professional professional = e.ClickedItem as Professional;
+            
+            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage), professional);
         }
 
     }

@@ -24,7 +24,7 @@
             />
 
 
-        <ListView Name="Activities_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
+        <ListView Name="Professions_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Profession">
                     <StackPanel Background="#F4FAE1" CornerRadius="15">
