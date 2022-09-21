@@ -44,7 +44,8 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
             }
             var toChangePassword = new Admin();
             toChangePassword.PasswordA = Password_pb.Password;
-            await APIConnection.GetConnection.PutAdminAsync(toChangePassword);
+            /*var id = await APIConnection.GetConnection.GetAdminFromEmailAsync()
+            await APIConnection.GetConnection.PutAdminAsync(toChangePassword);*/
         }
     }
 }
