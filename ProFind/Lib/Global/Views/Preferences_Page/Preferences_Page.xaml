@@ -13,15 +13,20 @@
         <ScrollViewer>
             <StackPanel>
                 <TextBlock
+                    TextAlignment="Center"
                     FontSize="38"
                     FontWeight="Normal"
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="Preferences" />
                 <Rectangle Height="50" />
-                <TextBlock
+                <StackPanel Orientation="Horizontal" Background="WhiteSmoke">
+                    <SymbolIcon Symbol="Edit" Margin="0,0,10,0"/>
+                    <TextBlock
                     FontWeight="Normal"
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="ThemeMode" />
+                </StackPanel>
+               
                 <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
                     <RadioButton
                        
@@ -38,10 +43,13 @@
                         Tag="Default" />
                 </StackPanel>
                 <Rectangle Height="50" />
-                <TextBlock
+                <StackPanel Orientation="Horizontal" Background="WhiteSmoke">
+                    <SymbolIcon Symbol="Volume" Margin="0,0,10,0"/>
+                    <TextBlock
                     FontWeight="Normal"
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="SoundMode" />
+                </StackPanel>
                 <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="This option enables sound effects in the app." />
                 <StackPanel x:Name="SoundPanel" Margin="0,10,0,0">
                     <RadioButton
@@ -55,10 +63,13 @@
                         Tag="Off" />
                 </StackPanel>
                 <Rectangle Height="50" />
-                <TextBlock
+                <StackPanel Orientation="Horizontal" Background="WhiteSmoke">
+                    <SymbolIcon Symbol="World" Margin="0,0,10,0"/>
+                    <TextBlock
                     FontWeight="Normal"
                     Style="{ThemeResource TitleTextBlockStyle}"
                     Text="Language" />
+                </StackPanel>
                 <RadioButton
                    
                     Content="Spanish"

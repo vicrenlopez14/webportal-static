@@ -444,6 +444,9 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProfessionalNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProfileClientNS\ProfielClient.xaml.cs">
+      <DependentUpon>ProfielClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -579,6 +582,9 @@
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProfileProffessionalNS\ProfileProfessional.xaml.cs">
+      <DependentUpon>ProfileProfessional.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
@@ -869,6 +875,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ProfileClientNS\ProfielClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1014,6 +1024,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProfileProffessionalNS\ProfileProfessional.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

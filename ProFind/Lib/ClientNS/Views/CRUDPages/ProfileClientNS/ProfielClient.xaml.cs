@@ -16,14 +16,14 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfileAdminNS
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProfileClientNS
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class ProfileAdminNS : Page
+    public sealed partial class ProfielClient : Page
     {
-        public ProfileAdminNS()
+        public ProfielClient()
         {
             this.InitializeComponent();
             InitializeData();
@@ -31,7 +31,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfileAdminNS
 
         private async void InitializeData()
         {
-            ListViewProfileAdmin.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
+            ListViewProfileClient.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
         }
     }
 }
