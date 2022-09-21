@@ -31,6 +31,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
         public UpdatePagePJ()
         {
             this.InitializeComponent();
+            AddEvents();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -111,7 +112,15 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            
+            if (FieldsChecker.OnlyFloats(e, TotalPrice_tb.Text)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+            TotalPrice_tb.OnEnterNextField();
         }
     }
 }
