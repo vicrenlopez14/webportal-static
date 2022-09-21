@@ -22,7 +22,6 @@ namespace WebService.Models.Generated
         public string IdA { get; set; } = null!;
         [StringLength(50)]
         public string? NameA { get; set; }
-        [StringLength(50)]
         public string? EmailA { get; set; }
         [StringLength(15)]
         public string? TelA { get; set; }
