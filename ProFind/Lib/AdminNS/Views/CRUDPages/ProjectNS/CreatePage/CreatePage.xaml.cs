@@ -27,8 +27,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         {
             this.InitializeComponent();
             Cargar();
+            AddEvents();
+        }
+
+        private void AddEvents()
+        {
+            Title_tb.OnEnterNextField();
+            Description_tb.OnEnterNextField();
+            TotalPrice_tb.OnEnterNextField();
 
         }
+
 
         private async void Cargar()
         {
@@ -117,6 +126,27 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+
+        }
+
+        private void Description_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+
+        }
+
+        private void TotalPrice_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyFloats(e,TotalPrice_tb.Text)) e.Handled = true;
+            else e.Handled = false;
+
         }
     }
 
