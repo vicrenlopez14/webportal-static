@@ -62,8 +62,12 @@
                         <ComboBox
                                 x:Name="Tag_cb"
                                 Header="Tag"
-                                SelectedIndex="0" Width="85"
-                                />
+                                SelectedIndex="0" Width="85" SelectionChanged="Tag_cb_SelectionChanged"
+                                >
+                            <x:String>Short</x:String>
+                            <x:String>Medium</x:String>
+                            <x:String>Long</x:String>
+                        </ComboBox>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="433*" />

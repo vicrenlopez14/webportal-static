@@ -125,5 +125,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         {
             await APIConnection.GetConnection.DeleteProposalAsync(Denegada.IdPp);
         }
+
+        private void Tag_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
