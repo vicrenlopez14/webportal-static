@@ -187,7 +187,7 @@ public class ClientsController : ControllerBase
             return BadRequest();
         }
 
-        if (client.PasswordC.Length < 64)
+        if (client.PasswordC.Length < 50)
         {
             client.PasswordC = ShaOperations.ShaPassword(client.PasswordC);
         }

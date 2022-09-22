@@ -370,8 +370,8 @@
       <DependentUpon>SendEmailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Controllers\LoggedClientStore.cs" />
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\CatalogList\CatalogList.xaml.cs">
+      <DependentUpon>CatalogList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\CreatePage\CreatePageNoti.xaml.cs">
       <DependentUpon>CreatePageNoti.xaml</DependentUpon>
@@ -420,9 +420,6 @@
     </Compile>
     <Compile Include="Lib\ClientNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml.cs">
       <DependentUpon>SendEmailPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ClientNS\Views\Operations\ProfessionalsCatalog\ProfessionalsCatalog.xaml.cs">
-      <DependentUpon>ProfessionalsCatalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
@@ -709,9 +706,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\ListPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\CatalogList\CatalogList.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\CreatePage\CreatePageNoti.xaml">
       <SubType>Designer</SubType>
@@ -774,10 +771,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ClientNS\Views\Operations\PasswordChangePage\SendEmailPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Lib\ClientNS\Views\Operations\ProfessionalsCatalog\ProfessionalsCatalog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

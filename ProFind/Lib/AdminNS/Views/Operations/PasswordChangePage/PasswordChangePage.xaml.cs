@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.Global.Controllers;
+using Windows.UI.Popups;
+using Windows.ApplicationModel.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,7 +36,7 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
         private string email;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e); 
+            base.OnNavigatedTo(e);
             if (e.Parameter != null)
             {
                 email = e.Parameter.ToString();
@@ -47,15 +50,42 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if(Password_pb.Password != Confirmation_pb.Password || (!FieldsChecker.CheckPassword(Password_pb.Password)))
+            if (Password_pb.Password != Confirmation_pb.Password || (!FieldsChecker.CheckPassword(Password_pb.Password)))
             {
 
             }
-            var toChangePassword = new Admin();
-            toChangePassword.PasswordA = Password_pb.Password;
-            var id = await APIConnection.GetConnection.GetAdminFromEmailAsync(email);
-            await APIConnection.GetConnection.PutAdminAsync(id.IdA,toChangePassword);
-            new InAppNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+
+            try
+            {
+                //var toChangePassword = new Admin();
+                //toChangePassword.PasswordA = Password_pb.Password;
+                //var id = await APIConnection.GetConnection.GetAdminFromEmailAsync(email);
+                //await APIConnection.GetConnection.PutAdminAsync(id.IdA, toChangePassword);
+                await APIConnection.GetConnection.ChangePasswordAdminsAsync(email, Password_pb.Password);
+
+                new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode < 300)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+                }
+                else
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Message dialog
+                var dialog = new MessageDialog("An error has ocurred, please try again later: " + ex.Message);
+                await dialog.ShowAsync();
+
+                await CoreApplication.RequestRestartAsync("");
+
+            }
+
         }
     }
 }

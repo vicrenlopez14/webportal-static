@@ -33,6 +33,15 @@ namespace ProFind
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += (sender, e) =>
+            {
+                e.Handled = true;
+                // Message dialog
+                var dialog = new Windows.UI.Popups.MessageDialog(e.Message);
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("This is an unimplented feature or a bug, please contact our team at support@profind.com, or wait for newer versions of ProFind."));
+                dialog.ShowAsync();
+                System.Diagnostics.Debug.WriteLine(e.Exception);
+            };
         }
 
         protected override void OnActivated(IActivatedEventArgs args)

@@ -26,7 +26,7 @@ public class ProposalsController : ControllerBase
             return NotFound();
         }
 
-        return await _context.Proposals.ToListAsync();
+        return await _context.Proposals.Include(x => x.IdC3Navigation).Include(x => x.IdP3Navigation).ToListAsync();
     }
 
     // GET: api/Proposals/5
@@ -215,7 +215,7 @@ public class ProposalsController : ControllerBase
             }
         }
 
-        return CreatedAtAction("GetProposal", new {id = proposal.IdPp}, proposal);
+        return CreatedAtAction("GetProposal", new { id = proposal.IdPp }, proposal);
     }
 
     // DELETE: api/Proposals/5
