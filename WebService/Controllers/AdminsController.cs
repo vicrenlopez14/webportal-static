@@ -67,16 +67,6 @@ public class AdminsController : ControllerBase
             var adminFromDb = await _context.Admins.FirstOrDefaultAsync(a => a.EmailA == email);
             if (adminFromDb != null)
             {
-                // Make any other code for this user invalid
-                var otherCodes =
-                    await _context.Changepasswordcodes.Where(c => c.IdA1 == adminFromDb.IdA).ToListAsync();
-
-                foreach (var otherCode in otherCodes)
-                {
-                    otherCode.ValidCpc = false;
-                    _context.Update(otherCode);
-                }
-
                 // Creation of the code to be sent to the user
                 // Random code with 4 digits
                 var random = new Random();
@@ -179,6 +169,25 @@ public class AdminsController : ControllerBase
         return admin;
     }
 
+    // Change password 
+    // POST: api/Admins/ChangePassword
+    [HttpPost("ChangePassword")]
+    public async Task<IActionResult> ChangePasswordAdmins(string email, string password)
+    {
+        if (ModelState.IsValid)
+        {
+            var adminFromDb = await _context.Admins.FirstOrDefaultAsync(a => a.EmailA == email);
+            if (adminFromDb != null)
+            {
+                adminFromDb.PasswordA = ShaOperations.ShaPassword(password);
+                _context.Update(adminFromDb);
+                await _context.SaveChangesAsync();
+                return Ok("Password changed successfully.");
+            }
+        }
+
+        return BadRequest(ModelState);
+    }
 
     // PUT: api/Admins/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -190,10 +199,11 @@ public class AdminsController : ControllerBase
             return BadRequest();
         }
 
-        if (admin.PasswordA.Length < 64)
+        if (admin.PasswordA.Length < 50)
         {
             admin.PasswordA = ShaOperations.ShaPassword(admin.PasswordA);
         }
+
         _context.Entry(admin).State = EntityState.Modified;
 
         try

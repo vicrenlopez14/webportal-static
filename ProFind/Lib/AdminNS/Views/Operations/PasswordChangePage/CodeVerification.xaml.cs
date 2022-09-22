@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(e.Parameter != null)
+            if (e.Parameter != null)
             {
                 email = e.Parameter.ToString();
             }
@@ -40,7 +41,7 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(SendEmailPage));
+            new GlobalNavigationController().NavigateTo(typeof(SendEmailPage));
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
@@ -48,11 +49,22 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
             try
             {
                 await APIConnection.GetConnection.VerifyRecoveryCodeAdminsAsync(Code_tb.Text);
-                new InAppNavigationController().NavigateTo(typeof(PasswordChangePage),email);
+
             }
-            catch
+            catch (ProFindServicesException ex)
             {
-                ToggleThemeTeachingTip1.IsOpen = true;
+                if (ex.StatusCode >= 200 && ex.StatusCode < 300)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(PasswordChangePage), email);
+                }
+                else if (ex != null)
+                {
+                    ToggleThemeTeachingTip1.IsOpen = true;
+                }
+            } finally
+            {
+                new GlobalNavigationController().NavigateTo(typeof(PasswordChangePage), email);
+
             }
         }
     }
