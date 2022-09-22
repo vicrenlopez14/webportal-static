@@ -1,6 +1,4 @@
-﻿using ProFind.Lib.AdminNS.Controllers;
-using ProFind.Lib.Global.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,28 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.SeachPage
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.SearchPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class SearchPage : Page
+    public sealed partial class BlankPage1 : Page
     {
-        Proposal id;
-        public SearchPage()
+        public BlankPage1()
         {
             this.InitializeComponent();
-        }
-
-        private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            ClientListView.ItemsSource = await APIConnection.GetConnection.SearchProposalsAsync(id.IdPp, Search_Client.Text);
-        }
-
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage.UpdatePage));
-
         }
     }
 }

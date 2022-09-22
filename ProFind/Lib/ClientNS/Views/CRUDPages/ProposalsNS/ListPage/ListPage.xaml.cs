@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -44,7 +45,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.SeachPage.SearchPage));
+           
         
         }
 
@@ -59,9 +60,47 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage.CreatePage));
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage.UpdatePage));
+            
+            if (Activities_lw.SelectedItem != null)
+            {
+                Proposal selectedProject = Activities_lw.SelectedItem as Proposal;
+
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage.UpdatePage), selectedProject);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Proposal.");
+                await dialog.ShowAsync();
+
+            }
+           
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var obj = Activities_lw.SelectedItem as Proposal;
+                await APIConnection.GetConnection.DeleteProposalAsync(obj.IdPp);
+                var dialog = new MessageDialog("Proposal deleted successfully.");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 204 || ex.StatusCode == 200 || ex.StatusCode == 201)
+                {
+                    var dialog = new MessageDialog("Proposal deleted successfully.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("You have to select an Proposal.");
+                    await dialog.ShowAsync();
+                }
+            }
         }
     }
 }

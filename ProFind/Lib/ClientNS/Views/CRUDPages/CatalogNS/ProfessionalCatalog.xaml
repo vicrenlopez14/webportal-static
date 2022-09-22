@@ -66,5 +66,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0 15 0 0" Name="CreateClient_btn" Content="Contract" Grid.Column="1" VerticalAlignment="Top" Click="CreateClient_btn_Click"  />
+        </StackPanel>
     </Grid>
 </Page>

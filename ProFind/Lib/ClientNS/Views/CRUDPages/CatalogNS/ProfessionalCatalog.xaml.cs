@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,5 +41,22 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny));
         }
 
+        private  async void CreateClient_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProfessionalsListView.SelectedItem != null)
+            {
+                Professional selectedProfesional = ProfessionalsListView.SelectedItem as Professional;
+
+                new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage.CreatePage), selectedProfesional);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Professional.");
+                await dialog.ShowAsync();
+
+            }
+           
+        }
     }
 }

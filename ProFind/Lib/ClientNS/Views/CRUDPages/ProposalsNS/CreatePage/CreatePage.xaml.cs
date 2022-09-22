@@ -34,8 +34,15 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             this.InitializeComponent();
             AddEvents();
         }
-      
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(e.Parameter != null)
+            {
+                IdP = (Professional)e.Parameter;
+            }
+        }
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -79,23 +86,24 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             {
 
                 var loggendClient = LoggedClientStore.LoggedClient;
-                var toCreateAdmin = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = ExpectedBegin_dp.Date, SuggestedEnd = Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = loggendClient.IdC, IdP3 = IdP.IdP };
+                var toCreatProposals = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = (DateTimeOffset)ExpectedBegin_dp.Date, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = loggendClient.IdC, IdP3 = IdP.IdP };
 
 
 
 
-                var result = await APIConnection.GetConnection.PostProposalAsync(toCreateAdmin);
-                new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
+                var result = await APIConnection.GetConnection.PostProposalAsync(toCreatProposals);
+              
 
 
             }
             catch (Exception ex)
             {
+                
                 Console.WriteLine(ex.Message);
             }
             finally
             {
-               
+              new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
             }
         }
 
