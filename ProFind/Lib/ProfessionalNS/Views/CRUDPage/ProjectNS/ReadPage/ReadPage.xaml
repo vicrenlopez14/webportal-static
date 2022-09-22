@@ -54,6 +54,7 @@ Style="{StaticResource PageStyle}">
                                             Style="{StaticResource BodyTextBlockStyle}"
                                             Text="{x:Bind TitlePj}" />
                                         <TextBlock Text="{x:Bind IdC1Navigation.NameC}" />
+                                        <TextBlock Text="{x:Bind }"/>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>

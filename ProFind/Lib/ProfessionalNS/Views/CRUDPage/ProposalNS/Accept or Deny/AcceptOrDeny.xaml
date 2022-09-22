@@ -60,7 +60,7 @@
                             PlaceholderText="Total price" KeyDown="TotalPrice_tb_KeyDown"
                             />
                         <ComboBox
-                                x:Name="Tag"
+                                x:Name="Tag_cb"
                                 Header="Tag"
                                 SelectedIndex="0" Width="85"
                                 />

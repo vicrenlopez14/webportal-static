@@ -109,7 +109,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
             var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
-            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3  };
+            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IsPaidPj =false, TagDurationPj = Tag_cb.SelectedIndex, IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3  };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);

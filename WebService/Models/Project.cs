@@ -10,4 +10,24 @@ public static class ProjectExtension
     {
         project.IdPj = Utils.ShaOperations.GenerateUID();
     }
+
+}
+
+public static class TagDurationDirtyTrick
+{
+    public static string ToTagDurationReadable(this int latag)
+    {
+        if (latag == 0)
+        {
+            return "Short";
+        } 
+        else if(latag == 1)
+        {
+            return "Medium";
+        }
+        else
+        {
+            return "Large";
+        }
+    }
 }
