@@ -104,5 +104,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
                 
             }
         }
+
+        private async void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+         
+
+        }
+
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        {
+            var allList = await APIConnection.GetConnection.GetAdminsAsync();
+
+            //Name contains sender text
+            //AdminsListView.ItemsSource;
+        }
     }
 }

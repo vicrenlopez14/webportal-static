@@ -25,7 +25,8 @@ public class ProjectsController : ControllerBase
         {
             return NotFound();
         }
-        return await _context.Projects.ToListAsync();
+
+        return await _context.Projects.Include(x => x.IdP1Navigation).Include(x => x.IdC1Navigation).ToListAsync();
     }
 
     // GET: api/Projects/5
@@ -36,6 +37,7 @@ public class ProjectsController : ControllerBase
         {
             return NotFound();
         }
+
         var project = await _context.Projects.FindAsync(id);
 
         if (project == null)
@@ -86,6 +88,7 @@ public class ProjectsController : ControllerBase
         {
             return Problem("Entity set 'ProFindContext.Projects'  is null.");
         }
+
         project.AssignId();
         _context.Projects.Add(project);
         try
@@ -115,6 +118,7 @@ public class ProjectsController : ControllerBase
         {
             return NotFound();
         }
+
         var project = await _context.Projects.FindAsync(id);
         if (project == null)
         {
@@ -132,13 +136,12 @@ public class ProjectsController : ControllerBase
         [FromQuery] string? TitlePJ)
     {
         var result = await (from proj in _context.Projects
-                            where (
-                            (TitlePJ == null ? true : proj.TitlePj.Contains(TitlePJ)))
-                            select proj).ToListAsync();
+            where (
+                (TitlePJ == null ? true : proj.TitlePj.Contains(TitlePJ)))
+            select proj).ToListAsync();
 
         if (result.Any() == false) return NotFound();
         else return result;
-
     }
 
     [HttpGet("search/")]
@@ -148,9 +151,9 @@ public class ProjectsController : ControllerBase
         else
         {
             var result = await (from proj in _context.Projects
-                                where (
-                                proj.TitlePj.Contains(TitlePJ))
-                                select proj).ToListAsync();
+                where (
+                    proj.TitlePj.Contains(TitlePJ))
+                select proj).ToListAsync();
 
             if (result.Any() == false) return NotFound();
             else return result;

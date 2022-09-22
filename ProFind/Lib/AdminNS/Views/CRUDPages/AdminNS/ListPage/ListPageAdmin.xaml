@@ -14,51 +14,54 @@
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" Name="AdminsListView">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="services:Admin">
-                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*"/>
-                                <ColumnDefinition Width="0.7*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <Image
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged"></SearchBox>
+            <ListView Name="AdminsListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="services:Admin">
+                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Image
                                     Width="100"
                                     Height="100"
                                     Source="{Binding PictureA}" />
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
-                                <StackPanel>
-                                    <TextBlock Height="25" Text="{Binding NameA}"  Style="{StaticResource ListTitleStyle}"/>
                                 </StackPanel>
-                                <StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
+                                    <StackPanel>
+                                        <TextBlock Height="25" Text="{Binding NameA}"  Style="{StaticResource ListTitleStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel>
 
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
                                 FontWeight="Bold"
                                 Text="Email:" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding EmailA}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding EmailA}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
                                 FontWeight="Bold"
                                 Text="Phone number:" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding TelA}" />
-                                </StackPanel>
-                                <StackPanel
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding TelA}" />
+                                    </StackPanel>
+                                    <StackPanel
                                      Grid.Column="1"
                                      HorizontalAlignment="Center"
                                       VerticalAlignment="Center">
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <Button Style="{StaticResource AccentButtonStyle}" Content="Add Admin" Grid.Column="1" VerticalAlignment="Top" Click="Button_Click_1" />
             <Button Style="{StaticResource AccentButtonStyle}" Content="Delete" Grid.Column="1" Margin="0,15,0,0" Click="Button_Click_3" Width="90" />
