@@ -397,9 +397,6 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\ListPage\ListPAge.xaml.cs">
       <DependentUpon>ListPAge.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\SearchPage.xaml.cs">
-      <DependentUpon>SearchPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
@@ -736,10 +733,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\SearchPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -978,6 +971,7 @@
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\CurriculumNS\ReadPage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\UpdatePage\" />
+    <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
