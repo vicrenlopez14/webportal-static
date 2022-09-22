@@ -77,8 +77,8 @@
 
         <StackPanel Grid.Column="1">
             <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Create proposal" Click="Button_Click"   />
-            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Search proposal" Click="Button_Click_2" />
             <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Update proposal" Click="Button_Click_1" />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Delete proposal" Click="Button_Click_3" />
         </StackPanel>
     </Grid>
 </Page>

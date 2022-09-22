@@ -16,7 +16,7 @@
         <muxc:TeachingTip
             x:Name="ToggleThemeTeachingTip2"
             Title="Administrator created successfuly!"
-            ActionButtonContent="Professionals create"
+            ActionButtonContent="Lets login"
             CloseButtonContent="Got it! Let me create more"
             IsLightDismissEnabled="True"
             PlacementMargin="20"

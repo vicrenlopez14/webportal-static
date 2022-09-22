@@ -211,7 +211,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                     await dialog.ShowAsync();
                     return;
                 }
-                if (!FieldsChecker.CheckDateUp((DateTimeOffset)FechadeIngreso.Date))
+                if (!FieldsChecker.CheckDateUp((DateTimeOffset)FechadeIngreso.Date) && 
+                    (DateTimeOffset)FechadeIngreso.Date != ToManipulateProfessional.HiringDateP)
                 {
                     var dialog = new MessageDialog("The hiring date must be valid");
                     await dialog.ShowAsync();

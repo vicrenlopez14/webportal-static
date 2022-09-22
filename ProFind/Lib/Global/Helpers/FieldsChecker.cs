@@ -38,12 +38,12 @@ namespace ProFind.Lib.Global.Helpers
         }
         public static bool CheckDateUp(DateTimeOffset date)
         {
-            return date >= DateTimeOffset.Now;
+            return date >= DateTimeOffset.Now.Date;
         }
 
         public static bool CheckDateDown(DateTimeOffset date)
         {
-            return date <= DateTimeOffset.Now;
+            return date <= DateTimeOffset.Now.Date;
         }
 
         public static bool OnlyInts(Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
