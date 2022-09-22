@@ -1,7 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
-using ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.ClientNS.Controllers;
 using System.Linq;
@@ -43,12 +42,6 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
            
         }
 
-        private void NotificationListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var notification = e.ClickedItem as Notification;
-
-            new InAppNavigationController().NavigateTo(typeof(UpdatePage), notification);
-        }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {

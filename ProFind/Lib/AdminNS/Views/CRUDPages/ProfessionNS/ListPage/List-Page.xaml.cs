@@ -4,6 +4,8 @@ using Profession = ProFind.Lib.Global.Services.Profession;
 using ProFind.Lib.Global.Controllers;
 using System.Collections.Generic;
 using ProFind.Lib.AdminNS.Controllers;
+using Windows.UI.Popups;
+using System;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,6 +36,34 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage.Update_Profesion));
 
+        }
+
+        private async void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            try
+            {
+                var obj = (ProfessionalsListView.SelectedItem as Profession);
+                await APIConnection.GetConnection.DeleteProfessionAsync(obj.IdPfs.GetValueOrDefault());
+                var dialog = new MessageDialog("The profession has been deleted.");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("The profession has been deleted.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("You have to select a profession.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                InitializeData();
+            }
         }
     }
 }
