@@ -7,6 +7,8 @@ using ProFind.Lib.Global.Services;
 using Client = ProFind.Lib.Global.Services.Client;
 using Professional = ProFind.Lib.Global.Services.Professional;
 using Project = ProFind.Lib.Global.Services.Project;
+using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -17,6 +19,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
+        Proposal SourceProposal = new Proposal();
         Project toManipulate = new Project();
 
 
@@ -41,38 +44,28 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         private async void Cargar()
         {
 
-            Professional_cb.ItemsSource = await APIConnection.GetConnection.GetProfessionalsAsync();
-            Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter != null)
+            {
+                if (e.Parameter.GetType() == typeof(Proposal))
+                {
+                    SourceProposal = e.Parameter as Proposal;
+                }
+            }
+            else
+            {
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
+            }
+        }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            byte[] da = toManipulate.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
-
-            var toCreateClien = new Project { IdPj =  "", TitlePj =  Title_tb.Text, DescriptionPj =  Description_tb.Text, PicturePj = imageBytes , TotalPricePj = int.Parse( TotalPrice_tb.Text), IdP1 = (Professional_cb.SelectedItem as Professional).IdP, IdC1 = (Client_cb.SelectedItem as Client).IdC };
-
-
-            var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
-
-            if (string.IsNullOrEmpty(Title_tb.Text))
-            {
-
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-                return;
-            }
-            else if (string.IsNullOrEmpty(Description_tb.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-                return;
-            }
-
-
-
-
-
+            
         }
 
 
@@ -83,18 +76,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-          
+
 
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
 
         }
 
@@ -107,7 +100,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         private void InitialStatus_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            
+
         }
 
         private void Professional_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -122,7 +115,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Title_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -141,9 +134,57 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private void TotalPrice_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats(e,TotalPrice_tb.Text)) e.Handled = true;
+            if (FieldsChecker.OnlyFloats(e, TotalPrice_tb.Text)) e.Handled = true;
             else e.Handled = false;
 
+        }
+
+        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var toCreateProject = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = SourceProposal.IdP3, IdC1 = SourceProposal.IdC3, TagDurationPj = TagDuration_cbx.SelectedIndex };
+
+                var result = await APIConnection.GetConnection.PostProjectAsync(toCreateProject);
+
+
+                // Success dialog
+                var dialog = new MessageDialog("Project created successfully");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 300)
+                {
+                    var dialog = new MessageDialog("Project created successfully");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Error creating project");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
+
+            }
+
+
+            if (string.IsNullOrEmpty(Title_tb.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
         }
     }
 

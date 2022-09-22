@@ -6520,6 +6520,9 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("changepasswordcodes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Changepasswordcode> Changepasswordcodes { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("notifications", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.List<Notification> Notifications { get; set; }
+
         [Newtonsoft.Json.JsonProperty("projects", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Project> Projects { get; set; }
 
@@ -6575,12 +6578,12 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("pictureN", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] PictureN { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonProperty("idC3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
-        public string IdPj2 { get; set; }
+        public string IdC3 { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("idPj2Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Project IdPj2Navigation { get; set; }
+        [Newtonsoft.Json.JsonProperty("idC3Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Client IdC3Navigation { get; set; }
 
     }
 
@@ -6729,9 +6732,6 @@ namespace ProFind.Lib.Global.Services
 
         [Newtonsoft.Json.JsonProperty("idP1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Professional IdP1Navigation { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("notifications", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.List<Notification> Notifications { get; set; }
 
     }
 

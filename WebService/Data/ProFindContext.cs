@@ -118,13 +118,13 @@ namespace WebService.Data
 
                 entity.Property(e => e.IdN).IsFixedLength();
 
-                entity.Property(e => e.IdPj2).IsFixedLength();
+                entity.Property(e => e.IdC3).IsFixedLength();
 
-                entity.HasOne(d => d.IdPj2Navigation)
+                entity.HasOne(d => d.IdC3Navigation)
                     .WithMany(p => p.Notifications)
-                    .HasForeignKey(d => d.IdPj2)
+                    .HasForeignKey(d => d.IdC3)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK_Notification_Project");
+                    .HasConstraintName("FK_Notification_Client");
             });
 
             modelBuilder.Entity<Profession>(entity =>

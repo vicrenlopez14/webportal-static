@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace WebService.Models.Generated
 {
     [Table("notification")]
-    [Index("IdPj2", Name = "FK_Notification_Project")]
+    [Index("IdC3", Name = "FK_Notification_Client")]
     public partial class Notification
     {
         [Key]
@@ -20,12 +20,11 @@ namespace WebService.Models.Generated
         [Column(TypeName = "datetime")]
         public DateTime? DateTimeIssuedN { get; set; }
         public byte[]? PictureN { get; set; }
-        [Column("IdPJ2")]
         [StringLength(21)]
-        public string? IdPj2 { get; set; }
+        public string? IdC3 { get; set; }
 
-        [ForeignKey("IdPj2")]
+        [ForeignKey("IdC3")]
         [InverseProperty("Notifications")]
-        public virtual Project? IdPj2Navigation { get; set; }
+        public virtual Client? IdC3Navigation { get; set; }
     }
 }
