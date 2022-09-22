@@ -32,7 +32,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNS.SearchPage
         private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
 
         {
-            ClientListView.ItemsSource = await APIConnection.GetConnection.SearchActivitiesAsync(id.IdA, Search_Client.Text);
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.SearchActivitiesAsync(id.IdA, Search_Client.Text);
 
         }
         private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)

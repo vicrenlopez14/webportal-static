@@ -30,6 +30,7 @@ namespace ProFind.Lib.Global.Views.Preferences_Page
         private void LoadSettings()
         {
 
+
         }
 
         private void OnThemeRadioButtonKeyDown(object sender, KeyRoutedEventArgs e)

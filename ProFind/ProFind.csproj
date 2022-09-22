@@ -348,9 +348,6 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\SelectProfessionalDialog.xaml.cs">
       <DependentUpon>SelectProfessionalDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ListPage\List_Page_Projects.xaml.cs">
-      <DependentUpon>List_Page_Projects.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -814,10 +811,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\SelectProfessionalDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ListPage\List_Page_Projects.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1327,7 +1320,6 @@
     <Folder Include="Lib\AdminNS\Views\CRUDPages\ProjectPayNS\UpdatePage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\UpdatePage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProjectPayNS\FilterPage\" />
-    <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\UpdatePage\" />
     <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectPayNS\CreatePage\" />
     <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectPayNS\FilterPage\" />
     <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectPayNS\UpdatePage\" />

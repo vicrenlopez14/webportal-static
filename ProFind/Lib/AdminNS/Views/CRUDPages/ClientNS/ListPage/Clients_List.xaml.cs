@@ -33,16 +33,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         }
 
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+       
+
+        private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages.Search_Page_Clients));
-
         }
 
-        private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage.Client_Update_Delete));
-
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
         }
 
         private void CreateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)

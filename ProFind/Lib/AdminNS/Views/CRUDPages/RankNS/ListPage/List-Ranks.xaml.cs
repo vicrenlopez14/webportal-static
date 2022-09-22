@@ -14,6 +14,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
     /// </summary>
     public sealed partial class List_Ranks : Page
     {
+
         public List_Ranks()
         {
             this.InitializeComponent();
@@ -21,7 +22,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
         }
         private async void InitializeData()
         {
+
+
+            Ranks_lw.ItemsSource =  await APIConnection.GetConnection.GetRanksAsync();
+
             Ranks_lw.ItemsSource = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
+
         }
 
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.ListPage
         public ListPage()
         {
             this.InitializeComponent();
+            mostrar();
+        }
+        private async void mostrar()
+        {
+            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetProposalsAsync();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage.CreatePage));
         }
     }
 }

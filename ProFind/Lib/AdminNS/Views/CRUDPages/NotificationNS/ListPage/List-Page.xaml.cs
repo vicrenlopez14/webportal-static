@@ -33,5 +33,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage.UpdatePage));
         }
+
+        private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.NotificationNS.UpdatePage.UpdatePage));
+        }
     }
 }
