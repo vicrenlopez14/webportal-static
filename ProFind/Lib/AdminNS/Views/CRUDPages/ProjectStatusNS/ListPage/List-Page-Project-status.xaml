@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <ListView
             Grid.Column="0"
-            Name="ProfessionalsListView" ItemClick="ProjectsActiveListView_ItemClick"
+            Name="ProfessionalsListView"
            
             >
             <ListView.ItemTemplate>

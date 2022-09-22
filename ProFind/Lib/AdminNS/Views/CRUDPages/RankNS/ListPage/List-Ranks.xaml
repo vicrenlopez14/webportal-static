@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <ListView
             Grid.Column="0"
-            Name="Ranks_lw" ItemClick="ProjectsActiveListView_ItemClick"
+            Name="Ranks_lw" 
            
             >
             <ListView.ItemTemplate>
