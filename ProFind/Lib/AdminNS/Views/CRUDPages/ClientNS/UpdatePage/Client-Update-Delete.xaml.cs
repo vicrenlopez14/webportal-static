@@ -230,6 +230,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         }
 
-       
+        private void Name1_tbx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Email_tbx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
