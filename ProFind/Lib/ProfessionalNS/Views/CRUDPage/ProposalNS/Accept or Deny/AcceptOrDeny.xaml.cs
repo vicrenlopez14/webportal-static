@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Controllers;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -108,22 +110,68 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
-            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IsPaidPj =false, TagDurationPj = Tag_cb.SelectedIndex, IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3  };
+            try
+            {
+                var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
+                var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IsPaidPj = false, TagDurationPj = Tag_cb.SelectedIndex, IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3 };
+                var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
+                var dialog = new MessageDialog("The proposal was accepted.");
+                await dialog.ShowAsync();
+                DeleteProposal();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("The proposal was accepted.");
+                    await dialog.ShowAsync();
+                    DeleteProposal();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was a problem while accepting the proposal, try again later.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
+            }
 
-
-            var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
-
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
+           
 
 
 
         }
 
 
+        private async void DeleteProposal()
+        {
+            try
+            {
+                await APIConnection.GetConnection.DeleteProposalAsync(InComingProposal.IdPp);
+                
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
+                {
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was a problem while deleting the proposal, try again later.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                new InAppNavigationController().NavigateTo(typeof(ReadPage.ReadPage));
+            }
+        }
+
         private async void Decline_Click(object sender, RoutedEventArgs e)
         {
-            await APIConnection.GetConnection.DeleteProposalAsync(Denegada.IdPp);
+            DeleteProposal();
         }
 
         private void Tag_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)

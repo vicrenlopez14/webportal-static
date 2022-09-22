@@ -57,7 +57,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 
         private void Generate_Report_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            new InAppNavigationController().NavigateTo(typeof(SearchPage.search_admin));
         }
 
         private async void Button_Click_3(object sender, RoutedEventArgs e)

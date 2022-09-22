@@ -10,6 +10,7 @@ using ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage;
 using Project = ProFind.Lib.Global.Services.Project;
 using ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage;
 using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
+using System.Threading.Tasks;
 
 namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 {
@@ -44,7 +45,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
             new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.Update_Project), project);
         }
 
-        
+
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -89,6 +90,38 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+        }
+
+        private async Task SearchBox_TextChangedAsync(object sender, TextChangedEventArgs e)
+        {
+            // Projects in which professional is related
+            var projects = await APIConnection.GetConnection.GetProjectsAsync();
+            var projectsOfThisProfessional = (from p in projects.ToList()
+                                              where p.IdP1 == LoggedProfessionalStore.LoggedProfessional.IdP
+                                              where p.TitlePj.Contains(SearchBox.Text)
+                                              select p).ToList();
+
+            // List contains
+
+
+
+            ProjectsListView.ItemsSource = projectsOfThisProfessional;
+        }
+
+        private async void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Projects in which professional is related
+            var projects = await APIConnection.GetConnection.GetProjectsAsync();
+            var projectsOfThisProfessional = (from p in projects.ToList()
+                                              where p.IdP1 == LoggedProfessionalStore.LoggedProfessional.IdP
+                                              where p.TitlePj.Contains(SearchBox.Text)
+                                              select p).ToList();
+
+            // List contains
+
+
+
+            ProjectsListView.ItemsSource = projectsOfThisProfessional;
         }
     }
 }

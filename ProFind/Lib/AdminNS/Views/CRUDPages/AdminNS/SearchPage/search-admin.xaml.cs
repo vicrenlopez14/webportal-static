@@ -21,8 +21,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.SearchPage
         private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
            var Resul =   await APIConnection.GetConnection.SearchAdminsAsync(id.IdA, Search_admin1.Text);
+            ProjectsListView.ItemsSource = Resul;
 
-            await APIConnection.GetConnection.GetAdminAsync(id.IdA);
+           
 
         }
     }
