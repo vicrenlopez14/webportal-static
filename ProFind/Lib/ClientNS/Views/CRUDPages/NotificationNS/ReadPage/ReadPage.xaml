@@ -10,8 +10,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00 *" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <StackPanel>
             <StackPanel
@@ -31,17 +31,9 @@
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
                         Text="Created notifications" />
-                    <Button
-                       
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                       
-                        Style="{StaticResource AccentButtonStyle}">
-                        Add more
-                    </Button>
                 </Grid>
                 <ListView
-                   
+                    Grid.Column="0"
                     Name="NotificationListView"
                     IsItemClickEnabled="True"
                    
@@ -76,10 +68,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Button>Add</Button>
+            Grid.Column="1">
+            <Button Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_3">Add notification</Button>
         </StackPanel>
     </Grid>
 </Page>

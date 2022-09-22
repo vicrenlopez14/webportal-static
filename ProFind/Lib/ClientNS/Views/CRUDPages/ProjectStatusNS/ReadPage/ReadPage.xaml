@@ -8,8 +8,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00 *" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <StackPanel>
             <StackPanel
@@ -21,12 +21,12 @@
                     Margin="20"
                     RenderTransformOrigin="0.638,0.776"
                     Style="{StaticResource SubheaderTextBlockStyle}"
-                    Text="Registered administrators" />
+                    Text="Projects status" />
+
                 <ListView
-                   
+                    Grid.Column ="0"
                     Name="ProjectsListView"
-                    IsItemClickEnabled="True"
-                   
+                    IsItemClickEnabled="True"                 
                     SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Projectstatus">
@@ -56,12 +56,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-        </StackPanel>
-        <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Button>Add</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Services;
 using Projectstatus = ProFind.Lib.Global.Services.Projectstatus;
+using ProFind.Lib.Global.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,6 +22,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProjectStatusNS.ReadPage
         {
             int idNo = int.Parse( Id1.IdPs);
             await APIConnection.GetConnection.GetProjectstatusAsync(idNo);
+        }
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            
         }
     }
 }

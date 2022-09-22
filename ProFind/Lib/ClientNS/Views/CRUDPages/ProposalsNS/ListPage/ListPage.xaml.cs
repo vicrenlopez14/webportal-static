@@ -53,5 +53,10 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage.UpdatePage));
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage.CreatePage));
+        }
     }
 }

@@ -9,12 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Margin="561,50,483,863">
-            <TextBlock TextAlignment="Center" Text="Security answer" FontWeight="Bold"  Style="{StaticResource HeaderTextBlockStyle}" Width="432"/>
-            <TextBlock Text="View your answers abour the questions security" Height="31" TextAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" Margin="0,0,0,866" Padding="20">
+            <TextBlock Text="Security answer" FontWeight="Bold"  Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock Text="View your answers abour the questions security" Height="31" />
         </StackPanel>
 
         <ListView
+            Grid.Column="0"
             Name="SecurityAnswerClientListView"
             IsItemClickEnabled="True"
             SelectionMode="None">
