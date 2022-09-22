@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
@@ -27,9 +28,8 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
     public sealed partial class UpdatePage : Page
     {
         private byte[] imageBytes;
-        Client IdC;
-        Professional IdP;
-        Proposal IPP;
+
+        Proposal IPp;
         public UpdatePage()
         {
             this.InitializeComponent();
@@ -40,6 +40,21 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
             Title_tb.OnEnterNextField();
             Description_tb.OnEnterNextField();
 
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter != null)
+            {
+                IPp = (Proposal)e.Parameter;
+            }
+        }
+
+        private void LoadData()
+        {
+            Title_tb.Text = IPp.TitlePp;
+            Description_tb.Text = IPp.DescriptionPp;
+            Theend.Date = (DateTimeOffset)IPp.SuggestedEnd;
         }
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
@@ -99,13 +114,13 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
             try
             {
 
-
-                var toCreateAdmin = new Proposal {  TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = Theend.Date, PicturePp = imageBytes };
-
-
+                var loggedClient = LoggedClientStore.LoggedClient;
+                var toCreateAdmin = new Proposal { TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageBytes, IdPp = IPp.IdPp, IdC3 = loggedClient.IdC };
 
 
-                 await APIConnection.GetConnection.PutProposalAsync(IPP.IdPp,toCreateAdmin);
+
+
+                 await APIConnection.GetConnection.PutProposalAsync(IPp.IdPp, toCreateAdmin);
                 new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
 
 
@@ -122,7 +137,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            await APIConnection.GetConnection.DeleteProposalAsync(IPP.IdPp);
+            await APIConnection.GetConnection.DeleteProposalAsync(IPp.IdPp);
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
         }
 
