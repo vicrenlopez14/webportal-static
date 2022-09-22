@@ -54,9 +54,15 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS.CatalogList
             new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage.ProfessionalInformationAddition));
         }
 
-        private void CreateProfessionalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void CreateProposalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage.ProfessionalInformationAddition));
+            if (ProfessionalsListView.SelectedItem != null)
+            {
+                var selectedProfessional = ProfessionalsListView.SelectedItem as Professional;
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage.CreatePage), selectedProfessional);
+            }
+
+
         }
 
         private void UpdateProfessionalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
