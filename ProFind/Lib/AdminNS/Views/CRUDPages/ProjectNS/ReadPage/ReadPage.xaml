@@ -17,7 +17,7 @@
     
                 <ListView
                     Grid.Column="0"
-                    Name="AdminsListView"
+                    Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
                     SelectionMode="None">
@@ -68,8 +68,9 @@
                 </ListView>
 
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Update Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top"/>
+            <Button Style="{StaticResource AccentButtonStyle}" Name="AddProject" Content="Add Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
+            <Button Style="{StaticResource AccentButtonStyle}" Name="UpdateProject" Content="Update Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="UpdateProject_Click" />
+            <Button Style="{StaticResource AccentButtonStyle}" Name="DeleteProject" Content="Delete Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="DeleteProject_Click"/>
         </StackPanel>
 
     </Grid>

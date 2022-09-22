@@ -8,6 +8,7 @@ using ProFind.Lib.Global.Services;
 using Client = ProFind.Lib.Global.Services.Client;
 using Professional = ProFind.Lib.Global.Services.Professional;
 using Project = ProFind.Lib.Global.Services.Project;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -20,6 +21,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
     {
         Project toManipulate = new Project();
         private byte[] imageBytes;
+
         public Update_Project()
         {
             this.InitializeComponent();
@@ -35,19 +37,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
         }
         private async void Cargar()
         {
-            Professional_cb.ItemsSource = await APIConnection.GetConnection.GetProfessionalsAsync();
-            Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
-
         }
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            byte[] da = toManipulate.PicturePj = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
-
-            var toCreateClien = new Project { TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = (Professional_cb.SelectedItem as Professional).IdP, IdC1 = (Client_cb.SelectedItem as Client).IdC };
-
-            await APIConnection.GetConnection.PutProjectAsync(toManipulate.IdPj,toCreateClien);
-
             if (string.IsNullOrEmpty(Title_tb.Text))
             {
 
@@ -60,6 +53,33 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
                 return;
+            }
+
+            try
+            {
+                var ToUpdateProject = new Project { TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = toManipulate.IdP1, IdC1 = toManipulate.IdC1, IsPaidPj = IsPaid_cbx.IsChecked };
+
+                await APIConnection.GetConnection.PutProjectAsync(toManipulate.IdPj, ToUpdateProject);
+
+                var dialog = new MessageDialog("Project updated successfully.");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("Project updated successfully.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was an error, try again later.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
             }
         }
 
@@ -124,6 +144,21 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
         {
             if (FieldsChecker.OnlyFloats(e, TotalPrice_tb.Text)) e.Handled = true;
             else e.Handled = false;
+        }
+
+        private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+
+            if (imageBytes != null)
+            {
+                SelectedPicture_tbk.Text = "Image correctly selected";
+            }
+            else
+            {
+                SelectedPicture_tbk.Text = "No picture has been selected";
+            }
         }
     }
 }
