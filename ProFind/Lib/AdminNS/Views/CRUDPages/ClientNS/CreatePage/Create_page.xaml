@@ -97,7 +97,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Create"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
 
                     <Button
                         x:Name="CreateProfessionals_btn"

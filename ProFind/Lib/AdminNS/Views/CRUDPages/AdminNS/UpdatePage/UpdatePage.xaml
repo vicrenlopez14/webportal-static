@@ -31,7 +31,7 @@
                                 x:Name="Picture_img"
                                 Width="100"
                                 Height="100" />
-                            <Button HorizontalAlignment="Center">Change picture</Button>
+                            <Button HorizontalAlignment="Center" Click="Button_Click_1">Change picture</Button>
                             <TextBox
                                 Name="FirstName1_tbx"
                                 Width="460"
@@ -82,25 +82,25 @@
 
                             <Button
                                 Name="Reset_btn"
-                                Margin="15"
+                                Margin="15" Click="Reset_btn_Click_1"
                                >
                                 Reset
                             </Button>
                             <Button
                                 Name="Update_btn"
-                                Margin="15"
+                                Margin="15" Click="Update_btn_Click_1"
                                >
                                 Update
                             </Button>
                             <Button
                                 Name="Delete_btn"
-                                Margin="15"
+                                Margin="15" Click="Delete_btn_Click_1"
                                >
                                 Delete
                             </Button>
                             <Button
                                 Name="Back_btn"
-                                Margin="15"
+                                Margin="15" Click="Back_btn_Click_1"
                                >
                                 Back
                             </Button>

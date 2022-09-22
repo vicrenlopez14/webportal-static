@@ -144,6 +144,36 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
+            if (FirstName1_tbx.Text.Length < 3) 
+            {
+                var dialog = new MessageDialog("The name must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.CheckEmail(Email.Text))
+            {
+                var dialog = new MessageDialog("The email must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.CheckDateDown(Nacimiento.Date))
+            {
+                var dialog = new MessageDialog("The birth date must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (int.Parse(Salario.Text) <= 0)
+            {
+                var dialog = new MessageDialog("The salary must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.CheckPassword(passwordBox.Password))
+            {
+                var dialog = new MessageDialog("The password must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
 
@@ -172,7 +202,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             }
             catch (ProFindServicesException ex)
             {
-                if (ex.StatusCode == 201)
+                if (ex.StatusCode == 201 || ex.StatusCode == 200 || ex.StatusCode == 204)
                 {
                     var dialog = new MessageDialog("Professional created successfully, ProFind is now ready to work.");
                     await dialog.ShowAsync();

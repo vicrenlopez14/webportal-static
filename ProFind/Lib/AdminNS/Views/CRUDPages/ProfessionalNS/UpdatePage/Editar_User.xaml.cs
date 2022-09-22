@@ -73,6 +73,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             if (e.Parameter != null)
             {
                 ToManipulateProfessional = (Professional)e.Parameter;
+                AutoComplete();
             }
             else
             {
@@ -85,6 +86,22 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                 new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage));
             }
         }
+
+        private void AutoComplete()
+        {
+            FirstName1_tbx.Text = ToManipulateProfessional.NameP;
+            if (ToManipulateProfessional.IdPfs1 == 1) profession_cbx.SelectedIndex = 0;
+
+            if (ToManipulateProfessional.IdPfs1 == 2) profession_cbx.SelectedIndex = 2;
+
+            if (ToManipulateProfessional.IdPfs1 == 3) profession_cbx.SelectedIndex = 3;
+
+            Afp.Text = ToManipulateProfessional.Afpp;
+            SeguroSocial.Text = ToManipulateProfessional.Isssp;
+            Dui.Text = ToManipulateProfessional.Duip;
+            FechadeIngreso.Date = ToManipulateProfessional.HiringDateP;
+        }
+
         private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
         {
             imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
@@ -169,7 +186,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                 }
                 catch (ProFindServicesException ex)
                 {
-                    if (ex.StatusCode == 201 || ex.StatusCode == 200)
+                    if (ex.StatusCode == 201 || ex.StatusCode == 200 || ex.StatusCode == 204)
                     {
                         // Success message dialog
                         var dialog = new MessageDialog("The Professional has been updated successfully");

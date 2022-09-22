@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -57,6 +58,51 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         private void Generate_Report_btn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            
+            try
+            {
+                var obj = AdminsListView.SelectedItem as Admin;
+                await APIConnection.GetConnection.DeleteAdminAsync(obj.IdA);
+                var dialog = new MessageDialog("Admin deleted successfully.");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 204)
+                {
+                    var dialog = new MessageDialog("Admin deleted successfully.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("You have to select an admin.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                GetAdminsList();
+            }
+        }
+
+        private async void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var obj = AdminsListView.SelectedItem as Admin;
+                new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage),obj);
+            }
+            catch (ProFindServicesException ex)
+            {
+               
+                var dialog = new MessageDialog("You have to select an admin.");
+                await dialog.ShowAsync();
+                
+            }
         }
     }
 }

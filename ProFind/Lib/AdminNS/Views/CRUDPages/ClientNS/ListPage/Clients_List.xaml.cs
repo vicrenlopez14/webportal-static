@@ -4,6 +4,8 @@ using Client = ProFind.Lib.Global.Services.Client;
 using ProFind.Lib.Global.Controllers;
 using System.Collections.Generic;
 using ProFind.Lib.AdminNS.Controllers;
+using Windows.UI.Popups;
+using System;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -48,7 +50,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
         }
 
-        private void UpdateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void UpdateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             // Selected client
 
@@ -60,8 +62,37 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
             } else
             {
                 // Validation content dialog
+                var dialog = new MessageDialog("You have to select a client.");
+                await dialog.ShowAsync();
                 
-                
+            }
+        }
+
+        private async void DeleteClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            try
+            {
+                var obj = Activities_lw.SelectedItem as Client;
+                await APIConnection.GetConnection.DeleteClientAsync(obj.IdC);
+                var dialog = new MessageDialog("Client deleted successfully.");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 204)
+                {
+                    var dialog = new MessageDialog("Client deleted successfully.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("You have to select an client.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                GetClientsList();
             }
         }
     }

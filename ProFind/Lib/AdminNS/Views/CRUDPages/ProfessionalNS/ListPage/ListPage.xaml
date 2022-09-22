@@ -62,8 +62,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Create" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="CreateProfessionalBtn_Click" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Update" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="UpdateProfessionalBtn_Click" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Professional" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="CreateProfessionalBtn_Click" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Update" Grid.Column="1" Margin="0 15 0 0" Click="UpdateProfessionalBtn_Click" Width="124" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Delete" Grid.Column="1" Margin="0 15 0 0" Click="DeleteProfessionalBtn_Click" Width="124" />
         </StackPanel>
     </Grid>
 </Page>

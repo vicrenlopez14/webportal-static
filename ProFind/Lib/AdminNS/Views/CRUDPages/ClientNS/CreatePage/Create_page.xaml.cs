@@ -5,6 +5,7 @@ using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using Client = ProFind.Lib.Global.Services.Client;
 using ProFind.Lib.AdminNS.Controllers;
+using Windows.UI.Popups;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,6 +37,46 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
+        {
+            PictureSelection_btn.IsChecked = !PictureSelection_btn.IsChecked;
+        }
+
+        private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.CheckEmail(Email_tb.Text)) e.Handled = true;
+            else e.Handled = false;
+        }
+
+        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Name_tb.Text.Length == 0)
+            {
+                var dialog = new MessageDialog("The name must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.CheckEmail(Email_tb.Text))
+            {
+                var dialog = new MessageDialog("The email must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.CheckPassword(Password_pb.Password))
+            {
+                var dialog = new MessageDialog("The password must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
                 var ToCreateAdmin = new Client("", Name_tb.Text, Email_tb.Text, Password_pb.Password, imageBytes);
@@ -94,23 +135,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
                 // Go back to clients list
                 new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List));
             }
-        }
-
-        private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
-        {
-            PictureSelection_btn.IsChecked = !PictureSelection_btn.IsChecked;
-        }
-
-        private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
-        }
-
-        private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
-        {
-            if (FieldsChecker.CheckEmail(Email_tb.Text)) e.Handled = true;
-            else e.Handled = false;
         }
     }
 }

@@ -4,6 +4,8 @@ using ProFind.Lib.ClientNS.Views.InitPage;
 using ProFind.Lib.Global.Services;
 using Professional = ProFind.Lib.Global.Services.Professional;
 using System.Collections.Generic;
+using Windows.UI.Popups;
+using System;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -54,6 +56,35 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
             {
                 var selectedProfessional = ProfessionalsListView.SelectedItem as Professional;
                 new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage.Editar_User), selectedProfessional);
+            }
+        }
+
+        private async void DeleteProfessionalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            try
+            {
+                var obj = ProfessionalsListView.SelectedItem as Professional;
+                await APIConnection.GetConnection.DeleteProfessionalAsync(obj.IdP);
+                var dialog = new MessageDialog("Professional has been deleted");
+                await dialog.ShowAsync();
+
+            }
+            catch(ProFindServicesException ex)
+            {
+                if(ex.StatusCode == 204 || ex.StatusCode == 202 || ex.StatusCode == 200 || ex.StatusCode == 405)
+                {
+                    var dialog = new MessageDialog("Professional has been deleted");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog(ex.Message);
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                GetProfessionalsList();
             }
         }
     }

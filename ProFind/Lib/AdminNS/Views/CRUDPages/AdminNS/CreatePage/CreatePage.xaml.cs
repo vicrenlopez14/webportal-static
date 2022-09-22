@@ -12,6 +12,7 @@ using ProFind.Lib.Global.Views;
 using Admin = ProFind.Lib.Global.Services.Admin;
 using Rank = ProFind.Lib.Global.Services.Rank;
 using ProFind.Lib.AdminNS.Controllers;
+using Windows.UI.Popups;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -132,6 +133,24 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            if (!FieldsChecker.CheckEmail(Email_tb.Text))
+            {
+                var dialog = new MessageDialog("The email must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.CheckPassword(Password_pb.Password))
+            {
+                var dialog = new MessageDialog("The password must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (Name_tb.Text.Length < 3)
+            {
+                var dialog = new MessageDialog("The name must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
                 Creation_pr.IsActive = true;
@@ -189,8 +208,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.CheckEmail(Email_tb.Text)) e.Handled = true;
-            else e.Handled = false;
+
         }
 
         private void PhoneNumber_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)

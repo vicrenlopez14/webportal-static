@@ -47,7 +47,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private void FillFields()
         {
-
+            Name1_tbx.Text = toManipulateClient.NameC;
+            Email_tbx.Text = toManipulateClient.EmailC;
         }
 
         private void AddEvents()
@@ -62,24 +63,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         private async Task Delete_btn_ClickAsync(object sender, RoutedEventArgs e)
         {
 
-            await APIConnection.GetConnection.DeleteClientAsync(toManipulateClient.IdC);
-
-            if (string.IsNullOrEmpty(Name1_tbx.Text))
-            {
-
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Email_tbx.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Password_tbx.Password))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-            }
+            
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
@@ -131,8 +115,30 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(Name1_tbx.Text))
+            {
+
+                var dialog = new MessageDialog("The Name is empty.");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (!FieldsChecker.CheckEmail(Email_tbx.Text))
+            {
+                var dialog = new MessageDialog("The email is invalid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (Password_tbx.Password.Length > 0 && !FieldsChecker.CheckPassword(Password_tbx.Password))
+            {
+                var dialog = new MessageDialog("The password is invalid.");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
+                toManipulateClient.EmailC = Email_tbx.Text;
+                toManipulateClient.NameC = Name1_tbx.Text;
+                if (Password_tbx.Password.Length > 0) toManipulateClient.PasswordC = Password_tbx.Password;
                 await APIConnection.GetConnection.PutClientAsync(toManipulateClient.IdC, toManipulateClient);
 
                 // Message dialog indicating success
@@ -142,7 +148,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
             }
             catch (ProFindServicesException ex)
             {
-                if (ex.StatusCode == 200 || ex.StatusCode == 201)
+                if (ex.StatusCode == 200 || ex.StatusCode == 201 ||ex.StatusCode == 204)
                 {
                     // Message dialog indicating success
                     var dialog = new MessageDialog("The client has been updated");
