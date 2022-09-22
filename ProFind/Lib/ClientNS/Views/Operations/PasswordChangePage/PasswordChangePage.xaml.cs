@@ -34,9 +34,9 @@ namespace ProFind.Lib.ClientNS.Views.Operations.PasswordChangePage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e != null)
+            if (e.Parameter != null)
             {
-                email = e.ToString();
+                email = e.Parameter.ToString();
             }
         }
 

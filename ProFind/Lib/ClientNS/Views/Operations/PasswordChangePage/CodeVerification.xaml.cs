@@ -35,7 +35,7 @@ namespace ProFind.Lib.ClientNS.Views.Operations.PasswordChangePage
             base.OnNavigatedTo(e);
             if(e.Parameter != null)
             {
-                email = e.ToString();
+                email = e.Parameter.ToString();
             }
         }
 

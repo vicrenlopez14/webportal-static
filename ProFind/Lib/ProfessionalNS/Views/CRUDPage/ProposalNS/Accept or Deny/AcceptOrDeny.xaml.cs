@@ -29,6 +29,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         private byte[] imageBytes;
         Professional Id;
         Proposal Denegada;
+
+        private Proposal InComingProposal;
+
+
         public AcceptOrDeny()
         {
             this.InitializeComponent();
@@ -40,6 +44,17 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
             Description_tb.OnEnterNextField();
             TotalPrice_tb.OnEnterNextField();
 
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(e.Parameter != null)
+            {
+                InComingProposal = (Proposal)e.Parameter;
+            }
+            Title_tb.Text = InComingProposal.TitlePp;
+            Description_tb.Text = InComingProposal.DescriptionPp;
         }
 
         private async void Cargar()
@@ -94,7 +109,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
             var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
-            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = LoggendPro.IdP  };
+            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3  };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
