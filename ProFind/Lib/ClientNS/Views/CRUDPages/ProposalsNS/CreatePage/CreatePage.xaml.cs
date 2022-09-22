@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.ClientNS.Controllers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.ClientNS.Controllers;
 using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -92,18 +94,27 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
 
 
                 var result = await APIConnection.GetConnection.PostProposalAsync(toCreatProposals);
-              
 
+                var dialog = new MessageDialog("Proposal already sent.");
+                await dialog.ShowAsync();
 
             }
-            catch (Exception ex)
+            catch (ProFindServicesException ex)
             {
-                
-                Console.WriteLine(ex.Message);
+                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("Proposal already sent.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was a problem while sending the proposal, try again later.");
+                    await dialog.ShowAsync();
+                }
             }
             finally
             {
-              new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
+              new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
             }
         }
 

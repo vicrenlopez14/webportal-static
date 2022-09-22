@@ -6,6 +6,8 @@ using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
 using Proposal = ProFind.Lib.Global.Services.Proposal;
 using Windows.UI.Popups;
 using System;
+using System.Linq;
+using ProFind.Lib.ProfessionalNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,8 +28,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
 
         private async void InitializeData()
         {
-
-           Activities_lw.ItemsSource = await APIConnection.GetConnection.GetProposalsAsync();
+            var result = await APIConnection.GetConnection.GetProposalsAsync();
+            var projectsOfThisProfessional = (from pp in result.ToList()
+                                                   where pp.IdP3 == LoggedProfessionalStore.LoggedProfessional.IdP
+                                                   select pp).ToList();
+            Activities_lw.ItemsSource = projectsOfThisProfessional;
         }
 
         private void ProposalListView_ItemClick(object sender, ItemClickEventArgs e)

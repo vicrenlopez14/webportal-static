@@ -8,6 +8,8 @@ using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage;
 using Project = ProFind.Lib.Global.Services.Project;
+using ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage;
+using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
 
 namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 {
@@ -44,12 +46,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(CreatePage));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(CreatePage));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -59,7 +61,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(CreatePage));
         }
 
         private void UpdateProject_Click(object sender, RoutedEventArgs e)
