@@ -1,14 +1,15 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using ProFind.Lib.ProfessionalNS.Controllers;
-using ProFind.Lib.Global.Services;
-using Project = ProFind.Lib.Global.Services.Project;
+﻿using System;
 using System.Linq;
-using ProFind.Lib.ProfessionalNS.Controllers;
 using Windows.UI.Popups;
-using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Controllers;
+using ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage;
+using Project = ProFind.Lib.Global.Services.Project;
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.ReadPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -38,7 +39,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.ReadPage
         {
             var project = e.ClickedItem as Project;
 
-            new InAppNavigationController().NavigateTo(typeof(UpdatePage.Update_Project), project);
+            new InAppNavigationController().NavigateTo(typeof(Update_Project), project);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
@@ -58,12 +59,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.ReadPage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
 
         private void UpdateProject_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project));
+            new InAppNavigationController().NavigateTo(typeof(Update_Project));
         }
 
         private async void DeleteProject_Click(object sender, RoutedEventArgs e)
