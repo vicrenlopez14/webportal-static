@@ -11,12 +11,6 @@ namespace WebService.Models.Generated
     [Index("IdP3", Name = "FK_Proposal_Professional")]
     public partial class Proposal
     {
-        public Proposal()
-        {
-            Proposalnotifications = new HashSet<Proposalnotification>();
-            Supporttickets = new HashSet<Supportticket>();
-        }
-
         [Key]
         [Column("IdPP")]
         [StringLength(21)]
@@ -34,8 +28,7 @@ namespace WebService.Models.Generated
         [Column(TypeName = "datetime")]
         public DateTime? SuggestedEnd { get; set; }
         public bool? Seen { get; set; }
-        [Column(TypeName = "enum('pending','planning','rejected','clientaccepted','topay','readytostart')")]
-        public string? RevisionStatus { get; set; }
+        public bool? Accepted { get; set; }
         [StringLength(21)]
         public string? IdP3 { get; set; }
         [StringLength(21)]
@@ -47,9 +40,5 @@ namespace WebService.Models.Generated
         [ForeignKey("IdP3")]
         [InverseProperty("Proposals")]
         public virtual Professional? IdP3Navigation { get; set; }
-        [InverseProperty("IdPp1Navigation")]
-        public virtual ICollection<Proposalnotification> Proposalnotifications { get; set; }
-        [InverseProperty("IdPp2Navigation")]
-        public virtual ICollection<Supportticket> Supporttickets { get; set; }
     }
 }

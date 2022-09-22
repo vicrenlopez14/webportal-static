@@ -30,7 +30,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         Professional toManipulate = new Professional();
 
-        private List<Department> departments = new List<Department>();
         private byte[] imageBytes;
 
         private byte[] curriculumBytes;
@@ -68,6 +67,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
             // Birth date
             Nacimiento.Date = DateTime.Now;
+
+            CurriculumInformation.Text = "No curriculum has been uploaded";
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -75,7 +76,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             if (e.Parameter != null)
             {
                 // Check if parameter is a bool
-                
+                isFirstProfessional = (bool)e.Parameter;
             }
 
         }
@@ -160,7 +161,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                     PasswordP = passwordBox.Password,
                     ActiveP = Sexo.SelectedValue == "Male",
                     PictureP = imageBytes,
-                    IdDp1 = (departamento.SelectedItem as Department).IdDp ,
+                    IdDp1 = (departamento.SelectedItem as Department).IdDp,
                     IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,
                     ZipCodeP = CodigoPostal.Text,
                     HiringDateP = FechadeIngreso.Date
@@ -350,6 +351,29 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private void Nacimiento_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
 
+        }
+
+        private async void SelectCurriculum_Click_2(object sender, RoutedEventArgs e)
+        {
+            // Launch curriculum select dialog
+            var result = await new Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog().ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                // Set selected curriculum
+                curriculumBytes = CurriculumNS.CreatePage.CreateDialog.curriculumBytes;
+
+                CurriculumInformation.Text = "The curriculum has been uploaded.";
+            }
+            else
+            {
+                CurriculumInformation.Text = "No curriculum has been uploaded";
+            }
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(AdminNS.ListPage.ListPageAdmin));
         }
     }
 }

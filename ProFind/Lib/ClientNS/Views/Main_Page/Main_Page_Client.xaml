@@ -54,10 +54,6 @@
                         Content="Projects"
                         Icon="Calendar"
                         Tag="Projects_Page_Clients" />
-                        <muxc:NavigationViewItem
-                        Content="Activity"
-                        Icon="Mail"
-                        Tag="Activity_Page_Clients" />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <!--Professionals-->
@@ -80,13 +76,6 @@
                                 <muxc:InfoBadge x:Name="Projects_ib" Value="0" Opacity="1"/>
                             </muxc:NavigationViewItem.InfoBadge>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
-                            Content="Proposals"
-                            Tag="ProposalNotifications_Page_Clients">
-                            <muxc:NavigationViewItem.InfoBadge>
-                                <muxc:InfoBadge x:Name="Proposals_ib" Value="0" Opacity="1"/>
-                            </muxc:NavigationViewItem.InfoBadge>
-                        </muxc:NavigationViewItem>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
 
@@ -97,7 +86,6 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Profile" Tag="Profile_Page" Icon="Contact" ></muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>
 
             <Frame Name="ClientsContentFrame" Margin="58,24,24,24">

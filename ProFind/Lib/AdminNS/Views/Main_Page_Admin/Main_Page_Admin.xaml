@@ -52,10 +52,6 @@
                         Content="Projects"
                         Icon="Calendar"
                         Tag="Projects_Page" />
-                        <muxc:NavigationViewItem
-                        Content="Activity"
-                        Icon="Mail"
-                        Tag="Activity_Page" />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <!--People-->
@@ -83,8 +79,7 @@
                 <!--Platform-->
                 <muxc:NavigationViewItem
                     Content="Platform"
-                    Tag="Activity_Page"
-                    >
+                    Tag="Professions_Page">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEDAF;" />
                     </muxc:NavigationViewItem.Icon>
@@ -114,13 +109,6 @@
                                 <muxc:InfoBadge x:Name="Projects_ib" Value="0" Opacity="1"/>
                             </muxc:NavigationViewItem.InfoBadge>
                         </muxc:NavigationViewItem>
-                        <muxc:NavigationViewItem
-                            Content="Proposals"
-                            Tag="ProposalNotifications_Page">
-                            <muxc:NavigationViewItem.InfoBadge>
-                                <muxc:InfoBadge x:Name="Proposals_ib" Value="0" Opacity="1"/>
-                            </muxc:NavigationViewItem.InfoBadge>
-                        </muxc:NavigationViewItem>
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
 
@@ -131,7 +119,6 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Profile" Tag="Profile_Page" Icon="Contact" ></muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>
 
             <Frame

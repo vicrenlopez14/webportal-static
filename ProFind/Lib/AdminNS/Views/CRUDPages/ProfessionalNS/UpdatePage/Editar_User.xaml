@@ -9,6 +9,7 @@
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
+
     <Grid>
         <muxc:TeachingTip
             x:Name="FirstProfessional_tt"
@@ -131,7 +132,7 @@
                                     HorizontalAlignment="Center"
                                    
                                     Content="Charge"
-                                    CornerRadius="5" />
+                                    CornerRadius="5" Click="btnExaminar_Click_1" />
                                 <TextBox
                                     Name="Afp"
                                     Grid.RowSpan="2"
@@ -183,15 +184,16 @@
                                     Height="73"
                                     Margin="0,15,0,0"
                                     VerticalAlignment="Top"
-                                    Header="Birth date" />
+                                    Header="Birth date" KeyDown="Nacimiento_KeyDown" />
                                 <TextBox
                                     Margin="0,15,0,0"
+                                    Name="position"
                                     d:LayoutRounding="Auto"
                                     Header="Position in the company"
                                     PlaceholderText="Position"
                                     RenderTransformOrigin="0.5,0.5"
                                     
-                                    UseLayoutRounding="False" KeyDown="TextBox_KeyDown">
+                                    UseLayoutRounding="False" KeyDown="position_KeyDown">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -253,20 +255,10 @@
                                     Margin="50,15,0,0"
                                     Header="Sex"
                                     PlaceholderText="Male"
+                                    SelectedIndex="0"
                                    >
                                     <x:String>Male</x:String>
                                     <x:String>Female</x:String>
-                                </ComboBox>
-                                <ComboBox
-                                    Name="MedotoPago"
-                                    Width="331"
-                                    Margin="50,15,0,0"
-                                    Header="Payment method"
-                                    PlaceholderText="Credit card payment"
-                                   >
-                                    <x:String>Credit card payment</x:String>
-                                    <x:String>Check (In person verify)</x:String>
-                                    <x:String>Cash (In person verify)</x:String>
                                 </ComboBox>
                                 <TextBox
                                     Name="Salario"
@@ -281,16 +273,6 @@
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
                                 </TextBox>
-                                <ComboBox
-                                    Name="Jornada"
-                                    Width="331"
-                                    Margin="50,15,0,0"
-                                    Header="Work-day type"
-                                    PlaceholderText=""
-                                   >
-                                    <x:String>Diurnal</x:String>
-                                    <x:String>Nocturnal</x:String>
-                                </ComboBox>
                                 <StackPanel Margin="50,15,0,0" Orientation="Horizontal">
                                     <CalendarDatePicker
                                         Name="FechadeIngreso"
@@ -305,6 +287,12 @@
                                         Today
                                     </Button>
                                 </StackPanel>
+
+                                <StackPanel Margin="50,15,0,0" Orientation="Horizontal" >
+                                    <Button Margin="0 0 15 0" Content="Select curriculum" Click="SelectCurriculum_Click_2" VerticalAlignment="Center"/>
+                                    <TextBlock Name="CurriculumInformation" d:Text="The curriculum has been uploaded." VerticalAlignment="Center"/>
+                                </StackPanel>
+
                                 <StackPanel Margin="0,20" Orientation="Horizontal" />
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical" />
@@ -320,29 +308,37 @@
                 HorizontalAlignment="Center"
                 Orientation="Horizontal">
                 <Button
-                    x:Name="btnAgregar"
+                    x:Name="btnUpdate"
                     Grid.Row="1"
                     Margin="50,0,0,0"
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
-                   
                     Content="Update"
-                    CornerRadius="5" />
+                    CornerRadius="5" 
+                    Click="btnUpdate_Click" />
                 <Button
                     x:Name="btnCancelar"
                     Grid.Row="1"
                     Margin="50,0"
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
-                    Content="Delete"
+                    Content="Cancel"
                     CornerRadius="5"
                     RenderTransformOrigin="1.663,0.216" />
+                <Button
+                    x:Name="btnDelete"
+                    Grid.Row="1"
+                    Margin="0,0"
+                    Padding="{StaticResource SmallLeftTopRightBottomMargin}"
+                    VerticalAlignment="Top"
+                    Content="Delete"
+                    CornerRadius="5"
+                    RenderTransformOrigin="1.663,0.216" Click="btnDelete_Click" />
             </StackPanel>
 
         </Grid>
-
-
-
-
     </Grid>
+
+
+
 </Page>

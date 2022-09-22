@@ -45,7 +45,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         {
                      
             Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
-            InitialStatus_cb.ItemsSource = await APIConnection.GetConnection.GetProjectstatusesAsync();
 
         }
 
@@ -93,7 +92,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdPs1 = (InitialStatus_cb.SelectedItem as Projectstatus).IdPs, IdP1 = Id.IdP , IdC1 = (Client_cb.SelectedItem as Client).IdC };
+            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = Id.IdP , IdC1 = (Client_cb.SelectedItem as Client).IdC };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);

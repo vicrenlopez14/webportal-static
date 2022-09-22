@@ -11,7 +11,7 @@
     PrimaryButtonText="Confirm"
     
     SecondaryButtonText="Cancel"
-    mc:Ignorable="d">
+    mc:Ignorable="d" PrimaryButtonClick="ContentDialog_PrimaryButtonClick_1" SecondaryButtonClick="ContentDialog_SecondaryButtonClick_1">
 
     <Grid Width="500" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
@@ -45,11 +45,10 @@
                 <ToggleButton
                     Name="UploadResume_btn"
                     HorizontalAlignment="Stretch"
-                   
-                    IsChecked="False">
+                    IsChecked="False" Click="UploadResume_btn_Click">
                     Upload my resume
                 </ToggleButton>
-                <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Visibility="Collapsed">
                     <TextBlock
                         Margin="0,20,0,0"
                         FontWeight="Medium"

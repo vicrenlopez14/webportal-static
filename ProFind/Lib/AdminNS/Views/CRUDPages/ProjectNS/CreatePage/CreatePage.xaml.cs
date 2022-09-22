@@ -7,7 +7,6 @@ using ProFind.Lib.Global.Services;
 using Client = ProFind.Lib.Global.Services.Client;
 using Professional = ProFind.Lib.Global.Services.Professional;
 using Project = ProFind.Lib.Global.Services.Project;
-using Projectstatus = ProFind.Lib.Global.Services.Projectstatus;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -41,11 +40,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
 
         private async void Cargar()
         {
-            InitialStatus_cb.ItemsSource = await APIConnection.GetConnection.GetProjectstatusesAsync();
 
             Professional_cb.ItemsSource = await APIConnection.GetConnection.GetProfessionalsAsync();
             Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
-
         }
 
 
@@ -53,7 +50,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         {
             byte[] da = toManipulate.PicturePj = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-            var toCreateClien = new Project { IdPj =  "", TitlePj =  Title_tb.Text, DescriptionPj =  Description_tb.Text, PicturePj = imageBytes , TotalPricePj = int.Parse( TotalPrice_tb.Text), IdPs1 = (InitialStatus_cb.SelectedItem as Projectstatus).IdPs, IdP1 = (Professional_cb.SelectedItem as Professional).IdP, IdC1 = (Client_cb.SelectedItem as Client).IdC };
+            var toCreateClien = new Project { IdPj =  "", TitlePj =  Title_tb.Text, DescriptionPj =  Description_tb.Text, PicturePj = imageBytes , TotalPricePj = int.Parse( TotalPrice_tb.Text), IdP1 = (Professional_cb.SelectedItem as Professional).IdP, IdC1 = (Client_cb.SelectedItem as Client).IdC };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
