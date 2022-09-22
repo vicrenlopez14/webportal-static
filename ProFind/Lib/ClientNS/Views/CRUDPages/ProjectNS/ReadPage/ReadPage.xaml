@@ -15,7 +15,6 @@
         <StackPanel>
             <StackPanel
                 Margin="20"
-                Padding="20"
                 Orientation="Vertical">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -66,7 +65,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <Button Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1"> Search </Button>
+            <Button Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1"> Search project</Button>
         </StackPanel>
     </Grid>
 </Page>

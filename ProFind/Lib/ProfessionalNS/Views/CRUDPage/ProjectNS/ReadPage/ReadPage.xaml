@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel>
             <StackPanel
-                Margin="20"
+                Margin="10"
                 Padding="20"
                 Orientation="Vertical">
                 <Grid>

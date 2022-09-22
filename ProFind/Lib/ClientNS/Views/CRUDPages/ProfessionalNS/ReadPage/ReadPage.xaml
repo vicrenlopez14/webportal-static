@@ -16,15 +16,16 @@
         <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Left" Orientation="Vertical">
             <TextBlock
                 Padding="20"
+                Margin="20"
                 RenderTransformOrigin="0.638,0.776"
                 Style="{StaticResource SubheaderTextBlockStyle}"
-                Text="List Professional" Width="1203" Height="78"
+                Text="List Professional" Width="1123" Height="78"
             />
         </StackPanel>
         
         <ListView
             Grid.Column="0"
-            Name="DashboardProfessionalsActiveListView" Grid.ColumnSpan="2" ItemClick="DashboardProfessionalsActiveListView_ItemClick"
+            Name="DashboardProfessionalsActiveListView" ItemClick="DashboardProfessionalsActiveListView_ItemClick"
             IsItemClickEnabled="True"
             SelectionMode="Single">
             <ListView.ItemTemplate>
@@ -73,7 +74,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Column="1">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Search"  Click="Button_Click_1" Margin="0,15,0,0" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Search professional"  Click="Button_Click_1" Margin="0,15,0,0" />
         </StackPanel>
     </Grid>
 </Page>

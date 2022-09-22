@@ -14,12 +14,13 @@
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <TextBlock
+                        Padding="10"
                         Grid.Column="0"
-                        Margin="20,20,0,928"
+                        Margin="20,20,0,910"
                         HorizontalAlignment="Left"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="Proposal" Grid.ColumnSpan="2" Width="1069"
+                        Text="Proposal list" Width="1069"
             
             />
 
@@ -77,6 +78,7 @@
         <StackPanel Grid.Column="1">
             <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Create proposal" Click="Button_Click"   />
             <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Search proposal" Click="Button_Click_2" />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Update proposal" Click="Button_Click_1" />
         </StackPanel>
     </Grid>
 </Page>

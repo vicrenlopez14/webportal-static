@@ -13,13 +13,14 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock
+                    Padding="10"
                     Grid.Column="0"
                     Margin="20,20,20,910"
                     RenderTransformOrigin="0.638,0.776"
                     Style="{StaticResource SubheaderTextBlockStyle}"
                     Text="Profession List"/>
         <ListView
-            Name="DashboardProfessionalsActiveListView" Margin="10,0,0,10" Grid.Column="0">
+            Name="DashboardProfessionalsActiveListView" Grid.Column="0">
             <ListView.ItemTemplate>
 
                 <DataTemplate x:DataType="services:Professional">
@@ -66,8 +67,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Column="1" Margin="0,0,0,10">
-            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0">Search profession</Button>
-        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="0,0,0,10"/>
     </Grid>
 </Page>

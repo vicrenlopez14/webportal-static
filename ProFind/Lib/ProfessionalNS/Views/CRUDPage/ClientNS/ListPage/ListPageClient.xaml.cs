@@ -71,5 +71,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
 
             //new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ReadPage), client);
         }
+
+        private void Search_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.SearchPage.SearchPageClient));
+        }
     }
 }
