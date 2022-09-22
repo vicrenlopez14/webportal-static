@@ -8,9 +8,10 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00 *" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
+        
         <StackPanel>
             <StackPanel
                 Margin="20"
@@ -31,10 +32,9 @@
                         Text="List projects" />
                 </Grid>
                 <ListView
-                   
+                    Grid.Column="0"
                     Name="AdminsListView"
                     IsItemClickEnabled="True"
-                   
                     SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models1:Project">
@@ -65,11 +65,8 @@
                 </ListView>
             </StackPanel>
         </StackPanel>
-        <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Button Name="Add_btn">Add</Button>
+        <StackPanel Grid.Column="1">
+            <Button Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1"> Search </Button>
         </StackPanel>
     </Grid>
 </Page>

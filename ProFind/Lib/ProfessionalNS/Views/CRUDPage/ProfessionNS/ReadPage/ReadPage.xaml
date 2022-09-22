@@ -6,23 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:services="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
-    <Grid Margin="0,134,56,0" HorizontalAlignment="Right" Width="1444">
-
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="640*" />
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="63*"/>
-            <ColumnDefinition Width="695*" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
+        
         <TextBlock
-                    Margin="35,-103,45,921"
+                    Grid.Column="0"
+                    Margin="20,20,20,910"
                     RenderTransformOrigin="0.638,0.776"
                     Style="{StaticResource SubheaderTextBlockStyle}"
-                    Text="Profession List" Grid.ColumnSpan="4" />
+                    Text="Profession List"/>
         <ListView
-            Name="DashboardProfessionalsActiveListView" Margin="10,0,0,10" Grid.ColumnSpan="4"
-           
-            >
+            Name="DashboardProfessionalsActiveListView" Margin="10,0,0,10" Grid.Column="0">
             <ListView.ItemTemplate>
 
                 <DataTemplate x:DataType="services:Professional">
@@ -69,5 +66,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Column="1" Margin="0,0,0,10">
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0">Search profession</Button>
+        </StackPanel>
     </Grid>
 </Page>

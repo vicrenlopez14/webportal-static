@@ -66,6 +66,10 @@
         </StackPanel>
         <StackPanel 
             Grid.Column="1">
+<<<<<<< HEAD
+=======
+            <Button Name="Search_btn" Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Click="Add_btn_Click_1">Search project</Button>
+>>>>>>> 08006f6abd3b4e08efe4571f7cdfe34e986f4684
             <Button Name="Update_btn" Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Click="Update_btn_Click">Update project</Button>
         </StackPanel>
     </Grid>
