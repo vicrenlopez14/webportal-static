@@ -80,7 +80,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Delete"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Delete_btn_Click_1" />
                         <Button
                         x:Name="Update_btn"
                         Width="100"
@@ -88,7 +88,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Update"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Update_btn_Click_1" />
 
                         <d:ProgressRing
                         x:Name="Creation_pr"

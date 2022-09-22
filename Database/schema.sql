@@ -57,7 +57,7 @@ CREATE TABLE Admin
     CONSTRAINT FK_Admin_Rank FOREIGN KEY (IdR1) REFERENCES `Rank` (IdR) ON DELETE CASCADE
 );
 
-DESCRIBE ADMIN;
+DESCRIBE Admin;
 
 SELECT *
 FROM Admin;
@@ -152,7 +152,7 @@ CREATE TABLE Project
     PicturePJ     LONGBLOB,
     TotalPricePJ  FLOAT,
     IsPaidPJ      BOOLEAN,
-    TagDurationPJ    INT,
+    TagDurationPJ INT,
     IdP1          CHAR(21),
     IdC1          CHAR(21),
     CONSTRAINT FK_Project_Professional FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE,
@@ -172,8 +172,8 @@ CREATE TABLE Notification
     DescriptionN    VARCHAR(500),
     DateTimeIssuedN DATETIME,
     PictureN        LONGBLOB,
-    IdPJ2           CHAR(21),
-    CONSTRAINT FK_Notification_Project FOREIGN KEY (IdPJ2) REFERENCES Project (IdPJ) ON DELETE CASCADE
+    IdC3            CHAR(21),
+    CONSTRAINT FK_Notification_Client FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE
 );
 
 ################################################

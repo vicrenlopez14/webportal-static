@@ -37,6 +37,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
         }
         private async void Cargar()
         {
+            SelectedPicture_pp.Source = toManipulate.PicturePj.ToBitmapImage();
+            Title_tb.Text = toManipulate.TitlePj;
+            Description_tb.Text = toManipulate.DescriptionPj;
+            TotalPrice_tb.Text = toManipulate.TotalPricePj.ToString();
+            IsPaid_cbx.IsChecked = toManipulate.IsPaidPj;
+            
         }
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
@@ -159,6 +165,16 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
             {
                 SelectedPicture_tbk.Text = "No picture has been selected";
             }
+        }
+
+        private void Delete_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Update_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

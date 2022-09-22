@@ -89,7 +89,7 @@
                             </StackPanel>
 
                             <ComboBox
-                                Name="Tag"
+                                Name="TagDuration_cbx"
                                 Grid.Column="3"
                                 Margin="109,20,0,0"
                                 Header="Tag Duration"
@@ -108,7 +108,7 @@
                             Width="100"
                            
                             Content="Create"
-                            Style="{StaticResource AccentButtonStyle}" />
+                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
 
 
 
