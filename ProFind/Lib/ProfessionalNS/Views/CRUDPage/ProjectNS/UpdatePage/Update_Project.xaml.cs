@@ -3,17 +3,15 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
+using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
-using Client = ProFind.Lib.Global.Services.Client;
-using Professional = ProFind.Lib.Global.Services.Professional;
 using Project = ProFind.Lib.Global.Services.Project;
-using ProFind.Lib.AdminNS.Controllers;
-using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -100,7 +98,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
             }
             finally
             {
-                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
+                new InAppNavigationController().NavigateTo(typeof(ReadPage.ReadPage));
             }
         }
 

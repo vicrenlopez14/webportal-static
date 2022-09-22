@@ -187,6 +187,11 @@ public class ClientsController : ControllerBase
             return BadRequest();
         }
 
+        if (client.PasswordC.Length < 64)
+        {
+            client.PasswordC = ShaOperations.ShaPassword(client.PasswordC);
+        }
+
         _context.Entry(client).State = EntityState.Modified;
 
         try

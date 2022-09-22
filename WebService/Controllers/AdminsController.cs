@@ -190,6 +190,10 @@ public class AdminsController : ControllerBase
             return BadRequest();
         }
 
+        if (admin.PasswordA.Length < 64)
+        {
+            admin.PasswordA = ShaOperations.ShaPassword(admin.PasswordA);
+        }
         _context.Entry(admin).State = EntityState.Modified;
 
         try
