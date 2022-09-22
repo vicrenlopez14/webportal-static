@@ -180,15 +180,59 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
             if (ToManipulateProfessional != null)
             {
+
+                if(FirstName1_tbx.Text.Length <= 3)
+                {
+                    var dialog = new MessageDialog("The name must be valid");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckEmail(Email.Text))
+                {
+                    var dialog = new MessageDialog("The name email be valid");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckPassword(passwordBox.Password))
+                {
+                    var dialog = new MessageDialog("The password must be valid");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (int.Parse(Salario.Text) <= 0)
+                {
+                    var dialog = new MessageDialog("The salary must be valid");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckDateDown((DateTimeOffset)Nacimiento.Date))
+                {
+                    var dialog = new MessageDialog("The birth date must be valid");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckDateUp((DateTimeOffset)FechadeIngreso.Date))
+                {
+                    var dialog = new MessageDialog("The hiring date must be valid");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if(Confirm_passwordBox.Password != passwordBox.Password)
+                {
+                    var dialog = new MessageDialog("Password and confirmation password are not the same");
+                    await dialog.ShowAsync();
+                    return;
+                }
                 try
                 {
-                    var toCreateProfessions = new Professional { NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = passwordBox.Password, ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageBytes, IdDp1 = int.Parse(departamento.Text), IdPfs1 = int.Parse(profession_cbx.Text), ZipCodeP = CodigoPostal.Text, HiringDateP = FechadeIngreso.Date };
+                    var toCreateProfessions = new Professional { IdP = ToManipulateProfessional.IdP, NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = (DateTimeOffset)Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = (string.IsNullOrEmpty(passwordBox.Password) ? ToManipulateProfessional.PasswordP : passwordBox.Password), ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageBytes, IdDp1 = (departamento.SelectedItem as Department).IdDp, IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs, ZipCodeP = CodigoPostal.Text, HiringDateP = (DateTimeOffset)FechadeIngreso.Date };
 
 
-                    await APIConnection.GetConnection.PutProfessionalAsync(ToManipulateProfessional.IdP, ToManipulateProfessional);
+                    await APIConnection.GetConnection.PutProfessionalAsync(ToManipulateProfessional.IdP, toCreateProfessions);
 
                     // Success message dialog
                     var dialog = new MessageDialog("The Professional has been updated successfully");
+                    await dialog.ShowAsync();
                 }
                 catch (ProFindServicesException ex)
                 {
@@ -202,6 +246,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                     {
                         // Error message dialog
                         var dialog = new MessageDialog("There was a problem updating the professional, pleasy try again later.");
+                        //"There was a problem updating the professional, pleasy try again later."
                         await dialog.ShowAsync();
                     }
                 }
@@ -210,55 +255,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                     // Back to profesionals list
                     new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage));
                 }
-            }
-
-
-            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
-            {
-
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-
-            else if (string.IsNullOrEmpty(Afp.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-            else if (string.IsNullOrEmpty(Dui.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-            }
-
-            else if (string.IsNullOrEmpty(SeguroSocial.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-            else if (string.IsNullOrEmpty(CodigoPostal.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-            else if (string.IsNullOrEmpty(Salario.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-            else if (string.IsNullOrEmpty(Email.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-            else if (string.IsNullOrEmpty(passwordBox.Password))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
-            }
-            else if (string.IsNullOrEmpty(Confirm_passwordBox.Password))
-            {
-                var dialog = new MessageDialog("The field is empty");
-
             }
 
 

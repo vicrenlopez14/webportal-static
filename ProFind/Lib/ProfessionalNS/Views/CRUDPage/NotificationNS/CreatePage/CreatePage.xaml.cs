@@ -60,7 +60,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
               
                 byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdPj2 = Project_cb.Text, PictureN = imageBytes, DateTimeIssuedN = Caledar.Date, IdPj2Navigation = toManipulate.IdPj2Navigation };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdC3= Project_cb.Text, PictureN = imageBytes };
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
@@ -124,7 +124,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
                 byte[] da = toManipulate.PictureN = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdPj2 = Project_cb.Text, PictureN = imageBytes, DateTimeIssuedN = Caledar.Date, IdPj2Navigation = toManipulate.IdPj2Navigation };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdC3 = Project_cb.Text, PictureN = imageBytes, DateTimeIssuedN = Caledar.Date};
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);

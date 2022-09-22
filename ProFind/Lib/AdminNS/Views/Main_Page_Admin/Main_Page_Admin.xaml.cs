@@ -31,9 +31,7 @@ namespace ProFind.Lib.AdminNS.Views.Main_Page_Admin
             // Platform
             {"Professions_Page", typeof(Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage.List_Page) },
             {"Ranks_Page", typeof(Lib.AdminNS.Views.CRUDPages.RankNS.ListPage.List_Ranks) },
-            //Notification center
-            {"Projecttype_Page",  typeof(Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage.List_Page)},
-            {"GeneralNotifications_Page", typeof(Lib.AdminNS.Views.CRUDPages.NotificationNS.ListPage.List_Page)},
+         
             {"ProposalNotifications_Page", null },
             #endregion
 

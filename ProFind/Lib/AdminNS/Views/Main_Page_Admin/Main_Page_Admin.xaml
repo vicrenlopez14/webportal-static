@@ -95,22 +95,7 @@
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <!--Notification center-->
-                <muxc:NavigationViewItem
-                    Content="Notification center"
-                    Tag="Projecttype_Page">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7E7;" />
-                    </muxc:NavigationViewItem.Icon>
-                    <muxc:NavigationViewItem.MenuItems>
-                        <muxc:NavigationViewItem
-                            Content="General"
-                            Tag="GeneralNotifications_Page">
-                            <muxc:NavigationViewItem.InfoBadge>
-                                <muxc:InfoBadge x:Name="Projects_ib" Value="0" Opacity="1"/>
-                            </muxc:NavigationViewItem.InfoBadge>
-                        </muxc:NavigationViewItem>
-                    </muxc:NavigationViewItem.MenuItems>
-                </muxc:NavigationViewItem>
+                
 
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.FooterMenuItems>
