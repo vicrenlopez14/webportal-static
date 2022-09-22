@@ -37,8 +37,8 @@ namespace ProFind
             {
                 e.Handled = true;
                 // Message dialog
-                var dialog = new Windows.UI.Popups.MessageDialog(e.Message);
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("This is an unimplented feature or a bug, please contact our team at support@profind.com, or wait for newer versions of ProFind."));
+                var dialog = new Windows.UI.Popups.MessageDialog("This is an unimplented feature or a bug, please contact our team at support@profind.com, or wait for newer versions of ProFind.");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok"));
                 dialog.ShowAsync();
                 System.Diagnostics.Debug.WriteLine(e.Exception);
             };
