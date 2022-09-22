@@ -12,7 +12,7 @@
     <Grid Margin="0,0,0,10">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
             <TextBlock Text="Enter your recovery code that was sent to your email" FontSize="30"></TextBlock>
-            <TextBlock Text="If you're email wasn't valid you won't get anything" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+            <TextBlock Text="If your email wasn't valid you won't get anything" HorizontalAlignment="Center" FontSize="20" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
 
             <TextBox x:Name="Code_tb" Margin="50 20 50 0"></TextBox>
 
