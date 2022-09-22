@@ -6,8 +6,8 @@ using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
 using Proposal = ProFind.Lib.Global.Services.Proposal;
 using Windows.UI.Popups;
 using System;
-using ProFind.Lib.ProfessionalNS.Controllers;
 using System.Linq;
+using ProFind.Lib.ProfessionalNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,11 +28,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
 
         private async void InitializeData()
         {
-            var loggedProfesioanal = LoggedProfessionalStore.LoggedProfessional;
-            var projects = await APIConnection.GetConnection.GetProjectsAsync();
-            var RealProfessional = projects.Where(p => p.IdPj == loggedProfesioanal.IdP).ToList();
-
-           Activities_lw.ItemsSource = RealProfessional;
+            var result = await APIConnection.GetConnection.GetProposalsAsync();
+            var projectsOfThisProfessional = (from pp in result.ToList()
+                                                   where pp.IdP3 == LoggedProfessionalStore.LoggedProfessional.IdP
+                                                   select pp).ToList();
+            Activities_lw.ItemsSource = projectsOfThisProfessional;
         }
 
         private void ProposalListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -71,11 +71,25 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
             {
                 Proposal obj = Activities_lw.SelectedItem as Proposal;
                 await APIConnection.GetConnection.DeleteProposalAsync(obj.IdPp);
-            }
-            catch
-            {
-                var dialog = new MessageDialog("You have to select a proposal.");
+                var dialog = new MessageDialog("The proposal has been deleted");
                 await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("You have to select a proposal.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was a problem while eliminating the proposal, try again later.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                InitializeData();
             }
         }
     }

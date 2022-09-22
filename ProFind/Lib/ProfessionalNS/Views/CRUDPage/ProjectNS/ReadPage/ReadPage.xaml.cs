@@ -8,6 +8,8 @@ using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage;
 using Project = ProFind.Lib.Global.Services.Project;
+using ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage;
+using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
 
 namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 {
@@ -39,32 +41,20 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
         {
             var project = e.ClickedItem as Project;
 
-            new InAppNavigationController().NavigateTo(typeof(Update_Project), project);
+            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.Update_Project), project);
         }
 
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
-        }
+        
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
-        }
 
         private void UpdateProject_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Update_Project));
+            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project));
         }
 
         private async void DeleteProject_Click(object sender, RoutedEventArgs e)
@@ -94,6 +84,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
             {
                 InitializeData();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
     }
 }
