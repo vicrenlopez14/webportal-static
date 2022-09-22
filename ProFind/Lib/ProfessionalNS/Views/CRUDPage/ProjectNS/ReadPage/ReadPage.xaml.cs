@@ -48,5 +48,15 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
         private void Button_Click(object sender, RoutedEventArgs e)
         {
         }
+
+        private void Add_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.SearchPage.SearchPagePJ));
+        }
+
+        private void Update_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.UpdatePagePJ));
+        }
     }
 }

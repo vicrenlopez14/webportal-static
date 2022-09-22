@@ -10,22 +10,24 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="114*"/>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="456*"/>
         </Grid.RowDefinitions>
         <AutoSuggestBox PlaceholderText="Search"
         TextChanged="Control2_TextChanged"
         QueryIcon="Find"
         x:Name="Search_Client"
-        Margin="280,44,279,0" Height="34"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="375*"/>
-                <ColumnDefinition Width="254*"/>
-                <ColumnDefinition Width="121*"/>
+        Grid.Row="1" Margin="106,0,114,31" Height="34"/>
+        
+        <Grid Grid.RowSpan="2">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="0.8*" />
+                <ColumnDefinition Width="0.2*" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="Clients" Style="{StaticResource HeaderTextBlockStyle}" Margin="80,39,670,49" RenderTransformOrigin="0.638,0.776"/>
-            <ListView Name="ClientListView"  Grid.ColumnSpan="3" Margin="44,101,56,-857">
+
+            <ListView Grid.ColumnSpan="2" Margin="34,94,58,-876"  Name="ClientListView">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="services:Proposal">
                         <StackPanel Background="#F4FAE1" CornerRadius="15">

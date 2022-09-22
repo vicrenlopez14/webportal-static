@@ -8,8 +8,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00 *" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <StackPanel>
             <StackPanel
@@ -30,6 +30,7 @@
                         Text="Created projects" />
                 </Grid>
                 <ListView
+                    Grid.Column ="0"
                     Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
@@ -63,11 +64,10 @@
                 </ListView>
             </StackPanel>
         </StackPanel>
-        <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Button Name="Add_btn">Add</Button>
+        <StackPanel 
+            Grid.Column="1">
+            <Button Name="Search_btn" Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Click="Add_btn_Click_1">Search project</Button>
+            <Button Name="Update_btn" Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Click="Update_btn_Click">Update project</Button>
         </StackPanel>
     </Grid>
 </Page>
