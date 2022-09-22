@@ -30,10 +30,10 @@
                         Style="{StaticResource HeaderTextBlockStyle}"
                         Text="Log In" />
                     <TextBlock Margin="0,0,0,20">You are in the log in page for Admins</TextBlock>
-                    <RichTextBlock SelectionHighlightColor="Green">
+                    <RichTextBlock SelectionHighlightColor="Green" SelectionChanged="RichTextBlock_SelectionChanged_1">
                         <Paragraph>
                             Forgot password?
-                            <Hyperlink>Click here</Hyperlink>
+                            <Hyperlink Click="Hyperlink_Click_1">Click here</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                     <TextBox

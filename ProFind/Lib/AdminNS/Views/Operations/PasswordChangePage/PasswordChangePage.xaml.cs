@@ -33,7 +33,7 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
         private string email;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e); e.
+            base.OnNavigatedTo(e); 
             if (e.Parameter != null)
             {
                 email = e.Parameter.ToString();

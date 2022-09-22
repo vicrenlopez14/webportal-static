@@ -101,5 +101,15 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
         {
             new GlobalNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.InitPage.InitPage));
         }
+
+        private void Hyperlink_Click_1(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Operations.PasswordChangePage.SendEmailPage));
+        }
+
+        private void RichTextBlock_SelectionChanged_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
