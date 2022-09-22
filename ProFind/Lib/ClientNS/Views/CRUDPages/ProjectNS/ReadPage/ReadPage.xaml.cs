@@ -55,7 +55,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.SearchPage.SearchPagePj));
+           
         }
     }
 }

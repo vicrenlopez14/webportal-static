@@ -29,14 +29,6 @@
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
                         Text="List projects" />
-                    <Button
-                       
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                       
-                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1">
-                        Search
-                    </Button>
                 </Grid>
                 <ListView
                    

@@ -397,9 +397,6 @@
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\SearchPage\SearchPagePj.xaml.cs">
-      <DependentUpon>SearchPagePj.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -541,9 +538,6 @@
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\SearchPage\SearchPagePJ.xaml.cs">
-      <DependentUpon>SearchPagePJ.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\UpdatePagePJ.xaml.cs">
       <DependentUpon>UpdatePagePJ.xaml</DependentUpon>
@@ -754,10 +748,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\SearchPage\SearchPagePj.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\CreatePage\CreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -914,10 +904,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\SearchPage\SearchPagePJ.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\UpdatePagePJ.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1000,7 +986,6 @@
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\UpdatePage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\SearchPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProfessionalNS\SearchPage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\ProjectNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\CreatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\DeletePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ListPage\.gitkeep" />
@@ -1019,8 +1004,6 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\SearchPage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\SearchPage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\.gitkeep" />
     <None Include="ProFind_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

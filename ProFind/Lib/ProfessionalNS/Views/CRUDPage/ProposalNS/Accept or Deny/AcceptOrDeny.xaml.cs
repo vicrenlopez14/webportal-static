@@ -1,6 +1,7 @@
 ﻿using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +45,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         private async void Cargar()
         {
                      
-            Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
+            
 
         }
 
@@ -92,7 +93,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = Id.IdP , IdC1 = (Client_cb.SelectedItem as Client).IdC };
+            var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
+            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = LoggendPro.IdP  };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
