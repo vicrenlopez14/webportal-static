@@ -56,10 +56,6 @@
                         Content="Projects"
                         Icon="Calendar"
                         Tag="Projects_Page_Professionals" />
-                        <muxc:NavigationViewItem
-                        Content="Activity"
-                        Icon="Mail"
-                        Tag="Activity_Page_Professionals" />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <!--People-->
@@ -99,7 +95,6 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Profile" Tag="Profile_Page" Icon="Contact" ></muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>
 
             <Frame Name="Professionals_ContentFrame" Margin="58,24,24,24">

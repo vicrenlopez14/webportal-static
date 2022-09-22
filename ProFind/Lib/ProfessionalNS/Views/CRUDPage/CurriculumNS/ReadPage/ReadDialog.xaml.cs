@@ -21,9 +21,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.CurriculumNS.ReadPage
             const string projectIdSelected = "1";
             const string Titulo = "Carlitos";
 
-            var results = await APIConnection.GetConnection.SearchActivitiesAsync(projectIdSelected, Titulo);
-            
-            
 
             this.Hide();
         }
