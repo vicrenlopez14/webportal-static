@@ -89,6 +89,13 @@
                                 Header="Client"
                                 SelectedIndex="0" Grid.ColumnSpan="2" Width="85"
                                 />
+                            <ComboBox
+                                Name="Tag"
+                                Grid.Column="3"
+                                Margin="109,20,0,0"
+                                Header="Tag"
+                                SelectedIndex="0" Width="85"
+                                />
 
 
                         </Grid>
