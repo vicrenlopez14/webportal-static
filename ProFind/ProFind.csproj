@@ -512,6 +512,9 @@
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\ReadPage\ReadPage.xaml.cs">
+      <DependentUpon>ReadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -859,6 +862,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\NotificationNS\ReadPage\ReadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\ReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -978,8 +985,6 @@
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\ReadPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\CurriculumNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\ReadPage\.gitkeep" />
-    <None Include="Lib\ProfessionalNS\Views\CRUDPage\ProfessionNS\SearchPage\.gitkeep" />
     <None Include="ProFind_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

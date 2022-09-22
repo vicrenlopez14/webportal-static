@@ -4,6 +4,7 @@ using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,16 +26,19 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
         public CreatePage()
         {
             this.InitializeComponent();
-            loadUsefulThings();
+            
             AddEvents();
         }
-        public async void loadUsefulThings()
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            ranks = await APIConnection.GetConnection.GetProjectAsync(id1.IdPj);
-            ranks2 = await APIConnection.GetConnection.GetClientAsync(id2.IdC);
-            Project_cb.ItemsSource = ranks;
-            Client_cb.ItemsSource = ranks2;
+            base.OnNavigatedTo(e);
+            if (e.Parameter != null)
+            {
+               id2 = e.Parameter as Client;
+               
+            }
         }
+
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
            
@@ -57,11 +61,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
             try
             {
-              
-                byte[] da = toManipulate.PictureN = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdC3= Project_cb.Text, PictureN = imageBytes };
 
+
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, IdC3 = id2.IdC, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 
@@ -122,10 +125,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             try
             {
 
-                byte[] da = toManipulate.PictureN = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
+                
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, IdC3 = Project_cb.Text, PictureN = imageBytes, DateTimeIssuedN = Caledar.Date};
-
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, IdC3 = id2.IdC, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 
