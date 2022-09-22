@@ -24,6 +24,7 @@ namespace ProFind.Lib.Global.Helpers
 
         public static WriteableBitmap ToWriteableBitmap(this BitmapImage img)
         {
+            if (img == null) return null;
             WriteableBitmap wb = new WriteableBitmap(img.PixelWidth, img.PixelHeight);
 
             using (Stream stream = wb.PixelBuffer.AsStream())
