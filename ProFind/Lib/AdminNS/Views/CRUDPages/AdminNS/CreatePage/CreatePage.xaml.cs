@@ -137,6 +137,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 Creation_pr.IsActive = true;
 
                 ToCreateAdmin.IdA = "";
+                ToCreateAdmin.TelA = PhoneNumber_tb.Text;
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(ToCreateAdmin);
 

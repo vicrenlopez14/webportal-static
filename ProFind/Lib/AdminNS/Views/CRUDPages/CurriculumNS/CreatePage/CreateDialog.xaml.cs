@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Helpers;
 using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -15,7 +16,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
         const string SideText_UPDATEMODE = "Update your information and provide the most recent data to your Clients.";
         const string SideHeader_UPDATEMODE = "Update your resume";
 
-        private byte[] newCurriculum;
+        public static PdfLoadedDocument curriculumLoaded;
+        public static byte[] curriculumBytes;
 
         public CreateDialog()
         {
@@ -23,11 +25,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
             CreateMode();
         }
 
-        public CreateDialog(PdfDocument document)
+        public CreateDialog(PdfLoadedDocument document)
         {
             UpdateMode();
 
-            //PDFPreview.Load(document);
+            PDFPreview.LoadDocument(document);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -48,16 +50,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
 
         private async void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            var pickedFile = await PickFileHelper.PickPDF();
-
-            if (pickedFile != null)
-            {
-
-                UploadResume_btn.IsChecked = true;
-                UploadResume_btn.Content = "Loaded file";
-            }
-
-            PDFPreview.LoadDocument(pickedFile.ToPdfLoadedDocument());
+           
         }
 
 
@@ -75,5 +68,31 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage
             
         }
 
+        private void ContentDialog_PrimaryButtonClick_1(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+
+        private async void UploadResume_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var pickedFile = await PickFileHelper.PickPDF();
+
+            if (pickedFile != null)
+            {
+
+                UploadResume_btn.IsChecked = true;
+                UploadResume_btn.Content = "Loaded file";
+            }
+
+            curriculumLoaded = pickedFile.ToPdfLoadedDocument();
+            curriculumBytes = pickedFile;
+            PDFPreview.LoadDocument(pickedFile.ToPdfLoadedDocument());
+        }
+
+        private void ContentDialog_SecondaryButtonClick_1(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            curriculumLoaded = null;
+            curriculumBytes = null;
+        }
     }
 }

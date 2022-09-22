@@ -69,6 +69,7 @@
 
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <Button Style="{StaticResource AccentButtonStyle}" Content="Add Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
+            <Button Style="{StaticResource AccentButtonStyle}" Content="Update Project" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top"/>
         </StackPanel>
 
     </Grid>

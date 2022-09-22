@@ -8,6 +8,7 @@ using ProFind.Lib.Global.Services;
 using Department = ProFind.Lib.Global.Services.Department;
 using Profession = ProFind.Lib.Global.Services.Profession;
 using Professional = ProFind.Lib.Global.Services.Professional;
+using ProFind.Lib.AdminNS.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,16 +20,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
     public sealed partial class Editar_User : Page
     {
 
-        Profession pro = new Profession();
-        Department depa;
 
-        Professional id = new Professional();
+        Profession selectedProfession;
+        Department selectedDepartment;
+
+        Professional ToManipulateProfessional = new Professional();
 
         private byte[] imageBytes;
 
-        private byte[] curriculo;
+        private byte[] curriculumBytes;
 
         private bool _isFirstAdmin;
+
         public Editar_User()
         {
             this.InitializeComponent();
@@ -42,29 +45,51 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             Afp.OnEnterNextField();
             Dui.OnEnterNextField();
             SeguroSocial.OnEnterNextField();
-           
             CodigoPostal.OnEnterNextField();
             Email.OnEnterNextField();
             Salario.OnEnterNextField();
-
         }
-
 
         public async void loadUsefulThings()
         {
-           
-            profession_cbx.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync();
 
-       
+            profession_cbx.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync();
+            profession_cbx.SelectedIndex = 0;
+
             departamento.ItemsSource = await APIConnection.GetConnection.GetDepartmentsAsync();
+            departamento.SelectedIndex = 0;
+
+        }
+        private void position_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
+            else e.Handled = false;
 
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _isFirstAdmin = (bool)e.Parameter;
+            if (e.Parameter != null)
+            {
+                ToManipulateProfessional = (Professional)e.Parameter;
+            }
+            else
+            {
+                // Go back to professionals list
+                // Error message dialog
+                var dialog = new MessageDialog("Professional not found or  not valid.");
+                await dialog.ShowAsync();
 
+                // Back to profesionals list
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage));
+            }
+        }
+        private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
+        {
+            imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+
+            ProfilePicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
         }
 
         private void Selection_Sexo(object sender, SelectionChangedEventArgs e)
@@ -127,38 +152,55 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         }
 
-        private async void btnAgregar_Click(object sender, RoutedEventArgs e)
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 
-            try
+            if (ToManipulateProfessional != null)
             {
-                byte[] da = id.PictureP = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+                try
+                {
+                    var toCreateProfessions = new Professional { NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = passwordBox.Password, ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageBytes, IdDp1 = int.Parse(departamento.Text), IdPfs1 = int.Parse(profession_cbx.Text), ZipCodeP = CodigoPostal.Text, HiringDateP = FechadeIngreso.Date };
 
 
-                var toCreateProfessions = new Professional { NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = passwordBox.Password, ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageBytes, IdDp1 = int.Parse(departamento.Text), IdPfs1 = int.Parse(profession_cbx.Text), ZipCodeP = CodigoPostal.Text, HiringDateP = FechadeIngreso.Date };
+                    await APIConnection.GetConnection.PutProfessionalAsync(ToManipulateProfessional.IdP, ToManipulateProfessional);
 
-
-                await APIConnection.GetConnection.PutProfessionalAsync(id.IdP,toCreateProfessions);
-
+                    // Success message dialog
+                    var dialog = new MessageDialog("The Professional has been updated successfully");
+                }
+                catch (ProFindServicesException ex)
+                {
+                    if (ex.StatusCode == 201 || ex.StatusCode == 200)
+                    {
+                        // Success message dialog
+                        var dialog = new MessageDialog("The Professional has been updated successfully");
+                        await dialog.ShowAsync();
+                    }
+                    else
+                    {
+                        // Error message dialog
+                        var dialog = new MessageDialog("There was a problem updating the professional, pleasy try again later.");
+                        await dialog.ShowAsync();
+                    }
+                }
+                finally
+                {
+                    // Back to profesionals list
+                    new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage));
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
 
 
             if (string.IsNullOrEmpty(FirstName1_tbx.Text))
             {
 
                 var dialog = new MessageDialog("The field is empty");
-                
+
             }
 
             else if (string.IsNullOrEmpty(Afp.Text))
             {
                 var dialog = new MessageDialog("The field is empty");
-               
+
             }
             else if (string.IsNullOrEmpty(Dui.Text))
             {
@@ -198,10 +240,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
 
         }
-
-       
-
-        
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -249,9 +287,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
         }
 
         private async void btnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            
-            await APIConnection.GetConnection.DeleteProfessionalAsync(id.IdP);
+        { 
+            await APIConnection.GetConnection.DeleteProfessionalAsync(ToManipulateProfessional.IdP);
         }
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -293,8 +330,69 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats(e,Salario.Text)) e.Handled = true;
+            if (FieldsChecker.OnlyFloats(e, Salario.Text)) e.Handled = true;
             else e.Handled = false;
         }
+
+        private async void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (ToManipulateProfessional != null)
+            {
+                try
+                {
+                    await APIConnection.GetConnection.DeleteProfessionalAsync(ToManipulateProfessional.IdP);
+
+                    // Success message dialog
+                    var dialog = new MessageDialog("The Professional has been deleted successfully");
+                    await dialog.ShowAsync();
+                }
+                catch (ProFindServicesException ex)
+                {
+                    if (ex.StatusCode == 201 || ex.StatusCode == 200)
+                    {
+                        // Success message dialog
+                        var dialog = new MessageDialog("The Professional has been deleted successfully");
+                        await dialog.ShowAsync();
+                    }
+                    else
+                    {
+                        // Error message dialog
+                        var dialog = new MessageDialog("There was a problem deleting the professional, pleasy try again later.");
+                        await dialog.ShowAsync();
+                    }
+                }
+                finally
+                {
+                    // Back to profesionals list
+                    new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage));
+                }
+            }
+        }
+
+
+        private void Nacimiento_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+
+        }
+
+        private async void SelectCurriculum_Click_2(object sender, RoutedEventArgs e)
+        {
+            // Launch curriculum select dialog
+            var result = await new Lib.AdminNS.Views.CRUDPages.CurriculumNS.CreatePage.CreateDialog().ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                // Set selected curriculum
+                curriculumBytes = CurriculumNS.CreatePage.CreateDialog.curriculumBytes;
+
+                CurriculumInformation.Text = "The curriculum has been uploaded.";
+            }
+            else
+            {
+                CurriculumInformation.Text = "No curriculum has been uploaded";
+            }
+        }
+
+      
     }
-    }
+}
