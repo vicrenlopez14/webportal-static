@@ -59,7 +59,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS.CatalogList
             if (ProfessionalsListView.SelectedItem != null)
             {
                 var selectedProfessional = ProfessionalsListView.SelectedItem as Professional;
-                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage.CreatePage), selectedProfessional);
+                new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage.CreatePage), selectedProfessional);
             }
 
 

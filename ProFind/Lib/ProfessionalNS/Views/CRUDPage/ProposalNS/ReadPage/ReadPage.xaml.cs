@@ -71,11 +71,25 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
             {
                 Proposal obj = Activities_lw.SelectedItem as Proposal;
                 await APIConnection.GetConnection.DeleteProposalAsync(obj.IdPp);
-            }
-            catch
-            {
-                var dialog = new MessageDialog("You have to select a proposal.");
+                var dialog = new MessageDialog("The proposal has been deleted");
                 await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("You have to select a proposal.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was a problem while eliminating the proposal, try again later.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                InitializeData();
             }
         }
     }

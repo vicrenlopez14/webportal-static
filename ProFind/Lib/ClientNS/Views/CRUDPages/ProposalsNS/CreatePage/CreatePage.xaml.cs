@@ -114,7 +114,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             }
             finally
             {
-              new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
+              new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS.CatalogList.CatalogList));
             }
         }
 
