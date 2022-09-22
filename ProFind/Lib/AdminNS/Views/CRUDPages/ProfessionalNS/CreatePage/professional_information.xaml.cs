@@ -23,24 +23,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
     /// </summary>
     public sealed partial class ProfessionalInformationAddition : Page
     {
-        Profession pro = new Profession();
-        Department depa;
+        bool isFirstProfessional;
+
+        Profession profession = new Profession();
+        Department department;
 
         Professional toManipulate = new Professional();
 
         private List<Department> departments = new List<Department>();
         private byte[] imageBytes;
 
-
-        private byte[] curriculo;
-
+        private byte[] curriculumBytes;
 
         public ProfessionalInformationAddition()
         {
             this.InitializeComponent();
             loadUsefulThings();
             AddEvents();
-
         }
         private void AddEvents()
         {
@@ -52,7 +51,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             CodigoPostal.OnEnterNextField();
             Email.OnEnterNextField();
             Salario.OnEnterNextField();
-
         }
 
         public async void loadUsefulThings()
@@ -74,7 +72,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            if (e.Parameter != null)
+            {
+                // Check if parameter is a bool
+                
+            }
 
         }
 
@@ -156,7 +158,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                     SalaryP = int.Parse(Salario.Text),
                     SexP = true,
                     PasswordP = passwordBox.Password,
-                    ActiveP = Sexo.SelectedValue == "Male" ? true : false,
+                    ActiveP = Sexo.SelectedValue == "Male",
                     PictureP = imageBytes,
                     IdDp1 = (departamento.SelectedItem as Department).IdDp ,
                     IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,

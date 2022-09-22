@@ -33,8 +33,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         }
 
-       
-
         private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages.Search_Page_Clients));

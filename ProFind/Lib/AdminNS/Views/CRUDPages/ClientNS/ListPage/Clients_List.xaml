@@ -61,7 +61,8 @@
         </ListView>
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <Button Style="{StaticResource AccentButtonStyle}" Content="Search Client" Grid.Column="1" VerticalAlignment="Top" Click="Button_Click_2" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Client" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0 15 0 0" Name="CreateClient_btn" Content="Create" Grid.Column="1" VerticalAlignment="Top" Click="CreateClient_btn_Click"  />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0 15 0 0" Name="UpdateClient_btn" Content="Update" Grid.Column="1" VerticalAlignment="Top" Click="UpdateClient_btn_Click"   />
         </StackPanel>
 
     </Grid>
