@@ -19,6 +19,7 @@ using ProFind.Lib.Global.Services;
 using ProFind.Lib.Global.Controllers;
 using Windows.UI.Popups;
 using Windows.ApplicationModel.Core;
+using ProFind.Lib.ClientNS.Views.InitPage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -54,38 +55,11 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
             {
 
             }
-
-            try
-            {
-                //var toChangePassword = new Admin();
-                //toChangePassword.PasswordA = Password_pb.Password;
-                //var id = await APIConnection.GetConnection.GetAdminFromEmailAsync(email);
-                //await APIConnection.GetConnection.PutAdminAsync(id.IdA, toChangePassword);
-                await APIConnection.GetConnection.ChangePasswordAdminsAsync(email, Password_pb.Password);
-
-                new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
-            }
-            catch (ProFindServicesException ex)
-            {
-                if (ex.StatusCode >= 200 && ex.StatusCode < 300)
-                {
-                    new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
-                }
-                else
-                {
-                    new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
-                }
-            }
-            catch (Exception ex)
-            {
-                // Message dialog
-                var dialog = new MessageDialog("An error has ocurred, please try again later: " + ex.Message);
-                await dialog.ShowAsync();
-
-                await CoreApplication.RequestRestartAsync("");
-
-            }
-
+            var toChangePassword = new Client();
+            toChangePassword.PasswordC = Password_pb.Password;
+            var id = await APIConnection.GetConnection.GetClientByEmailAsync(email);
+            await APIConnection.GetConnection.PutClientAsync(id.IdC, toChangePassword);
+            new InAppNavigationController().NavigateTo(typeof(InitPage_Login));
         }
     }
 }

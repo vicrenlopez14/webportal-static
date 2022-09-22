@@ -177,6 +177,26 @@ public class ClientsController : ControllerBase
         return client;
     }
 
+    // Change password
+    // POST: api/Clients/ChangePassword
+    [HttpPost("ChangePassword")]
+    public async Task<IActionResult> ChangePasswordClient(string email, string password)
+    {
+        if (ModelState.IsValid)
+        {
+            var clientFromDb = await _context.Clients.FirstOrDefaultAsync(a => a.EmailC == email);
+            if (clientFromDb != null)
+            {
+                clientFromDb.PasswordC = ShaOperations.ShaPassword(password);
+                _context.Update(clientFromDb);
+                await _context.SaveChangesAsync();
+                return Ok("Password changed successfully.");
+            }
+        }
+
+        return BadRequest(ModelState);
+    }
+
     // PUT: api/Clients/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]

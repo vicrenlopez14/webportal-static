@@ -78,6 +78,27 @@ namespace WebService.Controllers
             return professional;
         }
 
+        // Change password
+        [HttpPut("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var professionalFromDb =
+                    await _context.Professionals.FirstOrDefaultAsync(a => a.EmailP == email);
+                if (professionalFromDb != null)
+                {
+                    professionalFromDb.PasswordP = ShaOperations.ShaPassword(password);
+                    _context.Update(professionalFromDb);
+                    await _context.SaveChangesAsync();
+                    return Ok(professionalFromDb);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
+
         // POST: api/Admins/SendRecoveryEmail
         [HttpPost("SendRecoveryEmail")]
         public async Task<IActionResult> SendRecoveryEmailProfessionals(string email)

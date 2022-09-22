@@ -1,5 +1,6 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.ClientNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -49,11 +50,23 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
             try
             {
                 await APIConnection.GetConnection.VerifyRecoveryCodeProfessionalsAsync(Code_tb.Text);
-                new InAppNavigationController().NavigateTo(typeof(PasswordChangePage),email);
+
             }
-            catch
+            catch (ProFindServicesException ex)
             {
-                ToggleThemeTeachingTip1.IsOpen = true;
+                if (ex.StatusCode >= 200 && ex.StatusCode < 300)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(PasswordChangePage), email);
+                }
+                else if (ex != null)
+                {
+                    ToggleThemeTeachingTip1.IsOpen = true;
+                }
+            }
+            finally
+            {
+                new GlobalNavigationController().NavigateTo(typeof(PasswordChangePage), email);
+
             }
         }
 

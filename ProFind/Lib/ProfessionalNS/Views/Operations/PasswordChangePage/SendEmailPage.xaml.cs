@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
@@ -38,8 +39,22 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
                 ToggleThemeTeachingTip1.IsOpen = true;
                 return;
             }
-            await APIConnection.GetConnection.SendRecoveryEmailProfessionalsAsync(email);
-            new InAppNavigationController().NavigateTo(typeof(CodeVerification),email);
+            try
+            {
+                await APIConnection.GetConnection.SendRecoveryEmailProfessionalsAsync(email);
+                new GlobalNavigationController().NavigateTo(typeof(CodeVerification), email);
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode < 300)
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(CodeVerification), email);
+                }
+                else
+                {
+                    ToggleThemeTeachingTip1.IsOpen = true;
+                }
+            }
         }
     }
 }
