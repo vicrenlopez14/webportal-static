@@ -59,6 +59,11 @@
                             Margin="0,15,0,0"
                             PlaceholderText="Total price" KeyDown="TotalPrice_tb_KeyDown"
                             />
+                        <ComboBox
+                                x:Name="Tag"
+                                Header="Tag"
+                                SelectedIndex="0" Width="85"
+                                />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="433*" />
