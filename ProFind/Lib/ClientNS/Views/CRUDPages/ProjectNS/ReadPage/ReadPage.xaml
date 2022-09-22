@@ -64,8 +64,6 @@
                 </ListView>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <Button Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_1"> Search project</Button>
-        </StackPanel>
+        <StackPanel Grid.Column="1"/>
     </Grid>
 </Page>

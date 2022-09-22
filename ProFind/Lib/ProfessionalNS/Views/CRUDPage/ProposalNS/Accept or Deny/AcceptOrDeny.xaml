@@ -67,37 +67,7 @@
                                 <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="1" Orientation="Vertical"/>
-                            <ComboBox
-                                Name="Client_cb"
-                                Grid.Column="1"
-                                Margin="24,20,0,0"
-                                Header="Client"
-                                SelectedIndex="0" Width="217"
-                                />
-
-                            <ComboBox
-
-                                Name="InitialStatus_cb"
-                                Grid.Column="0"
-                                Margin="0,20"
-                                HorizontalAlignment="Center"
-                                Header="Initial status"
-                                SelectedIndex="0"
-                                />
                         </Grid>
-                        <Button
-                            x:Name="Create_btn"
-                            Width="160"
-                           
-                            Content="Accept and Create"
-                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click" />
-                        <Button
-                            x:Name="Decline"
-                            Width="160"
-                           
-                            Content="Decline"
-                            Margin="200,-30,3,33"
-                            Style="{StaticResource AccentButtonStyle}" Click="Decline_Click" RenderTransformOrigin="0.528,0.531" />
 
 
 
@@ -107,11 +77,23 @@
                                 <ColumnDefinition Width="0.3*" />
                             </Grid.ColumnDefinitions>
                         </Grid>
+                        <Button
+                            x:Name="Decline"
+                            Width="160"
+                           
+                            Content="Decline"
+                            Style="{StaticResource AccentButtonStyle}" Click="Decline_Click" RenderTransformOrigin="0.528,0.531" />
 
                         <d:ProgressRing
                             x:Name="Creation_pr"
                             Margin="0,20,0,0"
                             IsActive="False" />
+                        <Button
+                            x:Name="Create_btn"
+                            Width="160"
+                           
+                            Content="Accept and Create"
+                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click" />
                     </StackPanel>
                 </Grid>
             </ScrollViewer>

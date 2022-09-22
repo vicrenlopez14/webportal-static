@@ -1,6 +1,7 @@
 ﻿using ProFind.Lib.Global.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         private byte[] imageBytes;
         Professional Id;
         Proposal Denegada;
+
+        private Proposal InComingProposal;
+
+
         public AcceptOrDeny()
         {
             this.InitializeComponent();
@@ -41,10 +46,21 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if(e.Parameter != null)
+            {
+                InComingProposal = (Proposal)e.Parameter;
+            }
+            Title_tb.Text = InComingProposal.TitlePp;
+            Description_tb.Text = InComingProposal.DescriptionPp;
+        }
+
         private async void Cargar()
         {
                      
-            Client_cb.ItemsSource = await APIConnection.GetConnection.GetClientsAsync();
+            
 
         }
 
@@ -92,7 +108,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = Id.IdP , IdC1 = (Client_cb.SelectedItem as Client).IdC };
+            var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
+            var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3  };
 
 
             var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);

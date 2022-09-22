@@ -4,6 +4,8 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage;
 using Proposal = ProFind.Lib.Global.Services.Proposal;
+using Windows.UI.Popups;
+using System;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -44,9 +46,32 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
            
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.SearchPage.SearchPage));
+            try
+            {
+                var obj = Activities_lw.SelectedItem as Proposal;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny), obj);
+            }
+            catch
+            {
+                var dialog = new MessageDialog("You have to select a proposal.");
+                await dialog.ShowAsync();
+            }
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Proposal obj = Activities_lw.SelectedItem as Proposal;
+                await APIConnection.GetConnection.DeleteProposalAsync(obj.IdPp);
+            }
+            catch
+            {
+                var dialog = new MessageDialog("You have to select a proposal.");
+                await dialog.ShowAsync();
+            }
         }
     }
 }

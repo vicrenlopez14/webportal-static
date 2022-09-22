@@ -27,7 +27,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
             var loggedProfessional = LoggedProfessionalStore.LoggedProfessional;
             var projects = await APIConnection.GetConnection.GetProjectsAsync();
             
-            // Projects where loggedProfessional is related
+            
             var relatedProjects = projects.Where(p => p.IdP1 == loggedProfessional.IdP).ToList();
 
             ProjectsListView.ItemsSource = relatedProjects;
@@ -37,7 +37,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
         {
             var project = e.ClickedItem as Project;
 
-            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.UpdatePagePJ));
+          
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
@@ -49,9 +49,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
         {
         }
 
+
         private void Add_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.SearchPage.SearchPagePJ));
+            
         }
 
         private void Update_btn_Click(object sender, RoutedEventArgs e)

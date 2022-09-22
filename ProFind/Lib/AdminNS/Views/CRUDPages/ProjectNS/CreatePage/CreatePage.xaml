@@ -67,15 +67,6 @@
                                 <ColumnDefinition Width="57*"/>
                                 <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
-                            <ComboBox
-
-                                Name="InitialStatus_cb"
-                                Grid.Column="0"
-                                Margin="0,20"
-                                HorizontalAlignment="Center"
-                                Header="Initial status"
-                                SelectedIndex="0"
-                                />
                             <StackPanel Grid.Column="1" Orientation="Vertical">
                                 <TextBlock
                                    
@@ -83,7 +74,7 @@
                                     HorizontalAlignment="Center"
                                     d:Text="Selected professional" />
                                 <ComboBox
-                                   Margin="110,-20,0,0"
+                                   Margin="140,-20,0,0"
                             x:Name="Professional_cb"
                            
                             SelectedIndex="0" Width="99"
