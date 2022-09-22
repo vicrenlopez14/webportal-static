@@ -184,7 +184,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void ToggleThemeTeachingTip2_ActionButtonClick_1(TeachingTip sender, object args)
         {
-            new GlobalNavigationController().NavigateTo(typeof(ProfessionalInformationAddition), isFirstAdmin);
+            new GlobalNavigationController().NavigateTo(typeof(Int_Page.Int_Page));
 
         }
 

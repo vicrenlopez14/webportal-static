@@ -216,6 +216,7 @@ namespace WebService.Controllers
                 return BadRequest();
             }
 
+            if (professional.PasswordP.Length < 64) professional.PasswordP = ShaOperations.ShaPassword(professional.PasswordP);
             _context.Entry(professional).State = EntityState.Modified;
 
             try
@@ -243,6 +244,7 @@ namespace WebService.Controllers
         public async Task<ActionResult<Professional>> PostProfessional(Professional professional)
         {
             professional.AssignId();
+            professional.PasswordP = ShaOperations.ShaPassword(professional.PasswordP);
             _context.Professionals.Add(professional);
             try
             {
