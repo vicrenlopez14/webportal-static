@@ -6713,6 +6713,9 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("isPaidPj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsPaidPj { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("tagDurationPj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? TagDurationPj { get; set; }
+
         [Newtonsoft.Json.JsonProperty("idP1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
         public string IdP1 { get; set; }

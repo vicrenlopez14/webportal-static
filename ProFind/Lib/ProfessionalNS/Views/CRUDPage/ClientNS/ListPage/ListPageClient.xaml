@@ -10,22 +10,21 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="32*" />
-            <ColumnDefinition Width="43*" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <Button Style="{StaticResource AccentButtonStyle}" Content="Search CLient" Grid.Column="1" Margin="484,27,0,0" VerticalAlignment="Top" Click="Button_Click_1" />
         <TextBlock
-                        Grid.Column="0"
-                        Margin="20,20,0,928"
-                        HorizontalAlignment="Left"
+                        Margin="0,20,0,928"
+                        HorizontalAlignment="Center"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="List CLients" Grid.ColumnSpan="2" Width="1095"
+                        Text="List CLients" Width="1138"
             
             />
 
 
-        <ListView Name="Clients_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
+        <ListView Name="Clients_lw"  Grid.Column="0" Margin="31,94,31,52">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Client">
                     <StackPanel Background="#F4FAE1" CornerRadius="15">
@@ -64,18 +63,12 @@
                             <TextBlock Height="31" Text="{Binding EmailC}" />
 
                         </StackPanel>
-                        <StackPanel
-                         Grid.Column="1"
-                         HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                            <Button Name="Add_btn" Click="Add_btn_Click">Chat</Button>
-                        </StackPanel>
                     </StackPanel>
-
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
+        <StackPanel Grid.Column="1">
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Name="Search_btn">Seacrh admin</Button>
+        </StackPanel>
     </Grid>
 </Page>

@@ -68,12 +68,6 @@
                                 <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
                             <ComboBox
-                            Name="InitialStatus_cb"
-                            HorizontalAlignment="Center"
-                            Header="Initial status"
-                            SelectedIndex="0"
-                            />
-                            <ComboBox
                             Name="Professional_cb"
                             Grid.Column="1"
                             Margin="141,0,0,0"

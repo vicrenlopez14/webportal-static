@@ -2,14 +2,13 @@
     x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage.ReadPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:models="using:ProFind.Lib.Global.Services"
-    Style="{StaticResource PageStyle}">
+    xmlns:models="using:ProFind.Lib.Global.Services"
+Style="{StaticResource PageStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00 *" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <StackPanel>
             <StackPanel
@@ -30,6 +29,7 @@
                         Text="Created projects" />
                 </Grid>
                 <ListView
+                    Grid.Column ="0"
                     Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
@@ -46,7 +46,7 @@
                                         Width="69"
                                         Height="73"
                                         Margin="15,0"
-                                        ProfilePicture="{Binding PicturePJ}" />
+                                        ProfilePicture="{Binding PicturePj}" />
                                     <StackPanel Height="42" Orientation="Vertical">
                                         <TextBlock
                                             Height="21"
@@ -63,11 +63,10 @@
                 </ListView>
             </StackPanel>
         </StackPanel>
-        <StackPanel
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Button Name="Add_btn">Add</Button>
+        <StackPanel 
+            Grid.Column="1">
+
+            <Button Name="Update_btn" Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Click="Update_btn_Click">Update project</Button>
         </StackPanel>
     </Grid>
 </Page>

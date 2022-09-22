@@ -10,8 +10,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="32*" />
-            <ColumnDefinition Width="43*" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
         <TextBlock
                         Grid.Column="0"
@@ -23,7 +23,7 @@
             
             />
 
-        <ListView Name="Activities_lw"  Grid.ColumnSpan="2" Margin="31,94,31,52">
+        <ListView Name="Activities_lw" Grid.Column="0">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models11:Proposal">
                     <StackPanel Background="#F4FAE1" CornerRadius="15">
@@ -73,8 +73,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Style="{StaticResource AccentButtonStyle}" Content="Search Activity" Grid.Column="1" Margin="578,22,0,0" VerticalAlignment="Top" Click="Button_Click_2" />
 
-
+        <StackPanel Grid.Column="1">
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Create proposal" Click="Button_Click"   />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Search proposal" Click="Button_Click_2" />
+        </StackPanel>
     </Grid>
 </Page>

@@ -4,14 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="742" Width="1242">
 
     <Grid Margin="0,0,0,10">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
             <TextBlock Text="Enter your recovery code that was sent to your email" FontSize="30"></TextBlock>
-            <TextBlock Text="If you're email wasn't valid you won't get anything" HorizontalAlignment="Center" FontSize="20"></TextBlock>
+            <TextBlock Text="If your email wasn't valid you won't get anything" HorizontalAlignment="Center" FontSize="20" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
 
             <TextBox x:Name="Code_tb" Margin="50 20 50 0"></TextBox>
 

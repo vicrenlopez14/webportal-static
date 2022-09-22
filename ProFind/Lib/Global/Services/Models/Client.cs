@@ -6,6 +6,7 @@
         {
 
         }
+        
         public Client(string idC, string nameC, string emailC, string passwordC, byte[] pictureC)
         {
             IdC = idC;

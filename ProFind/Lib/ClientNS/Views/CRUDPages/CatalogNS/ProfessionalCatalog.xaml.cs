@@ -17,28 +17,28 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.SearchPage
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class SearchPagePJ : Page
+    public sealed partial class ProfessionalCatalog : Page
     {
-        Project id; 
-        public SearchPagePJ()
+        public ProfessionalCatalog()
         {
             this.InitializeComponent();
+            GetProfessionalList();
         }
 
-        private async void Control2_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private async void GetProfessionalList()
         {
-            //ClientListView.ItemsSource = await APIConnection.GetConnection.SearchProjectAsync(id.IdPj, Search_Client.Text);
+            ProfessionalsListView.ItemsSource = await APIConnection.GetConnection.GetProfessionalsAsync();
         }
-        private void ClientListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var project = e.ClickedItem as Project;
 
-          
+        private void btn_proposal_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny));
         }
+
     }
 }

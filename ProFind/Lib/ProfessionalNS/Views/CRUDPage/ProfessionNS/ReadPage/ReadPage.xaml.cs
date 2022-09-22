@@ -30,5 +30,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProfessionNS.ReadPage
            
             
         }
+
+        private void DashboardProfessionalsActiveListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
