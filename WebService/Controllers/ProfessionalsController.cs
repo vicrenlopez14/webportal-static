@@ -185,7 +185,6 @@ namespace WebService.Controllers
             }
         }
 
-
         // GET: api/Professionals
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Professional>>> GetProfessionals()
@@ -218,7 +217,7 @@ namespace WebService.Controllers
                 return BadRequest();
             }
 
-            if (professional.PasswordP.Length < 64)
+            if (professional.PasswordP.Length < 50)
                 professional.PasswordP = ShaOperations.ShaPassword(professional.PasswordP);
             _context.Entry(professional).State = EntityState.Modified;
 

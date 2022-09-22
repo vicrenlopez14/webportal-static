@@ -54,19 +54,6 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1" KeyUp="Description_tb_KeyUp"
                          />
-                    <CalendarDatePicker x:Name="Caledar" PlaceholderText="Pick a date" Header="Calendar" />
-                    <ComboBox
-                                x:Name="Project_cb"
-                                Header="Project"
-                                SelectedIndex="0"
-                                />
-                    <ComboBox
-                                Name="Client_cb"
-                                Grid.Column="1"
-                                Margin="180,-55,0,0"
-                                Header="Client"
-                                SelectedIndex="0"
-                                />
 
 
 

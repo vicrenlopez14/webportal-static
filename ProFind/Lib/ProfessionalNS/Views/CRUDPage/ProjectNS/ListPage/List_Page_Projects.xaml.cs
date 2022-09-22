@@ -28,13 +28,13 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage
 
         private async void LoadData()
         {
-            {
+            
                 // Projects of the loggedProfessoinal
                 var projects = await APIConnection.GetConnection.GetProjectsAsync();
                 var ForThisProfessional = projects.Where(x => x.IdP1 == LoggedProfessionalStore.LoggedProfessional.IdP).ToList();
 
                 ProjectsListView.ItemsSource = ForThisProfessional;
-            }
+            
         }
 
         private void AddProject_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
