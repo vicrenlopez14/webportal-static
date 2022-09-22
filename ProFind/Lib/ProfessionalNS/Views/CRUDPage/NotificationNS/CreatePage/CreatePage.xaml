@@ -36,7 +36,7 @@
                             HorizontalAlignment="Left"
                            
                            
-                            Content="Select a picture" Click="PictureSelection_btn_Click_1" />
+                            Content="Select a picture" />
                         <TextBlock
                             Name="SelectedPicture_tbk"
                             Margin="10,0,0,0"
@@ -71,7 +71,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Create"
-                        Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
+                        Style="{StaticResource AccentButtonStyle}" />
 
                     <d:ProgressRing
                         x:Name="Creation_pr"

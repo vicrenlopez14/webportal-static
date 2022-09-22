@@ -67,7 +67,7 @@
                          Grid.Column="1"
                          HorizontalAlignment="Center"
                           VerticalAlignment="Center">
-                            <Button Name="Add_btn" Click="Add_btn_Click">Update</Button>
+                            <Button Name="Add_btn">Update</Button>
                         </StackPanel>
                     </StackPanel>
 
@@ -76,9 +76,9 @@
         </ListView>
 
         <StackPanel Grid.Column="1">
-            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Create proposal" Click="Button_Click"   />
-            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Update proposal" Click="Button_Click_1" />
-            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Delete proposal" Click="Button_Click_3" />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Create proposal"   />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Update proposal" />
+            <Button Style="{StaticResource AccentButtonStyle}" Margin="0,15,0,0" Content="Delete proposal" />
         </StackPanel>
     </Grid>
 </Page>
