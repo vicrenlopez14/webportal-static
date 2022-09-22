@@ -133,7 +133,6 @@ public class ProjectsController : ControllerBase
     {
         var result = await (from proj in _context.Projects
                             where (
-                            (projectStatusId == null ? true : proj.IdPs1 == projectStatusId) &&
                             (TitlePJ == null ? true : proj.TitlePj.Contains(TitlePJ)))
                             select proj).ToListAsync();
 
@@ -148,8 +147,10 @@ public class ProjectsController : ControllerBase
         if (TitlePJ.Length == 0) return await GetProjects();
         else
         {
-            var result = await (from proj in _context.Projects where (
-                                proj.TitlePj.Contains(TitlePJ)) select proj).ToListAsync();
+            var result = await (from proj in _context.Projects
+                                where (
+                                proj.TitlePj.Contains(TitlePJ))
+                                select proj).ToListAsync();
 
             if (result.Any() == false) return NotFound();
             else return result;
