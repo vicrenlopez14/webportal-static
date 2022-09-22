@@ -1,20 +1,21 @@
-﻿using ProFind.Lib.Global.Services;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ProFind.Lib.AdminNS.Controllers;
-using Project = ProFind.Lib.Global.Services.Project;
 using ProFind.Lib.ProfessionalNS.Controllers;
+using ProFind.Lib.Global.Services;
+using Project = ProFind.Lib.Global.Services.Project;
 using System.Linq;
+using ProFind.Lib.ProfessionalNS.Controllers;
+using Windows.UI.Popups;
+using System;
 
-// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.ReadPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
     public sealed partial class ReadPage : Page
     {
+
         public ReadPage()
         {
             this.InitializeComponent();
@@ -24,40 +25,74 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ReadPage
 
         private async void InitializeData()
         {
-            var loggedProfessional = LoggedProfessionalStore.LoggedProfessional;
+            // Projects in which professional is related
             var projects = await APIConnection.GetConnection.GetProjectsAsync();
-            
-            
-            var relatedProjects = projects.Where(p => p.IdP1 == loggedProfessional.IdP).ToList();
+            var projectsOfThisProfessional = (from p in projects.ToList()
+                                              where p.IdP1 == LoggedProfessionalStore.LoggedProfessional.IdP
+                                              select p).ToList();
 
-            ProjectsListView.ItemsSource = relatedProjects;
+            ProjectsListView.ItemsSource = projectsOfThisProfessional;
         }
 
         private void AdminListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var project = e.ClickedItem as Project;
 
-          
+            new InAppNavigationController().NavigateTo(typeof(UpdatePage.Update_Project), project);
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
 
-
-        private void Add_btn_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
-        private void Update_btn_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.UpdatePagePJ));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
+        }
+
+        private void UpdateProject_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project));
+        }
+
+        private async void DeleteProject_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedProject = ProjectsListView.SelectedItem as Project;
+                await APIConnection.GetConnection.DeleteAdminAsync(selectedProject.IdPj);
+
+                var dialog = new MessageDialog("Admin deleted successfully.");
+                await dialog.ShowAsync();
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 204)
+                {
+                    var dialog = new MessageDialog("Admin deleted successfully.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("You have to select an admin.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                InitializeData();
+            }
         }
     }
 }

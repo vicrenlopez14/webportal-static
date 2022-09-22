@@ -542,11 +542,20 @@
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProfileProffessionalNS\ProfileProfessional.xaml.cs">
       <DependentUpon>ProfileProfessional.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\CreatePage\SelectProfessionalDialog.xaml.cs">
+      <DependentUpon>SelectProfessionalDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ListPage\List_Page_Projects.xaml.cs">
+      <DependentUpon>List_Page_Projects.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\UpdatePagePJ.xaml.cs">
-      <DependentUpon>UpdatePagePJ.xaml</DependentUpon>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\Update_Project.xaml.cs">
+      <DependentUpon>Update_Project.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\Accept or Deny\AcceptOrDeny.xaml.cs">
       <DependentUpon>AcceptOrDeny.xaml</DependentUpon>
@@ -914,13 +923,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\ReadPage.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\CreatePage\CreatePage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\UpdatePagePJ.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\CreatePage\SelectProfessionalDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ListPage\List_Page_Projects.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\ReadPage\ReadPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProjectNS\UpdatePage\Update_Project.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\Accept or Deny\AcceptOrDeny.xaml">
       <SubType>Designer</SubType>
