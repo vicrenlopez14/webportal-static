@@ -113,9 +113,10 @@ namespace WebService.Controllers
                     emailContent.Html =
                         $"In order to recover your password, please enter this code in the app: {verificationCode}";
                     List<EmailAddress> emailAddresses = new List<EmailAddress>
-                    { new EmailAddress(professionalFromDb.EmailP) { DisplayName = professionalFromDb.NameP } };
+                        { new EmailAddress(professionalFromDb.EmailP) { DisplayName = professionalFromDb.NameP } };
                     EmailRecipients emailRecipients = new EmailRecipients(emailAddresses);
-                    EmailMessage emailMessage = new EmailMessage("donotreply@profind.work", emailContent, emailRecipients);
+                    EmailMessage emailMessage =
+                        new EmailMessage("donotreply@profind.work", emailContent, emailRecipients);
                     SendEmailResult emailResult =
                         Utils.EmailClientUtil.GetEmailClient.Send(emailMessage, CancellationToken.None);
 
@@ -150,14 +151,14 @@ namespace WebService.Controllers
 
         [HttpGet("filter/")]
         public async Task<ActionResult<IEnumerable<Professional>>> FilterProfessionals([FromQuery] string? professionId,
-     [FromQuery] string? departmentId,
-     [FromQuery] string? name)
+            [FromQuery] string? departmentId,
+            [FromQuery] string? name)
         {
             var result = await (from prof in _context.Professionals
-                                where ((professionId == null || prof.IdDp1.ToString() == departmentId) &&
-                                       (name == null || prof.NameP.Contains(name))
-                                       && (departmentId == null || prof.IdPfs1.ToString() == departmentId))
-                                select prof).Include(x => professionId != null ? x.IdPfs1Navigation : null)
+                    where ((professionId == null || prof.IdDp1.ToString() == departmentId) &&
+                           (name == null || prof.NameP.Contains(name))
+                           && (departmentId == null || prof.IdPfs1.ToString() == departmentId))
+                    select prof).Include(x => professionId != null ? x.IdPfs1Navigation : null)
                 .Include(x => departmentId != null ? x.IdDp1Navigation : null).ToListAsync();
 
             if (result.Any() == false)
@@ -189,7 +190,8 @@ namespace WebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Professional>>> GetProfessionals()
         {
-            return await _context.Professionals.ToListAsync();
+            return await _context.Professionals.Include(x => x.IdDp1Navigation)
+                .Include(x => x.IdPfs1Navigation).ToListAsync();
         }
 
         // GET: api/Professionals/5
@@ -216,7 +218,8 @@ namespace WebService.Controllers
                 return BadRequest();
             }
 
-            if (professional.PasswordP.Length < 64) professional.PasswordP = ShaOperations.ShaPassword(professional.PasswordP);
+            if (professional.PasswordP.Length < 64)
+                professional.PasswordP = ShaOperations.ShaPassword(professional.PasswordP);
             _context.Entry(professional).State = EntityState.Modified;
 
             try
