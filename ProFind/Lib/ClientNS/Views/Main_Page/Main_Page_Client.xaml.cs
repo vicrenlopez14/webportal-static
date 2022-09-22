@@ -24,7 +24,7 @@ namespace ProFind.Lib.ClientNS.Views.Main_Page
         {
             {"Projects_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage) },
             {"Notifications_Page", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },
-            {"Catalog_Page", typeof(Lib.ClientNS.Views.ProfessionalsCatalog.ProfessionalsCatalog) },
+            {"Catalog_Page", typeof(Lib.ClientNS.Views.CRUDPages.CatalogNS.ProfessionalCatalog) },
             {"Professionals_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.ProfessionalNS.ReadPage.ReadPage) },
             {"GeneralNotifications_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },
             {"ProposalNotifications_Page_Clients", typeof(Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage.ReadPage) },

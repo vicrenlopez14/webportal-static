@@ -17,6 +17,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
             {"Projects_Page_Professionals", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) },
             {"Clients_Page_Professionals", typeof(CRUDPage.ClientNS.ListPage.ListPageClient) },
             {"GeneralNotifications_Page_Professionals", typeof(CRUDPage.NotificationNS.CreatePage.CreatePage)},
+            {"ProposalNotifications_Page_Professionals", typeof(CRUDPage.ProposalNS.ReadPage.ReadPage) },
             {"Preferences_Page", typeof(Preferences_Page) },
             {"About_Page",typeof(About_Page) },
             {"", typeof(CRUDPage.ProjectNS.ReadPage.ReadPage) }
@@ -63,7 +64,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
             }
             catch
             {
-                new InAppNavigationController().NavigateTo(DefinedPagesDictionary["Projects_PageProfessionals"]);
+                new InAppNavigationController().NavigateTo(DefinedPagesDictionary["Projects_Page_Professionals"]);
             }
         }
 

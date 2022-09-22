@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ClientNS.Views.ProfessionalsCatalog
+namespace ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -51,10 +51,6 @@ namespace ProFind.Lib.ClientNS.Views.ProfessionalsCatalog
 
         private async Task LoadDeparments()
         {
-            {
-                Deparments = await APIConnection.GetConnection.GetDepartmentsAsync() as List<Department>;
-                DepartmentSelection_cb.ItemsSource = Deparments;
-            }
         }
 
         private async Task LoadCandidates() => await LoadCandidates(null);
@@ -71,14 +67,11 @@ namespace ProFind.Lib.ClientNS.Views.ProfessionalsCatalog
             CandidateProfessionalsColumn2 = CandidateProfessionals.Skip((CandidateProfessionals.Count + 1) / 2).ToList();
 
             // Show data
-            ProfessionalsListViewCol1.ItemsSource = CandidateProfessionalsColumn1;
-            ProfessionalsListViewCol2.ItemsSource = CandidateProfessionalsColumn2;
         }
 
         private void RestartVars()
         {
             {
-                StepsFlipView_fv.SelectedIndex = 0;
                 SelectedProfession = null;
                 SelectedProfessional = null;
                 ReadyToMakeProposal = false;
@@ -87,18 +80,10 @@ namespace ProFind.Lib.ClientNS.Views.ProfessionalsCatalog
 
         private void UpdateControlStates()
         {
-            SelectedProfessionSection_sp.Visibility = SelectedProfession == null ? Visibility.Visible : Visibility.Collapsed;
-            SelectedProfessionalSection_sp.Visibility = SelectedProfessional == null ? Visibility.Visible : Visibility.Collapsed;
-            ReadyToMakeProposal = SelectedProfession != null && SelectedProfessional != null;
-            MakeAProposal_btn.IsEnabled = ReadyToMakeProposal;
         }
 
         private async void ProfessionsListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SelectedProfession = e.ClickedItem as Profession;
-            await LoadCandidates();
-            StepsFlipView_fv.SelectedIndex++;
-            UpdateControlStates();
         }
 
         private async void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -110,16 +95,10 @@ namespace ProFind.Lib.ClientNS.Views.ProfessionalsCatalog
         {
             // Since selecting an item will also change the text,
             // only listen to changes caused by user entering text.
-            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
-            {
-                await LoadCandidates(sender.Text, DepartmentSelection_cb.SelectedItem as Department);
-            }
-
         }
 
         private async void DepartmentSelection_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await LoadCandidates(SearchBox_asb.Text, DepartmentSelection_cb.SelectedItem as Department);
         }
 
         #endregion
