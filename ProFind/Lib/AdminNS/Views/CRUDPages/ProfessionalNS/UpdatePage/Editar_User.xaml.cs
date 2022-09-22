@@ -100,6 +100,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             SeguroSocial.Text = ToManipulateProfessional.Isssp;
             Dui.Text = ToManipulateProfessional.Duip;
             FechadeIngreso.Date = ToManipulateProfessional.HiringDateP;
+            Email.Text = ToManipulateProfessional.EmailP;
+            CodigoPostal.Text = ToManipulateProfessional.ZipCodeP;
+            Salario.Text = ToManipulateProfessional.SalaryP.ToString();
+            Nacimiento.Date = (DateTimeOffset)ToManipulateProfessional.DateBirthP;
+            FirstName1_tbx.Text = ToManipulateProfessional.NameP;
+
         }
 
         private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)

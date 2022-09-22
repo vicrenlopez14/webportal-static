@@ -242,6 +242,7 @@ namespace WebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Professional>> PostProfessional(Professional professional)
         {
+            professional.AssignId();
             _context.Professionals.Add(professional);
             try
             {
