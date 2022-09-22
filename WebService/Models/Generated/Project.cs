@@ -32,6 +32,8 @@ namespace WebService.Models.Generated
         public float? TotalPricePj { get; set; }
         [Column("IsPaidPJ")]
         public bool? IsPaidPj { get; set; }
+        [Column("TagDurationPJ", TypeName = "int(11)")]
+        public int? TagDurationPj { get; set; }
         [StringLength(21)]
         public string? IdP1 { get; set; }
         [StringLength(21)]

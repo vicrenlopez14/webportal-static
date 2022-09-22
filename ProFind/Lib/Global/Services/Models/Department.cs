@@ -1,5 +1,4 @@
 ﻿namespace ProFind.Lib.Global.Services
-
 {
     public partial class Department
     {
