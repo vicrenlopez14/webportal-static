@@ -206,7 +206,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 {
                     var dialog = new MessageDialog("Professional created successfully, ProFind is now ready to work.");
                     await dialog.ShowAsync();
-                    new GlobalNavigationController().NavigateTo(typeof(InitPage));
+                    new GlobalNavigationController().NavigateTo(typeof(ListPage.ReadPage));
                 }
                 else
                 {

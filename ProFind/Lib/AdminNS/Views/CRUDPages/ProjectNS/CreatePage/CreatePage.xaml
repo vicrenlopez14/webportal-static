@@ -67,35 +67,39 @@
                                 <ColumnDefinition Width="57*"/>
                                 <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <StackPanel Grid.Column="0" Orientation="Vertical">
                                 <TextBlock
-                                   
+                                   FontWeight="Medium"
                                     Margin="0,22"
                                     HorizontalAlignment="Center"
                                     d:Text="Selected professional" />
-                                <ComboBox
-                                   Margin="140,-20,0,0"
-                            x:Name="Professional_cb"
-                           
-                            SelectedIndex="0" Width="99"
-                            />
+                                <TextBlock Name="SelectedProfessional_tb" d:Text="Carlos Burgos" HorizontalAlignment="Center"></TextBlock>
                                 <Button HorizontalAlignment="Center" Margin="20">Select</Button>
 
                             </StackPanel>
+
+                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                                <TextBlock
+                                   FontWeight="Medium"
+                                    Margin="0,22"
+                                    HorizontalAlignment="Center"
+                                    d:Text="Selected client" />
+                                <TextBlock Name="SelectedClient_tb" d:Text="Daniel Alessandro" HorizontalAlignment="Center"></TextBlock>
+                                <Button HorizontalAlignment="Center" Margin="20">Select</Button>
+                            </StackPanel>
+
                             <ComboBox
-                                Name="Client_cb"
-                                Grid.Column="1"
-                                Margin="349,20,0,0"
-                                Header="Client"
-                                SelectedIndex="0" Grid.ColumnSpan="2" Width="85"
-                                />
-                            <ComboBox
-                                Name="Tag"
+                                Name="TagDuration_cbx"
                                 Grid.Column="3"
                                 Margin="109,20,0,0"
-                                Header="Tag"
-                                SelectedIndex="0" Width="85"
-                                />
+                                Header="Tag Duration"
+                                SelectedIndex="0" 
+                                Width="85"
+                                >
+                                <x:String>Short</x:String>
+                                <x:String>Medium</x:String>
+                                <x:String>Long</x:String>
+                            </ComboBox>
 
 
                         </Grid>
@@ -104,7 +108,7 @@
                             Width="100"
                            
                             Content="Create"
-                            Style="{StaticResource AccentButtonStyle}" />
+                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
 
 
 
