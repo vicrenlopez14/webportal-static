@@ -7,7 +7,6 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*" />

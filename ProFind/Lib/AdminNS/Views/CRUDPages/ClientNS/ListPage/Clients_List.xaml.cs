@@ -14,7 +14,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
     /// </summary>
     public sealed partial class Clients_List : Page
     {
-        Client Id1; 
+        Client Id1;
         public Clients_List()
         {
             this.InitializeComponent();
@@ -30,7 +30,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
         {
             Client clickedItem = e.ClickedItem as Client;
 
-           
+
         }
 
        
@@ -43,6 +43,28 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
         private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
+        }
+
+        private void CreateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
+        }
+
+        private void UpdateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            // Selected client
+
+            if (Activities_lw.SelectedItem != null)
+            {
+                Client selectedClient = Activities_lw.SelectedItem as Client;
+
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage.Client_Update_Delete), selectedClient);
+            } else
+            {
+                // Validation content dialog
+                
+                
+            }
         }
     }
 }
