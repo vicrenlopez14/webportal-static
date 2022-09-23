@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using ProFind.Lib.AdminNS.Controllers;
 using Windows.UI.Popups;
 using System;
+using System.Linq;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -94,6 +95,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
             {
                 GetClientsList();
             }
+        }
+
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        {
+            var allList = await APIConnection.GetConnection.GetClientsAsync();
+
+            if (string.IsNullOrEmpty(sender.QueryText))
+            {
+                Activities_lw.ItemsSource = null;
+                Activities_lw.ItemsSource = allList;
+                return;
+            }
+
+            var newList = allList.Where(x => x.NameC.Contains(sender.QueryText));
+
+            Activities_lw.ItemsSource = null;
+            Activities_lw.ItemsSource = newList;
         }
     }
 }
