@@ -83,6 +83,7 @@
             HorizontalAlignment="Center">
             <Button Style="{StaticResource AccentButtonStyle}" Name="UpdateProject_btn" Content="Update" Grid.Column="1" Width="90" Margin="0,15,0,0" Click="UpdateProject_btn_Click"/>
             <Button Style="{StaticResource AccentButtonStyle}" Name="CompleteProject_btn" Content="Complete" Grid.Column="1" Margin="0,15,0,0" Width="90" Click="CompleteProject_btn_Click" />
+            <Button Style="{StaticResource AccentButtonStyle}" Name="NotificationsProject_btn" Content="Notifications" Grid.Column="1" Margin="0,15,0,0" Width="90" Click="Notificatio_btn_Click" />
         </StackPanel>
     </Grid>
 </Page>

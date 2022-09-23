@@ -20,8 +20,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
         private byte[] imageBytes;
         Project id1;
         Client id2;
+        private string imageString;
         private Client ranks2;
-        private Project ranks = new Project();
+        private Notification ToCreateAdmin = new Notification();
         Notification toManipulate = new Notification();
         Professional id; 
 
@@ -66,7 +67,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
 
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
@@ -132,7 +133,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
                 
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 
@@ -164,17 +165,13 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
         {
             try
             {
+                var selectedImage = await PickFileHelper.PickImage();
+                SelectedPicture_tbk.Text = selectedImage.Name;
 
+                imageString = await selectedImage.ToBase64StringAsync();
+                ToCreateAdmin.PictureN = imageString;
+                await imageString.FromBase64String();
 
-                var file = await PickFileHelper.PickImage();
-
-                if (file != null)
-                {
-                    SelectedPicture_tbk.Text = file.Name;
-                    imageBytes = await file.ToByteArrayAsync();
-
-                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
-                }
             }
             catch (Exception ex)
             {
@@ -182,7 +179,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             }
             finally
             {
-
+               
                 PictureSelection_btn.IsChecked = false;
             }
         }
@@ -230,7 +227,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
 
                 var loggedprofesionales = LoggedProfessionalStore.LoggedProfessional;
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, IdPj2 = id1.IdPj, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now, IdP1 = loggedprofesionales.IdP };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, IdPj2 = id1.IdPj, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now, IdP1 = loggedprofesionales.IdP };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 
