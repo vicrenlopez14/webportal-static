@@ -19,7 +19,7 @@ CREATE TABLE Client
     NameC     VARCHAR(50),
     EmailC    VARCHAR(255),
     PasswordC CHAR(64),
-    PictureC  LONGBLOB
+    PictureC  LONGTEXT
 );
 
 SELECT *
@@ -51,13 +51,13 @@ CREATE TABLE Admin
     EmailA    VARCHAR(255) UNIQUE,
     TelA      VARCHAR(15),
     PasswordA CHAR(64),
-    PictureA  LONGBLOB,
+    PictureA  LONGTEXT,
     IdR1      INT,
     FULLTEXT (NameA, EmailA, TelA),
     CONSTRAINT FK_Admin_Rank FOREIGN KEY (IdR1) REFERENCES `Rank` (IdR) ON DELETE CASCADE
 );
 
-DESCRIBE Admin;
+DESCRIBE ADMIN;
 
 SELECT *
 FROM Admin;
@@ -116,7 +116,7 @@ CREATE TABLE Professional
     ZipCodeP    VARCHAR(10),
     SalaryP     FLOAT,
     HiringDateP DATETIME,
-    PictureP    LONGBLOB,
+    PictureP    LONGTEXT,
     CurriculumP LONGBLOB,
     IdPFS1      INT,
     IdDP1       INT,
@@ -149,7 +149,7 @@ CREATE TABLE Project
     IdPJ          CHAR(21) PRIMARY KEY,
     TitlePJ       VARCHAR(50),
     DescriptionPJ VARCHAR(50),
-    PicturePJ     LONGBLOB,
+    PicturePJ     LONGTEXT,
     TotalPricePJ  FLOAT,
     IsPaidPJ      BOOLEAN,
     TagDurationPJ INT,
@@ -171,9 +171,32 @@ CREATE TABLE Notification
     TitleN          VARCHAR(50),
     DescriptionN    VARCHAR(500),
     DateTimeIssuedN DATETIME,
-    PictureN        LONGBLOB,
-    IdC3            CHAR(21),
-    CONSTRAINT FK_Notification_Client FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE
+    PictureN        LONGTEXT,
+    IdP1            CHAR(21),
+    IdPJ2           CHAR(21),
+    CONSTRAINT FK_Notification_Project FOREIGN KEY (IdPJ2) REFERENCES Project (IdPJ) ON DELETE CASCADE,
+    CONSTRAINT FK_Notification_Professional FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE
+);
+
+###############################################
+CREATE TABLE Activity
+(
+    IdAC          CHAR(21) PRIMARY KEY,
+    TitleAC       VARCHAR(50),
+    DescriptionAC VARCHAR(500),
+    PictureAC     LONGTEXT,
+    IdPJ1        CHAR(21),
+    CONSTRAINT FK_Activity_Project FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE
+);
+
+################################################
+CREATE TABLE Tag
+(
+    IdT   CHAR(21) PRIMARY KEY,
+    NameT VARCHAR(50),
+    ColorT VARCHAR(6),
+    IdPJ1 CHAR(21),
+    CONSTRAINT FK_Tag_Project FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
 
 ################################################
@@ -182,7 +205,7 @@ CREATE TABLE Proposal
     IdPP           CHAR(21) PRIMARY KEY,
     TitlePP        VARCHAR(50),
     DescriptionPP  VARCHAR(500),
-    PicturePP      LONGBLOB,
+    PicturePP      LONGTEXT,
     SuggestedStart DATETIME,
     SuggestedEnd   DATETIME,
     Seen           BOOLEAN,
