@@ -87,5 +87,23 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage
             }
 
         }
+
+        private async void Notificatio_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+            if (ProjectsListView.SelectedItem != null)
+            {
+                Project selectedProject = ProjectsListView.SelectedItem as Project;
+
+                new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage.CreatePage), selectedProject);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a client.");
+                await dialog.ShowAsync();
+
+            }
+        }
     }
 }

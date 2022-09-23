@@ -357,6 +357,15 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml.cs">
       <DependentUpon>Update_Page_Rank.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\Tags\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\Tags\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\Tags\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\Int_Page\Int_Page.xaml.cs">
       <DependentUpon>Int_Page.xaml</DependentUpon>
     </Compile>
@@ -687,6 +696,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\Tags\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\Tags\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\Tags\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\AdminNS\Views\Int_Page\Int_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -967,7 +988,6 @@
   <ItemGroup>
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\CreatePage\.gitkeep" />
     <None Include="Lib\AdminNS\Views\CRUDPages\CurriculumNS\UpdatePage\.gitkeep" />
-    <None Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\SearchPage\.gitkeep" />
     <None Include="Lib\ClientNS\Views\CRUDPages\ProfessionalNS\SearchPage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\CreatePage\.gitkeep" />
     <None Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\DeletePage\.gitkeep" />
@@ -986,8 +1006,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\CurriculumNS\ReadPage\" />
-    <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\CreatePage\" />
-    <Folder Include="Lib\ClientNS\Views\CRUDPages\NotificationNS\UpdatePage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
