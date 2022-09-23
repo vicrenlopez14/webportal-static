@@ -176,6 +176,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
                     SelectedPicture_tbk.Text = file.Name;
                     imageBytes = await file.ToBase64StringAsync();
 
+                }
             }
             catch (Exception ex)
             {
@@ -183,7 +184,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             }
             finally
             {
-               
+
                 PictureSelection_btn.IsChecked = false;
             }
         }
