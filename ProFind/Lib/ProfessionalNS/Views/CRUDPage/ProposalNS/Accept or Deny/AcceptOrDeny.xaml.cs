@@ -100,8 +100,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats(e,TotalPrice_tb.Text)) e.Handled = true;
-            else e.Handled = false;
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
