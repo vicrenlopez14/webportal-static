@@ -104,6 +104,7 @@ namespace ProFind.Lib.Global.Helpers
             else return false;
         }
 
+
         public static bool CheckPhoneNumber(string phone)
         {
             return phone.Length == 8;
