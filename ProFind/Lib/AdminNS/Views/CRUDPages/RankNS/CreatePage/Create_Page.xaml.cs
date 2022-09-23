@@ -72,5 +72,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage
                 new InAppNavigationController().NavigateTo(typeof(ListPage.List_Ranks));
             }
         }
+
+        private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

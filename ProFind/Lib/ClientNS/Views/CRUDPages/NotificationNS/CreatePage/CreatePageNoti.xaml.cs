@@ -26,7 +26,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePageNoti : Page
     {
-        private string imageString;
+       byte[] data;
         public CreatePageNoti()
         {
             this.InitializeComponent();
@@ -46,7 +46,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage
                     SelectedPicture_tbk.Text = file.Name;
                     imageString = await file.ToBase64StringAsync();
 
-                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
+                    data = imageString.ToBitmapImage();
                 }
             }
             catch (Exception ex)

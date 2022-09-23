@@ -1,5 +1,7 @@
-﻿using ProFind.Lib.Global.Helpers;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
+using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -15,7 +17,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private string imageString;
+        private byte[] imageBytes;
         Project id1;
         Client id2;
         private Client ranks2;
@@ -34,7 +36,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             base.OnNavigatedTo(e);
             if (e.Parameter != null)
             {
-               id2 = e.Parameter as Client;
+                id1 = e.Parameter as Project;
                
             }
         }
@@ -64,7 +66,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
 
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
@@ -82,6 +84,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             }
 
         }
+
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
@@ -106,6 +109,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+
             if (string.IsNullOrEmpty(Title_tb1.Text))
             {
 
@@ -125,9 +129,14 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
             try
             {
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
+
+                
+
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+
+
 
             }
             catch (Exception ex)
@@ -138,6 +147,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             {
 
             }
+
         }
 
         private void Title_tb1_TextChanged(object sender, TextChangedEventArgs e)
@@ -161,9 +171,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
                 if (file != null)
                 {
                     SelectedPicture_tbk.Text = file.Name;
-                    imageString = await file.ToBase64StringAsync();
+                    imageBytes = await file.ToByteArrayAsync();
 
-                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
+                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
                 }
             }
             catch (Exception ex)
@@ -193,6 +203,59 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
         {
             Title_tb1.OnEnterNextField();
             Description_tb.OnEnterNextField();
+        }
+
+        private async void Create_btn_Click_2(object sender, RoutedEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(Title_tb1.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+
+
+
+            try
+            {
+
+
+                var loggedprofesionales = LoggedProfessionalStore.LoggedProfessional;
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, IdPj2 = id1.IdPj, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now, IdP1 = loggedprofesionales.IdP };
+
+                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+
+
+
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("Notifications was created .");
+                    await dialog.ShowAsync();
+
+                }
+                else
+                {
+                    var dialog = new MessageDialog("There was an error creating notifications, please try again later.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage.ReadPage));
+            }
+
         }
     }
 }
