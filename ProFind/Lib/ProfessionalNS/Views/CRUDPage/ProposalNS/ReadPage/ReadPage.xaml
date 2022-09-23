@@ -43,7 +43,7 @@
                                 <Image
                                     Width="100"
                                     Height="100"
-                                    Source="{Binding PicturePp}" />
+                                    Source="{Binding PicturePp, Converter={StaticResource ImageModelConverter}}" />
                             </StackPanel>
                             <StackPanel
                                 Grid.Column="1"

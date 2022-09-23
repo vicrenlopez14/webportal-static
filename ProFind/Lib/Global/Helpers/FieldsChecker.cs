@@ -83,6 +83,28 @@ namespace ProFind.Lib.Global.Helpers
             return true;
         }
 
+        public static bool CheckDUI(string dui)
+        {
+            if (dui.Length == 10)
+            {
+                int count = 0;
+                foreach (char character in dui)
+                {
+                    if (character == '-') count++;
+                    if ((character >= '0' && character <= '9') || (character == '-' && count < 2)) continue;
+                    return false;
+                }
+                if (count == 1)
+                {
+                    if (dui[8] == '-') return true;
+                    else return false;
+                }
+                else return false;
+            }
+            else return false;
+        }
+
+
         public static bool CheckPhoneNumber(string phone)
         {
             return phone.Length == 8;

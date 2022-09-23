@@ -28,7 +28,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models1:Professional">
                         <StackPanel CornerRadius="10" BorderThickness="1" BorderBrush="Black" Orientation="Horizontal" >
-                            <PersonPicture ProfilePicture="{Binding PictureP}" Height="73" Width="69" Margin="15,0"/>
+                            <PersonPicture ProfilePicture="{Binding PictureP, Converter={StaticResource ImageModelConverter}}" Height="73" Width="69" Margin="15,0"/>
                             <StackPanel Orientation="Vertical" Height="42">
                                 <TextBlock Text="{Binding NameP}" Height="21"/>
                                 <TextBlock Text="{Binding EmailP}"/>

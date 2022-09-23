@@ -1,12 +1,12 @@
 using System;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
-using System.Threading.Tasks;
-using Nito.AsyncEx;
 using Nito.AsyncEx.Synchronous;
+using ProFind.Lib.Global.Helpers;
+using Nito.AsyncEx;
 
-
-namespace ProFind.Lib.Global.Helpers
+namespace ProFind.Lib.Global.Converters
 {
     public class ToImageSourceConverter : IValueConverter
     {
@@ -16,8 +16,7 @@ namespace ProFind.Lib.Global.Helpers
 
             try
             {
-                var task = Task.Run(async () => await base64String.FromBase64String());
-                return task.WaitAndUnwrapException<ImageSource>();
+                return base64String.FromBase64StringSync();
             }
             catch (Exception e)
             {

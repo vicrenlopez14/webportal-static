@@ -432,6 +432,9 @@
     </Compile>
     <Compile Include="Lib\Global\Controllers\GlobalNavigationController.cs" />
     <Compile Include="Lib\Global\Controllers\IViewNavigator.cs" />
+    <Compile Include="Lib\Global\Converters\AsyncConverter.cs" />
+    <Compile Include="Lib\Global\Converters\ImageModelConverter.cs" />
+    <Compile Include="Lib\Global\Converters\ToImageSourceConverter.cs" />
     <Compile Include="Lib\Global\Helpers\ByteToBitmapImageExtension.cs" />
     <Compile Include="Lib\Global\Helpers\Connection.cs" />
     <Compile Include="Lib\Global\Helpers\DefinedPagesDictionary.cs" />
@@ -442,7 +445,6 @@
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\TextBoxExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
-    <Compile Include="Lib\Global\Helpers\ToImageSourceConverter.cs" />
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
     <Compile Include="Lib\Global\Services\Generated.cs" />
     <Compile Include="Lib\Global\Services\Models\Admin.cs" />
@@ -951,6 +953,10 @@
     <Page Include="Styles\CommandBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Image.xaml">
       <Generator>MSBuild:Compile</Generator>

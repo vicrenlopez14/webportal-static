@@ -46,7 +46,7 @@
                                         Width="69"
                                         Height="73"
                                         Margin="15,0"
-                                        ProfilePicture="{Binding PictureA}" />
+                                        ProfilePicture="{Binding PictureA, Converter={StaticResource ImageModelConverter}}" />
                                         <StackPanel Height="42" Orientation="Vertical">
                                             <TextBlock
                                             Height="21"
