@@ -1,7 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace ProFind.Lib.Global.Helpers
 {
@@ -19,6 +24,52 @@ namespace ProFind.Lib.Global.Helpers
                 await readStream.ReadAsync(byteArray, 0, byteArray.Length);
                 return byteArray;
             }
+        }
+
+        public static async Task<ImageSource> FromBase64(string base64)
+        {
+            // read stream
+            var bytes = Convert.FromBase64String(base64);
+            var image = bytes.AsBuffer().AsStream().AsRandomAccessStream();
+            // decode image
+            var decoder = await BitmapDecoder.CreateAsync(image);
+            image.Seek(0);
+
+            var output = new WriteableBitmap((int)decoder.PixelWidth, (int)decoder.PixelHeight);
+            await output.SetSourceAsync(image);
+            return output;
+        }
+
+        public static async Task<ImageSource> FromBase64(this StorageFile file)
+        {
+            var base64 = await FileIO.ReadTextAsync(file);
+            return await FromBase64(base64);
+        }
+
+        public static async Task<string> ToBase64StringAsync(this StorageFile bitmap)
+        {
+            var stream = await bitmap.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            var decoder = await BitmapDecoder.CreateAsync(stream);
+            var pixels = await decoder.GetPixelDataAsync();
+            var bytes = pixels.DetachPixelData();
+            return await ToBase64(bytes, (uint)decoder.PixelWidth, (uint)decoder.PixelHeight, decoder.DpiX,
+                decoder.DpiY);
+        }
+
+        private static async Task<string> ToBase64(byte[] image, uint height, uint width, double xpiX = 96,
+            double dpiY = 96)
+        {
+            var encoded = new InMemoryRandomAccessStream();
+            var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, encoded);
+            encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, height, width, dpiY, dpiY, image);
+            await encoder.FlushAsync();
+            encoded.Seek(0);
+
+            // read bytes
+            var bytes = new byte[encoded.Size];
+            await encoded.AsStream().ReadAsync(bytes, 0, bytes.Length);
+
+            return Convert.ToBase64String(bytes);
         }
     }
 }

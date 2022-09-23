@@ -41,7 +41,53 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             }
         }
 
+<<<<<<< HEAD
        
+=======
+        private async void Create_btn_Click(object sender, RoutedEventArgs e)
+        {
+           
+            if (string.IsNullOrEmpty(Title_tb1.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+          
+
+
+            try
+            {
+
+
+
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+
+
+                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+               
+            }
+
+        }
+>>>>>>> dac85217a3676dd13a4cdf8c47f1503432bedf1b
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
@@ -66,7 +112,47 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
            
+=======
+            if (string.IsNullOrEmpty(Title_tb1.Text))
+            {
+
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+            else if (string.IsNullOrEmpty(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The field is empty");
+                await dialog.ShowAsync();
+                return;
+            }
+
+
+
+
+            try
+            {
+
+                
+
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
+
+                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+            }
+>>>>>>> dac85217a3676dd13a4cdf8c47f1503432bedf1b
         }
 
         private void Title_tb1_TextChanged(object sender, TextChangedEventArgs e)
