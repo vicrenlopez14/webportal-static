@@ -235,6 +235,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Nito.AsyncEx">
+      <Version>5.1.2</Version>
+    </PackageReference>
     <PackageReference Include="Nito.AsyncEx.Tasks">
       <Version>5.1.2</Version>
     </PackageReference>
@@ -433,6 +436,7 @@
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\TextBoxExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
+    <Compile Include="Lib\Global\Helpers\ToImageSourceConverter.cs" />
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
     <Compile Include="Lib\Global\Services\Generated.cs" />
     <Compile Include="Lib\Global\Services\Models\Admin.cs" />
