@@ -34,7 +34,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
 
             foreach (var Projects in project)
             {
-                var RelatedANotificationsForRelatedProject = Notification.Where(n => n.IdC3 == LoggedClientStore.LoggedClient.IdC).ToList();
+                var RelatedANotificationsForRelatedProject = Notification.Where(n => n.IdPj2Navigation.IdC1 == LoggedClientStore.LoggedClient.IdC).ToList();
                 RelatedNotification.AddRange(RelatedANotificationsForRelatedProject);
             }
 

@@ -64,7 +64,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
 
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, IdC3 = id2.IdC, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 
@@ -127,7 +128,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
                 
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, IdC3 = id2.IdC, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
 

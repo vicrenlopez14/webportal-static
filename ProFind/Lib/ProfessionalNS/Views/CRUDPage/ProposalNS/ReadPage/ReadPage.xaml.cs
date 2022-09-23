@@ -33,8 +33,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
                                                    where pp.IdP3 == LoggedProfessionalStore.LoggedProfessional.IdP
                                                    select pp).ToList();
             Activities_lw.ItemsSource = projectsOfThisProfessional;
-
-            var a = new Tag { };
         }
 
         private void ProposalListView_ItemClick(object sender, ItemClickEventArgs e)
