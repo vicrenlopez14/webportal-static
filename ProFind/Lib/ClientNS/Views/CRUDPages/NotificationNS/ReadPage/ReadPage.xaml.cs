@@ -34,7 +34,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
 
             foreach (var Projects in project)
             {
-                var RelatedANotificationsForRelatedProject = Notification.Where(n => n.IdC3 == LoggedClientStore.LoggedClient.IdC).ToList();
+                var RelatedANotificationsForRelatedProject = Notification.Where(n => n.IdPj2Navigation.IdC1 == LoggedClientStore.LoggedClient.IdC).ToList();
                 RelatedNotification.AddRange(RelatedANotificationsForRelatedProject);
             }
 
@@ -53,20 +53,14 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.ReadPage
             
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage.CreatePageNoti));
-        }
+        
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.NotificationNS.CreatePage.CreatePageNoti));
-        }
+   
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {

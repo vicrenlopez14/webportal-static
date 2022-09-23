@@ -41,9 +41,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             }
         }
 
-<<<<<<< HEAD
-       
-=======
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
            
@@ -87,7 +84,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             }
 
         }
->>>>>>> dac85217a3676dd13a4cdf8c47f1503432bedf1b
+
 
         private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
         {
@@ -112,9 +109,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-           
-=======
+
             if (string.IsNullOrEmpty(Title_tb1.Text))
             {
 
@@ -152,7 +147,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             {
 
             }
->>>>>>> dac85217a3676dd13a4cdf8c47f1503432bedf1b
+
         }
 
         private void Title_tb1_TextChanged(object sender, TextChangedEventArgs e)

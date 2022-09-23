@@ -29,7 +29,7 @@
                         HorizontalAlignment="Left"
                         RenderTransformOrigin="0.638,0.776"
                         Style="{StaticResource SubheaderTextBlockStyle}"
-                        Text="Created notifications" />
+                        Text=" Notifications" />
                 </Grid>
                 <ListView
                     Grid.Column="0"
@@ -67,8 +67,6 @@
             </StackPanel>
         </StackPanel>
         <StackPanel
-            Grid.Column="1">
-            <Button Margin="0,15,0,0" Style="{StaticResource AccentButtonStyle}" Click="Button_Click_3">Add notification</Button>
-        </StackPanel>
+            Grid.Column="1"/>
     </Grid>
 </Page>
