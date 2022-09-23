@@ -144,7 +144,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
-            if (FirstName1_tbx.Text.Length < 3) 
+            if (FirstName1_tbx.Text.Length < 3)
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
@@ -162,12 +162,22 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 await dialog.ShowAsync();
                 return;
             }
-            if (int.Parse(Salario.Text) <= 0)
+            try
+            {
+                if (int.Parse(Salario.Text) <= 0)
+                {
+                    var dialog = new MessageDialog("The salary must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+            }
+            catch
             {
                 var dialog = new MessageDialog("The salary must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
+
             if (!FieldsChecker.CheckPassword(passwordBox.Password))
             {
                 var dialog = new MessageDialog("The password must be valid.");

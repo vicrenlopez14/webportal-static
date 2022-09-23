@@ -37,9 +37,9 @@
                         Name="btnExaminar"
                         Margin="0,10,0,20"
                         HorizontalAlignment="Center"
-                       
+                        Click="btnExaminar_Click_1"
                         Content="Charge"
-                        CornerRadius="5" Click="btnExaminar_Click_1" />
+                        CornerRadius="5" />
                     <TextBlock
                         FontWeight="Bold"
                         Style="{StaticResource HeaderTextBlockStyle}"
@@ -49,11 +49,15 @@
                             Already have an account?<Hyperlink Click="Hyperlink_Click_1">Log in to your account</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
+                    <RichTextBlock  SelectionHighlightColor="Green">
+                        <Paragraph>
+                            Forgot password?<Hyperlink Click="Hyperlink_Click_2">Click here</Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
                     <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Name"
-                         />
+                        PlaceholderText="Name" />
                     <TextBox
                         x:Name="Email_tb"
                         Margin="0,15,0,0"
@@ -71,9 +75,9 @@
                         Width="100"
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
-                       
+                        Click="Button_Click_4"
                         Content="Register"
-                        Style="{StaticResource AccentButtonStyle}" Click="Button_Click_4" />
+                        Style="{StaticResource AccentButtonStyle}" />
 
                     <TextBlock
                         Margin="0,10,0,0"
@@ -146,13 +150,13 @@
                         <Button
                             x:Name="Administrators_Login"
                             Margin="0,0,10,0"
-                           
-                            Content="Administrators" Click="Administrators_Login_Click" />
+                            Click="Administrators_Login_Click"
+                            Content="Administrators" />
                         <Button
                             x:Name="Professionals_Login"
                             Margin="10,0,0,0"
-                           
-                            Content="Professionals" Click="Professionals_Login_Click_1" />
+                            Click="Professionals_Login_Click_1"
+                            Content="Professionals" />
                     </StackPanel>
 
 

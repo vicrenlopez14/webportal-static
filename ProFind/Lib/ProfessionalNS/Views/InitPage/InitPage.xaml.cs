@@ -64,7 +64,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
                 LoggedProfessionalStore.LoggedProfessional = await APIConnection.GetConnection.GetProfessionalByEmailAsync(Email_tb.Text);
 
                 new GlobalNavigationController().NavigateTo(typeof(Main_Page_Professional));
-                
+
             }
             catch (ProFindServicesException ex)
             {
@@ -76,7 +76,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
                 {
                     var dialog = new MessageDialog("Incorrect, check your credentials.");
                     await dialog.ShowAsync();
-                } else
+                }
+                else
                 {
                     {
                         var dialog = new MessageDialog("Something went wrong, try again later.");
@@ -99,6 +100,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.InitPage
         private void Password_tb_PasswordChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Operations.PasswordChangePage.SendEmailPage));
         }
     }
 }
