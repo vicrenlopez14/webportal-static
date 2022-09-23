@@ -15,6 +15,7 @@ namespace WebService.Models.Generated
         {
             Activities = new HashSet<Activity>();
             Notifications = new HashSet<Notification>();
+            Tags = new HashSet<Tag>();
         }
 
         [Key]
@@ -50,5 +51,7 @@ namespace WebService.Models.Generated
         public virtual ICollection<Activity> Activities { get; set; }
         [InverseProperty("IdPj2Navigation")]
         public virtual ICollection<Notification> Notifications { get; set; }
+        [InverseProperty("IdPj1Navigation")]
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

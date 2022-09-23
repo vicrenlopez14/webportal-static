@@ -7737,6 +7737,9 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("notifications", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Notification> Notifications { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.List<Tag> Tags { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
@@ -7814,6 +7817,13 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("colorT", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(6)]
         public string ColorT { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("idPj1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(21)]
+        public string IdPj1 { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("idPj1Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Project IdPj1Navigation { get; set; }
 
     }
 

@@ -173,7 +173,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                         ToggleThemeTeachingTip2.IsOpen = true;
                     else
                         new InAppNavigationController().GoBack();
+                } else
+                {
+                    var elError = ex.StatusCode;
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
             finally
             {
@@ -217,7 +224,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private async void PictureSelection_btn_Checked_1(object sender, RoutedEventArgs e)
         {
-           
+
         }
     }
 }

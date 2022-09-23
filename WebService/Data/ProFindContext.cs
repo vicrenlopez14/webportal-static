@@ -245,6 +245,14 @@ namespace WebService.Data
                     .HasName("PRIMARY");
 
                 entity.Property(e => e.IdT).IsFixedLength();
+
+                entity.Property(e => e.IdPj1).IsFixedLength();
+
+                entity.HasOne(d => d.IdPj1Navigation)
+                    .WithMany(p => p.Tags)
+                    .HasForeignKey(d => d.IdPj1)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Tag_Project");
             });
 
             OnModelCreatingPartial(modelBuilder);

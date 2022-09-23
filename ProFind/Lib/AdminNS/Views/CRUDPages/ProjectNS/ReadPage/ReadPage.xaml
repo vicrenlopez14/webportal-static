@@ -7,8 +7,6 @@
     xmlns:services="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
-
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.8*" />

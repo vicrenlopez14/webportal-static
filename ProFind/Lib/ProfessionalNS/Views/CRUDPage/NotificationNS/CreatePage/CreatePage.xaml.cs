@@ -17,7 +17,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private byte[] imageBytes;
+        private string imageBytes;
         Project id1;
         Client id2;
         private Client ranks2;
@@ -171,7 +171,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
                 if (file != null)
                 {
                     SelectedPicture_tbk.Text = file.Name;
-                    imageBytes = await file.ToByteArrayAsync();
+                    imageBytes = await file.ToBase64StringAsync();
 
                     //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
                 }

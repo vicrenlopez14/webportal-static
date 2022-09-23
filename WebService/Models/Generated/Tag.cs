@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace WebService.Models.Generated
 {
     [Table("tag")]
+    [Index("IdPj1", Name = "FK_Tag_Project")]
     public partial class Tag
     {
         [Key]
@@ -16,5 +17,12 @@ namespace WebService.Models.Generated
         public string? NameT { get; set; }
         [StringLength(6)]
         public string? ColorT { get; set; }
+        [Column("IdPJ1")]
+        [StringLength(21)]
+        public string? IdPj1 { get; set; }
+
+        [ForeignKey("IdPj1")]
+        [InverseProperty("Tags")]
+        public virtual Project? IdPj1Navigation { get; set; }
     }
 }
