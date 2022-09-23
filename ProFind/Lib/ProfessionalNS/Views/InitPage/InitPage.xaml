@@ -37,7 +37,7 @@
                     <TextBlock>You are in the log in page for Professionals</TextBlock>
                     <RichTextBlock SelectionHighlightColor="Green">
                         <Paragraph>
-                            Forgot password?<Hyperlink>Click here</Hyperlink>
+                            Forgot password?<Hyperlink Click="Hyperlink_Click">Click here</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                     <TextBox

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,8 +40,30 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
                 ToggleThemeTeachingTip1.IsOpen = true;
                 return;
             }
-            await APIConnection.GetConnection.SendRecoveryEmailClientsAsync(email);
-            new InAppNavigationController().NavigateTo(typeof(CodeVerification), email);
+
+            try
+            {
+                await APIConnection.GetConnection.SendRecoveryEmailAdminsAsync(email);
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode == 400 || ex.StatusCode == 404)
+                {
+                    ToggleThemeTeachingTip1.IsOpen = true;
+                }
+
+                else
+                {
+                    new GlobalNavigationController().NavigateTo(typeof(CodeVerification), email);
+                }
+            }
+            finally
+            {
+                new GlobalNavigationController().NavigateTo(typeof(CodeVerification), email);
+
+            }
+
+
         }
     }
 }

@@ -52,7 +52,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
         private void Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender,
             Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
-          
+
 
         }
 
@@ -78,7 +78,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void btnExaminar_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            imageString = await(await PickFileHelper.PickImage()).ToBase64StringAsync();
+            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
         }
 
         private async void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -142,12 +142,17 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
                 Console.WriteLine(ex.Message);
             }
 
-            
+
         }
 
         private void Hyperlink_Click_1(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
             new GlobalNavigationController().NavigateTo(typeof(InitPage_Login));
+        }
+
+        private void Hyperlink_Click_2(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Operations.PasswordChangePage.SendEmailPage));
         }
     }
 }

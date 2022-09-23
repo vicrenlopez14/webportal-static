@@ -26,10 +26,10 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
         // validations
         private static void ValidationsSetUp()
         {
-           
+
         }
-        
-        
+
+
         private void RichTextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
@@ -66,7 +66,7 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
                 LoggedAdminStore.LoggedAdmin = await APIConnection.GetConnection.GetAdminFromEmailAsync(Email_tb.Text);
 
                 new GlobalNavigationController().NavigateTo(typeof(Main_Page_Admin.Main_Page_Admin));
-                
+
             }
             catch (ProFindServicesException ex)
             {
@@ -110,6 +110,11 @@ namespace ProFind.Lib.AdminNS.Views.Int_Page
         private void RichTextBlock_SelectionChanged_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Hyperlink_Click_2(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            new GlobalNavigationController().NavigateTo(typeof(Operations.PasswordChangePage.SendEmailPage));
         }
     }
 }
