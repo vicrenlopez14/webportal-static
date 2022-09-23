@@ -157,8 +157,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats(e, TotalPrice_tb.Text)) e.Handled = true;
-            else e.Handled = false;
+           
         }
 
         private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)

@@ -128,9 +128,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.CreatePage
 
         private void TotalPrice_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats(e, TotalPrice_tb.Text)) e.Handled = true;
-            else e.Handled = false;
-
+            
         }
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)

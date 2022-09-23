@@ -178,50 +178,55 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
             if (ToManipulateProfessional != null)
             {
+                if (FieldsChecker.CheckName(FirstName1_tbx.Text) == false)
+                {
+                    var dialog = new MessageDialog("The name must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckEmail(Email.Text) == false)
+                {
+                    var dialog = new MessageDialog("The email must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckDateDown(Nacimiento.Date) == false)
+                {
+                    var dialog = new MessageDialog("The birth date must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (FieldsChecker.OnlyFloats(Salario.Text) == false)
+                {
+                    var dialog = new MessageDialog("The salary must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (FieldsChecker.OnlyInts(Afp.Text) == false)
+                {
+                    var dialog = new MessageDialog("The Afp must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (FieldsChecker.OnlyInts(CodigoPostal.Text) == false)
+                {
+                    var dialog = new MessageDialog("The Code Postal must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (FieldsChecker.OnlyLetters(position.Text) == false)
+                {
+                    var dialog = new MessageDialog("The Position must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+                if (!FieldsChecker.CheckPassword(passwordBox.Password) == false)
+                {
+                    var dialog = new MessageDialog("The password must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
 
-                if(FirstName1_tbx.Text.Length <= 3)
-                {
-                    var dialog = new MessageDialog("The name must be valid");
-                    await dialog.ShowAsync();
-                    return;
-                }
-                if (!FieldsChecker.CheckEmail(Email.Text))
-                {
-                    var dialog = new MessageDialog("The name email be valid");
-                    await dialog.ShowAsync();
-                    return;
-                }
-                if (!FieldsChecker.CheckPassword(passwordBox.Password))
-                {
-                    var dialog = new MessageDialog("The password must be valid");
-                    await dialog.ShowAsync();
-                    return;
-                }
-                if (int.Parse(Salario.Text) <= 0)
-                {
-                    var dialog = new MessageDialog("The salary must be valid");
-                    await dialog.ShowAsync();
-                    return;
-                }
-                if (!FieldsChecker.CheckDateDown((DateTimeOffset)Nacimiento.Date))
-                {
-                    var dialog = new MessageDialog("The birth date must be valid");
-                    await dialog.ShowAsync();
-                    return;
-                }
-                if (!FieldsChecker.CheckDateUp((DateTimeOffset)FechadeIngreso.Date) && 
-                    (DateTimeOffset)FechadeIngreso.Date != ToManipulateProfessional.HiringDateP)
-                {
-                    var dialog = new MessageDialog("The hiring date must be valid");
-                    await dialog.ShowAsync();
-                    return;
-                }
-                if(Confirm_passwordBox.Password != passwordBox.Password)
-                {
-                    var dialog = new MessageDialog("Password and confirmation password are not the same");
-                    await dialog.ShowAsync();
-                    return;
-                }
                 try
                 {
                     var toCreateProfessions = new Professional { IdP = ToManipulateProfessional.IdP, NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = (DateTimeOffset)Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = (string.IsNullOrEmpty(passwordBox.Password) ? ToManipulateProfessional.PasswordP : passwordBox.Password), ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageString, IdDp1 = (departamento.SelectedItem as Department).IdDp, IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs, ZipCodeP = CodigoPostal.Text, HiringDateP = (DateTimeOffset)FechadeIngreso.Date };
@@ -311,18 +316,20 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+            if (FieldsChecker.CheckName(FirstName1_tbx.Text)) e.Handled = true;
+            else e.Handled = false;
 
         }
 
         private void Afp_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyInts(e)) e.Handled = true;
+            if (FieldsChecker.OnlyInts(Afp.Text)) e.Handled = true;
             else e.Handled = false;
         }
 
         private void SeguroSocial_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyInts(e)) e.Handled = true;
+            if (FieldsChecker.OnlyInts(SeguroSocial.Text)) e.Handled = true;
             else e.Handled = false;
         }
 
@@ -332,7 +339,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private void CodigoPostal_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyInts(e)) e.Handled = true;
+            if (FieldsChecker.OnlyInts(CodigoPostal.Text)) e.Handled = true;
             else e.Handled = false;
         }
 
@@ -344,7 +351,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats(e, Salario.Text)) e.Handled = true;
+            if (FieldsChecker.OnlyFloats( Salario.Text)) e.Handled = true;
             else e.Handled = false;
         }
 
