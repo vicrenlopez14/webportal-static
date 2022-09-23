@@ -44,17 +44,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-           
-            if (string.IsNullOrEmpty(Title_tb1.Text))
-            {
 
-                var dialog = new MessageDialog("The field is empty");
+            if (FieldsChecker.CheckName(Title_tb1.Text) == false)
+            {
+                var dialog = new MessageDialog("The Title must be valid");
                 await dialog.ShowAsync();
                 return;
             }
-            else if (string.IsNullOrEmpty(Description_tb.Text))
+            else if (FieldsChecker.OnlyLetters(Description_tb.Text) == false)
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The description must be valid");
                 await dialog.ShowAsync();
                 return;
             }

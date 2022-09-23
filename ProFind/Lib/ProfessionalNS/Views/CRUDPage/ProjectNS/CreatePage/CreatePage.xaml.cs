@@ -133,6 +133,18 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            if (FieldsChecker.CheckName(Title_tb.Text) == false)
+            {
+                var dialog = new MessageDialog("The Title must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (FieldsChecker.OnlyLetters(Description_tb.Text) == false)
+            {
+                var dialog = new MessageDialog("The Description must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
                 var toCreateProject = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageString, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = SourceProposal.IdP3, IdC1 = SourceProposal.IdC3, TagDurationPj = TagDuration_cbx.SelectedIndex };

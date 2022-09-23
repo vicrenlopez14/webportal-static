@@ -87,6 +87,14 @@
                             </Grid.ColumnDefinitions>
                         </Grid>
                         <Button
+                            x:Name="Create_btn"
+                            Width="160"
+                            Margin="260,22,3,30"
+                           
+                            Content="Accept and Create"
+                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click" />
+                        <Button
+                             Margin="20,-60,3,30"
                             x:Name="Decline"
                             Width="160"
                            
@@ -97,12 +105,6 @@
                             x:Name="Creation_pr"
                             Margin="0,20,0,0"
                             IsActive="False" />
-                        <Button
-                            x:Name="Create_btn"
-                            Width="160"
-                           
-                            Content="Accept and Create"
-                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click" />
                     </StackPanel>
                 </Grid>
             </ScrollViewer>
