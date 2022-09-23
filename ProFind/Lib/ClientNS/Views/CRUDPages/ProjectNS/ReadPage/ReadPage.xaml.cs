@@ -28,11 +28,9 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProjectNS.ReadPage
         {
             var loggendProject = LoggedClientStore.LoggedClient;
             var Projects = await APIConnection.GetConnection.GetProjectsAsync();
-            var RelatedProject = new List<Project>();
 
-            var RelatedProject2 = Projects.Where(c => c.IdPj == loggendProject.IdC).ToList();
+            var RelatedProject = Projects.Where(c => c.IdC1 == loggendProject.IdC).ToList();
 
-            RelatedProject.AddRange(RelatedProject2);
 
             AdminsListView.ItemsSource = RelatedProject;
         }
