@@ -17,6 +17,7 @@ namespace WebService.Data
         {
         }
 
+        public virtual DbSet<Activity> Activities { get; set; } = null!;
         public virtual DbSet<Admin> Admins { get; set; } = null!;
         public virtual DbSet<Changepasswordcode> Changepasswordcodes { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
@@ -27,6 +28,7 @@ namespace WebService.Data
         public virtual DbSet<Project> Projects { get; set; } = null!;
         public virtual DbSet<Proposal> Proposals { get; set; } = null!;
         public virtual DbSet<Rank> Ranks { get; set; } = null!;
+        public virtual DbSet<Tag> Tags { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,6 +43,22 @@ namespace WebService.Data
         {
             modelBuilder.UseCollation("utf8_general_ci")
                 .HasCharSet("utf8");
+
+            modelBuilder.Entity<Activity>(entity =>
+            {
+                entity.HasKey(e => e.IdAc)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdAc).IsFixedLength();
+
+                entity.Property(e => e.IdPj1).IsFixedLength();
+
+                entity.HasOne(d => d.IdPj1Navigation)
+                    .WithMany(p => p.Activities)
+                    .HasForeignKey(d => d.IdPj1)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Activity_Project");
+            });
 
             modelBuilder.Entity<Admin>(entity =>
             {
@@ -118,13 +136,21 @@ namespace WebService.Data
 
                 entity.Property(e => e.IdN).IsFixedLength();
 
-                entity.Property(e => e.IdC3).IsFixedLength();
+                entity.Property(e => e.IdP1).IsFixedLength();
 
-                entity.HasOne(d => d.IdC3Navigation)
+                entity.Property(e => e.IdPj2).IsFixedLength();
+
+                entity.HasOne(d => d.IdP1Navigation)
                     .WithMany(p => p.Notifications)
-                    .HasForeignKey(d => d.IdC3)
+                    .HasForeignKey(d => d.IdP1)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK_Notification_Client");
+                    .HasConstraintName("FK_Notification_Professional");
+
+                entity.HasOne(d => d.IdPj2Navigation)
+                    .WithMany(p => p.Notifications)
+                    .HasForeignKey(d => d.IdPj2)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Notification_Project");
             });
 
             modelBuilder.Entity<Profession>(entity =>
@@ -211,6 +237,14 @@ namespace WebService.Data
             {
                 entity.HasKey(e => e.IdR)
                     .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<Tag>(entity =>
+            {
+                entity.HasKey(e => e.IdT)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.IdT).IsFixedLength();
             });
 
             OnModelCreatingPartial(modelBuilder);

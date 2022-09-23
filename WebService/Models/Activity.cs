@@ -11,6 +11,6 @@ public static class ActivityExtension
 {
     public static void AssignId(this Activity activity)
     {
-        activity.IdA = Utils.ShaOperations.GenerateUID();
+        activity.IdAc = Utils.ShaOperations.GenerateUID();
     }
 }

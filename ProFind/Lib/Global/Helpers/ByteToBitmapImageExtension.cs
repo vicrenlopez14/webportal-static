@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ProFind.Lib.Global.Helpers
 {
-    public static class ByteToBitmapImage
+    public static class   ByteToBitmapImage
     {
         public static BitmapImage ToBitmapImage(this byte[] bytes)
         {

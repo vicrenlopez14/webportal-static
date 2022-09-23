@@ -11,6 +11,12 @@ namespace WebService.Models.Generated
     [Index("IdP1", Name = "FK_Project_Professional")]
     public partial class Project
     {
+        public Project()
+        {
+            Activities = new HashSet<Activity>();
+            Notifications = new HashSet<Notification>();
+        }
+
         [Key]
         [Column("IdPJ")]
         [StringLength(21)]
@@ -40,5 +46,9 @@ namespace WebService.Models.Generated
         [ForeignKey("IdP1")]
         [InverseProperty("Projects")]
         public virtual Professional? IdP1Navigation { get; set; }
+        [InverseProperty("IdPj1Navigation")]
+        public virtual ICollection<Activity> Activities { get; set; }
+        [InverseProperty("IdPj2Navigation")]
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }
