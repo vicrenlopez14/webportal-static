@@ -38,7 +38,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
 
-            if (Name_tb.Text.Length <= 3)
+            if (!FieldsChecker.CheckName(Name_tb.Text))
             {
                 var dialog = new MessageDialog("The name must be valid");
                 await dialog.ShowAsync();

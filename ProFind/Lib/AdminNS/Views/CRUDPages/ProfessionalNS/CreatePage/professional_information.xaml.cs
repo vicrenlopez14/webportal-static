@@ -145,7 +145,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
-            if (FieldsChecker.CheckName(FirstName1_tbx.Text))
+            if (!FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
@@ -163,25 +163,25 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyFloats(Salario.Text))
+            if (!FieldsChecker.OnlyFloats(Salario.Text))
             {
                 var dialog = new MessageDialog("The salary must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyInts(Afp.Text))
+            if (!FieldsChecker.OnlyInts(Afp.Text))
             {
                 var dialog = new MessageDialog("The Afp must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyInts(CodigoPostal.Text))
+            if (!FieldsChecker.OnlyInts(CodigoPostal.Text))
             {
                 var dialog = new MessageDialog("The Code Postal must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyLetters(position.Text))
+            if (!FieldsChecker.OnlyLetters(position.Text))
             {
                 var dialog = new MessageDialog("The Position must be valid.");
                 await dialog.ShowAsync();
@@ -235,49 +235,49 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             }
 
 
-            if (FieldsChecker.CheckName(FirstName1_tbx.Text) == false)
+            if (FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckEmail(Email.Text) == false)
+            if (!FieldsChecker.CheckEmail(Email.Text))
             {
                 var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckDateDown(Nacimiento.Date) == false)
+            if (!FieldsChecker.CheckDateDown(Nacimiento.Date))
             {
                 var dialog = new MessageDialog("The birth date must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyFloats(Salario.Text) == false)
+            if (FieldsChecker.OnlyFloats(Salario.Text))
             {
                 var dialog = new MessageDialog("The salary must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyInts(Afp.Text) == false)
+            if (FieldsChecker.OnlyInts(Afp.Text))
             {
                 var dialog = new MessageDialog("The Afp must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyInts(CodigoPostal.Text) == false)
+            if (FieldsChecker.OnlyInts(CodigoPostal.Text))
             {
                 var dialog = new MessageDialog("The Code Postal must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyLetters(position.Text) == false)
+            if (FieldsChecker.OnlyLetters(position.Text))
             {
                 var dialog = new MessageDialog("The Position must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckPassword(passwordBox.Password) == false)
+            if (!FieldsChecker.CheckPassword(passwordBox.Password))
             {
                 var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
@@ -355,46 +355,39 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.CheckName(FirstName1_tbx.Text)) e.Handled = true;
-            else e.Handled = false;
+         
 
         }
 
         private void Afp_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyInts(Afp.Text)) e.Handled = true;
-            else e.Handled = false;
+           
 
         }
 
         private void SeguroSocial_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyInts(SeguroSocial.Text)) e.Handled = true;
-            else e.Handled = false;
+           
         }
 
         private void position_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(position.Text)) e.Handled = true;
-            else e.Handled = false;
+           
         }
 
         private void CodigoPostal_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyInts(CodigoPostal.Text)) e.Handled = true;
-            else e.Handled = false;
+           
         }
 
         private void Email_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.CheckEmail(Email.Text)) e.Handled = true;
-            else e.Handled = false;
+
         }
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyFloats( Salario.Text)) e.Handled = true;
-            else e.Handled = false;
+         
         }
 
         private void Nacimiento_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)

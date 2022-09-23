@@ -105,13 +105,13 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (FieldsChecker.CheckName(Title_tb.Text) == false)
+            if (!FieldsChecker.CheckName(Title_tb.Text))
             {
                 var dialog = new MessageDialog("The Title must be valid");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyLetters(Description_tb.Text) == false)
+            if (!FieldsChecker.OnlyLetters(Description_tb.Text))
             {
                 var dialog = new MessageDialog("The Description must be valid");
                 await dialog.ShowAsync();

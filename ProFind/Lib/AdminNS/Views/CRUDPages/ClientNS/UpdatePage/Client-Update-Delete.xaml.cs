@@ -70,7 +70,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         {
             await APIConnection.GetConnection.DeleteClientAsync(toManipulateClient.IdC);
 
-            if (FieldsChecker.CheckName(Name1_tbx.Text) == false)
+            if (!FieldsChecker.CheckName(Name1_tbx.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();

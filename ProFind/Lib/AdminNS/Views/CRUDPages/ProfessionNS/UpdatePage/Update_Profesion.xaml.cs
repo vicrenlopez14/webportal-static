@@ -23,7 +23,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (FieldsChecker.CheckName(Name_tb.Text) == false)
+            if (!FieldsChecker.CheckName(Name_tb.Text))
             {
                 var dialog = new MessageDialog("The name must be valid");
                 await dialog.ShowAsync();

@@ -113,19 +113,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!FieldsChecker.CheckEmail(Email_tbx.Text) == false)
+            if (!FieldsChecker.CheckEmail(Email_tbx.Text))
             {
                 var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckPassword(Password_tbx.Password) == false)
+            if (!FieldsChecker.CheckPassword(Password_tbx.Password))
             {
                 var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckName(FirstName1_tbx.Text) == false)
+            if (!FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();

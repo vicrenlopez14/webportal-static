@@ -60,14 +60,14 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (FieldsChecker.CheckName(Title_tb.Text) == false)
+            if (!FieldsChecker.CheckName(Title_tb.Text))
             {
 
                 var dialog = new MessageDialog("The Title must be valid");
                 await dialog.ShowAsync();
                 return;
             }
-            else if (FieldsChecker.OnlyLetters(Description_tb.Text))
+            else if (!FieldsChecker.OnlyLetters(Description_tb.Text))
             {
                 var dialog = new MessageDialog("The description must be valid");
                 await dialog.ShowAsync();
