@@ -28,7 +28,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private byte[] imageBytes;
+        private string imageString;
         
         Professional IdP;
         public CreatePage()
@@ -56,9 +56,9 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
                 if (file != null)
                 {
                     SelectedPicture_tbk.Text = file.Name;
-                    imageBytes = await file.ToByteArrayAsync();
+                    imageString = await file.ToBase64StringAsync();
 
-                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
                 }
             }
             catch (Exception ex)
@@ -88,7 +88,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
             {
 
                 var loggendClient = LoggedClientStore.LoggedClient;
-                var toCreatProposals = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = (DateTimeOffset)ExpectedBegin_dp.Date, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageBytes, Seen = false, IdC3 = loggendClient.IdC, IdP3 = IdP.IdP };
+                var toCreatProposals = new Proposal { IdPp = "", TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedStart = (DateTimeOffset)ExpectedBegin_dp.Date, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageString, Seen = false, IdC3 = loggendClient.IdC, IdP3 = IdP.IdP };
 
 
 

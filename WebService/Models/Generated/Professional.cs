@@ -46,7 +46,7 @@ namespace WebService.Models.Generated
         public float? SalaryP { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? HiringDateP { get; set; }
-        public byte[]? PictureP { get; set; }
+        public string? PictureP { get; set; }
         public byte[]? CurriculumP { get; set; }
         [Column("IdPFS1", TypeName = "int(11)")]
         public int? IdPfs1 { get; set; }

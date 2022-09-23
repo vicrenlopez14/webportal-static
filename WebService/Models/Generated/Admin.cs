@@ -26,7 +26,7 @@ namespace WebService.Models.Generated
         public string? TelA { get; set; }
         [StringLength(64)]
         public string? PasswordA { get; set; }
-        public byte[]? PictureA { get; set; }
+        public string? PictureA { get; set; }
         [Column(TypeName = "int(11)")]
         public int? IdR1 { get; set; }
 

@@ -23,7 +23,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         Project toManipulate = new Project();
 
 
-        private byte[] imageBytes;
+        private string imageString;
 
         public CreatePage()
         {
@@ -143,7 +143,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage
         {
             try
             {
-                var toCreateProject = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = SourceProposal.IdP3, IdC1 = SourceProposal.IdC3, TagDurationPj = TagDuration_cbx.SelectedIndex };
+                var toCreateProject = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageString, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = SourceProposal.IdP3, IdC1 = SourceProposal.IdC3, TagDurationPj = TagDuration_cbx.SelectedIndex };
 
                 var result = await APIConnection.GetConnection.PostProjectAsync(toCreateProject);
 

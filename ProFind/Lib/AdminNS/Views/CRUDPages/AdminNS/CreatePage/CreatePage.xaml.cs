@@ -26,7 +26,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
     {
         private Admin ToCreateAdmin = new Admin();
         private List<Rank> ranks = new List<Rank>();
-        private byte[] imageBytes;
+        private string imageString;
         private bool isFirstAdmin = false;
 
         public CreatePage()
@@ -105,14 +105,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         {
             try
             {
-                Creation_pr.IsActive = true;
+                var selectedImage = await PickFileHelper.PickImage();
+                SelectedPicture_tbk.Text = selectedImage.Name;
 
-                var file = await PickFileHelper.PickImage();
+                imageString = await selectedImage.ToBase64StringAsync();
+                ToCreateAdmin.PictureA = imageString;
+                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
 
-                if (file != null)
-                {
-                    ToCreateAdmin.PictureA = await file.ToByteArrayAsync();
-                }
             }
             catch (Exception ex)
             {
@@ -214,6 +213,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         private void PhoneNumber_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
 
+        }
+
+        private async void PictureSelection_btn_Checked_1(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

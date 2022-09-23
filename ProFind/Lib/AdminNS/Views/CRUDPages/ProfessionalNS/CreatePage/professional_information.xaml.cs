@@ -30,7 +30,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         Professional toManipulate = new Professional();
 
-        private byte[] imageBytes;
+        private string imageString;
 
         private byte[] curriculumBytes;
 
@@ -190,7 +190,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                     SexP = true,
                     PasswordP = passwordBox.Password,
                     ActiveP = Sexo.SelectedValue == "Male",
-                    PictureP = imageBytes,
+                    PictureP = imageString,
                     IdDp1 = (departamento.SelectedItem as Department).IdDp,
                     IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,
                     ZipCodeP = CodigoPostal.Text,
@@ -328,9 +328,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
         {
-            imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
 
-            ProfilePicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+            ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
         }
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)

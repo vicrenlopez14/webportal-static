@@ -19,7 +19,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
     public sealed partial class Update_Project : Page
     {
         Project toManipulate = new Project();
-        private byte[] imageBytes;
+        private string imageString;
 
         public Update_Project()
         {
@@ -50,7 +50,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void Cargar()
         {
-            SelectedPicture_pp.Source = toManipulate.PicturePj.ToBitmapImage();
+            SelectedPicture_pp.Source = await toManipulate.PicturePj.FromBase64String();
             Title_tb.Text = toManipulate.TitlePj;
             Description_tb.Text = toManipulate.DescriptionPj;
             TotalPrice_tb.Text = toManipulate.TotalPricePj.ToString();
@@ -76,7 +76,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
             try
             {
-                var ToUpdateProject = new Project { TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageBytes, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = toManipulate.IdP1, IdC1 = toManipulate.IdC1, IsPaidPj = IsPaid_cbx.IsChecked };
+                var ToUpdateProject = new Project { TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageString, TotalPricePj = int.Parse(TotalPrice_tb.Text), IdP1 = toManipulate.IdP1, IdC1 = toManipulate.IdC1, IsPaidPj = IsPaid_cbx.IsChecked };
 
                 await APIConnection.GetConnection.PutProjectAsync(toManipulate.IdPj, ToUpdateProject);
 
@@ -167,10 +167,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
 
 
-            if (imageBytes != null)
+            if (imageString != null)
             {
                 SelectedPicture_tbk.Text = "Image correctly selected";
             }

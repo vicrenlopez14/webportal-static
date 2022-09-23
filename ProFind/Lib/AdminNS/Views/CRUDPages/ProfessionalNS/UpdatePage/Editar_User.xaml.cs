@@ -26,7 +26,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         Professional ToManipulateProfessional = new Professional();
 
-        private byte[] imageBytes;
+        private string imageString;
 
         private byte[] curriculumBytes;
 
@@ -110,9 +110,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
         {
-            imageBytes = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
 
-            ProfilePicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+            ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
         }
 
         private void Selection_Sexo(object sender, SelectionChangedEventArgs e)
@@ -226,7 +226,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                 }
                 try
                 {
-                    var toCreateProfessions = new Professional { IdP = ToManipulateProfessional.IdP, NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = (DateTimeOffset)Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = (string.IsNullOrEmpty(passwordBox.Password) ? ToManipulateProfessional.PasswordP : passwordBox.Password), ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageBytes, IdDp1 = (departamento.SelectedItem as Department).IdDp, IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs, ZipCodeP = CodigoPostal.Text, HiringDateP = (DateTimeOffset)FechadeIngreso.Date };
+                    var toCreateProfessions = new Professional { IdP = ToManipulateProfessional.IdP, NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = (DateTimeOffset)Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = (string.IsNullOrEmpty(passwordBox.Password) ? ToManipulateProfessional.PasswordP : passwordBox.Password), ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageString, IdDp1 = (departamento.SelectedItem as Department).IdDp, IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs, ZipCodeP = CodigoPostal.Text, HiringDateP = (DateTimeOffset)FechadeIngreso.Date };
 
 
                     await APIConnection.GetConnection.PutProfessionalAsync(ToManipulateProfessional.IdP, toCreateProfessions);

@@ -6,6 +6,7 @@ using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.Global.Views.About_Page;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using ProFind.Lib.Global.Helpers;
+using System.Threading.Tasks;
 
 namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
 {
@@ -28,14 +29,14 @@ namespace ProFind.Lib.ProfessionalNS.Views.Main_Page
             new InAppNavigationController().Init(Professionals_ContentFrame);
             new InAppNavigationController().NavigateTo(typeof(CRUDPage.ProjectNS.ReadPage.ReadPage));
 
-            LoadLoggedProfessionalData();
+            LoadLoggedProfessionalDataAsync();
         }
 
-        private void LoadLoggedProfessionalData()
+        private async Task LoadLoggedProfessionalDataAsync()
         {
             var loggedUserInfo = LoggedProfessionalStore.LoggedProfessional;
 
-            LoggedUser_pp.ProfilePicture = loggedUserInfo.PictureP.ToBitmapImage();
+            LoggedUser_pp.ProfilePicture = await loggedUserInfo.PictureP.FromBase64String();
             LoggedUserName_tb.Text = loggedUserInfo.NameP;
             LoggedUserEmail_tb.Text = loggedUserInfo.EmailP;
         }

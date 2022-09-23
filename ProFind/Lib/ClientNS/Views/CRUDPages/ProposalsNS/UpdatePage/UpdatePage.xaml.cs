@@ -27,7 +27,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
     /// </summary>
     public sealed partial class UpdatePage : Page
     {
-        private byte[] imageBytes;
+        private string imageString;
 
         Proposal IPp;
         public UpdatePage()
@@ -68,9 +68,9 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
                 if (file != null)
                 {
                     SelectedPicture_tbk.Text = file.Name;
-                    imageBytes = await file.ToByteArrayAsync();
+                    imageString = await file.ToBase64StringAsync();
 
-                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
                 }
             }
             catch (Exception ex)
@@ -115,7 +115,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
             {
 
                 var loggedClient = LoggedClientStore.LoggedClient;
-                var toCreateAdmin = new Proposal { TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageBytes, IdPp = IPp.IdPp, IdC3 = loggedClient.IdC };
+                var toCreateAdmin = new Proposal { TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageString, IdPp = IPp.IdPp, IdC3 = loggedClient.IdC };
 
 
 

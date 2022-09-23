@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,7 +24,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
 {
     public sealed partial class CreatePage : Page
     {
-        private byte[] SelectedPictureBytes;
+        private string selectedPicture;
         private Proposal ToSendProposal;
         private Professional SelectedProfessional;
 
@@ -62,13 +63,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
             }
             finally
             {
-                LoadPageData();
+                LoadPageDataAsync();
             }
         }
 
-        private void LoadPageData()
+        private async Task LoadPageDataAsync()
         {
-            ProfessionalImage_img.Source = SelectedProfessional.PictureP.ToBitmapImage().ToWriteableBitmap();
+            ProfessionalImage_img.Source = await SelectedProfessional.PictureP.FromBase64String();
             ProfessionalProfession_tb.Text = SelectedProfessional.IdPfs1Navigation.NamePfs;
             ProfessionalDepartment_tb.Text = SelectedProfessional.IdDp1Navigation.NameDp;
             ProfessionalHiringDate_tb.Text = SelectedProfessional.HiringDateP.ToString();
@@ -83,7 +84,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProposalNS.CreatePage
         {
             ToSendProposal = new Proposal
             {
-                PicturePp = SelectedPictureBytes,
+                PicturePp = selectedPicture,
                 TitlePp = Title_tb.Text,
                 DescriptionPp = Description_tb.Text,
                 SuggestedStart = SuggestedBegin_dp.ToDateTime(),

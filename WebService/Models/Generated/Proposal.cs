@@ -22,7 +22,7 @@ namespace WebService.Models.Generated
         [StringLength(500)]
         public string? DescriptionPp { get; set; }
         [Column("PicturePP")]
-        public byte[]? PicturePp { get; set; }
+        public string? PicturePp { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? SuggestedStart { get; set; }
         [Column(TypeName = "datetime")]

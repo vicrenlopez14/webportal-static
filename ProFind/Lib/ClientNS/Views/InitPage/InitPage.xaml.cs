@@ -18,7 +18,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
     /// </summary>
     public sealed partial class InitPage : Page
     {
-        byte[] pictureBytes;
+        private string imageString;
         public InitPage()
         {
 
@@ -78,7 +78,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void btnExaminar_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            pictureBytes = await(await PickFileHelper.PickImage()).ToByteArrayAsync();
+            imageString = await(await PickFileHelper.PickImage()).ToBase64StringAsync();
         }
 
         private async void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -109,7 +109,7 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
                 NameC = Name_tb.Text,
                 EmailC = Email_tb.Text,
                 PasswordC = Password_tb.Password,
-                PictureC = pictureBytes,
+                PictureC = imageString,
             };
 
             try
