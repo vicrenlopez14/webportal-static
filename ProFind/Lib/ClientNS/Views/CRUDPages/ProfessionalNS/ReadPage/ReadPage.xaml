@@ -42,7 +42,7 @@
                     Width="100"
                     Height="100"
                     Margin="-95,-60,450,-110"
-                    ProfilePicture="{Binding PictureP}" />
+                    ProfilePicture="{Binding PictureP, Converter={StaticResource ImageModelConverter}}" />
                         <StackPanel
                     Width="300"
                     Height="27"

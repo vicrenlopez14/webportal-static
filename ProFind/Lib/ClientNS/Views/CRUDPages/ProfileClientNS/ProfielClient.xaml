@@ -26,7 +26,7 @@
                     <StackPanel Orientation="Horizontal" Margin="251,158,211,560" Background="WhiteSmoke">
                         <StackPanel Padding="30" Background="LightGray">
                             <PersonPicture 
-                            ProfilePicture="{Binding PictureC}"
+                            ProfilePicture="{Binding PictureC, Converter={StaticResource ImageModelConverter}}"
                             Name="ClientPicture" 
                             Height="238" 
                             Width="139"/>
