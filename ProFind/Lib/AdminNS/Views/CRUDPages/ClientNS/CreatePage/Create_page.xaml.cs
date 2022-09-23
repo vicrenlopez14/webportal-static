@@ -47,14 +47,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
         }
 
         private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.CheckEmail(Email_tb.Text)) e.Handled = true;
-            else e.Handled = false;
         }
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)

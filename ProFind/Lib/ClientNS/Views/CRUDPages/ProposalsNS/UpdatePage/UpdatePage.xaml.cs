@@ -97,15 +97,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 
         private void Title_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
 
         }
 
         private void Description_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
 
         }
 
