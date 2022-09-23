@@ -27,10 +27,7 @@
                                     <ColumnDefinition Width="0.7*" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Orientation="Vertical">
-                                    <Image
-                                        Width="100"
-                                        Height="100"
-                                        Source="{Binding PictureA, Converter={ToImageSourceConverter}}" />
+                                    <Image Width="100" Height="100" />
                                 </StackPanel>
                                 <StackPanel
                                     Grid.Column="1"
