@@ -39,7 +39,7 @@
                             Width="100"
                             Height="100"
                             Margin="-2,-30,570,10"
-                            Source="{Binding PicturePp}" />
+                            Source="{Binding PicturePp, Converter={StaticResource ImageModelConverter}}" />
 
                             <StackPanel
                             Width="20"
