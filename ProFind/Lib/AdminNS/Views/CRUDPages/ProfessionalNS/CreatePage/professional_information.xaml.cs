@@ -145,7 +145,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
-            if (FieldsChecker.CheckName(FirstName1_tbx.Text))
+            if (!FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
@@ -163,25 +163,25 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyFloats(Salario.Text))
+            if (!FieldsChecker.OnlyFloats(Salario.Text))
             {
                 var dialog = new MessageDialog("The salary must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyInts(Afp.Text))
+            if (!FieldsChecker.OnlyInts(Afp.Text))
             {
                 var dialog = new MessageDialog("The Afp must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyInts(CodigoPostal.Text))
+            if (!FieldsChecker.OnlyInts(CodigoPostal.Text))
             {
                 var dialog = new MessageDialog("The Code Postal must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (FieldsChecker.OnlyLetters(position.Text))
+            if (!FieldsChecker.OnlyLetters(position.Text))
             {
                 var dialog = new MessageDialog("The Position must be valid.");
                 await dialog.ShowAsync();
@@ -232,56 +232,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                     var dialog = new MessageDialog("Error creating professional");
                     await dialog.ShowAsync();
                 }
-            }
-
-
-            if (FieldsChecker.CheckName(FirstName1_tbx.Text) == false)
-            {
-                var dialog = new MessageDialog("The name must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (!FieldsChecker.CheckEmail(Email.Text) == false)
-            {
-                var dialog = new MessageDialog("The email must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (!FieldsChecker.CheckDateDown(Nacimiento.Date) == false)
-            {
-                var dialog = new MessageDialog("The birth date must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (FieldsChecker.OnlyFloats(Salario.Text) == false)
-            {
-                var dialog = new MessageDialog("The salary must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (FieldsChecker.OnlyInts(Afp.Text) == false)
-            {
-                var dialog = new MessageDialog("The Afp must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (FieldsChecker.OnlyInts(CodigoPostal.Text) == false)
-            {
-                var dialog = new MessageDialog("The Code Postal must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (FieldsChecker.OnlyLetters(position.Text) == false)
-            {
-                var dialog = new MessageDialog("The Position must be valid.");
-                await dialog.ShowAsync();
-                return;
-            }
-            if (!FieldsChecker.CheckPassword(passwordBox.Password) == false)
-            {
-                var dialog = new MessageDialog("The password must be valid.");
-                await dialog.ShowAsync();
-                return;
             }
 
 
