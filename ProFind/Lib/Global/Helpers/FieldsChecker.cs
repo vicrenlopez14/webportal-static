@@ -30,12 +30,6 @@ namespace ProFind.Lib.Global.Helpers
         {
             return begin >= DateTimeOffset.Now && end >= begin;
         }
-        public static bool OnlyFloats(Windows.UI.Xaml.Input.KeyRoutedEventArgs e, string number)
-        {
-            if ((e.Key >= VirtualKey.Number0 && e.Key <= VirtualKey.Number9) || (e.Key == VirtualKey.Back)) return true;
-            else if (number.Length > 0 && e.Key == VirtualKey.Decimal && !number.Contains(".")) return true;
-            else return false;
-        }
         public static bool CheckDateUp(DateTimeOffset date)
         {
             return date >= DateTimeOffset.Now.Date;
@@ -46,17 +40,52 @@ namespace ProFind.Lib.Global.Helpers
             return date <= DateTimeOffset.Now.Date;
         }
 
-        public static bool OnlyInts(Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+
+        public static bool OnlyLetters(string text)
         {
-            if ((e.Key >= VirtualKey.Number0 && e.Key <= VirtualKey.Number9) || (e.Key == VirtualKey.Back)) return true;
-            else return false;
+            foreach (char character in text)
+            {
+                if (character >= '0' && character <= '9') return false;
+            }
+            return true;
         }
 
-        public static bool OnlyLetters(Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        public static bool CheckName(string text)
         {
-            if ((e.Key >= VirtualKey.A && e.Key <= VirtualKey.Z) || (e.Key == VirtualKey.Back
-               || e.Key == VirtualKey.Space)) return true;
-            else return false;
+            text = text.ToLower();
+            foreach (char character in text)
+            {
+                if ((character >= 'a' && character <= 'z') || character == ' ') continue;
+                return false;
+            }
+            return true;
+        }
+
+        public static bool OnlyInts(string number)
+        {
+            foreach (char character in number)
+            {
+                if ((character >= '0' && character <= '9')) continue;
+                return false;
+            }
+            return true;
+        }
+
+        public static bool OnlyFloats(string number)
+        {
+            int count = 0;
+            foreach (char character in number)
+            {
+                if (character == '.') count++;
+                if ((character >= '0' && character <= '9') || (character == '.' && count<2)) continue;
+                return false;
+            }
+            return true;
+        }
+
+        public static bool CheckPhoneNumber(string phone)
+        {
+            return phone.Length == 8;
         }
 
         public static bool CheckPassword(string pass)

@@ -42,7 +42,7 @@
                     <TextBox
                         x:Name="Name_tb"
                         Margin="0,30,0,0"
-                        PlaceholderText="Name" TextChanged="Name_tb_TextChanged_1" KeyDown="Name_tb_KeyDown"
+                        PlaceholderText="Name" TextChanged="Name_tb_TextChanged_1" KeyDown="Name_tb_KeyDown" TextChanging="Name_tb_TextChanging"
                          />
                     <TextBox
                         x:Name="Email_tb"

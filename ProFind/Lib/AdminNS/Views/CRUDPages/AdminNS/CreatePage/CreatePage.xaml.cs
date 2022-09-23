@@ -207,9 +207,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(e)) e.Handled = true;
-            else e.Handled = false;
-
+            
         }
 
         private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -225,6 +223,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         private async void PictureSelection_btn_Checked_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Name_tb_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            
         }
     }
 }

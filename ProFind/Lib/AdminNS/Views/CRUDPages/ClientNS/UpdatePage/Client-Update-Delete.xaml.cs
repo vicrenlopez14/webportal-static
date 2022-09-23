@@ -90,13 +90,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private void Name1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.OnlyLetters(e))
-            {
-                e.Handled = true;
-                toManipulateClient.NameC = Name1_tbx.Text;
-            }
-            
-            else e.Handled = false;
         }
 
         private void Email_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
