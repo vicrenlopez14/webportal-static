@@ -7391,7 +7391,7 @@ namespace ProFind.Lib.Global.Services
         public string DescriptionAc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureAc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PictureAc { get; set; }
+        public string PictureAc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idPj1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
@@ -7425,7 +7425,7 @@ namespace ProFind.Lib.Global.Services
         public string PasswordA { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PictureA { get; set; }
+        public string PictureA { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idR1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdR1 { get; set; }
@@ -7506,7 +7506,7 @@ namespace ProFind.Lib.Global.Services
         public string PasswordC { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureC", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PictureC { get; set; }
+        public string PictureC { get; set; }
 
         [Newtonsoft.Json.JsonProperty("changepasswordcodes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Changepasswordcode> Changepasswordcodes { get; set; }
@@ -7564,7 +7564,7 @@ namespace ProFind.Lib.Global.Services
         public System.DateTimeOffset? DateTimeIssuedN { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureN", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PictureN { get; set; }
+        public string PictureN { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idP1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(21)]
@@ -7648,7 +7648,7 @@ namespace ProFind.Lib.Global.Services
         public System.DateTimeOffset? HiringDateP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PictureP { get; set; }
+        public string PictureP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("curriculumP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] CurriculumP { get; set; }
@@ -7706,7 +7706,7 @@ namespace ProFind.Lib.Global.Services
         public string DescriptionPj { get; set; }
 
         [Newtonsoft.Json.JsonProperty("picturePj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PicturePj { get; set; }
+        public string PicturePj { get; set; }
 
         [Newtonsoft.Json.JsonProperty("totalPricePj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public float? TotalPricePj { get; set; }
@@ -7755,7 +7755,7 @@ namespace ProFind.Lib.Global.Services
         public string DescriptionPp { get; set; }
 
         [Newtonsoft.Json.JsonProperty("picturePp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public byte[] PicturePp { get; set; }
+        public string PicturePp { get; set; }
 
         [Newtonsoft.Json.JsonProperty("suggestedStart", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTimeOffset? SuggestedStart { get; set; }

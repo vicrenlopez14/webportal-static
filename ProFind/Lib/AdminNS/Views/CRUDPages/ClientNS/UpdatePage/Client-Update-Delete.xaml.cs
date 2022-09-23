@@ -206,7 +206,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
             try
             {
-                toManipulateClient.PictureC = await (await PickFileHelper.PickImage()).ToByteArrayAsync();
+                toManipulateClient.PictureC = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
                 // Success message dialog
                 var dialog = new MessageDialog("The picture has been uploaded");
                 await dialog.ShowAsync();

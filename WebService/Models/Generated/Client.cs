@@ -25,7 +25,7 @@ namespace WebService.Models.Generated
         public string? EmailC { get; set; }
         [StringLength(64)]
         public string? PasswordC { get; set; }
-        public byte[]? PictureC { get; set; }
+        public string? PictureC { get; set; }
 
         [InverseProperty("IdC1Navigation")]
         public virtual ICollection<Changepasswordcode> Changepasswordcodes { get; set; }

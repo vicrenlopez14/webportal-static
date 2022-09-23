@@ -17,7 +17,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
     public sealed partial class Create_page : Page
     {
 
-        private byte[] imageBytes;
+        private string imageString;
         public Create_page()
         {
             this.InitializeComponent();
@@ -79,7 +79,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
             }
             try
             {
-                var ToCreateAdmin = new Client("", Name_tb.Text, Email_tb.Text, Password_pb.Password, imageBytes);
+                var ToCreateAdmin = new Client
+                {
+                    IdC = "",
+                    NameC = Name_tb.Text,
+                    EmailC = Email_tb.Text,
+                    PasswordC = Password_pb.Password,
+                    PictureC = imageString
+                };
 
                 var result = await APIConnection.GetConnection.PostClientAsync(ToCreateAdmin);
 

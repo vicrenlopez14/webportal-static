@@ -28,7 +28,7 @@ namespace WebService.Models.Generated
         [StringLength(50)]
         public string? DescriptionPj { get; set; }
         [Column("PicturePJ")]
-        public byte[]? PicturePj { get; set; }
+        public string? PicturePj { get; set; }
         [Column("TotalPricePJ")]
         public float? TotalPricePj { get; set; }
         [Column("IsPaidPJ")]

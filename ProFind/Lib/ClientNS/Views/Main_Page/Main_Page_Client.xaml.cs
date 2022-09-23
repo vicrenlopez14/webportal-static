@@ -7,6 +7,7 @@ using ProFind.Lib.Global.Views.Preferences_Page;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.ClientNS.Controllers;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -41,14 +42,14 @@ namespace ProFind.Lib.ClientNS.Views.Main_Page
             new InAppNavigationController().Init(ClientsContentFrame);
             new InAppNavigationController().NavigateTo(typeof(CRUDPages.ProjectNS.ReadPage.ReadPage));
 
-            LoadLoggedProfessionalData();
+            LoadLoggedProfessionalDataAsync();
         }
 
-        private void LoadLoggedProfessionalData()
+        private async Task LoadLoggedProfessionalDataAsync()
         {
             var loggedUserInfo = LoggedClientStore.LoggedClient;
 
-            LoggedUser_pp.ProfilePicture = loggedUserInfo.PictureC.ToBitmapImage();
+            LoggedUser_pp.ProfilePicture = await loggedUserInfo.PictureC.FromBase64String();
             LoggedUserName_tb.Text = loggedUserInfo.NameC;
             LoggedUserEmail_tb.Text = loggedUserInfo.EmailC;
         }

@@ -15,7 +15,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
     /// </summary>
     public sealed partial class CreatePage : Page
     {
-        private byte[] imageBytes;
+        private string imageString;
         Project id1;
         Client id2;
         private Client ranks2;
@@ -64,7 +64,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
 
 
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
@@ -125,14 +125,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
             try
             {
-
-                
-
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageBytes, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
-
-
 
             }
             catch (Exception ex)
@@ -166,9 +161,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
                 if (file != null)
                 {
                     SelectedPicture_tbk.Text = file.Name;
-                    imageBytes = await file.ToByteArrayAsync();
+                    imageString = await file.ToBase64StringAsync();
 
-                    //SelectedPicture_pp.ProfilePicture = imageBytes.ToBitmapImage();
+                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
                 }
             }
             catch (Exception ex)

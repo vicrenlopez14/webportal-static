@@ -21,7 +21,7 @@ namespace WebService.Models.Generated
         [StringLength(500)]
         public string? DescriptionAc { get; set; }
         [Column("PictureAC")]
-        public byte[]? PictureAc { get; set; }
+        public string? PictureAc { get; set; }
         [Column("IdPJ1")]
         [StringLength(21)]
         public string? IdPj1 { get; set; }

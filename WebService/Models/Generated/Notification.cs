@@ -20,7 +20,7 @@ namespace WebService.Models.Generated
         public string? DescriptionN { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DateTimeIssuedN { get; set; }
-        public byte[]? PictureN { get; set; }
+        public string? PictureN { get; set; }
         [StringLength(21)]
         public string? IdP1 { get; set; }
         [Column("IdPJ2")]

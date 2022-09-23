@@ -40,10 +40,14 @@ namespace ProFind.Lib.Global.Helpers
             return output;
         }
 
-        public static async Task<ImageSource> FromBase64(this StorageFile file)
+        public static async Task<ImageSource> FromBase64String(this string base64)
         {
-            var base64 = await FileIO.ReadTextAsync(file);
             return await FromBase64(base64);
+        }
+
+        public static async Task<ImageSource> FromStorageFile(this StorageFile file)
+        {
+            return await FromBase64(await file.ToBase64StringAsync());
         }
 
         public static async Task<string> ToBase64StringAsync(this StorageFile bitmap)

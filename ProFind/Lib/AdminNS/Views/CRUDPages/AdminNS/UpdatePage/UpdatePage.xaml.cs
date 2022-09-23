@@ -105,7 +105,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
                 if (file != null)
                 {
-                    toManipulate.PictureA = await file.ToByteArrayAsync();
+                    toManipulate.PictureA = await file.ToBase64StringAsync();
                 }
             }
             catch (Exception ex)
