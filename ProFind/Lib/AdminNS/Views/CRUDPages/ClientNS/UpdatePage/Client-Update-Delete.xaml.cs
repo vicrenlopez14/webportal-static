@@ -70,21 +70,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         {
             await APIConnection.GetConnection.DeleteClientAsync(toManipulateClient.IdC);
 
-            if (string.IsNullOrEmpty(Name1_tbx.Text))
+            if (FieldsChecker.CheckName(Name1_tbx.Text) == false)
             {
-
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(Email_tbx.Text))
+            if (!FieldsChecker.CheckEmail(Email_tbx.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(Password_tbx.Password))
+            if (!FieldsChecker.CheckPassword(Password_tbx.Password))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
         }
 

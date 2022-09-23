@@ -90,8 +90,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private void Email_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            if (FieldsChecker.CheckEmail(Email_tbx.Text)) e.Handled = true;
-            else e.Handled = false;
+           
 
         }
 
@@ -114,25 +113,25 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            if (!FieldsChecker.CheckEmail(Email_tbx.Text) == false)
             {
-
-                var dialog = new MessageDialog("The Name is empty.");
+                var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            else if (!FieldsChecker.CheckEmail(Email_tbx.Text))
+            if (!FieldsChecker.CheckPassword(Password_tbx.Password) == false)
             {
-                var dialog = new MessageDialog("The email is invalid.");
+                var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            else if ( Password_tbx.Password.Length>0 && !FieldsChecker.CheckPassword(Password_tbx.Password))
+            if (!FieldsChecker.CheckName(FirstName1_tbx.Text) == false)
             {
-                var dialog = new MessageDialog("The password is invalid.");
+                var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
+        
             try
             {
                 toManipulate.EmailA = Email_tbx.Text;
