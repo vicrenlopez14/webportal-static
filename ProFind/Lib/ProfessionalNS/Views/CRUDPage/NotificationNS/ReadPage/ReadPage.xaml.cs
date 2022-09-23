@@ -33,10 +33,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
         {
             var LeggedProfesionales = LoggedProfessionalStore.LoggedProfessional;
             var notifications = await APIConnection.GetConnection.GetNotificationsAsync();
-            //var RelatedProfesionales = notifications.Where(p => p.IdP3 == LeggedProfesionales.IdP).ToList();
+            var RelatedProfesionales = notifications.Where(p => p.IdP1 == LeggedProfesionales.IdP).ToList();
 
 
-            Activities_lw.ItemsSource = await APIConnection.GetConnection.GetNotificationsAsync();
+            Activities_lw.ItemsSource = RelatedProfesionales;
 
         }
     }

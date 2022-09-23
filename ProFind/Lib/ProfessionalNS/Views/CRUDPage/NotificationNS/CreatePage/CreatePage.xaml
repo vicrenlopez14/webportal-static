@@ -71,7 +71,7 @@
                         HorizontalAlignment="Center"
                        
                         Content="Create"
-                        Style="{StaticResource AccentButtonStyle}" />
+                        Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_2" />
 
                     <d:ProgressRing
                         x:Name="Creation_pr"
