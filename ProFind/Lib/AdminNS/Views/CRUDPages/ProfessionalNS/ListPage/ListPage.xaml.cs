@@ -6,6 +6,7 @@ using Professional = ProFind.Lib.Global.Services.Professional;
 using System.Collections.Generic;
 using Windows.UI.Popups;
 using System;
+using System.Linq;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -86,6 +87,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
             {
                 GetProfessionalsList();
             }
+        }
+
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        {
+            var allList = await APIConnection.GetConnection.GetProfessionalsAsync();
+
+            if (string.IsNullOrEmpty(sender.QueryText))
+            {
+                ProfessionalsListView.ItemsSource = null;
+                ProfessionalsListView.ItemsSource = allList;
+                return;
+            }
+
+            var newList = allList.Where(x => x.NameP.Contains(sender.QueryText));
+
+            ProfessionalsListView.ItemsSource = null;
+            ProfessionalsListView.ItemsSource = newList;
         }
     }
 }

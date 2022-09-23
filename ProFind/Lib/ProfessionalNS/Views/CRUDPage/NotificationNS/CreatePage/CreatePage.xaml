@@ -54,6 +54,9 @@
                         Margin="0,15,0,0"
                         PlaceholderText="Description" TextChanged="Description_tb_TextChanged_1" KeyUp="Description_tb_KeyUp"
                          />
+                    <ComboBox>
+                        
+                    </ComboBox>
 
 
 
