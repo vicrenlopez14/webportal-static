@@ -132,19 +132,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!FieldsChecker.CheckEmail(Email_tb.Text) == false)
+            if (!FieldsChecker.CheckEmail(Email_tb.Text))
             {
                 var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckPassword(Password_pb.Password) == false)
+            if (!FieldsChecker.CheckPassword(Password_pb.Password))
             {
                 var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckName(Name_tb.Text) == false)
+            if (!FieldsChecker.CheckName(Name_tb.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
