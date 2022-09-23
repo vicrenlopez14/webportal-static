@@ -40,7 +40,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage.CreatePage));
-        
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -62,7 +62,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 
         private async void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            
+
             try
             {
                 var obj = AdminsListView.SelectedItem as Admin;
@@ -94,20 +94,20 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             try
             {
                 var obj = AdminsListView.SelectedItem as Admin;
-                new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage),obj);
+                new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), obj);
             }
             catch (ProFindServicesException ex)
             {
-               
+
                 var dialog = new MessageDialog("You have to select an admin.");
                 await dialog.ShowAsync();
-                
+
             }
         }
 
         private async void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-         
+
 
         }
 
@@ -115,8 +115,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         {
             var allList = await APIConnection.GetConnection.GetAdminsAsync();
 
-            //Name contains sender text
-            //AdminsListView.ItemsSource;
+            if (string.IsNullOrEmpty(sender.QueryText))
+            {
+                AdminsListView.ItemsSource = null;
+                AdminsListView.ItemsSource = allList;
+                return;
+            }
+
+            var newList = allList.Where(x => x.NameA.Contains(sender.QueryText));
+
+            AdminsListView.ItemsSource = null;
+            AdminsListView.ItemsSource = newList;
         }
     }
 }
