@@ -25,7 +25,7 @@ namespace ProFind.Lib.Global.Helpers
                 return byteArray;
             }
         }
-
+        
         public static async Task<ImageSource> FromBase64(string base64)
         {
             // read stream
