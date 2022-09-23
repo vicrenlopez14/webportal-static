@@ -2,13 +2,13 @@
     x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.ListPageAdmin"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converter="using:ProFind.Lib.Global.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:services="using:ProFind.Lib.Global.Services"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
+
     <Grid Padding="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.8*" />
@@ -27,7 +27,10 @@
                                     <ColumnDefinition Width="0.7*" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Orientation="Vertical">
-                                    <Image Width="100" Height="100" />
+                                    <PersonPicture
+                                        Width="100"
+                                        Height="100"
+                                        ProfilePicture="{Binding PictureA, Converter={StaticResource ImageModelConverter}}" />
                                 </StackPanel>
                                 <StackPanel
                                     Grid.Column="1"

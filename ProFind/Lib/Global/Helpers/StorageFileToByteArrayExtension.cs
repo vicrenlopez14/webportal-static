@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nito.AsyncEx.Synchronous;
+using System;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace ProFind.Lib.Global.Helpers
                 return byteArray;
             }
         }
-        
+
         public static async Task<ImageSource> FromBase64(string base64)
         {
             // read stream
@@ -43,6 +44,24 @@ namespace ProFind.Lib.Global.Helpers
         public static async Task<ImageSource> FromBase64String(this string base64)
         {
             return await FromBase64(base64);
+        }
+
+        public static ImageSource FromBase64Sync(string base64)
+        {
+            var ims = new InMemoryRandomAccessStream();
+            var bytes = Convert.FromBase64String(base64);
+            var dataWriter = new DataWriter(ims);
+            dataWriter.WriteBytes(bytes);
+            dataWriter.StoreAsync();
+            ims.Seek(0);
+            var img = new BitmapImage();
+            img.SetSource(ims);
+            return img;
+        }
+
+        public static ImageSource FromBase64StringSync(this string base64)
+        {
+            return FromBase64Sync(base64);
         }
 
         public static async Task<ImageSource> FromStorageFile(this StorageFile file)
