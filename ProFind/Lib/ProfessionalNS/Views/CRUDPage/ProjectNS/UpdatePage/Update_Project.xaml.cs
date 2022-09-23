@@ -60,16 +60,16 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(Title_tb.Text))
+            if (FieldsChecker.CheckName(Title_tb.Text) == false)
             {
 
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The Title must be valid");
                 await dialog.ShowAsync();
                 return;
             }
-            else if (string.IsNullOrEmpty(Description_tb.Text))
+            else if (FieldsChecker.OnlyLetters(Description_tb.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The description must be valid");
                 await dialog.ShowAsync();
                 return;
             }
@@ -157,6 +157,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
+           
         }
 
         private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)

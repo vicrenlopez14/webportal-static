@@ -33,17 +33,20 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.CreatePage
 
         private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+           
 
         }
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Name_tb.Text.Length <= 3)
+            if (FieldsChecker.CheckName(Name_tb.Text) == false)
             {
                 var dialog = new MessageDialog("The name must be valid");
                 await dialog.ShowAsync();
                 return;
             }
+            
+
             try
             {
                 var toCreateClien = new Profession { IdPfs = 0, NamePfs = Name_tb.Text };

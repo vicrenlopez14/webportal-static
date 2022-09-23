@@ -110,7 +110,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
                 imageString = await selectedImage.ToBase64StringAsync();
                 ToCreateAdmin.PictureA = imageString;
-                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+                 await imageString.FromBase64String();
 
             }
             catch (Exception ex)
@@ -132,19 +132,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!FieldsChecker.CheckEmail(Email_tb.Text))
+            if (!FieldsChecker.CheckEmail(Email_tb.Text) == false)
             {
                 var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckPassword(Password_pb.Password))
+            if (!FieldsChecker.CheckPassword(Password_pb.Password) == false)
             {
                 var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (Name_tb.Text.Length < 3)
+            if (!FieldsChecker.CheckName(Name_tb.Text) == false)
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();

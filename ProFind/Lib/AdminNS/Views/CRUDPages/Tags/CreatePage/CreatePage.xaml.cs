@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Name_tb.Text.Length <= 3)
+            if (FieldsChecker.CheckName(Name_tb.Text) == false)
             {
                 var dialog = new MessageDialog("The name must be valid");
                 await dialog.ShowAsync();

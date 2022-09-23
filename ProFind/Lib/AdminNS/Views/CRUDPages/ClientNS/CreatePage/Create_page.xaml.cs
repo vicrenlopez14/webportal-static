@@ -55,7 +55,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Name_tb.Text.Length == 0)
+            if (FieldsChecker.CheckName(Name_tb.Text) == false)
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
