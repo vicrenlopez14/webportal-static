@@ -6,15 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="604" Width="1124">
+    Style="{StaticResource PageStyle}">
+   
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="534">
-            <TextBlock Text="Enter your email to send a recovery code for your password" FontSize="20"></TextBlock>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="850" Background="WhiteSmoke" Padding="30" CornerRadius="30" Height="222">
+            <TextBlock TextAlignment="Center" Text="Enter your email to send a recovery code for your password" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
 
-            <TextBox x:Name="Email_tb" Margin="50 20 50 0" Width="406"></TextBox>
+            <TextBox x:Name="Email_tb" Margin="50 20 50 15" Width="406"></TextBox>
 
-            <Button Content="Send Email" Click="Button_Click" Margin="0 20 0 0" HorizontalAlignment="Center" Height="34" Width="164"></Button>
+            <Button  Style="{StaticResource AccentButtonStyle}" Content="Send Email" Click="Button_Click" Margin="0 20 0 0" HorizontalAlignment="Center" Height="34" Width="164"></Button>
         </StackPanel>
+        
         <muxc:TeachingTip x:Name="ToggleThemeTeachingTip1"
             Target="{x:Bind Email_tb}"
             Title="Error"
