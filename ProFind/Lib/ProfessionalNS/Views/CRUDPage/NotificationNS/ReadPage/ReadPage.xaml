@@ -21,6 +21,7 @@
         </Grid.ColumnDefinitions>
         <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.RowSpan="2">
             <AppBarButton Icon="Delete" Label="Delete" Click="AppBarButton_Click_1"/>
+           
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Setting" Label="Settings">
                     <AppBarButton.KeyboardAccelerators>
