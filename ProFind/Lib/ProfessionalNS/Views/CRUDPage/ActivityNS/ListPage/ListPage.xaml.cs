@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.ListPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.ListPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -35,75 +35,72 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.ListPage
         {
             var loggendPro = LoggedProfessionalStore.LoggedProfessional;
             var project = await APIConnection.GetConnection.GetProjectsAsync();
-            var Tag = await APIConnection.GetConnection.GetTagsAsync();
+            var activities = await APIConnection.GetConnection.GetActivitiesAsync();
 
-            var RelatedaTags = new List<Tag>();
+            var Relatedactivities = new List<Activity>();
 
 
             foreach (var Projects in project)
             {
-                var RelatedATagForRelatedProject = Tag.Where(n => n.IdPj1Navigation.IdP1 == loggendPro.IdP).ToList();
-                RelatedaTags.AddRange(RelatedATagForRelatedProject);
+                var RelatedActivitysForRelatedProject = activities.Where(n => n.IdPj1Navigation.IdP1 == loggendPro.IdP).ToList();
+                Relatedactivities.AddRange(RelatedActivitysForRelatedProject);
             }
 
-            Ranks_lw.ItemsSource = RelatedaTags;
+            ProjectsListView.ItemsSource = Relatedactivities;
 
         }
-
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.CreatePage.CreatePage));
-        }
-
-        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (Ranks_lw.SelectedItem != null)
-            {
-                Tag lectedTag = Ranks_lw.SelectedItem as Tag;
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.UpdatePage.UpdatePage), lectedTag);
-            }
-            else
-            {
-                // Validation content dialog
-                var dialog = new MessageDialog("You have to select a Tag.");
-                await dialog.ShowAsync();
-
-            }
-        }
-
-        private async void AppBarButton_Click_2(object sender, RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (Ranks_lw.SelectedItem != null)
-                {
-                    var obj = Ranks_lw.SelectedItem as Tag;
 
-                    await APIConnection.GetConnection.DeleteTagAsync(obj.IdT);
+                if (ProjectsListView.SelectedItem != null)
+                {
+                    var obj = ProjectsListView.SelectedItem as Activity;
+                    await APIConnection.GetConnection.DeleteActivityAsync(obj.IdAc);
+
                 }
                 else
                 {
-                    var dialog = new MessageDialog("You have to select a Tag.");
+                
+                    var dialog = new MessageDialog("You have to select a Activity.");
                     await dialog.ShowAsync();
 
-                }  
+                }
+           
             }
             catch (ProFindServicesException ex)
             {
                 if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
-                    var dialog = new MessageDialog("The Tag has been deleted");
+                    var dialog = new MessageDialog("The Activity has been deleted");
                     await dialog.ShowAsync();
                 }
                 else
                 {
-                    var dialog = new MessageDialog("There was a problem while creating the Tag, try again later");
+                    var dialog = new MessageDialog("There was a problem while creating the Activity, try again later");
                     await dialog.ShowAsync();
                 }
             }
             finally
             {
                 InitializeData();
+            }
+        }
+
+        private async void Update_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ProjectsListView.SelectedItem != null)
+            {
+                Activity lectedActivi = ProjectsListView.SelectedItem as Activity;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.UpdatePage.UpdatePage), lectedActivi);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Activity.");
+                await dialog.ShowAsync();
+
             }
         }
     }

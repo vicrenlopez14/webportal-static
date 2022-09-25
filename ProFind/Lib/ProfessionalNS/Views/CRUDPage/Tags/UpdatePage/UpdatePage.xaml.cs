@@ -27,6 +27,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.UpdatePage
     public sealed partial class UpdatePage : Page
     {
         Tag toManipulateTag;
+
         public UpdatePage()
         {
             this.InitializeComponent();
@@ -44,7 +45,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.UpdatePage
             {
                 // Go back to professionals list
                 // Error message dialog
-                var dialog = new MessageDialog("Taf not found or  not valid.");
+                var dialog = new MessageDialog("Tag not found or  not valid.");
                 await dialog.ShowAsync();
 
                 // Back to profesionals list

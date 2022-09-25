@@ -1,10 +1,10 @@
 ﻿<Page
-    x:Class="ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage.CreatePage"
+    x:Class="ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNs.UpdatePage.UpdatePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage"
+    xmlns:local="using:ProFind.Lib.AdminNS.Views.CRUDPages.ActivityNs.UpdatePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models11="using:ProFind.Lib.Global.Services"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -18,7 +18,7 @@
                         Text="Creation" />
 
                     <TextBlock>
-                        Create a new Activity.
+                        Update a new Activity.
                     </TextBlock>
                     <Image
                         Name="SelectedPicture_pp"
@@ -70,7 +70,7 @@
                         Margin="0,50,0,0"
                         HorizontalAlignment="Center"
                        
-                        Content="Create"
+                        Content="Update"
                         Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_2" />
 
                     <d:ProgressRing

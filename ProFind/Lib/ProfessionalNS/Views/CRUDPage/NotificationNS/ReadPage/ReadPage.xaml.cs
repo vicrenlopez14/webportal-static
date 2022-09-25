@@ -46,8 +46,20 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
         {
             try
             {
-                var selectedProject = Activities_lw.SelectedItem as Notification;
-                await APIConnection.GetConnection.DeleteNotificationAsync(selectedProject.IdN);
+                if (Activities_lw.SelectedItem != null)
+                {
+                    var selectedNoti = Activities_lw.SelectedItem as Notification;
+                    await APIConnection.GetConnection.DeleteNotificationAsync(selectedNoti.IdN);
+
+                }
+                else
+                {
+
+                    var dialog = new MessageDialog("You have to select a Notification.");
+                    await dialog.ShowAsync();
+
+                }
+              
 
             }
             catch (ProFindServicesException ex)
