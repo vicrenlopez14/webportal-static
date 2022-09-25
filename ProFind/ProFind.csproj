@@ -494,6 +494,9 @@
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Controllers\LoggedProfessionalStore.cs" />
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ChatPage\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
@@ -556,6 +559,15 @@
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
@@ -842,6 +854,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ChatPage\ChatPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -923,6 +939,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1013,6 +1041,8 @@
   <ItemGroup>
     <Folder Include="Lib\ClientNS\Views\CRUDPages\CurriculumNS\ReadPage\" />
     <Folder Include="Lib\ClientNS\Views\CRUDPages\ProposalsNS\SeachPage\" />
+    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\" />
+    <Folder Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\UpdatePage\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

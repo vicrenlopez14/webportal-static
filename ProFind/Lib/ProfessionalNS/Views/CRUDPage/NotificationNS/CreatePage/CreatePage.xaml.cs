@@ -64,9 +64,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             try
             {
 
+                var loggedPro = LoggedProfessionalStore.LoggedProfessional;
 
-
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now };
+                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now, IdP1 = loggedPro.IdP, IdPj2 = id1.IdPj };
 
 
                 var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
@@ -74,9 +74,18 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
 
 
             }
-            catch (Exception ex)
+            catch (ProFindServicesException ex)
             {
-                Console.WriteLine(ex.Message);
+                if (ex.StatusCode > 200 && ex.StatusCode < 205)
+                {
+                    var dialog = new MessageDialog("Notification created.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Try again later please.");
+                    await dialog.ShowAsync();
+                }
             }
             finally
             {
@@ -107,48 +116,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
             
         }
 
-        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(Title_tb1.Text))
-            {
-
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-                return;
-            }
-            else if (string.IsNullOrEmpty(Description_tb.Text))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
-                return;
-            }
-
-
-
-
-            try
-            {
-
-                
-
-                var toCreateClien = new Notification { IdN = "", TitleN = Title_tb1.Text, DescriptionN = Description_tb.Text, PictureN = imageString, DateTimeIssuedN = (DateTimeOffset)DateTimeOffset.Now  };
-
-                var result = await APIConnection.GetConnection.PostNotificationAsync(toCreateClien);
-
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-
-            }
-
-        }
+       
 
         private void Title_tb1_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -205,14 +173,14 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage
         private async void Create_btn_Click_2(object sender, RoutedEventArgs e)
         {
 
-            if (string.IsNullOrEmpty(Title_tb1.Text))
+            if (!FieldsChecker.CheckName(Title_tb1.Text))
             {
 
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();
                 return;
             }
-            else if (string.IsNullOrEmpty(Description_tb.Text))
+            else if (!FieldsChecker.OnlyLetters(Description_tb.Text))
             {
                 var dialog = new MessageDialog("The field is empty");
                 await dialog.ShowAsync();

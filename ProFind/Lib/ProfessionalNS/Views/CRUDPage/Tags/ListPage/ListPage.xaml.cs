@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.ListPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.ListPage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
@@ -37,10 +37,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.ListPage
 
         }
 
-       
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.Tags.CreatePage.CreatePage));
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.CreatePage.CreatePage));
         }
 
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
@@ -48,7 +47,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.ListPage
             if (Ranks_lw.SelectedItem != null)
             {
                 Tag lectedTag = Ranks_lw.SelectedItem as Tag;
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.Tags.UpdatePage.UpdatePage), lectedTag);
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.UpdatePage.UpdatePage), lectedTag);
             }
             else
             {

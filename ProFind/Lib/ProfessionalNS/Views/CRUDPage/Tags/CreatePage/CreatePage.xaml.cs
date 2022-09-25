@@ -1,6 +1,6 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
-using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,55 +19,55 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
+namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.CreatePage
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class ReadPage : Page
+    public sealed partial class CreatePage : Page
     {
-        public ReadPage()
+        public CreatePage()
         {
             this.InitializeComponent();
-            Cargar();
         }
-        private async void Cargar()
+
+        private void Name_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var LeggedProfesionales = LoggedProfessionalStore.LoggedProfessional;
-            var notifications = await APIConnection.GetConnection.GetNotificationsAsync();
-            var RelatedProfesionales = notifications.Where(p => p.IdP1 == LeggedProfesionales.IdP).ToList();
-
-
-            Activities_lw.ItemsSource = RelatedProfesionales;
 
         }
 
-        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            if (FieldsChecker.CheckName(Name_tb.Text) == false)
+            {
+                var dialog = new MessageDialog("The name must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
+
             try
             {
-                var selectedProject = Activities_lw.SelectedItem as Notification;
-                await APIConnection.GetConnection.DeleteNotificationAsync(selectedProject.IdN);
+                var toCreateTag = new Tag { IdT = "", NameT = Name_tb.Text };
+                var result = await APIConnection.GetConnection.PostTagAsync(toCreateTag);
 
             }
             catch (ProFindServicesException ex)
             {
-                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
+                if (ex.StatusCode == 200 || ex.StatusCode == 201 || ex.StatusCode == 204)
                 {
-                    var dialog = new MessageDialog("Notification deleted successfully.");
+                    var dialog = new MessageDialog("The Tags has been created.");
                     await dialog.ShowAsync();
                 }
                 else
                 {
-                    var dialog = new MessageDialog("You have to select an Notification.");
+                    var dialog = new MessageDialog("There was an error creating the Tags, try again later.");
                     await dialog.ShowAsync();
                 }
             }
             finally
             {
-                Cargar();
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.ListPage.ListPage));
             }
         }
-        }
     }
-
+}

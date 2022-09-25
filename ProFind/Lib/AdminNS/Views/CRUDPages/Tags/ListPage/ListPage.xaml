@@ -14,9 +14,21 @@
             <ColumnDefinition Width="0.8*" />
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="2" Margin="0,0,10,0">
+            <AppBarButton Icon="Add" Label="Add" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Edit" Label="Edit" Click="AppBarButton_Click_1"/>
+            <AppBarButton Icon="Delete" Label="Delete" Click="AppBarButton_Click_2"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting" Label="Settings">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
         <ListView
             Grid.Column="0"
-            Name="Ranks_lw" 
+            Name="Ranks_lw" Margin="10,53,0,10" Grid.ColumnSpan="2" 
            
             >
             <ListView.ItemTemplate>
@@ -65,10 +77,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Tags" Grid.Column="1" Margin="0 15 0 0" Click="Button_Click_1" Width="90" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Delete" Grid.Column="1" Margin="0 15 0 0" Click="Button_Click_2" Width="92" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Uptade" Grid.Column="1" Margin="0 15 0 0" Click="Button_Click_3" Width="92" />
-        </StackPanel>
     </Grid>
 </Page>
