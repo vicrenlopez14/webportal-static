@@ -57,7 +57,7 @@ CREATE TABLE Admin
     CONSTRAINT FK_Admin_Rank FOREIGN KEY (IdR1) REFERENCES `Rank` (IdR) ON DELETE CASCADE
 );
 
-DESCRIBE ADMIN;
+DESCRIBE Admin;
 
 SELECT *
 FROM Admin;
@@ -99,6 +99,9 @@ INSERT INTO Profession (NamePFS)
 VALUES ('Law firm'),
        ('Automotive services'),
        ('General medicine');
+
+SELECT *
+FROM Profession;
 
 ################################################
 CREATE TABLE Professional
@@ -164,7 +167,7 @@ DESCRIBE Project;
 SELECT *
 FROM Project;
 
-
+###############################################
 CREATE TABLE Notification
 (
     IdN             CHAR(21) PRIMARY KEY,
@@ -185,17 +188,17 @@ CREATE TABLE Activity
     TitleAC       VARCHAR(50),
     DescriptionAC VARCHAR(500),
     PictureAC     LONGTEXT,
-    IdPJ1        CHAR(21),
+    IdPJ1         CHAR(21),
     CONSTRAINT FK_Activity_Project FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
 
 ################################################
 CREATE TABLE Tag
 (
-    IdT   CHAR(21) PRIMARY KEY,
-    NameT VARCHAR(50),
+    IdT    CHAR(21) PRIMARY KEY,
+    NameT  VARCHAR(50),
     ColorT VARCHAR(6),
-    IdPJ1 CHAR(21),
+    IdPJ1  CHAR(21),
     CONSTRAINT FK_Tag_Project FOREIGN KEY (IdPJ1) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
 
@@ -214,4 +217,15 @@ CREATE TABLE Proposal
     IdC3           CHAR(21),
     CONSTRAINT FK_Proposal_Professional FOREIGN KEY (IdP3) REFERENCES Professional (IdP) ON DELETE CASCADE,
     CONSTRAINT FK_Proposal_Client FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE
+);
+
+################################################
+# Pays table
+CREATE TABLE Pay
+(
+    IdPY   CHAR(21) PRIMARY KEY,
+    PaidPY BOOLEAN,
+    PaidOn DATETIME,
+    IdPJ4  CHAR(21),
+    CONSTRAINT FK_Pay_Project FOREIGN KEY (IdPJ4) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );
