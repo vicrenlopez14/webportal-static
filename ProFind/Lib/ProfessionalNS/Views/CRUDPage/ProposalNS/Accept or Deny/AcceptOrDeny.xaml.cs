@@ -100,10 +100,24 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
+            
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
+            if (!FieldsChecker.CheckName(Title_tb.Text))
+            {
+                var dialog = new MessageDialog("The Title must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.OnlyLetters(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The Description must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
+           
             try
             {
                 var LoggendPro = LoggedProfessionalStore.LoggedProfessional;

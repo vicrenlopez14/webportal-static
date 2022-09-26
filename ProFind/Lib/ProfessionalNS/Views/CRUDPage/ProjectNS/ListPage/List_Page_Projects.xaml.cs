@@ -18,7 +18,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage
     {
         public List_Page_Projects()
         {
+
             this.InitializeComponent();
+            LoadData();
         }
 
         private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -28,81 +30,95 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage
 
         private async void LoadData()
         {
-            
-                // Projects of the loggedProfessoinal
-                var projects = await APIConnection.GetConnection.GetProjectsAsync();
-                var ForThisProfessional = projects.Where(x => x.IdP1 == LoggedProfessionalStore.LoggedProfessional.IdP).ToList();
 
-                ProjectsListView.ItemsSource = ForThisProfessional;
-            
+            // Projects of the loggedProfessoinal
+            var projects = await APIConnection.GetConnection.GetProjectsAsync();
+            var ForThisProfessional = projects.Where(x => x.IdP1 == LoggedProfessionalStore.LoggedProfessional.IdP).ToList();
+
+            ProjectsListView.ItemsSource = ForThisProfessional;
+
         }
 
-        private void AddProject_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+     
+
+        private async void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-        }
-
-        private void UpdateProject_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.Update_Project));
-        }
-
-        private async void CompleteProject_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            // The project has been mark as completed and deleted. A notification has been sent to the Client.
-
-            var project = (Project)ProjectsListView.SelectedItem;
-
-            if (project == null)
-            {
-                // Success dialog
-                var dialog = new MessageDialog("No Project was selected.");
-                await dialog.ShowAsync();
-            }
-
             try
             {
-                await APIConnection.GetConnection.DeleteProjectAsync(project.IdPj);
+                var obj = ProjectsListView.SelectedItem as Project;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage.CreatePage), obj);
+            }
+            catch
+            {
+                var dialog = new MessageDialog("You have to select a Project.");
+                await dialog.ShowAsync();
+            }
+        }
 
-                // Success dialog
-                var dialog = new MessageDialog("Project completed successfully");
+        private void AddProjects(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
+        }
+
+        private async void DeleteProject(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedProject = ProjectsListView.SelectedItem as Project;
+                await APIConnection.GetConnection.DeleteProjectAsync(selectedProject.IdPj);
+
+                var dialog = new MessageDialog("Project deleted successfully.");
                 await dialog.ShowAsync();
             }
             catch (ProFindServicesException ex)
             {
-                if (ex.StatusCode >= 200 && ex.StatusCode <= 300)
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
-                    var dialog = new MessageDialog("Project completed successfully");
+                    var dialog = new MessageDialog("Project deleted successfully.");
                     await dialog.ShowAsync();
                 }
                 else
                 {
-                    var dialog = new MessageDialog("Error completing project");
+                    var dialog = new MessageDialog("You have to select an Project.");
                     await dialog.ShowAsync();
                 }
             }
             finally
             {
-                new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage.List_Page_Projects));
-
+                LoadData();
             }
-
         }
 
-        private async void Notificatio_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void UpdateProject(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
-            if (ProjectsListView.SelectedItem != null)
+            try
             {
-                Project selectedProject = ProjectsListView.SelectedItem as Project;
-
-                new InAppNavigationController().NavigateTo(typeof(Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage.CreatePage), selectedProject);
+                var obj = ProjectsListView.SelectedItem as Project;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.Update_Project), obj);
             }
-            else
+            catch
             {
-                // Validation content dialog
-                var dialog = new MessageDialog("You have to select a client.");
+                var dialog = new MessageDialog("You have to select a Project.");
                 await dialog.ShowAsync();
+            }
+        }
 
+        private async void TagCreate(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.Tags.CreatePage.CreatePage));
+        }
+
+        private async void NotificationCreate(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            try
+            {
+                var obj = ProjectsListView.SelectedItem as Project;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.CreatePage.CreatePage), obj);
+            }
+            catch
+            {
+                var dialog = new MessageDialog("You have to select a Project.");
+                await dialog.ShowAsync();
             }
         }
     }

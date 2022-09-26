@@ -37,12 +37,29 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.ListPage
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+       
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.Tags.CreatePage.CreatePage));
         }
 
-        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Ranks_lw.SelectedItem != null)
+            {
+                Tag lectedTag = Ranks_lw.SelectedItem as Tag;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.Tags.UpdatePage.UpdatePage), lectedTag);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Tag.");
+                await dialog.ShowAsync();
+
+            }
+        }
+
+        private async void AppBarButton_Click_2(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -68,23 +85,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.ListPage
             {
                 InitializeData();
             }
-        }
-
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            if (Ranks_lw.SelectedItem != null)
-            {
-                Tag lectedTag = Ranks_lw.SelectedItem as Tag;
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.Tags.UpdatePage.UpdatePage), lectedTag);
-            }
-            else
-            {
-                // Validation content dialog
-                var dialog = new MessageDialog("You have to select a Tag.");
-                await dialog.ShowAsync();
-
-            }
-            
         }
     }
 }

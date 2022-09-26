@@ -7,25 +7,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="742" Width="1242">
+    Style="{StaticResource PageStyle}">
 
-    <Grid Margin="0,0,0,10">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
-            <TextBlock Text="Enter your recovery code that was sent to your email" FontSize="25"></TextBlock>
-            <TextBlock Text="If your email wasn't valid you won't get anything" HorizontalAlignment="Center" FontSize="18" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Background="WhiteSmoke" Padding="30" CornerRadius="30" Height="244">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" FontWeight="SemiBold" Text="Enter your recovery code that was sent to your email"></TextBlock>
+            <TextBlock Text="If your email wasn't valid you won't get anything" HorizontalAlignment="Center" Style="{StaticResource DetailBodyBaseMediumStyle}" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
 
-            <TextBox x:Name="Code_tb" Margin="50 20 50 0"></TextBox>
+            <TextBox x:Name="Code_tb" Margin="50 20 50 20"></TextBox>
 
             <Grid VerticalAlignment="Center" Margin="0 20 0 0 ">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column ="0" HorizontalAlignment="Center">
-                    <Button Content="Cancel" Height="37" Width="99" Click="Button_Click"></Button>
+                <StackPanel Grid.Column ="0" HorizontalAlignment="Right">
+                    <Button Margin="0 0 20 0" Style="{StaticResource AccentButtonStyle}" Content="Cancel" Height="37" Width="99" Click="Button_Click"></Button>
                 </StackPanel>
-                <StackPanel Grid.Column ="1" HorizontalAlignment="Center">
-                    <Button Content="Submit" Height="37" Width="97" Click="Button_Click_1" Name="Submit_btn"></Button>
+                <StackPanel Grid.Column ="1" HorizontalAlignment="Left">
+                    <Button Margin="20 0 0 0" Style="{StaticResource AccentButtonStyle}" Content="Submit" Height="37" Width="97" Click="Button_Click_1" Name="Submit_btn"></Button>
                 </StackPanel>
             </Grid>
             <muxc:TeachingTip x:Name="ToggleThemeTeachingTip1"

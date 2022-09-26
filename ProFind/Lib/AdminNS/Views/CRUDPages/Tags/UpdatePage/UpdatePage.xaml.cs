@@ -1,4 +1,5 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.Tags.UpdatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            if (!FieldsChecker.CheckName(Name_tb.Text))
+            {
+                var dialog = new MessageDialog("The name must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
                 var toCreateTag = new Tag { IdT = toManipulateTag.IdT, NameT = Name_tb.Text };

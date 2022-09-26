@@ -14,60 +14,57 @@
             <ColumnDefinition Width="0.8*" />
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
-        <ListView
-            Name="ProfessionalsListView"
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged" />
+            <ListView
             Grid.Column="0"
-            ItemClick="ProjectsActiveListView_ItemClick">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="services:Professional">
-                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="0.7*" />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <Image
+            Name="ProfessionalsListView" ItemClick="ProjectsActiveListView_ItemClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="services:Professional">
+                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Image
                                     Width="100"
                                     Height="100"
                                     Source="{Binding PictureP, Converter={StaticResource ImageModelConverter}}" />
-                            </StackPanel>
-                            <StackPanel
-                                Grid.Column="1"
-                                Padding="0,30"
-                                Orientation="Vertical">
-                                <StackPanel>
-                                    <TextBlock
-                                        Height="25"
-                                        Style="{StaticResource ListTitleStyle}"
-                                        Text="Profession" />
                                 </StackPanel>
-                                <StackPanel />
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Text="Name:" />
-                                    <TextBlock
-                                        Height="31"
-                                        Margin="10,0,0,0"
-                                        Text="{Binding NameP}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Text="E-mail" />
-                                    <TextBlock
-                                        Height="31"
-                                        Margin="10,0,0,0"
-                                        Text="{Binding EmailP}" />
-                                </StackPanel>
-                                <StackPanel
-                                    Grid.Column="1"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
+                                    <StackPanel>
+                                        <TextBlock Height="25" Text="Profession"  Style="{StaticResource ListTitleStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                FontWeight="Bold"
+                                Text="Name:" />
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding NameP}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                FontWeight="Bold"
+                                Text="E-mail" />
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding EmailP}" />
+                                    </StackPanel>
+                                    <StackPanel
+                                     Grid.Column="1"
+                                     HorizontalAlignment="Center"
+                                      VerticalAlignment="Center">
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Vertical">
             <Button
                 Grid.Column="1"

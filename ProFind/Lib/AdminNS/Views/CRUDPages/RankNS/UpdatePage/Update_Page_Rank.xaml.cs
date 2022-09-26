@@ -3,6 +3,8 @@ using Windows.UI.Xaml.Controls;
 using ProFind.Lib.Global.Services;
 using Rank = ProFind.Lib.Global.Services.Rank;
 using ProFind.Lib.Global.Helpers;
+using Windows.UI.Popups;
+using System;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,6 +28,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.UpdatePage
 
         private async void Update_btn_Click(object sender, RoutedEventArgs e)
         {
+            if (!FieldsChecker.CheckName(Name_tb.Text))
+            {
+                var dialog = new MessageDialog("The name must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
             int idNo = (int)pro.IdR;
             var toUpdateProfession = new Rank { NameR = Name_tb.Text };
             await APIConnection.GetConnection.PutRankAsync(idNo, toUpdateProfession);

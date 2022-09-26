@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -107,6 +108,18 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 
         private async void Create_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            if (!FieldsChecker.CheckName(Title_tb.Text))
+            {
+                var dialog = new MessageDialog("The Title must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.OnlyLetters(Description_tb.Text))
+            {
+                var dialog = new MessageDialog("The description must be valid");
+                await dialog.ShowAsync();
+                return;
+            }
             try
             {
 

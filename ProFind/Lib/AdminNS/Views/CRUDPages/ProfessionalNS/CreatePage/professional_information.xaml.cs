@@ -138,13 +138,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void TxtAFP(object sender, TextChangedEventArgs e)
         {
+           
 
         }
 
         private async void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
-            if (FirstName1_tbx.Text.Length < 3)
+            if (!FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
@@ -162,22 +163,30 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                 await dialog.ShowAsync();
                 return;
             }
-            try
-            {
-                if (int.Parse(Salario.Text) <= 0)
-                {
-                    var dialog = new MessageDialog("The salary must be valid.");
-                    await dialog.ShowAsync();
-                    return;
-                }
-            }
-            catch
+            if (!FieldsChecker.OnlyFloats(Salario.Text))
             {
                 var dialog = new MessageDialog("The salary must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-
+            if (!FieldsChecker.OnlyInts(Afp.Text))
+            {
+                var dialog = new MessageDialog("The Afp must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.OnlyInts(CodigoPostal.Text))
+            {
+                var dialog = new MessageDialog("The Code Postal must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
+            if (!FieldsChecker.OnlyLetters(position.Text))
+            {
+                var dialog = new MessageDialog("The Position must be valid.");
+                await dialog.ShowAsync();
+                return;
+            }
             if (!FieldsChecker.CheckPassword(passwordBox.Password))
             {
                 var dialog = new MessageDialog("The password must be valid.");
@@ -226,52 +235,53 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
             }
 
 
-            if (string.IsNullOrEmpty(FirstName1_tbx.Text))
+            if (FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
-
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-
-            else if (string.IsNullOrEmpty(Afp.Text))
+            if (!FieldsChecker.CheckEmail(Email.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(Dui.Text))
+            if (!FieldsChecker.CheckDateDown(Nacimiento.Date))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The birth date must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(SeguroSocial.Text))
+            if (FieldsChecker.OnlyFloats(Salario.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The salary must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(CodigoPostal.Text))
+            if (FieldsChecker.OnlyInts(Afp.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The Afp must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(Salario.Text))
+            if (FieldsChecker.OnlyInts(CodigoPostal.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The Code Postal must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(Email.Text))
+            if (FieldsChecker.OnlyLetters(position.Text))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The Position must be valid.");
                 await dialog.ShowAsync();
+                return;
             }
-            else if (string.IsNullOrEmpty(passwordBox.Password))
+            if (!FieldsChecker.CheckPassword(passwordBox.Password))
             {
-                var dialog = new MessageDialog("The field is empty");
+                var dialog = new MessageDialog("The password must be valid.");
                 await dialog.ShowAsync();
-            }
-            else if (string.IsNullOrEmpty(Confirm_passwordBox.Password))
-            {
-                var dialog = new MessageDialog("The field is empty");
-                await dialog.ShowAsync();
+                return;
             }
 
 
@@ -345,33 +355,39 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+         
 
         }
 
         private void Afp_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+           
 
         }
 
         private void SeguroSocial_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+           
         }
 
         private void position_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-
+           
         }
 
         private void CodigoPostal_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+           
         }
 
         private void Email_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+
         }
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
+         
         }
 
         private void Nacimiento_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)

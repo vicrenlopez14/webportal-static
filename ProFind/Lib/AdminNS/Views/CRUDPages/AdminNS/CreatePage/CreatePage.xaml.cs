@@ -110,7 +110,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
                 imageString = await selectedImage.ToBase64StringAsync();
                 ToCreateAdmin.PictureA = imageString;
-                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+                 await imageString.FromBase64String();
 
             }
             catch (Exception ex)
@@ -144,7 +144,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                 await dialog.ShowAsync();
                 return;
             }
-            if (Name_tb.Text.Length < 3)
+            if (!FieldsChecker.CheckName(Name_tb.Text))
             {
                 var dialog = new MessageDialog("The name must be valid.");
                 await dialog.ShowAsync();

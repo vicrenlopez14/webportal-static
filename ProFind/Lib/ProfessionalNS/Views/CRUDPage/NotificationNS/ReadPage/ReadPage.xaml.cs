@@ -1,4 +1,5 @@
-﻿using ProFind.Lib.Global.Services;
+﻿using ProFind.Lib.AdminNS.Controllers;
+using ProFind.Lib.Global.Services;
 using ProFind.Lib.ProfessionalNS.Controllers;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,5 +41,45 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.NotificationNS.ReadPage
             Activities_lw.ItemsSource = RelatedProfesionales;
 
         }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Activities_lw.SelectedItem != null)
+                {
+                    var selectedNoti = Activities_lw.SelectedItem as Notification;
+                    await APIConnection.GetConnection.DeleteNotificationAsync(selectedNoti.IdN);
+
+                }
+                else
+                {
+
+                    var dialog = new MessageDialog("You have to select a Notification.");
+                    await dialog.ShowAsync();
+
+                }
+              
+
+            }
+            catch (ProFindServicesException ex)
+            {
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
+                {
+                    var dialog = new MessageDialog("Notification deleted successfully.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("You have to select an Notification.");
+                    await dialog.ShowAsync();
+                }
+            }
+            finally
+            {
+                Cargar();
+            }
+        }
+        }
     }
-}
+

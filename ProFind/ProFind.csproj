@@ -267,6 +267,12 @@
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\AdminNS\Controllers\AdminNavigationController.cs" />
     <Compile Include="Lib\AdminNS\Controllers\LoggedAdminStore.cs" />
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\ListaPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
@@ -382,6 +388,9 @@
       <DependentUpon>SendEmailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Controllers\LoggedClientStore.cs" />
+    <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNs\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\CatalogList\CatalogList.xaml.cs">
       <DependentUpon>CatalogList.xaml</DependentUpon>
     </Compile>
@@ -494,6 +503,15 @@
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Controllers\LoggedProfessionalStore.cs" />
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ChatPage\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
@@ -557,6 +575,15 @@
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\CreatePage\CreatePage.xaml.cs">
+      <DependentUpon>CreatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\ListPage\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\UpdatePage\UpdatePage.xaml.cs">
+      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\InitPage\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
@@ -578,6 +605,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\ListaPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -730,6 +765,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ClientNS\Views\CRUDPages\ActivityNs\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\CatalogList\CatalogList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -842,6 +881,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\UpdatePage\UpdatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ChatPage\ChatPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -923,6 +974,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ProposalNS\SearchPage\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\ListPage\ListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\Tags\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
