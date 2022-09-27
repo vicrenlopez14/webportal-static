@@ -8,6 +8,7 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+using static System.Net.WebRequestMethods;
 
 namespace ProFind.Lib.Global.Helpers
 {
@@ -17,6 +18,7 @@ namespace ProFind.Lib.Global.Helpers
         {
             if (file == null)
                 return null;
+            
             using (var inputStream = await file.OpenSequentialReadAsync())
             {
                 var readStream = inputStream.AsStreamForRead();
@@ -29,6 +31,12 @@ namespace ProFind.Lib.Global.Helpers
 
         public static async Task<ImageSource> FromBase64(string base64)
         {
+            if (base64 == null)
+            {
+                return null;
+            }
+
+
             // read stream
             var bytes = Convert.FromBase64String(base64);
             var image = bytes.AsBuffer().AsStream().AsRandomAccessStream();
@@ -43,11 +51,22 @@ namespace ProFind.Lib.Global.Helpers
 
         public static async Task<ImageSource> FromBase64String(this string base64)
         {
+            if (base64 == null)
+            {
+                return null;
+            }
+
             return await FromBase64(base64);
         }
 
         public static ImageSource FromBase64Sync(string base64)
         {
+            if (base64 == null)
+            {
+                return null;
+            }
+
+
             var ims = new InMemoryRandomAccessStream();
             var bytes = Convert.FromBase64String(base64);
             var dataWriter = new DataWriter(ims);
@@ -61,16 +80,32 @@ namespace ProFind.Lib.Global.Helpers
 
         public static ImageSource FromBase64StringSync(this string base64)
         {
+            if (base64 == null)
+            {
+                return null;
+            }
+
+
             return FromBase64Sync(base64);
         }
 
         public static async Task<ImageSource> FromStorageFile(this StorageFile file)
         {
+            if (file == null)
+            {
+                return null;
+            }
+            
             return await FromBase64(await file.ToBase64StringAsync());
         }
 
         public static async Task<string> ToBase64StringAsync(this StorageFile bitmap)
         {
+            if (bitmap == null)
+            {
+                return "";
+            }
+            
             var stream = await bitmap.OpenAsync(Windows.Storage.FileAccessMode.Read);
             var decoder = await BitmapDecoder.CreateAsync(stream);
             var pixels = await decoder.GetPixelDataAsync();
@@ -79,9 +114,15 @@ namespace ProFind.Lib.Global.Helpers
                 decoder.DpiY);
         }
 
-        private static async Task<string> ToBase64(byte[] image, uint height, uint width, double xpiX = 96,
+        private static async Task<string> ToBase64(byte[] image, uint height = 0, uint width = 0, double xpiX = 96,
             double dpiY = 96)
         {
+            if (image == null)
+            {
+                return null;
+            }
+
+
             var encoded = new InMemoryRandomAccessStream();
             var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, encoded);
             encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Straight, height, width, dpiY, dpiY, image);

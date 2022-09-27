@@ -22,8 +22,9 @@ builder.Services.AddSwaggerGen(c =>
     c.CustomOperationIds(description =>
         description.TryGetMethodInfo(out var methodInfo) ? methodInfo.Name : null);
 });
+builder.Services.AddRazorPages();
 
-builder.Services.AddControllers()
+builder.Services.AddControllersWithViews()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
@@ -47,5 +48,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapRazorPages();
 
 app.Run();

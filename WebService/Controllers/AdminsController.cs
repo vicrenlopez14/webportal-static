@@ -38,6 +38,8 @@ public class AdminsController : ControllerBase
         return BadRequest(ModelState);
     }
 
+    
+
     // Login an Admin method
     // POST: api/Admins/Login
     [HttpPost("Login")]
@@ -212,7 +214,7 @@ public class AdminsController : ControllerBase
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!AdminExists(id))
+            if (!AdminExists(id, admin.EmailA))
             {
                 return NotFound();
             }
@@ -244,7 +246,7 @@ public class AdminsController : ControllerBase
         }
         catch (DbUpdateException)
         {
-            if (AdminExists(admin.IdA))
+            if (AdminExists(admin.IdA, admin.EmailA))
             {
                 return Conflict();
             }
@@ -278,9 +280,9 @@ public class AdminsController : ControllerBase
         return NoContent();
     }
 
-    private bool AdminExists(string id)
+    private bool AdminExists(string id, string email)
     {
-        return (_context.Admins?.Any(e => e.IdA == id)).GetValueOrDefault();
+        return (_context.Admins?.Any(e => e.IdA == id || e.EmailA == email)).GetValueOrDefault();
     }
 
     [HttpGet("search/")]

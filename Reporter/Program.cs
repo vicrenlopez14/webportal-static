@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Reporter.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ProFindContext>(options =>
+    options.UseMySql(builder.Configuration["DatabaseConnectionString"], new MySqlServerVersion(new Version(8, 0, 27)))
+        .LogTo(Console.WriteLine, LogLevel.Information).EnableSensitiveDataLogging().EnableDetailedErrors());
 
 var app = builder.Build();
 

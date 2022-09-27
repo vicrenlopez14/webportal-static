@@ -89,14 +89,6 @@
                 Click="Button_Click_4"
                 Content="Update"
                 Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Name="Generate_Report_btn"
-                Grid.Column="1"
-                Width="90"
-                Margin="0,15,0,0"
-                Click="Generate_Report_btn_Click"
-                Content="Search"
-                Style="{StaticResource AccentButtonStyle}" />
 
         </StackPanel>
     </Grid>

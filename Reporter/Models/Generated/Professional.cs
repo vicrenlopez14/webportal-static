@@ -31,6 +31,8 @@ namespace Reporter.Models.Generated
         [StringLength(64)]
         public string? PasswordP { get; set; }
         public bool? ActiveP { get; set; }
+        [StringLength(15)]
+        public string? PhoneP { get; set; }
         public bool? SexP { get; set; }
         [Column("DUIP")]
         [StringLength(15)]

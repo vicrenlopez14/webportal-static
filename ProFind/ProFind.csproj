@@ -208,6 +208,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="HtmlRenderer.PdfSharp">
+      <Version>1.5.0.6</Version>
+    </PackageReference>
     <PackageReference Include="JsonSubTypes">
       <Version>1.9.0</Version>
     </PackageReference>
@@ -329,15 +332,6 @@
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfileAdminNS\ProfileAdminNS.xaml.cs">
       <DependentUpon>ProfileAdminNS.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\CreatePage.xaml.cs">
-      <DependentUpon>CreatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\SelectProfessionalDialog.xaml.cs">
-      <DependentUpon>SelectProfessionalDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ListPage\List_Page_Projects.xaml.cs">
-      <DependentUpon>List_Page_Projects.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
@@ -466,6 +460,7 @@
     <Compile Include="Lib\Global\Services\Models\Proposal.cs" />
     <Compile Include="Lib\Global\Services\Models\Rank.cs" />
     <Compile Include="Lib\Global\Services\Models\Notification.cs" />
+    <Compile Include="Lib\Global\Services\ReportDownloader.cs" />
     <Compile Include="Lib\Global\Views\About_Page\About_Page.xaml.cs">
       <DependentUpon>About_Page.xaml</DependentUpon>
     </Compile>
@@ -688,18 +683,6 @@
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProfileAdminNS\ProfileAdminNS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\CreatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\CreatePage\SelectProfessionalDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ListPage\List_Page_Projects.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProjectNS\ReadPage\ReadPage.xaml">
       <SubType>Designer</SubType>
