@@ -100,18 +100,19 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 
         private async void Update_Click_1(object sender, RoutedEventArgs e)
         {
-            try
+            if (AdminsListView.SelectedItem != null)
             {
                 var obj = AdminsListView.SelectedItem as Admin;
                 new InAppNavigationController().NavigateTo(typeof(UpdatePage.UpdatePage), obj);
             }
-            catch (ProFindServicesException ex)
+            else
             {
-
-                var dialog = new MessageDialog("You have to select an admin.");
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Admin.");
                 await dialog.ShowAsync();
 
             }
+          
         }
 
         private void Add_Click_1(object sender, RoutedEventArgs e)
