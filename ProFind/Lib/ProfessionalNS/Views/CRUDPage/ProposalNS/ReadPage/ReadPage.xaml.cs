@@ -82,5 +82,22 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
                 InitializeData();
             }
         }
+
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Activities_lw.SelectedItem != null)
+            {
+                Proposal lectedProposal = Activities_lw.SelectedItem as Proposal;
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny), lectedProposal) ;
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Activity.");
+                await dialog.ShowAsync();
+
+            }
+           
+        }
     }
 }
