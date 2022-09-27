@@ -70,7 +70,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             AdminsListView.ItemsSource = newList;
         }
 
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
+
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -98,7 +99,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             }
         }
 
-        private async void Button_Click_4(object sender, RoutedEventArgs e)
+        private async void Update_Click_1(object sender, RoutedEventArgs e)
         {
             if (AdminsListView.SelectedItem != null)
             {
@@ -112,12 +113,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
                 await dialog.ShowAsync();
 
             }
-          
+
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Add_Click_1(object sender, RoutedEventArgs e)
         {
-
             new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
     }
