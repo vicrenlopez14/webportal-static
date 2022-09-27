@@ -82,5 +82,28 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Button
+                Grid.Column="1"
+                VerticalAlignment="Top"
+                Click="Button_Click_1"
+                Content="Add Admin"
+                Style="{StaticResource AccentButtonStyle}" />
+            <Button
+                Grid.Column="1"
+                Width="90"
+                Margin="0,15,0,0"
+                Click="Button_Click_3"
+                Content="Delete"
+                Style="{StaticResource AccentButtonStyle}" />
+            <Button
+                Grid.Column="1"
+                Width="90"
+                Margin="0,15,0,0"
+                Click="Button_Click_4"
+                Content="Update"
+                Style="{StaticResource AccentButtonStyle}" />
+
+        </StackPanel>
     </Grid>
 </Page>

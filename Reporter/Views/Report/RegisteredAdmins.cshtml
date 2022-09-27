@@ -1,0 +1,40 @@
+@using Reporter.Models.Generated
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/css/index.css")"/>
+}
+
+@* List of admins *@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Registered admins</h1>
+        <hr/>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tel</th>
+                <th scope="col">Rank</th>
+            </tr>
+            </thead>
+            <tbody>
+            @* @foreach (var admin in (ViewData["admins"] as List<Admin>)!) *@
+            @* { *@
+            @*     <tr> *@
+            @*         <td>@admin.NameA</td> *@
+            @*         <td>@admin.EmailA</td> *@
+            @*         <td>@admin.TelA</td> *@
+            @*         <td>@(admin.IdR1Navigation?.NameR ?? "Undefined Rank")</td> *@
+            @*     </tr> *@
+            @* } *@
+            </tbody>
+        </table>
+    </div>
+</div>

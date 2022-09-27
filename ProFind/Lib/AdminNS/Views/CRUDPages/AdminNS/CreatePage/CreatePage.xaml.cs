@@ -13,6 +13,8 @@ using Admin = ProFind.Lib.Global.Services.Admin;
 using Rank = ProFind.Lib.Global.Services.Rank;
 using ProFind.Lib.AdminNS.Controllers;
 using Windows.UI.Popups;
+using System.Linq;
+using System.Threading.Tasks;
 
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
@@ -49,6 +51,15 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
         public async void loadUsefulThings()
         {
             ranks = await APIConnection.GetConnection.GetRanksAsync() as List<Rank>;
+
+            if (isFirstAdmin)
+            {
+                {
+                    ranks = ranks.Where(x => x.NameR == "Principal").ToList();
+                    Rank_cb.IsEnabled = false;
+                    Rank_cb.SelectedIndex = 0;
+                }
+            }
 
             Rank_cb.ItemsSource = ranks;
             ToCreateAdmin = new Admin();
@@ -101,28 +112,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         }
 
-        private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var selectedImage = await PickFileHelper.PickImage();
-                SelectedPicture_tbk.Text = selectedImage.Name;
-
-                imageString = await selectedImage.ToBase64StringAsync();
-                ToCreateAdmin.PictureA = imageString;
-                 await imageString.FromBase64String();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Creation_pr.IsActive = false;
-                PictureSelection_btn.IsChecked = false;
-            }
-        }
 
         private void Rank_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -173,13 +162,27 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
                         ToggleThemeTeachingTip2.IsOpen = true;
                     else
                         new InAppNavigationController().GoBack();
-                } else
+                }
+                else if (ex.StatusCode == 409)
                 {
-                    var elError = ex.StatusCode;
+                    // Error message dialog
+                    var dialog = new MessageDialog("This email is already registed, please try with another one.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    {
+                        // Error message dialog
+                        var dialog = new MessageDialog("An error has ocurred, please try again later.");
+                        await dialog.ShowAsync();
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Error message dialog
+                var dialog = new MessageDialog("An unexpected error has ocurred, please try again later.");
+                await dialog.ShowAsync();
 
             }
             finally
@@ -194,10 +197,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         }
 
-        private void ToggleThemeTeachingTip2_CloseButtonClick_1(TeachingTip sender, object args)
-        {
-
-        }
 
         private void CreateProfessionals_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -207,7 +206,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         private void Name_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            
+
         }
 
         private void Email_tb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -220,14 +219,42 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         }
 
-        private async void PictureSelection_btn_Checked_1(object sender, RoutedEventArgs e)
+        private void PictureSelection_btn_Checked_1(object sender, RoutedEventArgs e)
         {
 
         }
 
         private void Name_tb_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
-            
+
+        }
+
+        public async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedImage = await PickFileHelper.PickImage();
+                SelectedPicture_tbk.Text = selectedImage.Name;
+
+                imageString = await selectedImage.ToBase64StringAsync();
+                ToCreateAdmin.PictureA = imageString;
+                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+
+
+            }
+            catch (Exception ex)
+            {
+                // friendly error dialog
+                var dialog = new MessageDialog("Image has not been loaded");
+                await dialog.ShowAsync();
+
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Creation_pr.IsActive = false;
+                PictureSelection_btn.IsChecked = false;
+            }
         }
     }
 }

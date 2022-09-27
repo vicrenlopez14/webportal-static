@@ -28,9 +28,9 @@
         </CommandBar>
         <ListView
             Name="ProjectsListView"
-            Grid.Column="0"
+            Grid.Row="1"
             IsItemClickEnabled="True"
-            SelectionMode="None" Margin="0,62,0,30">
+            SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Project">
                     <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
@@ -81,6 +81,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
 
     </Grid>
 </Page>

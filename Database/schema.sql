@@ -112,6 +112,7 @@ CREATE TABLE Professional
     EmailP      CHAR(255),
     PasswordP   CHAR(64),
     ActiveP     BOOLEAN,
+    PhoneP      CHAR(15),
     SexP        BOOLEAN,
     DUIP        VARCHAR(15),
     AFPP        VARCHAR(50),
@@ -217,15 +218,4 @@ CREATE TABLE Proposal
     IdC3           CHAR(21),
     CONSTRAINT FK_Proposal_Professional FOREIGN KEY (IdP3) REFERENCES Professional (IdP) ON DELETE CASCADE,
     CONSTRAINT FK_Proposal_Client FOREIGN KEY (IdC3) REFERENCES Client (IdC) ON DELETE CASCADE
-);
-
-################################################
-# Pays table
-CREATE TABLE Pay
-(
-    IdPY   CHAR(21) PRIMARY KEY,
-    PaidPY BOOLEAN,
-    PaidOn DATETIME,
-    IdPJ4  CHAR(21),
-    CONSTRAINT FK_Pay_Project FOREIGN KEY (IdPJ4) REFERENCES Project (IdPJ) ON DELETE CASCADE
 );

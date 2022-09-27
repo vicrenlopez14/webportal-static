@@ -1,0 +1,42 @@
+@using Reporter.Models.Generated
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/css/index.css")"/>
+}
+
+@* List of professionals *@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Registered professionals</h1>
+        <hr/>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var project in (ViewData["projects"] as List<Project>)!)
+            {
+                @* <tr> *@
+                @*     <td>@project.name</td> *@
+                @*     <td>@project.EmailP</td> *@
+                @*     <td>@project.PhoneP</td> *@
+                @*     <td>@project.Afpp</td> *@
+                @*     <td>@project.Isssp</td> *@
+                @*     <td>@(project.IdDp1Navigation?.NameDp ?? "Not specified")</td> *@
+                @*     <td>@(project.IdPfs1Navigation?.NamePfs ?? "Not specified")</td> *@
+                @* </tr> *@
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
