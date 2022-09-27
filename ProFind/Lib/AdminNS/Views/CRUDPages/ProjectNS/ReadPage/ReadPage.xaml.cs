@@ -101,7 +101,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
 
         private void Add_Click_1(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
         }
 
         private async void Update_Click_1(object sender, RoutedEventArgs e)

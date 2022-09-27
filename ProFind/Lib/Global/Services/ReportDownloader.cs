@@ -1,12 +1,9 @@
-﻿using PdfSharp;
-using PdfSharp.Pdf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using TheArtOfDev.HtmlRenderer.PdfSharp;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Popups;
@@ -50,8 +47,10 @@ namespace ProFind.Lib.Global.Services
 
         private static void GenerateAndSave(string html)
         {
-            PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4);
-            pdf.Save("document.pdf");
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+            SelectPdf.PdfDocument doc = converter.ConvertHtmlString(html);
+            doc.Save("report.pdf");
+            doc.Close();
         }
         #endregion
     }
