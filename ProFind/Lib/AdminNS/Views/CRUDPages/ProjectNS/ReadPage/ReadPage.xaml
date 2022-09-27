@@ -13,9 +13,9 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
-            <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
+           
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
-            <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+          
 
 
             <CommandBar.SecondaryCommands>
@@ -30,7 +30,7 @@
             Name="ProjectsListView"
             Grid.Row="1"
             IsItemClickEnabled="True"
-            SelectionMode="Single">
+            SelectionMode="Single" SelectionChanged="ProjectsListView_SelectionChanged_1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Project">
                     <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">

@@ -118,5 +118,15 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
 
             }
         }
+
+        private void ProjectsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ProjectsListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
