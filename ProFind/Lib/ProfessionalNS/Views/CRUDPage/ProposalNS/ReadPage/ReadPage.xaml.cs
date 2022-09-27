@@ -41,17 +41,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
 
         }
 
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny));
-        }
+       
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -62,10 +54,10 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
             {
                 var dialog = new MessageDialog("You have to select a proposal.");
                 await dialog.ShowAsync();
-            }
+            } 
         }
 
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        private async void Add_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -76,7 +68,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
             }
             catch (ProFindServicesException ex)
             {
-                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
                     var dialog = new MessageDialog("You have to select a proposal.");
                     await dialog.ShowAsync();
