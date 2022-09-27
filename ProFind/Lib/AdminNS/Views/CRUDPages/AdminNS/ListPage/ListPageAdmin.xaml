@@ -11,11 +11,25 @@
 
     <Grid Padding="30">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="2,-29,0,0">
+            <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
+            <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
+            <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+            
 
-        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting"  Label="Settings">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-18,46,-24,96">
             <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged" />
             <ListView Name="AdminsListView">
                 <ListView.ItemTemplate>
@@ -67,37 +81,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button
-                Grid.Column="1"
-                VerticalAlignment="Top"
-                Click="Button_Click_1"
-                Content="Add Admin"
-                Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Grid.Column="1"
-                Width="90"
-                Margin="0,15,0,0"
-                Click="Button_Click_3"
-                Content="Delete"
-                Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Grid.Column="1"
-                Width="90"
-                Margin="0,15,0,0"
-                Click="Button_Click_4"
-                Content="Update"
-                Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Name="Generate_Report_btn"
-                Grid.Column="1"
-                Width="90"
-                Margin="0,15,0,0"
-                Click="Generate_Report_btn_Click"
-                Content="Search"
-                Style="{StaticResource AccentButtonStyle}" />
-
         </StackPanel>
     </Grid>
 </Page>

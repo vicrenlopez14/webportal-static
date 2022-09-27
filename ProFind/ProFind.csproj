@@ -324,9 +324,6 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionNS\ListPage\List-Page.xaml.cs">
       <DependentUpon>List-Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfessionNS\UpdatePage\Update_Profesion.xaml.cs">
-      <DependentUpon>Update_Profesion.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\ProfileAdminNS\ProfileAdminNS.xaml.cs">
       <DependentUpon>ProfileAdminNS.xaml</DependentUpon>
     </Compile>
@@ -359,9 +356,6 @@
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\RankNS\ListPage\List-Ranks.xaml.cs">
       <DependentUpon>List-Ranks.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml.cs">
-      <DependentUpon>Update_Page_Rank.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\Tags\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
@@ -681,10 +675,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ProfessionNS\UpdatePage\Update_Profesion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\ProfileAdminNS\ProfileAdminNS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -726,10 +716,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\RankNS\ListPage\List-Ranks.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\RankNS\UpdatePage\Update_Page_Rank.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

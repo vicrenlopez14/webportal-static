@@ -25,20 +25,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
         {
             ProfessionalsListView.ItemsSource = await APIConnection.GetConnection.GetProfessionsAsync() as List<Profession>;
         }
+    
 
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.CreatePage.Profession_Create));
+       
 
-        }
-
-        private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.UpdatePage.Update_Profesion));
-
-        }
-
-        private async void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             try
             {
@@ -49,7 +40,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
             }
             catch (ProFindServicesException ex)
             {
-                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
                     var dialog = new MessageDialog("The profession has been deleted.");
                     await dialog.ShowAsync();
@@ -64,6 +55,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.ListPage
             {
                 InitializeData();
             }
+        }
+
+        private void Add_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionNS.CreatePage.Profession_Create));
+
         }
     }
 }

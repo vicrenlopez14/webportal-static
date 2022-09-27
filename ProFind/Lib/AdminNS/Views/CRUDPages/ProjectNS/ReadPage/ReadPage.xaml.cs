@@ -41,57 +41,55 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
             new InAppNavigationController().NavigateTo(typeof(UpdatePage.Update_Project), project);
         }
 
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
-        }
+       
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
-        }
-
-        private void UpdateProject_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project));
-        }
-
-        private async void DeleteProject_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
                 var selectedProject = ProjectsListView.SelectedItem as Project;
                 await APIConnection.GetConnection.DeleteAdminAsync(selectedProject.IdPj);
 
-                var dialog = new MessageDialog("Admin deleted successfully.");
+                var dialog = new MessageDialog("Project deleted successfully.");
                 await dialog.ShowAsync();
             }
             catch (ProFindServicesException ex)
             {
                 if (ex.StatusCode == 204)
                 {
-                    var dialog = new MessageDialog("Admin deleted successfully.");
+                    var dialog = new MessageDialog("Project deleted successfully.");
                     await dialog.ShowAsync();
                 }
                 else
                 {
-                    var dialog = new MessageDialog("You have to select an admin.");
+                    var dialog = new MessageDialog("You have to select an Project.");
                     await dialog.ShowAsync();
                 }
             }
             finally
             {
                 InitializeData();
+            }
+        }
+
+        private void Add_Click_1(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
+        }
+
+        private async void Update_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ProjectsListView.SelectedItem != null)
+            {
+                var selectedProject = ProjectsListView.SelectedItem as Project;
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project), selectedProject);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Project.");
+                await dialog.ShowAsync();
+
             }
         }
     }

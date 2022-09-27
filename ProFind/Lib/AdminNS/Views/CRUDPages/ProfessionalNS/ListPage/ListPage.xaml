@@ -11,11 +11,24 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="249*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged" />
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
+            <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
+            <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
+            <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting"  Label="Settings">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+        <StackPanel Orientation="Vertical" Margin="15,59,32,-59" Grid.ColumnSpan="2">
             <ListView
             Grid.Column="0"
             Name="ProfessionalsListView" ItemClick="ProjectsActiveListView_ItemClick">
@@ -64,29 +77,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button
-                Grid.Column="1"
-                Margin="0,15,0,0"
-                VerticalAlignment="Top"
-                Click="CreateProfessionalBtn_Click"
-                Content="Add Professional"
-                Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Grid.Column="1"
-                Width="124"
-                Margin="0,15,0,0"
-                Click="UpdateProfessionalBtn_Click"
-                Content="Update"
-                Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Grid.Column="1"
-                Width="124"
-                Margin="0,15,0,0"
-                Click="DeleteProfessionalBtn_Click"
-                Content="Delete"
-                Style="{StaticResource AccentButtonStyle}" />
+            <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged" />
         </StackPanel>
     </Grid>
 </Page>

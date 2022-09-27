@@ -37,32 +37,41 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             AdminsListView.ItemsSource = await APIConnection.GetConnection.GetAdminsAsync();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage.CreatePage));
 
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.SearchPage.search_admin));
-
-        }
-
-        private void Add_btn_Click(object sender, RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage.UpdatePage));
-
-        }
 
         private void Generate_Report_btn_Click(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(SearchPage.search_admin));
         }
 
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
+
+
+
+        private async void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+
+        }
+
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        {
+            var allList = await APIConnection.GetConnection.GetAdminsAsync();
+
+            if (string.IsNullOrEmpty(sender.QueryText))
+            {
+                AdminsListView.ItemsSource = null;
+                AdminsListView.ItemsSource = allList;
+                return;
+            }
+
+            var newList = allList.Where(x => x.NameA.Contains(sender.QueryText));
+
+            AdminsListView.ItemsSource = null;
+            AdminsListView.ItemsSource = newList;
+        }
+
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
+        {
             try
             {
                 var obj = AdminsListView.SelectedItem as Admin;
@@ -89,7 +98,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             }
         }
 
-        private async void Button_Click_4(object sender, RoutedEventArgs e)
+        private async void Update_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -105,27 +114,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             }
         }
 
-        private async void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Add_Click_1(object sender, RoutedEventArgs e)
         {
 
-
-        }
-
-        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
-        {
-            var allList = await APIConnection.GetConnection.GetAdminsAsync();
-
-            if (string.IsNullOrEmpty(sender.QueryText))
-            {
-                AdminsListView.ItemsSource = null;
-                AdminsListView.ItemsSource = allList;
-                return;
-            }
-
-            var newList = allList.Where(x => x.NameA.Contains(sender.QueryText));
-
-            AdminsListView.ItemsSource = null;
-            AdminsListView.ItemsSource = newList;
+            new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
     }
 }

@@ -32,20 +32,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
 
         }
 
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    
+
+   
+
+
+        private async void Delete_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage.Create_Page));
 
-        }
-
-        private void Add_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.UpdatePage.Update_Page_Rank));
-
-        }
-
-        private async void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
             try
             {
                 var obj = Ranks_lw.SelectedItem as Rank;
@@ -55,7 +49,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
             }
             catch (ProFindServicesException ex)
             {
-                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
                     var dialog = new MessageDialog("The rank has been deleted");
                     await dialog.ShowAsync();
@@ -70,6 +64,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.ListPage
             {
                 InitializeData();
             }
+        }
+
+        private void Add_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.RankNS.CreatePage.Create_Page));
+
         }
     }
 }
