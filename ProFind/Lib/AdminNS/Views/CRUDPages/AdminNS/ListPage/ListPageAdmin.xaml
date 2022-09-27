@@ -10,6 +10,9 @@
     mc:Ignorable="d">
 
     <Grid Padding="30">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="49*" />
             <ColumnDefinition Width="47*"/>

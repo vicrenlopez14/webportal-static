@@ -30,10 +30,16 @@ namespace Reporter.Models.Generated
         public string? DescriptionPj { get; set; }
         [Column("PicturePJ")]
         public string? PicturePj { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? StartDate { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? EndDate { get; set; }
         [Column("TotalPricePJ")]
         public float? TotalPricePj { get; set; }
         [Column("IsPaidPJ")]
         public bool? IsPaidPj { get; set; }
+        public bool? IsActive { get; set; }
+        public bool? Completed { get; set; }
         [Column("TagDurationPJ", TypeName = "int(11)")]
         public int? TagDurationPj { get; set; }
         [StringLength(21)]

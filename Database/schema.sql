@@ -150,15 +150,19 @@ CREATE TABLE ChangePasswordCode
 ###############################################
 CREATE TABLE Project
 (
-    IdPJ          CHAR(21) PRIMARY KEY,
-    TitlePJ       VARCHAR(50),
-    DescriptionPJ VARCHAR(50),
-    PicturePJ     LONGTEXT,
-    TotalPricePJ  FLOAT,
-    IsPaidPJ      BOOLEAN,
-    TagDurationPJ INT,
-    IdP1          CHAR(21),
-    IdC1          CHAR(21),
+    IdPJ           CHAR(21) PRIMARY KEY,
+    TitlePJ        VARCHAR(50),
+    DescriptionPJ  VARCHAR(50),
+    PicturePJ      LONGTEXT,
+    StartDate DATETIME,
+    EndDate   DATETIME,
+    TotalPricePJ   FLOAT,
+    IsPaidPJ       BOOLEAN,
+    IsActive       BOOLEAN,
+    Completed      BOOLEAN,
+    TagDurationPJ  INT,
+    IdP1           CHAR(21),
+    IdC1           CHAR(21),
     CONSTRAINT FK_Project_Professional FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE,
     CONSTRAINT FK_Project_Client FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE
 );
