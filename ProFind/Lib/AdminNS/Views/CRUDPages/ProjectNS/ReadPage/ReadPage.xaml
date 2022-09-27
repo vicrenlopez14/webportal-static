@@ -12,16 +12,26 @@
             <ColumnDefinition Width="373*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
-            <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
-            <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
-            <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+        <CommandBar
+            Height="48"
+            Margin="-2,5,2,0"
+            Background="Transparent"
+            DefaultLabelPosition="Right"
+            IsOpen="False">
+            <AppBarButton
+                Click="Delete_Click_1"
+                Icon="Delete"
+                Label="Delete" />
+            <AppBarButton
+                Click="Update_Click_1"
+                Icon="Edit"
+                Label="Edit " />
 
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton Icon="Setting"  Label="Settings">
+                <AppBarButton Icon="Setting" Label="Settings">
                     <AppBarButton.KeyboardAccelerators>
-                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                        <KeyboardAccelerator Key="I" Modifiers="Control" />
                     </AppBarButton.KeyboardAccelerators>
                 </AppBarButton>
             </CommandBar.SecondaryCommands>

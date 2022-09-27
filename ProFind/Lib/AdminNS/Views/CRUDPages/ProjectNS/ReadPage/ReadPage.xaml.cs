@@ -43,25 +43,9 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
 
         }
 
-        private async void UpdateProject_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedProject = ProjectsListView.SelectedItem as Project;
+        
 
-            if (selectedProject != null)
-            {
-                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project), selectedProject);
-            }
-            else
-            {
-                // Please select a project to update dialog
-                var dialog = new MessageDialog("Please select a project on the list first.");
-                await dialog.ShowAsync();
-            }
-
-
-        }
-
-        private async void DeleteProject_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
