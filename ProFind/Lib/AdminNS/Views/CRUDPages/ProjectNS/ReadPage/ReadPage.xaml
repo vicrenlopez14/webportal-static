@@ -15,7 +15,8 @@
         <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
            
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
-          
+            <AppBarButton Icon="Delete" Label="Delete " Click="Delete_Click_2"/>
+
 
 
             <CommandBar.SecondaryCommands>
