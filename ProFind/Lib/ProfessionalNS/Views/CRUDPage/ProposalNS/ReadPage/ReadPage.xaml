@@ -9,28 +9,25 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="1469*" />
+            <ColumnDefinition Width="31*" />
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical">
-            <TextBlock
-                Width="1138"
-                HorizontalAlignment="Center"
-                RenderTransformOrigin="0.638,0.776"
-                Style="{StaticResource SubheaderTextBlockStyle}"
-                Text="Proposal" />
-            <CommandBar
-                Margin="25,0,0,0"
-                HorizontalAlignment="Left"
-                DefaultLabelPosition="Right"
-                IsOpen="False">
-                <AppBarButton Icon="Accept" Label="Accept" />
-                <AppBarButton Icon="Cancel" Label="Cancel" />
-                <AppBarButton Icon="Find" Label="Review" />
-            </CommandBar>
-        </StackPanel>
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
+            <AppBarButton Icon="Accept" Label="To accept" Click="Delete_Click_1"/>
 
-        <ListView Name="Activities_lw" Grid.Column="0">
+            <AppBarButton Icon="Cancel" Label="Deny " Click="Add_Click_1"/>
+
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting"  Label="Settings">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+
+        <ListView Name="Activities_lw" Grid.Column="0" Margin="8,57,3,1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="services:Proposal">
                     <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
@@ -81,19 +78,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Column="1">
-            <Button
-                Margin="0,15,0,0"
-                Click="Button_Click_2"
-                Content="Accept"
-                Style="{StaticResource AccentButtonStyle}" />
-            <Button
-                Width="66"
-                Margin="0,15,0,0"
-                Click="Button_Click_3"
-                Content="Deny"
-                Style="{StaticResource AccentButtonStyle}" />
-        </StackPanel>
 
     </Grid>
 </Page>

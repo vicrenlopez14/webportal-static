@@ -98,5 +98,26 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
 
             ProjectsListView.ItemsSource = projects;
         }
+
+        private void Add_Click_1(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.CreatePage.CreatePage));
+        }
+
+        private async void Update_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ProjectsListView.SelectedItem != null)
+            {
+                var selectedProject = ProjectsListView.SelectedItem as Project;
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage.Update_Project), selectedProject);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Project.");
+                await dialog.ShowAsync();
+
+            }
+        }
     }
 }

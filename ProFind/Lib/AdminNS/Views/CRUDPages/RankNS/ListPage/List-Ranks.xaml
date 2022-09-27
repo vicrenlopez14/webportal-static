@@ -11,12 +11,26 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="124*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
+            <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
+
+            <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting"  Label="Settings">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
         <ListView
             Grid.Column="0"
-            Name="Ranks_lw" 
+            Name="Ranks_lw" Margin="0,63,0,0" 
            
             >
             <ListView.ItemTemplate>
@@ -65,9 +79,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Add Ranks" Grid.Column="1" Margin="0 15 0 0" VerticalAlignment="Top" Click="Button_Click_1" />
-            <Button Style="{StaticResource AccentButtonStyle}" Content="Delete" Grid.Column="1" Margin="0 15 0 0" Click="Button_Click_2" Width="92" />
-        </StackPanel>
     </Grid>
 </Page>

@@ -36,40 +36,30 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
         }
 
-        private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.Search_Pages.Search_Page_Clients));
-        }
+       
 
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
-        }
+      
 
-        private void CreateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
-        }
+       
 
-        private async void UpdateClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
         {
-            // Selected client
+            var allList = await APIConnection.GetConnection.GetClientsAsync();
 
-            if (Activities_lw.SelectedItem != null)
+            if (string.IsNullOrEmpty(sender.QueryText))
             {
-                Client selectedClient = Activities_lw.SelectedItem as Client;
-
-                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage.Client_Update_Delete), selectedClient);
-            } else
-            {
-                // Validation content dialog
-                var dialog = new MessageDialog("You have to select a client.");
-                await dialog.ShowAsync();
-                
+                Activities_lw.ItemsSource = null;
+                Activities_lw.ItemsSource = allList;
+                return;
             }
+
+            var newList = allList.Where(x => x.NameC.Contains(sender.QueryText));
+
+            Activities_lw.ItemsSource = null;
+            Activities_lw.ItemsSource = newList;
         }
 
-        private async void DeleteClient_btn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             try
             {
@@ -97,21 +87,28 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
             }
         }
 
-        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        private async void Update_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var allList = await APIConnection.GetConnection.GetClientsAsync();
+            // Selected client
 
-            if (string.IsNullOrEmpty(sender.QueryText))
+            if (Activities_lw.SelectedItem != null)
             {
-                Activities_lw.ItemsSource = null;
-                Activities_lw.ItemsSource = allList;
-                return;
+                Client selectedClient = Activities_lw.SelectedItem as Client;
+
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage.Client_Update_Delete), selectedClient);
             }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a client.");
+                await dialog.ShowAsync();
 
-            var newList = allList.Where(x => x.NameC.Contains(sender.QueryText));
+            }
+        }
 
-            Activities_lw.ItemsSource = null;
-            Activities_lw.ItemsSource = newList;
+        private void Add_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
         }
     }
 }

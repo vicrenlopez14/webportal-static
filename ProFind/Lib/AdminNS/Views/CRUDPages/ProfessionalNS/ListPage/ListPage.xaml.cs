@@ -36,31 +36,28 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage.ReadPage), professional);
         }
 
-        private void Button_Click_2(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
+     
+      
+      
 
-        }
-
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage.ProfessionalInformationAddition));
-        }
+            var allList = await APIConnection.GetConnection.GetProfessionalsAsync();
 
-        private void CreateProfessionalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage.ProfessionalInformationAddition));
-        }
-
-        private void UpdateProfessionalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (ProfessionalsListView.SelectedItem != null)
+            if (string.IsNullOrEmpty(sender.QueryText))
             {
-                var selectedProfessional = ProfessionalsListView.SelectedItem as Professional;
-                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage.Editar_User), selectedProfessional);
+                ProfessionalsListView.ItemsSource = null;
+                ProfessionalsListView.ItemsSource = allList;
+                return;
             }
+
+            var newList = allList.Where(x => x.NameP.Contains(sender.QueryText));
+
+            ProfessionalsListView.ItemsSource = null;
+            ProfessionalsListView.ItemsSource = newList;
         }
 
-        private async void DeleteProfessionalBtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             try
             {
@@ -89,21 +86,25 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.ListPage
             }
         }
 
-        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        private async void Update_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var allList = await APIConnection.GetConnection.GetProfessionalsAsync();
-
-            if (string.IsNullOrEmpty(sender.QueryText))
+            if (ProfessionalsListView.SelectedItem != null)
             {
-                ProfessionalsListView.ItemsSource = null;
-                ProfessionalsListView.ItemsSource = allList;
-                return;
+                var selectedProfessional = ProfessionalsListView.SelectedItem as Professional;
+                new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage.Editar_User), selectedProfessional);
             }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Professional.");
+                await dialog.ShowAsync();
 
-            var newList = allList.Where(x => x.NameP.Contains(sender.QueryText));
+            }
+        }
 
-            ProfessionalsListView.ItemsSource = null;
-            ProfessionalsListView.ItemsSource = newList;
+        private void Add_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage.ProfessionalInformationAddition));
         }
     }
 }
