@@ -10,13 +10,14 @@
 
     <Grid Margin="0,30,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="741*" />
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1317*" />
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="68*"/>
+
 
 
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="2,-29,0,0" Height="48">
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="2,-20,0,0" Height="40">
             <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
             <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
@@ -30,7 +31,7 @@
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-        <StackPanel Orientation="Vertical" Margin="44,23,16,52">
+        <StackPanel Orientation="Vertical" Margin="42,23,18,52" Grid.ColumnSpan="3">
             <ListView Grid.Column="0" Name="Activities_lw"  Grid.ColumnSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="services:Client">
