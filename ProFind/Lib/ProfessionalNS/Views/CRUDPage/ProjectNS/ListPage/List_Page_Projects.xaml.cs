@@ -91,16 +91,18 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage
 
         private async void UpdateProject(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            try
-            {
-                var obj = ProjectsListView.SelectedItem as Project;
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.Update_Project), obj);
-            }
-            catch
-            {
-                var dialog = new MessageDialog("You have to select a Project.");
-                await dialog.ShowAsync();
-            }
+                if (ProjectsListView.SelectedItem != null)
+                {
+                    var obj = ProjectsListView.SelectedItem as Project;
+                    new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage.Update_Project), obj);
+                }
+                else
+                {
+
+                    var dialog = new MessageDialog("You have to select a Project.");
+                    await dialog.ShowAsync();
+                }
+
         }
 
         private async void TagCreate(object sender, Windows.UI.Xaml.RoutedEventArgs e)

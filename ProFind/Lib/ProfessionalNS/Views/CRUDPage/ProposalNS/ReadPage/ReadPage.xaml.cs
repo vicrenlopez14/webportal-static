@@ -43,34 +43,32 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.ReadPage
 
        
 
-        private async void Delete_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var obj = Activities_lw.SelectedItem as Proposal;
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny.AcceptOrDeny), obj);
-            }
-            catch
-            {
-                var dialog = new MessageDialog("You have to select a proposal.");
-                await dialog.ShowAsync();
-            } 
-        }
+    
 
         private async void Add_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                Proposal obj = Activities_lw.SelectedItem as Proposal;
-                await APIConnection.GetConnection.DeleteProposalAsync(obj.IdPp);
-                var dialog = new MessageDialog("The proposal has been deleted");
-                await dialog.ShowAsync();
+                if (Activities_lw.SelectedItem != null)
+                {
+                    Proposal obj = Activities_lw.SelectedItem as Proposal;
+                    await APIConnection.GetConnection.DeleteProposalAsync(obj.IdPp);
+                }
+
+                else
+                {
+
+                    var dialog = new MessageDialog("You have to select a proposal.");
+                    await dialog.ShowAsync();
+                }
+               
+               
             }
             catch (ProFindServicesException ex)
             {
                 if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
-                    var dialog = new MessageDialog("You have to select a proposal.");
+                    var dialog = new MessageDialog("The proposal has been deleted");
                     await dialog.ShowAsync();
                 }
                 else

@@ -60,26 +60,12 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage.CreatePage));
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            
-            if (Activities_lw.SelectedItem != null)
-            {
-                Proposal selectedProject = Activities_lw.SelectedItem as Proposal;
+     
+        
 
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage.UpdatePage), selectedProject);
-            }
-            else
-            {
-                // Validation content dialog
-                var dialog = new MessageDialog("You have to select a Proposal.");
-                await dialog.ShowAsync();
+     
 
-            }
-           
-        }
-
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -100,6 +86,24 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage
                     var dialog = new MessageDialog("You have to select an Proposal.");
                     await dialog.ShowAsync();
                 }
+            }
+        }
+
+        private async void Update_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            if (Activities_lw.SelectedItem != null)
+            {
+                Proposal selectedProject = Activities_lw.SelectedItem as Proposal;
+
+                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage.UpdatePage), selectedProject);
+            }
+            else
+            {
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Proposal.");
+                await dialog.ShowAsync();
+
             }
         }
     }
