@@ -8,18 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Padding="30">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="219*"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="231*" />
-            <ColumnDefinition Width="19*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="0*" />
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.RowSpan="2">
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
             <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
 
@@ -31,57 +29,59 @@
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-
-        <ListView
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
+            <SearchBox PlaceholderText="Search" />
+            <ListView
                     Grid.Column="0"
                     Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
                     SelectionMode="None" Margin="0,74,0,0" Grid.ColumnSpan="2">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models11:Activity">
-                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*"/>
-                                <ColumnDefinition Width="0.7*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <Image
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models11:Activity">
+                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Image
                                     Width="100"
                                     Height="100"
                                     Source="{Binding PictureAc, Converter={StaticResource ImageModelConverter}}" />
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
-                                <StackPanel>
-                                    <TextBlock Height="25" Text="{Binding TitleAc}"  Style="{StaticResource ListTitleStyle}"/>
                                 </StackPanel>
-                                <StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
+                                    <StackPanel>
+                                        <TextBlock Height="25" Text="{Binding TitleAc}"  Style="{StaticResource ListTitleStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel>
 
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
                                 FontWeight="Bold"
                                 Text="Description:" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding DescriptionAc}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding DescriptionAc}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
                                 FontWeight="Bold"
                                 Text=" Client :" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding IdPj1Navigation.IdP1Navigation.NameP }" />
-                                </StackPanel>
-                                <StackPanel
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding IdPj1Navigation.IdP1Navigation.NameP }" />
+                                    </StackPanel>
+                                    <StackPanel
                                      Grid.Column="1"
                                      HorizontalAlignment="Center"
                                       VerticalAlignment="Center">
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
+                            </Grid>
+                        </StackPanel>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

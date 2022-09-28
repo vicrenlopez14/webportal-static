@@ -7,12 +7,16 @@
     xmlns:services="using:ProFind.Lib.Global.Services"
     Style="{StaticResource PageStyle}">
 
-    <Grid>
+    <Grid Padding="30">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1469*" />
-            <ColumnDefinition Width="31*" />
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
             <AppBarButton Icon="Accept" Label="To accept" Click="Delete_Click_1"/>
 
             <AppBarButton Icon="Cancel" Label="Deny " Click="Add_Click_1"/>
@@ -26,58 +30,58 @@
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-
-        <ListView Name="Activities_lw" Grid.Column="0" Margin="8,57,3,1">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="services:Proposal">
-                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="0.7*" />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <Image
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
+            <ListView Name="Activities_lw">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="services:Proposal">
+                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*" />
+                                    <ColumnDefinition Width="0.7*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Image
                                     Width="100"
                                     Height="100"
                                     Source="{Binding PicturePp, Converter={StaticResource ImageModelConverter}}" />
-                            </StackPanel>
-                            <StackPanel
+                                </StackPanel>
+                                <StackPanel
                                 Grid.Column="1"
                                 Padding="0,30"
                                 Orientation="Vertical">
-                                <StackPanel>
-                                    <TextBlock
+                                    <StackPanel>
+                                        <TextBlock
                                         Height="25"
                                         Style="{StaticResource ListTitleStyle}"
                                         Text="{Binding TitlePp}" />
-                                </StackPanel>
-                                <StackPanel />
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Text="Description:" />
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontWeight="Bold" Text="Description:" />
+                                        <TextBlock
                                         Height="31"
                                         Margin="10,0,0,0"
                                         Text="{Binding DescriptionPp}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Text=" Professional :" />
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontWeight="Bold" Text=" Professional :" />
+                                        <TextBlock
                                         Height="31"
                                         Margin="10,0,0,0"
                                         Text="{Binding IdP3Navigation.NameP}" />
-                                </StackPanel>
-                                <StackPanel
+                                    </StackPanel>
+                                    <StackPanel
                                     Grid.Column="1"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

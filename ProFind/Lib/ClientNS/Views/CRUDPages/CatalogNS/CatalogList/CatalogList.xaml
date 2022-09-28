@@ -9,73 +9,87 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Padding="30">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
-        <ListView
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
+            
+            <AppBarButton Icon="Add" Label="Add Proposal " Click="Add_Click_1"/>
+         
+
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Setting"  Label="Settings">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
+            <SearchBox PlaceholderText="Search" />
+
+            <ListView
             Name="ProfessionalsListView"
-            Grid.Column="0"
+          
             ItemClick="ProjectsActiveListView_ItemClick">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="services:Professional">
-                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*" />
-                                <ColumnDefinition Width="0.7*" />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <Image
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="services:Professional">
+                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*" />
+                                    <ColumnDefinition Width="0.7*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Image
                                     Width="100"
                                     Height="100"
                                     Source="{Binding PictureP, Converter={StaticResource ImageModelConverter}}" />
-                            </StackPanel>
-                            <StackPanel
+                                </StackPanel>
+                                <StackPanel
                                 Grid.Column="1"
                                 Padding="0,30"
                                 Orientation="Vertical">
-                                <StackPanel>
-                                    <TextBlock
+                                    <StackPanel>
+                                        <TextBlock
                                         Height="25"
                                         Style="{StaticResource ListTitleStyle}"
                                         Text="Profession" />
-                                </StackPanel>
-                                <StackPanel />
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Text="Name:" />
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontWeight="Bold" Text="Name:" />
+                                        <TextBlock
                                         Height="31"
                                         Margin="10,0,0,0"
                                         Text="{Binding NameP}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Bold" Text="E-mail" />
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontWeight="Bold" Text="E-mail" />
+                                        <TextBlock
                                         Height="31"
                                         Margin="10,0,0,0"
                                         Text="{Binding EmailP}" />
-                                </StackPanel>
-                                <StackPanel
+                                    </StackPanel>
+                                    <StackPanel
                                     Grid.Column="1"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Button
-                Grid.Column="1"
-                Margin="0,15,0,0"
-                VerticalAlignment="Top"
-                Click="CreateProposalBtn_Click"
-                Content="Create Proposal"
-                Style="{StaticResource AccentButtonStyle}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
+
     </Grid>
 </Page>

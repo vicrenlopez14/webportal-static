@@ -102,5 +102,14 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.CatalogNS.CatalogList
                 GetProfessionalsList();
             }
         }
+
+        private void Add_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (ProfessionalsListView.SelectedItem != null)
+            {
+                var selectedProfessional = ProfessionalsListView.SelectedItem as Professional;
+                new InAppNavigationController().NavigateTo(typeof(Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage.CreatePage), selectedProfessional);
+            }
+        }
     }
 }

@@ -8,19 +8,20 @@
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
-    <Grid Margin="0,30,0,0">
+    <Grid  Padding="30">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1317*" />
-            <ColumnDefinition Width="115*"/>
-            <ColumnDefinition Width="68*"/>
-
-
-
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="2,-20,0,0" Height="40">
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
             <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
             <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+            <AppBarButton Icon="NewFolder" Label="Report "/>
 
 
             <CommandBar.SecondaryCommands>
@@ -31,7 +32,7 @@
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-        <StackPanel Orientation="Vertical" Margin="42,23,18,52" Grid.ColumnSpan="3">
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
             <ListView Grid.Column="0" Name="Activities_lw"  Grid.ColumnSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="services:Client">

@@ -8,12 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Padding="30">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="457*" />
-            <ColumnDefinition Width="43*" />
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Margin="-2,5,2,0" Height="48">
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
             <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
            
@@ -27,55 +31,57 @@
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-        <ListView Name="Activities_lw" Grid.Column="0" Margin="0,54,0,0">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models11:Proposal">
-                    <StackPanel Background="#F4FAE1" CornerRadius="15">
-                        <StackPanel
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
+            <ListView Name="Activities_lw">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models11:Proposal">
+                        <StackPanel Background="#F4FAE1" CornerRadius="15">
+                            <StackPanel
                             Width="300"
                             Height="27"
                             Margin="-95,20,0,0">
-                            <TextBlock Height="25" Text="{Binding TitlePp}" />
-                        </StackPanel>
-                        <Image
+                                <TextBlock Height="25" Text="{Binding TitlePp}" />
+                            </StackPanel>
+                            <Image
                             Width="100"
                             Height="100"
                             Margin="-2,-30,570,10"
                             Source="{Binding PicturePp, Converter={StaticResource ImageModelConverter}}" />
 
-                        <StackPanel
+                            <StackPanel
                             Width="20"
                             Height="22"
                             Margin="-425,-250,0,-70">
-                            <SymbolIcon Symbol="Contact2" />
-                        </StackPanel>
-                        <StackPanel
+                                <SymbolIcon Symbol="Contact2" />
+                            </StackPanel>
+                            <StackPanel
                             Width="340"
                             Height="23"
                             Margin="130,5">
-                            <TextBlock
+                                <TextBlock
                                 Height="23"
                                 Margin="-20,-190,3,-70"
                                 FontWeight="Bold"
                                 Text="Revision Status:" />
-                        </StackPanel>
-                        <StackPanel
+                            </StackPanel>
+                            <StackPanel
                             Width="340"
                             Height="20"
                             Margin="-20,-190,3,-70">
-                            <TextBlock Height="31" Text="{Binding RevisionStatus}" />
+                                <TextBlock Height="31" Text="{Binding RevisionStatus}" />
 
-                        </StackPanel>
-                        <StackPanel
+                            </StackPanel>
+                            <StackPanel
                          Grid.Column="1"
                          HorizontalAlignment="Center"
                           VerticalAlignment="Center">
-                            <Button Name="Add_btn" Click="Add_btn_Click">Update</Button>
+                                <Button Name="Add_btn" Click="Add_btn_Click">Update</Button>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
