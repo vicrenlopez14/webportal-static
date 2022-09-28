@@ -9,7 +9,7 @@
     Style="{StaticResource PageStyle}">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" CornerRadius="30" Padding="30" Background="WhiteSmoke" Height="270">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" CornerRadius="30" Padding="30" Height="270">
             <TextBlock Text="Enter your recovery code that was sent to your email" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
             <TextBlock Text="If you're email wasn't valid you won't get anything" HorizontalAlignment="Center" Style="{StaticResource DetailBodyBaseMediumStyle}"></TextBlock>
 

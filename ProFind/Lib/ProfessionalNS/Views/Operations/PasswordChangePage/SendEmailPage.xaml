@@ -9,7 +9,7 @@
     Style="{StaticResource PageStyle}">
     
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" Padding="30" CornerRadius="30">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Padding="30" CornerRadius="30">
             <TextBlock Text="Enter your email to send a recovery code for your password" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
 
             <TextBox x:Name="Email_tb" Margin="50 20 50 20"></TextBox>
