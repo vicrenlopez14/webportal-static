@@ -16,9 +16,9 @@
                         Name="PageTitle"
                         FontWeight="Bold"
                         Style="{StaticResource HeaderTextBlockStyle}"
-                        Text="Creation" />
+                        Text="Update" />
                     <TextBlock Name="PageSubtitle">
-                        Create a new Proposal.
+                        Uptade a new Proposal.
                     </TextBlock>
                     <muxc:PersonPicture
                         Name="SelectedPicture_pp"

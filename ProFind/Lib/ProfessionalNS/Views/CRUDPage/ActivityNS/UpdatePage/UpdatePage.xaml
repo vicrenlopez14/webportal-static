@@ -20,7 +20,7 @@
                     <TextBlock>
                         Update a new Activity.
                     </TextBlock>
-                    <Image
+                    <d:PersonPicture
                         Name="SelectedPicture_pp"
                         Width="100"
                         Height="100"

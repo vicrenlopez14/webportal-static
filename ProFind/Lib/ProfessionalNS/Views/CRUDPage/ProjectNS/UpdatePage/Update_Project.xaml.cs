@@ -50,7 +50,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void Cargar()
         {
-            SelectedPicture_pp.Source = await toManipulate.PicturePj.FromBase64String();
+            
             Title_tb.Text = toManipulate.TitlePj;
             Description_tb.Text = toManipulate.DescriptionPj;
             TotalPrice_tb.Text = toManipulate.TotalPricePj.ToString();
@@ -162,16 +162,28 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.UpdatePage
 
         private async void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
         {
-            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
-
-
-            if (imageString != null)
+            try
             {
-                SelectedPicture_tbk.Text = "Image correctly selected";
+
+
+                var file = await PickFileHelper.PickImage();
+
+                if (file != null)
+                {
+                    SelectedPicture_tbk.Text = file.Name;
+                    imageString = await file.ToBase64StringAsync();
+                    SelectedPicture_pp.ProfilePicture = await toManipulate.PicturePj.FromBase64String();
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SelectedPicture_tbk.Text = "No picture has been selected";
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+                PictureSelection_btn.IsChecked = false;
             }
         }
 

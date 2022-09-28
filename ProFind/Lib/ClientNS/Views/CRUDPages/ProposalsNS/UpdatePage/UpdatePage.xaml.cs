@@ -61,7 +61,29 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+
+                var file = await PickFileHelper.PickImage();
+
+                if (file != null)
+                {
+                    SelectedPicture_tbk.Text = file.Name;
+                    imageString = await file.ToBase64StringAsync();
+                    SelectedPicture_pp.ProfilePicture = await ToManipulate.PicturePp.FromBase64String();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+                PictureSelection_btn.IsChecked = false;
+            }
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
