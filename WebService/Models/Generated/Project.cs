@@ -15,7 +15,6 @@ namespace WebService.Models.Generated
         {
             Activities = new HashSet<Activity>();
             Notifications = new HashSet<Notification>();
-            Pays = new HashSet<Pay>();
             Tags = new HashSet<Tag>();
         }
 
@@ -31,10 +30,16 @@ namespace WebService.Models.Generated
         public string? DescriptionPj { get; set; }
         [Column("PicturePJ")]
         public string? PicturePj { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? StartDate { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? EndDate { get; set; }
         [Column("TotalPricePJ")]
         public float? TotalPricePj { get; set; }
         [Column("IsPaidPJ")]
         public bool? IsPaidPj { get; set; }
+        public bool? IsActive { get; set; }
+        public bool? Completed { get; set; }
         [Column("TagDurationPJ", TypeName = "int(11)")]
         public int? TagDurationPj { get; set; }
         [StringLength(21)]
@@ -52,8 +57,6 @@ namespace WebService.Models.Generated
         public virtual ICollection<Activity> Activities { get; set; }
         [InverseProperty("IdPj2Navigation")]
         public virtual ICollection<Notification> Notifications { get; set; }
-        [InverseProperty("IdPj4Navigation")]
-        public virtual ICollection<Pay> Pays { get; set; }
         [InverseProperty("IdPj1Navigation")]
         public virtual ICollection<Tag> Tags { get; set; }
     }

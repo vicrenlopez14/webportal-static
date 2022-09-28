@@ -25,6 +25,8 @@ namespace Reporter.Models.Generated
         public string? EmailC { get; set; }
         [StringLength(64)]
         public string? PasswordC { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? RegistrationDateC { get; set; }
         public string? PictureC { get; set; }
 
         [InverseProperty("IdC1Navigation")]

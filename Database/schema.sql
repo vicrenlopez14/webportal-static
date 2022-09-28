@@ -15,11 +15,12 @@ USE ProFind;
 
 CREATE TABLE Client
 (
-    IdC       CHAR(21) PRIMARY KEY,
-    NameC     VARCHAR(50),
-    EmailC    VARCHAR(255),
-    PasswordC CHAR(64),
-    PictureC  LONGTEXT
+    IdC               CHAR(21) PRIMARY KEY,
+    NameC             VARCHAR(50),
+    EmailC            VARCHAR(255),
+    PasswordC         CHAR(64),
+    RegistrationDateC DATETIME,
+    PictureC          LONGTEXT
 );
 
 SELECT *
@@ -46,13 +47,14 @@ FROM `Rank`;
 ###########################################
 CREATE TABLE Admin
 (
-    IdA       CHAR(21) PRIMARY KEY,
-    NameA     VARCHAR(50),
-    EmailA    VARCHAR(255) UNIQUE,
-    TelA      VARCHAR(15),
-    PasswordA CHAR(64),
-    PictureA  LONGTEXT,
-    IdR1      INT,
+    IdA           CHAR(21) PRIMARY KEY,
+    NameA         VARCHAR(50),
+    EmailA        VARCHAR(255) UNIQUE,
+    TelA          VARCHAR(15),
+    PasswordA     CHAR(64),
+    PictureA      LONGTEXT,
+    CreationDateA DATETIME,
+    IdR1          INT,
     FULLTEXT (NameA, EmailA, TelA),
     CONSTRAINT FK_Admin_Rank FOREIGN KEY (IdR1) REFERENCES `Rank` (IdR) ON DELETE CASCADE
 );
@@ -106,24 +108,24 @@ FROM Profession;
 ################################################
 CREATE TABLE Professional
 (
-    IdP         CHAR(21) PRIMARY KEY,
-    NameP       CHAR(50),
-    DateBirthP  DATETIME,
-    EmailP      CHAR(255),
-    PasswordP   CHAR(64),
-    ActiveP     BOOLEAN,
-    PhoneP      CHAR(15),
-    SexP        BOOLEAN,
-    DUIP        VARCHAR(15),
-    AFPP        VARCHAR(50),
-    ISSSP       VARCHAR(50),
-    ZipCodeP    VARCHAR(10),
-    SalaryP     FLOAT,
-    HiringDateP DATETIME,
-    PictureP    LONGTEXT,
-    CurriculumP LONGBLOB,
-    IdPFS1      INT,
-    IdDP1       INT,
+    IdP               CHAR(21) PRIMARY KEY,
+    NameP             CHAR(50),
+    DateBirthP        DATETIME,
+    EmailP            CHAR(255),
+    PasswordP         CHAR(64),
+    ActiveP           BOOLEAN,
+    PhoneP            CHAR(15),
+    SexP              BOOLEAN,
+    DUIP              VARCHAR(15),
+    AFPP              VARCHAR(50),
+    ISSSP             VARCHAR(50),
+    ZipCodeP          VARCHAR(10),
+    SalaryP           FLOAT,
+    HiringDateP       DATETIME,
+    PictureP          LONGTEXT,
+    CurriculumP       LONGBLOB,
+    IdPFS1            INT,
+    IdDP1             INT,
     CONSTRAINT FK_Professional_Profession FOREIGN KEY (IdPFS1) REFERENCES Profession (IdPFS) ON DELETE CASCADE,
     CONSTRAINT FK_Professional_Department FOREIGN KEY (IdDP1) REFERENCES Department (IdDP) ON DELETE CASCADE
 );
@@ -150,19 +152,19 @@ CREATE TABLE ChangePasswordCode
 ###############################################
 CREATE TABLE Project
 (
-    IdPJ           CHAR(21) PRIMARY KEY,
-    TitlePJ        VARCHAR(50),
-    DescriptionPJ  VARCHAR(50),
-    PicturePJ      LONGTEXT,
-    StartDate DATETIME,
-    EndDate   DATETIME,
-    TotalPricePJ   FLOAT,
-    IsPaidPJ       BOOLEAN,
-    IsActive       BOOLEAN,
-    Completed      BOOLEAN,
-    TagDurationPJ  INT,
-    IdP1           CHAR(21),
-    IdC1           CHAR(21),
+    IdPJ          CHAR(21) PRIMARY KEY,
+    TitlePJ       VARCHAR(50),
+    DescriptionPJ VARCHAR(50),
+    PicturePJ     LONGTEXT,
+    StartDate     DATETIME,
+    EndDate       DATETIME,
+    TotalPricePJ  FLOAT,
+    IsPaidPJ      BOOLEAN,
+    IsActive      BOOLEAN,
+    Completed     BOOLEAN,
+    TagDurationPJ INT,
+    IdP1          CHAR(21),
+    IdC1          CHAR(21),
     CONSTRAINT FK_Project_Professional FOREIGN KEY (IdP1) REFERENCES Professional (IdP) ON DELETE CASCADE,
     CONSTRAINT FK_Project_Client FOREIGN KEY (IdC1) REFERENCES Client (IdC) ON DELETE CASCADE
 );
