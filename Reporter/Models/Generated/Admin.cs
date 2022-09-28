@@ -27,6 +27,8 @@ namespace Reporter.Models.Generated
         [StringLength(64)]
         public string? PasswordA { get; set; }
         public string? PictureA { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? CreationDateA { get; set; }
         [Column(TypeName = "int(11)")]
         public int? IdR1 { get; set; }
 

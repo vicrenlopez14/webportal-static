@@ -1,3 +1,4 @@
+@using Reporter.Models.Generated
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -9,39 +10,74 @@
     <link rel="stylesheet" href="@Url.Content("~/css/index.css")"/>
 }
 
-@*Reports available to generate*@
-<div class="row">
-    <div class="col-md-12">
-        <h1>Reports</h1>
-        <hr/>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Registered professionals</h5>
-                        <p class="card-text">Review the registered professionals at the moment.</p>
-                        <a href="@Url.Action("RegisteredProfessionals", "Report")" class="btn btn-primary">Generate</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Registered clients</h5>
-                        <p class="card-text">Review the registered clients at the moment.</p>
-                        <a href="@Url.Action("RegisteredClients", "Report")" class="btn btn-primary">Generate</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Projects</h5>
-                        <p class="card-text">Created projects and their details</p>
-                        <a href="@Url.Action("CreatedProjects", "Report")" class="btn btn-primary">Generate</a>
-                    </div>
-                </div>
-            </div>
+
+@* List of professionals *@
+<div class="container-fluid bg-dark text-light p-4">
+    <!--    Title bar-->
+    <div class="row">
+        <div class="col-8">
+            <h1>ProFind</h1>
+            <h5>Reports portal</h5>
+        </div>
+        <div class="col-4">
+            <ul class="text-secondary">
+                <li>
+                    Avenida Aguilares 218 San Salvador CP, 1101, SV
+                </li>
+                <li>
+                    (503) 7852-2783
+                </li>
+                <li>
+                    Profind@Gmail.com
+                </li>
+            </ul>
         </div>
     </div>
+</div>
+
+<div class="bg-dark p-3 m-4 text-light">
+    ADMINISTRATORS
+</div>
+<div class="m-4">
+    <button type="button" class="btn btn-danger" id="download">
+        Download PDF
+    </button>
+</div>
+<!-- Table that show the projoects -->
+<table class="table table-striped table-hover m-4 p-3">
+    <thead>
+    <tr>
+        <th scope="col">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Projects involved in</th>
+        <th scope="col">Registration date</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var client in (ViewData["clients"]! as List<Client>)!)
+    {
+        <tr>
+            <th>
+                <img style="width: 100px; height: auto;" src="data:image/png;base64, @client.PictureC" alt="@(client.NameC + "'s profile picture")"/>
+            </th>
+            <th scope="row">@client.NameC</th>
+            <td>@client.EmailC</td>
+            <td>@(client.Projects.Count)</td>
+            <td>@(client.RegistrationDateC.Value.ToString())</td>
+            <td>
+                <button type="button" class="btn btn-success">
+                    <a class="text-light" style="text-decoration: none;" asp-action="ClientDetail" asp-route-id="@client.IdC">View</a>
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="bg-dark text-light p-2 m-4 align-items-center">
+    <b>
+        <p>CLIENTS REGISTERED</p>
+    </b>
+    <p>@((ViewData["clients"]! as List<Client>).Count)</p>
 </div>

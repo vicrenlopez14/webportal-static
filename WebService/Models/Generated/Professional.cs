@@ -31,6 +31,8 @@ namespace WebService.Models.Generated
         [StringLength(64)]
         public string? PasswordP { get; set; }
         public bool? ActiveP { get; set; }
+        [StringLength(15)]
+        public string? PhoneP { get; set; }
         public bool? SexP { get; set; }
         [Column("DUIP")]
         [StringLength(15)]
@@ -48,6 +50,8 @@ namespace WebService.Models.Generated
         public DateTime? HiringDateP { get; set; }
         public string? PictureP { get; set; }
         public byte[]? CurriculumP { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? RegistrationDateP { get; set; }
         [Column("IdPFS1", TypeName = "int(11)")]
         public int? IdPfs1 { get; set; }
         [Column("IdDP1", TypeName = "int(11)")]

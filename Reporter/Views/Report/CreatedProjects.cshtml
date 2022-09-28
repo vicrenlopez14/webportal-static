@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="@Url.Content("~/css/index.css")"/>
 }
 
+
 @* List of professionals *@
 <div class="container-fluid bg-dark text-light p-4">
     <!--    Title bar-->
@@ -35,25 +36,24 @@
 </div>
 
 <div class="bg-dark p-3 m-4 text-light">
-    PROJECTS
+    ADMINISTRATORS
 </div>
 <div class="m-4">
-    <button type="button" class="btn btn-danger">
-        <a asp-action="CreatedProjects">
-            Download PDF
-        </a>
+    <button type="button" class="btn btn-danger" id="download">
+        Download PDF
     </button>
 </div>
 <!-- Table that shoow the projoects -->
 <table class="table table-striped table-hover m-4 p-3">
     <thead>
     <tr>
-        <th scope="col">Project</th>
+        <th scope="col">Picture</th>
+        <th scope="col">Title</th>
         <th scope="col">Description</th>
-        <th scope="col">Status</th>
-        <th scope="col">Responsible Professional</th>
-        <th scope="col">Start date</th>
-        <th scope="col">End date</th>
+        <th scope="col">Description</th>
+        
+        <th scope="col">Phone number</th>
+        <th scope="col">Rank</th>
         <th scope="col">Action</th>
     </tr>
     </thead>
@@ -61,15 +61,16 @@
     @foreach (var project in (ViewData["projects"]! as List<Project>)!)
     {
         <tr>
-            <th scope="row">@project.TitlePj</th>
-            <td>@project.DescriptionPj</td>
-            <td>@project.IsActive</td>
-            <td>@(project.IdP1Navigation?.NameP ?? "Undefined")</td>
-            <td>@(project.StartDate.Value.Date.ToString())</td>
-            <td>@(project.EndDate.Value.Date.ToString())</td>
+            <th>
+                <img style="width: 100px; height: auto;" src="data:image/png;base64, @project.PictureA" alt="@(project.NameA + "'s profile picture")"/>
+            </th>
+            <th scope="row">@project.NameA</th>
+            <td>@project.EmailA</td>
+            <td>@project.TelA</td>
+            <td>@(project.IdR1Navigation?.NameR ?? "Undefined")</td>
             <td>
-                <button type="button" class="btn btn-primary">
-                    <a asp-action="ProjectDetail" asp-route-id="@project.IdPj">View</a>
+                <button type="button" class="btn btn-success">
+                    <a class="text-light" style="text-decoration: none;" asp-action="AdminDetail" asp-route-id="@project.IdA">View</a>
                 </button>
             </td>
         </tr>
@@ -78,7 +79,7 @@
 
 <div class="bg-dark text-light p-2 m-4 align-items-center">
     <b>
-        <p>TOTAL PRICE</p>
+        <p>ADMINS REGISTERED</p>
     </b>
-    <p>@(ViewData["totalPrice"]! as decimal?)!</p>
+    <p>@((ViewData["admins"]! as List<Admin>).Count)</p>
 </div>

@@ -23,7 +23,6 @@ namespace WebService.Data
         public virtual DbSet<Client> Clients { get; set; } = null!;
         public virtual DbSet<Department> Departments { get; set; } = null!;
         public virtual DbSet<Notification> Notifications { get; set; } = null!;
-        public virtual DbSet<Pay> Pays { get; set; } = null!;
         public virtual DbSet<Profession> Professions { get; set; } = null!;
         public virtual DbSet<Professional> Professionals { get; set; } = null!;
         public virtual DbSet<Project> Projects { get; set; } = null!;
@@ -154,22 +153,6 @@ namespace WebService.Data
                     .HasConstraintName("FK_Notification_Project");
             });
 
-            modelBuilder.Entity<Pay>(entity =>
-            {
-                entity.HasKey(e => e.IdPy)
-                    .HasName("PRIMARY");
-
-                entity.Property(e => e.IdPy).IsFixedLength();
-
-                entity.Property(e => e.IdPj4).IsFixedLength();
-
-                entity.HasOne(d => d.IdPj4Navigation)
-                    .WithMany(p => p.Pays)
-                    .HasForeignKey(d => d.IdPj4)
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK_Pay_Project");
-            });
-
             modelBuilder.Entity<Profession>(entity =>
             {
                 entity.HasKey(e => e.IdPfs)
@@ -188,6 +171,8 @@ namespace WebService.Data
                 entity.Property(e => e.NameP).IsFixedLength();
 
                 entity.Property(e => e.PasswordP).IsFixedLength();
+
+                entity.Property(e => e.PhoneP).IsFixedLength();
 
                 entity.HasOne(d => d.IdDp1Navigation)
                     .WithMany(p => p.Professionals)

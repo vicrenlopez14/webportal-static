@@ -38,7 +38,6 @@ public class AdminsController : ControllerBase
         return BadRequest(ModelState);
     }
 
-    
 
     // Login an Admin method
     // POST: api/Admins/Login
@@ -129,7 +128,8 @@ public class AdminsController : ControllerBase
             return NotFound();
         }
 
-        return await _context.Admins.Include(x => x.IdR1Navigation).ToListAsync();
+        var toIncludeAdmins = await _context.Admins.Include(x => x.IdR1Navigation).ToListAsync();
+        return toIncludeAdmins;
     }
 
     // GET: api/Admins/5

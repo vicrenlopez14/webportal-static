@@ -145,6 +145,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
                 ToCreateAdmin.IdA = "";
                 ToCreateAdmin.TelA = PhoneNumber_tb.Text;
+                ToCreateAdmin.NameA = Name_tb.Text;
+                ToCreateAdmin.EmailA = Email_tb.Text;
+                ToCreateAdmin.PasswordA = Password_pb.Password;
+                ToCreateAdmin.IdR1 = (Rank_cb.SelectedItem as Rank).IdR;
 
                 var result = await APIConnection.GetConnection.PostAdminAsync(ToCreateAdmin);
 
@@ -229,7 +233,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
 
         }
 
-        public async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
+        public async void PictureSelection_btn_Checked_2(object sender, RoutedEventArgs e)
         {
             try
             {

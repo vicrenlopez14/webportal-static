@@ -47,23 +47,28 @@
 <table class="table table-striped table-hover m-4 p-3">
     <thead>
     <tr>
+        <th scope="col">Picture</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Phone number</th>
         <th scope="col">Rank</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     @foreach (var admin in (ViewData["admins"]! as List<Admin>)!)
     {
         <tr>
+            <th>
+                <img style="width: 100px; height: auto;" src="data:image/png;base64, @admin.PictureA" alt="@(admin.NameA + "'s profile picture")"/>
+            </th>
             <th scope="row">@admin.NameA</th>
             <td>@admin.EmailA</td>
             <td>@admin.TelA</td>
             <td>@(admin.IdR1Navigation?.NameR ?? "Undefined")</td>
             <td>
-                <button type="button" class="btn btn-primary">
-                    <a asp-action="ProjectDetail" asp-route-id="@admin.IdA">View</a>
+                <button type="button" class="btn btn-success">
+                    <a class="text-light" style="text-decoration: none;" asp-action="AdminDetail" asp-route-id="@admin.IdA">View</a>
                 </button>
             </td>
         </tr>
@@ -72,7 +77,7 @@
 
 <div class="bg-dark text-light p-2 m-4 align-items-center">
     <b>
-        <p>TOTAL PRICE</p>
+        <p>ADMINS REGISTERED</p>
     </b>
-    <p>@(ViewData["totalPrice"]! as decimal?)!</p>
+    <p>@((ViewData["admins"]! as List<Admin>).Count)</p>
 </div>

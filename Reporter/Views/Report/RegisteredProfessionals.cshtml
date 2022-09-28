@@ -10,34 +10,94 @@
     <link rel="stylesheet" href="@Url.Content("~/css/index.css")"/>
 }
 
+
 @* List of professionals *@
-<div class="row">
-    <div class="col-md-12">
-        <h1>Created projects</h1>
-        <hr/>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
-            </tr>
-            </thead>
-            <tbody>
-            @* @foreach (var professional in (ViewData["professionals"] as List<Professional>)!) *@
-            @* { *@
-            @*     <tr> *@
-            @*         <td>@professional.NameP</td> *@
-            @*         <td>@professional.EmailP</td> *@
-            @*         <td>@professional.PhoneP</td> *@
-            @*         <td>@professional.Afpp</td> *@
-            @*         <td>@professional.Isssp</td> *@
-            @*         <td>@(professional.IdDp1Navigation?.NameDp ?? "Not specified")</td> *@
-            @*         <td>@(professional.IdPfs1Navigation?.NamePfs ?? "Not specified")</td> *@
-            @*     </tr> *@
-            @* } *@
-            </tbody>
-        </table>
+<div class="container-fluid bg-dark text-light p-4">
+    <!--    Title bar-->
+    <div class="row">
+        <div class="col-8">
+            <h1>ProFind</h1>
+            <h5>Reports portal</h5>
+        </div>
+        <div class="col-4">
+            <ul class="text-secondary">
+                <li>
+                    Avenida Aguilares 218 San Salvador CP, 1101, SV
+                </li>
+                <li>
+                    (503) 7852-2783
+                </li>
+                <li>
+                    Profind@Gmail.com
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
+<div class="bg-dark p-3 m-4 text-light">
+    ADMINISTRATORS
+</div>
+<div class="m-4">
+    <button type="button" class="btn btn-danger" id="download">
+        Download PDF
+    </button>
+</div>
+<!-- Table that show the projoects -->
+<table class="table table-striped table-hover m-4 p-3">
+    <thead>
+    <tr>
+        <th scope="col">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Birth Date</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Projects involved in</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Hiring Date</th>
+        <th scope="col">Department/State</th>
+        <th scope="col">Profession</th>
+        <th scope="col">Is active</th>
+        <th scope="col">DUI #</th>
+        <th scope="col">AFP #</th>
+        <th scope="col">ISSS #</th>
+        <th scope="col">ZipCode</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var professional in (ViewData["professionals"]! as List<Professional>)!)
+    {
+        <tr>
+            <th>
+                <img style="width: 100px; height: auto;" src="data:image/png;base64, @professional.PictureP" alt="@(professional.NameP + "'s profile picture")"/>
+            </th>
+            <th scope="row">@professional.NameP</th>
+            <td>@professional.EmailP</td>
+            <td>@professional.DateBirthP.ToString()</td>
+            <td>@professional.PhoneP</td>
+            <td>@(professional.Projects.Count)</td>
+            <td>@(professional.SalaryP)</td>
+            <td>@(professional.HiringDateP.Value.Date.ToString())</td>
+            <td>@(professional.IdDp1Navigation.NameDp)</td>
+            <td>@(professional.IdPfs1Navigation.NamePfs)</td>
+            <td>@((professional.ActiveP ?? false) ? "Yes" : "No")</td>
+            <td>@(professional.Duip)</td>
+            <td>@(professional.Afpp)</td>
+            <td>@(professional.Isssp)</td>
+            <td>@(professional.ZipCodeP)</td>
+            <td>
+                <button type="button" class="btn btn-success">
+                    <a class="text-light" style="text-decoration: none;" asp-action="ProfessionalDetail" asp-route-id="@professional.IdP">View</a>
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="bg-dark text-light p-2 m-4 align-items-center">
+    <b>
+        <p>PROFESSIONALS REGISTERED</p>
+    </b>
+    <p>@((ViewData["professionals"]! as List<Professional>).Count)</p>
+</div>
