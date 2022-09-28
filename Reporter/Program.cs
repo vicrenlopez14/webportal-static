@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Reporter.Data;
-using Rotativa.AspNetCore;
+using RotativaCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +34,5 @@ app.MapControllerRoute(
 app.MapControllers();
 
 IWebHostEnvironment env = app.Environment;
-RotativaConfiguration.Setup(env as Microsoft.AspNetCore.Hosting.IHostingEnvironment);
-
+// RotativaCore fork way of initializing setup
 app.Run();

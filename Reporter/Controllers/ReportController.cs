@@ -2,7 +2,7 @@
 using System.Text.Encodings.Web;
 using Microsoft.EntityFrameworkCore;
 using Reporter.Data;
-using Rotativa.NetCore;
+using RotativaCore;
 
 namespace Reporter.Controllers;
 
@@ -30,11 +30,23 @@ public class ReportController : Controller
         return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
     }
 
+    #region RegisteredAdmins
+
+    public IActionResult PrintRegisteredAdmins()
+    {
+        return new ActionAsPdf("RegisteredAdmins")
+        {
+            FileName = "RegisteredAdmins.pdf"
+        };
+    }
+
     public async Task<IActionResult> RegisteredAdmins()
     {
         ViewData["admins"] = await _context.Admins.ToListAsync();
         return View();
     }
+
+    #endregion
 
     public async Task<IActionResult> RegisteredProfessionals()
     {
@@ -42,9 +54,32 @@ public class ReportController : Controller
         return View();
     }
 
+
+    #region RegisteredClients
+
+    public ActionResult PrintRegisteredClients()
+    {
+        return new ActionAsPdf("RegisteredClients")
+        {
+            FileName = "RegisteredClients.pdf"
+        };
+    }
+
     public IActionResult RegisteredClients()
     {
         return View();
+    }
+
+    #endregion
+
+    #region CreatedProjects
+
+    public ActionResult PrintCreatedProjects()
+    {
+        return new ActionAsPdf("CreatedProjects")
+        {
+            FileName = "CreatedProjects.pdf"
+        };
     }
 
     public async Task<IActionResult> CreatedProjects()
@@ -56,6 +91,10 @@ public class ReportController : Controller
 
         return View();
     }
+
+    #endregion CreatedProjects
+
+    #region ProjectDetail
 
     public ActionResult PrintProjectDetail(string id)
     {
@@ -75,4 +114,6 @@ public class ReportController : Controller
 
         return View();
     }
+
+    #endregion
 }
