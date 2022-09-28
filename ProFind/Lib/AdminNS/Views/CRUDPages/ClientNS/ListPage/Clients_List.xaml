@@ -33,7 +33,7 @@
             </CommandBar.SecondaryCommands>
         </CommandBar>
         <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
-            <ListView Grid.Column="0" Name="Activities_lw"  Grid.ColumnSpan="2">
+            <ListView  Name="Activities_lw">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="services:Client">
                         <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
