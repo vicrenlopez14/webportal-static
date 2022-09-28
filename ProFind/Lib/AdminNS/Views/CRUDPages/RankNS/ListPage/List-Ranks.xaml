@@ -33,7 +33,7 @@
             </CommandBar.SecondaryCommands>
         </CommandBar>
         <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
-            <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged" />
+            <SearchBox PlaceholderText="Search" />
             <ListView
            
             Name="Ranks_lw"  
