@@ -8,13 +8,17 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid  Padding="30">
 
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*" />
-            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="49*" />
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="24*" />
         </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="2" Margin="0,0,10,0">
+        <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
             <AppBarButton Icon="Add" Label="Add" Click="AppBarButton_Click"/>
             <AppBarButton Icon="Edit" Label="Edit" Click="AppBarButton_Click_1"/>
             <AppBarButton Icon="Delete" Label="Delete" Click="AppBarButton_Click_2"/>
@@ -26,56 +30,59 @@
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-        <ListView
-            Grid.Column="0"
-            Name="Ranks_lw" Margin="10,53,0,10" Grid.ColumnSpan="2" 
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
+            <SearchBox PlaceholderText="Search" QueryChanged="SearchBox_QueryChanged" />
+            <ListView
+           
+            Name="Ranks_lw" 
            
             >
-            <ListView.ItemTemplate>
+                <ListView.ItemTemplate>
 
-                <DataTemplate x:DataType="services:Tag">
-                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.3*"/>
-                                <ColumnDefinition Width="0.7*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <Image
+                    <DataTemplate x:DataType="services:Tag">
+                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.7*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Image
                                     Width="100"
                                     Height="100"
                                     Source="https://kinsta.com/es/wp-content/uploads/sites/8/2018/02/Etiquetas-de-WordPress-1024x512.png" />
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
-                                <StackPanel>
-                                    <TextBlock Height="25" Text="Tags"  Style="{StaticResource ListTitleStyle}"/>
                                 </StackPanel>
-                                <StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Padding="0 30">
+                                    <StackPanel>
+                                        <TextBlock Height="25" Text="Tags"  Style="{StaticResource ListTitleStyle}"/>
+                                    </StackPanel>
+                                    <StackPanel>
 
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
                                 FontWeight="Bold"
                                 Text="Name:" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding NameT}" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="{Binding NameT}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
                                 FontWeight="Bold"
                                 Text="" />
-                                    <TextBlock Margin="10 0 0 0" Height="31" Text="" />
-                                </StackPanel>
-                                <StackPanel
+                                        <TextBlock Margin="10 0 0 0" Height="31" Text="" />
+                                    </StackPanel>
+                                    <StackPanel
                                      Grid.Column="1"
                                      HorizontalAlignment="Center"
                                       VerticalAlignment="Center">
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
+                            </Grid>
+                        </StackPanel>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

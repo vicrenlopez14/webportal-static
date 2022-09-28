@@ -22,6 +22,7 @@
             <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
             <AppBarButton Icon="Edit" Label="Edit " Click="Update_Click_1"/>
             <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+            <AppBarButton Icon="NewFolder" Label="Report "/>
             
 
             <CommandBar.SecondaryCommands>
