@@ -21,11 +21,11 @@
             <SearchBox PlaceholderText="Search"  />
 
             <ListView
-                    Grid.Column="0"
+                    
                     Name="ProjectsListView"
                     IsItemClickEnabled="True"
                    
-                    SelectionMode="None" Margin="0,74,0,0" Grid.ColumnSpan="2">
+                     >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models11:Activity">
                         <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">

@@ -32,10 +32,10 @@
         </CommandBar>
         <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
             <ListView
-                    Grid.Column="0"
+                   
                     Name="AdminsListView"
                     IsItemClickEnabled="True"
-                    SelectionMode="None">
+                  >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models1:Project">
                         <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
