@@ -52,7 +52,7 @@ namespace ProFind.Lib.Global.Helpers
 
         public static bool CheckName(string text)
         {
-            text = text.ToLower();
+            text = text.ToLower().Normalize(System.Text.NormalizationForm.FormD);
             foreach (char character in text)
             {
                 if ((character >= 'a' && character <= 'z') || character == ' ') continue;
@@ -77,7 +77,7 @@ namespace ProFind.Lib.Global.Helpers
             foreach (char character in number)
             {
                 if (character == '.') count++;
-                if ((character >= '0' && character <= '9') || (character == '.' && count<2)) continue;
+                if ((character >= '0' && character <= '9') || (character == '.' && count < 2)) continue;
                 return false;
             }
             return true;

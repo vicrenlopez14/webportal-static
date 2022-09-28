@@ -51,7 +51,7 @@
         <th scope="col">Title</th>
         <th scope="col">Description</th>
         <th scope="col">Description</th>
-        
+
         <th scope="col">Phone number</th>
         <th scope="col">Rank</th>
         <th scope="col">Action</th>
@@ -62,15 +62,15 @@
     {
         <tr>
             <th>
-                <img style="width: 100px; height: auto;" src="data:image/png;base64, @project.PictureA" alt="@(project.NameA + "'s profile picture")"/>
+                <img style="width: 100px; height: auto;" src="data:image/png;base64, @project.PicturePj" alt="@(project.TitlePj + "'s project picture")"/>
             </th>
-            <th scope="row">@project.NameA</th>
-            <td>@project.EmailA</td>
-            <td>@project.TelA</td>
-            <td>@(project.IdR1Navigation?.NameR ?? "Undefined")</td>
+            <th scope="row">@project.TitlePj</th>
+            <td>@project.DescriptionPj</td>
+            <td>@project.Completed</td>
+            <td>@(project.IdC1Navigation?.NameC ?? "Undefined")</td>
             <td>
                 <button type="button" class="btn btn-success">
-                    <a class="text-light" style="text-decoration: none;" asp-action="AdminDetail" asp-route-id="@project.IdA">View</a>
+                    <a class="text-light" style="text-decoration: none;" asp-action="AdminDetail" asp-route-id="@project.IdPj">View</a>
                 </button>
             </td>
         </tr>

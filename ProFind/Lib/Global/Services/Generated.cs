@@ -7427,6 +7427,9 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("pictureA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PictureA { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("creationDateA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset? CreationDateA { get; set; }
+
         [Newtonsoft.Json.JsonProperty("idR1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdR1 { get; set; }
 
@@ -7504,6 +7507,9 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("passwordC", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [System.ComponentModel.DataAnnotations.StringLength(64)]
         public string PasswordC { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("registrationDateC", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset? RegistrationDateC { get; set; }
 
         [Newtonsoft.Json.JsonProperty("pictureC", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PictureC { get; set; }
@@ -7583,28 +7589,6 @@ namespace ProFind.Lib.Global.Services
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
-    public partial class Pay
-    {
-        [Newtonsoft.Json.JsonProperty("idPy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(21)]
-        public string IdPy { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("paidPy", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? PaidPy { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("paidOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? PaidOn { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("idPj4", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [System.ComponentModel.DataAnnotations.StringLength(21)]
-        public string IdPj4 { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("idPj4Navigation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Project IdPj4Navigation { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.17.0.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Profession
     {
         [Newtonsoft.Json.JsonProperty("idPfs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -7644,6 +7628,10 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("activeP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? ActiveP { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("phoneP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.ComponentModel.DataAnnotations.StringLength(15)]
+        public string PhoneP { get; set; }
+
         [Newtonsoft.Json.JsonProperty("sexP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? SexP { get; set; }
 
@@ -7674,6 +7662,9 @@ namespace ProFind.Lib.Global.Services
 
         [Newtonsoft.Json.JsonProperty("curriculumP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public byte[] CurriculumP { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("registrationDateP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset? RegistrationDateP { get; set; }
 
         [Newtonsoft.Json.JsonProperty("idPfs1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? IdPfs1 { get; set; }
@@ -7730,11 +7721,23 @@ namespace ProFind.Lib.Global.Services
         [Newtonsoft.Json.JsonProperty("picturePj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PicturePj { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("startDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset? StartDate { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("endDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset? EndDate { get; set; }
+
         [Newtonsoft.Json.JsonProperty("totalPricePj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public float? TotalPricePj { get; set; }
 
         [Newtonsoft.Json.JsonProperty("isPaidPj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsPaidPj { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("isActive", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsActive { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("completed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? Completed { get; set; }
 
         [Newtonsoft.Json.JsonProperty("tagDurationPj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? TagDurationPj { get; set; }
@@ -7758,9 +7761,6 @@ namespace ProFind.Lib.Global.Services
 
         [Newtonsoft.Json.JsonProperty("notifications", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Notification> Notifications { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("pays", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.List<Pay> Pays { get; set; }
 
         [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<Tag> Tags { get; set; }

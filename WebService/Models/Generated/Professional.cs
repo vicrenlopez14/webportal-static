@@ -50,8 +50,6 @@ namespace WebService.Models.Generated
         public DateTime? HiringDateP { get; set; }
         public string? PictureP { get; set; }
         public byte[]? CurriculumP { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime? RegistrationDateP { get; set; }
         [Column("IdPFS1", TypeName = "int(11)")]
         public int? IdPfs1 { get; set; }
         [Column("IdDP1", TypeName = "int(11)")]

@@ -279,6 +279,9 @@
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\AdminReportsPage.xaml.cs">
+      <DependentUpon>AdminReportsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ListPageAdmin.xaml.cs">
       <DependentUpon>ListPageAdmin.xaml</DependentUpon>
     </Compile>
@@ -603,6 +606,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\AdminReportsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

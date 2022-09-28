@@ -59,6 +59,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             departamento.ItemsSource = await APIConnection.GetConnection.GetDepartmentsAsync();
             departamento.SelectedIndex = 0;
 
+            ProfilePicture_pp.ProfilePicture = await ToManipulateProfessional.PictureP.FromBase64String();
+
         }
         private void position_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
@@ -108,9 +110,18 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
         {
-            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
+            try
+            {
+                imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
+                ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
+            }
+            catch
+            {
+                // Message dialog
+                var dialog = new MessageDialog("Error while picking image.");
+                await dialog.ShowAsync();
+            }
 
-            ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
         }
 
         private void Selection_Sexo(object sender, SelectionChangedEventArgs e)
@@ -310,23 +321,23 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
         }
 
         private async void btnCancelar_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             await APIConnection.GetConnection.DeleteProfessionalAsync(ToManipulateProfessional.IdP);
         }
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
 
         private void Afp_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            
+
         }
 
         private void SeguroSocial_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            
+
         }
 
         private void TextBox_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -339,12 +350,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private void Email_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -406,6 +417,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             }
         }
 
-      
+
     }
 }

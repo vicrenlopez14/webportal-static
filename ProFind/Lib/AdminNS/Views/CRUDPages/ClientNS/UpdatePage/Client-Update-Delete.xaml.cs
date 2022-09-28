@@ -45,10 +45,12 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
             }
         }
 
-        private void FillFields()
+        private async void FillFields()
         {
             Name1_tbx.Text = toManipulateClient.NameC;
             Email_tbx.Text = toManipulateClient.EmailC;
+            Picture_img.ProfilePicture = await toManipulateClient.PictureC.FromBase64String();
+            
         }
 
         private void AddEvents()
@@ -63,7 +65,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
         private async Task Delete_btn_ClickAsync(object sender, RoutedEventArgs e)
         {
 
-            
+
         }
 
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
@@ -143,7 +145,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
             }
             catch (ProFindServicesException ex)
             {
-                if (ex.StatusCode == 200 || ex.StatusCode == 201 ||ex.StatusCode == 204)
+                if (ex.StatusCode == 200 || ex.StatusCode == 201 || ex.StatusCode == 204)
                 {
                     // Message dialog indicating success
                     var dialog = new MessageDialog("The client has been updated");
@@ -202,6 +204,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
             try
             {
                 toManipulateClient.PictureC = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
+                Picture_img.ProfilePicture = await toManipulateClient.PictureC.FromBase64String();
+
                 // Success message dialog
                 var dialog = new MessageDialog("The picture has been uploaded");
                 await dialog.ShowAsync();

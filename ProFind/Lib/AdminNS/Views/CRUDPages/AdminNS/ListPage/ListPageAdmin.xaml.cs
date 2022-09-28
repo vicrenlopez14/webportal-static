@@ -120,5 +120,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
         {
             new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
+
+        private void GenerateReport_btn_Click(object sender, RoutedEventArgs e)
+        {
+            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.AdminReportsPage));
+
+        }
     }
 }

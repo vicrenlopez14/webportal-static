@@ -29,10 +29,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(e.Parameter != null)
+            if (e.Parameter != null)
             {
                 toManipulate = e.Parameter as Admin;
                 loadUsefulthings();
+                AddEvents();
             }
         }
 
@@ -41,7 +42,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
             FirstName1_tbx.OnEnterNextField();
             Email_tbx.OnEnterNextField();
             Phone_tbx.OnEnterNextField();
-           
+
 
 
         }
@@ -51,6 +52,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
             FirstName1_tbx.Text = toManipulate.NameA;
             Email_tbx.Text = toManipulate.EmailA;
             Phone_tbx.Text = toManipulate.TelA;
+            Picture_img.ProfilePicture = await toManipulate.PictureA.FromBase64String();
+
         }
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
@@ -66,7 +69,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
         private async void Delete_btn_Click(object sender, RoutedEventArgs e)
         {
 
-            
+
 
         }
 
@@ -90,7 +93,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private void Email_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
 
         }
 
@@ -103,6 +106,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
                 if (file != null)
                 {
                     toManipulate.PictureA = await file.ToBase64StringAsync();
+                    Picture_img.ProfilePicture = await toManipulate.PictureA.FromBase64String();
                 }
             }
             catch (Exception ex)
@@ -113,17 +117,24 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
 
         private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            bool ChangeThePassword = false;
+
             if (!FieldsChecker.CheckEmail(Email_tbx.Text))
             {
                 var dialog = new MessageDialog("The email must be valid.");
                 await dialog.ShowAsync();
                 return;
             }
-            if (!FieldsChecker.CheckPassword(Password_tbx.Password))
+            if (string.IsNullOrEmpty(toManipulate.PasswordA) && !string.IsNullOrEmpty(Password_tbx.Password))
             {
-                var dialog = new MessageDialog("The password must be valid.");
-                await dialog.ShowAsync();
-                return;
+                if (!FieldsChecker.CheckPassword(Password_tbx.Password))
+                {
+                    var dialog = new MessageDialog("The password must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+
+                ChangeThePassword = true;
             }
             if (!FieldsChecker.CheckName(FirstName1_tbx.Text))
             {
@@ -131,14 +142,15 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
                 await dialog.ShowAsync();
                 return;
             }
-        
+
             try
             {
                 toManipulate.EmailA = Email_tbx.Text;
                 toManipulate.NameA = FirstName1_tbx.Text;
-                if(Password_tbx.Password.Length > 0) toManipulate.PasswordA = Password_tbx.Password;
+                if (Password_tbx.Password.Length > 0) toManipulate.PasswordA = Password_tbx.Password;
                 toManipulate.TelA = Phone_tbx.Text;
                 await APIConnection.GetConnection.PutAdminAsync(toManipulate.IdA, toManipulate);
+                await APIConnection.GetConnection.ChangePasswordAdminsAsync(toManipulate.EmailA, Password_tbx.Password);
                 var dialog = new MessageDialog("Admin updated successfully.");
                 await dialog.ShowAsync();
             }

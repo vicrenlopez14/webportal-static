@@ -50,8 +50,9 @@ public class ReportController : Controller
 
     #region RegisteredClients
 
-    public IActionResult RegisteredClients()
+    public async Task<IActionResult> RegisteredClients()
     {
+        ViewData["clients"] = await _context.Clients.ToListAsync();
         return View();
     }
 

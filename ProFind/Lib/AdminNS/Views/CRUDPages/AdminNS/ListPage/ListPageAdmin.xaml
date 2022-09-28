@@ -33,7 +33,7 @@
                     Icon="Add"
                     Label="Add " />
                 <AppBarSeparator />
-                <AppBarButton x:Name="GenerateReport_btn" Icon="NewFolder" Label="Report" />
+                <AppBarButton x:Name="GenerateReport_btn" Icon="NewFolder" Label="Report" Click="GenerateReport_btn_Click" />
 
                 <CommandBar.SecondaryCommands>
                     <AppBarButton Icon="Setting" Label="Settings">

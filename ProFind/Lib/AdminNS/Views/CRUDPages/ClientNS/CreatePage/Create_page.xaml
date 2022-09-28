@@ -75,7 +75,7 @@
                                 Width="150"
                                 HorizontalAlignment="Left"
                                
-                                Content="Select a picture" />
+                                Content="Select a picture" Checked="PictureSelection_btn_Checked_1" Click="PictureSelection_btn_Click" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"

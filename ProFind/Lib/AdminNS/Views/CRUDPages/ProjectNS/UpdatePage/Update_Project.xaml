@@ -20,7 +20,7 @@
                         <TextBlock>
                             Update an existant project.
                         </TextBlock>
-                        <Image
+                        <muxc:PersonPicture
                             Name="SelectedPicture_pp"
                             Width="100"
                             Height="100"

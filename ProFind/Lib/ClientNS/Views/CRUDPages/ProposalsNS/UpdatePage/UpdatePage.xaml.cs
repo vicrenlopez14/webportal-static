@@ -30,7 +30,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
     {
         private string imageString;
 
-        Proposal IPp;
+        Proposal ToManipulate;
         public UpdatePage()
         {
             this.InitializeComponent();
@@ -47,42 +47,21 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
             base.OnNavigatedTo(e);
             if (e.Parameter != null)
             {
-                IPp = (Proposal)e.Parameter;
+                ToManipulate = (Proposal)e.Parameter;
             }
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            Title_tb.Text = IPp.TitlePp;
-            Description_tb.Text = IPp.DescriptionPp;
-            Theend.Date = (DateTimeOffset)IPp.SuggestedEnd;
+            Title_tb.Text = ToManipulate.TitlePp;
+            Description_tb.Text = ToManipulate.DescriptionPp;
+            Theend.Date = (DateTimeOffset)ToManipulate.SuggestedEnd;
+            SelectedPicture_pp.ProfilePicture = await ToManipulate.PicturePp.FromBase64String();
         }
 
         private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
 
-
-                var file = await PickFileHelper.PickImage();
-
-                if (file != null)
-                {
-                    SelectedPicture_tbk.Text = file.Name;
-                    imageString = await file.ToBase64StringAsync();
-
-                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-
-                PictureSelection_btn.IsChecked = false;
-            }
         }
 
         private void Title_tb_TextChanged(object sender, TextChangedEventArgs e)
@@ -92,7 +71,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 
         private void Description_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
-           
+
 
         }
 
@@ -124,12 +103,12 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
             {
 
                 var loggedClient = LoggedClientStore.LoggedClient;
-                var toCreateAdmin = new Proposal { TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageString, IdPp = IPp.IdPp, IdC3 = loggedClient.IdC };
+                var toCreateAdmin = new Proposal { TitlePp = Title_tb.Text, DescriptionPp = Description_tb.Text, SuggestedEnd = (DateTimeOffset)Theend.Date, PicturePp = imageString, IdPp = ToManipulate.IdPp, IdC3 = loggedClient.IdC };
 
 
 
 
-                 await APIConnection.GetConnection.PutProposalAsync(IPp.IdPp, toCreateAdmin);
+                await APIConnection.GetConnection.PutProposalAsync(ToManipulate.IdPp, toCreateAdmin);
                 new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
 
 
@@ -146,13 +125,41 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.UpdatePage
 
         private async void Reset_btn_Click(object sender, RoutedEventArgs e)
         {
-            await APIConnection.GetConnection.DeleteProposalAsync(IPp.IdPp);
+            await APIConnection.GetConnection.DeleteProposalAsync(ToManipulate.IdPp);
             new GlobalNavigationController().NavigateTo(typeof(ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.ListPage.ListPAge));
         }
 
         private void Create_btn_Click_12(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().GoBack();
+        }
+
+        private async void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+
+
+                var file = await PickFileHelper.PickImage();
+
+                if (file != null)
+                {
+                    SelectedPicture_tbk.Text = file.Name;
+                    imageString = await file.ToBase64StringAsync();
+                    SelectedPicture_pp.ProfilePicture = await ToManipulate.PicturePp.FromBase64String();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+                PictureSelection_btn.IsChecked = false;
+            }
         }
     }
 }

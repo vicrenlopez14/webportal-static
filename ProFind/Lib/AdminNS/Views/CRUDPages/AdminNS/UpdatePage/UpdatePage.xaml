@@ -27,8 +27,8 @@
 
                         <StackPanel Grid.Row="0" Orientation="Vertical">
                             <TextBlock Margin="0,0,0,30" Style="{StaticResource SubheaderTextBlockStyle}">See, Update or Delete</TextBlock>
-                            <Image
-                                x:Name="Picture_img"
+                            <muxc:PersonPicture
+                                Name="Picture_img"
                                 Width="100"
                                 Height="100" />
                             <Button HorizontalAlignment="Center" Click="Button_Click_1">Change picture</Button>
@@ -38,19 +38,21 @@
                                 Margin="0,0,0,15"
                                 d:LayoutRounding="Auto"
                                 Header="First name"
+                                KeyDown="FirstName1_tbx_KeyDown"
                                 PlaceholderText="Name"
                                 RenderTransformOrigin="0.5,0.5"
-                                UseLayoutRounding="False" KeyDown="FirstName1_tbx_KeyDown" />
+                                UseLayoutRounding="False" />
                             <TextBox
-                            Name="Email_tbx"
-                            Width="460"
-                            Margin="0,0,0,15"
-                            d:LayoutRounding="Auto"
-                            Header="Email"
-                            PlaceholderText="Email"
-                            RenderTransformOrigin="0.5,0.5"
-                            UseLayoutRounding="False" KeyDown="Email_tbx_KeyDown" />
-                            
+                                Name="Email_tbx"
+                                Width="460"
+                                Margin="0,0,0,15"
+                                d:LayoutRounding="Auto"
+                                Header="Email"
+                                KeyDown="Email_tbx_KeyDown"
+                                PlaceholderText="Email"
+                                RenderTransformOrigin="0.5,0.5"
+                                UseLayoutRounding="False" />
+
                             <muxc:NumberBox
                                 Name="Phone_tbx"
                                 Margin="0,0,0,15"
@@ -82,26 +84,26 @@
 
                             <Button
                                 Name="Reset_btn"
-                                Margin="15" Click="Reset_btn_Click_1"
-                               >
+                                Margin="15"
+                                Click="Reset_btn_Click_1">
                                 Reset
                             </Button>
                             <Button
                                 Name="Update_btn"
-                                Margin="15" Click="Update_btn_Click_1"
-                               >
+                                Margin="15"
+                                Click="Update_btn_Click_1">
                                 Update
                             </Button>
                             <Button
                                 Name="Delete_btn"
-                                Margin="15" Click="Delete_btn_Click_1"
-                               >
+                                Margin="15"
+                                Click="Delete_btn_Click_1">
                                 Delete
                             </Button>
                             <Button
                                 Name="Back_btn"
-                                Margin="15" Click="Back_btn_Click_1"
-                               >
+                                Margin="15"
+                                Click="Back_btn_Click_1">
                                 Back
                             </Button>
                         </StackPanel>

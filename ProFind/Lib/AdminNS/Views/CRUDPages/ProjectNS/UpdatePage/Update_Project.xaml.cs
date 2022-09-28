@@ -57,7 +57,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
 
         private async void Cargar()
         {
-            SelectedPicture_pp.Source = await toManipulate.PicturePj.FromBase64String();
+            SelectedPicture_pp.ProfilePicture = await toManipulate.PicturePj.FromBase64String();
             Title_tb.Text = toManipulate.TitlePj;
             Description_tb.Text = toManipulate.DescriptionPj;
             TotalPrice_tb.Text = toManipulate.TotalPricePj.ToString();
@@ -155,7 +155,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
 
                 // Message dialog
                 var dialog = new MessageDialog(message);
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
             finally
             {
@@ -217,8 +217,10 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.UpdatePage
                     SelectedPicture_tbk.Text = selectedImage.Name;
 
                     imageString = await selectedImage.ToBase64StringAsync();
+     
+
                     toManipulate.PicturePj = imageString;
-                    SelectedPicture_pp.Source = await imageString.FromBase64String();
+                    SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
 
                 }
 

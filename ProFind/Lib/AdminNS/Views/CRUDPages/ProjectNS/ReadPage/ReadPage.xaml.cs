@@ -77,31 +77,42 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage
 
         private async void Delete_Click_2(object sender, RoutedEventArgs e)
         {
-            try
+            if (ProjectsListView.SelectedItem != null)
             {
-                var selectedProject = ProjectsListView.SelectedItem as Project;
-                await APIConnection.GetConnection.DeleteProjectAsync(selectedProject.IdPj);
-
-                var dialog = new MessageDialog("Project deleted successfully.");
-                await dialog.ShowAsync();
-            }
-            catch (ProFindServicesException ex)
-            {
-                if (ex.StatusCode == 204)
+                try
                 {
+                    var selectedProject = ProjectsListView.SelectedItem as Project;
+                    await APIConnection.GetConnection.DeleteProjectAsync(selectedProject.IdPj);
+
                     var dialog = new MessageDialog("Project deleted successfully.");
                     await dialog.ShowAsync();
                 }
-                else
+                catch (ProFindServicesException ex)
                 {
-                    var dialog = new MessageDialog("You have to select a project.");
-                    await dialog.ShowAsync();
+                    if (ex.StatusCode == 204)
+                    {
+                        var dialog = new MessageDialog("Project deleted successfully.");
+                        await dialog.ShowAsync();
+                    }
+                    else
+                    {
+                        var dialog = new MessageDialog("You have to select a project.");
+                        await dialog.ShowAsync();
+                    }
+                }
+                finally
+                {
+                    InitializeData();
                 }
             }
-            finally
+            else
             {
-                InitializeData();
+                // Validation content dialog
+                var dialog = new MessageDialog("You have to select a Project.");
+                await dialog.ShowAsync();
+
             }
+            
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
@@ -137,6 +137,35 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
             {
                 // Go back to clients list
                 new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage.Clients_List));
+            }
+        }
+
+        private void PictureSelection_btn_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void PictureSelection_btn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedImage = await PickFileHelper.PickImage();
+                SelectedPicture_tbk.Text = selectedImage.Name;
+
+                imageString = await selectedImage.ToBase64StringAsync();
+                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+            }
+            catch (Exception ex)
+            {
+                // friendly error dialog
+                var dialog = new MessageDialog("Image has not been loaded");
+                await dialog.ShowAsync();
+
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                PictureSelection_btn.IsChecked = false;
             }
         }
     }
