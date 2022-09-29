@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebService.Models.Generated
 {
-    [Table("rank")]
+    [Table("ranks")]
     [Index("NameR", Name = "NameR", IsUnique = true)]
     public partial class Rank
     {

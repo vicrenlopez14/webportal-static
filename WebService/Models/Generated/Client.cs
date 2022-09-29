@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebService.Models.Generated
 {
-    [Table("client")]
+    [Table("clients")]
     public partial class Client
     {
         public Client()
