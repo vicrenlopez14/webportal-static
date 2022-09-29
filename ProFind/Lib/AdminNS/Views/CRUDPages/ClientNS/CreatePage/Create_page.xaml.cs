@@ -150,10 +150,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage
             try
             {
                 var selectedImage = await PickFileHelper.PickImage();
-                SelectedPicture_tbk.Text = selectedImage.Name;
+                if (selectedImage != null)
+                {
+                    SelectedPicture_tbk.Text = selectedImage.Name;
 
-                imageString = await selectedImage.ToBase64StringAsync();
-                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+                    imageString = await selectedImage.ToBase64StringAsync();
+                    SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+                }
             }
             catch (Exception ex)
             {

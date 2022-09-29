@@ -78,7 +78,24 @@ namespace ProFind.Lib.ClientNS.Views.InitPage
 
         private async void btnExaminar_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
+            try
+            {
+
+
+                var file = await PickFileHelper.PickImage();
+
+                if (file != null)
+                {
+                    imageString = await (file).ToBase64StringAsync();
+                    ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
+                }
+            }
+            catch
+            {
+                {
+                    await new MessageDialog("Image not loaded").ShowAsync();
+                }
+            }
         }
 
         private async void Button_Click_4(object sender, Windows.UI.Xaml.RoutedEventArgs e)

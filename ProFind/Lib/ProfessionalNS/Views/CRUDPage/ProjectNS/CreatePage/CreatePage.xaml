@@ -21,11 +21,10 @@
                         <TextBlock>
                             Create a new project from zero.
                         </TextBlock>
-                        <Image
+                        <muxc:PersonPicture
                             x:Name="SelectedPicture_pp"
                             Width="100"
-                            Height="100"
-                            />
+                            Height="100" />
                         <StackPanel
                             Grid.Column="0"
                             HorizontalAlignment="Center"
@@ -35,9 +34,7 @@
                                 Grid.Column="0"
                                 Width="150"
                                 HorizontalAlignment="Left"
-                               
-                               
-                                Content="Select a picture" />
+                                Content="Select a picture" Click="PictureSelection_btn_Click_1" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"
@@ -48,52 +45,57 @@
                         <TextBox
                             x:Name="Title_tb"
                             Margin="0,30,0,0"
-                            PlaceholderText="Title" KeyDown="Title_tb_KeyDown"
-                             />
+                            KeyDown="Title_tb_KeyDown"
+                            PlaceholderText="Title" />
                         <TextBox
                             x:Name="Description_tb"
                             Margin="0,15,0,0"
-                            PlaceholderText="Description" KeyDown="Description_tb_KeyDown"
-                             />
+                            KeyDown="Description_tb_KeyDown"
+                            PlaceholderText="Description" />
                         <muxc:NumberBox
                             x:Name="TotalPrice_tb"
                             Margin="0,15,0,0"
-                            PlaceholderText="Total price" KeyDown="TotalPrice_tb_KeyDown"
-                            />
+                            KeyDown="TotalPrice_tb_KeyDown"
+                            PlaceholderText="Total price" />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="433*" />
                                 <ColumnDefinition Width="378*" />
-                                <ColumnDefinition Width="57*"/>
+                                <ColumnDefinition Width="57*" />
                                 <ColumnDefinition Width="433*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
                                 <TextBlock
-                                   FontWeight="Medium"
                                     Margin="0,22"
                                     HorizontalAlignment="Center"
-                                    d:Text="Selected professional" />
-                                <TextBlock Name="SelectedProfessional_tb" d:Text="Carlos Burgos" HorizontalAlignment="Center"></TextBlock>
+                                    d:Text="Selected professional"
+                                    FontWeight="Medium" />
+                                <TextBlock
+                                    Name="SelectedProfessional_tb"
+                                    HorizontalAlignment="Center"
+                                    d:Text="Carlos Burgos" />
 
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Orientation="Vertical">
                                 <TextBlock
-                                   FontWeight="Medium"
                                     Margin="0,22"
                                     HorizontalAlignment="Center"
-                                    d:Text="Selected client" />
-                                <TextBlock Name="SelectedClient_tb" d:Text="Daniel Alessandro" HorizontalAlignment="Center"></TextBlock>
+                                    d:Text="Selected client"
+                                    FontWeight="Medium" />
+                                <TextBlock
+                                    Name="SelectedClient_tb"
+                                    HorizontalAlignment="Center"
+                                    d:Text="Daniel Alessandro" />
                             </StackPanel>
 
                             <ComboBox
                                 Name="TagDuration_cbx"
                                 Grid.Column="3"
+                                Width="85"
                                 Margin="109,20,0,0"
                                 Header="Tag Duration"
-                                SelectedIndex="0" 
-                                Width="85"
-                                >
+                                SelectedIndex="0">
                                 <x:String>Short</x:String>
                                 <x:String>Medium</x:String>
                                 <x:String>Long</x:String>
@@ -104,10 +106,11 @@
                         <Button
                             x:Name="Create_btn"
                             Width="100"
-                            Content="Create"
-                            Margin="0 45 0 0"
+                            Margin="0,45,0,0"
                             HorizontalAlignment="Center"
-                            Style="{StaticResource AccentButtonStyle}" Click="Create_btn_Click_1" />
+                            Click="Create_btn_Click_1"
+                            Content="Create"
+                            Style="{StaticResource AccentButtonStyle}" />
 
 
 

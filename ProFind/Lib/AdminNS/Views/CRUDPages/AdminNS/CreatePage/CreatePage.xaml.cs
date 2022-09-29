@@ -238,11 +238,14 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.CreatePage
             try
             {
                 var selectedImage = await PickFileHelper.PickImage();
-                SelectedPicture_tbk.Text = selectedImage.Name;
+                if (selectedImage != null)
+                {
+                    SelectedPicture_tbk.Text = selectedImage.Name;
 
-                imageString = await selectedImage.ToBase64StringAsync();
-                ToCreateAdmin.PictureA = imageString;
-                SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+                    imageString = await selectedImage.ToBase64StringAsync();
+                    ToCreateAdmin.PictureA = imageString;
+                    SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
+                }
 
 
             }

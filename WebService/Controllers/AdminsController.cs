@@ -239,6 +239,8 @@ public class AdminsController : ControllerBase
 
         admin.AssignId();
         admin.PasswordA = ShaOperations.ShaPassword(admin.PasswordA);
+        admin.CreationDateA = DateTime.Now;
+
         _context.Admins.Add(admin);
         try
         {

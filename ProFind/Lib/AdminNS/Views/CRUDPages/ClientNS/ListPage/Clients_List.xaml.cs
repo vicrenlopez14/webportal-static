@@ -7,6 +7,7 @@ using ProFind.Lib.AdminNS.Controllers;
 using Windows.UI.Popups;
 using System;
 using System.Linq;
+using ProFind.Lib.Global.Helpers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,12 +36,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
 
 
         }
-
-       
-
-      
-
-       
 
         private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
         {
@@ -109,6 +104,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.ListPage
         private void Add_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.CreatePage.Create_page));
+        }
+
+        private void AppBarButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            URLOpenerUtil.OpenURL(@"https://localhost:7119/Report/RegisteredClients");
         }
     }
 }

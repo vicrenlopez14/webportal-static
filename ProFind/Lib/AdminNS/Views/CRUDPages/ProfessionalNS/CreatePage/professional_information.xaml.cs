@@ -138,7 +138,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void TxtAFP(object sender, TextChangedEventArgs e)
         {
-           
+
 
         }
 
@@ -208,11 +208,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
                     SalaryP = int.Parse(Salario.Text),
                     SexP = true,
                     PasswordP = passwordBox.Password,
+                    PhoneP = Phone_nb.Text,
                     ActiveP = Sexo.SelectedValue == "Male",
                     PictureP = imageString,
                     IdDp1 = (departamento.SelectedItem as Department).IdDp,
                     IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,
                     ZipCodeP = CodigoPostal.Text,
+                    CurriculumP = curriculumBytes,
                     HiringDateP = FechadeIngreso.Date
                 };
 
@@ -348,36 +350,42 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private async void btnExaminar_Click_1(object sender, RoutedEventArgs e)
         {
-            imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
+            var file = await PickFileHelper.PickImage();
+            if (file == null)
+            {
+                return;
+            }
+
+            imageString = await (file).ToBase64StringAsync();
 
             ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
         }
 
         private void FirstName1_tbx_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-         
+
 
         }
 
         private void Afp_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
 
         }
 
         private void SeguroSocial_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
 
         private void position_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
 
         private void CodigoPostal_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-           
+
         }
 
         private void Email_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -387,7 +395,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
 
         private void Salario_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-         
+
         }
 
         private void Nacimiento_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
@@ -416,6 +424,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.CreatePage
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(AdminNS.ListPage.ListPageAdmin));
+        }
+
+        private void Phone_nb_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+
         }
     }
 }

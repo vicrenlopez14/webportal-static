@@ -1,7 +1,9 @@
 ﻿using ProFind.Lib.AdminNS.Controllers;
 using ProFind.Lib.Global.Controllers;
+using ProFind.Lib.Global.Helpers;
 using ProFind.Lib.Global.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -73,29 +75,39 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
 
         private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
-            try
+            if ((AdminsListView.ItemsSource as List<Admin>).Count > 1)
             {
-                var obj = AdminsListView.SelectedItem as Admin;
-                await APIConnection.GetConnection.DeleteAdminAsync(obj.IdA);
-                var dialog = new MessageDialog("Admin deleted successfully.");
-                await dialog.ShowAsync();
-            }
-            catch (ProFindServicesException ex)
-            {
-                if (ex.StatusCode == 204)
+                try
                 {
+                    var obj = AdminsListView.SelectedItem as Admin;
+                    await APIConnection.GetConnection.DeleteAdminAsync(obj.IdA);
                     var dialog = new MessageDialog("Admin deleted successfully.");
                     await dialog.ShowAsync();
                 }
-                else
+                catch (ProFindServicesException ex)
                 {
-                    var dialog = new MessageDialog("You have to select an admin.");
-                    await dialog.ShowAsync();
+                    if (ex.StatusCode == 204)
+                    {
+                        var dialog = new MessageDialog("Admin deleted successfully.");
+                        await dialog.ShowAsync();
+                    }
+                    else
+                    {
+                        var dialog = new MessageDialog("You have to select an admin.");
+                        await dialog.ShowAsync();
+                    }
+                }
+                finally
+                {
+                    GetAdminsList();
                 }
             }
-            finally
+            else
             {
-                GetAdminsList();
+                {
+                    var dialog = new MessageDialog("You can't delete the last admin.");
+                    await dialog.ShowAsync();
+                }
             }
         }
 
@@ -121,10 +133,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage
             new InAppNavigationController().NavigateTo(typeof(CreatePage.CreatePage));
         }
 
-        private void GenerateReport_btn_Click(object sender, RoutedEventArgs e)
+        private async void GenerateReport_btn_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(Lib.AdminNS.Views.CRUDPages.AdminNS.ListPage.AdminReportsPage));
-
+            URLOpenerUtil.OpenURL(@"https://localhost:7119/Report/RegisteredAdmins");
         }
+
     }
 }
+

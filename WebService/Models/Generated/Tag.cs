@@ -15,8 +15,6 @@ namespace WebService.Models.Generated
         public string IdT { get; set; } = null!;
         [StringLength(50)]
         public string? NameT { get; set; }
-        [StringLength(6)]
-        public string? ColorT { get; set; }
         [Column("IdPJ1")]
         [StringLength(21)]
         public string? IdPj1 { get; set; }

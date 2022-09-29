@@ -42,7 +42,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new InAppNavigationController().NavigateTo(typeof(SendEmailPage));
+            new GlobalNavigationController().NavigateTo(typeof(SendEmailPage));
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)

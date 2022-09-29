@@ -190,6 +190,11 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.CreatePage
                 return;
             }
         }
+
+        private void PictureSelection_btn_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

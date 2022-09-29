@@ -81,13 +81,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-
-                            <Button
-                                Name="Reset_btn"
-                                Margin="15"
-                                Click="Reset_btn_Click_1">
-                                Reset
-                            </Button>
                             <Button
                                 Name="Update_btn"
                                 Margin="15"

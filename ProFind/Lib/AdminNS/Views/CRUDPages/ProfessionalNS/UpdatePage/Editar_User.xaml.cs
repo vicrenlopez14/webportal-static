@@ -186,6 +186,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            bool ChangeThePassword = false;
 
             if (ToManipulateProfessional != null)
             {
@@ -237,14 +238,46 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                     await dialog.ShowAsync();
                     return;
                 }
+                if (string.IsNullOrEmpty(ToManipulateProfessional.PasswordP) && !string.IsNullOrEmpty(passwordBox.Password))
+                {
+                    if (!FieldsChecker.CheckPassword(passwordBox.Password))
+                    {
+                        var dialog = new MessageDialog("The password must be valid.");
+                        await dialog.ShowAsync();
+                        return;
+                    }
+
+                    ChangeThePassword = true;
+                }
 
                 try
                 {
-                    var toCreateProfessions = new Professional { IdP = ToManipulateProfessional.IdP, NameP = FirstName1_tbx.Text, EmailP = Email.Text, Afpp = Afp.Text, Isssp = SeguroSocial.Text, Duip = Dui.Text, DateBirthP = (DateTimeOffset)Nacimiento.Date, SalaryP = int.Parse(Salario.Text), SexP = true, PasswordP = (string.IsNullOrEmpty(passwordBox.Password) ? ToManipulateProfessional.PasswordP : passwordBox.Password), ActiveP = Sexo.SelectedValue == "Male" ? true : false, PictureP = imageString, IdDp1 = (departamento.SelectedItem as Department).IdDp, IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs, ZipCodeP = CodigoPostal.Text, HiringDateP = (DateTimeOffset)FechadeIngreso.Date };
+                    var toCreateProfessions = new Professional
+                    {
+                        IdP = ToManipulateProfessional.IdP,
+                        NameP = FirstName1_tbx.Text,
+                        EmailP = Email.Text,
+                        Afpp = Afp.Text,
+                        Isssp = SeguroSocial.Text,
+                        Duip = Dui.Text,
+                        DateBirthP = (DateTimeOffset)Nacimiento.Date,
+                        SalaryP = int.Parse(Salario.Text),
+                        SexP = true,
+                        PasswordP = (string.IsNullOrEmpty(passwordBox.Password) ? ToManipulateProfessional.PasswordP : passwordBox.Password),
+                        ActiveP = Sexo.SelectedValue == "Male" ? true : false,
+                        CurriculumP = curriculumBytes,
+                        PhoneP = Phone_nb.Text,
+                        PictureP = imageString,
+                        IdDp1 = (departamento.SelectedItem as Department).IdDp,
+                        IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,
+                        ZipCodeP = CodigoPostal.Text,
+                        HiringDateP = (DateTimeOffset)FechadeIngreso.Date,
+                    };
 
 
                     await APIConnection.GetConnection.PutProfessionalAsync(ToManipulateProfessional.IdP, toCreateProfessions);
-
+                    if (ChangeThePassword)
+                        await APIConnection.GetConnection.ChangePasswordAsync(ToManipulateProfessional.EmailP, passwordBox.Password);
                     // Success message dialog
                     var dialog = new MessageDialog("The Professional has been updated successfully");
                     await dialog.ShowAsync();
@@ -258,6 +291,15 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                         await dialog.ShowAsync();
                     }
                     else
+                    {
+                        // Error message dialog
+                        var dialog = new MessageDialog("There was a problem updating the professional, pleasy try again later.");
+                        //"There was a problem updating the professional, pleasy try again later."
+                        await dialog.ShowAsync();
+                    }
+                }
+                catch
+                {
                     {
                         // Error message dialog
                         var dialog = new MessageDialog("There was a problem updating the professional, pleasy try again later.");

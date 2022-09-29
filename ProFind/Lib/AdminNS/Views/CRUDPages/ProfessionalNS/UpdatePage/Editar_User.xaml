@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="ProFind.Lib.ProfessionalNS.Views.CRUDPages.ProfessionalNS.UpdatePage"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
@@ -44,10 +44,10 @@
                                     Width="460"
                                     d:LayoutRounding="Auto"
                                     Header="Name"
+                                    KeyDown="FirstName1_tbx_KeyDown"
                                     PlaceholderText="Name"
                                     RenderTransformOrigin="0.5,0.5"
-                                    
-                                    UseLayoutRounding="False" KeyDown="FirstName1_tbx_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -58,8 +58,7 @@
                                     Margin="0,15,0,0"
                                     Header="Profession choice"
                                     RenderTransformOrigin="0.555,0.073"
-                                    SelectedIndex="0"
-                                   >
+                                    SelectedIndex="0">
                                     <x:String>Law firm</x:String>
                                     <x:String>Automotive services</x:String>
                                     <x:String>General medicine</x:String>
@@ -109,11 +108,8 @@
                             <muxc:TeachingTip
                                 x:Name="SucessfulCreation_tt"
                                 Title="Professional created successfuly!"
-                               
                                 ActionButtonContent="Go to log in"
-                               
                                 CloseButtonContent="Got it! Let me create more"
-                               
                                 IsLightDismissEnabled="True"
                                 PlacementMargin="20"
                                 PreferredPlacement="Auto"
@@ -130,19 +126,19 @@
                                     Name="btnExaminar"
                                     Margin="0,10,0,20"
                                     HorizontalAlignment="Center"
-                                   
+                                    Click="btnExaminar_Click_1"
                                     Content="Charge"
-                                    CornerRadius="5" Click="btnExaminar_Click_1" />
+                                    CornerRadius="5" />
                                 <TextBox
                                     Name="Afp"
                                     Grid.RowSpan="2"
                                     Margin="0,15,0,0"
                                     d:LayoutRounding="Auto"
                                     Header="AFP"
+                                    KeyDown="Afp_KeyDown"
                                     PlaceholderText="AFP"
                                     RenderTransformOrigin="0.6,0.536"
-                                    
-                                    UseLayoutRounding="False" KeyDown="Afp_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform
                                             Rotation="-0.195"
@@ -158,7 +154,6 @@
                                     Header="DUI #"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    
                                     UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
@@ -170,10 +165,10 @@
                                     Margin="0,15,0,0"
                                     d:LayoutRounding="Auto"
                                     Header="ISSS #"
+                                    KeyDown="SeguroSocial_KeyDown"
                                     PlaceholderText="Seguro"
                                     RenderTransformOrigin="0.5,0.5"
-                                    
-                                    UseLayoutRounding="False" KeyDown="SeguroSocial_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -184,16 +179,17 @@
                                     Height="73"
                                     Margin="0,15,0,0"
                                     VerticalAlignment="Top"
-                                    Header="Birth date" KeyDown="Nacimiento_KeyDown" />
+                                    Header="Birth date"
+                                    KeyDown="Nacimiento_KeyDown" />
                                 <TextBox
-                                    Margin="0,15,0,0"
                                     Name="position"
+                                    Margin="0,15,0,0"
                                     d:LayoutRounding="Auto"
                                     Header="Position in the company"
+                                    KeyDown="position_KeyDown"
                                     PlaceholderText="Position"
                                     RenderTransformOrigin="0.5,0.5"
-                                    
-                                    UseLayoutRounding="False" KeyDown="position_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -205,8 +201,7 @@
                                     Width="316"
                                     Margin="50,15,0,0"
                                     Header="Department/State"
-                                    PlaceholderText="San Salvador"
-                                   >
+                                    PlaceholderText="San Salvador">
                                     <x:String>Ahuachapán</x:String>
                                     <x:String>Cabañas</x:String>
                                     <x:String>Chalatenango</x:String>
@@ -228,23 +223,33 @@
                                     Margin="50,15,0,15"
                                     d:LayoutRounding="Auto"
                                     Header="Postal Code"
+                                    KeyDown="CodigoPostal_KeyDown"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    
-                                    UseLayoutRounding="False" KeyDown="CodigoPostal_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
                                 </TextBox>
+                                <muxc:NumberBox
+                                    Name="Phone_nb"
+                                    Grid.RowSpan="2"
+                                    Margin="50,15,0,15"
+                                    d:LayoutRounding="Auto"
+                                    Header="Phone number"
+                                    PlaceholderText="1234-5678"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    UseLayoutRounding="False" />
+
                                 <TextBox
                                     Name="Email"
                                     Margin="50,0,0,0"
                                     d:LayoutRounding="Auto"
                                     Header="Email"
+                                    KeyDown="Email_KeyDown"
                                     PlaceholderText="mail@example.com"
                                     RenderTransformOrigin="0.5,0.5"
-                                    
-                                    UseLayoutRounding="False" KeyDown="Email_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -255,8 +260,7 @@
                                     Margin="50,15,0,0"
                                     Header="Sex"
                                     PlaceholderText="Male"
-                                    SelectedIndex="0"
-                                   >
+                                    SelectedIndex="0">
                                     <x:String>Male</x:String>
                                     <x:String>Female</x:String>
                                 </ComboBox>
@@ -265,10 +269,10 @@
                                     Margin="50,15,0,0"
                                     d:LayoutRounding="Auto"
                                     Header="Base salary"
+                                    KeyDown="Salario_KeyDown"
                                     PlaceholderText=""
                                     RenderTransformOrigin="0.5,0.5"
-                                    
-                                    UseLayoutRounding="False" KeyDown="Salario_KeyDown">
+                                    UseLayoutRounding="False">
                                     <TextBox.RenderTransform>
                                         <CompositeTransform Rotation="-0.195" />
                                     </TextBox.RenderTransform>
@@ -280,17 +284,21 @@
                                         VerticalAlignment="Top"
                                         Header="Hiring date"
                                         PlaceholderText="Pick a date" />
-                                    <Button
-                                        Margin="5,0"
-                                        VerticalAlignment="Bottom"
-                                       >
+                                    <Button Margin="5,0" VerticalAlignment="Bottom">
                                         Today
                                     </Button>
                                 </StackPanel>
 
-                                <StackPanel Margin="50,15,0,0" Orientation="Horizontal" >
-                                    <Button Margin="0 0 15 0" Content="Select curriculum" Click="SelectCurriculum_Click_2" VerticalAlignment="Center"/>
-                                    <TextBlock Name="CurriculumInformation" d:Text="The curriculum has been uploaded." VerticalAlignment="Center"/>
+                                <StackPanel Margin="50,15,0,0" Orientation="Horizontal">
+                                    <Button
+                                        Margin="0,0,15,0"
+                                        VerticalAlignment="Center"
+                                        Click="SelectCurriculum_Click_2"
+                                        Content="Select curriculum" />
+                                    <TextBlock
+                                        Name="CurriculumInformation"
+                                        VerticalAlignment="Center"
+                                        d:Text="The curriculum has been uploaded." />
                                 </StackPanel>
 
                                 <StackPanel Margin="0,20" Orientation="Horizontal" />
@@ -313,9 +321,9 @@
                     Margin="50,0,0,0"
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
+                    Click="btnUpdate_Click"
                     Content="Update"
-                    CornerRadius="5" 
-                    Click="btnUpdate_Click" />
+                    CornerRadius="5" />
                 <Button
                     x:Name="btnCancelar"
                     Grid.Row="1"
@@ -331,9 +339,10 @@
                     Margin="0,0"
                     Padding="{StaticResource SmallLeftTopRightBottomMargin}"
                     VerticalAlignment="Top"
+                    Click="btnDelete_Click"
                     Content="Delete"
                     CornerRadius="5"
-                    RenderTransformOrigin="1.663,0.216" Click="btnDelete_Click" />
+                    RenderTransformOrigin="1.663,0.216" />
             </StackPanel>
 
         </Grid>

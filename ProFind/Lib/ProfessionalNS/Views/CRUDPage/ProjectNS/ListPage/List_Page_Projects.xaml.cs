@@ -46,7 +46,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProjectNS.ListPage
             try
             {
                 var obj = ProjectsListView.SelectedItem as Project;
-                new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ActivityNS.CreatePage.CreatePage), obj);
             }
             catch
             {

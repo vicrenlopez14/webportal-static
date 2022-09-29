@@ -26,7 +26,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
     /// </summary>
     public sealed partial class ListPageClient : Page
     {
-        Client id; 
+        Client id;
         public ListPageClient()
         {
             this.InitializeComponent();
@@ -51,7 +51,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
                 relatedClients.AddRange(relatedClientsForThisProject);
             }
 
-            Clients_lw.ItemsSource = relatedClients;
+            Clients_lw.ItemsSource = relatedClients.Distinct().ToList();
         }
 
         private void Add_btn_Click(object sender, RoutedEventArgs e)
@@ -75,6 +75,41 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.ListPage
         private void Search_btn_Click(object sender, RoutedEventArgs e)
         {
             new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.ProfessionalNS.Views.CRUDPage.ClientNS.SearchPage.SearchPageClient));
+        }
+
+        private async void SearchBox_QueryChanged(SearchBox sender, SearchBoxQueryChangedEventArgs args)
+        {
+            var loggedProfessional = LoggedProfessionalStore.LoggedProfessional;
+
+            // Major lists
+            var projects = await APIConnection.GetConnection.GetProjectsAsync();
+            var clients = await APIConnection.GetConnection.GetClientsAsync();
+
+            // Projects where loggedProfessional is related
+            var relatedProjects = projects.Where(p => p.IdP1 == loggedProfessional.IdP).ToList();
+
+            // Notifications where loggedProfessional is related through a project
+            var relatedClients = new List<Client>();
+            foreach (var project in projects)
+            {
+                var relatedClientsForThisProject = clients.Where(n => n.IdC == project.IdC1).ToList();
+                relatedClients.AddRange(relatedClientsForThisProject);
+            }
+
+            var filteredList = relatedClients.Distinct().ToList();
+
+
+            if (string.IsNullOrEmpty(sender.QueryText))
+            {
+                Clients_lw.ItemsSource = null;
+                Clients_lw.ItemsSource = filteredList;
+                return;
+            }
+
+            var newList = filteredList.Where(x => x.NameC.Contains(sender.QueryText));
+
+            Clients_lw.ItemsSource = null;
+            Clients_lw.ItemsSource = newList;
         }
     }
 }

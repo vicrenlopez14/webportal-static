@@ -20,7 +20,7 @@
                         <TextBlock>
                             Create a new project from zero.
                         </TextBlock>
-                        <Image
+                        <muxc:PersonPicture
                             x:Name="SelectedPicture_pp"
                             Width="100"
                             Height="100"
@@ -36,7 +36,7 @@
                                 HorizontalAlignment="Left"
                                
                                
-                                Content="Select a picture" Click="PictureSelection_btn_Click" />
+                                Content="Select a picture" Click="PictureSelection_btn_Click" Checked="PictureSelection_btn_Checked" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"

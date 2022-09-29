@@ -58,7 +58,7 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
                     SelectedPicture_tbk.Text = file.Name;
                     imageString = await file.ToBase64StringAsync();
 
-                    //SelectedPicture_pp.ProfilePicture = imageString.ToBitmapImage();
+                    SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
                 }
             }
             catch (Exception ex)
@@ -149,6 +149,11 @@ namespace ProFind.Lib.ClientNS.Views.CRUDPages.ProposalsNS.CreatePage
         {
             Title_tb.OnEnterNextField();
             Description_tb.OnEnterNextField();
+        }
+
+        private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

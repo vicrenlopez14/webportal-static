@@ -150,7 +150,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.AdminNS.UpdatePage
                 if (Password_tbx.Password.Length > 0) toManipulate.PasswordA = Password_tbx.Password;
                 toManipulate.TelA = Phone_tbx.Text;
                 await APIConnection.GetConnection.PutAdminAsync(toManipulate.IdA, toManipulate);
-                await APIConnection.GetConnection.ChangePasswordAdminsAsync(toManipulate.EmailA, Password_tbx.Password);
+                if (ChangeThePassword)
+                    await APIConnection.GetConnection.ChangePasswordAdminsAsync(toManipulate.EmailA, Password_tbx.Password);
                 var dialog = new MessageDialog("Admin updated successfully.");
                 await dialog.ShowAsync();
             }

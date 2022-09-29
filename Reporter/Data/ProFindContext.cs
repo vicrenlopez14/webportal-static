@@ -17,7 +17,6 @@ namespace Reporter.Data
         {
         }
 
-        public virtual DbSet<Activity> Activities { get; set; } = null!;
         public virtual DbSet<Admin> Admins { get; set; } = null!;
         public virtual DbSet<Changepasswordcode> Changepasswordcodes { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
@@ -43,22 +42,6 @@ namespace Reporter.Data
         {
             modelBuilder.UseCollation("utf8_general_ci")
                 .HasCharSet("utf8");
-
-            modelBuilder.Entity<Activity>(entity =>
-            {
-                entity.HasKey(e => e.IdAc)
-                    .HasName("PRIMARY");
-
-                entity.Property(e => e.IdAc).IsFixedLength();
-
-                entity.Property(e => e.IdPj1).IsFixedLength();
-
-                entity.HasOne(d => d.IdPj1Navigation)
-                    .WithMany(p => p.Activities)
-                    .HasForeignKey(d => d.IdPj1)
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK_Activity_Project");
-            });
 
             modelBuilder.Entity<Admin>(entity =>
             {

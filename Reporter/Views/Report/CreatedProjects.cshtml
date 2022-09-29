@@ -16,7 +16,7 @@
     <!--    Title bar-->
     <div class="row">
         <div class="col-8">
-            <h1>ProFind</h1>
+            <img src="~/img/profind-logo-dark-surface.png" width="350" alt="Logo"/>
             <h5>Reports portal</h5>
         </div>
         <div class="col-4">
@@ -36,7 +36,7 @@
 </div>
 
 <div class="bg-dark p-3 m-4 text-light">
-    ADMINISTRATORS
+    PROJECTS
 </div>
 <div class="m-4">
     <button type="button" class="btn btn-danger" id="download">
@@ -50,11 +50,14 @@
         <th scope="col">Picture</th>
         <th scope="col">Title</th>
         <th scope="col">Description</th>
-        <th scope="col">Description</th>
-
-        <th scope="col">Phone number</th>
-        <th scope="col">Rank</th>
-        <th scope="col">Action</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Is paid</th>
+        <th scope="col">¿Marked as complete?</th>
+        <th scope="col">Tag - Duration</th>
+        <th scope="col">Professional</th>
+        <th scope="col">Client</th>
     </tr>
     </thead>
     <tbody>
@@ -66,20 +69,20 @@
             </th>
             <th scope="row">@project.TitlePj</th>
             <td>@project.DescriptionPj</td>
-            <td>@project.Completed</td>
-            <td>@(project.IdC1Navigation?.NameC ?? "Undefined")</td>
-            <td>
-                <button type="button" class="btn btn-success">
-                    <a class="text-light" style="text-decoration: none;" asp-action="AdminDetail" asp-route-id="@project.IdPj">View</a>
-                </button>
-            </td>
+            <td>@project.StartDate.Value.Date.ToString()</td>
+            <td>@project.EndDate.Value.Date.ToString()</td>
+            <td>@project.TotalPricePj.Value.ToString()</td>
+            <td>@project.IsPaidPj.Value ? "Yes" : "No"</td>
+            <td>@project.TagDurationPj.ToString()</td>
+            <td>@project.IdP1Navigation.NameP</td>
+            <td>@project.IdC1Navigation.NameC</td>
         </tr>
     }
 </table>
 
 <div class="bg-dark text-light p-2 m-4 align-items-center">
     <b>
-        <p>ADMINS REGISTERED</p>
+        <p>PROJECTS CREATED</p>
     </b>
-    <p>@((ViewData["admins"]! as List<Admin>).Count)</p>
+    <p>@((ViewData["projects"]! as List<Project>).Count)</p>
 </div>

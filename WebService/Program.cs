@@ -1,7 +1,13 @@
+using System.Net;
 using System.Text.Json.Serialization;
 using Azure.Communication.Email;
+using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebService.Data;
 
@@ -27,18 +33,33 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+
+builder.Services.AddHttpLogging(logging =>
+{
+    // Customize HTTP logging.
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestHeaders.Add("My-Request-Header");
+    logging.ResponseHeaders.Add("My-Response-Header");
+    logging.MediaTypeOptions.AddText("application/javascript");
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+});
+
+
 var app = builder.Build();
+
+app.UseHttpLogging();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    
     app.UseSwagger(o =>
     {
-     o.PreSerializeFilters.Add((swagger, httpReq) =>
-     {
-         swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"{httpReq.Scheme}://{httpReq.Host.Value}" } };
-     });   
+        o.PreSerializeFilters.Add((swagger, httpReq) =>
+        {
+            swagger.Servers = new List<OpenApiServer>
+                { new OpenApiServer { Url = $"{httpReq.Scheme}://{httpReq.Host.Value}" } };
+        });
     });
     app.UseSwaggerUI(c => c.DisplayOperationId());
 }

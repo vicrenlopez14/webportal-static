@@ -19,14 +19,22 @@
             <muxc:NavigationView.PaneCustomContent>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.3*"/>
-                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.3*" />
+                        <ColumnDefinition Width="0.7*" />
                     </Grid.ColumnDefinitions>
 
-                    <muxc:PersonPicture x:Name="LoggedUser_pp" Grid.Column="0" Margin="10" Width="50" />
+                    <muxc:PersonPicture
+                        x:Name="LoggedUser_pp"
+                        Grid.Column="0"
+                        Width="50"
+                        Margin="10" />
 
                     <StackPanel Grid.Column="1">
-                        <TextBlock Name="LoggedUserName_tb" d:Text="Víctor López" Style="{StaticResource DetailBodyStyle}" FontWeight="Bold"/>
+                        <TextBlock
+                            Name="LoggedUserName_tb"
+                            d:Text="Víctor López"
+                            FontWeight="Bold"
+                            Style="{StaticResource DetailBodyStyle}" />
                         <TextBlock Name="LoggedUserEmail_tb" d:Text="vicren.lopez@outlook.com" />
                     </StackPanel>
                 </Grid>
@@ -35,45 +43,45 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItemHeader Content="ProFind.Work" />
                 <muxc:NavigationViewItem
-                        Content="Catalog"
-                        FontWeight="Medium"
-                        Tag="Catalog_Page" >
+                    Content="Catalog"
+                    FontWeight="Medium"
+                    Tag="Catalog_Page">
                     <muxc:NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="Find"/>
+                        <SymbolIcon Symbol="Find" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <!--Projects overview-->
-                <muxc:NavigationViewItem
-                    Content="Projects overview"
-                    Tag="ProjectsOverview_Page" >
+                <!--  Projects overview  -->
+                <muxc:NavigationViewItem Content="Projects overview" Tag="ProjectsOverview_Page">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;" />
                     </muxc:NavigationViewItem.Icon>
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem
-                        Content="Projects"
-                        Icon="Calendar"
-                        Tag="Projects_Page_Clients" />
+                            Content="Projects"
+                            Icon="Calendar"
+                            Tag="Projects_Page_Clients" />
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
-                <!--Professionals-->
+                <!--  Professionals  -->
                 <muxc:NavigationViewItem
-                            Content="Professionals"
-                            Icon="People"
-                            Tag="Professionals_Page_Clients" />
-                <!--Notification center-->
-                <muxc:NavigationViewItem
-                    Content="Notification center"
-                    Tag="Projecttype_Page">
+                    Content="Professionals"
+                    Icon="People"
+                    Tag="Professionals_Page_Clients" />
+                <!--  Notification center  -->
+                <muxc:NavigationViewItem Content="Notification center" Tag="Projecttype_Page">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7E7;" />
                     </muxc:NavigationViewItem.Icon>
                     <muxc:NavigationViewItem.MenuItems>
                         <muxc:NavigationViewItem
                             Content="General"
-                            Tag="GeneralNotifications_Page_Clients">
+                            Tag="GeneralNotifications_Page_Clients"
+                            Visibility="Collapsed">
                             <muxc:NavigationViewItem.InfoBadge>
-                                <muxc:InfoBadge x:Name="Projects_ib" Value="0" Opacity="1"/>
+                                <muxc:InfoBadge
+                                    x:Name="Projects_ib"
+                                    Opacity="1"
+                                    Value="0" />
                             </muxc:NavigationViewItem.InfoBadge>
                         </muxc:NavigationViewItem>
                     </muxc:NavigationViewItem.MenuItems>

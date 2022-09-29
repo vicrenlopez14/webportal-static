@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.UI.Popups;
 
 namespace ProFind.Lib.Global.Helpers
 {
@@ -32,7 +33,12 @@ namespace ProFind.Lib.Global.Helpers
             picker.FileTypeFilter.Add(".jpeg");
             picker.FileTypeFilter.Add(".png");
             var file = await picker.PickSingleFileAsync();
-            if (file == null) return null;
+            if (file == null)
+            {
+                // Content dialog
+                await new MessageDialog("No image has been loaded").ShowAsync();
+                return null;
+            }
 
             return file;
         }
@@ -56,13 +62,26 @@ namespace ProFind.Lib.Global.Helpers
             //Filters PDF files in the documents library.
             picker.FileTypeFilter.Add(".pdf");
             var file = await picker.PickSingleFileAsync();
-            if (file == null) return null;
-           
+            if (file == null)
+            {
+                // Content dialog
+                await new MessageDialog("No PDF has been loaded").ShowAsync();
+                return null;
+            }
+
+
             return await file.ToByteArrayAsync();
         }
 
-        public  static PdfLoadedDocument ToPdfLoadedDocument(this byte[] file)
+        public static PdfLoadedDocument ToPdfLoadedDocument(this byte[] file)
         {
+            if (file == null)
+            {
+                // Content dialog
+                new MessageDialog("No PDF has been loaded").ShowAsync();
+                return null;
+            }
+
             return new PdfLoadedDocument(file);
         }
     }

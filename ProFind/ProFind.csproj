@@ -270,17 +270,8 @@
     <Compile Include="Application\Current.cs" />
     <Compile Include="Lib\AdminNS\Controllers\AdminNavigationController.cs" />
     <Compile Include="Lib\AdminNS\Controllers\LoggedAdminStore.cs" />
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\ListaPage\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\UpdatePage\UpdatePage.xaml.cs">
-      <DependentUpon>UpdatePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml.cs">
       <DependentUpon>CreatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\AdminReportsPage.xaml.cs">
-      <DependentUpon>AdminReportsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\ListPageAdmin.xaml.cs">
       <DependentUpon>ListPageAdmin.xaml</DependentUpon>
@@ -379,9 +370,6 @@
       <DependentUpon>SendEmailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ClientNS\Controllers\LoggedClientStore.cs" />
-    <Compile Include="Lib\ClientNS\Views\CRUDPages\ActivityNs\ListPage\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\CatalogList\CatalogList.xaml.cs">
       <DependentUpon>CatalogList.xaml</DependentUpon>
     </Compile>
@@ -445,6 +433,7 @@
     <Compile Include="Lib\Global\Helpers\StorageFileToByteArrayExtension.cs" />
     <Compile Include="Lib\Global\Helpers\TextBoxExtension.cs" />
     <Compile Include="Lib\Global\Helpers\ThemeHelper.cs" />
+    <Compile Include="Lib\Global\Helpers\URLOpenerUtil.cs" />
     <Compile Include="Lib\Global\Services\APIConnection.cs" />
     <Compile Include="Lib\Global\Services\Generated.cs" />
     <Compile Include="Lib\Global\Services\Models\Admin.cs" />
@@ -457,7 +446,6 @@
     <Compile Include="Lib\Global\Services\Models\Proposal.cs" />
     <Compile Include="Lib\Global\Services\Models\Rank.cs" />
     <Compile Include="Lib\Global\Services\Models\Notification.cs" />
-    <Compile Include="Lib\Global\Services\ReportDownloader.cs" />
     <Compile Include="Lib\Global\Views\About_Page\About_Page.xaml.cs">
       <DependentUpon>About_Page.xaml</DependentUpon>
     </Compile>
@@ -495,15 +483,6 @@
       <DependentUpon>ServerNotAvailablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ProfessionalNS\Controllers\LoggedProfessionalStore.cs" />
-    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePage.xaml.cs">
-      <DependentUpon>CreatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\UpdatePage\UpdatePage.xaml.cs">
-      <DependentUpon>UpdatePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Lib\ProfessionalNS\Views\CRUDPage\AdminNS\ChatPage\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
@@ -597,19 +576,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\ListaPage\ListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\ActivityNs\UpdatePage\UpdatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\CreatePage\CreatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\AdminNS\Views\CRUDPages\AdminNS\ListPage\AdminReportsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -741,10 +708,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lib\ClientNS\Views\CRUDPages\ActivityNs\ListPage\ListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Lib\ClientNS\Views\CRUDPages\CatalogNS\CatalogList\CatalogList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -854,18 +817,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\Global\Views\ServerNotAvailable\ServerNotAvailablePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\CreatePage\CreatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\ListPage\ListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Lib\ProfessionalNS\Views\CRUDPage\ActivityNS\UpdatePage\UpdatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

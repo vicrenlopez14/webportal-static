@@ -51,7 +51,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if(e.Parameter != null)
+            if (e.Parameter != null)
             {
                 InComingProposal = (Proposal)e.Parameter;
             }
@@ -61,8 +61,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private async void Cargar()
         {
-                     
-            
+
+
 
         }
 
@@ -70,13 +70,15 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         {
             try
             {
-               
+
 
                 var file = await PickFileHelper.PickImage();
 
                 if (file != null)
                 {
-                  imageString  = await file.ToBase64StringAsync();
+                    imageString = await file.ToBase64StringAsync();
+                    SelectedPicture_tbk.Text = file.Name;
+                    SelectedPicture_pp.ProfilePicture = await imageString.FromBase64String();
                 }
             }
             catch (Exception ex)
@@ -85,7 +87,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
             }
             finally
             {
-                
+
                 PictureSelection_btn.IsChecked = false;
             }
         }
@@ -100,7 +102,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private void TotalPrice_tb_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            
+
         }
 
         private async void Create_btn_Click(object sender, RoutedEventArgs e)
@@ -117,19 +119,19 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
                 await dialog.ShowAsync();
                 return;
             }
-           
+
             try
             {
                 var LoggendPro = LoggedProfessionalStore.LoggedProfessional;
                 var toCreateClien = new Project { IdPj = "", TitlePj = Title_tb.Text, DescriptionPj = Description_tb.Text, PicturePj = imageString, TotalPricePj = int.Parse(TotalPrice_tb.Text), IsPaidPj = false, TagDurationPj = Tag_cb.SelectedIndex, IdP1 = LoggendPro.IdP, IdC1 = InComingProposal.IdC3 };
                 var result = await APIConnection.GetConnection.PostProjectAsync(toCreateClien);
-                var dialog = new MessageDialog("The proposal was accepted.");
+                var dialog = new MessageDialog("The proposal was accepted and project created.");
                 await dialog.ShowAsync();
                 DeleteProposal();
             }
             catch (ProFindServicesException ex)
             {
-                if(ex.StatusCode>=200 && ex.StatusCode <= 205)
+                if (ex.StatusCode >= 200 && ex.StatusCode <= 205)
                 {
                     var dialog = new MessageDialog("The proposal was accepted.");
                     await dialog.ShowAsync();
@@ -145,11 +147,6 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
             {
                 new InAppNavigationController().NavigateTo(typeof(ProFind.Lib.AdminNS.Views.CRUDPages.ProjectNS.ReadPage.ReadPage));
             }
-
-           
-
-
-
         }
 
 
@@ -157,8 +154,8 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
         {
             try
             {
-                await APIConnection.GetConnection.DeleteProposalAsync(InComingProposal.IdPp);
-                
+                await APIConnection.GetConnection.DeleteProposalAsync(id: InComingProposal.IdPp);
+
             }
             catch (ProFindServicesException ex)
             {
@@ -167,7 +164,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
                 }
                 else
                 {
-                    var dialog = new MessageDialog("There was a problem while deleting the proposal, try again later.");
+                    var dialog = new MessageDialog("There was a problem while deleting the proposal, even so, the project was crated, try again later.");
                     await dialog.ShowAsync();
                 }
             }
@@ -184,7 +181,12 @@ namespace ProFind.Lib.ProfessionalNS.Views.CRUDPage.ProposalNS.Accept_or_Deny
 
         private void Tag_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
+        }
+
+        private void PictureSelection_btn_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -50,7 +50,7 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
             Name1_tbx.Text = toManipulateClient.NameC;
             Email_tbx.Text = toManipulateClient.EmailC;
             Picture_img.ProfilePicture = await toManipulateClient.PictureC.FromBase64String();
-            
+
         }
 
         private void AddEvents()
@@ -112,6 +112,8 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
 
         private async void Update_btn_Click_1(object sender, RoutedEventArgs e)
         {
+            bool ChangeThePassword = false;
+
             if (string.IsNullOrEmpty(Name1_tbx.Text))
             {
 
@@ -131,13 +133,25 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ClientNS.UpdatePage
                 await dialog.ShowAsync();
                 return;
             }
+            if (string.IsNullOrEmpty(toManipulateClient.PasswordC) && !string.IsNullOrEmpty(Password_tbx.Password))
+            {
+                if (!FieldsChecker.CheckPassword(Password_tbx.Password))
+                {
+                    var dialog = new MessageDialog("The password must be valid.");
+                    await dialog.ShowAsync();
+                    return;
+                }
+
+                ChangeThePassword = true;
+            }
             try
             {
                 toManipulateClient.EmailC = Email_tbx.Text;
                 toManipulateClient.NameC = Name1_tbx.Text;
                 if (Password_tbx.Password.Length > 0) toManipulateClient.PasswordC = Password_tbx.Password;
-                await APIConnection.GetConnection.PutClientAsync(toManipulateClient.IdC, toManipulateClient);
-
+                await APIConnection.GetConnection.PutClientAsync(toManipulateClient.IdC, body: toManipulateClient);
+                if (ChangeThePassword)
+                    await APIConnection.GetConnection.ChangePasswordClientAsync(toManipulateClient.EmailC, Password_tbx.Password);
                 // Message dialog indicating success
                 var dialog = new MessageDialog("The client has been updated");
                 await dialog.ShowAsync();

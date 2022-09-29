@@ -56,7 +56,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
                 }
             } finally
             {
-                new InAppNavigationController().NavigateTo(typeof(CodeVerification), email);
+                new GlobalNavigationController().NavigateTo(typeof(CodeVerification), email);
                 
             }
         }
