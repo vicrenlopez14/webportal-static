@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="ProFind.Lib.ClientNS.Views.Operations.Chat.ChatScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ProFind.Lib.ClientNS.Views.Operations.Chat"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Style="{StaticResource PageStyle}"
+    mc:Ignorable="d">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="0.1*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <muxc:PersonPicture Name="PersonProfilePicture_pp" Margin="0,0,15,0" />
+            <TextBlock
+                Name="PersonName"
+                VerticalAlignment="Center"
+                d:Text="Alessandro Morales"
+                Style="{StaticResource SubheaderTextBlockStyle}" />
+            <StackPanel />
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <ListView x:Name="InvertedListView" ItemTemplate="{StaticResource MessageViewTemplate}">
+
+                <!--  The ItemsStackPanel must be edited to update the following two properties  -->
+                <!--  These properties allow the list to grow from the bottom  -->
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsStackPanel VerticalAlignment="Bottom" ItemsUpdatingScrollMode="KeepLastItemInView" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <!--  This setter property is created so ListViewItems correctly align to the left or right.  -->
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate  x:DataType="">
+                        <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
+                            <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{x:Bind BgColor}" CornerRadius="{StaticResource ControlCornerRadius}">
+                                <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                                <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemControlForegroundAltMediumHighBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.85" />
+                <ColumnDefinition Width="0.15" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" />
+            <Button
+                Grid.Column="1"
+                AutomationProperties.Name="Pie"
+                Click="Button_Click">
+                <muxc:AnimatedIcon x:Name="SearchAnimatedIcon">
+                    <muxc:AnimatedIcon.Source>
+                        <animatedvisuals:AnimatedFindVisualSource />
+                    </muxc:AnimatedIcon.Source>
+                    <muxc:AnimatedIcon.FallbackIconSource>
+                        <muxc:SymbolIconSource Symbol="Send" />
+                    </muxc:AnimatedIcon.FallbackIconSource>
+                </muxc:AnimatedIcon>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

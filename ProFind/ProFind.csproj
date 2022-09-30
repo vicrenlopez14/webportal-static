@@ -208,6 +208,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Azure.Communication.Chat">
+      <Version>1.1.1</Version>
+    </PackageReference>
     <PackageReference Include="JsonSubTypes">
       <Version>1.9.0</Version>
     </PackageReference>
@@ -409,6 +412,9 @@
     <Compile Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml.cs">
       <DependentUpon>Main_Page_Client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ClientNS\Views\Operations\Chat\ChatScreen.xaml.cs">
+      <DependentUpon>ChatScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClientNS\Views\Operations\PasswordChangePage\CodeVerification.xaml.cs">
       <DependentUpon>CodeVerification.xaml</DependentUpon>
     </Compile>
@@ -440,6 +446,7 @@
     <Compile Include="Lib\Global\Services\Models\Client.cs" />
     <Compile Include="Lib\Global\Services\Models\DateOnly.cs" />
     <Compile Include="Lib\Global\Services\Models\Department.cs" />
+    <Compile Include="Lib\Global\Services\Models\Message.cs" />
     <Compile Include="Lib\Global\Services\Models\Profession.cs" />
     <Compile Include="Lib\Global\Services\Models\Professional.cs" />
     <Compile Include="Lib\Global\Services\Models\Project.cs" />
@@ -757,6 +764,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Lib\ClientNS\Views\Main_Page\Main_Page_Client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lib\ClientNS\Views\Operations\Chat\ChatScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
