@@ -24,6 +24,7 @@ namespace ProFind.Lib.ClientNS.Views.Operations.Chat
     {
         public ChatScreen()
         {
+            // a
             this.InitializeComponent();
         }
 
