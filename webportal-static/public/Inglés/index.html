@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    
+     <script src="//code.tidio.co/8sdqglhkmvvlgw0xc2jfjljoopfaqufk.js" async></script>
+    <link rel="stylesheet" href="Inglés/css/style.css" />
+    <title>ProFInd</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+   
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+  <div class="container">
+      <a href="#" class="navbar-brand">ProFind - Home</a>
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navmenu"
+      >
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a href="index.html" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a href="./Download/download.html" class="nav-link">Downloads</a>
+              </li>
+              
+              <li class="nav-item">
+                  <a href="./About/About.html" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="../Español/Español.html"  class="nav-link">Español</a>
+            </li>
+
+          </ul>
+      </div>
+  </div>
+</nav>
+
+    <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+      <div class="container" id="inicio">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1>About us <span class="text-warning"> ProFInd </span></h1>
+            <p class="lead my-4">
+              The temporary hiring of professionals and services, safely
+  
+            </p>
+            
+          </div>
+          <img class="img-fluid w-50 d-none d-sm-block" src="Inglés/Images/showcase.svg" alt="" />
+        </div>
+      </div>
+    </section>
+  
+    
+  
+  
+  
+  
+  
+  
+    <section id="learn" class="p-5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md">
+            <img class="Anima2 d-none d-sm-block" src="https://mentee.es/wp-content/uploads/2022/01/objetivos-especificos.png" width="500px" height="250px" alt="" />
+          </div>
+          <div class="col-md-5 text-center my-auto">
+            <h2>ProFind</h2>
+            <p class="lead">
+  
+               Can be described as a software that is aimed at making the temporary hiring of professionals by 
+              individuals more efficient and comfortable, making the monitoring by the client of the situation that their 
+              processes have with the hired professionals easier and faster, this is made up of a web application and a desktop application.
+            </p>
+  
+           
+  
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container"> 
+      <div class="row flex-row-reverse" id="contactanos">
+        <div class="col-md-6 text-center">
+            <img src="Inglés/Images/App.jpeg" style="border-radius: 25px;"  class="img-fluid anima" width="430px" height="180px" alt="travelers">
+        </div>
+        <div class="col-md-5 text-center my-auto">
+          <h2>The desktop application</h2>
+        
+            <p>Will have three different views, both for the client, the administrator and the professional. 
+              The client's view would open up the project itself, this would include the process of agreeing terms, 
+              contract, professional remuneration, as well as the monitoring of processes that would be carried out in
+               the project agreed by the client.</p>
+        </div>
+    
+  
+    <section id="questions" class="p-5">
+      <div class="container">
+        <h2 class="text-center p-5 bg-dark text-light">Frequent questions
+        </h2>
+        <div class="accordion accordion-flush" id="questions">
+  
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#question-one">
+                What is ProFind?
+              </button>
+            </h2>
+            <div id="question-one" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="p-5 bg-dark text-light">
+  
+                ProFind is a company whose mission is to contract temporary services and to ensure this service 
+                from start to finish.
+  
+  
+              </div>
+            </div>
+          </div>
+  
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#question-two">
+                How to get the services? 
+              </button>
+            </h2>
+            <div id="question-two" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="p-5 bg-dark text-light">
+                It will be possible to obtain the services with a desktop application that will have many tools 
+                while shielding better options for the client.
+              </div>
+            </div>
+          </div>
+  
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#question-three">
+                What will the desktop application do for them?
+              </button>
+            </h2>
+            <div id="question-three" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="p-5 bg-dark text-light">
+                The application will be for the contracting of the services that you want, you can also be notified of your 
+                service as it goes and you can make your payments from the application.
+              </div>
+            </div>
+          </div>
+  
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#question-four">
+                What benefits will the application have?
+              </button>
+            </h2>
+            <div id="question-four" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="p-5 bg-dark text-light">
+                A much faster method of contracting service, having real-time information on how your service is going.
+              </div>
+            </div>
+          </div>
+  
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#question-five">
+                How to download the application?
+              </button>
+            </h2>
+            <div id="question-five" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="p-5 bg-dark text-light">
+                It can only be downloaded from the Microsoft store.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="instructors" class="p-5">
+      <div class="container">
+        <h2 class="text-center card-title">Developers</h2>
+        
+      
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                  <h3 class="card-title mb-3"> Victor  <br>López</h3>
+                  <p class="card-text">
+                    <br>
+                    Age: 16 year
+                    <br>
+                    School: Institute Thecnical Ricaldone
+                  </p>
+                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                  <h3 class="card-title mb-3"> Fernando <br> González</h3>
+                  <p class="card-text">
+                    <br>
+                    Age: 17 year
+                    <br>
+                    School: Institute Thecnical Ricaldone
+                  </p>
+                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <h3 class="card-title mb-3"> Susan <br> Castillo</h3>
+                <p class="card-text">
+                  <br>
+                  Age: 17 year
+                  <br>
+                  School: Institute Thecnical Ricaldone
+                </p>
+                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                  <h3 class="card-title mb-3"> Daniel <br> Morales</h3>
+                  <p class="card-text">
+                    <br>
+                    Age: 17 year
+                    <br>
+                    School: Institute Thecnical Ricaldone
+                  </p>
+                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+          <center>
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                  <h3 class="card-title mb-3"> Carlos <br>Burgos</h3>
+                  <p class="card-text">
+                    <br>
+                    Age: 17 year
+                    <br>
+                    School: Institute Thecnical Ricaldone
+                  </p>
+                <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </center>
+      </div>
+    </section>
+    <br>
+    <section class="p-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md">
+            <h2 class="text-center mb-4">Company Address</h2>
+            <ul class="list-group list-group-flush lead">
+              <li class="list-group-item">
+                <span class="fw-bold">Company Address:</span> Avenida Aguilares 218 San Salvador CP, 1101
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Phone:</span> (503) 8572-179
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Landline:</span> (503) 2372-6024
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Hours:</span> 8 A.M
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">E-mail:</span>
+                SoporteCliente@ProFInd.com
+              </li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section id="Soporte" class="p-5">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md">
+          
+         
+    </section>
+
+   
+   
+</div>
+
+
+</div>
+</diV>
+
+
+<div class="Coinater-fluid">
+  <div class="row mt-5 p-5 bg-dark text-white align-items-center justify-content-center">
+      <div class="col-xs-12 col-md-6 col-lg-3">
+          <p class="h3">ProFind</p>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+          <p class="h5">Email address</p>
+          <div class="mb-2">
+              <a class="text-secondary text-decoration-none" href="#">Profind@gmail.com</a>
+          </div>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+          <img src="Inglés/Images/Logo.png" width="300">
+      </div>
+  </div>
+</div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+  
+    <script>
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoiYWxlc3MwODIyIiwiYSI6ImNsNnBlN3VwZzBnaW0zZHQ1a3pibDd0azQifQ.KWuG0r86sFONs5Xzupky8w'
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/aless0822/cl6pep5ye002b14mnojig2895',
+        center: [-89.204577, 13.723029],
+        zoom: 16,
+      })
+    </script>
+    
+  </body>
+  
+  </html>
