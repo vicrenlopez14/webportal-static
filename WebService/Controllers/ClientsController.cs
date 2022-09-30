@@ -71,7 +71,7 @@ public class ClientsController : ControllerBase
     }
 
     // POST: api/Admins/SendRecoveryEmail
-    [HttpPost("SendRecoveryEmail")]
+    [HttpPost("SendRecoveryEmail/{email}")]
     public async Task<IActionResult> SendRecoveryEmailClients(string email)
     {
         if (ModelState.IsValid)

@@ -87,15 +87,11 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
             }
         }
 
-        private void AutoComplete()
+        private async void AutoComplete()
         {
+            ProfilePicture_pp.ProfilePicture = await ToManipulateProfessional.PictureP.FromBase64String();
             FirstName1_tbx.Text = ToManipulateProfessional.NameP;
-            if (ToManipulateProfessional.IdPfs1 == 1) profession_cbx.SelectedIndex = 0;
-
-            if (ToManipulateProfessional.IdPfs1 == 2) profession_cbx.SelectedIndex = 2;
-
-            if (ToManipulateProfessional.IdPfs1 == 3) profession_cbx.SelectedIndex = 3;
-
+            profession_cbx.SelectedItem = ToManipulateProfessional.IdPfs1Navigation;
             Afp.Text = ToManipulateProfessional.Afpp;
             SeguroSocial.Text = ToManipulateProfessional.Isssp;
             Dui.Text = ToManipulateProfessional.Duip;
@@ -112,7 +108,13 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
         {
             try
             {
-                imageString = await (await PickFileHelper.PickImage()).ToBase64StringAsync();
+                var file = await PickFileHelper.PickImage();
+                if (file == null)
+                {
+                    return;
+                }
+
+                imageString = await (file).ToBase64StringAsync();
                 ProfilePicture_pp.ProfilePicture = await imageString.FromBase64String();
             }
             catch
@@ -232,12 +234,6 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                     await dialog.ShowAsync();
                     return;
                 }
-                if (!FieldsChecker.CheckPassword(passwordBox.Password))
-                {
-                    var dialog = new MessageDialog("The password must be valid.");
-                    await dialog.ShowAsync();
-                    return;
-                }
                 if (string.IsNullOrEmpty(ToManipulateProfessional.PasswordP) && !string.IsNullOrEmpty(passwordBox.Password))
                 {
                     if (!FieldsChecker.CheckPassword(passwordBox.Password))
@@ -267,12 +263,17 @@ namespace ProFind.Lib.AdminNS.Views.CRUDPages.ProfessionalNS.UpdatePage
                         ActiveP = Sexo.SelectedValue == "Male" ? true : false,
                         CurriculumP = curriculumBytes,
                         PhoneP = Phone_nb.Text,
-                        PictureP = imageString,
+                        
                         IdDp1 = (departamento.SelectedItem as Department).IdDp,
                         IdPfs1 = (profession_cbx.SelectedItem as Profession).IdPfs,
                         ZipCodeP = CodigoPostal.Text,
                         HiringDateP = (DateTimeOffset)FechadeIngreso.Date,
                     };
+
+                    if (imageString != null)
+                    {
+                        toCreateProfessions.PictureP = imageString;
+                    }
 
 
                     await APIConnection.GetConnection.PutProfessionalAsync(ToManipulateProfessional.IdP, toCreateProfessions);

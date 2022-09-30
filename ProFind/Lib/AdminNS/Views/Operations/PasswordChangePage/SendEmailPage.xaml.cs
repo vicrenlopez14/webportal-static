@@ -56,6 +56,10 @@ namespace ProFind.Lib.AdminNS.Views.Operations.PasswordChangePage
                 {
                     new GlobalNavigationController().NavigateTo(typeof(CodeVerification), email);
                 }
+
+            }
+            catch (Exception ex)
+            { 
             }
             finally
             {

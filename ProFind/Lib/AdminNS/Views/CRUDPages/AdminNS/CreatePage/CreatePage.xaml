@@ -79,7 +79,8 @@
                                 Grid.Column="0"
                                 Width="150"
                                 HorizontalAlignment="Left"
-                                Content="Select a picture" Checked="PictureSelection_btn_Checked_2" />
+                                Checked="PictureSelection_btn_Checked_2"
+                                Content="Select a picture" />
                             <TextBlock
                                 Name="SelectedPicture_tbk"
                                 Margin="10,0,0,0"

@@ -60,7 +60,7 @@ public class AdminsController : ControllerBase
     }
 
     // POST: api/Admins/SendRecoveryEmail
-    [HttpPost("SendRecoveryEmail")]
+    [HttpPost("SendRecoveryEmail/{email}")]
     public async Task<IActionResult> SendRecoveryEmailAdmins(string email)
     {
         if (ModelState.IsValid)

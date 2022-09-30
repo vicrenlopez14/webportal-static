@@ -50,6 +50,9 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
             try
             {
                 await APIConnection.GetConnection.VerifyRecoveryCodeProfessionalsAsync(Code_tb.Text);
+                new GlobalNavigationController().NavigateTo(typeof(PasswordChangePage), email);
+                
+
 
             }
             catch (ProFindServicesException ex)
@@ -63,11 +66,7 @@ namespace ProFind.Lib.ProfessionalNS.Views.Operations.PasswordChangePage
                     ToggleThemeTeachingTip1.IsOpen = true;
                 }
             }
-            finally
-            {
-                new GlobalNavigationController().NavigateTo(typeof(PasswordChangePage), email);
-
-            }
+            
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

@@ -149,6 +149,8 @@ CREATE TABLE ChangePasswordCodes
     CONSTRAINT FK_Professional_ChangePasswordCode FOREIGN KEY (IdP1) REFERENCES Professionals (IdP) ON DELETE CASCADE
 );
 
+SELECT +
+
 ###############################################
 CREATE TABLE Projects
 (
@@ -173,29 +175,6 @@ DESCRIBE Projects;
 
 SELECT *
 FROM Projects;
-
-###############################################
-CREATE TABLE Notifications
-(
-    IdN             CHAR(21) PRIMARY KEY,
-    TitleN          VARCHAR(50),
-    DescriptionN    VARCHAR(500),
-    DateTimeIssuedN DATETIME,
-    PictureN        LONGTEXT,
-    IdP1            CHAR(21),
-    IdPJ2           CHAR(21),
-    CONSTRAINT FK_Notification_Project FOREIGN KEY (IdPJ2) REFERENCES Projects (IdPJ) ON DELETE CASCADE,
-    CONSTRAINT FK_Notification_Professional FOREIGN KEY (IdP1) REFERENCES Professionals (IdP) ON DELETE CASCADE
-);
-
-################################################
-CREATE TABLE Tags
-(
-    IdT    CHAR(21) PRIMARY KEY,
-    NameT  VARCHAR(50),
-    IdPJ1  CHAR(21),
-    CONSTRAINT FK_Tag_Project FOREIGN KEY (IdPJ1) REFERENCES Projects (IdPJ) ON DELETE CASCADE
-);
 
 ################################################
 CREATE TABLE Proposals

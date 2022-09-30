@@ -63,12 +63,12 @@
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
                 <!--  Professionals  -->
-                <muxc:NavigationViewItem
+                <!--<muxc:NavigationViewItem
                     Content="Professionals"
                     Icon="People"
-                    Tag="Professionals_Page_Clients" />
+                    Tag="Professionals_Page_Clients" />-->
                 <!--  Notification center  -->
-                <muxc:NavigationViewItem Content="Notification center" Tag="Projecttype_Page">
+                <!--<muxc:NavigationViewItem Content="Notification center" Tag="Projecttype_Page">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7E7;" />
                     </muxc:NavigationViewItem.Icon>
@@ -85,7 +85,7 @@
                             </muxc:NavigationViewItem.InfoBadge>
                         </muxc:NavigationViewItem>
                     </muxc:NavigationViewItem.MenuItems>
-                </muxc:NavigationViewItem>
+                </muxc:NavigationViewItem>-->
 
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.FooterMenuItems>

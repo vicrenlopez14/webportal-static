@@ -5,82 +5,84 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:services="using:ProFind.Lib.Global.Services"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
 
-    <Grid  Padding="30">
+    <Grid Padding="30">
 
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.9*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="49*" />
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="24*" />
-        </Grid.ColumnDefinitions>
-        <CommandBar Background="Transparent"  IsOpen="False" DefaultLabelPosition="Right" Grid.ColumnSpan="3" Margin="-22,-30,-30,0">
-            <AppBarButton Icon="Delete" Label="Delete" Click="Delete_Click_1"/>
-            
-            <AppBarButton Icon="Add" Label="Add " Click="Add_Click_1"/>
+        <CommandBar
+            Grid.Row="00"
+            Background="Transparent"
+            DefaultLabelPosition="Right"
+            IsOpen="False">
+            <AppBarButton
+                Click="Delete_Click_1"
+                Icon="Delete"
+                Label="Delete" />
+
+            <AppBarButton
+                Click="Add_Click_1"
+                Icon="Add"
+                Label="Add " />
 
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton Icon="Setting"  Label="Settings">
+                <AppBarButton Icon="Setting" Label="Settings">
                     <AppBarButton.KeyboardAccelerators>
-                        <KeyboardAccelerator Modifiers="Control" Key="I" />
+                        <KeyboardAccelerator Key="I" Modifiers="Control" />
                     </AppBarButton.KeyboardAccelerators>
                 </AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
-        <StackPanel Orientation="Vertical" Grid.ColumnSpan="3" Margin="-22,22,-20,240">
-            <SearchBox PlaceholderText="Search" />
 
-            <ListView Name="ProfessionalsListView" >
-                <ListView.ItemTemplate>
+        <ListView Name="ProfessionalsListView" Grid.Row="1">
+            <ListView.ItemTemplate>
 
-                    <DataTemplate x:DataType="services:Profession">
-                        <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.1*" />
-                                    <ColumnDefinition Width="0.9*" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel
+                <DataTemplate x:DataType="services:Profession">
+                    <StackPanel Background="{StaticResource ButtonBackgroundThemeBrush}" CornerRadius="45">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel
                                 Grid.Column="1"
                                 Padding="0,30"
                                 Orientation="Vertical">
-                                    <StackPanel>
-                                        <TextBlock
+                                <StackPanel>
+                                    <TextBlock
                                         Height="25"
                                         Style="{StaticResource ListTitleStyle}"
                                         Text="Profession" />
-                                    </StackPanel>
-                                    <StackPanel />
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontWeight="Bold" Text="Name:" />
-                                        <TextBlock
+                                </StackPanel>
+                                <StackPanel />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="Name:" />
+                                    <TextBlock
                                         Height="31"
                                         Margin="10,0,0,0"
                                         Text="{Binding NamePfs}" />
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontWeight="Bold" Text="" />
-                                        <TextBlock
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="" />
+                                    <TextBlock
                                         Height="31"
                                         Margin="10,0,0,0"
                                         Text="" />
-                                    </StackPanel>
-                                    <StackPanel
+                                </StackPanel>
+                                <StackPanel
                                     Grid.Column="1"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center" />
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
 
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

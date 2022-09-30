@@ -219,7 +219,7 @@ public class ProposalsController : ControllerBase
     }
 
     // DELETE: api/Proposals/5
-    [HttpDelete("{id}")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteProposal(string id)
     {
         if (_context.Proposals == null)
